@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: docs       # HTML files will be placed in docs/ for GitHub Pages
 
 website:
   title: "ECON 700"
@@ -10,14 +10,17 @@ website:
         href: index.qmd
       - text: "About"
         href: about.qmd
+      - text: "Module 1"
+        href: mod-1-1-intro-to-r.qmd
 
 execute:
-  webR: true
+  webR: true            # enables WebR chunks for interactive R in the browser
 
 format:
   html:
     toc: true
     toc-location: right
-    self-contained: false
+    self-contained: false  # recommended for WebR to load JS modules correctly
+
 
 
