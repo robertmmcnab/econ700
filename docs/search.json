@@ -49,24 +49,31 @@
     "text": "# About ECON 700\nECON 700 introduces students to R for economic analysis. You will learn to:\n- Explore datasets\n- Create plots\n- Perform calculations\n- Use interactive WebR examples in the browser"
   },
   {
-    "objectID": "index.html#title-econ-700",
-    "href": "index.html#title-econ-700",
-    "title": "Welcome to ECON 700",
-    "section": "title: “ECON 700”",
-    "text": "title: “ECON 700”"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ECON 700",
+    "section": "",
+    "text": "About\n\n\nMeet Your Instructor\n\n\nReview the Course Objectives and Materials\n\n\nSyllabus"
   },
   {
-    "objectID": "index.html#navigate",
-    "href": "index.html#navigate",
-    "title": "Welcome to ECON 700",
-    "section": "Navigate",
-    "text": "Navigate\n\nAbout\nModule 1"
+    "objectID": "index.html#course-introduction",
+    "href": "index.html#course-introduction",
+    "title": "ECON 700",
+    "section": "",
+    "text": "About\n\n\nMeet Your Instructor\n\n\nReview the Course Objectives and Materials\n\n\nSyllabus"
   },
   {
-    "objectID": "index.html#overview",
-    "href": "index.html#overview",
-    "title": "Welcome to ECON 700",
-    "section": "Overview",
-    "text": "Overview\nThis site provides interactive and static examples for economic data analysis using R and WebR.\nClick on the links above to explore each section."
+    "objectID": "index.html#module-01-introduction-to-r-and-descriptive-statistics",
+    "href": "index.html#module-01-introduction-to-r-and-descriptive-statistics",
+    "title": "ECON 700",
+    "section": "Module 01 – Introduction to R and Descriptive Statistics",
+    "text": "Module 01 – Introduction to R and Descriptive Statistics\n\n\nOverview\n\n\nModule 1.1 – Introduction to R\n\n\nModule 1.2 – Descriptive Statistics"
+  },
+  {
+    "objectID": "index.html#module-02-probability",
+    "href": "index.html#module-02-probability",
+    "title": "ECON 700",
+    "section": "Module 02 – Probability",
+    "text": "Module 02 – Probability\n\n\nOverview\n\n\nModule 2.1 – Basics of Probability\n\n\nModule 2.2 – Conditional Probability\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section."
   }
 ]

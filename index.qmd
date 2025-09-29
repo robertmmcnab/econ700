@@ -1,19 +1,35 @@
 ---
-
 title: "ECON 700"
 ---
 
-# Welcome to ECON 700
+## Course Introduction
 
-This is the main landing page for ECON 700.
+<ul>
+  <li><a href="about.qmd">About</a></li>
+  <li><a href="instructor.qmd">Meet Your Instructor</a></li>
+  <li><a href="objectives.qmd">Review the Course Objectives and Materials</a></li>
+  <li><a href="syllabus.qmd">Syllabus</a></li>
+</ul>
 
-## Navigate
+## Module 01 – Introduction to R and Descriptive Statistics
 
-- [About](about.qmd)
-- [Module 1](mod-1-1-intro-to-r.qmd)
+<ul>
+  <li><a href="mod-1-overview.qmd">Overview</a></li>
+  <li><a href="mod-1-1-intro-to-r.qmd">Module 1.1 – Introduction to R</a></li>
+  <li><a href="mod-1-2-descriptive-stats.qmd">Module 1.2 – Descriptive Statistics</a></li>
+</ul>
 
-## Overview
+## Module 02 – Probability
 
-This site provides interactive and static examples for economic data analysis using R and WebR. 
+<ul>
+  <li><a href="mod-2-overview.qmd">Overview</a></li>
+  <li><a href="mod-2-1-basics.qmd">Module 2.1 – Basics of Probability</a></li>
+  <li><a href="mod-2-2-conditional.qmd">Module 2.2 – Conditional Probability</a></li>
+</ul>
 
-Click on the links above to explore each section.
+---
+
+<p>This site provides <strong>interactive and static examples</strong> for economic data analysis using R and WebR. Click on the links above to explore each section.</p>
+
+
+
