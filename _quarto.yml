@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "ECON 700"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+
+execute:
+  webR: true
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    self-contained: false
+
+

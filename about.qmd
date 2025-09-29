@@ -1,0 +1,21 @@
+---
+title: "About"
+format: html
+editor: visual
+---
+
+## ECON 700
+
+---
+
+\# About ECON 700
+
+ECON 700 introduces students to R for economic analysis. You will learn to:
+
+\- Explore datasets
+
+\- Create plots
+
+\- Perform calculations
+
+\- Use interactive WebR examples in the browser

@@ -1,0 +1,105 @@
+---
+title: "ECON 700"
+subtitle: "An Introduction to R for Economic Analysis"
+author: "Bob McNab"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    self-contained: false     # must be false when using webr
+filters:
+  - webr
+execute:
+  webR: true
+---
+
+# Introduction
+
+## Data and the Challenge of Economic Analysis
+
+We are awash in data. The challenge is to find the right data at the appropriate time to investigate an empirical question of interest. In some cases, the data are well defined, consistently formatted, readily available, and structured to facilitate analysis. Then there are data that could help answer a question, but are not in an easily accessible format. But, before tackling these problems, we need to ask the simple question:
+
+**What are data?**
+
+The Merriam-Webster dictionary defines data as: "...*factual information (such as measurements or statistics) used a basis for reasoning, discussion, or calculation*." Broadly speaking, data can consist of measurements regarding the health of individuals, performance of firms, the income of regions, the inflation rate of a national economy, among other things. Data can also consist of statistics that describe the properties of an underlying set of measurements.
+
+The Bureau of Labor Statistics (BLS) defines the civilian labor force as "*The labor force includes all people age 16 and older who are classified as either [employed](https://www.bls.gov/cps/definitions.htm#employed) and [unemployed](https://www.bls.gov/cps/definitions.htm#unemployed). Conceptually, the labor force level is the number of people who are either working or actively looking for work.*"
+
+How many people are the in the civilian labor force in the United States? How many in Virginia? Is the labor force larger today than it was at the same time last year? How does the growth in the labor force in Virginia compare to other states? All these questions require obtaining data and, for some, manipulating data to create statistics about the properties of the data.
+
+## Headline Unemployment Rate
+
+The headline unemployment rate is an example of a measure that has different values across time. Collectively, these measures are data on the headline unemployment rate. This rate is equal to the ratio of the employed persons in the civilian labor force to the civilian labor force.
+
+In the following figure, we plot the evolution of the unemployment rate over time.
+
+```{r unemp1, echo = FALSE, message = FALSE, results = 'asis', fig.height = 3, fig.width = 5, fig.align = "center"}
+
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library(tidyquant)
+
+unrate <- tq_get("UNRATE",
+                    get  = "economic.data",
+                    from = "1939-01-01" ) %>%
+          mutate(value = price/100)  %>%
+          filter(year(date) > 2017) 
+
+ggplot(data = unrate,
+       aes(x = date, 
+           y = value)) +
+  geom_line(color = "darkblue") + 
+  scale_y_continuous(labels=scales::percent_format(a=1)) +
+  scale_x_date(date_labels = "%Y", 
+               date_breaks="1 years") +
+  theme_minimal()+
+  theme(legend.position="none",
+        plot.caption=element_text(hjust=0),
+        plot.subtitle=element_text(size=12,face="italic",color="darkgray"),
+        plot.title=element_text(size=12,face="bold",color="black")) +
+  labs(x        = "",
+       y        = "Unemployment Rate",
+       title    = "Headline (U3) Unemployment Rate, United States",
+       caption  = "Source: Bureau of Labor Statistics, seasonally adjusted data.")
+
+
+
+```
+
+## Basic Operations
+
+Let's first try some basic math operations in R using webR.
+
+Notice that when you run the code that R produces the output.
+
+Try adding the following to the code and executing the code: $(6 \times 12)/24$.
+
+What happens?
+
+```{webr-r}
+
+# Basic math examples
+5 + 5
+
+10 / 3
+
+4 + 3 * 100
+
+(4 + 3) * 100
+
+```
+
+## Another example
+
+Try some of these with WebR:
+
+```{webr-r}
+TRUE & FALSE
+# TRUE | TRUE
+# TRUE & !FALSE
+# TRUE & (TRUE | FALSE)
+# TRUE & (TRUE & FALSE)
+# !(TRUE | FALSE)
+```

@@ -1,0 +1,19 @@
+---
+
+title: "ECON 700"
+---
+
+# Welcome to ECON 700
+
+This is the main landing page for ECON 700.
+
+## Navigate
+
+- [About](about.qmd)
+- [Module 1](mod-1-1-intro-to-r.qmd)
+
+## Overview
+
+This site provides interactive and static examples for economic data analysis using R and WebR. 
+
+Click on the links above to explore each section.
