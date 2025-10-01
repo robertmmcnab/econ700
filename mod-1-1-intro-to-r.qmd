@@ -23,21 +23,6 @@ library(kableExtra, quietly = TRUE)
 library(lubridate, quietly = TRUE)
 library(tidyquant, quietly = TRUE)
 
-pkgs <- c("dplyr", 
-          "ggplot2",
-          "kableExtra",
-          "lubridate",
-          "tidyquant")  # add all packages students need
-
-for (p in pkgs) {
-  if (!requireNamespace(p, quietly = TRUE)) {
-    suppressMessages(suppressWarnings(
-      webr::install(p, quiet = TRUE)
-    ))
-  }
-  suppressMessages(library(p, character.only = TRUE))
-}
-
 
 ```
 
@@ -205,9 +190,17 @@ We can use **WebR** to provide **dynamic** examples of code. The WebR code chunk
 
 As you can see below, you can run the WebR code in your browser. You can add, subtract, or change the code chunk entirely.
 
-The WebR code chunk below mirrors the static code chunk above.
+In this example, we first clear the memory, then we do three operations
 
-Like the code above, since we are only clearing memory and loading packages, there is no significant output other than we are preparing for the work to come.
+-   Add 5 and 13 or $(5 + 13)$
+
+-   Multiple 5 and 13 or $(5 \times 13)$
+
+-   Divide 5 by 13 or $\frac{5}{13}$
+
+-   Raise 5 to the 5th power or $5^{5}$
+
+-   Take the square root of 52 or $\sqrt{64}$
 
 ```{webr-r}
 
@@ -215,13 +208,13 @@ Like the code above, since we are only clearing memory and loading packages, the
 
 rm(list = ls())
 
-#Load packages
+#Simple math examples
 
-library(dplyr, quietly =  TRUE)
-library(ggplot2)
-library(lubridate)
-library(tidyverse)
-library(kableExtra)
+5 + 13
+5 * 13
+5 / 13
+5 ^ 5
+sqrt(64)
 
 ```
 

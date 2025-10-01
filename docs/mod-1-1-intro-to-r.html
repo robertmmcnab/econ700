@@ -404,7 +404,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"#Clear the Workspace\n\nrm(list = ls())\n\n#Load packages\n\nlibrary(dplyr, quietly =  TRUE)\nlibrary(ggplot2)\nlibrary(lubridate)\nlibrary(tidyverse)\nlibrary(kableExtra)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"#Clear the Workspace\n\nrm(list = ls())\n\n#Simple math examples\n\n5 + 13\n5 * 13\n5 / 13\n5 ^ 5\nsqrt(64)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1658,6 +1658,35 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -2158,8 +2187,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h1>WebR</h1>
 <p>We can use <strong>WebR</strong> to provide <strong>dynamic</strong> examples of code. The WebR code chunks appear different than the static code chucks.</p>
 <p>As you can see below, you can run the WebR code in your browser. You can add, subtract, or change the code chunk entirely.</p>
-<p>The WebR code chunk below mirrors the static code chunk above.</p>
-<p>Like the code above, since we are only clearing memory and loading packages, there is no significant output other than we are preparing for the work to come.</p>
+<p>In this example, we first clear the memory, then we do three operations</p>
+<ul>
+<li><p>Add 5 and 13 or <span class="math inline">\((5 + 13)\)</span></p></li>
+<li><p>Multiple 5 and 13 or <span class="math inline">\((5 \times 13)\)</span></p></li>
+<li><p>Divide 5 by 13 or <span class="math inline">\(\frac{5}{13}\)</span></p></li>
+<li><p>Raise 5 to the 5th power or <span class="math inline">\(5^{5}\)</span></p></li>
+<li><p>Take the square root of 52 or <span class="math inline">\(\sqrt{64}\)</span></p></li>
+</ul>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>In the next section, we will explore how to create variables in R and how to assign values to variables.</p>
