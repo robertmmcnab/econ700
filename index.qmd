@@ -10,7 +10,7 @@ Note: The course is under construction. Many links will not work.
   <li><a href="about.qmd">About</a></li>
   <li><a href="instructor.qmd">Meet Your Instructor</a></li>
   <li><a href="objectives.qmd">Review the Course Objectives and Materials</a></li>
-  <li><a href="syllabus.qmd">Syllabus</a></li>
+  <li><a href="ECON-700---Fall-2026.pdf">Syllabus</a></li>
 </ul>
 
 ## Module 01 – Introduction to R and Descriptive Statistics
