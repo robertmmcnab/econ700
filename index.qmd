@@ -16,7 +16,7 @@ Note: The course is under construction. Many links will not work.
 ## Module 01 – Introduction to R and Descriptive Statistics
 
 <ul>
-  <li><a href="mod-1-0.qmd">Module 1.0 - Getting Started With R and R Studio</a></li>
+  <li><a href="mod-1-0-intro-to-data.qmd">Module 1.0 - Data and the Challenge of Economic Analysis</a></li>
   <li><a href="mod-1-1-intro-to-r.qmd">Module 1.1 – Introduction to R</a></li>
   <li><a href="mod-1-2-descriptive-stats.qmd">Module 1.2 – Descriptive Statistics</a></li>
 </ul>
