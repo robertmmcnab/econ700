@@ -21,6 +21,6 @@ format:
     toc: true
     toc-location: right
     self-contained: false  # recommended for WebR to load JS modules correctly
-
+    link-external-newwindow: true  # ✅ open external links in new tabs
 
 

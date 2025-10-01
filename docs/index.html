@@ -175,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 <a href="./mod-1-1-intro-to-r.html">Module 1.1 – Introduction to R</a>
 </li>
 <li>
-<a href="mod-1-2-descriptive-stats.qmd">Module 1.2 – Descriptive Statistics</a>
+<a href="./mod-1-2-intro-to-r-variables.html">Module 1.2 – Variables and Assignment Basics in R</a>
 </li>
 </ul>
 </section>
@@ -288,6 +288,11 @@ This site provides <strong>interactive and static examples</strong> for economic
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

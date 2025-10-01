@@ -1,0 +1,864 @@
+---
+title: "ECON 700"
+subtitle: "An Introduction to R for Economic Analysis"
+author: "Bob McNab"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    self-contained: false     # must be false when using webr
+urlcolor: blue
+filters:
+  - webr
+execute:
+  webR: true
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+
+library(dplyr, quietly = TRUE)
+library(ggplot2, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(lubridate, quietly = TRUE)
+library(tidyquant, quietly = TRUE)
+
+```
+
+## Why use R and RStudio?
+
+We will use **R** and **RStudio** extensively in this class. You will also use these programs extensively in the following classes on the econometrics sequence.
+
+A frequently asked question is "why can't we use Excel?"
+
+The simple answer is that Excel is good for some things but R is better for the things we want to do in this and other classes.
+
+Writing code (programming) allows for:
+
+-   Reproducibility (code provides transparency to processes)
+
+-   Customization (many solutions to a problem)
+
+-   Automation (code once, run many times)
+
+-   Accountability (the programmer is responsible for what the code does)
+
+Other programs have lower fixed costs than R. These programs, whether Excel, SAS, SPSS, or TSP, have 'built in' functions and interfaces that allow 'easier entry' than R. In other words, you will invest less time to learn how to start working in other programs than R.
+
+So, why then use R? First, coding is like learning a second language. It takes a while to learn the logic and 'flow' of the programming language. Second, unlike many other programs, you have a very good idea of what R is doing. If you write code, you learn where data come from, how they are formatted, the properties of data, and you gain a much deeper understanding of the process by which you arrive at an answer.
+
+Another strength of this approach is that once you learn to code in R and use RStudio, your marginal cost of learning Python, C++, or SQL is lower because the logic behind each of these languages is similar.
+
+*Simply put, coding is as much about the journey as the destination.*
+
+## R and RStudio: An Introduction
+
+You will need to install **R** and **RStudio**.
+
+Each is a piece of software. R is the 'engine' and RStudio is the interface.
+
+You can work with R directly, but RStudio makes the process less painful.
+
+R is the statistical software package that we will use throughout the course,
+
+RStudio is an interface that makes using R much easier.
+
+The **R Project** is located at: <https://www.r-project.org/>
+
+## Downloading R
+
+You can download **R** at: <https://cloud.r-project.org/>
+
+Select the correct operating system to download and install R.
+
+## Downloading RStudio
+
+You can download **RStudio** at: <https://posit.co/download/rstudio-desktop/>
+
+Note how Posit tells you to install R and then RStudio.
+
+You can also use **Posit Cloud** from Posit at: <https://posit.cloud/>
+
+## Tutorials in R
+
+There are numerous tutorials online on how to use R.
+
+Some overviews that might be helpful:
+
+R Programming for Beginners: <https://youtu.be/fDRa82lxzaU>
+
+R Programming Tutorial: <https://youtu.be/_V8eKsto3Ug>
+
+## Opening RStudio
+
+![Screenshot of RStudio in Windows](images/rstudio-desktop.jpg){fig-alt="Screenshot of RStudio in Windows"}
+
+When you open RStudio for the first time, you will see four panels like in the above image. It is likely that your version of RStudio has a white background with blue or black text.
+
+If you would like to change this, go to “Tools \> Global Options… \> Appearance \> Editor theme”.
+
+You can choose a darker theme, or leave it a lighter theme.
+
+The four panels are as follows:
+
+-   Top Left: **Source** – This is where you will write the R code you want to save. In other words, this is where you write and save your work, usually called R scripts (.R files).
+
+-   Bottom Left: **Console** – When you execute (or *run*) code, you will usually see output here. This is also a place you can write code you do not want to be part of your final script. If you were a painter, the **Source** panel would be your canvas and the **Console** would be your [palette](https://upload.wikimedia.org/wikipedia/commons/0/04/Oil_painting_palette.jpg).
+
+-   Top Right: **Enviornment** – Here is where we will be able to see all the objects (data, etc.) that we are working with in the moment. To clear your environment, use the code `rm(list = ls())`.
+
+-   Bottom Right: **Output** – This is mostly where you will see plots you have generated, but can also see files on your computer, packages you have installed, and “Help” for certain functions.
+
+![Screenshot of Rstudio with panel labels.](images/rstudio-fourpanel.jpg){fig-alt="Screenshot of Rstudio with panel labels."}
+
+# Packages in R
+
+One of the most powerful features of R is that there are numerous packages or add-ons to base R that provide additional functionality. We need to install these packages and then include them so they are accessible to R as we work with data.
+
+If you need to install a package, you can always use the **install.packages** command. For example, you could use **install.packages("dplyr")** to install the **dplyr** package.
+
+Once a package is installed, you typically will not need to re-install it. You may need to update your packages, however, and this can be easily done. You can either use the function **update.packages** or update packages through the packages menu in RStudio.
+
+In the following code, we clear the workspace (essentially erasing working memory) and load three packages.
+
+First, we clear memory with the command **rm(list = ls())**.
+
+Second, we load the packages into memory by using the **library** statement.
+
+For example, **library(dplyr)** loads the dplyr package so we can use its functions later in our code.
+
+Note, however, the code below is ***static***. In other words, you can't run the code here. You will have to replicate the code in your RStudio. 
+
+To learn more, see the following links.
+
+dplyr: <https://dplyr.tidyverse.org/>
+
+lubridate: <https://lubridate.tidyverse.org/>
+
+tidyverse: <https://www.tidyverse.org/>
+
+kable: <https://cran.r-project.org/web/packages/kableExtra>
+
+```{r, message = FALSE}
+
+#Clear the Workspace
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+```
+
+## WebR
+
+We can use **WebR** to provide **dynamic** examples of code. The WebR code chunks appear different than the static code chucks.
+
+As you can see below, you can run the WebR code in your browser. You can add, subtract, or change the code chunk entirely. 
+
+The WebR code chunk below mirrors the static code chunk above.
+
+```{webr-r}
+
+#Clear the Workspace
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+```
+
+
+
+
+# Variable and Assignment Basics
+
+## Assigning Numeric Values to Variables
+
+We can use the \textbf{assignment operator} in R to assign values to a variable. The assignment operator can be thought of as moving a value, character, date, or other form into a named variable. The assignment operator is "\<-", that is, "x2 \<- 1056" means assign the value 1056 to the variable x2.
+
+For example, in the code below, we assign the numerical value of 2 to the variable \textbf{x1} and the numerical value of 4.5 to the variable \textbf{x2}.
+
+We can assign the value contained in one variable in another. For example, we can assign \textbf{x2} to \textbf{x3} and also specify that the integer value of \textbf{x2} is assigned to \textbf{x3}.
+
+\hfill\break
+
+```{r}
+
+#Clear the Workspace
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+#Assign 2 to variable x_1
+
+x1 <- 2
+
+#Assign 4.5 to variable x_2
+
+x2 <- 4.5
+
+#Assign the integer value of x_2 to x_3
+
+x3 <- as.integer(x2)
+
+#Output the variables 
+
+x1
+x2
+x3
+
+```
+
+## Assigning Character Values to a Variable
+
+We can assign character values to a variable. In the following code, we assign the name "Timothy" as a character to the variable \textbf{name1}.
+
+There is a subtle but important difference to storing a value as a character or as a numeric variable.
+
+We assign the \textbf{numeric} or \textbf{quantitative} value 06250 to \textbf{x4} and 06250 as a \textbf{character} or \textbf{qualitative} value to \textbf{name2}.
+
+Note what happens: when stored as a numeric value, 06250 is stored as 6250. When 06250 is stored as "06250" as a character variable, the character variable does not "lose" then "0" in the front of "06250".
+
+This can be very important if you are storing an identification value with a leading 0.
+
+```{r}
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+#Assign the character Timothy to name_1
+
+name1 <- as.character("Timothy")
+
+#Assign the numeric value 06250 to x_4
+
+x4 <- 06250
+
+#Assign 06250 as a character 
+
+name2 <- as.character("06250")
+
+#Convert the character 06250 to numeric
+
+name3 <- as.numeric(name2)
+
+# Output
+
+name1
+x4
+name2
+name3
+```
+
+## Assigning Date Values to a Variable
+
+We can also store dates and work with dates. We assign 2020-09-01 a date value using the \textbf{lubridate} package. Note that we tell the package that the format of the date is year-month-day (ymd).
+
+Likewise, we assign 09-05-2020 to date2 as a date variable but tell the package that the format of the date is now month-day-year (mdy). Note that even though the dates are in different formats, the \textbf{lubridate} package transforms the dates into a format recognizable by R.
+
+Having transformed the date values, we can calculate the time difference by assigning \textbf{date2 - date1} to variable \textbf{date3}.
+
+```{r}
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+
+#Convert the text "2020-09-01" to a date variable
+
+date1 <- lubridate::ymd("2020-09-01")
+
+#Convert "2020-09-05" to a date variable
+
+date2 <- lubridate::mdy("09-05-2020")
+
+#Calculate the time difference between two variables
+
+date3 <- date2 - date1
+
+#Output the variables 
+
+date1
+date2
+date3
+
+```
+
+# Vectors and Data Frames
+
+## Creating Vectors
+
+We can now create a vector that contains several values. In the following example, we combine several numbers and assign them to the variable \textbf{x5}.
+
+We can also combine other variables (if they are the same type) to form a new vector. You can combine single element variables with vectors to create a new vector \textbf{x6}.
+
+```{r}
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+# Assign values to x1, x2, x3, x4
+
+x1 <- 1
+x2 <- -5
+x3 <- 136
+x4 <- 0.47
+x5 <- 4840
+
+#Create a row vector 
+
+x5 <- c(12, 13, 14, 25, 100)
+
+#Use existing variables to create a row vector
+
+x6 <- c(x1, x2, x3, x4, x5)
+
+# Use Kable To Create Tables of X5 and X6
+
+kable(x5)
+
+kable(x6)
+```
+
+When we display \textbf{x5}, for example, we note is a row vector consisting of one row and 5 elements. We can also directly manipulate \textbf{x5} by multiplying it by two.
+
+We should, however, understand that product of \textbf{x5} and 2 is not stored, it's a direct manipulation and not available for future use. If we wanted to store it, we would have to assign it to a variable. Here, we assign the product of \textbf{x5} and 2 to the variable \textbf{x7}.
+
+```{r}
+
+#Output x5 * 2
+
+kable(x5)
+
+kable(x5*2)
+
+#Assign x5*2 to x7
+
+x7 <- x5*2
+
+kable(x7)
+```
+
+## Creating a Data Frame
+
+So far, everything we have created has been stored as a variable or vector. A \textbf{matrix} consists of rows and columns. The organization of the matrix is important. In some cases, the rows will correspond to individual observations with variables in the columns. In other cases, the variables are in the rows and individuals in columns. Matrices can contain quantitative and qualitative elements.
+
+A matrix is a table or a two-dimensional array-like structure. In R, a \textbf{data frame} is a list of variables with the same number of rows with unique row names. It is represented by the class \textbf{data.frame}.
+
+A \textbf{data frame} can have one column with numeric elements, another with date elements, another with character elements, and so on. The CDC data earlier in this module is an example of a data frame.
+
+First, let's create two row vectors, \textbf{x8} and \textbf{x9}. We can \textit{bind} these together using the row bind, \textbf{rbind}, or column bind, \textbf{cbind}, functions.
+
+The \textbf{rbind} function "stacks" the observations in the vectors. The \textbf{cbind} function "adds" the column of the second vector to the first vector, creating a data frame with two columns.
+
+Now, let's column bind \textbf{x8} and \textbf{x9} together as a data frame. We then row bind \textbf{x8} and \textbf{x9} together as another data frame
+
+\textit{df1} is a data frame where the observations are in rows and the variables are in columns. \textit{df2} is a data frame where the variables are in the rows and the observations are in the columns.
+
+```{r}
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+#create two vectors
+
+x8 <- 3:6
+x9 <- 10:13
+
+kable(rbind(x8,x9))
+
+kable(cbind(x8,x9))
+
+#Create Data Frames
+
+df1 <- data.frame(cbind(x8,x9))
+
+df2 <- data.frame(rbind(x8, x9))
+
+kable(df1)
+
+kable(df2)
+
+```
+
+## Using an Existing Dataframe
+
+R comes with a number of "built in" data sets. For the following discussion, we use the \textit{mtcars} data. The data contain observations on a number of cars from the Motor Trend magazine.
+
+One can work directly with the \textit{mtcars} data or assign the \textit{mtcars} data to a data frame. In the following, we assign \textit{cars} to the \textit{cardata} data frame. We use the assignment operator so that data flows from \textit{mtcars} to \textit{cardata}.
+
+We can now use the \textit{head} or \textit{tail} functions to examine the structure of the \textit{cardata} data frame. Note that the \textit{head} function returns the first six rows while the \textit{tail} function returns the last six rows.
+
+```{r cars}
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+#Assign mtcars to cardata 
+
+cardata <- mtcars
+
+# View structure of the data frame
+
+head(cardata)
+
+tail(cardata)
+
+```
+
+## Dimensions of a Data Frame
+
+To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the \textit{nrow} and \textit{ncol} functions determine the number of rows and columns in a data frame, respectively.
+
+We can also use the \textit{dim} function to return the dimensions of the data frame. Note that the \textit{dim} function returns rows then columns.
+
+```{r}
+
+# Number of rows
+
+nrow(cardata)
+
+# Number of columns
+
+ncol(cardata)
+
+# Dimensions of data frame (rows and columns)
+
+dim(cardata)
+```
+
+## Selecting Rows or Columns in a Data Frame
+
+Having determined the dimensions of the \textit{cardata} data frame, we can now select parts of the data frame.
+
+We can approach this by recognizing that a data frame is organized by rows and columns. For example, \textit{mtcars[1,1]} returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.
+
+So, in general, for a data frame, \textit{data[row,column]}. For example, \textit{cardata[1:2, 2:3]} returns rows 1 to 2 and columns 2 to 3.
+
+```{r}
+
+# First observation, First variable.
+
+cardata[1,1]
+
+# First two observations, 2nd and 3rd variables
+
+cardata[1:2, 2:3]
+
+```
+
+If the row or column is left blank, all values for the column are the result. For example, \textit{cardata[,1]} would return all rows for the first column of data. On the other hand, \textit{cardata[1:2,]} would return the first two rows and all the columns.
+
+```{r}
+
+# All rows, first two columns
+
+cardata[,1:2]
+
+# First two observations, All Columns
+
+cardata[1:2,]
+
+```
+
+## Manipulating the Dataframe and Adding New Variables
+
+Starting with the \textit{cardata} data frame, we can now utilize one of the features of the packages to \textit{pipe} the data. Piping means that the data 'flows' in the direction of the pipe. It's actually called a pipeline of data.
+
+A bit of housekeeping. We want to convert the rownames in \textit{cardata} to a variable. We pipe the data frame and then use the function \textbf{rownames\_to\_column()} to do just that. We then pipe the data to rename the new variable \textit{rowname} to \textit{car}.
+
+We can now use the \textit{mutate} function to create a new variable or replace an existing variable.
+
+In the following code, the data flow from \textit{cardata} to the next line of code to create a new variable \textbf{km\_per\_gallon} using the \textit{mutate} function.
+
+Imagine a temporary data frame that consists of \textit{cardata} with a new column for the \textbf{km\_per\_gallon} variable.
+
+Each new line of within the \textit{mutate} function creates a new variable. The second variable that we create converts kilometers per gallon to kilometers per liter or \textbf{km\_per\_liter}.
+
+Your temporary data frame now consists of the \textit{cardata} data frame plus the two new variables.
+
+The third line of the \textit{mutate} statement creates a new variable that converts miles per gallon into kilometers per liter, essentially duplicating the process of the first two lines of the mutate statement. The new variable is called \textbf{km2\_per\_liter}.
+
+At this point, you decide you only need to keep a subset of variables. We pipe the resulting data frame to the \textit{select} statement. The variables included in the select statement are kept in the temporary data frame while the variables excluded from the select statement are deleted from the temporary data frame.
+
+You have now reached the end of the pipe. The "\<-" at the beginning then assigns all the data in the temporary data frame to the \textit{cardata2} data frame. Because we have used the grammar of piping, the original data frame is unchanged.
+
+The grammar of piping is very useful as it allows you to manipulate a data frame without changing the contents of the original data frame.
+
+Note how we can start using some of the additional features in the **kable** package to rename column names for improve presentation.
+
+```{r}
+
+cardata2 <- cardata %>%
+  rownames_to_column() %>%
+  rename(car           = rowname) %>%
+  mutate(km_per_gallon = mpg*1.60934,
+         km_per_liter  = km_per_gallon*3.78541,
+         km2_per_liter = mpg*1.60934*3.78541) %>%
+  select(car, mpg, cyl, wt, km_per_gallon, km_per_liter, km2_per_liter)
+
+kable(cardata[1:5,])
+
+kable(cardata2[1:5,],
+      col.names = c("Car",
+                    "MPG",
+                    "Cylinders",
+                    "Weight",
+                    "Kilometers per Gallon",
+                    "Kliometers per Liter",
+                    "Squared KM/Gallon")) %>%
+kable_classic()
+
+```
+
+# Working with an API
+
+## 4.1 The FRED API for Real GDP
+
+An Application Programming Interface (API) allows us to obtain data from a source without having to manually downloading the data. In effect, an API allows us to "grab" data from an external source. If the external source updates the data, then our next API call with obtain the updated data.
+
+For example, let's say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called \textbf{GDPC1}, and download the data into an Excel file. This process is labor-intensive and subject to error.
+
+FRED: \url{https://fred.stlouisfed.org/}
+
+Real GDP: \url{https://fred.stlouisfed.org/series/GDPC1}
+
+We can use an API call to obtain the data. Instead of having to write the code for an API call, we can use a package called \textbf{tidyquant}.
+
+We have the variable name \textit{GDPC1} and so we can simply use the \textit{tq\_get} function in \textbf{tidyquant} to retrieve the real GDP series. Note that we rename the \textit{price} variable to \textit{rgdp} and we convert the date using the \textbf{lubridate} package.
+
+We can use the \textit{head} or \textit{kable} to print out the contents of the first rows of the resulting data frame.
+
+We see the data are organized such that each row corresponds to a time period, that is, the first row represents real GDP for the 1st quarter of 1950, the second row represents real GDP for the 2nd quarter of 1950, and so on.
+
+```{r, fig.height = 4, fig.width = 6, fig.align = "center"}
+
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+library(tidyquant)
+
+#Use tq_get to obtain real GDP from FRED
+
+rgdp <- tq_get("GDPC1",
+                    get  = "economic.data",
+                    from = "1950-01-01" ) %>%
+        rename(rgdp = price) %>%
+        mutate(date = lubridate::ymd(date))
+
+kable(rgdp[1:5,])
+
+```
+
+## The FRED API for Nominal GDP
+
+We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the \textit{price} variable containing the values for nominal GDP. We rename the variable to \textit{gdp} and also use the \textbf{lubridate} pacakge for the dates.
+
+Nominal GDP: \url{https://fred.stlouisfed.org/series/GDP}
+
+```{r}
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+library(tidyquant)
+
+#Use tq_get to obtain nominal GDP from FRED
+
+gdp <- tq_get("GDP",
+                    get  = "economic.data",
+                    from = "1950-01-01" ) %>%
+        rename(gdp = price) %>%
+        mutate(date = lubridate::ymd(date))
+
+kable(gdp[1:5,])
+```
+
+## The FRED API for Nominal and Real GDP
+
+In the previous examples, we made an API call for one variable at a time. The result was two data frames, one for nominal GDP, and one for real GDP. It would be more efficient to make one API call that results in a single data frame with both variables.
+
+In the following code, we \textbf{combine} the names of the two variables, that is, \textit{c("GDP","GDPC1")} creates a row vector with the two names. This row vector is used by the \textit{tq\_get} function to make an API call to obtain the two variables from FRED.
+
+What's important to note is that the \textit{all\_gdp} data fame is in \textbf{long} format. In other words, each row corresponds to one period of time for one variable.
+
+We have to do some housecleaning. When we obtain the data from FRED, the variable names are contained in a variable called \textit{symbol} and the values are contained in a variable named \textit{price}. We rename those to \textit{variable} and \textit{value}, respectively.
+
+We then plot the data using the \textbf{ggplot2} package. The \textit{ggplot} function is very flexible and you can modify almost every element of a graph. For now, we provide the example and will work on developing our graphing skills later on in the course.
+
+```{r gdp1, echo = TRUE, message = FALSE, results = 'asis', fig.height = 5, fig.width = 6, fig.align = "center"}
+
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(kableExtra)
+library(lubridate)
+library(tidyquant)
+library(tidyverse)
+library(ggplot2)
+
+#Use tq_get to obtain nominal and real GDP from FRED
+
+all_gdp <- tq_get(c("GDP", "GDPC1"), 
+                  get  = "economic.data",
+                    from = "1950-01-01") %>%
+        mutate(date     = lubridate::ymd(date)) %>%
+        rename(variable = symbol,
+               value    = price)
+
+# Produce Table of First 10 Observations
+
+kable(all_gdp[1:10,],
+      col.names = c("Variable",
+                    "Date",
+                    "Value"))
+
+#Use GGPLOT 
+#GDP over time
+
+ggplot(data = all_gdp, 
+       aes(x = date, 
+           y = value,
+           color = variable,
+           group = variable)) +
+  geom_line(linewidth = 1.5) +
+  theme_minimal() +
+  labs(title    = "Real and Nominal GDP, United States",
+       subtitle = "Billions of Dollars",
+       x        = "Date",
+       y        = "Billions of Dollars")
+
+```
+
+# An Example with US Census Data
+
+\textbf{Population} refers to data that contains all members of a specified group. *N* is the number of individuals in the population. We can think of the population as the universe of individuals for the variable or variables of interest.
+
+A \textbf{sample} refers to a subset or part of the population with sample size $n$ that is less than the population size $N$ or $n < N$.
+
+## Using the Census API
+
+In the following code, we use the \textbf{censusapi} package to use the United States Census Bureau's API for the American Community Survey to obtain data on county population for 2019.
+
+We are using data from the American Community Survey 5-Year estimates which provide estimates for counties and county-equivalents in the United States.
+
+You can learn more about the ACS at:
+
+url{<https://www.census.gov/programs-surveys/acs>}
+
+To set up the API, you will need to understand what variable names are used by the API developer.
+
+Here we rely on the ACS API documentation:
+
+\url{https://www.census.gov/data/developers/data-sets/acs-5year.html}
+
+We can also use built in functions of the censusapi package.
+
+First, we can use \textit{list CensusApis()} to obtain a data frame with all the Census' API.
+
+We then can use \textit{listCensusMetadata} for a specific API to determine what variables we can access and the names of these variables.
+
+You will have to register for your own free Census API key.
+
+You can do this at: \url{https://api.census.gov/data/key_signup.html}
+
+```{r}
+
+rm(list = ls())
+
+#Load packages
+
+library(censusapi)
+
+library(dplyr)
+library(kableExtra)
+library(lubridate)
+library(tidyquant)
+library(tidyverse)
+library(ggplot2)
+
+# List all the available Census APIs
+
+apis <- listCensusApis()
+
+# List all the variables in the ACS 5-Year API
+# Note that this takes a while, you should only run this when needed
+
+acs_vars <- listCensusMetadata(name = "2019/acs/acs5", type = "variables")
+
+```
+
+## An API Call Example
+
+We can now use the \textit{getCensus} function in the \textbf{censusapi} package to obtain 2019 ACS data for total population. In doing so, we obtain data on the the universe of counties and county equivalents for the United States for 2019 with respect to total population.
+
+We use the \textit{arrange} function to sort by state FIPS code (a geographical identification code) and then county FIPS code.
+
+```{r}
+
+#Note that B01001_001 = Total Population
+
+county_pop <- getCensus(name = "acs/acs5", 
+                              vintage = 2019,
+                              key = "9c1637a56ff93f0af6b4b1d0547ea048fe668175",
+                              vars = c("NAME",
+                                       "B01001_001E"),
+                              region = "county:*")   %>%
+  rename(total_pop   = B01001_001E,
+         county_fips = county, 
+         state_fips  = state) %>%
+  arrange(state_fips, county_fips)
+
+kable(county_pop[1:5,])
+
+```
+
+## Filtering to Focus On One State
+
+We can then use the \textit{filter} function to obtain a subset of the data. Here, we filter the data to only keep those observations for which the state FIPS code is 51, which happens to be the FIPS code for Virginia.
+
+We use the existing \textbf{county\_pop} data frame which we created using the previous code example.
+
+```{R}
+
+va_pop <- county_pop %>%
+  filter(state_fips == 51) %>%
+  arrange(county_fips)
+
+
+kable(va_pop[1:10,])
+```
+
+## API Call With Multiple Variables
+
+We can also obtain multiple variables from one API call. In the last example, we obtain total population, male population, and female population from the 2019 ACS 5-Year estimates. We then calculate the sex ratio, which is equal to the male population divided by the female population and plot the sex ratio.
+
+We note that there is one very large county in the data (Los Angeles, California). We also note there is another county where there are approximately 3.5 males to every woman (Forest County, Pennsylvania).
+
+```{r}
+
+# Obtain Population by Sex, Total Male Population, Total Female Population
+# B01001_001E - Population Total by Sex
+# B01001_002E - Total Male Population
+# B01001_026E - Total Female Population
+# Calculate sex-ratio = male population / female population
+
+sex_pop <- getCensus(name = "acs/acs5", 
+                              vintage = 2019,
+                              key = "9c1637a56ff93f0af6b4b1d0547ea048fe668175",
+                              vars = c("NAME",
+                                       "B01001_001E",
+                                       "B01001_002E",
+                                       "B01001_026E"),
+                              region = "county:*")   %>%
+  rename(total_pop   = B01001_001E,
+         male_pop    = B01001_002E,
+         female_pop  = B01001_026E,
+         county_fips = county, 
+         state_fips  = state) %>%
+  mutate(sex_ratio   = male_pop / female_pop) %>%
+  arrange(state_fips, county_fips)
+
+ggplot(data = sex_pop,
+       aes(x = total_pop, y = sex_ratio)) +
+  geom_point() + 
+  labs(title = "Sex Ratio for U.S Counties, 2019",
+       x     = "County Population",
+       y     = "Sex Ratio")
+
+```
+
+## Basic Operations
+
+Let's first try some basic math operations in R using webR.
+
+Notice that when you run the code that R produces the output.
+
+Try adding the following to the code and executing the code: $(6 \times 12)/24$.
+
+What happens?
+
+```{webr-r}
+
+# Basic math examples
+5 + 5
+
+10 / 3
+
+4 + 3 * 100
+
+(4 + 3) * 100
+
+```
+
+## Another example
+
+Try some of these with WebR:
+
+```{webr-r}
+TRUE & FALSE
+# TRUE | TRUE
+# TRUE & !FALSE
+# TRUE & (TRUE | FALSE)
+# TRUE & (TRUE & FALSE)
+# !(TRUE | FALSE)
+```
