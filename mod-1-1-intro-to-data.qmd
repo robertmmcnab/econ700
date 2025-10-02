@@ -1,6 +1,5 @@
 ---
-title: "ECON 700"
-subtitle: "An Introduction to R for Economic Analysis"
+title: "Economic Analysis"
 author: "Bob McNab"
 format:
   html:
@@ -25,7 +24,7 @@ library(tidyquant, quietly = TRUE)
 
 ```
 
-# Data and the Challenge of Economic Analysis
+## Data and the Challenge of Economic Analysis
 
 We are awash in data. The challenge is to find the right data at the appropriate time to investigate an empirical question of interest. In some cases, the data are well defined, consistently formatted, readily available, and structured to facilitate analysis. Then there are data that could help answer a question, but are not in an easily accessible format. But, before tackling these problems, we need to ask the simple question:
 
@@ -37,7 +36,7 @@ The Bureau of Labor Statistics (BLS) defines the civilian labor force as "*The l
 
 How many people are the in the civilian labor force in the United States? How many in Virginia? Is the labor force larger today than it was at the same time last year? How does the growth in the labor force in Virginia compare to other states? All these questions require obtaining data and, for some, manipulating data to create statistics about the properties of the data.
 
-# Headline Unemployment Rate
+## Headline Unemployment Rate
 
 The headline unemployment rate is an example of a measure that has different values across time. Collectively, these measures are data on the headline unemployment rate. This rate is equal to the ratio of the employed persons in the civilian labor force to the civilian labor force.
 
@@ -77,7 +76,7 @@ ggplot(data = unrate,
 
 ```
 
-# Unemployment by Race
+## Unemployment by Race
 
 Data can consist of measurements of a variable across groups of individuals and time. In the following figure, we present the headline unemployment rate by selected racial groups in the United States from February 2020 to July 2020. Unlike the national unemployment rate which encompasses all individuals in the civilian labor force, each group represents all individuals by race relative to the civilian labor force by race. We can observe how the responsiveness of the unemployment rate differed by race.
 
@@ -131,7 +130,7 @@ labs(x        = "",
 
 ```
 
-# Unemployment Rate for Selected States
+## Unemployment Rate for Selected States
 
 In the table below, we obtain data on unemployment rates for Virginia, Maryland, North Carolina, West Virginia, and the United States from \url{https://fred.stlouisfed.org} or 'FRED'.
 
@@ -163,7 +162,7 @@ kable_styling()
 
 ```
 
-# Measurement
+## Measurement
 
 Referring to the unemployment rate, there are two rows with observations for the selected geographical areas. In other words, the \textbf{elements} are the states on which data are collected and presented in the table. There are six variables in the table: the symbol of the variable from FRED, the date of the observation, the value of the observation, the value of the observation in decimal form, and the geography name of the observation.
 
@@ -171,7 +170,7 @@ The table contains different scales of measurement. The \textbf{date} variable c
 
 Broadly speaking, data can be classified as \textbf{categorical} or \textbf{quantitative}. In the table, the variable containing the geographical names is categorical. We cannot mathematically manipulate the categorical data (subtracting 1 from Virginia does not produce a meaningful result). We could, however, create a new variable that contains numerical values to represent the categorical data, that is, the new quantitative variable would be a numerical representation of the categorical data.
 
-# Cross-Sectional, Time Series, and Panel Data
+## Cross-Sectional, Time Series, and Panel Data
 
 There are three broad types of data. Let's establish some terminology. When we discuss data, we often refer to \textbf{individuals} and \textbf{time}. In this context, individuals can represent people, firms, airlines, cars, or some other characteristic that defines the unique observations. For example, if we had data on the average fuel mileage of passenger vehicles in 2019, then individuals would refer to each type of passenger vehicle. If we had randomized data on 100,000 taxpayers in Virginia for 2018, then individuals would refer to unique taxpayers. Lastly, if we collected data on airplane arrivals at Dulles International Airport for each day in 2019, then we would have individual observations across time. We could organize this data by plane registration, airline, or country of origin, or some other category of interest.
 
@@ -181,7 +180,7 @@ There are three broad types of data. Let's establish some terminology. When we d
 
 \textbf{Panel data} are data collected across individuals and time. If we collected data for the unemployment rate across states from 2010 to 2020, then we would have individuals (states) and time (months) as defining characteristics of our data. Panel data has breadth (across individuals) and depth (across time).
 
-# Population versus Sample Data
+## Population versus Sample Data
 
 When working with data, a question may arise whether it is appropriate to work with the population or a sample. The \textbf{population} represents all the individuals for a particular study while a \textbf{sample} is a subset of the population. Let's say we wanted to calculate the average age of students at Old Dominion University for the Fall 2020 semester. If we had access to student records, this might be a relatively easy exercise. In other words, if we had access to data for the population of students, we could calculate the average age of the student population.
 

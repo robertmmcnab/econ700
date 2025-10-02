@@ -8,7 +8,7 @@
 
 <meta name="author" content="Bob McNab">
 
-<title>ECON 700</title>
+<title>6&nbsp; Variables in R – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./mod-1-2-intro-to-r.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -76,13 +77,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1d4f84655f446305ac42a8f1abcf7405.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -408,7 +409,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"#Clear the Workspace\n\nrm(list = ls())\n\n#Load packages\n\nlibrary(dplyr)\nlibrary(lubridate)\nlibrary(tidyverse)\nlibrary(kableExtra)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Basic math examples\n5 + 5\n\n10 / 3\n\n4 + 3 * 100\n\n(4 + 3) * 100","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"TRUE & FALSE\n# TRUE | TRUE\n# TRUE & !FALSE\n# TRUE & (TRUE | FALSE)\n# TRUE & (TRUE & FALSE)\n# !(TRUE | FALSE)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"#Clear the Workspace\n\nrm(list = ls())\n\n#Load packages\n\nlibrary(dplyr)\nlibrary(lubridate)\nlibrary(tidyverse)\nlibrary(kableExtra)\n\n#Assign 2 to variable x_1\n\nx1 <- 2\n\n#Assign 4.5 to variable x_2\n\nx2 <- 4.5\n\n#Assign the integer value of x_2 to x_3\n\nx3 <- as.integer(x2)\n\n#Output the variables \n\nx1\nx2\nx3","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Basic math examples\n5 + 5\n\n10 / 3\n\n4 + 3 * 100\n\n(4 + 3) * 100","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"TRUE & FALSE\n# TRUE | TRUE\n# TRUE & !FALSE\n# TRUE & (TRUE | FALSE)\n# TRUE & (TRUE & FALSE)\n# !(TRUE | FALSE)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1694,92 +1695,129 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">ECON 700</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./mod-1-1-intro-to-r.html"> 
-<span class="menu-text">Module 1</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-3-intro-to-r-variables.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables in R</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">ECON 700</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">ECON 700</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">About</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 1: Introduction to R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-0-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-1-intro-to-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to Economic Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-2-intro-to-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-3-intro-to-r-variables.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables in R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Module 2: Introduction to Descriptive Statistics</span></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-use-r-and-rstudio" id="toc-why-use-r-and-rstudio" class="nav-link active" data-scroll-target="#why-use-r-and-rstudio">Why use R and RStudio?</a></li>
-  <li><a href="#r-and-rstudio-an-introduction" id="toc-r-and-rstudio-an-introduction" class="nav-link" data-scroll-target="#r-and-rstudio-an-introduction">R and RStudio: An Introduction</a></li>
-  <li><a href="#downloading-r" id="toc-downloading-r" class="nav-link" data-scroll-target="#downloading-r">Downloading R</a></li>
-  <li><a href="#downloading-rstudio" id="toc-downloading-rstudio" class="nav-link" data-scroll-target="#downloading-rstudio">Downloading RStudio</a></li>
-  <li><a href="#tutorials-in-r" id="toc-tutorials-in-r" class="nav-link" data-scroll-target="#tutorials-in-r">Tutorials in R</a></li>
-  <li><a href="#opening-rstudio" id="toc-opening-rstudio" class="nav-link" data-scroll-target="#opening-rstudio">Opening RStudio</a></li>
-  <li><a href="#packages-in-r" id="toc-packages-in-r" class="nav-link" data-scroll-target="#packages-in-r">Packages in R</a>
+  <li><a href="#assigning-numeric-values-to-variables" id="toc-assigning-numeric-values-to-variables" class="nav-link active" data-scroll-target="#assigning-numeric-values-to-variables"><span class="header-section-number">6.1</span> Assigning Numeric Values to Variables</a></li>
+  <li><a href="#assigning-character-values-to-a-variable" id="toc-assigning-character-values-to-a-variable" class="nav-link" data-scroll-target="#assigning-character-values-to-a-variable"><span class="header-section-number">6.2</span> Assigning Character Values to a Variable</a></li>
+  <li><a href="#assigning-date-values-to-a-variable" id="toc-assigning-date-values-to-a-variable" class="nav-link" data-scroll-target="#assigning-date-values-to-a-variable"><span class="header-section-number">6.3</span> Assigning Date Values to a Variable</a></li>
+  <li><a href="#vectors-and-data-frames" id="toc-vectors-and-data-frames" class="nav-link" data-scroll-target="#vectors-and-data-frames"><span class="header-section-number">7</span> Vectors and Data Frames</a>
   <ul class="collapse">
-  <li><a href="#webr" id="toc-webr" class="nav-link" data-scroll-target="#webr">WebR</a></li>
+  <li><a href="#creating-vectors" id="toc-creating-vectors" class="nav-link" data-scroll-target="#creating-vectors"><span class="header-section-number">7.1</span> Creating Vectors</a></li>
+  <li><a href="#creating-a-data-frame" id="toc-creating-a-data-frame" class="nav-link" data-scroll-target="#creating-a-data-frame"><span class="header-section-number">7.2</span> Creating a Data Frame</a></li>
+  <li><a href="#using-an-existing-dataframe" id="toc-using-an-existing-dataframe" class="nav-link" data-scroll-target="#using-an-existing-dataframe"><span class="header-section-number">7.3</span> Using an Existing Dataframe</a></li>
+  <li><a href="#dimensions-of-a-data-frame" id="toc-dimensions-of-a-data-frame" class="nav-link" data-scroll-target="#dimensions-of-a-data-frame"><span class="header-section-number">7.4</span> Dimensions of a Data Frame</a></li>
+  <li><a href="#selecting-rows-or-columns-in-a-data-frame" id="toc-selecting-rows-or-columns-in-a-data-frame" class="nav-link" data-scroll-target="#selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.5</span> Selecting Rows or Columns in a Data Frame</a></li>
+  <li><a href="#manipulating-the-dataframe-and-adding-new-variables" id="toc-manipulating-the-dataframe-and-adding-new-variables" class="nav-link" data-scroll-target="#manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.6</span> Manipulating the Dataframe and Adding New Variables</a></li>
   </ul></li>
-  <li><a href="#variable-and-assignment-basics" id="toc-variable-and-assignment-basics" class="nav-link" data-scroll-target="#variable-and-assignment-basics">Variable and Assignment Basics</a>
+  <li><a href="#working-with-an-api" id="toc-working-with-an-api" class="nav-link" data-scroll-target="#working-with-an-api"><span class="header-section-number">8</span> Working with an API</a>
   <ul class="collapse">
-  <li><a href="#assigning-numeric-values-to-variables" id="toc-assigning-numeric-values-to-variables" class="nav-link" data-scroll-target="#assigning-numeric-values-to-variables">Assigning Numeric Values to Variables</a></li>
-  <li><a href="#assigning-character-values-to-a-variable" id="toc-assigning-character-values-to-a-variable" class="nav-link" data-scroll-target="#assigning-character-values-to-a-variable">Assigning Character Values to a Variable</a></li>
-  <li><a href="#assigning-date-values-to-a-variable" id="toc-assigning-date-values-to-a-variable" class="nav-link" data-scroll-target="#assigning-date-values-to-a-variable">Assigning Date Values to a Variable</a></li>
+  <li><a href="#the-fred-api-for-real-gdp" id="toc-the-fred-api-for-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-real-gdp"><span class="header-section-number">8.1</span> 4.1 The FRED API for Real GDP</a></li>
+  <li><a href="#the-fred-api-for-nominal-gdp" id="toc-the-fred-api-for-nominal-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-gdp"><span class="header-section-number">8.2</span> The FRED API for Nominal GDP</a></li>
+  <li><a href="#the-fred-api-for-nominal-and-real-gdp" id="toc-the-fred-api-for-nominal-and-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">8.3</span> The FRED API for Nominal and Real GDP</a></li>
   </ul></li>
-  <li><a href="#vectors-and-data-frames" id="toc-vectors-and-data-frames" class="nav-link" data-scroll-target="#vectors-and-data-frames">Vectors and Data Frames</a>
+  <li><a href="#an-example-with-us-census-data" id="toc-an-example-with-us-census-data" class="nav-link" data-scroll-target="#an-example-with-us-census-data"><span class="header-section-number">9</span> An Example with US Census Data</a>
   <ul class="collapse">
-  <li><a href="#creating-vectors" id="toc-creating-vectors" class="nav-link" data-scroll-target="#creating-vectors">Creating Vectors</a></li>
-  <li><a href="#creating-a-data-frame" id="toc-creating-a-data-frame" class="nav-link" data-scroll-target="#creating-a-data-frame">Creating a Data Frame</a></li>
-  <li><a href="#using-an-existing-dataframe" id="toc-using-an-existing-dataframe" class="nav-link" data-scroll-target="#using-an-existing-dataframe">Using an Existing Dataframe</a></li>
-  <li><a href="#dimensions-of-a-data-frame" id="toc-dimensions-of-a-data-frame" class="nav-link" data-scroll-target="#dimensions-of-a-data-frame">Dimensions of a Data Frame</a></li>
-  <li><a href="#selecting-rows-or-columns-in-a-data-frame" id="toc-selecting-rows-or-columns-in-a-data-frame" class="nav-link" data-scroll-target="#selecting-rows-or-columns-in-a-data-frame">Selecting Rows or Columns in a Data Frame</a></li>
-  <li><a href="#manipulating-the-dataframe-and-adding-new-variables" id="toc-manipulating-the-dataframe-and-adding-new-variables" class="nav-link" data-scroll-target="#manipulating-the-dataframe-and-adding-new-variables">Manipulating the Dataframe and Adding New Variables</a></li>
-  </ul></li>
-  <li><a href="#working-with-an-api" id="toc-working-with-an-api" class="nav-link" data-scroll-target="#working-with-an-api">Working with an API</a>
-  <ul class="collapse">
-  <li><a href="#the-fred-api-for-real-gdp" id="toc-the-fred-api-for-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-real-gdp">4.1 The FRED API for Real GDP</a></li>
-  <li><a href="#the-fred-api-for-nominal-gdp" id="toc-the-fred-api-for-nominal-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-gdp">The FRED API for Nominal GDP</a></li>
-  <li><a href="#the-fred-api-for-nominal-and-real-gdp" id="toc-the-fred-api-for-nominal-and-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-and-real-gdp">The FRED API for Nominal and Real GDP</a></li>
-  </ul></li>
-  <li><a href="#an-example-with-us-census-data" id="toc-an-example-with-us-census-data" class="nav-link" data-scroll-target="#an-example-with-us-census-data">An Example with US Census Data</a>
-  <ul class="collapse">
-  <li><a href="#using-the-census-api" id="toc-using-the-census-api" class="nav-link" data-scroll-target="#using-the-census-api">Using the Census API</a></li>
-  <li><a href="#an-api-call-example" id="toc-an-api-call-example" class="nav-link" data-scroll-target="#an-api-call-example">An API Call Example</a></li>
-  <li><a href="#filtering-to-focus-on-one-state" id="toc-filtering-to-focus-on-one-state" class="nav-link" data-scroll-target="#filtering-to-focus-on-one-state">Filtering to Focus On One State</a></li>
-  <li><a href="#api-call-with-multiple-variables" id="toc-api-call-with-multiple-variables" class="nav-link" data-scroll-target="#api-call-with-multiple-variables">API Call With Multiple Variables</a></li>
-  <li><a href="#basic-operations" id="toc-basic-operations" class="nav-link" data-scroll-target="#basic-operations">Basic Operations</a></li>
-  <li><a href="#another-example" id="toc-another-example" class="nav-link" data-scroll-target="#another-example">Another example</a></li>
+  <li><a href="#using-the-census-api" id="toc-using-the-census-api" class="nav-link" data-scroll-target="#using-the-census-api"><span class="header-section-number">9.1</span> Using the Census API</a></li>
+  <li><a href="#an-api-call-example" id="toc-an-api-call-example" class="nav-link" data-scroll-target="#an-api-call-example"><span class="header-section-number">9.2</span> An API Call Example</a></li>
+  <li><a href="#filtering-to-focus-on-one-state" id="toc-filtering-to-focus-on-one-state" class="nav-link" data-scroll-target="#filtering-to-focus-on-one-state"><span class="header-section-number">9.3</span> Filtering to Focus On One State</a></li>
+  <li><a href="#api-call-with-multiple-variables" id="toc-api-call-with-multiple-variables" class="nav-link" data-scroll-target="#api-call-with-multiple-variables"><span class="header-section-number">9.4</span> API Call With Multiple Variables</a></li>
+  <li><a href="#basic-operations" id="toc-basic-operations" class="nav-link" data-scroll-target="#basic-operations"><span class="header-section-number">9.5</span> Basic Operations</a></li>
+  <li><a href="#another-example" id="toc-another-example" class="nav-link" data-scroll-target="#another-example"><span class="header-section-number">9.6</span> Another example</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2071,10 +2109,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-3-intro-to-r-variables.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables in R</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">ECON 700</h1>
-<p class="subtitle lead">An Introduction to R for Economic Analysis</p>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables in R</span></h1>
 </div>
 
 
@@ -2097,291 +2134,161 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="why-use-r-and-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="why-use-r-and-rstudio">Why use R and RStudio?</h2>
-<p>We will use <strong>R</strong> and <strong>RStudio</strong> extensively in this class. You will also use these programs extensively in the following classes on the econometrics sequence.</p>
-<p>A frequently asked question is “why can’t we use Excel?”</p>
-<p>The simple answer is that Excel is good for some things but R is better for the things we want to do in this and other classes.</p>
-<p>Writing code (programming) allows for:</p>
-<ul>
-<li><p>Reproducibility (code provides transparency to processes)</p></li>
-<li><p>Customization (many solutions to a problem)</p></li>
-<li><p>Automation (code once, run many times)</p></li>
-<li><p>Accountability (the programmer is responsible for what the code does)</p></li>
-</ul>
-<p>Other programs have lower fixed costs than R. These programs, whether Excel, SAS, SPSS, or TSP, have ‘built in’ functions and interfaces that allow ‘easier entry’ than R. In other words, you will invest less time to learn how to start working in other programs than R.</p>
-<p>So, why then use R? First, coding is like learning a second language. It takes a while to learn the logic and ‘flow’ of the programming language. Second, unlike many other programs, you have a very good idea of what R is doing. If you write code, you learn where data come from, how they are formatted, the properties of data, and you gain a much deeper understanding of the process by which you arrive at an answer.</p>
-<p>Another strength of this approach is that once you learn to code in R and use RStudio, your marginal cost of learning Python, C++, or SQL is lower because the logic behind each of these languages is similar.</p>
-<p><em>Simply put, coding is as much about the journey as the destination.</em></p>
-</section>
-<section id="r-and-rstudio-an-introduction" class="level2">
-<h2 class="anchored" data-anchor-id="r-and-rstudio-an-introduction">R and RStudio: An Introduction</h2>
-<p>You will need to install <strong>R</strong> and <strong>RStudio</strong>.</p>
-<p>Each is a piece of software. R is the ‘engine’ and RStudio is the interface.</p>
-<p>You can work with R directly, but RStudio makes the process less painful.</p>
-<p>R is the statistical software package that we will use throughout the course,</p>
-<p>RStudio is an interface that makes using R much easier.</p>
-<p>The <strong>R Project</strong> is located at: <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a></p>
-</section>
-<section id="downloading-r" class="level2">
-<h2 class="anchored" data-anchor-id="downloading-r">Downloading R</h2>
-<p>You can download <strong>R</strong> at: <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></p>
-<p>Select the correct operating system to download and install R.</p>
-</section>
-<section id="downloading-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="downloading-rstudio">Downloading RStudio</h2>
-<p>You can download <strong>RStudio</strong> at: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
-<p>Note how Posit tells you to install R and then RStudio.</p>
-<p>You can also use <strong>Posit Cloud</strong> from Posit at: <a href="https://posit.cloud/" class="uri">https://posit.cloud/</a></p>
-</section>
-<section id="tutorials-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="tutorials-in-r">Tutorials in R</h2>
-<p>There are numerous tutorials online on how to use R.</p>
-<p>Some overviews that might be helpful:</p>
-<p>R Programming for Beginners: <a href="https://youtu.be/fDRa82lxzaU" class="uri">https://youtu.be/fDRa82lxzaU</a></p>
-<p>R Programming Tutorial: <a href="https://youtu.be/_V8eKsto3Ug" class="uri">https://youtu.be/_V8eKsto3Ug</a></p>
-</section>
-<section id="opening-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="opening-rstudio">Opening RStudio</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/rstudio-desktop.jpg" class="img-fluid figure-img" alt="Screenshot of RStudio in Windows"></p>
-<figcaption>Screenshot of RStudio in Windows</figcaption>
-</figure>
-</div>
-<p>When you open RStudio for the first time, you will see four panels like in the above image. It is likely that your version of RStudio has a white background with blue or black text.</p>
-<p>If you would like to change this, go to “Tools &gt; Global Options… &gt; Appearance &gt; Editor theme”.</p>
-<p>You can choose a darker theme, or leave it a lighter theme.</p>
-<p>The four panels are as follows:</p>
-<ul>
-<li><p>Top Left: <strong>Source</strong> – This is where you will write the R code you want to save. In other words, this is where you write and save your work, usually called R scripts (.R files).</p></li>
-<li><p>Bottom Left: <strong>Console</strong> – When you execute (or <em>run</em>) code, you will usually see output here. This is also a place you can write code you do not want to be part of your final script. If you were a painter, the <strong>Source</strong> panel would be your canvas and the <strong>Console</strong> would be your <a href="https://upload.wikimedia.org/wikipedia/commons/0/04/Oil_painting_palette.jpg">palette</a>.</p></li>
-<li><p>Top Right: <strong>Enviornment</strong> – Here is where we will be able to see all the objects (data, etc.) that we are working with in the moment. To clear your environment, use the code <code>rm(list = ls())</code>.</p></li>
-<li><p>Bottom Right: <strong>Output</strong> – This is mostly where you will see plots you have generated, but can also see files on your computer, packages you have installed, and “Help” for certain functions.</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/rstudio-fourpanel.jpg" class="img-fluid figure-img" alt="Screenshot of Rstudio with panel labels."></p>
-<figcaption>Screenshot of Rstudio with panel labels.</figcaption>
-</figure>
-</div>
-</section>
-<section id="packages-in-r" class="level1">
-<h1>Packages in R</h1>
-<p>One of the most powerful features of R is that there are numerous packages or add-ons to base R that provide additional functionality. We need to install these packages and then include them so they are accessible to R as we work with data.</p>
-<p>If you need to install a package, you can always use the <strong>install.packages</strong> command. For example, you could use <strong>install.packages(“dplyr”)</strong> to install the <strong>dplyr</strong> package.</p>
-<p>Once a package is installed, you typically will not need to re-install it. You may need to update your packages, however, and this can be easily done. You can either use the function <strong>update.packages</strong> or update packages through the packages menu in RStudio.</p>
-<p>In the following code, we clear the workspace (essentially erasing working memory) and load three packages.</p>
-<p>First, we clear memory with the command <strong>rm(list = ls())</strong>.</p>
-<p>Second, we load the packages into memory by using the <strong>library</strong> statement.</p>
-<p>For example, <strong>library(dplyr)</strong> loads the dplyr package so we can use its functions later in our code.</p>
-<p>Note, however, the code below is <strong><em>static</em></strong>. In other words, you can’t run the code here. You will have to replicate the code in your RStudio.</p>
-<p>To learn more, see the following links.</p>
-<p>dplyr: <a href="https://dplyr.tidyverse.org/" class="uri">https://dplyr.tidyverse.org/</a></p>
-<p>lubridate: <a href="https://lubridate.tidyverse.org/" class="uri">https://lubridate.tidyverse.org/</a></p>
-<p>tidyverse: <a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a></p>
-<p>kable: <a href="https://cran.r-project.org/web/packages/kableExtra" class="uri">https://cran.r-project.org/web/packages/kableExtra</a></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Clear the Workspace</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="webr" class="level2">
-<h2 class="anchored" data-anchor-id="webr">WebR</h2>
-<p>We can use <strong>WebR</strong> to provide <strong>dynamic</strong> examples of code. The WebR code chunks appear different than the static code chucks.</p>
-<p>As you can see below, you can run the WebR code in your browser. You can add, subtract, or change the code chunk entirely.</p>
-<p>The WebR code chunk below mirrors the static code chunk above.</p>
+<section id="assigning-numeric-values-to-variables" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="assigning-numeric-values-to-variables"><span class="header-section-number">6.1</span> Assigning Numeric Values to Variables</h2>
+<p>We can use the <strong>assignment operator</strong> in R to assign values to a variable. The assignment operator can be thought of as moving a value, character, date, or other form into a named variable.</p>
+<p>The assignment operator is “&lt;-”.</p>
+<p>The line, “x2 &lt;- 1056”, means assign the value 1056 to the variable <strong>x2</strong>.</p>
+<p>In the code below, we assign the numerical value of 2 to the variable <strong>x1</strong> and the numerical value of 4.5 to the variable <strong>x2</strong>.</p>
+<p>We can assign the value contained in one variable in another. For example, we can assign <strong>x2</strong> to <strong>x3</strong> and also specify that the integer value of <strong>x2</strong> is assigned to <strong>x3</strong>.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-</section>
-<section id="variable-and-assignment-basics" class="level1">
-<h1>Variable and Assignment Basics</h1>
-<section id="assigning-numeric-values-to-variables" class="level2">
-<h2 class="anchored" data-anchor-id="assigning-numeric-values-to-variables">Assigning Numeric Values to Variables</h2>
-<p>We can use the in R to assign values to a variable. The assignment operator can be thought of as moving a value, character, date, or other form into a named variable. The assignment operator is “&lt;-”, that is, “x2 &lt;- 1056” means assign the value 1056 to the variable x2.</p>
-<p>For example, in the code below, we assign the numerical value of 2 to the variable and the numerical value of 4.5 to the variable .</p>
-<p>We can assign the value contained in one variable in another. For example, we can assign to and also specify that the integer value of is assigned to .</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Clear the Workspace</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign 2 to variable x_1</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign 4.5 to variable x_2</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fl">4.5</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign the integer value of x_2 to x_3</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(x2)</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#Output the variables </span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.5</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-</section>
-<section id="assigning-character-values-to-a-variable" class="level2">
-<h2 class="anchored" data-anchor-id="assigning-character-values-to-a-variable">Assigning Character Values to a Variable</h2>
+<section id="assigning-character-values-to-a-variable" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="assigning-character-values-to-a-variable"><span class="header-section-number">6.2</span> Assigning Character Values to a Variable</h2>
 <p>We can assign character values to a variable. In the following code, we assign the name “Timothy” as a character to the variable .</p>
 <p>There is a subtle but important difference to storing a value as a character or as a numeric variable.</p>
 <p>We assign the or value 06250 to and 06250 as a or value to .</p>
 <p>Note what happens: when stored as a numeric value, 06250 is stored as 6250. When 06250 is stored as “06250” as a character variable, the character variable does not “lose” then “0” in the front of “06250”.</p>
 <p>This can be very important if you are storing an identification value with a leading 0.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign the character Timothy to name_1</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>name1 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="st">"Timothy"</span>)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign the numeric value 06250 to x_4</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="dv">06250</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign 06250 as a character </span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>name2 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="st">"06250"</span>)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert the character 06250 to numeric</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>name3 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(name2)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Output</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>name1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats 1.0.0     ✔ stringr 1.5.1
+✔ purrr   1.1.0     ✔ tibble  3.3.0
+✔ readr   2.1.5     ✔ tidyr   1.3.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter()          masks stats::filter()
+✖ xts::first()             masks dplyr::first()
+✖ kableExtra::group_rows() masks dplyr::group_rows()
+✖ dplyr::lag()             masks stats::lag()
+✖ xts::last()              masks dplyr::last()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign the character Timothy to name_1</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>name1 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="st">"Timothy"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign the numeric value 06250 to x_4</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="dv">06250</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign 06250 as a character </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>name2 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="st">"06250"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert the character 06250 to numeric</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>name3 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(name2)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Output</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>name1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Timothy"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6250</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>name2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>name2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "06250"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>name3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>name3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6250</code></pre>
 </div>
 </div>
 </section>
-<section id="assigning-date-values-to-a-variable" class="level2">
-<h2 class="anchored" data-anchor-id="assigning-date-values-to-a-variable">Assigning Date Values to a Variable</h2>
+<section id="assigning-date-values-to-a-variable" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="assigning-date-values-to-a-variable"><span class="header-section-number">6.3</span> Assigning Date Values to a Variable</h2>
 <p>We can also store dates and work with dates. We assign 2020-09-01 a date value using the package. Note that we tell the package that the format of the date is year-month-day (ymd).</p>
 <p>Likewise, we assign 09-05-2020 to date2 as a date variable but tell the package that the format of the date is now month-day-year (mdy). Note that even though the dates are in different formats, the package transforms the dates into a format recognizable by R.</p>
 <p>Having transformed the date values, we can calculate the time difference by assigning to variable .</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert the text "2020-09-01" to a date variable</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>date1 <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">"2020-09-01"</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert "2020-09-05" to a date variable</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>date2 <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(<span class="st">"09-05-2020"</span>)</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate the time difference between two variables</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>date3 <span class="ot">&lt;-</span> date2 <span class="sc">-</span> date1</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co">#Output the variables </span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>date1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert the text "2020-09-01" to a date variable</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>date1 <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">"2020-09-01"</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert "2020-09-05" to a date variable</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>date2 <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(<span class="st">"09-05-2020"</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate the time difference between two variables</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>date3 <span class="ot">&lt;-</span> date2 <span class="sc">-</span> date1</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co">#Output the variables </span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>date1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2020-09-01"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>date2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>date2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2020-09-05"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>date3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>date3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Time difference of 4 days</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="vectors-and-data-frames" class="level1">
-<h1>Vectors and Data Frames</h1>
-<section id="creating-vectors" class="level2">
-<h2 class="anchored" data-anchor-id="creating-vectors">Creating Vectors</h2>
+<section id="vectors-and-data-frames" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Vectors and Data Frames</h1>
+<section id="creating-vectors" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="creating-vectors"><span class="header-section-number">7.1</span> Creating Vectors</h2>
 <p>We can now create a vector that contains several values. In the following example, we combine several numbers and assign them to the variable .</p>
 <p>We can also combine other variables (if they are the same type) to form a new vector. You can combine single element variables with vectors to create a new vector .</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign values to x1, x2, x3, x4</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="dv">136</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="fl">0.47</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>x5 <span class="ot">&lt;-</span> <span class="dv">4840</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a row vector </span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>x5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">25</span>, <span class="dv">100</span>)</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="co">#Use existing variables to create a row vector</span></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>x6 <span class="ot">&lt;-</span> <span class="fu">c</span>(x1, x2, x3, x4, x5)</span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Kable To Create Tables of X5 and X6</span></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign values to x1, x2, x3, x4</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="dv">136</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="fl">0.47</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>x5 <span class="ot">&lt;-</span> <span class="dv">4840</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a row vector </span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>x5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">25</span>, <span class="dv">100</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co">#Use existing variables to create a row vector</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>x6 <span class="ot">&lt;-</span> <span class="fu">c</span>(x1, x2, x3, x4, x5)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Kable To Create Tables of X5 and X6</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -2408,7 +2315,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tbody>
 </table>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -2451,9 +2358,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>When we display , for example, we note is a row vector consisting of one row and 5 elements. We can also directly manipulate by multiplying it by two.</p>
 <p>We should, however, understand that product of and 2 is not stored, it’s a direct manipulation and not available for future use. If we wanted to store it, we would have to assign it to a variable. Here, we assign the product of and 2 to the variable .</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Output x5 * 2</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Output x5 * 2</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -2480,7 +2387,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tbody>
 </table>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5<span class="sc">*</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5<span class="sc">*</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -2507,11 +2414,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tbody>
 </table>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign x5*2 to x7</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>x7 <span class="ot">&lt;-</span> x5<span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x7)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign x5*2 to x7</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>x7 <span class="ot">&lt;-</span> x5<span class="sc">*</span><span class="dv">2</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x7)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -2540,8 +2447,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </section>
-<section id="creating-a-data-frame" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-data-frame">Creating a Data Frame</h2>
+<section id="creating-a-data-frame" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="creating-a-data-frame"><span class="header-section-number">7.2</span> Creating a Data Frame</h2>
 <p>So far, everything we have created has been stored as a variable or vector. A consists of rows and columns. The organization of the matrix is important. In some cases, the rows will correspond to individual observations with variables in the columns. In other cases, the variables are in the rows and individuals in columns. Matrices can contain quantitative and qualitative elements.</p>
 <p>A matrix is a table or a two-dimensional array-like structure. In R, a is a list of variables with the same number of rows with unique row names. It is represented by the class .</p>
 <p>A can have one column with numeric elements, another with date elements, another with character elements, and so on. The CDC data earlier in this module is an example of a data frame.</p>
@@ -2550,21 +2457,21 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Now, let’s column bind and together as a data frame. We then row bind and together as another data frame</p>
 <p> is a data frame where the observations are in rows and the variables are in columns. is a data frame where the variables are in the rows and the observations are in the columns.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#create two vectors</span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>x8 <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>x9 <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">13</span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">rbind</span>(x8,x9))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">#create two vectors</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>x8 <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>x9 <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">13</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">rbind</span>(x8,x9))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <tbody>
@@ -2585,7 +2492,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tbody>
 </table>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">cbind</span>(x8,x9))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">cbind</span>(x8,x9))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -2614,13 +2521,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tbody>
 </table>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create Data Frames</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(x8,x9))</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rbind</span>(x8, x9))</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create Data Frames</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(x8,x9))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rbind</span>(x8, x9))</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -2649,7 +2556,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tbody>
 </table>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -2681,28 +2588,28 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </section>
-<section id="using-an-existing-dataframe" class="level2">
-<h2 class="anchored" data-anchor-id="using-an-existing-dataframe">Using an Existing Dataframe</h2>
+<section id="using-an-existing-dataframe" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="using-an-existing-dataframe"><span class="header-section-number">7.3</span> Using an Existing Dataframe</h2>
 <p>R comes with a number of “built in” data sets. For the following discussion, we use the data. The data contain observations on a number of cars from the Motor Trend magazine.</p>
 <p>One can work directly with the data or assign the data to a data frame. In the following, we assign to the data frame. We use the assignment operator so that data flows from to .</p>
 <p>We can now use the or functions to examine the structure of the data frame. Note that the function returns the first six rows while the function returns the last six rows.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign mtcars to cardata </span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>cardata <span class="ot">&lt;-</span> mtcars</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co"># View structure of the data frame</span></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign mtcars to cardata </span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>cardata <span class="ot">&lt;-</span> mtcars</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co"># View structure of the data frame</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -2712,7 +2619,7 @@ Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                mpg cyl  disp  hp drat    wt qsec vs am gear carb
 Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
@@ -2724,46 +2631,46 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 </div>
 </div>
 </section>
-<section id="dimensions-of-a-data-frame" class="level2">
-<h2 class="anchored" data-anchor-id="dimensions-of-a-data-frame">Dimensions of a Data Frame</h2>
+<section id="dimensions-of-a-data-frame" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="dimensions-of-a-data-frame"><span class="header-section-number">7.4</span> Dimensions of a Data Frame</h2>
 <p>To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the and functions determine the number of rows and columns in a data frame, respectively.</p>
 <p>We can also use the function to return the dimensions of the data frame. Note that the function returns rows then columns.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 32</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of columns</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of columns</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dimensions of data frame (rows and columns)</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dimensions of data frame (rows and columns)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 32 11</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-rows-or-columns-in-a-data-frame" class="level2">
-<h2 class="anchored" data-anchor-id="selecting-rows-or-columns-in-a-data-frame">Selecting Rows or Columns in a Data Frame</h2>
+<section id="selecting-rows-or-columns-in-a-data-frame" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.5</span> Selecting Rows or Columns in a Data Frame</h2>
 <p>Having determined the dimensions of the data frame, we can now select parts of the data frame.</p>
 <p>We can approach this by recognizing that a data frame is organized by rows and columns. For example, returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.</p>
 <p>So, in general, for a data frame, . For example, returns rows 1 to 2 and columns 2 to 3.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First observation, First variable.</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span>,<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First observation, First variable.</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span>,<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 21</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First two observations, 2nd and 3rd variables</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First two observations, 2nd and 3rd variables</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              cyl disp
 Mazda RX4       6  160
@@ -2772,9 +2679,9 @@ Mazda RX4 Wag   6  160</code></pre>
 </div>
 <p>If the row or column is left blank, all values for the column are the result. For example, would return all rows for the first column of data. On the other hand, would return the first two rows and all the columns.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All rows, first two columns</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>cardata[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All rows, first two columns</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>cardata[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     mpg cyl
 Mazda RX4           21.0   6
@@ -2810,9 +2717,9 @@ Ferrari Dino        19.7   6
 Maserati Bora       15.0   8
 Volvo 142E          21.4   4</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First two observations, All Columns</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First two observations, All Columns</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
@@ -2820,8 +2727,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="manipulating-the-dataframe-and-adding-new-variables" class="level2">
-<h2 class="anchored" data-anchor-id="manipulating-the-dataframe-and-adding-new-variables">Manipulating the Dataframe and Adding New Variables</h2>
+<section id="manipulating-the-dataframe-and-adding-new-variables" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.6</span> Manipulating the Dataframe and Adding New Variables</h2>
 <p>Starting with the data frame, we can now utilize one of the features of the packages to the data. Piping means that the data ‘flows’ in the direction of the pipe. It’s actually called a pipeline of data.</p>
 <p>A bit of housekeeping. We want to convert the rownames in to a variable. We pipe the data frame and then use the function to do just that. We then pipe the data to rename the new variable to .</p>
 <p>We can now use the function to create a new variable or replace an existing variable.</p>
@@ -2835,15 +2742,15 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <p>The grammar of piping is very useful as it allows you to manipulate a data frame without changing the contents of the original data frame.</p>
 <p>Note how we can start using some of the additional features in the <strong>kable</strong> package to rename column names for improve presentation.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>cardata2 <span class="ot">&lt;-</span> cardata <span class="sc">%&gt;%</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">car           =</span> rowname) <span class="sc">%&gt;%</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">km_per_gallon =</span> mpg<span class="sc">*</span><span class="fl">1.60934</span>,</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">km_per_liter  =</span> km_per_gallon<span class="sc">*</span><span class="fl">3.78541</span>,</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">km2_per_liter =</span> mpg<span class="sc">*</span><span class="fl">1.60934</span><span class="sc">*</span><span class="fl">3.78541</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(car, mpg, cyl, wt, km_per_gallon, km_per_liter, km2_per_liter)</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>cardata2 <span class="ot">&lt;-</span> cardata <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">car           =</span> rowname) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">km_per_gallon =</span> mpg<span class="sc">*</span><span class="fl">1.60934</span>,</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">km_per_liter  =</span> km_per_gallon<span class="sc">*</span><span class="fl">3.78541</span>,</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">km2_per_liter =</span> mpg<span class="sc">*</span><span class="fl">1.60934</span><span class="sc">*</span><span class="fl">3.78541</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(car, mpg, cyl, wt, km_per_gallon, km_per_liter, km2_per_liter)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
@@ -2950,15 +2857,15 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </tbody>
 </table>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cardata2[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,],</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Car"</span>,</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"MPG"</span>,</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Cylinders"</span>,</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Weight"</span>,</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Kilometers per Gallon"</span>,</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Kliometers per Liter"</span>,</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Squared KM/Gallon"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cardata2[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,],</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Car"</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"MPG"</span>,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Cylinders"</span>,</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Weight"</span>,</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Kilometers per Gallon"</span>,</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Kliometers per Liter"</span>,</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Squared KM/Gallon"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="lightable-classic caption-top table table-sm table-striped small">
 <thead>
@@ -3024,10 +2931,10 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </section>
 </section>
-<section id="working-with-an-api" class="level1">
-<h1>Working with an API</h1>
-<section id="the-fred-api-for-real-gdp" class="level2">
-<h2 class="anchored" data-anchor-id="the-fred-api-for-real-gdp">4.1 The FRED API for Real GDP</h2>
+<section id="working-with-an-api" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Working with an API</h1>
+<section id="the-fred-api-for-real-gdp" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="the-fred-api-for-real-gdp"><span class="header-section-number">8.1</span> 4.1 The FRED API for Real GDP</h2>
 <p>An Application Programming Interface (API) allows us to obtain data from a source without having to manually downloading the data. In effect, an API allows us to “grab” data from an external source. If the external source updates the data, then our next API call with obtain the updated data.</p>
 <p>For example, let’s say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called , and download the data into an Excel file. This process is labor-intensive and subject to error.</p>
 <p>FRED: </p>
@@ -3037,25 +2944,25 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <p>We can use the or to print out the contents of the first rows of the resulting data frame.</p>
 <p>We see the data are organized such that each row corresponds to a time period, that is, the first row represents real GDP for the 1st quarter of 1950, the second row represents real GDP for the 2nd quarter of 1950, and so on.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain real GDP from FRED</span></span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>rgdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"GDPC1"</span>,</span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">rgdp =</span> price) <span class="sc">%&gt;%</span></span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date))</span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rgdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain real GDP from FRED</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>rgdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"GDPC1"</span>,</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">rgdp =</span> price) <span class="sc">%&gt;%</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date))</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rgdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -3096,30 +3003,30 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-nominal-gdp" class="level2">
-<h2 class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp">The FRED API for Nominal GDP</h2>
+<section id="the-fred-api-for-nominal-gdp" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp"><span class="header-section-number">8.2</span> The FRED API for Nominal GDP</h2>
 <p>We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the variable containing the values for nominal GDP. We rename the variable to and also use the pacakge for the dates.</p>
 <p>Nominal GDP: </p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain nominal GDP from FRED</span></span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>gdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"GDP"</span>,</span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">gdp =</span> price) <span class="sc">%&gt;%</span></span>
-<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date))</span>
-<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain nominal GDP from FRED</span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>gdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"GDP"</span>,</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">gdp =</span> price) <span class="sc">%&gt;%</span></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date))</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -3160,40 +3067,40 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-nominal-and-real-gdp" class="level2">
-<h2 class="anchored" data-anchor-id="the-fred-api-for-nominal-and-real-gdp">The FRED API for Nominal and Real GDP</h2>
+<section id="the-fred-api-for-nominal-and-real-gdp" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">8.3</span> The FRED API for Nominal and Real GDP</h2>
 <p>In the previous examples, we made an API call for one variable at a time. The result was two data frames, one for nominal GDP, and one for real GDP. It would be more efficient to make one API call that results in a single data frame with both variables.</p>
 <p>In the following code, we the names of the two variables, that is, creates a row vector with the two names. This row vector is used by the function to make an API call to obtain the two variables from FRED.</p>
 <p>What’s important to note is that the data fame is in format. In other words, each row corresponds to one period of time for one variable.</p>
 <p>We have to do some housecleaning. When we obtain the data from FRED, the variable names are contained in a variable called and the values are contained in a variable named . We rename those to and , respectively.</p>
 <p>We then plot the data using the package. The function is very flexible and you can modify almost every element of a graph. For now, we provide the example and will work on developing our graphing skills later on in the course.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain nominal and real GDP from FRED</span></span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>all_gdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="fu">c</span>(<span class="st">"GDP"</span>, <span class="st">"GDPC1"</span>), </span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date     =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date)) <span class="sc">%&gt;%</span></span>
-<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">variable =</span> symbol,</span>
-<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">value    =</span> price)</span>
-<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce Table of First 10 Observations</span></span>
-<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(all_gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,],</span>
-<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Variable"</span>,</span>
-<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Date"</span>,</span>
-<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Value"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain nominal and real GDP from FRED</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>all_gdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="fu">c</span>(<span class="st">"GDP"</span>, <span class="st">"GDPC1"</span>), </span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date     =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">variable =</span> symbol,</span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">value    =</span> price)</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce Table of First 10 Observations</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(all_gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,],</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Variable"</span>,</span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Date"</span>,</span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Value"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
@@ -3255,34 +3162,34 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </tr>
 </tbody>
 </table>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use GGPLOT </span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co">#GDP over time</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> all_gdp, </span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> date, </span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> value,</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> variable,</span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> variable)) <span class="sc">+</span></span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> <span class="st">"Real and Nominal GDP, United States"</span>,</span>
-<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Billions of Dollars"</span>,</span>
-<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x        =</span> <span class="st">"Date"</span>,</span>
-<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y        =</span> <span class="st">"Billions of Dollars"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use GGPLOT </span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#GDP over time</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> all_gdp, </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> date, </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> value,</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> variable,</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> variable)) <span class="sc">+</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> <span class="st">"Real and Nominal GDP, United States"</span>,</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Billions of Dollars"</span>,</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x        =</span> <span class="st">"Date"</span>,</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y        =</span> <span class="st">"Billions of Dollars"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mod-1-2-intro-to-r-variables_files/figure-html/gdp1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+<p><img src="mod-1-3-intro-to-r-variables_files/figure-html/gdp1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
 </figure>
 </div>
 </div>
 </section>
 </section>
-<section id="an-example-with-us-census-data" class="level1">
-<h1>An Example with US Census Data</h1>
+<section id="an-example-with-us-census-data" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> An Example with US Census Data</h1>
 <p> refers to data that contains all members of a specified group. <em>N</em> is the number of individuals in the population. We can think of the population as the universe of individuals for the variable or variables of interest.</p>
 <p>A refers to a subset or part of the population with sample size <span class="math inline">\(n\)</span> that is less than the population size <span class="math inline">\(N\)</span> or <span class="math inline">\(n &lt; N\)</span>.</p>
-<section id="using-the-census-api" class="level2">
-<h2 class="anchored" data-anchor-id="using-the-census-api">Using the Census API</h2>
+<section id="using-the-census-api" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="using-the-census-api"><span class="header-section-number">9.1</span> Using the Census API</h2>
 <p>In the following code, we use the package to use the United States Census Bureau’s API for the American Community Survey to obtain data on county population for 2019.</p>
 <p>We are using data from the American Community Survey 5-Year estimates which provide estimates for counties and county-equivalents in the United States.</p>
 <p>You can learn more about the ACS at:</p>
@@ -3296,48 +3203,48 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <p>You will have to register for your own free Census API key.</p>
 <p>You can do this at: </p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a><span class="co"># List all the available Census APIs</span></span>
-<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>apis <span class="ot">&lt;-</span> <span class="fu">listCensusApis</span>()</span>
-<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a><span class="co"># List all the variables in the ACS 5-Year API</span></span>
-<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that this takes a while, you should only run this when needed</span></span>
-<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a>acs_vars <span class="ot">&lt;-</span> <span class="fu">listCensusMetadata</span>(<span class="at">name =</span> <span class="st">"2019/acs/acs5"</span>, <span class="at">type =</span> <span class="st">"variables"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="co"># List all the available Census APIs</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>apis <span class="ot">&lt;-</span> <span class="fu">listCensusApis</span>()</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="co"># List all the variables in the ACS 5-Year API</span></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that this takes a while, you should only run this when needed</span></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>acs_vars <span class="ot">&lt;-</span> <span class="fu">listCensusMetadata</span>(<span class="at">name =</span> <span class="st">"2019/acs/acs5"</span>, <span class="at">type =</span> <span class="st">"variables"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="an-api-call-example" class="level2">
-<h2 class="anchored" data-anchor-id="an-api-call-example">An API Call Example</h2>
+<section id="an-api-call-example" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="an-api-call-example"><span class="header-section-number">9.2</span> An API Call Example</h2>
 <p>We can now use the function in the package to obtain 2019 ACS data for total population. In doing so, we obtain data on the the universe of counties and county equivalents for the United States for 2019 with respect to total population.</p>
 <p>We use the function to sort by state FIPS code (a geographical identification code) and then county FIPS code.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Note that B01001_001 = Total Population</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>, </span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vintage =</span> <span class="dv">2019</span>,</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_001E"</span>),</span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">region =</span> <span class="st">"county:*"</span>)   <span class="sc">%&gt;%</span></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">total_pop   =</span> B01001_001E,</span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_fips =</span> county, </span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">state_fips  =</span> state) <span class="sc">%&gt;%</span></span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(state_fips, county_fips)</span>
-<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(county_pop[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Note that B01001_001 = Total Population</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>, </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vintage =</span> <span class="dv">2019</span>,</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_001E"</span>),</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">region =</span> <span class="st">"county:*"</span>)   <span class="sc">%&gt;%</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">total_pop   =</span> B01001_001E,</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_fips =</span> county, </span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">state_fips  =</span> state) <span class="sc">%&gt;%</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(state_fips, county_fips)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(county_pop[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -3384,17 +3291,17 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="filtering-to-focus-on-one-state" class="level2">
-<h2 class="anchored" data-anchor-id="filtering-to-focus-on-one-state">Filtering to Focus On One State</h2>
+<section id="filtering-to-focus-on-one-state" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="filtering-to-focus-on-one-state"><span class="header-section-number">9.3</span> Filtering to Focus On One State</h2>
 <p>We can then use the function to obtain a subset of the data. Here, we filter the data to only keep those observations for which the state FIPS code is 51, which happens to be the FIPS code for Virginia.</p>
 <p>We use the existing data frame which we created using the previous code example.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>va_pop <span class="ot">&lt;-</span> county_pop <span class="sc">%&gt;%</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state_fips <span class="sc">==</span> <span class="dv">51</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(county_fips)</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(va_pop[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>va_pop <span class="ot">&lt;-</span> county_pop <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state_fips <span class="sc">==</span> <span class="dv">51</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(county_fips)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(va_pop[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -3471,50 +3378,50 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="api-call-with-multiple-variables" class="level2">
-<h2 class="anchored" data-anchor-id="api-call-with-multiple-variables">API Call With Multiple Variables</h2>
+<section id="api-call-with-multiple-variables" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="api-call-with-multiple-variables"><span class="header-section-number">9.4</span> API Call With Multiple Variables</h2>
 <p>We can also obtain multiple variables from one API call. In the last example, we obtain total population, male population, and female population from the 2019 ACS 5-Year estimates. We then calculate the sex ratio, which is equal to the male population divided by the female population and plot the sex ratio.</p>
 <p>We note that there is one very large county in the data (Los Angeles, California). We also note there is another county where there are approximately 3.5 males to every woman (Forest County, Pennsylvania).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain Population by Sex, Total Male Population, Total Female Population</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># B01001_001E - Population Total by Sex</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co"># B01001_002E - Total Male Population</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># B01001_026E - Total Female Population</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sex-ratio = male population / female population</span></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>sex_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>, </span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vintage =</span> <span class="dv">2019</span>,</span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_001E"</span>,</span>
-<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_002E"</span>,</span>
-<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_026E"</span>),</span>
-<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>                              <span class="at">region =</span> <span class="st">"county:*"</span>)   <span class="sc">%&gt;%</span></span>
-<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">total_pop   =</span> B01001_001E,</span>
-<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">male_pop    =</span> B01001_002E,</span>
-<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">female_pop  =</span> B01001_026E,</span>
-<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_fips =</span> county, </span>
-<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">state_fips  =</span> state) <span class="sc">%&gt;%</span></span>
-<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_ratio   =</span> male_pop <span class="sc">/</span> female_pop) <span class="sc">%&gt;%</span></span>
-<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(state_fips, county_fips)</span>
-<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sex_pop,</span>
-<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> total_pop, <span class="at">y =</span> sex_ratio)) <span class="sc">+</span></span>
-<span id="cb58-25"><a href="#cb58-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb58-26"><a href="#cb58-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sex Ratio for U.S Counties, 2019"</span>,</span>
-<span id="cb58-27"><a href="#cb58-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">"County Population"</span>,</span>
-<span id="cb58-28"><a href="#cb58-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">y     =</span> <span class="st">"Sex Ratio"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain Population by Sex, Total Male Population, Total Female Population</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># B01001_001E - Population Total by Sex</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># B01001_002E - Total Male Population</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># B01001_026E - Total Female Population</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sex-ratio = male population / female population</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>sex_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>, </span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vintage =</span> <span class="dv">2019</span>,</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_001E"</span>,</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_002E"</span>,</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_026E"</span>),</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>                              <span class="at">region =</span> <span class="st">"county:*"</span>)   <span class="sc">%&gt;%</span></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">total_pop   =</span> B01001_001E,</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">male_pop    =</span> B01001_002E,</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">female_pop  =</span> B01001_026E,</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_fips =</span> county, </span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">state_fips  =</span> state) <span class="sc">%&gt;%</span></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_ratio   =</span> male_pop <span class="sc">/</span> female_pop) <span class="sc">%&gt;%</span></span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(state_fips, county_fips)</span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sex_pop,</span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> total_pop, <span class="at">y =</span> sex_ratio)) <span class="sc">+</span></span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sex Ratio for U.S Counties, 2019"</span>,</span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">"County Population"</span>,</span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">y     =</span> <span class="st">"Sex Ratio"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mod-1-2-intro-to-r-variables_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mod-1-3-intro-to-r-variables_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="basic-operations" class="level2">
-<h2 class="anchored" data-anchor-id="basic-operations">Basic Operations</h2>
+<section id="basic-operations" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="basic-operations"><span class="header-section-number">9.5</span> Basic Operations</h2>
 <p>Let’s first try some basic math operations in R using webR.</p>
 <p>Notice that when you run the code that R produces the output.</p>
 <p>Try adding the following to the code and executing the code: <span class="math inline">\((6 \times 12)/24\)</span>.</p>
@@ -3522,8 +3429,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="another-example" class="level2">
-<h2 class="anchored" data-anchor-id="another-example">Another example</h2>
+<section id="another-example" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="another-example"><span class="header-section-number">9.6</span> Another example</h2>
 <p>Try some of these with WebR:</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -3938,6 +3845,15 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./mod-1-2-intro-to-r.html" class="pagination-link" aria-label="Introduction to R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to R</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <script type="module">
 // Handle cell initialization initialization

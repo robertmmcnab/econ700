@@ -1,6 +1,5 @@
 ---
-title: "ECON 700"
-subtitle: "An Introduction to R for Economic Analysis"
+title: "Variables in R"
 author: "Bob McNab"
 format:
   html:
@@ -25,174 +24,21 @@ library(tidyquant, quietly = TRUE)
 
 ```
 
-## Why use R and RStudio?
-
-We will use **R** and **RStudio** extensively in this class. You will also use these programs extensively in the following classes on the econometrics sequence.
-
-A frequently asked question is "why can't we use Excel?"
-
-The simple answer is that Excel is good for some things but R is better for the things we want to do in this and other classes.
-
-Writing code (programming) allows for:
-
--   Reproducibility (code provides transparency to processes)
-
--   Customization (many solutions to a problem)
-
--   Automation (code once, run many times)
-
--   Accountability (the programmer is responsible for what the code does)
-
-Other programs have lower fixed costs than R. These programs, whether Excel, SAS, SPSS, or TSP, have 'built in' functions and interfaces that allow 'easier entry' than R. In other words, you will invest less time to learn how to start working in other programs than R.
-
-So, why then use R? First, coding is like learning a second language. It takes a while to learn the logic and 'flow' of the programming language. Second, unlike many other programs, you have a very good idea of what R is doing. If you write code, you learn where data come from, how they are formatted, the properties of data, and you gain a much deeper understanding of the process by which you arrive at an answer.
-
-Another strength of this approach is that once you learn to code in R and use RStudio, your marginal cost of learning Python, C++, or SQL is lower because the logic behind each of these languages is similar.
-
-*Simply put, coding is as much about the journey as the destination.*
-
-## R and RStudio: An Introduction
-
-You will need to install **R** and **RStudio**.
-
-Each is a piece of software. R is the 'engine' and RStudio is the interface.
-
-You can work with R directly, but RStudio makes the process less painful.
-
-R is the statistical software package that we will use throughout the course,
-
-RStudio is an interface that makes using R much easier.
-
-The **R Project** is located at: <https://www.r-project.org/>
-
-## Downloading R
-
-You can download **R** at: <https://cloud.r-project.org/>
-
-Select the correct operating system to download and install R.
-
-## Downloading RStudio
-
-You can download **RStudio** at: <https://posit.co/download/rstudio-desktop/>
-
-Note how Posit tells you to install R and then RStudio.
-
-You can also use **Posit Cloud** from Posit at: <https://posit.cloud/>
-
-## Tutorials in R
-
-There are numerous tutorials online on how to use R.
-
-Some overviews that might be helpful:
-
-R Programming for Beginners: <https://youtu.be/fDRa82lxzaU>
-
-R Programming Tutorial: <https://youtu.be/_V8eKsto3Ug>
-
-## Opening RStudio
-
-![Screenshot of RStudio in Windows](images/rstudio-desktop.jpg){fig-alt="Screenshot of RStudio in Windows"}
-
-When you open RStudio for the first time, you will see four panels like in the above image. It is likely that your version of RStudio has a white background with blue or black text.
-
-If you would like to change this, go to “Tools \> Global Options… \> Appearance \> Editor theme”.
-
-You can choose a darker theme, or leave it a lighter theme.
-
-The four panels are as follows:
-
--   Top Left: **Source** – This is where you will write the R code you want to save. In other words, this is where you write and save your work, usually called R scripts (.R files).
-
--   Bottom Left: **Console** – When you execute (or *run*) code, you will usually see output here. This is also a place you can write code you do not want to be part of your final script. If you were a painter, the **Source** panel would be your canvas and the **Console** would be your [palette](https://upload.wikimedia.org/wikipedia/commons/0/04/Oil_painting_palette.jpg).
-
--   Top Right: **Enviornment** – Here is where we will be able to see all the objects (data, etc.) that we are working with in the moment. To clear your environment, use the code `rm(list = ls())`.
-
--   Bottom Right: **Output** – This is mostly where you will see plots you have generated, but can also see files on your computer, packages you have installed, and “Help” for certain functions.
-
-![Screenshot of Rstudio with panel labels.](images/rstudio-fourpanel.jpg){fig-alt="Screenshot of Rstudio with panel labels."}
-
-# Packages in R
-
-One of the most powerful features of R is that there are numerous packages or add-ons to base R that provide additional functionality. We need to install these packages and then include them so they are accessible to R as we work with data.
-
-If you need to install a package, you can always use the **install.packages** command. For example, you could use **install.packages("dplyr")** to install the **dplyr** package.
-
-Once a package is installed, you typically will not need to re-install it. You may need to update your packages, however, and this can be easily done. You can either use the function **update.packages** or update packages through the packages menu in RStudio.
-
-In the following code, we clear the workspace (essentially erasing working memory) and load three packages.
-
-First, we clear memory with the command **rm(list = ls())**.
-
-Second, we load the packages into memory by using the **library** statement.
-
-For example, **library(dplyr)** loads the dplyr package so we can use its functions later in our code.
-
-Note, however, the code below is ***static***. In other words, you can't run the code here. You will have to replicate the code in your RStudio. 
-
-To learn more, see the following links.
-
-dplyr: <https://dplyr.tidyverse.org/>
-
-lubridate: <https://lubridate.tidyverse.org/>
-
-tidyverse: <https://www.tidyverse.org/>
-
-kable: <https://cran.r-project.org/web/packages/kableExtra>
-
-```{r, message = FALSE}
-
-#Clear the Workspace
-
-rm(list = ls())
-
-#Load packages
-
-library(dplyr)
-library(lubridate)
-library(tidyverse)
-library(kableExtra)
-
-```
-
-## WebR
-
-We can use **WebR** to provide **dynamic** examples of code. The WebR code chunks appear different than the static code chucks.
-
-As you can see below, you can run the WebR code in your browser. You can add, subtract, or change the code chunk entirely. 
-
-The WebR code chunk below mirrors the static code chunk above.
-
-```{webr-r}
-
-#Clear the Workspace
-
-rm(list = ls())
-
-#Load packages
-
-library(dplyr)
-library(lubridate)
-library(tidyverse)
-library(kableExtra)
-
-```
-
-
-
-
-# Variable and Assignment Basics
-
 ## Assigning Numeric Values to Variables
 
-We can use the \textbf{assignment operator} in R to assign values to a variable. The assignment operator can be thought of as moving a value, character, date, or other form into a named variable. The assignment operator is "\<-", that is, "x2 \<- 1056" means assign the value 1056 to the variable x2.
+We can use the **assignment operator** in R to assign values to a variable. The assignment operator can be thought of as moving a value, character, date, or other form into a named variable. 
 
-For example, in the code below, we assign the numerical value of 2 to the variable \textbf{x1} and the numerical value of 4.5 to the variable \textbf{x2}.
+The assignment operator is "\<-".
 
-We can assign the value contained in one variable in another. For example, we can assign \textbf{x2} to \textbf{x3} and also specify that the integer value of \textbf{x2} is assigned to \textbf{x3}.
+The line, "x2 \<- 1056", means assign the value 1056 to the variable **x2**.
+
+In the code below, we assign the numerical value of 2 to the variable **x1** and the numerical value of 4.5 to the variable **x2**.
+
+We can assign the value contained in one variable in another. For example, we can assign **x2** to **x3** and also specify that the integer value of **x2** is assigned to **x3**.
 
 \hfill\break
 
-```{r}
+```{webr-r}
 
 #Clear the Workspace
 

@@ -1,6 +1,5 @@
 ---
-title: "ECON 700"
-subtitle: "An Introduction to R for Economic Analysis"
+title: "Introduction to R"
 author: "Bob McNab"
 format:
   html:
