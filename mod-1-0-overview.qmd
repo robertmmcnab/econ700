@@ -2,11 +2,13 @@
 title: "Module 1 Overview"
 ---
 
-## Module 1: Introduction to R and Data Analysis
+## Introduction
 
 Welcome to **Module 1** of ECON 700.
 
-In this module, you will be introduced to R, the RStudio environment, and the basics of working with data in R.
+In this module, you will be introduced to **R** and the **RStudio** environment.
+
+You will also start working with data in R.
 
 ------------------------------------------------------------------------
 
@@ -24,8 +26,12 @@ By the end of this module, you should be able to:
 
 ## Readings & Resources
 
+-   Irizarry, R. (2025). *Introduction to Data Science: Data Wrangling and Visualization with R*. (Chapters 1-2). Available for free at: <https://rafalab.dfci.harvard.edu/dsbook-part-1/>
+
 -   Wickham, H., & Grolemund, G. (2017). *R for Data Science*. (Chapters 1–3).\
+
 -   Online R documentation: <https://cran.r-project.org/manuals.html>\
+
 -   [RStudio Cheat Sheets](https://posit.co/resources/cheatsheets/)
 
 ------------------------------------------------------------------------
@@ -34,16 +40,18 @@ By the end of this module, you should be able to:
 
 -   Complete the hands-on coding exercises embedded in each lesson.\
 -   Use WebR to experiment directly in your browser.\
--   Participate in the discussion forum with your reflections on R’s strengths and challenges.
+-   Complete the weekly class assignment.\
+-   Participate in the discussion form.\
+-   Take the weekly knowledge quiz.\
 
 ------------------------------------------------------------------------
 
 ## Lessons in this Module
 
--   [1.0 – Introduction to Economic Analysis](mod-1-0-intro-to-data.qmd)\
--   [1.1 – Introduction to R](mod-1-1-intro-to-r.qmd)\
--   [1.2 – Variables in R](mod-1-2-intro-to-r-variables.qmd)
+-   [1.0 – Introduction to Economic Analysis](mod-1-1-intro-to-data.qmd)\
+-   [1.1 – Introduction to R](mod-1-2-intro-to-r.qmd)\
+-   [1.2 – Variables in R](mod-1-3-intro-to-r-variables.qmd)
 
 ------------------------------------------------------------------------
 
-Next: Start with [**Lesson 1.0 – Introduction to Data**](mod-1-0-intro-to-data.qmd).
+Next: Start with [**Economic Analysis**](mod-1-1-intro-to-data.qmd).

@@ -84,6 +84,10 @@ There are numerous tutorials online on how to use R.
 
 Some overviews that might be helpful:
 
+The Big Book of R: <https://www.bigbookofr.com/>
+
+Getting Started with R: <https://rfortherestofus.com/courses/getting-started/>
+
 R Programming for Beginners: <https://youtu.be/fDRa82lxzaU>
 
 R Programming Tutorial: <https://youtu.be/_V8eKsto3Ug>
@@ -100,7 +104,7 @@ You can then start asking other resources for help.
 
 Artificial Intelligence (AI) is helpful to debug code. It can even write code for you, if you know what you are doing.
 
-Remember, however, that AI is only as good as its algorithm and your prompt. It can (and will) give you answers that do not do what you expect them to do.
+*Remember, however, that AI is only as good as its algorithm and your prompt. It can (and will) give you answers that are incorrect, answers that appear correct but are wrong, or lead you through solution paths that are inefficient.*
 
 Coding is a dance between what you know and what you can find. The more that you do on your own, the better you will be able to use AI to help you improve (not write) your code.
 
