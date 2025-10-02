@@ -2151,7 +2151,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>We assign the or value 06250 to and 06250 as a or value to .</p>
 <p>Note what happens: when stored as a numeric value, 06250 is stored as 6250. When 06250 is stored as “06250” as a character variable, the character variable does not “lose” then “0” in the front of “06250”.</p>
 <p>This can be very important if you are storing an identification value with a leading 0.</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
@@ -2215,7 +2215,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>We can also store dates and work with dates. We assign 2020-09-01 a date value using the package. Note that we tell the package that the format of the date is year-month-day (ymd).</p>
 <p>Likewise, we assign 09-05-2020 to date2 as a date variable but tell the package that the format of the date is now month-day-year (mdy). Note that even though the dates are in different formats, the package transforms the dates into a format recognizable by R.</p>
 <p>Having transformed the date values, we can calculate the time difference by assigning to variable .</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
@@ -2260,7 +2260,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2 data-number="7.1" class="anchored" data-anchor-id="creating-vectors"><span class="header-section-number">7.1</span> Creating Vectors</h2>
 <p>We can now create a vector that contains several values. In the following example, we combine several numbers and assign them to the variable .</p>
 <p>We can also combine other variables (if they are the same type) to form a new vector. You can combine single element variables with vectors to create a new vector .</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
@@ -2357,7 +2357,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <p>When we display , for example, we note is a row vector consisting of one row and 5 elements. We can also directly manipulate by multiplying it by two.</p>
 <p>We should, however, understand that product of and 2 is not stored, it’s a direct manipulation and not available for future use. If we wanted to store it, we would have to assign it to a variable. Here, we assign the product of and 2 to the variable .</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Output x5 * 2</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2456,7 +2456,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>The function “stacks” the observations in the vectors. The function “adds” the column of the second vector to the first vector, creating a data frame with two columns.</p>
 <p>Now, let’s column bind and together as a data frame. We then row bind and together as another data frame</p>
 <p> is a data frame where the observations are in rows and the variables are in columns. is a data frame where the variables are in the rows and the observations are in the columns.</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
@@ -2593,7 +2593,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>R comes with a number of “built in” data sets. For the following discussion, we use the data. The data contain observations on a number of cars from the Motor Trend magazine.</p>
 <p>One can work directly with the data or assign the data to a data frame. In the following, we assign to the data frame. We use the assignment operator so that data flows from to .</p>
 <p>We can now use the or functions to examine the structure of the data frame. Note that the function returns the first six rows while the function returns the last six rows.</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
@@ -2635,7 +2635,7 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 <h2 data-number="7.4" class="anchored" data-anchor-id="dimensions-of-a-data-frame"><span class="header-section-number">7.4</span> Dimensions of a Data Frame</h2>
 <p>To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the and functions determine the number of rows and columns in a data frame, respectively.</p>
 <p>We can also use the function to return the dimensions of the data frame. Note that the function returns rows then columns.</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2661,7 +2661,7 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 <p>Having determined the dimensions of the data frame, we can now select parts of the data frame.</p>
 <p>We can approach this by recognizing that a data frame is organized by rows and columns. For example, returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.</p>
 <p>So, in general, for a data frame, . For example, returns rows 1 to 2 and columns 2 to 3.</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First observation, First variable.</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span>,<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2678,7 +2678,7 @@ Mazda RX4 Wag   6  160</code></pre>
 </div>
 </div>
 <p>If the row or column is left blank, all values for the column are the result. For example, would return all rows for the first column of data. On the other hand, would return the first two rows and all the columns.</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All rows, first two columns</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>cardata[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2741,7 +2741,7 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <p>You have now reached the end of the pipe. The “&lt;-” at the beginning then assigns all the data in the temporary data frame to the data frame. Because we have used the grammar of piping, the original data frame is unchanged.</p>
 <p>The grammar of piping is very useful as it allows you to manipulate a data frame without changing the contents of the original data frame.</p>
 <p>Note how we can start using some of the additional features in the <strong>kable</strong> package to rename column names for improve presentation.</p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>cardata2 <span class="ot">&lt;-</span> cardata <span class="sc">%&gt;%</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">car           =</span> rowname) <span class="sc">%&gt;%</span></span>
@@ -3007,7 +3007,7 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <h2 data-number="8.2" class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp"><span class="header-section-number">8.2</span> The FRED API for Nominal GDP</h2>
 <p>We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the variable containing the values for nominal GDP. We rename the variable to and also use the pacakge for the dates.</p>
 <p>Nominal GDP: </p>
-<div class="cell">
+<div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
@@ -3414,7 +3414,7 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mod-1-3-intro-to-r-variables_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mod-1-3-intro-to-r-variables_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
