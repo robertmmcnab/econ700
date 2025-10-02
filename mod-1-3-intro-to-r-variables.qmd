@@ -44,13 +44,6 @@ We can assign the value contained in one variable in another. For example, we ca
 
 rm(list = ls())
 
-#Load packages
-
-library(dplyr)
-library(lubridate)
-library(tidyverse)
-library(kableExtra)
-
 #Assign 2 to variable x_1
 
 x1 <- 2
