@@ -117,7 +117,7 @@ Having transformed the date values, we can calculate the time difference by assi
 
 rm(list = ls())
 
-library(lubridate)
+library(lubridate, quiet = TRUE)
 
 #Convert the text "2020-09-01" to a date variable
 
