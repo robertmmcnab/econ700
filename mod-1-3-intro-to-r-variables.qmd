@@ -1,6 +1,5 @@
 ---
 title: "Variables in R"
-author: "Bob McNab"
 format:
   html:
     toc: true

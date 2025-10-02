@@ -98,7 +98,7 @@
     "href": "mod-1-0-overview.html#lessons-in-this-module",
     "title": "3  Module 1 Overview",
     "section": "3.5 Lessons in this Module",
-    "text": "3.5 Lessons in this Module\n\n1.0 – Introduction to Data\n\n1.1 – Introduction to R\n\n1.2 – Variables in R\n\n\nNext: Start with Lesson 1.0 – Introduction to Data.",
+    "text": "3.5 Lessons in this Module\n\n1.0 – Introduction to Economic Analysis\n\n1.1 – Introduction to R\n\n1.2 – Variables in R\n\n\nNext: Start with Lesson 1.0 – Introduction to Data.",
     "crumbs": [
       "Module 1: Introduction to R",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Module 1 Overview</span>"
@@ -275,83 +275,6 @@
     "title": "6  Variables in R",
     "section": "",
     "text": "6.1 Assigning Numeric Values to Variables\nWe can use the assignment operator in R to assign values to a variable. The assignment operator can be thought of as moving a value, character, date, or other form into a named variable.\nThe assignment operator is “&lt;-”.\nThe line, “x2 &lt;- 1056”, means assign the value 1056 to the variable x2.\nIn the code below, we assign the numerical value of 2 to the variable x1 and the numerical value of 4.5 to the variable x2.\nWe can assign the value contained in one variable in another. For example, we can assign x2 to x3 and also specify that the integer value of x2 is assigned to x3.",
-    "crumbs": [
-      "Module 1: Introduction to R",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Variables in R</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-3-intro-to-r-variables.html#why-use-r-and-rstudio",
-    "href": "mod-1-3-intro-to-r-variables.html#why-use-r-and-rstudio",
-    "title": "6  Variables in R",
-    "section": "",
-    "text": "Reproducibility (code provides transparency to processes)\nCustomization (many solutions to a problem)\nAutomation (code once, run many times)\nAccountability (the programmer is responsible for what the code does)",
-    "crumbs": [
-      "Module 1: Introduction to R",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Variables in R</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-3-intro-to-r-variables.html#r-and-rstudio-an-introduction",
-    "href": "mod-1-3-intro-to-r-variables.html#r-and-rstudio-an-introduction",
-    "title": "6  Variables in R",
-    "section": "6.2 R and RStudio: An Introduction",
-    "text": "6.2 R and RStudio: An Introduction\nYou will need to install R and RStudio.\nEach is a piece of software. R is the ‘engine’ and RStudio is the interface.\nYou can work with R directly, but RStudio makes the process less painful.\nR is the statistical software package that we will use throughout the course,\nRStudio is an interface that makes using R much easier.\nThe R Project is located at: https://www.r-project.org/",
-    "crumbs": [
-      "Module 1: Introduction to R",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Variables in R</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-3-intro-to-r-variables.html#downloading-r",
-    "href": "mod-1-3-intro-to-r-variables.html#downloading-r",
-    "title": "6  Variables in R",
-    "section": "6.3 Downloading R",
-    "text": "6.3 Downloading R\nYou can download R at: https://cloud.r-project.org/\nSelect the correct operating system to download and install R.",
-    "crumbs": [
-      "Module 1: Introduction to R",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Variables in R</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-3-intro-to-r-variables.html#downloading-rstudio",
-    "href": "mod-1-3-intro-to-r-variables.html#downloading-rstudio",
-    "title": "6  Variables in R",
-    "section": "6.4 Downloading RStudio",
-    "text": "6.4 Downloading RStudio\nYou can download RStudio at: https://posit.co/download/rstudio-desktop/\nNote how Posit tells you to install R and then RStudio.\nYou can also use Posit Cloud from Posit at: https://posit.cloud/",
-    "crumbs": [
-      "Module 1: Introduction to R",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Variables in R</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-3-intro-to-r-variables.html#tutorials-in-r",
-    "href": "mod-1-3-intro-to-r-variables.html#tutorials-in-r",
-    "title": "6  Variables in R",
-    "section": "6.5 Tutorials in R",
-    "text": "6.5 Tutorials in R\nThere are numerous tutorials online on how to use R.\nSome overviews that might be helpful:\nR Programming for Beginners: https://youtu.be/fDRa82lxzaU\nR Programming Tutorial: https://youtu.be/_V8eKsto3Ug",
-    "crumbs": [
-      "Module 1: Introduction to R",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Variables in R</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-3-intro-to-r-variables.html#opening-rstudio",
-    "href": "mod-1-3-intro-to-r-variables.html#opening-rstudio",
-    "title": "6  Variables in R",
-    "section": "6.6 Opening RStudio",
-    "text": "6.6 Opening RStudio\n\n\n\nScreenshot of RStudio in Windows\n\n\nWhen you open RStudio for the first time, you will see four panels like in the above image. It is likely that your version of RStudio has a white background with blue or black text.\nIf you would like to change this, go to “Tools &gt; Global Options… &gt; Appearance &gt; Editor theme”.\nYou can choose a darker theme, or leave it a lighter theme.\nThe four panels are as follows:\n\nTop Left: Source – This is where you will write the R code you want to save. In other words, this is where you write and save your work, usually called R scripts (.R files).\nBottom Left: Console – When you execute (or run) code, you will usually see output here. This is also a place you can write code you do not want to be part of your final script. If you were a painter, the Source panel would be your canvas and the Console would be your palette.\nTop Right: Enviornment – Here is where we will be able to see all the objects (data, etc.) that we are working with in the moment. To clear your environment, use the code rm(list = ls()).\nBottom Right: Output – This is mostly where you will see plots you have generated, but can also see files on your computer, packages you have installed, and “Help” for certain functions.\n\n\n\n\nScreenshot of Rstudio with panel labels.",
-    "crumbs": [
-      "Module 1: Introduction to R",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Variables in R</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-3-intro-to-r-variables.html#webr",
-    "href": "mod-1-3-intro-to-r-variables.html#webr",
-    "title": "6  Variables in R",
-    "section": "7.1 WebR",
-    "text": "7.1 WebR\nWe can use WebR to provide dynamic examples of code. The WebR code chunks appear different than the static code chucks.\nAs you can see below, you can run the WebR code in your browser. You can add, subtract, or change the code chunk entirely.\nThe WebR code chunk below mirrors the static code chunk above.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Module 1: Introduction to R",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Variables in R</span>"

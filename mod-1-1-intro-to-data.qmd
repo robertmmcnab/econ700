@@ -1,6 +1,5 @@
 ---
 title: "Economic Analysis"
-author: "Bob McNab"
 format:
   html:
     toc: true

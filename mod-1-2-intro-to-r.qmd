@@ -1,6 +1,5 @@
 ---
 title: "Introduction to R"
-author: "Bob McNab"
 format:
   html:
     toc: true
