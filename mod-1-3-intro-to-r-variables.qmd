@@ -257,7 +257,7 @@ library(kableExtra, quiet = TRUE)
 
 vector_1 <- c(4, 16, 25, 81, 10000)
 
-vector_2 <- sqrt(vector 1)
+vector_2 <- sqrt(vector_1)
 
 kable(vector_2,
       align = 'c',
