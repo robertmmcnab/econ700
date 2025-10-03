@@ -1,0 +1,340 @@
+---
+title: "Variables in R"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    self-contained: false     # must be false when using webr
+urlcolor: blue
+filters:
+  - webr
+execute:
+  webR: true
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+
+library(dplyr, quietly = TRUE)
+library(ggplot2, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(lubridate, quietly = TRUE)
+library(tidyquant, quietly = TRUE)
+
+```
+
+## Creating a Data Frame
+
+So far, everything we have created has been stored as a variable or vector. A \textbf{matrix} consists of rows and columns. The organization of the matrix is important. In some cases, the rows will correspond to individual observations with variables in the columns. In other cases, the variables are in the rows and individuals in columns. Matrices can contain quantitative and qualitative elements.
+
+A matrix is a table or a two-dimensional array-like structure. In R, a \textbf{data frame} is a list of variables with the same number of rows with unique row names. It is represented by the class \textbf{data.frame}.
+
+A \textbf{data frame} can have one column with numeric elements, another with date elements, another with character elements, and so on. The CDC data earlier in this module is an example of a data frame.
+
+First, let's create two row vectors, \textbf{x8} and \textbf{x9}. We can \textit{bind} these together using the row bind, \textbf{rbind}, or column bind, \textbf{cbind}, functions.
+
+The \textbf{rbind} function "stacks" the observations in the vectors. The \textbf{cbind} function "adds" the column of the second vector to the first vector, creating a data frame with two columns.
+
+Now, let's column bind \textbf{x8} and \textbf{x9} together as a data frame. We then row bind \textbf{x8} and \textbf{x9} together as another data frame
+
+\textit{df1} is a data frame where the observations are in rows and the variables are in columns. \textit{df2} is a data frame where the variables are in the rows and the observations are in the columns.
+
+```{r, messages = FALSE}
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+#create two vectors
+
+x8 <- 3:6
+x9 <- 10:13
+
+kable(rbind(x8,x9))
+
+kable(cbind(x8,x9))
+
+#Create Data Frames
+
+df1 <- data.frame(cbind(x8,x9))
+
+df2 <- data.frame(rbind(x8, x9))
+
+kable(df1)
+
+kable(df2)
+
+```
+
+## Using an Existing Dataframe
+
+R comes with a number of "built in" data sets. For the following discussion, we use the \textit{mtcars} data. The data contain observations on a number of cars from the Motor Trend magazine.
+
+One can work directly with the \textit{mtcars} data or assign the \textit{mtcars} data to a data frame. In the following, we assign \textit{cars} to the \textit{cardata} data frame. We use the assignment operator so that data flows from \textit{mtcars} to \textit{cardata}.
+
+We can now use the \textit{head} or \textit{tail} functions to examine the structure of the \textit{cardata} data frame. Note that the \textit{head} function returns the first six rows while the \textit{tail} function returns the last six rows.
+
+```{r, messages = FALSE}
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+
+#Assign mtcars to cardata 
+
+cardata <- mtcars
+
+# View structure of the data frame
+
+head(cardata)
+
+tail(cardata)
+
+```
+
+## Dimensions of a Data Frame
+
+To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the \textit{nrow} and \textit{ncol} functions determine the number of rows and columns in a data frame, respectively.
+
+We can also use the \textit{dim} function to return the dimensions of the data frame. Note that the \textit{dim} function returns rows then columns.
+
+```{r, messages = FALSE}
+
+# Number of rows
+
+nrow(cardata)
+
+# Number of columns
+
+ncol(cardata)
+
+# Dimensions of data frame (rows and columns)
+
+dim(cardata)
+```
+
+## Selecting Rows or Columns in a Data Frame
+
+Having determined the dimensions of the \textit{cardata} data frame, we can now select parts of the data frame.
+
+We can approach this by recognizing that a data frame is organized by rows and columns. For example, \textit{mtcars[1,1]} returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.
+
+So, in general, for a data frame, \textit{data[row,column]}. For example, \textit{cardata[1:2, 2:3]} returns rows 1 to 2 and columns 2 to 3.
+
+```{r, messages = FALSE}
+
+# First observation, First variable.
+
+cardata[1,1]
+
+# First two observations, 2nd and 3rd variables
+
+cardata[1:2, 2:3]
+
+```
+
+If the row or column is left blank, all values for the column are the result. For example, \textit{cardata[,1]} would return all rows for the first column of data. On the other hand, \textit{cardata[1:2,]} would return the first two rows and all the columns.
+
+```{r, messages = FALSE}
+
+# All rows, first two columns
+
+cardata[,1:2]
+
+# First two observations, All Columns
+
+cardata[1:2,]
+
+```
+
+## Manipulating the Dataframe and Adding New Variables
+
+Starting with the \textit{cardata} data frame, we can now utilize one of the features of the packages to \textit{pipe} the data. Piping means that the data 'flows' in the direction of the pipe. It's actually called a pipeline of data.
+
+A bit of housekeeping. We want to convert the rownames in \textit{cardata} to a variable. We pipe the data frame and then use the function \textbf{rownames\_to\_column()} to do just that. We then pipe the data to rename the new variable \textit{rowname} to \textit{car}.
+
+We can now use the \textit{mutate} function to create a new variable or replace an existing variable.
+
+In the following code, the data flow from \textit{cardata} to the next line of code to create a new variable \textbf{km\_per\_gallon} using the \textit{mutate} function.
+
+Imagine a temporary data frame that consists of \textit{cardata} with a new column for the \textbf{km\_per\_gallon} variable.
+
+Each new line of within the \textit{mutate} function creates a new variable. The second variable that we create converts kilometers per gallon to kilometers per liter or \textbf{km\_per\_liter}.
+
+Your temporary data frame now consists of the \textit{cardata} data frame plus the two new variables.
+
+The third line of the \textit{mutate} statement creates a new variable that converts miles per gallon into kilometers per liter, essentially duplicating the process of the first two lines of the mutate statement. The new variable is called \textbf{km2\_per\_liter}.
+
+At this point, you decide you only need to keep a subset of variables. We pipe the resulting data frame to the \textit{select} statement. The variables included in the select statement are kept in the temporary data frame while the variables excluded from the select statement are deleted from the temporary data frame.
+
+You have now reached the end of the pipe. The "\<-" at the beginning then assigns all the data in the temporary data frame to the \textit{cardata2} data frame. Because we have used the grammar of piping, the original data frame is unchanged.
+
+The grammar of piping is very useful as it allows you to manipulate a data frame without changing the contents of the original data frame.
+
+Note how we can start using some of the additional features in the **kable** package to rename column names for improve presentation.
+
+```{r, messages = FALSE}
+
+cardata2 <- cardata %>%
+  rownames_to_column() %>%
+  rename(car           = rowname) %>%
+  mutate(km_per_gallon = mpg*1.60934,
+         km_per_liter  = km_per_gallon*3.78541,
+         km2_per_liter = mpg*1.60934*3.78541) %>%
+  select(car, mpg, cyl, wt, km_per_gallon, km_per_liter, km2_per_liter)
+
+kable(cardata[1:5,])
+
+kable(cardata2[1:5,],
+      col.names = c("Car",
+                    "MPG",
+                    "Cylinders",
+                    "Weight",
+                    "Kilometers per Gallon",
+                    "Kliometers per Liter",
+                    "Squared KM/Gallon")) %>%
+kable_classic()
+
+```
+
+## The FRED API for Real GDP
+
+An Application Programming Interface (API) allows us to obtain data from a source without having to manually downloading the data. In effect, an API allows us to "grab" data from an external source. If the external source updates the data, then our next API call with obtain the updated data.
+
+For example, let's say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called \textbf{GDPC1}, and download the data into an Excel file. This process is labor-intensive and subject to error.
+
+FRED: \url{https://fred.stlouisfed.org/}
+
+Real GDP: \url{https://fred.stlouisfed.org/series/GDPC1}
+
+We can use an API call to obtain the data. Instead of having to write the code for an API call, we can use a package called \textbf{tidyquant}.
+
+We have the variable name \textit{GDPC1} and so we can simply use the \textit{tq\_get} function in \textbf{tidyquant} to retrieve the real GDP series. Note that we rename the \textit{price} variable to \textit{rgdp} and we convert the date using the \textbf{lubridate} package.
+
+We can use the \textit{head} or \textit{kable} to print out the contents of the first rows of the resulting data frame.
+
+We see the data are organized such that each row corresponds to a time period, that is, the first row represents real GDP for the 1st quarter of 1950, the second row represents real GDP for the 2nd quarter of 1950, and so on.
+
+```{r, fig.height = 4, fig.width = 6, fig.align = "center"}
+
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+library(tidyquant)
+
+#Use tq_get to obtain real GDP from FRED
+
+rgdp <- tq_get("GDPC1",
+                    get  = "economic.data",
+                    from = "1950-01-01" ) %>%
+        rename(rgdp = price) %>%
+        mutate(date = lubridate::ymd(date))
+
+kable(rgdp[1:5,])
+
+```
+
+## The FRED API for Nominal GDP
+
+We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the \textit{price} variable containing the values for nominal GDP. We rename the variable to \textit{gdp} and also use the \textbf{lubridate} pacakge for the dates.
+
+Nominal GDP: \url{https://fred.stlouisfed.org/series/GDP}
+
+```{r, messages = FALSE}
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(kableExtra)
+library(tidyquant)
+
+#Use tq_get to obtain nominal GDP from FRED
+
+gdp <- tq_get("GDP",
+                    get  = "economic.data",
+                    from = "1950-01-01" ) %>%
+        rename(gdp = price) %>%
+        mutate(date = lubridate::ymd(date))
+
+kable(gdp[1:5,])
+```
+
+## The FRED API for Nominal and Real GDP
+
+In the previous examples, we made an API call for one variable at a time. The result was two data frames, one for nominal GDP, and one for real GDP. It would be more efficient to make one API call that results in a single data frame with both variables.
+
+In the following code, we \textbf{combine} the names of the two variables, that is, \textit{c("GDP","GDPC1")} creates a row vector with the two names. This row vector is used by the \textit{tq\_get} function to make an API call to obtain the two variables from FRED.
+
+What's important to note is that the \textit{all\_gdp} data fame is in \textbf{long} format. In other words, each row corresponds to one period of time for one variable.
+
+We have to do some housecleaning. When we obtain the data from FRED, the variable names are contained in a variable called \textit{symbol} and the values are contained in a variable named \textit{price}. We rename those to \textit{variable} and \textit{value}, respectively.
+
+We then plot the data using the \textbf{ggplot2} package. The \textit{ggplot} function is very flexible and you can modify almost every element of a graph. For now, we provide the example and will work on developing our graphing skills later on in the course.
+
+```{r gdp1, echo = TRUE, message = FALSE, results = 'asis', fig.height = 5, fig.width = 6, fig.align = "center"}
+
+
+rm(list = ls())
+
+#Load packages
+
+library(dplyr)
+library(kableExtra)
+library(lubridate)
+library(tidyquant)
+library(tidyverse)
+library(ggplot2)
+
+#Use tq_get to obtain nominal and real GDP from FRED
+
+all_gdp <- tq_get(c("GDP", "GDPC1"), 
+                  get  = "economic.data",
+                    from = "1950-01-01") %>%
+        mutate(date     = lubridate::ymd(date)) %>%
+        rename(variable = symbol,
+               value    = price)
+
+# Produce Table of First 10 Observations
+
+kable(all_gdp[1:10,],
+      col.names = c("Variable",
+                    "Date",
+                    "Value"))
+
+#Use GGPLOT 
+#GDP over time
+
+ggplot(data = all_gdp, 
+       aes(x = date, 
+           y = value,
+           color = variable,
+           group = variable)) +
+  geom_line(linewidth = 1.5) +
+  theme_minimal() +
+  labs(title    = "Real and Nominal GDP, United States",
+       subtitle = "Billions of Dollars",
+       x        = "Date",
+       y        = "Billions of Dollars")
+
+```
+
