@@ -139,24 +139,20 @@ date3
 
 ```
 
-# Vectors and Data Frames
-
 ## Creating Vectors
 
 We can now create a vector that contains several values. In the following example, we combine several numbers and assign them to the variable \textbf{x5}.
 
 We can also combine other variables (if they are the same type) to form a new vector. You can combine single element variables with vectors to create a new vector \textbf{x6}.
 
-```{r, messages = FALSE}
+```{r}
 
 rm(list = ls())
 
 #Load packages
 
-library(dplyr)
-library(lubridate)
-library(tidyverse)
-library(kableExtra)
+library(dplyr, quiet = TRUE)
+library(kableExtra, quiet = TRUE)
 
 # Assign values to x1, x2, x3, x4
 
@@ -164,7 +160,6 @@ x1 <- 1
 x2 <- -5
 x3 <- 136
 x4 <- 0.47
-x5 <- 4840
 
 #Create a row vector 
 
@@ -176,9 +171,16 @@ x6 <- c(x1, x2, x3, x4, x5)
 
 # Use Kable To Create Tables of X5 and X6
 
-kable(x5)
+kable(x5,
+      align = 'c',
+      digits = 2,
+      col.names = c('X5'))
 
-kable(x6)
+kable(x6,
+      align = 'c',
+      digits = 1,
+      col.names = c('X6'))
+
 ```
 
 When we display \textbf{x5}, for example, we note is a row vector consisting of one row and 5 elements. We can also directly manipulate \textbf{x5} by multiplying it by two.
@@ -189,7 +191,10 @@ We should, however, understand that product of \textbf{x5} and 2 is not stored, 
 
 #Output x5 * 2
 
-kable(x5)
+kable(x5*2,
+      align = 'c',
+      digits = 2,
+      col.names = c('X5 * 2'))
 
 kable(x5*2)
 
@@ -197,7 +202,10 @@ kable(x5*2)
 
 x7 <- x5*2
 
-kable(x7)
+kable(x7,
+      align = 'c',
+      digits = 2,
+      col.names = c('X7'))
 ```
 
 ## Creating a Data Frame
@@ -384,9 +392,7 @@ kable_classic()
 
 ```
 
-# Working with an API
-
-## 4.1 The FRED API for Real GDP
+## The FRED API for Real GDP
 
 An Application Programming Interface (API) allows us to obtain data from a source without having to manually downloading the data. In effect, an API allows us to "grab" data from an external source. If the external source updates the data, then our next API call with obtain the updated data.
 
@@ -517,176 +523,3 @@ ggplot(data = all_gdp,
 
 ```
 
-# An Example with US Census Data
-
-\textbf{Population} refers to data that contains all members of a specified group. *N* is the number of individuals in the population. We can think of the population as the universe of individuals for the variable or variables of interest.
-
-A \textbf{sample} refers to a subset or part of the population with sample size $n$ that is less than the population size $N$ or $n < N$.
-
-## Using the Census API
-
-In the following code, we use the \textbf{censusapi} package to use the United States Census Bureau's API for the American Community Survey to obtain data on county population for 2019.
-
-We are using data from the American Community Survey 5-Year estimates which provide estimates for counties and county-equivalents in the United States.
-
-You can learn more about the ACS at:
-
-url{<https://www.census.gov/programs-surveys/acs>}
-
-To set up the API, you will need to understand what variable names are used by the API developer.
-
-Here we rely on the ACS API documentation:
-
-\url{https://www.census.gov/data/developers/data-sets/acs-5year.html}
-
-We can also use built in functions of the censusapi package.
-
-First, we can use \textit{list CensusApis()} to obtain a data frame with all the Census' API.
-
-We then can use \textit{listCensusMetadata} for a specific API to determine what variables we can access and the names of these variables.
-
-You will have to register for your own free Census API key.
-
-You can do this at: \url{https://api.census.gov/data/key_signup.html}
-
-```{r}
-
-rm(list = ls())
-
-#Load packages
-
-library(censusapi)
-
-library(dplyr)
-library(kableExtra)
-library(lubridate)
-library(tidyquant)
-library(tidyverse)
-library(ggplot2)
-
-# List all the available Census APIs
-
-apis <- listCensusApis()
-
-# List all the variables in the ACS 5-Year API
-# Note that this takes a while, you should only run this when needed
-
-acs_vars <- listCensusMetadata(name = "2019/acs/acs5", type = "variables")
-
-```
-
-## An API Call Example
-
-We can now use the \textit{getCensus} function in the \textbf{censusapi} package to obtain 2019 ACS data for total population. In doing so, we obtain data on the the universe of counties and county equivalents for the United States for 2019 with respect to total population.
-
-We use the \textit{arrange} function to sort by state FIPS code (a geographical identification code) and then county FIPS code.
-
-```{r}
-
-#Note that B01001_001 = Total Population
-
-county_pop <- getCensus(name = "acs/acs5", 
-                              vintage = 2019,
-                              key = "9c1637a56ff93f0af6b4b1d0547ea048fe668175",
-                              vars = c("NAME",
-                                       "B01001_001E"),
-                              region = "county:*")   %>%
-  rename(total_pop   = B01001_001E,
-         county_fips = county, 
-         state_fips  = state) %>%
-  arrange(state_fips, county_fips)
-
-kable(county_pop[1:5,])
-
-```
-
-## Filtering to Focus On One State
-
-We can then use the \textit{filter} function to obtain a subset of the data. Here, we filter the data to only keep those observations for which the state FIPS code is 51, which happens to be the FIPS code for Virginia.
-
-We use the existing \textbf{county\_pop} data frame which we created using the previous code example.
-
-```{R}
-
-va_pop <- county_pop %>%
-  filter(state_fips == 51) %>%
-  arrange(county_fips)
-
-
-kable(va_pop[1:10,])
-```
-
-## API Call With Multiple Variables
-
-We can also obtain multiple variables from one API call. In the last example, we obtain total population, male population, and female population from the 2019 ACS 5-Year estimates. We then calculate the sex ratio, which is equal to the male population divided by the female population and plot the sex ratio.
-
-We note that there is one very large county in the data (Los Angeles, California). We also note there is another county where there are approximately 3.5 males to every woman (Forest County, Pennsylvania).
-
-```{r}
-
-# Obtain Population by Sex, Total Male Population, Total Female Population
-# B01001_001E - Population Total by Sex
-# B01001_002E - Total Male Population
-# B01001_026E - Total Female Population
-# Calculate sex-ratio = male population / female population
-
-sex_pop <- getCensus(name = "acs/acs5", 
-                              vintage = 2019,
-                              key = "9c1637a56ff93f0af6b4b1d0547ea048fe668175",
-                              vars = c("NAME",
-                                       "B01001_001E",
-                                       "B01001_002E",
-                                       "B01001_026E"),
-                              region = "county:*")   %>%
-  rename(total_pop   = B01001_001E,
-         male_pop    = B01001_002E,
-         female_pop  = B01001_026E,
-         county_fips = county, 
-         state_fips  = state) %>%
-  mutate(sex_ratio   = male_pop / female_pop) %>%
-  arrange(state_fips, county_fips)
-
-ggplot(data = sex_pop,
-       aes(x = total_pop, y = sex_ratio)) +
-  geom_point() + 
-  labs(title = "Sex Ratio for U.S Counties, 2019",
-       x     = "County Population",
-       y     = "Sex Ratio")
-
-```
-
-## Basic Operations
-
-Let's first try some basic math operations in R using webR.
-
-Notice that when you run the code that R produces the output.
-
-Try adding the following to the code and executing the code: $(6 \times 12)/24$.
-
-What happens?
-
-```{webr-r}
-
-# Basic math examples
-5 + 5
-
-10 / 3
-
-4 + 3 * 100
-
-(4 + 3) * 100
-
-```
-
-## Another example
-
-Try some of these with WebR:
-
-```{webr-r}
-TRUE & FALSE
-# TRUE | TRUE
-# TRUE & !FALSE
-# TRUE & (TRUE | FALSE)
-# TRUE & (TRUE & FALSE)
-# !(TRUE | FALSE)
-```

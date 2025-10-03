@@ -408,7 +408,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"#Clear the Workspace\n\nrm(list = ls())\n\n#Assign 2 to variable x_1\n\nx1 <- 2\n\n#Assign 4.5 to variable x_2\n\nx2 <- 4.5\n\n#Assign the integer value of x_2 to x_3\n\nx3 <- as.integer(x2)\n\n#Output the variables \n\nx1\nx2\nx3","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\n#Assign the character Timothy to name_1\n\nname1 <- as.character(\"Timothy\")\n\n#Assign the numeric value 06250 to x_4\n\nx4 <- 06250\n\n#Assign 06250 as a character \n\nname2 <- as.character(\"06250\")\n\n#Convert the character 06250 to numeric\n\nname3 <- as.numeric(name2)\n\n# Output\n\nname1\nx4\nname2\nname3","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\nlibrary(lubridate, quiet = TRUE)\n\n#Convert the text \"2020-09-01\" to a date variable\n\ndate1 <- lubridate::ymd(\"2020-09-01\")\n\n#Convert \"2020-09-05\" to a date variable\n\ndate2 <- lubridate::mdy(\"09-05-2020\")\n\n#Calculate the time difference between two variables\n\ndate3 <- date2 - date1\n\n#Output the variables \n\ndate1\ndate2\ndate3","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Basic math examples\n5 + 5\n\n10 / 3\n\n4 + 3 * 100\n\n(4 + 3) * 100","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"TRUE & FALSE\n# TRUE | TRUE\n# TRUE & !FALSE\n# TRUE & (TRUE | FALSE)\n# TRUE & (TRUE & FALSE)\n# !(TRUE | FALSE)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"#Clear the Workspace\n\nrm(list = ls())\n\n#Assign 2 to variable x_1\n\nx1 <- 2\n\n#Assign 4.5 to variable x_2\n\nx2 <- 4.5\n\n#Assign the integer value of x_2 to x_3\n\nx3 <- as.integer(x2)\n\n#Output the variables \n\nx1\nx2\nx3","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\n#Assign the character Timothy to name_1\n\nname1 <- as.character(\"Timothy\")\n\n#Assign the numeric value 06250 to x_4\n\nx4 <- 06250\n\n#Assign 06250 as a character \n\nname2 <- as.character(\"06250\")\n\n#Convert the character 06250 to numeric\n\nname3 <- as.numeric(name2)\n\n# Output\n\nname1\nx4\nname2\nname3","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\nlibrary(lubridate, quiet = TRUE)\n\n#Convert the text \"2020-09-01\" to a date variable\n\ndate1 <- lubridate::ymd(\"2020-09-01\")\n\n#Convert \"2020-09-05\" to a date variable\n\ndate2 <- lubridate::mdy(\"09-05-2020\")\n\n#Calculate the time difference between two variables\n\ndate3 <- date2 - date1\n\n#Output the variables \n\ndate1\ndate2\ndate3","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1662,35 +1662,6 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -1794,30 +1765,15 @@ window.Quarto = {
   <li><a href="#assigning-numeric-values-to-variables" id="toc-assigning-numeric-values-to-variables" class="nav-link active" data-scroll-target="#assigning-numeric-values-to-variables"><span class="header-section-number">6.1</span> Assigning Numeric Values to Variables</a></li>
   <li><a href="#assigning-character-values-to-a-variable" id="toc-assigning-character-values-to-a-variable" class="nav-link" data-scroll-target="#assigning-character-values-to-a-variable"><span class="header-section-number">6.2</span> Assigning Character Values to a Variable</a></li>
   <li><a href="#assigning-date-values-to-a-variable" id="toc-assigning-date-values-to-a-variable" class="nav-link" data-scroll-target="#assigning-date-values-to-a-variable"><span class="header-section-number">6.3</span> Assigning Date Values to a Variable</a></li>
-  <li><a href="#vectors-and-data-frames" id="toc-vectors-and-data-frames" class="nav-link" data-scroll-target="#vectors-and-data-frames"><span class="header-section-number">7</span> Vectors and Data Frames</a>
-  <ul class="collapse">
-  <li><a href="#creating-vectors" id="toc-creating-vectors" class="nav-link" data-scroll-target="#creating-vectors"><span class="header-section-number">7.1</span> Creating Vectors</a></li>
-  <li><a href="#creating-a-data-frame" id="toc-creating-a-data-frame" class="nav-link" data-scroll-target="#creating-a-data-frame"><span class="header-section-number">7.2</span> Creating a Data Frame</a></li>
-  <li><a href="#using-an-existing-dataframe" id="toc-using-an-existing-dataframe" class="nav-link" data-scroll-target="#using-an-existing-dataframe"><span class="header-section-number">7.3</span> Using an Existing Dataframe</a></li>
-  <li><a href="#dimensions-of-a-data-frame" id="toc-dimensions-of-a-data-frame" class="nav-link" data-scroll-target="#dimensions-of-a-data-frame"><span class="header-section-number">7.4</span> Dimensions of a Data Frame</a></li>
-  <li><a href="#selecting-rows-or-columns-in-a-data-frame" id="toc-selecting-rows-or-columns-in-a-data-frame" class="nav-link" data-scroll-target="#selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.5</span> Selecting Rows or Columns in a Data Frame</a></li>
-  <li><a href="#manipulating-the-dataframe-and-adding-new-variables" id="toc-manipulating-the-dataframe-and-adding-new-variables" class="nav-link" data-scroll-target="#manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.6</span> Manipulating the Dataframe and Adding New Variables</a></li>
-  </ul></li>
-  <li><a href="#working-with-an-api" id="toc-working-with-an-api" class="nav-link" data-scroll-target="#working-with-an-api"><span class="header-section-number">8</span> Working with an API</a>
-  <ul class="collapse">
-  <li><a href="#the-fred-api-for-real-gdp" id="toc-the-fred-api-for-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-real-gdp"><span class="header-section-number">8.1</span> 4.1 The FRED API for Real GDP</a></li>
-  <li><a href="#the-fred-api-for-nominal-gdp" id="toc-the-fred-api-for-nominal-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-gdp"><span class="header-section-number">8.2</span> The FRED API for Nominal GDP</a></li>
-  <li><a href="#the-fred-api-for-nominal-and-real-gdp" id="toc-the-fred-api-for-nominal-and-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">8.3</span> The FRED API for Nominal and Real GDP</a></li>
-  </ul></li>
-  <li><a href="#an-example-with-us-census-data" id="toc-an-example-with-us-census-data" class="nav-link" data-scroll-target="#an-example-with-us-census-data"><span class="header-section-number">9</span> An Example with US Census Data</a>
-  <ul class="collapse">
-  <li><a href="#using-the-census-api" id="toc-using-the-census-api" class="nav-link" data-scroll-target="#using-the-census-api"><span class="header-section-number">9.1</span> Using the Census API</a></li>
-  <li><a href="#an-api-call-example" id="toc-an-api-call-example" class="nav-link" data-scroll-target="#an-api-call-example"><span class="header-section-number">9.2</span> An API Call Example</a></li>
-  <li><a href="#filtering-to-focus-on-one-state" id="toc-filtering-to-focus-on-one-state" class="nav-link" data-scroll-target="#filtering-to-focus-on-one-state"><span class="header-section-number">9.3</span> Filtering to Focus On One State</a></li>
-  <li><a href="#api-call-with-multiple-variables" id="toc-api-call-with-multiple-variables" class="nav-link" data-scroll-target="#api-call-with-multiple-variables"><span class="header-section-number">9.4</span> API Call With Multiple Variables</a></li>
-  <li><a href="#basic-operations" id="toc-basic-operations" class="nav-link" data-scroll-target="#basic-operations"><span class="header-section-number">9.5</span> Basic Operations</a></li>
-  <li><a href="#another-example" id="toc-another-example" class="nav-link" data-scroll-target="#another-example"><span class="header-section-number">9.6</span> Another example</a></li>
-  </ul></li>
+  <li><a href="#creating-vectors" id="toc-creating-vectors" class="nav-link" data-scroll-target="#creating-vectors"><span class="header-section-number">6.4</span> Creating Vectors</a></li>
+  <li><a href="#creating-a-data-frame" id="toc-creating-a-data-frame" class="nav-link" data-scroll-target="#creating-a-data-frame"><span class="header-section-number">6.5</span> Creating a Data Frame</a></li>
+  <li><a href="#using-an-existing-dataframe" id="toc-using-an-existing-dataframe" class="nav-link" data-scroll-target="#using-an-existing-dataframe"><span class="header-section-number">6.6</span> Using an Existing Dataframe</a></li>
+  <li><a href="#dimensions-of-a-data-frame" id="toc-dimensions-of-a-data-frame" class="nav-link" data-scroll-target="#dimensions-of-a-data-frame"><span class="header-section-number">6.7</span> Dimensions of a Data Frame</a></li>
+  <li><a href="#selecting-rows-or-columns-in-a-data-frame" id="toc-selecting-rows-or-columns-in-a-data-frame" class="nav-link" data-scroll-target="#selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">6.8</span> Selecting Rows or Columns in a Data Frame</a></li>
+  <li><a href="#manipulating-the-dataframe-and-adding-new-variables" id="toc-manipulating-the-dataframe-and-adding-new-variables" class="nav-link" data-scroll-target="#manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">6.9</span> Manipulating the Dataframe and Adding New Variables</a></li>
+  <li><a href="#the-fred-api-for-real-gdp" id="toc-the-fred-api-for-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-real-gdp"><span class="header-section-number">6.10</span> The FRED API for Real GDP</a></li>
+  <li><a href="#the-fred-api-for-nominal-gdp" id="toc-the-fred-api-for-nominal-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-gdp"><span class="header-section-number">6.11</span> The FRED API for Nominal GDP</a></li>
+  <li><a href="#the-fred-api-for-nominal-and-real-gdp" id="toc-the-fred-api-for-nominal-and-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">6.12</span> The FRED API for Nominal and Real GDP</a></li>
   </ul>
 </nav>
     </div>
@@ -2156,20 +2112,223 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="vectors-and-data-frames" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Vectors and Data Frames</h1>
-<section id="creating-vectors" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="creating-vectors"><span class="header-section-number">7.1</span> Creating Vectors</h2>
+<section id="creating-vectors" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="creating-vectors"><span class="header-section-number">6.4</span> Creating Vectors</h2>
 <p>We can now create a vector that contains several values. In the following example, we combine several numbers and assign them to the variable .</p>
 <p>We can also combine other variables (if they are the same type) to form a new vector. You can combine single element variables with vectors to create a new vector .</p>
-<div class="cell" data-messages="false">
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign values to x1, x2, x3, x4</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="dv">136</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="fl">0.47</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a row vector </span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>x5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">25</span>, <span class="dv">100</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Use existing variables to create a row vector</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>x6 <span class="ot">&lt;-</span> <span class="fu">c</span>(x1, x2, x3, x4, x5)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Kable To Create Tables of X5 and X6</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">'c'</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'X5'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;">X5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x6,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">'c'</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">1</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'X6'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;">X6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">136.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">12.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">13.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">14.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">25.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">100.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>When we display , for example, we note is a row vector consisting of one row and 5 elements. We can also directly manipulate by multiplying it by two.</p>
+<p>We should, however, understand that product of and 2 is not stored, it’s a direct manipulation and not available for future use. If we wanted to store it, we would have to assign it to a variable. Here, we assign the product of and 2 to the variable .</p>
+<div class="cell" data-messages="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Output x5 * 2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5<span class="sc">*</span><span class="dv">2</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">'c'</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'X5 * 2'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;">X5 * 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">200</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5<span class="sc">*</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign x5*2 to x7</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x7 <span class="ot">&lt;-</span> x5<span class="sc">*</span><span class="dv">2</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x7,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">'c'</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'X7'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;">X7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">200</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="creating-a-data-frame" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="creating-a-data-frame"><span class="header-section-number">6.5</span> Creating a Data Frame</h2>
+<p>So far, everything we have created has been stored as a variable or vector. A consists of rows and columns. The organization of the matrix is important. In some cases, the rows will correspond to individual observations with variables in the columns. In other cases, the variables are in the rows and individuals in columns. Matrices can contain quantitative and qualitative elements.</p>
+<p>A matrix is a table or a two-dimensional array-like structure. In R, a is a list of variables with the same number of rows with unique row names. It is represented by the class .</p>
+<p>A can have one column with numeric elements, another with date elements, another with character elements, and so on. The CDC data earlier in this module is an example of a data frame.</p>
+<p>First, let’s create two row vectors, and . We can these together using the row bind, , or column bind, , functions.</p>
+<p>The function “stacks” the observations in the vectors. The function “adds” the column of the second vector to the first vector, creating a data frame with two columns.</p>
+<p>Now, let’s column bind and together as a data frame. We then row bind and together as another data frame</p>
+<p> is a data frame where the observations are in rows and the variables are in columns. is a data frame where the variables are in the rows and the observations are in the columns.</p>
+<div class="cell" data-messages="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ forcats 1.0.0     ✔ stringr 1.5.1
@@ -2183,210 +2342,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 ✖ xts::last()              masks dplyr::last()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign values to x1, x2, x3, x4</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="dv">136</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="fl">0.47</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>x5 <span class="ot">&lt;-</span> <span class="dv">4840</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a row vector </span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>x5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">25</span>, <span class="dv">100</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Use existing variables to create a row vector</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>x6 <span class="ot">&lt;-</span> <span class="fu">c</span>(x1, x2, x3, x4, x5)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Kable To Create Tables of X5 and X6</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">x</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">12</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">13</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">25</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">100</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">x</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-5.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">136.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0.47</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">12.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">13.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">25.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">100.00</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>When we display , for example, we note is a row vector consisting of one row and 5 elements. We can also directly manipulate by multiplying it by two.</p>
-<p>We should, however, understand that product of and 2 is not stored, it’s a direct manipulation and not available for future use. If we wanted to store it, we would have to assign it to a variable. Here, we assign the product of and 2 to the variable .</p>
-<div class="cell" data-messages="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Output x5 * 2</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">x</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">12</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">13</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">25</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">100</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x5<span class="sc">*</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">x</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">24</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">26</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">28</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">50</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">200</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign x5*2 to x7</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x7 <span class="ot">&lt;-</span> x5<span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(x7)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">x</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">24</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">26</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">28</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">50</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">200</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="creating-a-data-frame" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="creating-a-data-frame"><span class="header-section-number">7.2</span> Creating a Data Frame</h2>
-<p>So far, everything we have created has been stored as a variable or vector. A consists of rows and columns. The organization of the matrix is important. In some cases, the rows will correspond to individual observations with variables in the columns. In other cases, the variables are in the rows and individuals in columns. Matrices can contain quantitative and qualitative elements.</p>
-<p>A matrix is a table or a two-dimensional array-like structure. In R, a is a list of variables with the same number of rows with unique row names. It is represented by the class .</p>
-<p>A can have one column with numeric elements, another with date elements, another with character elements, and so on. The CDC data earlier in this module is an example of a data frame.</p>
-<p>First, let’s create two row vectors, and . We can these together using the row bind, , or column bind, , functions.</p>
-<p>The function “stacks” the observations in the vectors. The function “adds” the column of the second vector to the first vector, creating a data frame with two columns.</p>
-<p>Now, let’s column bind and together as a data frame. We then row bind and together as another data frame</p>
-<p> is a data frame where the observations are in rows and the variables are in columns. is a data frame where the variables are in the rows and the observations are in the columns.</p>
-<div class="cell" data-messages="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create two vectors</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#create two vectors</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>x8 <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>x9 <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">13</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">rbind</span>(x8,x9))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>x8 <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>x9 <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">13</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">rbind</span>(x8,x9))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <tbody>
@@ -2503,8 +2466,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </section>
-<section id="using-an-existing-dataframe" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="using-an-existing-dataframe"><span class="header-section-number">7.3</span> Using an Existing Dataframe</h2>
+<section id="using-an-existing-dataframe" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="using-an-existing-dataframe"><span class="header-section-number">6.6</span> Using an Existing Dataframe</h2>
 <p>R comes with a number of “built in” data sets. For the following discussion, we use the data. The data contain observations on a number of cars from the Motor Trend magazine.</p>
 <p>One can work directly with the data or assign the data to a data frame. In the following, we assign to the data frame. We use the assignment operator so that data flows from to .</p>
 <p>We can now use the or functions to examine the structure of the data frame. Note that the function returns the first six rows while the function returns the last six rows.</p>
@@ -2546,8 +2509,8 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 </div>
 </div>
 </section>
-<section id="dimensions-of-a-data-frame" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="dimensions-of-a-data-frame"><span class="header-section-number">7.4</span> Dimensions of a Data Frame</h2>
+<section id="dimensions-of-a-data-frame" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="dimensions-of-a-data-frame"><span class="header-section-number">6.7</span> Dimensions of a Data Frame</h2>
 <p>To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the and functions determine the number of rows and columns in a data frame, respectively.</p>
 <p>We can also use the function to return the dimensions of the data frame. Note that the function returns rows then columns.</p>
 <div class="cell" data-messages="false">
@@ -2571,8 +2534,8 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-rows-or-columns-in-a-data-frame" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.5</span> Selecting Rows or Columns in a Data Frame</h2>
+<section id="selecting-rows-or-columns-in-a-data-frame" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">6.8</span> Selecting Rows or Columns in a Data Frame</h2>
 <p>Having determined the dimensions of the data frame, we can now select parts of the data frame.</p>
 <p>We can approach this by recognizing that a data frame is organized by rows and columns. For example, returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.</p>
 <p>So, in general, for a data frame, . For example, returns rows 1 to 2 and columns 2 to 3.</p>
@@ -2642,8 +2605,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="manipulating-the-dataframe-and-adding-new-variables" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.6</span> Manipulating the Dataframe and Adding New Variables</h2>
+<section id="manipulating-the-dataframe-and-adding-new-variables" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">6.9</span> Manipulating the Dataframe and Adding New Variables</h2>
 <p>Starting with the data frame, we can now utilize one of the features of the packages to the data. Piping means that the data ‘flows’ in the direction of the pipe. It’s actually called a pipeline of data.</p>
 <p>A bit of housekeeping. We want to convert the rownames in to a variable. We pipe the data frame and then use the function to do just that. We then pipe the data to rename the new variable to .</p>
 <p>We can now use the function to create a new variable or replace an existing variable.</p>
@@ -2845,11 +2808,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="working-with-an-api" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Working with an API</h1>
-<section id="the-fred-api-for-real-gdp" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="the-fred-api-for-real-gdp"><span class="header-section-number">8.1</span> 4.1 The FRED API for Real GDP</h2>
+<section id="the-fred-api-for-real-gdp" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="the-fred-api-for-real-gdp"><span class="header-section-number">6.10</span> The FRED API for Real GDP</h2>
 <p>An Application Programming Interface (API) allows us to obtain data from a source without having to manually downloading the data. In effect, an API allows us to “grab” data from an external source. If the external source updates the data, then our next API call with obtain the updated data.</p>
 <p>For example, let’s say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called , and download the data into an Excel file. This process is labor-intensive and subject to error.</p>
 <p>FRED: </p>
@@ -2918,8 +2878,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-nominal-gdp" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp"><span class="header-section-number">8.2</span> The FRED API for Nominal GDP</h2>
+<section id="the-fred-api-for-nominal-gdp" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp"><span class="header-section-number">6.11</span> The FRED API for Nominal GDP</h2>
 <p>We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the variable containing the values for nominal GDP. We rename the variable to and also use the pacakge for the dates.</p>
 <p>Nominal GDP: </p>
 <div class="cell" data-messages="false">
@@ -2982,8 +2942,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-nominal-and-real-gdp" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">8.3</span> The FRED API for Nominal and Real GDP</h2>
+<section id="the-fred-api-for-nominal-and-real-gdp" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">6.12</span> The FRED API for Nominal and Real GDP</h2>
 <p>In the previous examples, we made an API call for one variable at a time. The result was two data frames, one for nominal GDP, and one for real GDP. It would be more efficient to make one API call that results in a single data frame with both variables.</p>
 <p>In the following code, we the names of the two variables, that is, creates a row vector with the two names. This row vector is used by the function to make an API call to obtain the two variables from FRED.</p>
 <p>What’s important to note is that the data fame is in format. In other words, each row corresponds to one period of time for one variable.</p>
@@ -3097,261 +3057,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </figure>
 </div>
 </div>
-</section>
-</section>
-<section id="an-example-with-us-census-data" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> An Example with US Census Data</h1>
-<p> refers to data that contains all members of a specified group. <em>N</em> is the number of individuals in the population. We can think of the population as the universe of individuals for the variable or variables of interest.</p>
-<p>A refers to a subset or part of the population with sample size <span class="math inline">\(n\)</span> that is less than the population size <span class="math inline">\(N\)</span> or <span class="math inline">\(n &lt; N\)</span>.</p>
-<section id="using-the-census-api" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="using-the-census-api"><span class="header-section-number">9.1</span> Using the Census API</h2>
-<p>In the following code, we use the package to use the United States Census Bureau’s API for the American Community Survey to obtain data on county population for 2019.</p>
-<p>We are using data from the American Community Survey 5-Year estimates which provide estimates for counties and county-equivalents in the United States.</p>
-<p>You can learn more about the ACS at:</p>
-<p>url{<a href="https://www.census.gov/programs-surveys/acs" class="uri">https://www.census.gov/programs-surveys/acs</a>}</p>
-<p>To set up the API, you will need to understand what variable names are used by the API developer.</p>
-<p>Here we rely on the ACS API documentation:</p>
-<p></p>
-<p>We can also use built in functions of the censusapi package.</p>
-<p>First, we can use to obtain a data frame with all the Census’ API.</p>
-<p>We then can use for a specific API to determine what variables we can access and the names of these variables.</p>
-<p>You will have to register for your own free Census API key.</p>
-<p>You can do this at: </p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># List all the available Census APIs</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>apis <span class="ot">&lt;-</span> <span class="fu">listCensusApis</span>()</span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="co"># List all the variables in the ACS 5-Year API</span></span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that this takes a while, you should only run this when needed</span></span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>acs_vars <span class="ot">&lt;-</span> <span class="fu">listCensusMetadata</span>(<span class="at">name =</span> <span class="st">"2019/acs/acs5"</span>, <span class="at">type =</span> <span class="st">"variables"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="an-api-call-example" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="an-api-call-example"><span class="header-section-number">9.2</span> An API Call Example</h2>
-<p>We can now use the function in the package to obtain 2019 ACS data for total population. In doing so, we obtain data on the the universe of counties and county equivalents for the United States for 2019 with respect to total population.</p>
-<p>We use the function to sort by state FIPS code (a geographical identification code) and then county FIPS code.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Note that B01001_001 = Total Population</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>, </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vintage =</span> <span class="dv">2019</span>,</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_001E"</span>),</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">region =</span> <span class="st">"county:*"</span>)   <span class="sc">%&gt;%</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">total_pop   =</span> B01001_001E,</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_fips =</span> county, </span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">state_fips  =</span> state) <span class="sc">%&gt;%</span></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(state_fips, county_fips)</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(county_pop[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">state_fips</th>
-<th style="text-align: left;">county_fips</th>
-<th style="text-align: left;">NAME</th>
-<th style="text-align: right;">total_pop</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">01</td>
-<td style="text-align: left;">001</td>
-<td style="text-align: left;">Autauga County, Alabama</td>
-<td style="text-align: right;">55380</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">01</td>
-<td style="text-align: left;">003</td>
-<td style="text-align: left;">Baldwin County, Alabama</td>
-<td style="text-align: right;">212830</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">01</td>
-<td style="text-align: left;">005</td>
-<td style="text-align: left;">Barbour County, Alabama</td>
-<td style="text-align: right;">25361</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">01</td>
-<td style="text-align: left;">007</td>
-<td style="text-align: left;">Bibb County, Alabama</td>
-<td style="text-align: right;">22493</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">01</td>
-<td style="text-align: left;">009</td>
-<td style="text-align: left;">Blount County, Alabama</td>
-<td style="text-align: right;">57681</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="filtering-to-focus-on-one-state" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="filtering-to-focus-on-one-state"><span class="header-section-number">9.3</span> Filtering to Focus On One State</h2>
-<p>We can then use the function to obtain a subset of the data. Here, we filter the data to only keep those observations for which the state FIPS code is 51, which happens to be the FIPS code for Virginia.</p>
-<p>We use the existing data frame which we created using the previous code example.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>va_pop <span class="ot">&lt;-</span> county_pop <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state_fips <span class="sc">==</span> <span class="dv">51</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(county_fips)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(va_pop[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">state_fips</th>
-<th style="text-align: left;">county_fips</th>
-<th style="text-align: left;">NAME</th>
-<th style="text-align: right;">total_pop</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">001</td>
-<td style="text-align: left;">Accomack County, Virginia</td>
-<td style="text-align: right;">32673</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">003</td>
-<td style="text-align: left;">Albemarle County, Virginia</td>
-<td style="text-align: right;">107405</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">005</td>
-<td style="text-align: left;">Alleghany County, Virginia</td>
-<td style="text-align: right;">15157</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">007</td>
-<td style="text-align: left;">Amelia County, Virginia</td>
-<td style="text-align: right;">12953</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">009</td>
-<td style="text-align: left;">Amherst County, Virginia</td>
-<td style="text-align: right;">31775</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">011</td>
-<td style="text-align: left;">Appomattox County, Virginia</td>
-<td style="text-align: right;">15707</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">013</td>
-<td style="text-align: left;">Arlington County, Virginia</td>
-<td style="text-align: right;">233464</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">015</td>
-<td style="text-align: left;">Augusta County, Virginia</td>
-<td style="text-align: right;">75079</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">017</td>
-<td style="text-align: left;">Bath County, Virginia</td>
-<td style="text-align: right;">4307</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">51</td>
-<td style="text-align: left;">019</td>
-<td style="text-align: left;">Bedford County, Virginia</td>
-<td style="text-align: right;">78376</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="api-call-with-multiple-variables" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="api-call-with-multiple-variables"><span class="header-section-number">9.4</span> API Call With Multiple Variables</h2>
-<p>We can also obtain multiple variables from one API call. In the last example, we obtain total population, male population, and female population from the 2019 ACS 5-Year estimates. We then calculate the sex ratio, which is equal to the male population divided by the female population and plot the sex ratio.</p>
-<p>We note that there is one very large county in the data (Los Angeles, California). We also note there is another county where there are approximately 3.5 males to every woman (Forest County, Pennsylvania).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain Population by Sex, Total Male Population, Total Female Population</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># B01001_001E - Population Total by Sex</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># B01001_002E - Total Male Population</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># B01001_026E - Total Female Population</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sex-ratio = male population / female population</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>sex_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>, </span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vintage =</span> <span class="dv">2019</span>,</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_001E"</span>,</span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_002E"</span>,</span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"B01001_026E"</span>),</span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>                              <span class="at">region =</span> <span class="st">"county:*"</span>)   <span class="sc">%&gt;%</span></span>
-<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">total_pop   =</span> B01001_001E,</span>
-<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">male_pop    =</span> B01001_002E,</span>
-<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">female_pop  =</span> B01001_026E,</span>
-<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_fips =</span> county, </span>
-<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">state_fips  =</span> state) <span class="sc">%&gt;%</span></span>
-<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_ratio   =</span> male_pop <span class="sc">/</span> female_pop) <span class="sc">%&gt;%</span></span>
-<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(state_fips, county_fips)</span>
-<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sex_pop,</span>
-<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> total_pop, <span class="at">y =</span> sex_ratio)) <span class="sc">+</span></span>
-<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sex Ratio for U.S Counties, 2019"</span>,</span>
-<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">"County Population"</span>,</span>
-<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">y     =</span> <span class="st">"Sex Ratio"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="mod-1-3-intro-to-r-variables_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="basic-operations" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="basic-operations"><span class="header-section-number">9.5</span> Basic Operations</h2>
-<p>Let’s first try some basic math operations in R using webR.</p>
-<p>Notice that when you run the code that R produces the output.</p>
-<p>Try adding the following to the code and executing the code: <span class="math inline">\((6 \times 12)/24\)</span>.</p>
-<p>What happens?</p>
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="another-example" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="another-example"><span class="header-section-number">9.6</span> Another example</h2>
-<p>Try some of these with WebR:</p>
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
