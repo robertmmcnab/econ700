@@ -24,7 +24,7 @@ filters:
   - webr                # activates the webR filter globally
   
 webr:
-  packages: [dplyr, ggplot2, tidyquant]
+  packages: [dplyr, ggplot2, knitr]
 
 format:
   html:
