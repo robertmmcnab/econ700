@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Dataframes in R – ECON 700</title>
+<title>7&nbsp; Data frames in R – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -1674,7 +1674,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-4-intro-to-r-dataframes.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Dataframes in R</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-4-intro-to-r-dataframes.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data frames in R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1749,7 +1749,7 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mod-1-4-intro-to-r-dataframes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Dataframes in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data frames in R</span></span></a>
   </div>
 </li>
       </ul>
@@ -2071,9 +2071,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-4-intro-to-r-dataframes.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Dataframes in R</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-4-intro-to-r-dataframes.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data frames in R</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Dataframes in R</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data frames in R</span></h1>
 </div>
 
 
@@ -2128,50 +2128,28 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="using-an-existing-dataframe" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="using-an-existing-dataframe"><span class="header-section-number">7.3</span> Using an Existing Dataframe</h2>
-<p>R comes with a number of “built in” data sets. For the following discussion, we use the data. The data contain observations on a number of cars from the Motor Trend magazine.</p>
-<p>One can work directly with the data or assign the data to a data frame. In the following, we assign to the data frame. We use the assignment operator so that data flows from to .</p>
-<p>We can now use the or functions to examine the structure of the data frame. Note that the function returns the first six rows while the function returns the last six rows.</p>
-<div class="cell" data-messages="false">
+<p>R comes with a number of “built in” data sets. For the following discussion, we use the <em>mtcars</em> data. The data contain observations on a number of cars from the Motor Trend magazine.</p>
+<p>One can work directly with the <em>mtcars</em> data or assign the <em>mtcars</em> data to a data frame. In the following, we assign <em>mtcars</em> to the <em>cardata</em> data frame. We use the assignment operator so that data flows from <em>mtcars</em> to <em>cardata</em>.</p>
+<p>We can now use the <strong>head</strong> or <strong>tail</strong> functions to examine the structure of the <em>cardata</em> data frame. Note that the <strong>head</strong> function returns the first six rows while the <strong>tail</strong> function returns the last six rows.</p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'lubridate'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    date, intersect, setdiff, union</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ forcats 1.0.0     ✔ stringr 1.5.1
-✔ purrr   1.1.0     ✔ tibble  3.3.0
-✔ readr   2.1.5     ✔ tidyr   1.3.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter()          masks stats::filter()
-✖ xts::first()             masks dplyr::first()
-✖ kableExtra::group_rows() masks dplyr::group_rows()
-✖ dplyr::lag()             masks stats::lag()
-✖ xts::last()              masks dplyr::last()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign mtcars to cardata </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>cardata <span class="ot">&lt;-</span> mtcars</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View structure of the data frame</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign mtcars to cardata </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>cardata <span class="ot">&lt;-</span> mtcars</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># View structure of the data frame</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cardata)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -2179,11 +2157,8 @@ Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
 Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                mpg cyl  disp  hp drat    wt qsec vs am gear carb
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+                mpg cyl  disp  hp drat    wt qsec vs am gear carb
 Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
 Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
 Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
@@ -2195,55 +2170,57 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 </section>
 <section id="dimensions-of-a-data-frame" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="dimensions-of-a-data-frame"><span class="header-section-number">7.4</span> Dimensions of a Data Frame</h2>
-<p>To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the and functions determine the number of rows and columns in a data frame, respectively.</p>
-<p>We can also use the function to return the dimensions of the data frame. Note that the function returns rows then columns.</p>
-<div class="cell" data-messages="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the <strong>nrow</strong> and <strong>ncol</strong> functions determine the number of rows and columns in a data frame, respectively.</p>
+<p>We can also use the <strong>dim</strong> function to return the dimensions of the data frame. Note that the <strong>dim</strong> function returns rows then columns.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cardata)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of columns</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(cardata)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Dimensions of data frame (rows and columns)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 32</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of columns</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 11</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dimensions of data frame (rows and columns)</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(cardata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 32 11</code></pre>
+<pre><code>[1] 32
+[1] 11
+[1] 32 11</code></pre>
 </div>
 </div>
 </section>
 <section id="selecting-rows-or-columns-in-a-data-frame" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.5</span> Selecting Rows or Columns in a Data Frame</h2>
-<p>Having determined the dimensions of the data frame, we can now select parts of the data frame.</p>
-<p>We can approach this by recognizing that a data frame is organized by rows and columns. For example, returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.</p>
-<p>So, in general, for a data frame, . For example, returns rows 1 to 2 and columns 2 to 3.</p>
-<div class="cell" data-messages="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First observation, First variable.</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span>,<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Having determined the dimensions of the <em>cardata</em> data frame, we can now select parts of the data frame.</p>
+<p>We can approach this by recognizing that a data frame is organized by rows and columns.</p>
+<p>For example, <em>mtcars[1,1]</em> returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.</p>
+<p>So, in general, for a data frame or tibble, <em>data[row,column]</em>. For example, <em>cardata[1:2, 2:3]</em> returns rows 1 to 2 and columns 2 to 3.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First observation, First variable.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># First two observations, 2nd and 3rd variables</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 21</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First two observations, 2nd and 3rd variables</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              cyl disp
+<pre><code>[1] 21
+              cyl disp
 Mazda RX4       6  160
 Mazda RX4 Wag   6  160</code></pre>
 </div>
 </div>
-<p>If the row or column is left blank, all values for the column are the result. For example, would return all rows for the first column of data. On the other hand, would return the first two rows and all the columns.</p>
-<div class="cell" data-messages="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All rows, first two columns</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>cardata[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If the row or column is left blank, all values for the column are the result. For example, <em>cardata[,1]</em> would return all rows for the first column of data. On the other hand, <em>cardata[1:2,]</em> would return the first two rows and all the columns.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All rows, first two columns</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cardata[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># First two observations, All Columns</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     mpg cyl
 Mazda RX4           21.0   6
@@ -2277,13 +2254,8 @@ Lotus Europa        30.4   4
 Ford Pantera L      15.8   8
 Ferrari Dino        19.7   6
 Maserati Bora       15.0   8
-Volvo 142E          21.4   4</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First two observations, All Columns</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Volvo 142E          21.4   4
+              mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
 Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
@@ -2303,16 +2275,26 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <p>You have now reached the end of the pipe. The “&lt;-” at the beginning then assigns all the data in the temporary data frame to the data frame. Because we have used the grammar of piping, the original data frame is unchanged.</p>
 <p>The grammar of piping is very useful as it allows you to manipulate a data frame without changing the contents of the original data frame.</p>
 <p>Note how we can start using some of the additional features in the <strong>kable</strong> package to rename column names for improve presentation.</p>
-<div class="cell" data-messages="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cardata2 <span class="ot">&lt;-</span> cardata <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">car           =</span> rowname) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">km_per_gallon =</span> mpg<span class="sc">*</span><span class="fl">1.60934</span>,</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">km_per_liter  =</span> km_per_gallon<span class="sc">*</span><span class="fl">3.78541</span>,</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">km2_per_liter =</span> mpg<span class="sc">*</span><span class="fl">1.60934</span><span class="sc">*</span><span class="fl">3.78541</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(car, mpg, cyl, wt, km_per_gallon, km_per_liter, km2_per_liter)</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cardata2 <span class="ot">&lt;-</span> cardata <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">car           =</span> rowname) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">km_per_gallon =</span> mpg<span class="sc">*</span><span class="fl">1.60934</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">km_per_liter  =</span> km_per_gallon<span class="sc">*</span><span class="fl">3.78541</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">km2_per_liter =</span> mpg<span class="sc">*</span><span class="fl">1.60934</span><span class="sc">*</span><span class="fl">3.78541</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(car, mpg, cyl, wt, km_per_gallon, km_per_liter, km2_per_liter)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cardata[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cardata2[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,],</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Car"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"MPG"</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Cylinders"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Weight"</span>,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Kilometers per Gallon"</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Kliometers per Liter"</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Squared KM/Gallon"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
@@ -2418,74 +2400,147 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cardata2[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,],</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Car"</span>,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"MPG"</span>,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Cylinders"</span>,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Weight"</span>,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Kilometers per Gallon"</span>,</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Kliometers per Liter"</span>,</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Squared KM/Gallon"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="lightable-classic caption-top table table-sm table-striped small">
+<table class=" lightable-classic" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Car</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">MPG</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Cylinders</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Weight</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Kilometers per Gallon</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Kliometers per Liter</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Squared KM/Gallon</th>
+<tr>
+<th style="text-align:left;">
+Car
+</th>
+<th style="text-align:right;">
+MPG
+</th>
+<th style="text-align:right;">
+Cylinders
+</th>
+<th style="text-align:right;">
+Weight
+</th>
+<th style="text-align:right;">
+Kilometers per Gallon
+</th>
+<th style="text-align:right;">
+Kliometers per Liter
+</th>
+<th style="text-align:right;">
+Squared KM/Gallon
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">Mazda RX4</td>
-<td style="text-align: right;">21.0</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">2.620</td>
-<td style="text-align: right;">33.79614</td>
-<td style="text-align: right;">127.9322</td>
-<td style="text-align: right;">127.9322</td>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+<td style="text-align:right;">
+33.79614
+</td>
+<td style="text-align:right;">
+127.9322
+</td>
+<td style="text-align:right;">
+127.9322
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Mazda RX4 Wag</td>
-<td style="text-align: right;">21.0</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">2.875</td>
-<td style="text-align: right;">33.79614</td>
-<td style="text-align: right;">127.9322</td>
-<td style="text-align: right;">127.9322</td>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+<td style="text-align:right;">
+33.79614
+</td>
+<td style="text-align:right;">
+127.9322
+</td>
+<td style="text-align:right;">
+127.9322
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Datsun 710</td>
-<td style="text-align: right;">22.8</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2.320</td>
-<td style="text-align: right;">36.69295</td>
-<td style="text-align: right;">138.8979</td>
-<td style="text-align: right;">138.8979</td>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+<td style="text-align:right;">
+36.69295
+</td>
+<td style="text-align:right;">
+138.8979
+</td>
+<td style="text-align:right;">
+138.8979
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Hornet 4 Drive</td>
-<td style="text-align: right;">21.4</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3.215</td>
-<td style="text-align: right;">34.43988</td>
-<td style="text-align: right;">130.3691</td>
-<td style="text-align: right;">130.3691</td>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+<td style="text-align:right;">
+34.43988
+</td>
+<td style="text-align:right;">
+130.3691
+</td>
+<td style="text-align:right;">
+130.3691
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Hornet Sportabout</td>
-<td style="text-align: right;">18.7</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">3.440</td>
-<td style="text-align: right;">30.09466</td>
-<td style="text-align: right;">113.9206</td>
-<td style="text-align: right;">113.9206</td>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+<td style="text-align:right;">
+30.09466
+</td>
+<td style="text-align:right;">
+113.9206
+</td>
+<td style="text-align:right;">
+113.9206
+</td>
 </tr>
 </tbody>
 </table>
@@ -2495,40 +2550,42 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <section id="the-fred-api-for-real-gdp" class="level2" data-number="7.7">
 <h2 data-number="7.7" class="anchored" data-anchor-id="the-fred-api-for-real-gdp"><span class="header-section-number">7.7</span> The FRED API for Real GDP</h2>
 <p>An Application Programming Interface (API) allows us to obtain data from a source without having to manually downloading the data. In effect, an API allows us to “grab” data from an external source. If the external source updates the data, then our next API call with obtain the updated data.</p>
-<p>For example, let’s say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called , and download the data into an Excel file. This process is labor-intensive and subject to error.</p>
-<p>FRED: </p>
-<p>Real GDP: </p>
-<p>We can use an API call to obtain the data. Instead of having to write the code for an API call, we can use a package called .</p>
-<p>We have the variable name and so we can simply use the function in to retrieve the real GDP series. Note that we rename the variable to and we convert the date using the package.</p>
-<p>We can use the or to print out the contents of the first rows of the resulting data frame.</p>
+<p>For example, let’s say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called <strong>GDPC1</strong>, and download the data into an Excel file. This process is labor-intensive and subject to error.</p>
+<p>FRED: <a href="https://fred.stlouisfed.org/" class="uri">https://fred.stlouisfed.org/</a></p>
+<p>Real GDP: <a href="https://fred.stlouisfed.org/series/GDPC1" class="uri">https://fred.stlouisfed.org/series/GDPC1</a></p>
+<p>We can use an API call to obtain the data. Instead of having to write the code for an API call, we can use a package called <strong>tidyquant</strong>.</p>
+<p>We have the variable name <strong>GDPC1</strong> and so we can simply use the <strong>tq_get</strong> function in tidyquant to retrieve the real GDP series.</p>
+<p>We rename the <strong>price</strong> variable to <strong>rgdp</strong> and we convert the date using the lubridate package.</p>
+<p>We can use the <em>head</em> or <em>kable</em> to print out the contents of the first rows of the resulting data frame.</p>
 <p>We see the data are organized such that each row corresponds to a time period, that is, the first row represents real GDP for the 1st quarter of 1950, the second row represents real GDP for the 2nd quarter of 1950, and so on.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain real GDP from FRED</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>rgdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"GDPC1"</span>,</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">rgdp =</span> price) <span class="sc">%&gt;%</span></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date))</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rgdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain real GDP from FRED</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>rgdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"GDPC1"</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">rgdp =</span> price) <span class="sc">%&gt;%</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date))</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rgdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]) <span class="sc">%&gt;%</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="lightable-classic caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">symbol</th>
-<th style="text-align: left;">date</th>
-<th style="text-align: right;">rgdp</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">symbol</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">rgdp</th>
 </tr>
 </thead>
 <tbody>
@@ -2564,35 +2621,36 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </section>
 <section id="the-fred-api-for-nominal-gdp" class="level2" data-number="7.8">
 <h2 data-number="7.8" class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp"><span class="header-section-number">7.8</span> The FRED API for Nominal GDP</h2>
-<p>We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the variable containing the values for nominal GDP. We rename the variable to and also use the pacakge for the dates.</p>
-<p>Nominal GDP: </p>
+<p>We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the <strong>price</strong> variable containing the values for nominal GDP. We rename the variable to <strong>gdp</strong> and also use the lubridate package for the dates.</p>
+<p>Nominal GDP: <a href="https://fred.stlouisfed.org/series/GDP" class="uri">https://fred.stlouisfed.org/series/GDP</a></p>
 <div class="cell" data-messages="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain nominal GDP from FRED</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>gdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"GDP"</span>,</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">gdp =</span> price) <span class="sc">%&gt;%</span></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date))</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain nominal GDP from FRED</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>gdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"GDP"</span>,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">gdp =</span> price) <span class="sc">%&gt;%</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date))</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]) <span class="sc">%&gt;%</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="lightable-classic caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">symbol</th>
-<th style="text-align: left;">date</th>
-<th style="text-align: right;">gdp</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">symbol</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">gdp</th>
 </tr>
 </thead>
 <tbody>
@@ -2629,37 +2687,38 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 <section id="the-fred-api-for-nominal-and-real-gdp" class="level2" data-number="7.9">
 <h2 data-number="7.9" class="anchored" data-anchor-id="the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">7.9</span> The FRED API for Nominal and Real GDP</h2>
 <p>In the previous examples, we made an API call for one variable at a time. The result was two data frames, one for nominal GDP, and one for real GDP. It would be more efficient to make one API call that results in a single data frame with both variables.</p>
-<p>In the following code, we the names of the two variables, that is, creates a row vector with the two names. This row vector is used by the function to make an API call to obtain the two variables from FRED.</p>
-<p>What’s important to note is that the data fame is in format. In other words, each row corresponds to one period of time for one variable.</p>
-<p>We have to do some housecleaning. When we obtain the data from FRED, the variable names are contained in a variable called and the values are contained in a variable named . We rename those to and , respectively.</p>
-<p>We then plot the data using the package. The function is very flexible and you can modify almost every element of a graph. For now, we provide the example and will work on developing our graphing skills later on in the course.</p>
+<p>In the following code, we <strong>combine</strong> the names of the two variables, that is, <em>c(“GDP”,“GDPC1”)</em> creates a row vector with the two names. This row vector is used by the <strong>tq_get</strong> function to make an API call to obtain the two variables from FRED.</p>
+<p>What’s important to note is that the <em>all_gdp</em> data fame is in <strong>long</strong> format. In other words, each row corresponds to one period of time for one variable.</p>
+<p>We have to do some housecleaning. When we obtain the data from FRED, the variable names are contained in a variable called <strong>symbol</strong> and the values are contained in a variable named <strong>price</strong>. We rename those to <strong>variable</strong> and <strong>value</strong>, respectively.</p>
+<p>We then plot the data using the <strong>ggplot2</strong> package.</p>
+<p>The ggplot function is very flexible and you can modify almost every element of a graph. For now, we provide the example and will work on developing our graphing skills later on in the course.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain nominal and real GDP from FRED</span></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>all_gdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="fu">c</span>(<span class="st">"GDP"</span>, <span class="st">"GDPC1"</span>), </span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date     =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date)) <span class="sc">%&gt;%</span></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">variable =</span> symbol,</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">value    =</span> price)</span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce Table of First 10 Observations</span></span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(all_gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,],</span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Variable"</span>,</span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Date"</span>,</span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Value"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Load packages</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Use tq_get to obtain nominal and real GDP from FRED</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>all_gdp <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="fu">c</span>(<span class="st">"GDP"</span>, <span class="st">"GDPC1"</span>), </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">get  =</span> <span class="st">"economic.data"</span>,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">"1950-01-01"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">date     =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">variable =</span> symbol,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">value    =</span> price)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce Table of First 10 Observations</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(all_gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,],</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Variable"</span>,</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Date"</span>,</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Value"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
@@ -2721,20 +2780,23 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </tr>
 </tbody>
 </table>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use GGPLOT </span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#GDP over time</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> all_gdp, </span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> date, </span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> value,</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> variable,</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> variable)) <span class="sc">+</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> <span class="st">"Real and Nominal GDP, United States"</span>,</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Billions of Dollars"</span>,</span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x        =</span> <span class="st">"Date"</span>,</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y        =</span> <span class="st">"Billions of Dollars"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use GGPLOT </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#GDP over time</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> all_gdp, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> date, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> value,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> variable,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> variable)) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'bottom'</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.title    =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title    =</span> <span class="st">"Real and Nominal GDP, United States"</span>,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"Billions of Dollars"</span>,</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">x        =</span> <span class="st">"Date"</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">y        =</span> <span class="st">"Billions of Dollars"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="mod-1-4-intro-to-r-dataframes_files/figure-html/gdp1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
