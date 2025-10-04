@@ -18,46 +18,57 @@ execute:
 library(dplyr, quietly = TRUE)
 library(ggplot2, quietly = TRUE)
 library(kableExtra, quietly = TRUE)
-library(lubridate, quietly = TRUE)
 library(tidyquant, quietly = TRUE)
 
 ```
 
 ## Creating a Data Frame
 
-So far, everything we have created has been stored as a variable or vector. A \textbf{matrix} consists of rows and columns. The organization of the matrix is important. In some cases, the rows will correspond to individual observations with variables in the columns. In other cases, the variables are in the rows and individuals in columns. Matrices can contain quantitative and qualitative elements.
+So far, everything we have created has been stored as a variable or vector. A **matrix** consists of rows and columns. The organization of the matrix is important. In some cases, the rows will correspond to individual observations with variables in the columns. In other cases, the variables are in the rows and individuals in columns. Matrices can contain quantitative and qualitative elements.
 
-A matrix is a table or a two-dimensional array-like structure. In R, a \textbf{data frame} is a list of variables with the same number of rows with unique row names. It is represented by the class \textbf{data.frame}.
+A matrix is a table or a two-dimensional array-like structure. In R, a **data frame** is a list of variables with the same number of rows with unique row names. If we use the dplyr package, a **tibble** is similar to a data frame.
 
-A \textbf{data frame} can have one column with numeric elements, another with date elements, another with character elements, and so on. The CDC data earlier in this module is an example of a data frame.
+A data frame can have one column with numeric elements, another with date elements, another with character elements, and so on. 
 
-First, let's create two row vectors, \textbf{x8} and \textbf{x9}. We can \textit{bind} these together using the row bind, \textbf{rbind}, or column bind, \textbf{cbind}, functions.
+In the webR code chunk below, we create two vectors, **x8** and **x9**. 
 
-The \textbf{rbind} function "stacks" the observations in the vectors. The \textbf{cbind} function "adds" the column of the second vector to the first vector, creating a data frame with two columns.
+We can **bind** these vectors together, that is, 'merge' the two vectors. How we choose to put the vectors together is important.
 
-Now, let's column bind \textbf{x8} and \textbf{x9} together as a data frame. We then row bind \textbf{x8} and \textbf{x9} together as another data frame
+There are two functions at our disposal: **rbind** and **cbind**.
 
-\textit{df1} is a data frame where the observations are in rows and the variables are in columns. \textit{df2} is a data frame where the variables are in the rows and the observations are in the columns.
+The **rbind** function "stacks" the observations in the vectors. 
 
-```{r, messages = FALSE}
+The **cbind** function "adds" the column of the second vector to the first vector, creating a data frame with two columns.
+
+In the example below, we show that order matters. We first bind **x9** to **x8** using the two bind functions. We then reverse the order, binding **x8** to **x9**.
+
+```{webr-r}
 
 rm(list = ls())
 
-#Load packages
+#kableExtra and dplyr are loaded
 
-library(dplyr)
-library(lubridate)
-library(tidyverse)
-library(kableExtra)
-
-#create two vectors
+#Create X8 as equal to the sequence of numbers from 3 to 6
+#Create X9 as equal to the sequence of numbers from 10 to 13
 
 x8 <- 3:6
 x9 <- 10:13
 
+#Row bind x9 to x8 
+
 kable(rbind(x8,x9))
 
+#Row bind x8 to x9
+
+kable(rbind(x9,x9))
+
+#Column bind x9 to x8
+
 kable(cbind(x8,x9))
+
+#Column bind x8 to x9
+
+kable(cbind(x9,x8))
 
 #Create Data Frames
 

@@ -19,6 +19,12 @@ book:
 
 execute:
   webR: true            # enables WebR chunks for interactive R in the browser
+  
+filters:
+  - webr                # activates the webR filter globally
+  
+webr:
+  packages: [dplyr, ggplot2, kableExtra, tidyquant]
 
 format:
   html:
