@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Variables in R</title>
+<title>7&nbsp; Variables in R – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,50 +58,180 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="mod-1-4-intro-to-r-dataframes_files/libs/clipboard/clipboard.min.js"></script>
-<script src="mod-1-4-intro-to-r-dataframes_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="mod-1-4-intro-to-r-dataframes_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="mod-1-4-intro-to-r-dataframes_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="mod-1-4-intro-to-r-dataframes_files/libs/quarto-html/popper.min.js"></script>
-<script src="mod-1-4-intro-to-r-dataframes_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="mod-1-4-intro-to-r-dataframes_files/libs/quarto-html/anchor.min.js"></script>
-<link href="mod-1-4-intro-to-r-dataframes_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="mod-1-4-intro-to-r-dataframes_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="mod-1-4-intro-to-r-dataframes_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="mod-1-4-intro-to-r-dataframes_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="mod-1-4-intro-to-r-dataframes_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="mod-1-4-intro-to-r-dataframes_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./mod-1-3-intro-to-r-variables.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 
-<link href="mod-1-4-intro-to-r-dataframes_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 
 </head>
 
-<body class="quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-4-intro-to-r-dataframes.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables in R</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">ECON 700</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">ECON 700</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">About</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module 1: Introduction to R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-0-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-1-intro-to-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Economic Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-2-intro-to-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-3-intro-to-r-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-4-intro-to-r-dataframes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables in R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Module 2: Probabilty</span></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#creating-a-data-frame" id="toc-creating-a-data-frame" class="nav-link active" data-scroll-target="#creating-a-data-frame">Creating a Data Frame</a></li>
-  <li><a href="#using-an-existing-dataframe" id="toc-using-an-existing-dataframe" class="nav-link" data-scroll-target="#using-an-existing-dataframe">Using an Existing Dataframe</a></li>
-  <li><a href="#dimensions-of-a-data-frame" id="toc-dimensions-of-a-data-frame" class="nav-link" data-scroll-target="#dimensions-of-a-data-frame">Dimensions of a Data Frame</a></li>
-  <li><a href="#selecting-rows-or-columns-in-a-data-frame" id="toc-selecting-rows-or-columns-in-a-data-frame" class="nav-link" data-scroll-target="#selecting-rows-or-columns-in-a-data-frame">Selecting Rows or Columns in a Data Frame</a></li>
-  <li><a href="#manipulating-the-dataframe-and-adding-new-variables" id="toc-manipulating-the-dataframe-and-adding-new-variables" class="nav-link" data-scroll-target="#manipulating-the-dataframe-and-adding-new-variables">Manipulating the Dataframe and Adding New Variables</a></li>
-  <li><a href="#the-fred-api-for-real-gdp" id="toc-the-fred-api-for-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-real-gdp">The FRED API for Real GDP</a></li>
-  <li><a href="#the-fred-api-for-nominal-gdp" id="toc-the-fred-api-for-nominal-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-gdp">The FRED API for Nominal GDP</a></li>
-  <li><a href="#the-fred-api-for-nominal-and-real-gdp" id="toc-the-fred-api-for-nominal-and-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-and-real-gdp">The FRED API for Nominal and Real GDP</a></li>
+  <li><a href="#creating-a-data-frame" id="toc-creating-a-data-frame" class="nav-link active" data-scroll-target="#creating-a-data-frame"><span class="header-section-number">7.1</span> Creating a Data Frame</a></li>
+  <li><a href="#using-an-existing-dataframe" id="toc-using-an-existing-dataframe" class="nav-link" data-scroll-target="#using-an-existing-dataframe"><span class="header-section-number">7.2</span> Using an Existing Dataframe</a></li>
+  <li><a href="#dimensions-of-a-data-frame" id="toc-dimensions-of-a-data-frame" class="nav-link" data-scroll-target="#dimensions-of-a-data-frame"><span class="header-section-number">7.3</span> Dimensions of a Data Frame</a></li>
+  <li><a href="#selecting-rows-or-columns-in-a-data-frame" id="toc-selecting-rows-or-columns-in-a-data-frame" class="nav-link" data-scroll-target="#selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.4</span> Selecting Rows or Columns in a Data Frame</a></li>
+  <li><a href="#manipulating-the-dataframe-and-adding-new-variables" id="toc-manipulating-the-dataframe-and-adding-new-variables" class="nav-link" data-scroll-target="#manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.5</span> Manipulating the Dataframe and Adding New Variables</a></li>
+  <li><a href="#the-fred-api-for-real-gdp" id="toc-the-fred-api-for-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-real-gdp"><span class="header-section-number">7.6</span> The FRED API for Real GDP</a></li>
+  <li><a href="#the-fred-api-for-nominal-gdp" id="toc-the-fred-api-for-nominal-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-gdp"><span class="header-section-number">7.7</span> The FRED API for Nominal GDP</a></li>
+  <li><a href="#the-fred-api-for-nominal-and-real-gdp" id="toc-the-fred-api-for-nominal-and-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">7.8</span> The FRED API for Nominal and Real GDP</a></li>
   </ul>
 </nav>
-</div>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Module 1: Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-4-intro-to-r-dataframes.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables in R</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Variables in R</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables in R</span></h1>
 </div>
 
 
@@ -118,8 +248,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="creating-a-data-frame" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-data-frame">Creating a Data Frame</h2>
+<section id="creating-a-data-frame" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="creating-a-data-frame"><span class="header-section-number">7.1</span> Creating a Data Frame</h2>
 <p>So far, everything we have created has been stored as a variable or vector. A consists of rows and columns. The organization of the matrix is important. In some cases, the rows will correspond to individual observations with variables in the columns. In other cases, the variables are in the rows and individuals in columns. Matrices can contain quantitative and qualitative elements.</p>
 <p>A matrix is a table or a two-dimensional array-like structure. In R, a is a list of variables with the same number of rows with unique row names. It is represented by the class .</p>
 <p>A can have one column with numeric elements, another with date elements, another with character elements, and so on. The CDC data earlier in this module is an example of a data frame.</p>
@@ -272,8 +402,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="using-an-existing-dataframe" class="level2">
-<h2 class="anchored" data-anchor-id="using-an-existing-dataframe">Using an Existing Dataframe</h2>
+<section id="using-an-existing-dataframe" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="using-an-existing-dataframe"><span class="header-section-number">7.2</span> Using an Existing Dataframe</h2>
 <p>R comes with a number of “built in” data sets. For the following discussion, we use the data. The data contain observations on a number of cars from the Motor Trend magazine.</p>
 <p>One can work directly with the data or assign the data to a data frame. In the following, we assign to the data frame. We use the assignment operator so that data flows from to .</p>
 <p>We can now use the or functions to examine the structure of the data frame. Note that the function returns the first six rows while the function returns the last six rows.</p>
@@ -315,8 +445,8 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 </div>
 </div>
 </section>
-<section id="dimensions-of-a-data-frame" class="level2">
-<h2 class="anchored" data-anchor-id="dimensions-of-a-data-frame">Dimensions of a Data Frame</h2>
+<section id="dimensions-of-a-data-frame" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="dimensions-of-a-data-frame"><span class="header-section-number">7.3</span> Dimensions of a Data Frame</h2>
 <p>To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the and functions determine the number of rows and columns in a data frame, respectively.</p>
 <p>We can also use the function to return the dimensions of the data frame. Note that the function returns rows then columns.</p>
 <div class="cell" data-messages="false">
@@ -340,8 +470,8 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-rows-or-columns-in-a-data-frame" class="level2">
-<h2 class="anchored" data-anchor-id="selecting-rows-or-columns-in-a-data-frame">Selecting Rows or Columns in a Data Frame</h2>
+<section id="selecting-rows-or-columns-in-a-data-frame" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.4</span> Selecting Rows or Columns in a Data Frame</h2>
 <p>Having determined the dimensions of the data frame, we can now select parts of the data frame.</p>
 <p>We can approach this by recognizing that a data frame is organized by rows and columns. For example, returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.</p>
 <p>So, in general, for a data frame, . For example, returns rows 1 to 2 and columns 2 to 3.</p>
@@ -411,8 +541,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="manipulating-the-dataframe-and-adding-new-variables" class="level2">
-<h2 class="anchored" data-anchor-id="manipulating-the-dataframe-and-adding-new-variables">Manipulating the Dataframe and Adding New Variables</h2>
+<section id="manipulating-the-dataframe-and-adding-new-variables" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.5</span> Manipulating the Dataframe and Adding New Variables</h2>
 <p>Starting with the data frame, we can now utilize one of the features of the packages to the data. Piping means that the data ‘flows’ in the direction of the pipe. It’s actually called a pipeline of data.</p>
 <p>A bit of housekeeping. We want to convert the rownames in to a variable. We pipe the data frame and then use the function to do just that. We then pipe the data to rename the new variable to .</p>
 <p>We can now use the function to create a new variable or replace an existing variable.</p>
@@ -614,8 +744,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-real-gdp" class="level2">
-<h2 class="anchored" data-anchor-id="the-fred-api-for-real-gdp">The FRED API for Real GDP</h2>
+<section id="the-fred-api-for-real-gdp" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="the-fred-api-for-real-gdp"><span class="header-section-number">7.6</span> The FRED API for Real GDP</h2>
 <p>An Application Programming Interface (API) allows us to obtain data from a source without having to manually downloading the data. In effect, an API allows us to “grab” data from an external source. If the external source updates the data, then our next API call with obtain the updated data.</p>
 <p>For example, let’s say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called , and download the data into an Excel file. This process is labor-intensive and subject to error.</p>
 <p>FRED: </p>
@@ -684,8 +814,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-nominal-gdp" class="level2">
-<h2 class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp">The FRED API for Nominal GDP</h2>
+<section id="the-fred-api-for-nominal-gdp" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp"><span class="header-section-number">7.7</span> The FRED API for Nominal GDP</h2>
 <p>We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the variable containing the values for nominal GDP. We rename the variable to and also use the pacakge for the dates.</p>
 <p>Nominal GDP: </p>
 <div class="cell" data-messages="false">
@@ -748,8 +878,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-nominal-and-real-gdp" class="level2">
-<h2 class="anchored" data-anchor-id="the-fred-api-for-nominal-and-real-gdp">The FRED API for Nominal and Real GDP</h2>
+<section id="the-fred-api-for-nominal-and-real-gdp" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">7.8</span> The FRED API for Nominal and Real GDP</h2>
 <p>In the previous examples, we made an API call for one variable at a time. The result was two data frames, one for nominal GDP, and one for real GDP. It would be more efficient to make one API call that results in a single data frame with both variables.</p>
 <p>In the following code, we the names of the two variables, that is, creates a row vector with the two names. This row vector is used by the function to make an API call to obtain the two variables from FRED.</p>
 <p>What’s important to note is that the data fame is in format. In other words, each row corresponds to one period of time for one variable.</p>
@@ -863,10 +993,11 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </figure>
 </div>
 </div>
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -954,6 +1085,11 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1267,6 +1403,15 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./mod-1-3-intro-to-r-variables.html" class="pagination-link" aria-label="Variables in R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables in R</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

@@ -14,9 +14,8 @@ book:
         - mod-1-1-intro-to-data.qmd
         - mod-1-2-intro-to-r.qmd
         - mod-1-3-intro-to-r-variables.qmd
-        # - mod-1-2-descriptive-stats.qmd
-        # - mod-1-3-data-structures.qmd
-    - part: "Module 2: Introduction to Descriptive Statistics"
+        - mod-1-4-intro-to-r-dataframes.qmd
+    - part: "Module 2: Probabilty"
 
 execute:
   webR: true            # enables WebR chunks for interactive R in the browser

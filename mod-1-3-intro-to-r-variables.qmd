@@ -249,7 +249,7 @@ Output the second vector to a table.
 
 You can build off the example below.
 
-```{webr-r}
+```{r, messages = FALSE, results = 'hold'}
 
 rm(list = ls())
 
