@@ -40,7 +40,13 @@ The **rbind** function "stacks" the observations in the vectors.
 
 The **cbind** function "adds" the column of the second vector to the first vector, creating a data frame with two columns.
 
-In the example below, we show that order matters. We first bind **x9** to **x8** using the two bind functions. We then reverse the order, binding **x8** to **x9**.
+### Using rbind
+
+In the chunk below, we use the rbind function to bind the two vectors together.
+
+First, we bind **x9** to **x8**. We then bind **x8** to **x9**.
+
+Note that we bind within the **kable** function. We do not create a new matrix.
 
 ```{webr-r}
 
@@ -62,19 +68,62 @@ kable(rbind(x8,x9))
 
 kable(rbind(x9,x9))
 
-#Column bind x9 to x8
+```
 
-kable(cbind(x8,x9))
+### Using cbind
+
+In the following chunk, we demonstrate the **cbind** function, that is, column bind.
+
+First, we bind **x9** to **x8**. We then bind **x8** to **x9**.
+
+Note that we bind within the **kable** function. We do not create a new matrix.
+
+
+```{webr-r}
+
+rm(list = ls())
+
+#kableExtra and dplyr are loaded
+
+#Create X8 as equal to the sequence of numbers from 3 to 6
+#Create X9 as equal to the sequence of numbers from 10 to 13
+
+x8 <- 3:6
+x9 <- 10:13
+
 
 #Column bind x8 to x9
 
 kable(cbind(x9,x8))
 
-#Create Data Frames
+```
+
+## Creating a data frame
+
+Previously, we created a matrix by binding two vectors together. We can now create a **data frame** or **tibble**. 
+
+A tibble is a more modern version of the standard R data farme. It is part of the *tidyverse* collection of packages.
+
+If you want to learn more about tibbles, see <https://tibble.tidyverse.org/>
+
+In the code chunk below, we again create our two variables. This time, however, we store the two variables in a data frame (original R) and a tibble (new and improved).
+
+
+```{webr-r}
+
+rm(list = ls())
+
+#kableExtra and dplyr are loaded
+
+#Create X8 as equal to the sequence of numbers from 3 to 6
+#Create X9 as equal to the sequence of numbers from 10 to 13
+
+x8 <- 3:6
+x9 <- 10:13
 
 df1 <- data.frame(cbind(x8,x9))
 
-df2 <- data.frame(rbind(x8, x9))
+df2 <- tibble(cbind(x8, x9))
 
 kable(df1)
 

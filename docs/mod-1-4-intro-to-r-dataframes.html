@@ -408,7 +408,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\n#kableExtra and dplyr are loaded\n\n#Create X8 as equal to the sequence of numbers from 3 to 6\n#Create X9 as equal to the sequence of numbers from 10 to 13\n\nx8 <- 3:6\nx9 <- 10:13\n\n#Row bind x9 to x8 \n\nkable(rbind(x8,x9))\n\n#Row bind x8 to x9\n\nkable(rbind(x9,x9))\n\n#Column bind x9 to x8\n\nkable(cbind(x8,x9))\n\n#Column bind x8 to x9\n\nkable(cbind(x9,x8))\n\n#Create Data Frames\n\ndf1 <- data.frame(cbind(x8,x9))\n\ndf2 <- data.frame(rbind(x8, x9))\n\nkable(df1)\n\nkable(df2)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\n#kableExtra and dplyr are loaded\n\n#Create X8 as equal to the sequence of numbers from 3 to 6\n#Create X9 as equal to the sequence of numbers from 10 to 13\n\nx8 <- 3:6\nx9 <- 10:13\n\n#Row bind x9 to x8 \n\nkable(rbind(x8,x9))\n\n#Row bind x8 to x9\n\nkable(rbind(x9,x9))","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\n#kableExtra and dplyr are loaded\n\n#Create X8 as equal to the sequence of numbers from 3 to 6\n#Create X9 as equal to the sequence of numbers from 10 to 13\n\nx8 <- 3:6\nx9 <- 10:13\n\n\n#Column bind x8 to x9\n\nkable(cbind(x9,x8))","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\n#kableExtra and dplyr are loaded\n\n#Create X8 as equal to the sequence of numbers from 3 to 6\n#Create X9 as equal to the sequence of numbers from 10 to 13\n\nx8 <- 3:6\nx9 <- 10:13\n\ndf1 <- data.frame(cbind(x8,x9))\n\ndf2 <- tibble(cbind(x8, x9))\n\nkable(df1)\n\nkable(df2)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1768,14 +1768,19 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#creating-a-data-frame" id="toc-creating-a-data-frame" class="nav-link active" data-scroll-target="#creating-a-data-frame"><span class="header-section-number">7.1</span> Creating a Data Frame</a></li>
-  <li><a href="#using-an-existing-dataframe" id="toc-using-an-existing-dataframe" class="nav-link" data-scroll-target="#using-an-existing-dataframe"><span class="header-section-number">7.2</span> Using an Existing Dataframe</a></li>
-  <li><a href="#dimensions-of-a-data-frame" id="toc-dimensions-of-a-data-frame" class="nav-link" data-scroll-target="#dimensions-of-a-data-frame"><span class="header-section-number">7.3</span> Dimensions of a Data Frame</a></li>
-  <li><a href="#selecting-rows-or-columns-in-a-data-frame" id="toc-selecting-rows-or-columns-in-a-data-frame" class="nav-link" data-scroll-target="#selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.4</span> Selecting Rows or Columns in a Data Frame</a></li>
-  <li><a href="#manipulating-the-dataframe-and-adding-new-variables" id="toc-manipulating-the-dataframe-and-adding-new-variables" class="nav-link" data-scroll-target="#manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.5</span> Manipulating the Dataframe and Adding New Variables</a></li>
-  <li><a href="#the-fred-api-for-real-gdp" id="toc-the-fred-api-for-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-real-gdp"><span class="header-section-number">7.6</span> The FRED API for Real GDP</a></li>
-  <li><a href="#the-fred-api-for-nominal-gdp" id="toc-the-fred-api-for-nominal-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-gdp"><span class="header-section-number">7.7</span> The FRED API for Nominal GDP</a></li>
-  <li><a href="#the-fred-api-for-nominal-and-real-gdp" id="toc-the-fred-api-for-nominal-and-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">7.8</span> The FRED API for Nominal and Real GDP</a></li>
+  <li><a href="#creating-a-data-frame" id="toc-creating-a-data-frame" class="nav-link active" data-scroll-target="#creating-a-data-frame"><span class="header-section-number">7.1</span> Creating a Data Frame</a>
+  <ul class="collapse">
+  <li><a href="#using-rbind" id="toc-using-rbind" class="nav-link" data-scroll-target="#using-rbind"><span class="header-section-number">7.1.1</span> Using rbind</a></li>
+  <li><a href="#using-cbind" id="toc-using-cbind" class="nav-link" data-scroll-target="#using-cbind"><span class="header-section-number">7.1.2</span> Using cbind</a></li>
+  </ul></li>
+  <li><a href="#creating-a-data-frame-1" id="toc-creating-a-data-frame-1" class="nav-link" data-scroll-target="#creating-a-data-frame-1"><span class="header-section-number">7.2</span> Creating a data frame</a></li>
+  <li><a href="#using-an-existing-dataframe" id="toc-using-an-existing-dataframe" class="nav-link" data-scroll-target="#using-an-existing-dataframe"><span class="header-section-number">7.3</span> Using an Existing Dataframe</a></li>
+  <li><a href="#dimensions-of-a-data-frame" id="toc-dimensions-of-a-data-frame" class="nav-link" data-scroll-target="#dimensions-of-a-data-frame"><span class="header-section-number">7.4</span> Dimensions of a Data Frame</a></li>
+  <li><a href="#selecting-rows-or-columns-in-a-data-frame" id="toc-selecting-rows-or-columns-in-a-data-frame" class="nav-link" data-scroll-target="#selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.5</span> Selecting Rows or Columns in a Data Frame</a></li>
+  <li><a href="#manipulating-the-dataframe-and-adding-new-variables" id="toc-manipulating-the-dataframe-and-adding-new-variables" class="nav-link" data-scroll-target="#manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.6</span> Manipulating the Dataframe and Adding New Variables</a></li>
+  <li><a href="#the-fred-api-for-real-gdp" id="toc-the-fred-api-for-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-real-gdp"><span class="header-section-number">7.7</span> The FRED API for Real GDP</a></li>
+  <li><a href="#the-fred-api-for-nominal-gdp" id="toc-the-fred-api-for-nominal-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-gdp"><span class="header-section-number">7.8</span> The FRED API for Nominal GDP</a></li>
+  <li><a href="#the-fred-api-for-nominal-and-real-gdp" id="toc-the-fred-api-for-nominal-and-real-gdp" class="nav-link" data-scroll-target="#the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">7.9</span> The FRED API for Nominal and Real GDP</a></li>
   </ul>
 </nav>
     </div>
@@ -2095,12 +2100,34 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>There are two functions at our disposal: <strong>rbind</strong> and <strong>cbind</strong>.</p>
 <p>The <strong>rbind</strong> function “stacks” the observations in the vectors.</p>
 <p>The <strong>cbind</strong> function “adds” the column of the second vector to the first vector, creating a data frame with two columns.</p>
-<p>In the example below, we show that order matters. We first bind <strong>x9</strong> to <strong>x8</strong> using the two bind functions. We then reverse the order, binding <strong>x8</strong> to <strong>x9</strong>.</p>
+<section id="using-rbind" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="using-rbind"><span class="header-section-number">7.1.1</span> Using rbind</h3>
+<p>In the chunk below, we use the rbind function to bind the two vectors together.</p>
+<p>First, we bind <strong>x9</strong> to <strong>x8</strong>. We then bind <strong>x8</strong> to <strong>x9</strong>.</p>
+<p>Note that we bind within the <strong>kable</strong> function. We do not create a new matrix.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="using-an-existing-dataframe" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="using-an-existing-dataframe"><span class="header-section-number">7.2</span> Using an Existing Dataframe</h2>
+<section id="using-cbind" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="using-cbind"><span class="header-section-number">7.1.2</span> Using cbind</h3>
+<p>In the following chunk, we demonstrate the <strong>cbind</strong> function, that is, column bind.</p>
+<p>First, we bind <strong>x9</strong> to <strong>x8</strong>. We then bind <strong>x8</strong> to <strong>x9</strong>.</p>
+<p>Note that we bind within the <strong>kable</strong> function. We do not create a new matrix.</p>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+</section>
+<section id="creating-a-data-frame-1" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="creating-a-data-frame-1"><span class="header-section-number">7.2</span> Creating a data frame</h2>
+<p>Previously, we created a matrix by binding two vectors together. We can now create a <strong>data frame</strong> or <strong>tibble</strong>.</p>
+<p>A tibble is a more modern version of the standard R data farme. It is part of the <em>tidyverse</em> collection of packages.</p>
+<p>If you want to learn more about tibbles, see <a href="https://tibble.tidyverse.org/" class="uri">https://tibble.tidyverse.org/</a></p>
+<p>In the code chunk below, we again create our two variables. This time, however, we store the two variables in a data frame (original R) and a tibble (new and improved).</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="using-an-existing-dataframe" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="using-an-existing-dataframe"><span class="header-section-number">7.3</span> Using an Existing Dataframe</h2>
 <p>R comes with a number of “built in” data sets. For the following discussion, we use the data. The data contain observations on a number of cars from the Motor Trend magazine.</p>
 <p>One can work directly with the data or assign the data to a data frame. In the following, we assign to the data frame. We use the assignment operator so that data flows from to .</p>
 <p>We can now use the or functions to examine the structure of the data frame. Note that the function returns the first six rows while the function returns the last six rows.</p>
@@ -2166,8 +2193,8 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 </div>
 </div>
 </section>
-<section id="dimensions-of-a-data-frame" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="dimensions-of-a-data-frame"><span class="header-section-number">7.3</span> Dimensions of a Data Frame</h2>
+<section id="dimensions-of-a-data-frame" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="dimensions-of-a-data-frame"><span class="header-section-number">7.4</span> Dimensions of a Data Frame</h2>
 <p>To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the and functions determine the number of rows and columns in a data frame, respectively.</p>
 <p>We can also use the function to return the dimensions of the data frame. Note that the function returns rows then columns.</p>
 <div class="cell" data-messages="false">
@@ -2191,8 +2218,8 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-rows-or-columns-in-a-data-frame" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.4</span> Selecting Rows or Columns in a Data Frame</h2>
+<section id="selecting-rows-or-columns-in-a-data-frame" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">7.5</span> Selecting Rows or Columns in a Data Frame</h2>
 <p>Having determined the dimensions of the data frame, we can now select parts of the data frame.</p>
 <p>We can approach this by recognizing that a data frame is organized by rows and columns. For example, returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.</p>
 <p>So, in general, for a data frame, . For example, returns rows 1 to 2 and columns 2 to 3.</p>
@@ -2262,8 +2289,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="manipulating-the-dataframe-and-adding-new-variables" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.5</span> Manipulating the Dataframe and Adding New Variables</h2>
+<section id="manipulating-the-dataframe-and-adding-new-variables" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="manipulating-the-dataframe-and-adding-new-variables"><span class="header-section-number">7.6</span> Manipulating the Dataframe and Adding New Variables</h2>
 <p>Starting with the data frame, we can now utilize one of the features of the packages to the data. Piping means that the data ‘flows’ in the direction of the pipe. It’s actually called a pipeline of data.</p>
 <p>A bit of housekeeping. We want to convert the rownames in to a variable. We pipe the data frame and then use the function to do just that. We then pipe the data to rename the new variable to .</p>
 <p>We can now use the function to create a new variable or replace an existing variable.</p>
@@ -2465,8 +2492,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-real-gdp" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="the-fred-api-for-real-gdp"><span class="header-section-number">7.6</span> The FRED API for Real GDP</h2>
+<section id="the-fred-api-for-real-gdp" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="the-fred-api-for-real-gdp"><span class="header-section-number">7.7</span> The FRED API for Real GDP</h2>
 <p>An Application Programming Interface (API) allows us to obtain data from a source without having to manually downloading the data. In effect, an API allows us to “grab” data from an external source. If the external source updates the data, then our next API call with obtain the updated data.</p>
 <p>For example, let’s say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called , and download the data into an Excel file. This process is labor-intensive and subject to error.</p>
 <p>FRED: </p>
@@ -2535,8 +2562,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-nominal-gdp" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp"><span class="header-section-number">7.7</span> The FRED API for Nominal GDP</h2>
+<section id="the-fred-api-for-nominal-gdp" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp"><span class="header-section-number">7.8</span> The FRED API for Nominal GDP</h2>
 <p>We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the variable containing the values for nominal GDP. We rename the variable to and also use the pacakge for the dates.</p>
 <p>Nominal GDP: </p>
 <div class="cell" data-messages="false">
@@ -2599,8 +2626,8 @@ Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
 </div>
 </div>
 </section>
-<section id="the-fred-api-for-nominal-and-real-gdp" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">7.8</span> The FRED API for Nominal and Real GDP</h2>
+<section id="the-fred-api-for-nominal-and-real-gdp" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="the-fred-api-for-nominal-and-real-gdp"><span class="header-section-number">7.9</span> The FRED API for Nominal and Real GDP</h2>
 <p>In the previous examples, we made an API call for one variable at a time. The result was two data frames, one for nominal GDP, and one for real GDP. It would be more efficient to make one API call that results in a single data frame with both variables.</p>
 <p>In the following code, we the names of the two variables, that is, creates a row vector with the two names. This row vector is used by the function to make an API call to obtain the two variables from FRED.</p>
 <p>What’s important to note is that the data fame is in format. In other words, each row corresponds to one period of time for one variable.</p>
