@@ -7,9 +7,8 @@ Note: The course is under construction. Many links will not work.
 ## Course Introduction
 
 <ul>
-  <li><a href="about.qmd">About</a></li>
-  <li><a href="instructor.qmd">Meet Your Instructor</a></li>
-  <li><a href="objectives.qmd">Review the Course Objectives and Materials</a></li>
+  <li><a href="about.qmd">Course Objectives and Materials</a></li>
+  <li><a href="mcnab.qmd">Meet Your Instructor</a></li>
   <li><a href="ECON-700---Fall-2026.pdf">Syllabus</a></li>
 </ul>
 
@@ -23,12 +22,12 @@ Note: The course is under construction. Many links will not work.
   <li><a href="mod-1-4-intro-to-r-dataframes.qmd">Module 1.4 – Data frames in R</a></li>
 </ul>
 
-## Module 02 – Probability
+## Module 02 – Covariance and Correlation
 
 <ul>
-  <li><a href="mod-2-overview.qmd">Overview</a></li>
-  <li><a href="mod-2-1-basics.qmd">Module 2.1 – Basics of Probability</a></li>
-  <li><a href="mod-2-2-conditional.qmd">Module 2.2 – Conditional Probability</a></li>
+  <li><a href="mod-2-overview.qmd">Moudle 2.0 - Overview</a></li>
+  <li><a href="mod-2-1-basics.qmd">Module 2.1 – Covariance</a></li>
+  <li><a href="mod-2-2-conditional.qmd">Module 2.2 – Correlation</a></li>
 </ul>
 
 ---

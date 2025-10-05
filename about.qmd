@@ -1,21 +1,53 @@
 ---
-title: "About"
+title: "Course Objectives"
 format: html
 editor: visual
 ---
 
 ## ECON 700
 
----
+------------------------------------------------------------------------
 
-\# About ECON 700
+## Course Learning Objectives
 
-ECON 700 introduces students to R for economic analysis. You will learn to:
+-   Formulate economic research questions and testable hypotheses that can be examined using publicly available data sources.
 
-\- Explore datasets
+-   Acquire, manage, and prepare economic data by applying programming techniques in R, including data extraction from APIs and other official sources.
 
-\- Create plots
+-   Apply descriptive statistics, probability concepts, and sampling methods to summarize, visualize, and interpret economic data.
 
-\- Perform calculations
+-   Conduct hypothesis testing and interval estimation to draw valid inferences from economic and financial data.
 
-\- Use interactive WebR examples in the browser
+-   Utilize R and RStudio to implement statistical techniques and effectively communicate results through reproducible code, visualizations, and written analysis.
+
+## Textbooks and Materials
+
+The required textbooks are an integral part of the class. Students should expect to read the textbooks prior to class and to be prepared to answer discussion questions from the textbook. These textbooks provide a foundation upon which the course is built and students will succeed if they take the time to read and review the material in the textbooks.
+
+The first textbook (Hanck, et. al.) provides students with an introduction to applied econometrics using the R programming language. The second textbook (Irizarry) provides an introduction to data science methods using R and covers many of the same topics that we discuss in class. These textbooks are free.
+
+As this course focuses on the learning and application of statistical techniques, a computer with R and R Studio installed is necessary. You will need access to a laptop, tablet, or other computing device to complete the assignments and and exams.
+
+**You may also use R Studio Cloud instead of a locally installed version of R.**
+
+You can create a free R-Studio cloud account at \<\[https://posit.co/download/rstudio-desktop/\>
+
+All other course materials are on Canvas or can be accessed through Canvas. You are required to know how to use Canvas to access and submit assignments, quizzes, and examinations. You should also be comfortable using ODU email to communicate.
+
+## Required Texts
+
+Christoph Hanck, Martin Arnold, Alexander Gerber,and Martin Schmelzer. *Introduction to Econometrics with R*. Available for free online at <https://www.econometrics-with-r.org>, 2025.
+
+Rafael A. Irizarry. *Introduction to Data Science: Data Wrangling and Visualization with R.* Available for free at <https://rafalab.dfci.harvard.edu/dsbook-part-1/>.
+
+## Reference Texts
+
+David R. Anderson, Dennis J. Sweeney, Thomas A. Williams, Jeffrey D. Camm, and James J. Cochran. *Statistics for Business and Economics 14th Edition*. Earlier editions will suffice.
+
+Angrist, J.D. & Pischke, Jorn-Steffen. (2013). *Mostly Harmless Econometrics: An Empiricist’s Companion*. Content Technologies Inc.
+
+Baruffa, O. (2022). *The Big Book of R*. Available for free at: \url{https://www.bigbookofr.com/}
+
+Chan, S. (2021) *ntroduction to Probability for Data Science*. Michigan Publishing. Available for free at: <https://probability4datascience.com>
+
+Kennedy, P. (2003). *A Guide to Econometrics*. MIT Press.
