@@ -26,7 +26,7 @@
     "href": "index.html#module-01-introduction-to-r-and-descriptive-statistics",
     "title": "ECON 700",
     "section": "0.2 Module 01 – Introduction to R and Descriptive Statistics",
-    "text": "0.2 Module 01 – Introduction to R and Descriptive Statistics\n\n\nModule 1.0 - Module 1 Overview\n\n\nModule 1.1 - Data and the Challenge of Economic Analysis\n\n\nModule 1.2 – Introduction to R\n\n\nModule 1.3 – Variables and Assignments in R\n\n\nModule 1.4 – Data frames in R",
+    "text": "0.2 Module 01 – Introduction to R and Descriptive Statistics\n\n\nModule 1.0 - Module 1 Overview\n\n\nModule 1.1 - Data and the Challenge of Economic Analysis\n\n\nModule 1.2 – Introduction to R\n\n\nModule 1.3 – Variables and Assignments in R\n\n\nModule 1.4 – Data frames in R\n\n\nModule 1.5 – Descriptive Statistics",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -646,6 +646,83 @@
     "crumbs": [
       "R and Descriptive Statistics",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Data frames in R</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-descriptive-stats.html",
+    "href": "mod-1-5-descriptive-stats.html",
+    "title": "9  Descriptive Statistics",
+    "section": "",
+    "text": "9.1 Overview\nNow that we have established a foundation of working with R and RStudio, we can use descriptive statistics to discuss the properties of population and sample data.\nIn this section, we will cover the following topics:",
+    "crumbs": [
+      "R and Descriptive Statistics",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-descriptive-stats.html#overview",
+    "href": "mod-1-5-descriptive-stats.html#overview",
+    "title": "9  Descriptive Statistics",
+    "section": "",
+    "text": "Frequency Distributions\nRelative Frequency Distributions\nCenter, Spread, and Dispersion of Data\nMean, Median, and Mode\nTrimmed and Weighted Means\nRange, Variance, and Standard Deviation\nCoefficient of Variation\nZ-Scores",
+    "crumbs": [
+      "R and Descriptive Statistics",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-descriptive-stats.html#frequency-distributions",
+    "href": "mod-1-5-descriptive-stats.html#frequency-distributions",
+    "title": "9  Descriptive Statistics",
+    "section": "9.2 Frequency Distributions",
+    "text": "9.2 Frequency Distributions\n\nThe frequency of a category, class, or value is the number of times it occurs in a data set.\nA frequency distribution is summary of data.\nA frequency distribution is the pattern of frequencies of variable of interest.\nGiven several non-overlapping categories or classes, a frequency distribution contains the number of observations per class or category.\nA frequency distribution, to be complete, must be:\n\nMutually exclusive - the classes or categories do not overlap.\nCollectively exhaustive - all the observations are described by the distribution\n\nA frequency distribution may provide insights about the data that cannot be quickly obtained by examining the data itself.",
+    "crumbs": [
+      "R and Descriptive Statistics",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-descriptive-stats.html#example-of-frequency-distribution",
+    "href": "mod-1-5-descriptive-stats.html#example-of-frequency-distribution",
+    "title": "9  Descriptive Statistics",
+    "section": "9.3 Example of Frequency Distribution",
+    "text": "9.3 Example of Frequency Distribution\nFor the following example, we use the mtcars data frame.\nFirst, we group the data by the cylinder variable. The group_by function notifies R that the data are organized by a specific variable or variables.\nHere, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.\nSecond, we create a new variable freq_cyl using the summarize function. The variable freq_cyl is equal to the number of observations in each group.\nWe then use the arrange function to sort the resulting frequencies from lowest number to the highest number.\nWe create a frequency table using the kable function.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\ndata(\"mtcars\")\n\ncyl_freq &lt;- mtcars %&gt;%\n  group_by(cyl) %&gt;%\n  summarize(freq_cyl = n()) %&gt;%\n  arrange(freq_cyl)\n\nkable(cyl_freq,\n      col.names = c(\"Cylinders\", \"Frequency\"),\n      align = c('c','c'),\n      caption = 'Frequency Distribution of Cylinders') %&gt;%\nkable_styling(font_size = 14)\n\n\nFrequency Distribution of Cylinders\n\n\nCylinders\nFrequency\n\n\n\n\n6\n7\n\n\n4\n11\n\n\n8\n14",
+    "crumbs": [
+      "R and Descriptive Statistics",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-descriptive-stats.html#frequency-example",
+    "href": "mod-1-5-descriptive-stats.html#frequency-example",
+    "title": "9  Descriptive Statistics",
+    "section": "9.3 Frequency Example",
+    "text": "9.3 Frequency Example\nFor the following example, we use the mtcars data frame.\nFirst, we group the data by the cylinder variable. The group_by function notifies R that the data are organized by a specific variable or variables.\nHere, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.\nSecond, we create a new variable freq_cyl using the summarize function. The variable freq_cyl is equal to the number of observations in each group.\nWe then use the arrange function to sort the resulting frequencies from lowest number to the highest number.\nWe create a frequency table using the kable function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "R and Descriptive Statistics",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-descriptive-stats.html#census-frequency",
+    "href": "mod-1-5-descriptive-stats.html#census-frequency",
+    "title": "9  Descriptive Statistics",
+    "section": "9.4 Census Frequency",
+    "text": "9.4 Census Frequency\nIn the example below, we use the censusapi package to obtain data from the U.S. Census Bureau’s American Community Survey.\nWe use the API to download data on counties and county-equivalent geographies for the United States. We specify two variables, the name of each geography and the population of each geography.\nWe rename the census population variable, B01001_001E, to total_pop.\nWe want to create categories for different ranges of population. To do this, we use the case_when function.\nHaving created the population categories, we group_by the population category variable and then use the summarize function to obtain a count of the number of observations in each category.\n\n# Clear Memory \nrm(list = ls())\n\n# Load Libraries\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\n#B01001_001E is total population\n#Case When to Create Categories\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(total_pop = B01001_001E) %&gt;%\nmutate(pop_cat = case_when(total_pop &gt; 99999 ~ \"Greater than 99,999\",\n                           total_pop &gt; 49999 ~ \"50,000 - 99,999\",\n                           total_pop &gt; 24999 ~ \"25,000 - 49,999\",\n                           total_pop &gt; 9999  ~ \"10,000 - 24,999\",\n                           TRUE ~ \"0 - 9,999\"))\n\n# Summarize to Create Frequencies by Categories\n\ncounty_freq &lt;- county_pop %&gt;%\n  group_by(pop_cat) %&gt;%\n  summarize(freq_pop = n()) %&gt;%\n  arrange(pop_cat)\n\n# Use frequency data frame to produce table\n\nkable(county_freq,\n      col.names = c(\"Category\", \"Frequency\"),\n      align = c('c','c'),\n      caption = 'Frequency of County Population, 2023') %&gt;%\nkable_styling(font_size = 14)\n\n\nFrequency of County Population, 2023\n\n\nCategory\nFrequency\n\n\n\n\n0 - 9,999\n743\n\n\n10,000 - 24,999\n823\n\n\n25,000 - 49,999\n643\n\n\n50,000 - 99,999\n397\n\n\nGreater than 99,999\n616",
+    "crumbs": [
+      "R and Descriptive Statistics",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-descriptive-stats.html#frequency-distributions-1",
+    "href": "mod-1-5-descriptive-stats.html#frequency-distributions-1",
+    "title": "9  Descriptive Statistics",
+    "section": "9.5 Frequency Distributions",
+    "text": "9.5 Frequency Distributions\n\nWe can also graphically depict the frequency distribution.\nWe can use ggplot to create a graphical plot of the frequency distribution.\nWe have categories (population size) on the x-axis and the frequencies on the y-axis.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "R and Descriptive Statistics",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
     ]
   }
 ]

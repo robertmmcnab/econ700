@@ -18,6 +18,7 @@ book:
         - mod-1-2-intro-to-r.qmd
         - mod-1-3-intro-to-r-variables.qmd
         - mod-1-4-intro-to-r-dataframes.qmd
+        - mod-1-5-descriptive-stats.qmd
     - part: "Covariance and Correlation"
     - part: "Introduction to Probability"
     - part: "Discrete Probability"

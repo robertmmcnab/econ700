@@ -1,0 +1,175 @@
+---
+title: "Descriptive Statistics"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    self-contained: false     # must be false when using webr
+urlcolor: blue
+filters:
+  - webr
+execute:
+  webR: true
+---
+
+## Overview
+
+Now that we have established a foundation of working with R and RStudio, we can use **descriptive statistics** to discuss the properties of population and sample data.
+
+In this section, we will cover the following topics:
+
+-   Frequency Distributions
+
+-   Relative Frequency Distributions
+
+-   Center, Spread, and Dispersion of Data
+
+-   Mean, Median, and Mode
+
+-   Trimmed and Weighted Means
+
+-   Range, Variance, and Standard Deviation
+
+-   Coefficient of Variation
+
+-   Z-Scores
+
+## Frequency Distributions
+
+-   The **frequency** of a category, class, or value is the number of times it occurs in a data set.
+
+-   A **frequency distribution** is summary of data.
+
+-   A frequency distribution is the pattern of frequencies of variable of interest.
+
+-   Given several **non-overlapping** categories or classes, a frequency distribution contains the number of observations per class or category.
+
+-   A frequency distribution, to be complete, must be:
+
+    -   **Mutually exclusive** - the classes or categories do not overlap.
+
+    -   **Collectively exhaustive** - all the observations are described by the distribution
+
+-   A frequency distribution may provide insights about the data that cannot be quickly obtained by examining the data itself.
+
+## Frequency Example
+
+For the following example, we use the **mtcars** data frame. 
+
+First, we **group** the data by the cylinder variable. The **group_by** function notifies R that the data are organized by a specific variable or variables.
+
+Here, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.
+
+Second, we create a new variable **freq_cyl** using the **summarize** function. The variable **freq_cyl** is equal to the number of observations in each group.
+
+We then use the **arrange** function to sort the resulting frequencies from lowest number to the highest number.
+
+We create a frequency table using the **kable** function.
+
+```{webr-r}
+
+rm(list = ls())
+
+data("mtcars")
+
+cyl_freq <- mtcars %>%
+  group_by(cyl) %>%
+  summarize(freq_cyl = n()) %>%
+  arrange(freq_cyl)
+
+kable(cyl_freq,
+      col.names = c("Cylinders", "Frequency"),
+      align = c('c','c'),
+      caption = 'Frequency Distribution of Cylinders') 
+```
+
+## Census Frequency
+
+In the example below, we use the **censusapi** package to obtain data from the U.S. Census Bureau's *American Community Survey*. 
+
+We use the API to download data on counties and county-equivalent geographies for the United States. We specify two variables, the name of each geography and the population of each geography.
+
+We rename the census population variable, **B01001_001E**, to **total_pop**. 
+
+We want to create categories for different ranges of population. To do this, we use the **case_when** function.
+
+Having created the population categories, we **group_by** the population category variable and then use the **summarize** function to obtain a count of the number of observations in each category.
+
+```{r, message = FALSE}
+
+# Clear Memory 
+rm(list = ls())
+
+# Load Libraries
+
+library(censusapi)
+library(dplyr)
+library(kableExtra)
+library(tidyverse)
+
+#B01001_001E is total population
+#Case When to Create Categories
+
+county_pop <- getCensus(name = "acs/acs5",
+            vintage = 2023,
+            key = "9c1637a56ff93f0af6b4b1d0547ea048fe668175",
+            vars = c("NAME",
+                     "B01001_001E"),
+            region = "county:*") %>%
+rename(total_pop = B01001_001E) %>%
+mutate(pop_cat = case_when(total_pop > 99999 ~ "Greater than 99,999",
+                           total_pop > 49999 ~ "50,000 - 99,999",
+                           total_pop > 24999 ~ "25,000 - 49,999",
+                           total_pop > 9999  ~ "10,000 - 24,999",
+                           TRUE ~ "0 - 9,999"))
+
+# Summarize to Create Frequencies by Categories
+
+county_freq <- county_pop %>%
+  group_by(pop_cat) %>%
+  summarize(freq_pop = n()) %>%
+  arrange(pop_cat)
+
+# Use frequency data frame to produce table
+
+kable(county_freq,
+      col.names = c("Category", "Frequency"),
+      align = c('c','c'),
+      caption = 'Frequency of County Population, 2023') %>%
+kable_styling(font_size = 14)
+
+
+
+```
+
+## Frequency Distributions
+
+- We can also graphically depict the frequency distribution.
+
+- We can use **ggplot** to create a graphical plot of the frequency distribution.
+
+- We have categories (population size) on the x-axis and the frequencies on the y-axis.
+
+
+```{webr-r}
+
+rm(list = ls())
+
+data("mtcars")
+
+cyl_freq <- mtcars %>%
+  group_by(cyl) %>%
+  summarize(freq_cyl = n()) %>%
+  arrange(freq_cyl)
+
+ggplot(data = cyl_freq,
+       aes(x    = cyl,
+           y    = freq_cyl)) +
+geom_col(fill = 'darkblue') +
+labs(title    = 'Frequency Distribution for Cylinders',
+     subtitle = 'MTCARS data',
+     y        = 'Frequency',
+     x        = 'Number of Cylinders')
+```
+
