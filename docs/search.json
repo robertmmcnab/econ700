@@ -26,18 +26,29 @@
     "href": "index.html#module-01-introduction-to-r-and-descriptive-statistics",
     "title": "ECON 700",
     "section": "0.2 Module 01 – Introduction to R and Descriptive Statistics",
-    "text": "0.2 Module 01 – Introduction to R and Descriptive Statistics\n\n\nModule 1.0 - Module 1 Overview\n\n\nModule 1.1 - Data and the Challenge of Economic Analysis\n\n\nModule 1.2 – Introduction to R\n\n\nModule 1.3 – Variables and Assignments in R\n\n\nModule 1.4 – Data frames in R\n\n\nModule 1.5 – Descriptive Statistics",
+    "text": "0.2 Module 01 – Introduction to R and Descriptive Statistics\n\n\nModule 1.0 - Module 1 Overview\n\n\nModule 1.1 - Data and the Challenge of Economic Analysis\n\n\nModule 1.2 – Introduction to R\n\n\nModule 1.3 – Variables and Assignments in R\n\n\nModule 1.4 – Data frames in R",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
     ]
   },
   {
-    "objectID": "index.html#module-02-covariance-and-correlation",
-    "href": "index.html#module-02-covariance-and-correlation",
+    "objectID": "index.html#module-02---descriptive-statistics",
+    "href": "index.html#module-02---descriptive-statistics",
     "title": "ECON 700",
-    "section": "0.3 Module 02 – Covariance and Correlation",
-    "text": "0.3 Module 02 – Covariance and Correlation\n\n\nMoudle 2.0 - Overview\n\n\nModule 2.1 – Covariance\n\n\nModule 2.2 – Correlation\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "section": "0.3 Module 02 - Descriptive Statistics",
+    "text": "0.3 Module 02 - Descriptive Statistics\n\n\nModule 2.0 - Overview\n\n\nModule 2.1 – Frequency",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-03-covariance-and-correlation",
+    "href": "index.html#module-03-covariance-and-correlation",
+    "title": "ECON 700",
+    "section": "0.4 Module 03 – Covariance and Correlation",
+    "text": "0.4 Module 03 – Covariance and Correlation\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -138,7 +149,7 @@
     "section": "",
     "text": "4.1 Introduction\nWelcome to Module 1 of ECON 700.\nIn this module, you will be introduced to R and the RStudio environment.\nYou will also start working with data in R.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
     ]
   },
@@ -149,7 +160,7 @@
     "section": "4.2 Learning Objectives",
     "text": "4.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nInstall and navigate R and RStudio.\n\nUnderstand R’s basic syntax and data types.\n\nWork with variables and simple operations in R.\n\nImport, view, and explore datasets.\n\nApply descriptive statistics for initial data exploration.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
     ]
   },
@@ -160,7 +171,7 @@
     "section": "4.3 Readings & Resources",
     "text": "4.3 Readings & Resources\n\nIrizarry, R. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. (Chapters 1-2). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-1/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\n\nOnline R documentation: https://cran.r-project.org/manuals.html\n\nRStudio Cheat Sheets",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
     ]
   },
@@ -171,7 +182,7 @@
     "section": "4.4 Activities",
     "text": "4.4 Activities\n\nComplete the hands-on coding exercises embedded in each lesson.\n\nUse WebR to experiment directly in your browser.\n\nComplete the weekly class assignment.\n\nParticipate in the discussion form.\n\nTake the weekly knowledge quiz.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
     ]
   },
@@ -182,7 +193,7 @@
     "section": "4.5 Lessons in this Module",
     "text": "4.5 Lessons in this Module\n\n1.1 – Introduction to Economic Analysis\n\n1.2 – Introduction to R\n\n1.3 – Variables in R\n\n1.4 - Data frames in R\n\n\nNext: Start with Economic Analysis.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
     ]
   },
@@ -193,7 +204,7 @@
     "section": "",
     "text": "5.1 Data and the Challenge of Economic Analysis\nWe are awash in data. The challenge is to find the right data at the appropriate time to investigate an empirical question of interest. In some cases, the data are well defined, consistently formatted, readily available, and structured to facilitate analysis. Then there are data that could help answer a question, but are not in an easily accessible format. But, before tackling these problems, we need to ask the simple question:\nWhat are data?\nThe Merriam-Webster dictionary defines data as: “…factual information (such as measurements or statistics) used a basis for reasoning, discussion, or calculation.” Broadly speaking, data can consist of measurements regarding the health of individuals, performance of firms, the income of regions, the inflation rate of a national economy, among other things. Data can also consist of statistics that describe the properties of an underlying set of measurements.\nThe Bureau of Labor Statistics (BLS) defines the civilian labor force as “The labor force includes all people age 16 and older who are classified as either employed and unemployed. Conceptually, the labor force level is the number of people who are either working or actively looking for work.”\nHow many people are the in the civilian labor force in the United States? How many in Virginia? Is the labor force larger today than it was at the same time last year? How does the growth in the labor force in Virginia compare to other states? All these questions require obtaining data and, for some, manipulating data to create statistics about the properties of the data.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -204,7 +215,7 @@
     "section": "5.2 Headline Unemployment Rate",
     "text": "5.2 Headline Unemployment Rate\nThe headline unemployment rate is an example of a measure that has different values across time. Collectively, these measures are data on the headline unemployment rate. This rate is equal to the ratio of the employed persons in the civilian labor force to the civilian labor force.\nIn the following figure, we plot the evolution of the unemployment rate over time.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -215,7 +226,7 @@
     "section": "5.3 Unemployment by Race",
     "text": "5.3 Unemployment by Race\nData can consist of measurements of a variable across groups of individuals and time. In the following figure, we present the headline unemployment rate by selected racial groups in the United States. Unlike the national unemployment rate which encompasses all individuals in the civilian labor force, each group represents all individuals by race relative to the civilian labor force by race. We can observe how the responsiveness of the unemployment rate differed by race.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -226,7 +237,7 @@
     "section": "5.4 Unemployment Rate for Selected States",
     "text": "5.4 Unemployment Rate for Selected States\nIn the table below, we obtain data on unemployment rates for Virginia, Maryland, North Carolina, West Virginia, and the United States from https://fred.stlouisfed.org or ‘FRED’.\nIn the table, each row corresponds to a geography (state or nation) while each column represents a variable for that geography. Note that only the last period available is represented in the table.\n\n\nUnemployment Rate for Selected Geographies\n\n\nFRED Symbol\nDate of Observation\nValue\nValue in Decimal Form\nGeography\n\n\n\n\nVAUR\n2025-08-01\n3.6\n0.036\nVirginia\n\n\nNCUR\n2025-08-01\n3.7\n0.037\nNorth Carollina\n\n\nWVUR\n2025-08-01\n3.8\n0.038\nWest Virginia\n\n\nMDUR\n2025-08-01\n3.6\n0.036\nMaryland\n\n\nUNRATE\n2025-08-01\n4.3\n0.043\nUnited States",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -237,7 +248,7 @@
     "section": "5.5 Statistics and Data",
     "text": "5.5 Statistics and Data\nThe term statistics can refer to numerical facts such as minimums, maximums, averages, medians, variances, and standard deviations (among others) that describe the properties of data.\nStatistics can also refer to the art and science of collecting, analyzing, interpreting, and presenting data. Statistics can also refer to the art and science of collecting, analyzing, presenting, and interpreting data.\nData are the facts collected, analyzed, and summarized for interpretation and presentation. A data set refers to all the data collected for a specific study.\nData are plural, while a data set is singular.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -248,7 +259,7 @@
     "section": "5.6 Elements, Variables, Observations",
     "text": "5.6 Elements, Variables, Observations\nAn element is the entity or entities on which data are collected.\nA variable is a characteristic of interest for the elements.\nAn observation is the set of measurements for an element.\nA data set consists of 1,200 individuals with data concerning individual income and job tenure.\n\n1,200 observations (elements)\n2 variables (income and tenure)\n2,400 data values\n\n\n\n\nExample Data Set\n\n\nIndividual\nIncome\nJob Tenure\n\n\n\n\n1\n23420\n8\n\n\n2\n33239\n10\n\n\n3\n44849\n14\n\n\n4\n54829\n17\n\n\n5\n75793\n39",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -259,7 +270,7 @@
     "section": "5.7 Measurement",
     "text": "5.7 Measurement\nReferring to the unemployment rate, there are two rows with observations for the selected geographical areas. In other words, the elements are the states on which data are collected and presented in the table. There are six variables in the table: the symbol of the variable from FRED, the date of the observation, the value of the observation, the value of the observation in decimal form, and the geography name of the observation.\nThe table contains different scales of measurement. The date variable contains information on time while the state variable is measured on the nominal scale. The nominal scale is used to identify the observational data, that is, the data in the table are organized by the geographical area of the observation. The data pertaining to the unemployment rate is ordinal data in that the measurements contain numeric information.\nBroadly speaking, data can be classified as categorical or quantitative. In the table, the variable containing the geographical names is categorical. We cannot mathematically manipulate the categorical data (subtracting 1 from Virginia does not produce a meaningful result). We could, however, create a new variable that contains numerical values to represent the categorical data, that is, the new quantitative variable would be a numerical representation of the categorical data.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -270,7 +281,7 @@
     "section": "5.8 Nominal Scale of Measurement",
     "text": "5.8 Nominal Scale of Measurement\nThe scale of measurement determines the amount of information contained in the data. Data are labels or names used to identify an attribute of an element.\nData may be numeric, non-numeric, or both. Ranking is not implied by the numeric values.\nThe individual’s grade can be represented by a character label (“Freshman”) or a numeric value (1).\n\n\n\nNominal Example\n\n\nObservation\nName\nGrade\nNumeric Grade\n\n\n\n\n1\nBob\nFreshman\n4\n\n\n2\nSally\nSophmore\n3\n\n\n3\nJim\nJunior\n2\n\n\n4\nTony\nFreshman\n4\n\n\n5\nSarah\nSenior\n1",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -281,7 +292,7 @@
     "section": "5.9 Ordinal Scale of Measurement",
     "text": "5.9 Ordinal Scale of Measurement\n\nOrdinal scales of measurement have the same properties as nominal scales of measure.\nThe ordering of the ordinal scale is meaningful.\nData may be numeric, non-numeric, or both.\nThe class rank variable is numeric and the values represent a ranking, that is, the lower the number, the higher the rank in the class of students.\n\n\n\n\nOrdinal Example\n\n\nObs\nName\nGrade\nClass Rank\n\n\n\n\n1\nBob\nFreshman\n3\n\n\n2\nSally\nFreshman\n5\n\n\n3\nJim\nFreshman\n29\n\n\n4\nTony\nFreshman\n55\n\n\n5\nSarah\nFreshamn\n144",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -292,7 +303,7 @@
     "section": "5.10 Interval Scale of Measurement",
     "text": "5.10 Interval Scale of Measurement\n\nInterval scales of measurement have the same properties as ordinal scales of measurement.\nThe ranking of the scale contains information.\nThe intervals between observations contain information.\nInterval data are always numeric.\nThe SAT score is ordinal while the difference between the highest scoring student and another student is an interval measure.\n\n\n\n\nInterval Example\n\n\nObs\nName\nSAT Score (Ordinal)\nInterval to Bob\n\n\n\n\n1\nBob\n1580\n0\n\n\n2\nSally\n1320\n260\n\n\n3\nJim\n1110\n470\n\n\n4\nTony\n1052\n528\n\n\n5\nSarah\n952\n628",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -303,7 +314,7 @@
     "section": "5.11 Ratio Scale of Measurement",
     "text": "5.11 Ratio Scale of Measurement\n\nA ratio scale of measurement has the properties of the interval scale and the ratio of the two values is useful.\nThe ratio is numeric and zero is a possible value.\nCare must be taken to define and interpret the ratio data.\nStudents take a physical fitness test with across three events with a maximum possible score of 300 points.\nThe ratio represents the percentage score of each student relative to the maximum score on the test.\n\n\n\n\nRatio Example\n\n\nObs\nName\nRaw Score (300 Max)\nRatio\n\n\n\n\n1\nBob\n248\n0.83\n\n\n2\nSally\n232\n0.77\n\n\n3\nJim\n178\n0.59\n\n\n4\nTony\n157\n0.52\n\n\n5\nSarah\n109\n0.36",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -314,7 +325,7 @@
     "section": "5.12 Categorical Measures",
     "text": "5.12 Categorical Measures\n\nCategorical variables represent types of data which may be divided into groups.\nLabels or names identify an attribute of each observation.\nCategorical and qualitative data may be used synomously.\nCan be numeric or non-numeric.\nCan be nominal or ordinal scale of measurement.\n\n\n\n\nCategorical Example\n\n\nObs\nName\nRace\nOpinion\n\n\n\n\n1\nBob\nBlack\nAgree\n\n\n2\nSally\nWhite\nDisagree\n\n\n3\nJim\nAsian\nNone\n\n\n4\nTony\nWhite\nAgree\n\n\n5\nSarah\nBlack\nStrongly Agree",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -325,7 +336,7 @@
     "section": "5.13 Quantitative versus Qualitative Data",
     "text": "5.13 Quantitative versus Qualitative Data\n\nQuantitative data capture how many or how much.\nQuantitative data are always numeric.\nQuantitative data may ordinal, ranked, interval, ratio or a combination of all types of scales.\nQuantitative data may capture how many or how much but may also capture non-quantitative information.\nOpinion surveys, for example, may ask provide a numeric scale from strongly agree (1) to strongly disagree (5).\nThe numeric measure is a proxy for the strength of agreement or disagreement.\nIn many instances, qualitative responses are transformed into numerical representations to allow for quantatitive analysis.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -336,7 +347,7 @@
     "section": "5.14 Cross-Sectional, Time Series, and Panel Data",
     "text": "5.14 Cross-Sectional, Time Series, and Panel Data\nThere are three broad types of data. Let’s establish some terminology. When we discuss data, we often refer to individuals and time. In this context, individuals can represent people, firms, airlines, cars, or some other characteristic that defines the unique observations.\nFor example, if we had data on the average fuel mileage of passenger vehicles in 2019, then individuals would refer to each type of passenger vehicle. If we had randomized data on 100,000 taxpayers in Virginia for 2018, then individuals would refer to unique taxpayers. Lastly, if we collected data on airplane arrivals at Dulles International Airport for each day in 2019, then we would have individual observations across time. We could organize this data by plane registration, airline, or country of origin, or some other category of interest.\nCross-sectional data are data collected across individuals at the same point of time. There is no depth to cross-sectional data, that is, the data represent a snapshot at a specific point in time.\nTime series data are data collected over several time periods. Data for the headline unemployment graph for the United States are time series data.In this context, time series data refers to one variable across time. One can have a collection of time series variables (inflation rate, unemployment rate, and so on). Time series data has depth but not breadth.\nPanel data are data collected across individuals and time. If we collected data for the unemployment rate across states from 2013 to 2025, then we would have individuals (states) and time (months) as defining characteristics of our data. Panel data has breadth (across individuals) and depth (across time).",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -347,7 +358,7 @@
     "section": "5.15 Types of Studies",
     "text": "5.15 Types of Studies\n\nObservational\n\nObservational studies are non-experimental studies.\nNo attempt is made (or can be made) to control or influence the variables of interest.\nIf we study the impact of smoking on birth weight, we do not control who smokes and who does not smoke during pregnancy.\nIf we examine how exports influence economic growth across countries, we do not control export policy.\n\nConvenience\n\nA convenience study is the most common method of non-probability sampling.\nObservations are obtained because individuals are available to the researcher.\nThis type of study is cheaper and easier than other types, hence it’s popularity.\nThere is no attempt to control for sampling or to randomly sample the population of interest.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -358,7 +369,7 @@
     "section": "5.16 Population versus Sample Data",
     "text": "5.16 Population versus Sample Data\nWhen working with data, a question may arise whether it is appropriate to work with the population or a sample.\nThe population represents all the individuals for a particular study while a sample is a subset of the population.\nLet’s say we wanted to calculate the average age of students at Old Dominion University for the Fall 2025 semester. If we had access to student records, this might be a relatively easy exercise. In other words, if we had access to data for the population of students, we could calculate the average age of the student population.\nNow, let’s assume we wanted to calculate the average age for all college students in the United States. The problem has become more difficult. We could try and obtain all the records from all the colleges and universities in the United States but this effort might be costly and complex.\nWe could instead sample different colleges and universities and construct an estimate of the average age of college students. The “closer” our sample is to the population, the better our estimate of the average age of all the college students in the United States. If we only selected colleges and universities with undergraduate programs, our sample would likely understate the average age of college students. If we only selected graduate programs at colleges and universities, our sample would likely overstate the average age of college students.\nThe process by which we use a sample to estimate the properties of the population is statistical inference.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -367,9 +378,9 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n48.06\n52.58\n50.17",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n54.98\n48.87\n50.19",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -380,7 +391,7 @@
     "section": "5.18 Statistical Inference",
     "text": "5.18 Statistical Inference\n\nObtaining data for the population of interest may be difficult, complex, and costly.\nFor cost, complexity, and time considerations, we may use a subset or sample of the population.\nThe decennial Census of the population attempts to count every person in the United States.\nEvery non-Census year, a sample of 1-2 million individuals is taken to estimate the properties of the population.\nStatistical inference is the process of using sample data to make estimates and test hypotheses about the characteristics of the population.\nSince we are using sample data, our estimates are not precise, but come with a measure of error.\nThis course is, at its core, about using sample data to make inferences about the population.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
     ]
   },
@@ -391,7 +402,7 @@
     "section": "",
     "text": "6.1 Why use R and RStudio?\nWe will use R and RStudio extensively in this class. You will also use these programs extensively in the following classes on the econometrics sequence.\nA frequently asked question is “why can’t we use Excel?”\nThe simple answer is that Excel is good for some things but R is better for the things we want to do in this and other classes.\nWriting code (programming) allows for:\nOther programs have lower fixed costs than R. These programs, whether Excel, SAS, SPSS, or TSP, have ‘built in’ functions and interfaces that allow ‘easier entry’ than R. In other words, you will invest less time to learn how to start working in other programs than R.\nSo, why then use R? First, coding is like learning a second language. It takes a while to learn the logic and ‘flow’ of the programming language. Second, unlike many other programs, you have a very good idea of what R is doing. If you write code, you learn where data come from, how they are formatted, the properties of data, and you gain a much deeper understanding of the process by which you arrive at an answer.\nAnother strength of this approach is that once you learn to code in R and use RStudio, your marginal cost of learning Python, C++, or SQL is lower because the logic behind each of these languages is similar.\nSimply put, coding is as much about the journey as the destination.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
@@ -402,7 +413,7 @@
     "section": "",
     "text": "Reproducibility (code provides transparency to processes)\nCustomization (many solutions to a problem)\nAutomation (code once, run many times)\nAccountability (the programmer is responsible for what the code does)",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
@@ -413,7 +424,7 @@
     "section": "6.2 R and RStudio: An Introduction",
     "text": "6.2 R and RStudio: An Introduction\nYou will need to install R and RStudio.\nEach is a piece of software. R is the ‘engine’ and RStudio is the interface.\nYou can work with R directly, but RStudio makes the process less painful.\nR is the statistical software package that we will use throughout the course,\nRStudio is an interface that makes using R much easier.\nThe R Project is located at: https://www.r-project.org/",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
@@ -424,7 +435,7 @@
     "section": "6.3 Downloading R",
     "text": "6.3 Downloading R\nYou can download R at: https://cloud.r-project.org/\nSelect the correct operating system to download and install R.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
@@ -435,7 +446,7 @@
     "section": "6.4 Downloading RStudio",
     "text": "6.4 Downloading RStudio\nYou can download RStudio at: https://posit.co/download/rstudio-desktop/\nNote how Posit tells you to install R and then RStudio.\nYou can also use Posit Cloud from Posit at: https://posit.cloud/",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
@@ -446,7 +457,7 @@
     "section": "6.5 Tutorials in R",
     "text": "6.5 Tutorials in R\nThere are numerous tutorials online on how to use R.\nSome overviews that might be helpful:\nThe Big Book of R: https://www.bigbookofr.com/\nGetting Started with R: https://rfortherestofus.com/courses/getting-started/\nR Programming for Beginners: https://youtu.be/fDRa82lxzaU\nR Programming Tutorial: https://youtu.be/_V8eKsto3Ug",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
@@ -457,7 +468,7 @@
     "section": "6.6 How to Get Better at Coding",
     "text": "6.6 How to Get Better at Coding\nNo coder works alone. Everyone (and yes, I mean everyone) relies on the expertise of others to code.\nWhat does this mean?\nWhen you are working on code, try it yourself first. If something doesn’t work, look for small typos.\nYou can then start asking other resources for help.\nArtificial Intelligence (AI) is helpful to debug code. It can even write code for you, if you know what you are doing.\nRemember, however, that AI is only as good as its algorithm and your prompt. It can (and will) give you answers that are incorrect, answers that appear correct but are wrong, or lead you through solution paths that are inefficient.\nCoding is a dance between what you know and what you can find. The more that you do on your own, the better you will be able to use AI to help you improve (not write) your code.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
@@ -468,7 +479,7 @@
     "section": "6.7 Opening RStudio",
     "text": "6.7 Opening RStudio\n\n\n\nScreenshot of RStudio in Windows\n\n\nWhen you open RStudio for the first time, you will see four panels like in the above image. It is likely that your version of RStudio has a white background with blue or black text.\nIf you would like to change this, go to “Tools &gt; Global Options… &gt; Appearance &gt; Editor theme”.\nYou can choose a darker theme, or leave it a lighter theme.\nThe four panels are as follows:\n\nTop Left: Source – This is where you will write the R code you want to save. In other words, this is where you write and save your work, usually called R scripts (.R files).\nBottom Left: Console – When you execute (or run) code, you will usually see output here. This is also a place you can write code you do not want to be part of your final script. If you were a painter, the Source panel would be your canvas and the Console would be your palette.\nTop Right: Environment – Here is where we will be able to see all the objects (data, etc.) that we are working with in the moment. To clear your environment, use the code rm(list = ls()).\nBottom Right: Output – This is mostly where you will see plots you have generated, but can also see files on your computer, packages you have installed, and “Help” for certain functions.\n\n\n\n\nScreenshot of Rstudio with panel labels.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
@@ -479,7 +490,7 @@
     "section": "",
     "text": "7.1 Assigning Numeric Values to Variables\nWe can use the assignment operator in R to assign values to a variable. The assignment operator can be thought of as moving a value, character, date, or other form into a named variable.\nThe assignment operator is “&lt;-”.\nThe line, “x2 &lt;- 1056”, means assign the value 1056 to the variable x2.\nIn the code below, we assign the numerical value of 2 to the variable x1 and the numerical value of 4.5 to the variable x2.\nWe can assign the value contained in one variable in another. For example, we can assign x2 to x3 and also specify that the integer value of x2 is assigned to x3.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Variables in R</span>"
     ]
   },
@@ -490,7 +501,7 @@
     "section": "",
     "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Variables in R</span>"
     ]
   },
@@ -501,7 +512,7 @@
     "section": "7.2 Assigning Character Values to a Variable",
     "text": "7.2 Assigning Character Values to a Variable\nWe can assign character values to a variable. In the following code, we assign the name “Timothy” as a character to the variable .\nThere is a subtle but important difference to storing a value as a character or as a numeric variable.\nWe assign the or value 06250 to and 06250 as a or value to .\nNote what happens: when stored as a numeric value, 06250 is stored as 6250. When 06250 is stored as “06250” as a character variable, the character variable does not “lose” then “0” in the front of “06250”.\nThis can be very important if you are storing an identification value with a leading 0.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Variables in R</span>"
     ]
   },
@@ -512,7 +523,7 @@
     "section": "7.3 Assigning Date Values to a Variable",
     "text": "7.3 Assigning Date Values to a Variable\nWe can also store dates and work with dates. We assign 2020-09-01 a date value using the lubridate package. Note that we tell the package that the format of the date is year-month-day (ymd).\nLikewise, we assign 09-05-2020 to date2 as a date variable but tell the package that the format of the date is now month-day-year (mdy).\nNote that even though the dates are in different formats, the lubridate package transforms the dates into a format recognizable by R.\nHaving transformed the date values, we can calculate the time difference by assigning the difference between the two dates to variable date3.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Variables in R</span>"
     ]
   },
@@ -523,7 +534,7 @@
     "section": "7.4 Creating Vectors",
     "text": "7.4 Creating Vectors\nWe can now create a vector that contains several values. In the following example, we combine several numbers and assign them to the variable x5.\nWe can transpose the variable x5. Notice the difference between x5 and its transpose. X5, when output to a table, has five rows and one column. The transpose of X5, when it output to a table, is one row and five columns.\nWe can also combine other variables (if they are the same type) to form a new vector. You can combine single element variables with vectors to create a new vector x6.\nWe can also combine vectors. We create x7 by combining the variables x1, x2, x3, x4 with the vector x5.\n\nrm(list = ls())\n\n#Load packages\n\nlibrary(kableExtra, quiet = TRUE)\n\n# Assign values to x1, x2, x3, x4\n\nx1 &lt;- 1\nx2 &lt;- -5\nx3 &lt;- 136\nx4 &lt;- 0.47\n\n#Create a vector \n\nx5 &lt;- c(12, 13, 14, 25, 100)\n\n#Transpose x5\n\nx6 &lt;- t(x5)\n\n#Use existing variables to create a row vector\n\nx7 &lt;- c(x1, x2, x3, x4, x5)\n\n# Use kable To Create Tables of X5 and X6\n# align = 'c' -&gt; aligns to center\n# digits = 0  -&gt; no decimals\n# col.names -&gt; sets a name for the column\n\nkable(x5,\n      align = 'c',\n      digits = 0,\n      col.names = c('X5'),\n      caption = 'Table Containing Variable X5')\n\nkable(x6,\n      align = 'c',\n      col.names = c('A','B','C','D','E'),\n      caption = 'Table Containing Transpose of X5')\n\nkable(x7,\n      align = 'c',\n      digits = 0,\n      col.names = c('X7'),\n      caption = 'Table Containing Variable X7')\n\n\nTable Containing Variable X5\n\n\nX5\n\n\n\n\n12\n\n\n13\n\n\n14\n\n\n25\n\n\n100\n\n\n\n\nTable Containing Transpose of X5\n\n\nA\nB\nC\nD\nE\n\n\n\n\n12\n13\n14\n25\n100\n\n\n\n\nTable Containing Variable X7\n\n\nX7\n\n\n\n\n1\n\n\n-5\n\n\n136\n\n\n0\n\n\n12\n\n\n13\n\n\n14\n\n\n25\n\n\n100\n\n\n\n\n\nWhen we display x5, for example, we note is a vector 5 elements. We can also directly manipulate x5 by multiplying it by two.\nWe should, however, understand that product of x5 and 2 is not stored, it’s a direct manipulation and not available for future use.\nIf we wanted to store it, we would have to assign it to a variable. Here, we assign the product of x5 and 2 to the variable x8.\n\nrm(list = ls())\n\n#Load packages\n\nlibrary(kableExtra, quiet = TRUE)\n\n#Create a vector \n\nx5 &lt;- c(12, 13, 14, 25, 100)\n\nkable(x5*2,\n      align = 'c',\n      digits = 2,\n      col.names = c('X5 * 2'),\n      caption = 'Table of Variable X5 - Each Element Times 2')\n\n#Assign x5*2 to x8\n\nx8 &lt;- x5*2\n\nkable(x8,\n      align = 'c',\n      digits = 1,\n      col.names = c('X8'),\n      caption = 'Table of Variable X8')\n\n\nTable of Variable X5 - Each Element Times 2\n\n\nX5 * 2\n\n\n\n\n24\n\n\n26\n\n\n28\n\n\n50\n\n\n200\n\n\n\n\nTable of Variable X8\n\n\nX8\n\n\n\n\n24\n\n\n26\n\n\n28\n\n\n50\n\n\n200",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Variables in R</span>"
     ]
   },
@@ -534,7 +545,7 @@
     "section": "7.5 Assignment and Vector Practice",
     "text": "7.5 Assignment and Vector Practice\nWe have now worked on the basics of assignment elements to vectors and manipulating vectors in R.\nAs practice, try the following.\nCreate a vector made of the following numbers: 5, 10, 12, 24\nCreate a second vector that divides each element of the first vector by 2.\nOutput the second vector to a table.\nYou can build off the example below.\n\nrm(list = ls())\n\nlibrary(kableExtra, quiet = TRUE)\n\nvector_1 &lt;- c(4, 16, 25, 81, 10000)\n\nvector_2 &lt;- sqrt(vector_1)\n\nkable(vector_2,\n      align = 'c',\n      col.names = 'Vector 2')\n\n\n\n\nVector 2\n\n\n\n\n2\n\n\n4\n\n\n5\n\n\n9\n\n\n100",
     "crumbs": [
-      "R and Descriptive Statistics",
+      "Introduction to R",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Variables in R</span>"
     ]
   },
@@ -649,83 +660,6 @@
     ]
   },
   {
-    "objectID": "mod-1-5-descriptive-stats.html",
-    "href": "mod-1-5-descriptive-stats.html",
-    "title": "9  Descriptive Statistics",
-    "section": "",
-    "text": "9.1 Overview\nNow that we have established a foundation of working with R and RStudio, we can use descriptive statistics to discuss the properties of population and sample data.\nIn this section, we will cover the following topics:",
-    "crumbs": [
-      "R and Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-5-descriptive-stats.html#overview",
-    "href": "mod-1-5-descriptive-stats.html#overview",
-    "title": "9  Descriptive Statistics",
-    "section": "",
-    "text": "Frequency Distributions\nRelative Frequency Distributions\nCenter, Spread, and Dispersion of Data\nMean, Median, and Mode\nTrimmed and Weighted Means\nRange, Variance, and Standard Deviation\nCoefficient of Variation\nZ-Scores",
-    "crumbs": [
-      "R and Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-5-descriptive-stats.html#frequency-distributions",
-    "href": "mod-1-5-descriptive-stats.html#frequency-distributions",
-    "title": "9  Descriptive Statistics",
-    "section": "9.2 Frequency Distributions",
-    "text": "9.2 Frequency Distributions\n\nThe frequency of a category, class, or value is the number of times it occurs in a data set.\nA frequency distribution is summary of data.\nA frequency distribution is the pattern of frequencies of variable of interest.\nGiven several non-overlapping categories or classes, a frequency distribution contains the number of observations per class or category.\nA frequency distribution, to be complete, must be:\n\nMutually exclusive - the classes or categories do not overlap.\nCollectively exhaustive - all the observations are described by the distribution\n\nA frequency distribution may provide insights about the data that cannot be quickly obtained by examining the data itself.",
-    "crumbs": [
-      "R and Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-5-descriptive-stats.html#example-of-frequency-distribution",
-    "href": "mod-1-5-descriptive-stats.html#example-of-frequency-distribution",
-    "title": "9  Descriptive Statistics",
-    "section": "9.3 Example of Frequency Distribution",
-    "text": "9.3 Example of Frequency Distribution\nFor the following example, we use the mtcars data frame.\nFirst, we group the data by the cylinder variable. The group_by function notifies R that the data are organized by a specific variable or variables.\nHere, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.\nSecond, we create a new variable freq_cyl using the summarize function. The variable freq_cyl is equal to the number of observations in each group.\nWe then use the arrange function to sort the resulting frequencies from lowest number to the highest number.\nWe create a frequency table using the kable function.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\ndata(\"mtcars\")\n\ncyl_freq &lt;- mtcars %&gt;%\n  group_by(cyl) %&gt;%\n  summarize(freq_cyl = n()) %&gt;%\n  arrange(freq_cyl)\n\nkable(cyl_freq,\n      col.names = c(\"Cylinders\", \"Frequency\"),\n      align = c('c','c'),\n      caption = 'Frequency Distribution of Cylinders') %&gt;%\nkable_styling(font_size = 14)\n\n\nFrequency Distribution of Cylinders\n\n\nCylinders\nFrequency\n\n\n\n\n6\n7\n\n\n4\n11\n\n\n8\n14",
-    "crumbs": [
-      "R and Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-5-descriptive-stats.html#frequency-example",
-    "href": "mod-1-5-descriptive-stats.html#frequency-example",
-    "title": "9  Descriptive Statistics",
-    "section": "9.3 Frequency Example",
-    "text": "9.3 Frequency Example\nFor the following example, we use the mtcars data frame.\nFirst, we group the data by the cylinder variable. The group_by function notifies R that the data are organized by a specific variable or variables.\nHere, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.\nSecond, we create a new variable freq_cyl using the summarize function. The variable freq_cyl is equal to the number of observations in each group.\nWe then use the arrange function to sort the resulting frequencies from lowest number to the highest number.\nWe create a frequency table using the kable function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "R and Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-5-descriptive-stats.html#census-frequency",
-    "href": "mod-1-5-descriptive-stats.html#census-frequency",
-    "title": "9  Descriptive Statistics",
-    "section": "9.4 Census Frequency",
-    "text": "9.4 Census Frequency\nIn the example below, we use the censusapi package to obtain data from the U.S. Census Bureau’s American Community Survey.\nWe use the API to download data on counties and county-equivalent geographies for the United States. We specify two variables, the name of each geography and the population of each geography.\nWe rename the census population variable, B01001_001E, to total_pop.\nWe want to create categories for different ranges of population. To do this, we use the case_when function.\nHaving created the population categories, we group_by the population category variable and then use the summarize function to obtain a count of the number of observations in each category.\n\n# Clear Memory \nrm(list = ls())\n\n# Load Libraries\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\n#B01001_001E is total population\n#Case When to Create Categories\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(total_pop = B01001_001E) %&gt;%\nmutate(pop_cat = case_when(total_pop &gt; 99999 ~ \"Greater than 99,999\",\n                           total_pop &gt; 49999 ~ \"50,000 - 99,999\",\n                           total_pop &gt; 24999 ~ \"25,000 - 49,999\",\n                           total_pop &gt; 9999  ~ \"10,000 - 24,999\",\n                           TRUE ~ \"0 - 9,999\"))\n\n# Summarize to Create Frequencies by Categories\n\ncounty_freq &lt;- county_pop %&gt;%\n  group_by(pop_cat) %&gt;%\n  summarize(freq_pop = n()) %&gt;%\n  arrange(pop_cat)\n\n# Use frequency data frame to produce table\n\nkable(county_freq,\n      col.names = c(\"Category\", \"Frequency\"),\n      align = c('c','c'),\n      caption = 'Frequency of County Population, 2023') %&gt;%\nkable_styling(font_size = 14)\n\n\nFrequency of County Population, 2023\n\n\nCategory\nFrequency\n\n\n\n\n0 - 9,999\n743\n\n\n10,000 - 24,999\n823\n\n\n25,000 - 49,999\n643\n\n\n50,000 - 99,999\n397\n\n\nGreater than 99,999\n616",
-    "crumbs": [
-      "R and Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "mod-1-5-descriptive-stats.html#frequency-distributions-1",
-    "href": "mod-1-5-descriptive-stats.html#frequency-distributions-1",
-    "title": "9  Descriptive Statistics",
-    "section": "9.5 Frequency Distributions",
-    "text": "9.5 Frequency Distributions\n\nWe can also graphically depict the frequency distribution.\nWe can use ggplot to create a graphical plot of the frequency distribution.\nWe have categories (population size) on the x-axis and the frequencies on the y-axis.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "R and Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Descriptive Statistics</span>"
-    ]
-  },
-  {
     "objectID": "mod-2-0-overview.html",
     "href": "mod-2-0-overview.html",
     "title": "9  Module 2 Overview",
@@ -792,17 +726,6 @@
     ]
   },
   {
-    "objectID": "mod-2-1-frequency.html#overview",
-    "href": "mod-2-1-frequency.html#overview",
-    "title": "10  Descriptive Statistics",
-    "section": "",
-    "text": "Frequency Distributions\nRelative Frequency Distributions\nCenter, Spread, and Dispersion of Data\nMean, Median, and Mode\nTrimmed and Weighted Means\nRange, Variance, and Standard Deviation\nCoefficient of Variation\nZ-Scores",
-    "crumbs": [
-      "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Descriptive Statistics</span>"
-    ]
-  },
-  {
     "objectID": "mod-2-1-frequency.html#frequency-distributions",
     "href": "mod-2-1-frequency.html#frequency-distributions",
     "title": "10  Frequency Distributions",
@@ -825,6 +748,17 @@
     ]
   },
   {
+    "objectID": "mod-2-1-frequency.html#mtcars-frequency",
+    "href": "mod-2-1-frequency.html#mtcars-frequency",
+    "title": "10  Frequency Distributions",
+    "section": "10.3 Mtcars Frequency",
+    "text": "10.3 Mtcars Frequency\nFor the following example, we use the mtcars data frame.\nFirst, we group the data by the cylinder variable. The group_by function notifies R that the data are organized by a specific variable or variables.\nHere, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.\nSecond, we create a new variable freq_cyl using the summarize function. The variable freq_cyl is equal to the number of observations in each group.\nWe then use the arrange function to sort the resulting frequencies from lowest number to the highest number.\nWe create a frequency table using the kable function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+    ]
+  },
+  {
     "objectID": "mod-2-1-frequency.html#census-frequency",
     "href": "mod-2-1-frequency.html#census-frequency",
     "title": "10  Frequency Distributions",
@@ -841,17 +775,6 @@
     "title": "10  Frequency Distributions",
     "section": "10.5 Frequency Distributions",
     "text": "10.5 Frequency Distributions\nWe can graphically depict the frequency distribution.\nWe use the ggplot package to create a graphical plot of the frequency distribution.\nTo learn more about the capabilities of ggplot, see https://ggplot2.tidyverse.org/.\nWe have categories (population size) on the x-axis and the frequencies on the y-axis.\nWe use the geom_col command to create a column chart of the frequencies. We choose to fill the columns with the darkblue color.\nThe labs command specifies the labels for the plot, to include the x-axis, y-axis, title, and subtitle.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
-    ]
-  },
-  {
-    "objectID": "mod-2-1-frequency.html#mtcars-frequency",
-    "href": "mod-2-1-frequency.html#mtcars-frequency",
-    "title": "10  Frequency Distributions",
-    "section": "10.3 Mtcars Frequency",
-    "text": "10.3 Mtcars Frequency\nFor the following example, we use the mtcars data frame.\nFirst, we group the data by the cylinder variable. The group_by function notifies R that the data are organized by a specific variable or variables.\nHere, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.\nSecond, we create a new variable freq_cyl using the summarize function. The variable freq_cyl is equal to the number of observations in each group.\nWe then use the arrange function to sort the resulting frequencies from lowest number to the highest number.\nWe create a frequency table using the kable function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Descriptive Statistics",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
