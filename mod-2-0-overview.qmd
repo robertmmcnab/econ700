@@ -1,0 +1,58 @@
+---
+title: "Module 2 Overview"
+---
+
+## Introduction
+
+Welcome to **Module 2** of ECON 700.
+
+In this module, you will deepen your understanding of how to summarize and interpret data using descriptive statistics. You will learn to organize data into frequency and relative frequency distributions, calculate measures that describe the center and spread of data, and assess how individual observations compare to the overall dataset.
+
+Emphasis will be placed on using R to compute and visualize descriptive statistics, including the mean, median, mode, range, variance, standard deviation, coefficient of variation, and z-scores. By the end of this module, you will be able to use these tools to describe key features of economic data accurately and communicate your findings effectively through reproducible R-based analyses.
+
+------------------------------------------------------------------------
+
+## Learning Objectives
+
+By the end of this module, you should be able to:
+
+-   Construct and interpret **frequency and relative frequency distributions** to summarize quantitative data.
+
+-   Compute and interpret **measures of central tendency**, including the mean, median, mode, and trimmed and weighted means.
+
+-   Calculate and explain **measures of variability**, including the range, variance, standard deviation, and coefficient of variation.
+
+-   Use **z-scores** to assess relative position and identify outliers within a dataset.
+
+-   Apply R to **generate, visualize, and interpret** descriptive statistics and graphical summaries of economic data.
+
+------------------------------------------------------------------------
+
+## Readings & Resources
+
+-   Irizarry, R. (2025). *Introduction to Data Science: Data Wrangling and Visualization with R*. (Chapters 1-2). Available for free at: <https://rafalab.dfci.harvard.edu/dsbook-part-1/>
+
+-   Wickham, H., & Grolemund, G. (2017). *R for Data Science*. (Chapters 1–3).\
+
+-   Online R documentation: <https://cran.r-project.org/manuals.html>\
+
+-   [RStudio Cheat Sheets](https://posit.co/resources/cheatsheets/)
+
+------------------------------------------------------------------------
+
+## Activities
+
+-   Complete the hands-on coding exercises embedded in each lesson.\
+-   Complete the weekly class assignment.\
+-   Participate in the discussion form.\
+-   Take the weekly knowledge quiz.\
+
+------------------------------------------------------------------------
+
+## Lessons in this Module
+
+-   [2.1 – Frequency Distributions](mod-2-1-frequency.qmd)\
+
+------------------------------------------------------------------------
+
+Next: Start with [**Frequency Distributions**](mod-2-1-frequency.qmd).

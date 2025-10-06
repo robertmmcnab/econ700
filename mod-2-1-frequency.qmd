@@ -1,5 +1,5 @@
 ---
-title: "Descriptive Statistics"
+title: "Frequency Distributions"
 format:
   html:
     toc: true
@@ -13,49 +13,51 @@ execute:
   webR: true
 ---
 
-## Overview
-
-Now that we have established a foundation of working with R and RStudio, we can use **descriptive statistics** to discuss the properties of population and sample data.
-
-In this section, we will cover the following topics:
-
--   Frequency Distributions
-
--   Relative Frequency Distributions
-
--   Center, Spread, and Dispersion of Data
-
--   Mean, Median, and Mode
-
--   Trimmed and Weighted Means
-
--   Range, Variance, and Standard Deviation
-
--   Coefficient of Variation
-
--   Z-Scores
-
 ## Frequency Distributions
 
--   The **frequency** of a category, class, or value is the number of times it occurs in a data set.
+The **frequency** of a category, class, or value is the number of times it occurs in a data set.
 
--   A **frequency distribution** is summary of data.
+A **frequency distribution** is summary of data.
 
--   A frequency distribution is the pattern of frequencies of variable of interest.
+A frequency distribution is the pattern of frequencies of variable of interest.
 
--   Given several **non-overlapping** categories or classes, a frequency distribution contains the number of observations per class or category.
+Given several **non-overlapping** categories or classes, a frequency distribution contains the number of observations per class or category.
 
--   A frequency distribution, to be complete, must be:
+A frequency distribution, to be complete, must be:
 
-    -   **Mutually exclusive** - the classes or categories do not overlap.
+-   **Mutually exclusive** - the classes or categories do not overlap.
 
-    -   **Collectively exhaustive** - all the observations are described by the distribution
+-   **Collectively exhaustive** - all the observations are described by the distribution
 
--   A frequency distribution may provide insights about the data that cannot be quickly obtained by examining the data itself.
+A frequency distribution may provide insights about the data that cannot be quickly obtained by examining the data itself.
 
 ## Frequency Example
 
-For the following example, we use the **mtcars** data frame. 
+In the example below, we have six observations (students).
+
+The students can be grouped by their graduating year. There are 3 students that graduate in 2028 and 4 students that graduate in 2029.
+
+The number of students for each group is the frequency (count) associated with the group, that is,
+
+-   Graduating Year 2028: 3
+
+-   Graduating Year 2029: 4
+
+| Student | Graduating Year | Grade Point Average |
+|---------|-----------------|---------------------|
+| 1       | 2028            | 3.0                 |
+| 2       | 2028            | 2.8                 |
+| 3       | 2028            | 3.5                 |
+| 4       | 2029            | 2.7                 |
+| 5       | 2029            | 2.8                 |
+| 6       | 2029            | 3.0                 |
+| 7       | 2029            | 3.6                 |
+
+: Table of Observations
+
+## Mtcars Frequency
+
+For the following example, we use the **mtcars** data frame.
 
 First, we **group** the data by the cylinder variable. The **group_by** function notifies R that the data are organized by a specific variable or variables.
 
@@ -86,11 +88,11 @@ kable(cyl_freq,
 
 ## Census Frequency
 
-In the example below, we use the **censusapi** package to obtain data from the U.S. Census Bureau's *American Community Survey*. 
+In the example below, we use the **censusapi** package to obtain data from the U.S. Census Bureau's *American Community Survey*.
 
 We use the API to download data on counties and county-equivalent geographies for the United States. We specify two variables, the name of each geography and the population of each geography.
 
-We rename the census population variable, **B01001_001E**, to **total_pop**. 
+We rename the census population variable, **B01001_001E**, to **total_pop**.
 
 We want to create categories for different ranges of population. To do this, we use the **case_when** function.
 
@@ -145,12 +147,17 @@ kable_styling(font_size = 14)
 
 ## Frequency Distributions
 
-- We can also graphically depict the frequency distribution.
+We can graphically depict the frequency distribution.
 
-- We can use **ggplot** to create a graphical plot of the frequency distribution.
+We use the **ggplot** package to create a graphical plot of the frequency distribution.
 
-- We have categories (population size) on the x-axis and the frequencies on the y-axis.
+To learn more about the capabilities of **ggplot**, see <https://ggplot2.tidyverse.org/>.
 
+We have categories (population size) on the x-axis and the frequencies on the y-axis.
+
+We use the **geom_col** command to create a column chart of the frequencies. We choose to fill the columns with the *darkblue* color.
+
+The **labs** command specifies the labels for the plot, to include the x-axis, y-axis, title, and subtitle.
 
 ```{webr-r}
 
@@ -172,4 +179,3 @@ labs(title    = 'Frequency Distribution for Cylinders',
      y        = 'Frequency',
      x        = 'Number of Cylinders')
 ```
-
