@@ -52,6 +52,7 @@ By the end of this module, you should be able to:
 ## Lessons in this Module
 
 -   [2.1 – Frequency Distributions](mod-2-1-frequency.qmd)\
+-   [2.1 - Measures of Central Tendency](mod-2-2-central.qmd)
 
 ------------------------------------------------------------------------
 

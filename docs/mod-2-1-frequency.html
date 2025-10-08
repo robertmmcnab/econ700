@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./mod-2-2-central.html" rel="next">
 <link href="./mod-2-0-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -408,7 +409,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\ndata(\"mtcars\")\n\ncyl_freq <- mtcars %>%\n  group_by(cyl) %>%\n  summarize(freq_cyl = n()) %>%\n  arrange(freq_cyl)\n\nkable(cyl_freq,\n      col.names = c(\"Cylinders\", \"Frequency\"),\n      align = c('c','c'),\n      caption = 'Frequency Distribution of Cylinders') ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(\"mtcars\")\n\ncyl_freq <- mtcars %>%\n  group_by(cyl) %>%\n  summarize(freq_cyl = n()) %>%\n  arrange(freq_cyl)\n\nggplot(data = cyl_freq,\n       aes(x    = cyl,\n           y    = freq_cyl)) +\ngeom_col(fill = 'darkblue') +\nlabs(title    = 'Frequency Distribution for Cylinders',\n     subtitle = 'MTCARS data',\n     y        = 'Frequency',\n     x        = 'Number of Cylinders')","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\ndata(\"mtcars\")\n\ncyl_freq <- mtcars %>%\n  group_by(cyl) %>%\n  summarize(freq_cyl = n()) %>%\n  arrange(freq_cyl)\n\nkable(cyl_freq,\n      col.names = c(\"Cylinders\", \"Frequency\"),\n      align = c('c','c'),\n      caption = 'Frequency Distribution of Cylinders') ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(\"mtcars\")\n\ncyl_freq <- mtcars %>%\n  group_by(cyl) %>%\n  summarize(freq_cyl = n()) %>%\n  arrange(freq_cyl)\n\nggplot(data = cyl_freq,\n       aes(x    = cyl,\n           y    = freq_cyl)) +\ngeom_col(fill = 'darkblue') +\nlabs(title    = 'Frequency Distribution for Cylinders',\n     subtitle = 'MTCARS data',\n     y        = 'Frequency',\n     x        = 'Number of Cylinders')","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(\"mtcars\")\n\ncyl_freq <- mtcars %>%\n  group_by(cyl) %>%\n  summarize(freq_cyl = n()) %>%\n  mutate(rel_freq = freq_cyl/sum(freq_cyl)) %>%\n  arrange(rel_freq)\n\nkable(cyl_freq,\n      col.names = c(\"Cylinders\", \"Frequency\", \n                    \"Relative Frequency\"),\n      align     = c('c','c','c'),\n      digits    = 2,\n      caption   = 'Frequency Distribution') ","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\n# Use GGPLOT\n# x-axis -> weight\n# y-axis -> mpg\n# geom_point -> scatterplot\n# theme_economic -> presentation\n\nggplot(data = mtcars,\n       aes(x = wt*1000,\n           y = mpg)) +\ngeom_point()+\ntheme_minimal() +\nlabs(x = \"Weight in Pounds\",\n     y = \"Miles per Gallon\",\n     title = 'Scatterplot of Car Weight and Miles per Gallon',\n     subtitle = 'MTCARS Data')","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1662,6 +1663,35 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -1792,6 +1822,12 @@ globalThis.qwebrExecuteCode = async function (
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency Distributions</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-2-2-central.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Central Tendency</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -1833,6 +1869,10 @@ globalThis.qwebrExecuteCode = async function (
   <li><a href="#mtcars-frequency" id="toc-mtcars-frequency" class="nav-link" data-scroll-target="#mtcars-frequency"><span class="header-section-number">10.3</span> Mtcars Frequency</a></li>
   <li><a href="#census-frequency" id="toc-census-frequency" class="nav-link" data-scroll-target="#census-frequency"><span class="header-section-number">10.4</span> Census Frequency</a></li>
   <li><a href="#frequency-distributions-1" id="toc-frequency-distributions-1" class="nav-link" data-scroll-target="#frequency-distributions-1"><span class="header-section-number">10.5</span> Frequency Distributions</a></li>
+  <li><a href="#relative-frequency-distributions" id="toc-relative-frequency-distributions" class="nav-link" data-scroll-target="#relative-frequency-distributions"><span class="header-section-number">10.6</span> Relative Frequency Distributions</a></li>
+  <li><a href="#relative-frequency-mtcars" id="toc-relative-frequency-mtcars" class="nav-link" data-scroll-target="#relative-frequency-mtcars"><span class="header-section-number">10.7</span> Relative Frequency: Mtcars</a></li>
+  <li><a href="#relative-frequency-census" id="toc-relative-frequency-census" class="nav-link" data-scroll-target="#relative-frequency-census"><span class="header-section-number">10.8</span> Relative Frequency: Census</a></li>
+  <li><a href="#scatterplots" id="toc-scatterplots" class="nav-link" data-scroll-target="#scatterplots"><span class="header-section-number">10.9</span> Scatterplots</a></li>
   </ul>
 </nav>
     </div>
@@ -2316,6 +2356,102 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>The <strong>labs</strong> command specifies the labels for the plot, to include the x-axis, y-axis, title, and subtitle.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="relative-frequency-distributions" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="relative-frequency-distributions"><span class="header-section-number">10.6</span> Relative Frequency Distributions</h2>
+<p>The frequency distribution may not be as informative as we would like if the number of observations is sufficiently large.</p>
+<p>In the frequency distribution for the population of U.S. counties, there were more than 600 counties with populations between 10,000 and 24,999 individuals. How does this compare with the number of counties with populations less than 10,000?</p>
+<p>A <strong>relative frequency</strong> distribution contains information on the <strong>proportion</strong> of observations in each class relative to the total number of observations.</p>
+<p>Let <span class="math inline">\(n\)</span> be the total number of observations.</p>
+<p>Let <span class="math inline">\(i\)</span> represent the number of classes or categories.</p>
+<p>Let <span class="math inline">\(n_i\)</span> be the total number of observations in the <em>i-th</em> class.</p>
+<p><span class="math display">\[\text{Relative Frequency of Class}_i = \frac{n_i}{n}\]</span></p>
+</section>
+<section id="relative-frequency-mtcars" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="relative-frequency-mtcars"><span class="header-section-number">10.7</span> Relative Frequency: Mtcars</h2>
+<p>We use the <strong>mtcars</strong> example data.</p>
+<p>We <strong>group</strong> the data by the cylinder variable.</p>
+<p>We estimate the frequency by cylinder.</p>
+<p>We estimate the relative frequency using the <strong>mutate</strong> function.</p>
+<p>We create a frequency table using the <strong>kable</strong> function.</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="relative-frequency-census" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="relative-frequency-census"><span class="header-section-number">10.8</span> Relative Frequency: Census</h2>
+<p>We can also graphically depict the frequency distribution.</p>
+<p>We return to our previous example using data from the U.S. Census Bureau. We obtain data on population for counties and county-equivalent geographies in the United States.</p>
+<p>We use <strong>case_when</strong> to create a categorical variable that groups geographies into population <strong>bins</strong>.</p>
+<p>As before, we use <strong>summarize</strong> to count the number of observations in each bin.</p>
+<p>We then estimate the <strong>relative frequency</strong> by diving the number of observations in each bin by the total number of observations or</p>
+<p><span class="math display">\[\text{Relative Frequency of Population Bin}_i = \frac{\text{Observations in Bin}_i}{\text{Total Observations}}\]</span></p>
+<p>In other words, the relative frequency of the 0 to 9,999 population bin is equal to the number of counties in that bin divided by the total number of counties across all bins.</p>
+<p>We then <strong>ggplot</strong> to create a graphical plot of the frequency distribution.</p>
+<p>We have categories (population size) on the x-axis and the frequencies on the y-axis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#B01001_001E is total population</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Case When to Create Categories</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">vintage =</span> <span class="dv">2023</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"B01001_001E"</span>),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">region =</span> <span class="st">"county:*"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">total_pop =</span> B01001_001E) <span class="sc">%&gt;%</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">pop_cat =</span> <span class="fu">case_when</span>(total_pop <span class="sc">&gt;</span> <span class="dv">99999</span> <span class="sc">~</span> <span class="st">"Greater than 99,999"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                           total_pop <span class="sc">&gt;</span> <span class="dv">49999</span> <span class="sc">~</span> <span class="st">"50,000 - 99,999"</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                           total_pop <span class="sc">&gt;</span> <span class="dv">24999</span> <span class="sc">~</span> <span class="st">"25,000 - 49,999"</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                           total_pop <span class="sc">&gt;</span> <span class="dv">9999</span>  <span class="sc">~</span> <span class="st">"10,000 - 24,999"</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                           <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"0 - 9,999"</span>))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>county_freq <span class="ot">&lt;-</span> county_pop <span class="sc">%&gt;%</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pop_cat) <span class="sc">%&gt;%</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">freq_pop =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> freq_pop<span class="sc">/</span><span class="fu">sum</span>(freq_pop)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(pop_cat)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> county_freq,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> pop_cat,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> rel_freq,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> rel_freq)) <span class="sc">+</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relative Frequency of Population Bins"</span>,</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>     <span class="at">x     =</span> <span class="st">"Population Bin"</span>,</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>     <span class="at">y     =</span> <span class="st">"Relative Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-2-1-frequency_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="scatterplots" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="scatterplots"><span class="header-section-number">10.9</span> Scatterplots</h2>
+<p>A <strong>scatterplot</strong> is a graphical display of a relationship between two variables of interest.</p>
+<p>Before constructing a scatterplot, one must think about the nature of the relationship between the two variables.</p>
+<p>The <strong>independent</strong> variable is typically represented on the horizontal axis while the <strong>dependent</strong> variable is typically represented on the vertical axis.</p>
+<p>The hypothesized relationship between the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> variables can be expressed as:</p>
+<p><span class="math display">\[y = f(x)\]</span></p>
+<p>Care must be taken to avoid interpreting the visual relationship.</p>
+<p>In other words, what if the true relationship is:</p>
+<p><span class="math display">\[y = f(x, w, z)\]</span></p>
+<p>If you plot <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> and interpret the visual relationship, you are ignoring the potential relationships between <span class="math inline">\(y\)</span> and <span class="math inline">\(w\)</span> and <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span>.</p>
+<p>Scatterplots may inform, but we should always be careful with any conclusions we derive from merely observing the pattern of two variables.</p>
+<p>In the code below, we plot <strong>weight in pounds</strong> on the x-axis and <strong>miles per gallon</strong> on the y-axis. It would seem that there is a negative relationship between the weight of cars and their fuel efficiency. Heavier cars appear to have lower fuel efficiency.</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
 </section>
@@ -2733,6 +2869,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./mod-2-2-central.html" class="pagination-link" aria-label="Central Tendency">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Central Tendency</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

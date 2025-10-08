@@ -13,6 +13,16 @@ execute:
   webR: true
 ---
 
+```{r setup, echo = FALSE, message = FALSE}
+
+library(dplyr, quietly = TRUE)
+library(ggplot2, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(tidyquant, quietly = TRUE)
+
+```
+
+
 ## Frequency Distributions
 
 The **frequency** of a category, class, or value is the number of times it occurs in a data set.
@@ -178,4 +188,159 @@ labs(title    = 'Frequency Distribution for Cylinders',
      subtitle = 'MTCARS data',
      y        = 'Frequency',
      x        = 'Number of Cylinders')
+```
+
+## Relative Frequency Distributions
+
+The frequency distribution may not be as informative as we would like if the number of observations is sufficiently large.
+
+In the frequency distribution for the population of U.S. counties, there were more than 600 counties with populations between 10,000 and 24,999 individuals. How does this compare with the number of counties with populations less than 10,000?
+
+A **relative frequency** distribution contains information on the **proportion** of observations in each class relative to the total number of observations.
+
+Let $n$ be the total number of observations.
+
+Let $i$ represent the number of classes or categories.
+
+Let $n_i$ be the total number of observations in the *i-th* class.
+
+$$\text{Relative Frequency of Class}_i = \frac{n_i}{n}$$
+
+## Relative Frequency: Mtcars
+
+We use the **mtcars** example data.
+
+We **group** the data by the cylinder variable.
+
+We estimate the frequency by cylinder.
+
+We estimate the relative frequency using the **mutate** function.
+
+We create a frequency table using the **kable** function.
+
+```{webr-r}
+
+rm(list = ls())
+
+data("mtcars")
+
+cyl_freq <- mtcars %>%
+  group_by(cyl) %>%
+  summarize(freq_cyl = n()) %>%
+  mutate(rel_freq = freq_cyl/sum(freq_cyl)) %>%
+  arrange(rel_freq)
+
+kable(cyl_freq,
+      col.names = c("Cylinders", "Frequency", 
+                    "Relative Frequency"),
+      align     = c('c','c','c'),
+      digits    = 2,
+      caption   = 'Frequency Distribution') 
+```
+
+## Relative Frequency: Census
+
+We can also graphically depict the frequency distribution.
+
+We return to our previous example using data from the U.S. Census Bureau. We obtain data on population for counties and county-equivalent geographies in the United States.
+
+We use **case_when** to create a categorical variable that groups geographies into population **bins**.
+
+As before, we use **summarize** to count the number of observations in each bin.
+
+We then estimate the **relative frequency** by diving the number of observations in each bin by the total number of observations or
+
+$$\text{Relative Frequency of Population Bin}_i = \frac{\text{Observations in Bin}_i}{\text{Total Observations}}$$
+
+In other words, the relative frequency of the 0 to 9,999 population bin is equal to the number of counties in that bin divided by the total number of counties across all bins.
+
+We then **ggplot** to create a graphical plot of the frequency distribution.
+
+We have categories (population size) on the x-axis and the frequencies on the y-axis.
+
+```{r, message = FALSE, warning=FALSE}
+
+rm(list = ls())
+
+library(censusapi)
+library(dplyr)
+library(kableExtra)
+library(tidyverse)
+
+#B01001_001E is total population
+#Case When to Create Categories
+
+county_pop <- getCensus(name = "acs/acs5",
+            vintage = 2023,
+            key = "9c1637a56ff93f0af6b4b1d0547ea048fe668175",
+            vars = c("NAME",
+                     "B01001_001E"),
+            region = "county:*") %>%
+rename(total_pop = B01001_001E) %>%
+mutate(pop_cat = case_when(total_pop > 99999 ~ "Greater than 99,999",
+                           total_pop > 49999 ~ "50,000 - 99,999",
+                           total_pop > 24999 ~ "25,000 - 49,999",
+                           total_pop > 9999  ~ "10,000 - 24,999",
+                           TRUE ~ "0 - 9,999"))
+
+county_freq <- county_pop %>%
+  group_by(pop_cat) %>%
+  summarize(freq_pop = n()) %>%
+  mutate(rel_freq = freq_pop/sum(freq_pop)) %>%
+  arrange(pop_cat)
+
+ggplot(data = county_freq,
+       aes(x = pop_cat,
+           y = rel_freq,
+           fill = rel_freq)) +
+geom_col() +
+theme_minimal() +
+theme(legend.position="none") +
+labs(title = "Relative Frequency of Population Bins",
+     x     = "Population Bin",
+     y     = "Relative Frequency")
+```
+## Scatterplots
+
+A **scatterplot** is a graphical display of a relationship between two variables of interest. 
+
+Before constructing a scatterplot, one must think about the nature of the relationship between the two variables.
+
+The **independent** variable is typically represented on the horizontal axis while the **dependent** variable is typically represented on the vertical axis.
+
+The hypothesized relationship between the $x$ and $y$ variables can be expressed as:
+
+$$y = f(x)$$
+
+Care must be taken to avoid interpreting the visual relationship.
+
+In other words, what if the true relationship is:
+
+$$y = f(x, w, z)$$
+
+If you plot $y$ and $x$ and interpret the visual relationship, you are ignoring the potential relationships between $y$ and $w$ and $y$ and $z$.
+
+Scatterplots may inform, but we should always be careful with any conclusions we derive from merely observing the pattern of two variables.
+
+In the code below, we plot **weight in pounds** on the x-axis and **miles per gallon** on the y-axis. It would seem that there is a negative relationship between the weight of cars and their fuel efficiency. Heavier cars appear to have lower fuel efficiency.
+
+```{webr-r}
+
+rm(list = ls())
+
+# Use GGPLOT
+# x-axis -> weight
+# y-axis -> mpg
+# geom_point -> scatterplot
+# theme_economic -> presentation
+
+ggplot(data = mtcars,
+       aes(x = wt*1000,
+           y = mpg)) +
+geom_point()+
+theme_minimal() +
+labs(x = "Weight in Pounds",
+     y = "Miles per Gallon",
+     title = 'Scatterplot of Car Weight and Miles per Gallon',
+     subtitle = 'MTCARS Data')
 ```
