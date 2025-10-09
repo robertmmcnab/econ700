@@ -37,7 +37,7 @@
     "href": "index.html#module-02---descriptive-statistics",
     "title": "ECON 700",
     "section": "0.3 Module 02 - Descriptive Statistics",
-    "text": "0.3 Module 02 - Descriptive Statistics\n\n\nModule 2.0 - Overview\n\n\nModule 2.1 – Frequency\n\n\nModule 2.1 – Measures of Central Tendency",
+    "text": "0.3 Module 02 - Descriptive Statistics\n\n\nModule 2.0 - Overview\n\n\nModule 2.1 – Frequency\n\n\nModule 2.2 – Measures of Central Tendency\n\n\nModule 2.3 – Measures of Dispersion",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -378,7 +378,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n47.84\n50.9\n51.04",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n45.12\n49.39\n50.5",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -1031,6 +1031,149 @@
     "crumbs": [
       "Descriptive Statistics",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html",
+    "href": "mod-2-3-variance.html",
+    "title": "13  Measures of Disperson",
+    "section": "",
+    "text": "13.1 Data Properties\nPreviously, we discussed measures of the central tendency of the data.\nWe used population data from the U.S. Census to estimate the population mean, \\(/mu\\), as well as the median.\nWe used sample data from the mtcars dataset to estimate the sample average, \\(\\bar{x}\\), as well as the sample median.\nWe also used R and RStudio to estimate the number of observations, the minimum value for a variable, and the maximum value for a variable.\nThe measures of central tendency estimate the middle of the data, however, we also noted that outliers can influence the sample average. We discussed how to trim the data to reduce the influence of outliers.\nThe measures of central tendency do not provide us information about the spread or dispersion of the data.\nAre the data “tightly clustered” around the measure of central tendency or are the data “spread out?”\nWe want to know the spread of the data relative to the center of the data.\nTo this end, we will estimate measure of the variance and standard deviation.",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#population-variance",
+    "href": "mod-2-3-variance.html#population-variance",
+    "title": "13  Measures of Disperson",
+    "section": "13.2 Population Variance",
+    "text": "13.2 Population Variance\nOne measure of the dispersion (spread) of the data is the range which is equal to the distance between the minimum and maximum observations in the data.\nWe could estimate the average distance of the observations from the mean or:\n\\[\\text{average mean deviation} = \\frac{1}{N} \\sum_{i = 1}^N (x_i - \\mu)\\]\nHowever, if sum of the mean deviations is equal to zero in the population, the average of the mean deviations will also be zero in the population.\nWe note that the sum of the squared mean deviations will not be zero.\nThe population variance, \\(\\sigma^2\\), is equal to the average of the sum of the squared mean deviations:\n\\[\\text{Population Variance} = \\sigma^2 = \\frac{1}{N} \\sum_{i = 1}^N (x_i - \\mu)^2\\]",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#population-standard-deviation",
+    "href": "mod-2-3-variance.html#population-standard-deviation",
+    "title": "13  Measures of Disperson",
+    "section": "13.3 Population Standard Deviation",
+    "text": "13.3 Population Standard Deviation\nAs noted previously, the population variance, \\(\\sigma^2\\), is the average of the squared mean deviations:\n\\[\\sigma^2 = \\frac{1}{N} \\sum_{i = 1}^N (x_i - \\mu)^2\\]\nThe population variance, \\(\\sigma^2\\), may difficult to interpret as \\(\\sigma^2\\) is measured in the squared units of the variable of interest.\nIn other words, if we were measuring the variance of total population, the variance would be in individuals-squared units. If we were measuring the variance of income, the variance would be in income-squared units.\nThe population standard deviation, \\(\\sigma\\), is the positive square root of the population standard deviation.\n\\[\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i = 1}^N (x_i - \\mu)^2}\\]The standard deviation is measured in the same units as the variable of interest.\nLastly, we note that if we have two variables \\(x\\) and \\(y\\), then \\(x\\) is less dispersed than \\(y\\) if \\(\\sigma_x &lt; \\sigma_y\\).",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#variance-example",
+    "href": "mod-2-3-variance.html#variance-example",
+    "title": "13  Measures of Disperson",
+    "section": "13.4 Variance Example",
+    "text": "13.4 Variance Example\nIn the example below, we create a tibble of simulated population data.\nThere are 1,000,000 observations drawn from a random normal distribution with a population mean of 50.5 and a standard deviation of 5.\nIn other words, we are creating a population with a known mean and known standard deviation.\nSince the variance is the square of the standard deviation, we know the variance also.\nFor a random variable, \\(X\\) that is distributed normally with mean \\(\\mu\\) and variance \\(\\sigma^2\\), we can express this distribution of \\(X\\) as:\n\\[X \\sim N(\\mu, \\sigma^2 )\\]\nWe use the summarize function for this example.\nWe estimate the population variance manually and using the var function.\nWe then estimate the population standard deviation manually and using the sd function.\nWe do this to illustrate the manual estimates and estimates using the functions are the same.\nAn additional note that each time you run the code, a new population is generated, and the descriptive statistics may change.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#census-example",
+    "href": "mod-2-3-variance.html#census-example",
+    "title": "13  Measures of Disperson",
+    "section": "13.5 Census Example",
+    "text": "13.5 Census Example\nIn the code chunk below, we replicate the example above but with actual data from the U.S. Census for the total population of counties and county-equivalent geographies in the United States.\nNote the difference between the mean and median population estimates. The relatively large counties influence the population mean and ‘pull’ it away from the population median.\n\nrm(list = ls())\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key     = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars    = c(\"NAME\",\n                        \"B01001_001E\"),\n            region  = \"county:*\") %&gt;%\nrename(pop = B01001_001E) %&gt;%\nsummarize(med_pop  = median(pop),\n          mean_pop = mean(pop),\n          var_pop  = var(pop),\n          sd_pop   = sd(pop))\n\nkable(county_pop,\n      col.names = c('Median', 'Mean',\n                    'Variance', 'Std. Dev'),\n      align     = 'c',\n      digits    = 2,\n      caption = 'Mean, Variance, and Standard Deviation, County Population') %&gt;%\nkable_styling(font_size = 12)\n\n\nMean, Variance, and Standard Deviation, County Population\n\n\nMedian\nMean\nVariance\nStd. Dev\n\n\n\n\n25967\n104172.1\n108681584571\n329668.9",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#sample-variance",
+    "href": "mod-2-3-variance.html#sample-variance",
+    "title": "13  Measures of Disperson",
+    "section": "13.6 Sample Variance",
+    "text": "13.6 Sample Variance\nThe sample variance, \\(s^2\\), is estimated by:\n\\[s^2 = \\frac{1}{n-1} \\sum_{i = 1}^N (x_i - \\bar{x})^2\\]\nOne might ask, “why do we divide by \\(n-1\\) instead of \\(n\\)?”\nThe population mean \\(\\mu\\) is a known, definite mean. It does not require estimation.\nThe sample average, \\(\\bar{x}\\) is an estimate of the population mean \\(\\mu\\).\nIf \\(\\mu\\) is known, then we can reconstitute the data with \\(n-1\\) values.\nWith 100 observations and \\(\\mu = 50\\), then the \\(n-1\\) values can take on any value, but the n-th value is constrained so \\(\\mu = 50\\).\nThe loss of a degree of freedom requires the use \\(n-1\\) in the sample variance instead of \\(n\\).",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#sample-standard-deviation",
+    "href": "mod-2-3-variance.html#sample-standard-deviation",
+    "title": "13  Measures of Disperson",
+    "section": "13.7 Sample Standard Deviation",
+    "text": "13.7 Sample Standard Deviation\nThe sample variance, \\(s^2\\), is estimated by:\n\\[s^2 = \\frac{1}{n-1} \\sum_{i = 1}^N (x_i - \\bar{x})^2\\]\nThe sample standard deviation, \\(s\\), is estimated by:\n\\[s = \\sqrt{\\frac{1}{n-1} \\sum_{i = 1}^N (x_i - \\bar{x})^2}\\] R (as with most programs) calculates the sample variance and sample standard deviation.\nAs \\(n\\) increases, the impact of dividing by \\(n-1\\) rather than \\(N\\) declines.\nIf you are worried about \\(n-1\\), then you are likely to have other issues (sample size) of higher concern.",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#sample-example",
+    "href": "mod-2-3-variance.html#sample-example",
+    "title": "13  Measures of Disperson",
+    "section": "13.8 Sample Example",
+    "text": "13.8 Sample Example\nWe simulate 100,000 observations from a normal distribution with \\(\\mu = 100\\) and \\(\\sigma = 8.5\\).\nWe then take a random sample of 1,000 observations from the population and estimate the variance manually and with the var function in summarize\nThe slice_sample function is used to randomly select rows from a data frame.\nThe manually calculated sample variance using \\((n-1)\\) is equal to the variance obtained from the var function in R illustrating that R generates its variance estimate using the sample variance formula.\nAs \\(\\sigma\\) is the square root of \\(\\sigma^2\\), the same discussion applies.\nIt is interesting to note that a new set of values for \\(X\\) is generated each time the code is run, changing the resulting sample descriptive statistics.\nTry changing the sample size, that is, changing from n = 1000 to n = 50, and observe what happens to the sample statistics for variance and standard deviation across several runs.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#coefficient-of-variation",
+    "href": "mod-2-3-variance.html#coefficient-of-variation",
+    "title": "13  Measures of Disperson",
+    "section": "13.9 Coefficient of Variation",
+    "text": "13.9 Coefficient of Variation\nThe coefficient of variation is a measure of how “large” the standard deviation is relative to the mean.\nThe coefficient of variation for the population is:\n\\[\\text{coefficient of variation} = \\frac{\\sigma}{\\mu}\\] The coefficient of variation for a sample is:\n\\[\\text{coefficient of variation} = \\frac{s}{\\bar{x}}\\]\nThe higher the coefficient of variation, the greater the level of dispersion of observations around the mean.\nIn finance, the coefficient of variation estimates how much volatility, or risk, is assumed in comparison to the amount of return expected from investments.\nThe lower the coefficient of variation, the better risk-return trade-off.",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#tidyquant-example",
+    "href": "mod-2-3-variance.html#tidyquant-example",
+    "title": "13  Measures of Disperson",
+    "section": "13.10 Tidyquant Example",
+    "text": "13.10 Tidyquant Example\nWe use the tidyquant package to obtain stock price data for Apple, Ford, General Motors, Gamestop, IBM, and Netflix.\nWe then estimate the coefficient of variation for each of these corporations.\nFrom January 2020 to July 2025, IBM had the lowest coefficient of variation, that is, it was the least volatile relative to its mean.\nOver the same period, Netflix and Gamestop has the highest coefficients of variation, that is, these stocks were relatively volatile when compared to IBM or Ford.\n\nrm(list = ls())\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\nlibrary(tidyquant)\n\ntickers &lt;- c('AAPL', 'F',\n             'GM', 'GME',\n             'IBM', 'NFLX')\n\nprices &lt;- tq_get(tickers, \n                  from = '2010-01-01',\n                  to   = \"2025-07-31\",\n                  get  = \"stock.prices\")\n\n\ncoef_var &lt;- prices %&gt;%\n  group_by(symbol) %&gt;%\n  summarize(cv = sd(close)/mean(close)) %&gt;%\n  arrange(cv)\n\nkable(coef_var,\n      col.names = c('Company',\n                    'Coefficient of Variation'),\n      align     = c('c','c'),\n      caption   = 'Coefficient of Variation') %&gt;%\nkable_styling(font_size = 12)\n\n\nCoefficient of Variation\n\n\nCompany\nCoefficient of Variation\n\n\n\n\nIBM\n0.2096402\n\n\nF\n0.2307120\n\n\nGM\n0.2413333\n\n\nAAPL\n0.9291908\n\n\nGME\n0.9739563\n\n\nNFLX\n0.9909600",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#z-scores",
+    "href": "mod-2-3-variance.html#z-scores",
+    "title": "13  Measures of Disperson",
+    "section": "13.11 Z-Scores",
+    "text": "13.11 Z-Scores\nRecall that mean deviations, \\(d_i = x_i - \\mu\\) and \\(d_i = x_i - \\bar{x}\\) frame our discussion of the data in terms of the center of the data.\nWe lack information, however, on whether the mean deviation is “large” or “small” relative to the dispersion of the data.\nThe z-score is a measure of the mean deviation of an observation relative to the standard deviation of the variable.\nIn the population, the z-score for an observation is:\n\\[Z = \\frac{x_i - \\mu}{\\sigma}\\] In the sample, the Z-score for an observation is:\n\\[Z = \\frac{x_i - \\bar{x}}{s}\\] The Z-score provides a measure in standard deviation units.\nIf \\(Z_{x1} = 2\\) then the observation \\(x_1\\) is two standard deviations to the right of \\(\\mu\\).\nIf \\(Z_{x2} = -0.75\\), then the observation \\(x_2\\) is 0.75 observations to the left of \\(\\mu\\).\nIf a distribution has a mean and variance, you can estimate the Z-score.",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#z-scores-example",
+    "href": "mod-2-3-variance.html#z-scores-example",
+    "title": "13  Measures of Disperson",
+    "section": "13.12 Z-Scores Example",
+    "text": "13.12 Z-Scores Example\nIn the following example, we generate a simulated population of 10,000 observations with \\(\\mu = -25\\) and \\(\\sigma = 2.9\\).\nWe then generate the population mean and population standard deviation for the simulated population.\nThe next step is estimating the z-score of each observation. We then output the first five observations to the table.\n\n\n\nrm(list = ls())\n\ndf_1 &lt;- data.frame(x = rnorm(10000, mean = -25, sd = 2.9)) \n\nz_norm &lt;- df_1 %&gt;%\n  mutate(mean_x  = mean(x),\n         sd_x    = sd(x),\n         z_score = (x - mean(x))/sd(x))\n\nkable(z_norm[1:5,],\n      col.names = c('Observation',\n                    \"Mean X\", \"Standard Deviation X\",\n                    \"Z-Score\"),\n      align     = 'c',\n      caption   = 'Z-Scores') %&gt;%\nkable_styling(font_size = 12)\n\n\nZ-Scores\n\n\nObservation\nMean X\nStandard Deviation X\nZ-Score\n\n\n\n\n-24.61549\n-24.99985\n2.915116\n0.1318513\n\n\n-26.85273\n-24.99985\n2.915116\n-0.6356091\n\n\n-17.10426\n-24.99985\n2.915116\n2.7084993\n\n\n-30.11698\n-24.99985\n2.915116\n-1.7553786\n\n\n-24.38497\n-24.99985\n2.915116\n0.2109300",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
+    ]
+  },
+  {
+    "objectID": "mod-2-3-variance.html#module-summary",
+    "href": "mod-2-3-variance.html#module-summary",
+    "title": "13  Measures of Disperson",
+    "section": "13.13 Module Summary",
+    "text": "13.13 Module Summary\nWe use descriptive statistics to develop an understanding of the properties of the data.\nWe have discussed two broad properties of the data:\n\nThe center of the data\nThe spread of the data\n\nWe will work on the shape of the data in coming modules.\nNow, having worked with measures of the center and spread, we can turn our attention to the question of co-movement.\nDo two variables “move” together in some systematic fashion?\nWhat measures might suggest a potential relationship between two variables of interest?\nIn our next module, we will focus on covariance and correlation.",
+    "crumbs": [
+      "Descriptive Statistics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
     ]
   }
 ]

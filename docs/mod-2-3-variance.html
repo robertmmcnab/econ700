@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; Central Tendency – ECON 700</title>
+<title>13&nbsp; Measures of Disperson – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-2-3-variance.html" rel="next">
-<link href="./mod-2-1-frequency.html" rel="prev">
+<link href="./mod-2-2-central.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -409,7 +408,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\ncar_stats <- mtcars %>%\n  summarize(n_mpg    = n(),\n            min_mpg  = min(mpg),\n            max_mpg  = max(mpg),\n            avg_mpg  = mean(mpg))\n\nkable(car_stats,\n      align  = 'c',\n      digits = 2,\n      col.names = c('N', 'Minimum', 'Maximum', 'Sample Average'))\n      ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\ncars <- mtcars %>%\n  select(mpg) %>%\n  mutate(mean_mpg = mean(mpg),\n         deviation = mpg - mean(mpg))\n\nkable(cars[1:5,],\n      col.names = c(\"MPG\", \n                    \"Sample Average\",\n                    \"Mean Deviation\"),\n      align = c('c','c','c'),\n      caption = 'Mean Deviations of MT Cars')","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\ncars <- mtcars %>%\n  select(mpg, wt) %>%\n  summarize(mean_mpg = mean(mpg),\n            dev_mpg  = sum(mpg - mean(mpg)),\n            mean_wt  = mean(wt),\n            dev_wt   = sum(wt - mean(wt)))\n\nkable(cars,\n      col.names = c(\"Average MPG\", \n                    \"Sum of MPG Deviations\",\n                    \"Average Weight\",\n                    \"Sum of WT Deviations\"),\n      align     = 'c',\n      digits    = 15,\n      caption = 'Mean Deviations of MT Cars')","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndf_1 <- data.frame(x    = c(1, 2, 4, \n                            6, 9, 16, \n                            25, 36, 49, 64),\n                   wt_1 = c(.125, .125, .125,\n                            .125, .125, .125,\n                            .125, .125, .125, .125),\n                   wt_2 = c(0.05, 0.1, 0.05, \n                            0.05, 0.1, 0.05,\n                            0.2, 0.2, 0.1, 0.1))\n\nmeans_df1 <- df_1 %>%\n  summarize(mean_     = mean(x),\n            wt_mean_1 = weighted.mean(x, wt_1),\n            wt_mean_2 = weighted.mean(x, wt_2))\n\nkable(means_df1,\n      col.names = c('Mean', \n                    'Mean (Weights are Equal)',\n                    'Mean (Unequal Weights)'),\n      align = c('c','c','c'),\n      caption = 'Mean and Weighted Means') ","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\npopulation <- tibble(pop = rnorm(1000000, mean = 50.5, sd = 5))\n\npop_stats <- population %>%\n  summarize(man_mean = sum(pop)/n(),\n            mean_pop = mean(pop),\n            man_var  = sum((pop-mean(pop))^2)/n(),\n            var_pop  = var(pop),\n            man_sd   = sqrt(sum((pop-mean(pop))^2)/n()),\n            sd_pop   = sd(pop))\n            \nkable(pop_stats,\n      align  = 'c',\n      digits = 2,\n      font   = 8,\n      col.names = c('M.Mean','Mean',\n                    'M.Variance', 'Variance',\n                    'M.Std. Dev', 'Std. Dev'))\n      ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndf_1 <- data.frame(x = rnorm(100000, mean = 100, sd = 8.5)) %>%\n        slice_sample(n = 1000)\n\nvar_df1 <- df_1 %>%\n  summarize(n = n(),\n            var_man_n  = (1/n())*sum((x - mean(x))^2),\n            var_man_n1 = (1/(n()-1))*sum((x - mean(x))^2),\n            var_auto   = var(x),\n            sd_auto    = sd(x))\n\ndf_2 <- slice_sample(df_1, n = 1000)\n\nkable(var_df1,\n      col.names = c('Observations',\n                    'Variance (N)', \n                    'Variance (n-1)',\n                    'Variance',\n                    'Standard Deviation'),\n      align     = 'c',\n      digits    = 3,\n      caption = 'Variance with N and n-1')","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1704,7 +1703,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-2-central.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1830,13 +1829,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-2-2-central.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-2-2-central.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-2-3-variance.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-2-3-variance.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></span></a>
   </div>
 </li>
@@ -1876,17 +1875,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-properties" id="toc-data-properties" class="nav-link active" data-scroll-target="#data-properties"><span class="header-section-number">12.1</span> Data Properties</a></li>
-  <li><a href="#population-mean-and-sample-average" id="toc-population-mean-and-sample-average" class="nav-link" data-scroll-target="#population-mean-and-sample-average"><span class="header-section-number">12.2</span> Population Mean and Sample Average</a></li>
-  <li><a href="#mean-and-median" id="toc-mean-and-median" class="nav-link" data-scroll-target="#mean-and-median"><span class="header-section-number">12.3</span> Mean and Median</a></li>
-  <li><a href="#mean-deviations" id="toc-mean-deviations" class="nav-link" data-scroll-target="#mean-deviations"><span class="header-section-number">12.4</span> Mean Deviations</a></li>
-  <li><a href="#mean-deviations-example" id="toc-mean-deviations-example" class="nav-link" data-scroll-target="#mean-deviations-example"><span class="header-section-number">12.5</span> Mean Deviations Example</a></li>
-  <li><a href="#trimmed-mean" id="toc-trimmed-mean" class="nav-link" data-scroll-target="#trimmed-mean"><span class="header-section-number">12.6</span> Trimmed Mean</a></li>
-  <li><a href="#trimmed-mean-example" id="toc-trimmed-mean-example" class="nav-link" data-scroll-target="#trimmed-mean-example"><span class="header-section-number">12.7</span> Trimmed Mean Example</a></li>
-  <li><a href="#weighted-mean" id="toc-weighted-mean" class="nav-link" data-scroll-target="#weighted-mean"><span class="header-section-number">12.8</span> Weighted Mean</a></li>
-  <li><a href="#weighted-mean-example" id="toc-weighted-mean-example" class="nav-link" data-scroll-target="#weighted-mean-example"><span class="header-section-number">12.9</span> Weighted Mean Example</a></li>
-  <li><a href="#quantiles-and-percentiles" id="toc-quantiles-and-percentiles" class="nav-link" data-scroll-target="#quantiles-and-percentiles"><span class="header-section-number">12.10</span> Quantiles and Percentiles</a></li>
-  <li><a href="#quantiles-and-percentiles-example" id="toc-quantiles-and-percentiles-example" class="nav-link" data-scroll-target="#quantiles-and-percentiles-example"><span class="header-section-number">12.11</span> Quantiles and Percentiles Example</a></li>
+  <li><a href="#data-properties" id="toc-data-properties" class="nav-link active" data-scroll-target="#data-properties"><span class="header-section-number">13.1</span> Data Properties</a></li>
+  <li><a href="#population-variance" id="toc-population-variance" class="nav-link" data-scroll-target="#population-variance"><span class="header-section-number">13.2</span> Population Variance</a></li>
+  <li><a href="#population-standard-deviation" id="toc-population-standard-deviation" class="nav-link" data-scroll-target="#population-standard-deviation"><span class="header-section-number">13.3</span> Population Standard Deviation</a></li>
+  <li><a href="#variance-example" id="toc-variance-example" class="nav-link" data-scroll-target="#variance-example"><span class="header-section-number">13.4</span> Variance Example</a></li>
+  <li><a href="#census-example" id="toc-census-example" class="nav-link" data-scroll-target="#census-example"><span class="header-section-number">13.5</span> Census Example</a></li>
+  <li><a href="#sample-variance" id="toc-sample-variance" class="nav-link" data-scroll-target="#sample-variance"><span class="header-section-number">13.6</span> Sample Variance</a></li>
+  <li><a href="#sample-standard-deviation" id="toc-sample-standard-deviation" class="nav-link" data-scroll-target="#sample-standard-deviation"><span class="header-section-number">13.7</span> Sample Standard Deviation</a></li>
+  <li><a href="#sample-example" id="toc-sample-example" class="nav-link" data-scroll-target="#sample-example"><span class="header-section-number">13.8</span> Sample Example</a></li>
+  <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation"><span class="header-section-number">13.9</span> Coefficient of Variation</a></li>
+  <li><a href="#tidyquant-example" id="toc-tidyquant-example" class="nav-link" data-scroll-target="#tidyquant-example"><span class="header-section-number">13.10</span> Tidyquant Example</a></li>
+  <li><a href="#z-scores" id="toc-z-scores" class="nav-link" data-scroll-target="#z-scores"><span class="header-section-number">13.11</span> Z-Scores</a></li>
+  <li><a href="#z-scores-example" id="toc-z-scores-example" class="nav-link" data-scroll-target="#z-scores-example"><span class="header-section-number">13.12</span> Z-Scores Example</a></li>
+  <li><a href="#module-summary" id="toc-module-summary" class="nav-link" data-scroll-target="#module-summary"><span class="header-section-number">13.13</span> Module Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -2177,9 +2178,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-2-central.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></h1>
 </div>
 
 
@@ -2196,56 +2197,58 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="data-properties" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="data-properties"><span class="header-section-number">12.1</span> Data Properties</h2>
-<p>The properties of a set of data can be described (in general) by:</p>
-<ul>
-<li><p>The <strong>center</strong> of the data.</p></li>
-<li><p>The <strong>spread</strong> of the data.</p></li>
-<li><p>The <strong>shape</strong> of the data</p></li>
-</ul>
-<p>The <strong>center</strong> of the data refers to the measure of central tendency of the data, that is, what is an estimate of the “middle” of the data.</p>
-<p>The <strong>spread</strong> of the data refers to how “far apart” observations are in the data relative to center of the data.</p>
-<p>There are two typical measures of the <strong>shape</strong> of the data:</p>
-<ul>
-<li>Are the data symmetrically or asymmetrically distributed around the mean?</li>
-<li>Are the data concentrated in one tail of the distribution?</li>
-</ul>
-<p>The measures of the center, spread, and shape of the data help us understand the properties of the data.</p>
+<section id="data-properties" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="data-properties"><span class="header-section-number">13.1</span> Data Properties</h2>
+<p>Previously, we discussed measures of the <strong>central tendency</strong> of the data.</p>
+<p>We used population data from the U.S. Census to estimate the population mean, <span class="math inline">\(/mu\)</span>, as well as the median.</p>
+<p>We used sample data from the <em>mtcars</em> dataset to estimate the sample average, <span class="math inline">\(\bar{x}\)</span>, as well as the sample median.</p>
+<p>We also used R and RStudio to estimate the number of observations, the minimum value for a variable, and the maximum value for a variable.</p>
+<p>The measures of central tendency estimate the <em>middle</em> of the data, however, we also noted that <strong>outliers</strong> can influence the sample average. We discussed how to <strong>trim</strong> the data to reduce the influence of outliers.</p>
+<p>The measures of central tendency do not provide us information about the <strong>spread</strong> or <strong>dispersion</strong> of the data.</p>
+<p>Are the data “tightly clustered” around the measure of central tendency or are the data “spread out?”</p>
+<p>We want to know the spread of the data relative to the center of the data.</p>
+<p>To this end, we will estimate measure of the <strong>variance</strong> and <strong>standard deviation</strong>.</p>
 </section>
-<section id="population-mean-and-sample-average" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="population-mean-and-sample-average"><span class="header-section-number">12.2</span> Population Mean and Sample Average</h2>
-<p>Recall that <strong>population data</strong> is comprehensive information collected on all members of a group or entity under study. The population is the universe of members of the group.</p>
-<p>Recall that <strong>sample data</strong> is a subset of the population data. Samples may range from 1 member of the population of interest to many members of a population of interest.</p>
-<p>Let <span class="math inline">\(N\)</span> be the number of members of a specified group.</p>
-<p><span class="math inline">\(N\)</span> defines the size of the population of the group of interest.</p>
-<p>Let <span class="math inline">\(n = N - j\)</span> where <span class="math inline">\(0 \le j \le N\)</span>.</p>
-<p><span class="math inline">\(n\)</span> is the size of a sample of the population size <span class="math inline">\(N\)</span>.</p>
-<p>Given a population size <span class="math inline">\(N\)</span>, the population mean, <span class="math inline">\(\mu\)</span>, is defined as:</p>
-<p><span class="math display">\[\mu = \frac{1}{N} \sum_{i = 1}^N x_i\]</span></p>
-<p>For a sample size <span class="math inline">\(n\)</span> from a population size <span class="math inline">\(N\)</span>, then the sample average <span class="math inline">\(\bar{X}\)</span> is:</p>
-<p><span class="math display">\[\bar{x} = \frac{1}{n} \sum_{i = 1}^n x_i\]</span> Here we must be careful in our use of language. When we say <strong>mean</strong> we refer to the <strong>population mean</strong>, that is, the mean obtained using all the members of the population. When we say <strong>sample</strong>, we refer to the <strong>sample average</strong>, that is, the average obtained using a subset of the members of the population.</p>
-<p>In the example below, we can use the summarize function to determine number of observations, the minimum value for mpg, the maximum value for mpg, and the sample average for mpg.</p>
+<section id="population-variance" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="population-variance"><span class="header-section-number">13.2</span> Population Variance</h2>
+<p>One measure of the dispersion (spread) of the data is the <strong>range</strong> which is equal to the distance between the minimum and maximum observations in the data.</p>
+<p>We could estimate the average distance of the observations from the mean or:</p>
+<p><span class="math display">\[\text{average mean deviation} = \frac{1}{N} \sum_{i = 1}^N (x_i - \mu)\]</span></p>
+<p>However, if sum of the mean deviations is equal to zero in the population, the average of the mean deviations will also be zero in the population.</p>
+<p>We note that the sum of the <strong>squared mean deviations</strong> will not be zero.</p>
+<p>The <strong>population variance</strong>, <span class="math inline">\(\sigma^2\)</span>, is equal to the average of the sum of the squared mean deviations:</p>
+<p><span class="math display">\[\text{Population Variance} = \sigma^2 = \frac{1}{N} \sum_{i = 1}^N (x_i - \mu)^2\]</span></p>
+</section>
+<section id="population-standard-deviation" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="population-standard-deviation"><span class="header-section-number">13.3</span> Population Standard Deviation</h2>
+<p>As noted previously, the population variance, <span class="math inline">\(\sigma^2\)</span>, is the average of the squared mean deviations:</p>
+<p><span class="math display">\[\sigma^2 = \frac{1}{N} \sum_{i = 1}^N (x_i - \mu)^2\]</span></p>
+<p>The population variance, <span class="math inline">\(\sigma^2\)</span>, may difficult to interpret as <span class="math inline">\(\sigma^2\)</span> is measured in the squared units of the variable of interest.</p>
+<p><em>In other words, if we were measuring the variance of total population, the variance would be in individuals-squared units. If we were measuring the variance of income, the variance would be in income-squared units.</em></p>
+<p>The <strong>population standard deviation</strong>, <span class="math inline">\(\sigma\)</span>, is the positive square root of the population standard deviation.</p>
+<p><span class="math display">\[\sigma = \sqrt{\frac{1}{N} \sum_{i = 1}^N (x_i - \mu)^2}\]</span>The standard deviation is measured in the same units as the variable of interest.</p>
+<p>Lastly, we note that if we have two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then <span class="math inline">\(x\)</span> is less dispersed than <span class="math inline">\(y\)</span> if <span class="math inline">\(\sigma_x &lt; \sigma_y\)</span>.</p>
+</section>
+<section id="variance-example" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="variance-example"><span class="header-section-number">13.4</span> Variance Example</h2>
+<p>In the example below, we create a tibble of <strong>simulated</strong> population data.</p>
+<p>There are 1,000,000 observations drawn from a <strong>random normal</strong> distribution with a population mean of 50.5 and a standard deviation of 5.</p>
+<p>In other words, we are creating a population with a known mean and known standard deviation.</p>
+<p>Since the variance is the square of the standard deviation, we know the variance also.</p>
+<p>For a random variable, <span class="math inline">\(X\)</span> that is distributed normally with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, we can express this distribution of <span class="math inline">\(X\)</span> as:</p>
+<p><span class="math display">\[X \sim N(\mu, \sigma^2 )\]</span></p>
+<p>We use the <strong>summarize</strong> function for this example.</p>
+<p>We estimate the population variance manually and using the <strong>var</strong> function.</p>
+<p>We then estimate the population standard deviation manually and using the <strong>sd</strong> function.</p>
+<p>We do this to illustrate the manual estimates and estimates using the functions are the same.</p>
+<p>An additional note that each time you run the code, a new population is generated, and the descriptive statistics may change.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="mean-and-median" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="mean-and-median"><span class="header-section-number">12.3</span> Mean and Median</h2>
-<p>The population mean, <span class="math inline">\(\mu\)</span>, is one measure of the center of the data.</p>
-<p>The <strong>population median</strong> is another measure of the center of the data.</p>
-<p>The <strong>median</strong> is a value that separates the observations in half.</p>
-<p>For a given median, 50% of the observations are below the median value and 50% of the observations are above the median value.Depending on the spread and shape of the data, the mean and median may be relatively close or far apart.</p>
-<p><strong>Outlying observations</strong> can “pull” the mean far from the “center” of the data.</p>
-<p>In the example below, we use the <strong>censusapi</strong> package to access the U.S. Census API to obtain data on total population for county and county-equivalent geographies.</p>
-<p><em>Note the difference between the mtcars example and the census example: the mtcars example is a sample while the census examine uses population data</em>.</p>
-<p>We then estimate the following descriptive statistics for the population of geographies:</p>
-<ul>
-<li><p>Number of observations</p></li>
-<li><p>Minimum value for population</p></li>
-<li><p>Maximum value for population</p></li>
-<li><p>Median value for population</p></li>
-<li><p>Mean value for population</p></li>
-</ul>
+<section id="census-example" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="census-example"><span class="header-section-number">13.5</span> Census Example</h2>
+<p>In the code chunk below, we replicate the example above but with actual data from the U.S. Census for the total population of counties and county-equivalent geographies in the United States.</p>
+<p>Note the difference between the mean and median population estimates. The relatively large counties influence the population mean and ‘pull’ it away from the population median.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2256,90 +2259,94 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>,</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">vintage =</span> <span class="dv">2023</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"B01001_001E"</span>),</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">region =</span> <span class="st">"county:*"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">key     =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">vars    =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"B01001_001E"</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">region  =</span> <span class="st">"county:*"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">pop =</span> B01001_001E) <span class="sc">%&gt;%</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">n_pop    =</span> <span class="fu">n</span>(),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">min_pop  =</span> <span class="fu">min</span>(pop),</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">max_pop  =</span> <span class="fu">max</span>(pop),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">med_pop  =</span> <span class="fu">median</span>(pop),</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_pop =</span> <span class="fu">mean</span>(pop))</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(county_pop,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Minimum"</span>, <span class="st">"Maximum"</span>,</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Median"</span>, <span class="st">"Mean"</span>),</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>),</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">'Descriptive Statistics of U.S. Counties - Population'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">med_pop  =</span> <span class="fu">median</span>(pop),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_pop =</span> <span class="fu">mean</span>(pop),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">var_pop  =</span> <span class="fu">var</span>(pop),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd_pop   =</span> <span class="fu">sd</span>(pop))</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(county_pop,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Median'</span>, <span class="st">'Mean'</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Variance'</span>, <span class="st">'Std. Dev'</span>),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits    =</span> <span class="dv">2</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">'Mean, Variance, and Standard Deviation, County Population'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
-<caption>Descriptive Statistics of U.S. Counties - Population</caption>
+<caption>Mean, Variance, and Standard Deviation, County Population</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">N</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Minimum</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Maximum</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Median</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Variance</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Std. Dev</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">3,222</td>
-<td style="text-align: center;">43</td>
-<td style="text-align: center;">9,848,406</td>
-<td style="text-align: center;">25,967</td>
-<td style="text-align: center;">104,172.1</td>
+<td style="text-align: center;">25967</td>
+<td style="text-align: center;">104172.1</td>
+<td style="text-align: center;">108681584571</td>
+<td style="text-align: center;">329668.9</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </section>
-<section id="mean-deviations" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="mean-deviations"><span class="header-section-number">12.4</span> Mean Deviations</h2>
-<p>We have estimated the population mean (<span class="math inline">\(\mu\)</span>) and the sample average (<span class="math inline">\(\bar{x}\)</span>).</p>
-<p>We can now construct an estimate of how much each observation deviates from the population mean or sample average.</p>
-<p>Given the <em>i-th</em> observation for a variable <span class="math inline">\(x\)</span>, that is, <span class="math inline">\(x_i\)</span>, the <strong>mean deviation</strong> of <span class="math inline">\(x_i\)</span> is:</p>
-<p><span class="math display">\[d_i = x_i - \mu\]</span> Given the <em>i-th</em> observation for a variable <span class="math inline">\(x\)</span>, that is, <span class="math inline">\(x_i\)</span>, the <strong>average deviation</strong> of <span class="math inline">\(x_i\)</span> for a sample is:</p>
-<p><span class="math display">\[d_i = x_i - \bar{x}\]</span></p>
-<p>The sum of the mean deviations is zero for the population or approximately zero for a sample.</p>
-<p><span class="math display">\[\sum_{i = 1}^N d_i = \sum_{i = 1}^N (x_i - \mu) = 0\]</span></p>
-<p><span class="math display">\[\sum_{i = 1}^N d_i = \sum_{i = 1}^N (x_i - \bar{x}) \approx 0\]</span></p>
+<section id="sample-variance" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="sample-variance"><span class="header-section-number">13.6</span> Sample Variance</h2>
+<p>The sample variance, <span class="math inline">\(s^2\)</span>, is estimated by:</p>
+<p><span class="math display">\[s^2 = \frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2\]</span></p>
+<p>One might ask, “why do we divide by <span class="math inline">\(n-1\)</span> instead of <span class="math inline">\(n\)</span>?”</p>
+<p>The population mean <span class="math inline">\(\mu\)</span> is a <strong>known, definite mean</strong>. It does not require estimation.</p>
+<p>The sample average, <span class="math inline">\(\bar{x}\)</span> is an <strong>estimate</strong> of the population mean <span class="math inline">\(\mu\)</span>.</p>
+<p>If <span class="math inline">\(\mu\)</span> is known, then we can reconstitute the data with <span class="math inline">\(n-1\)</span> values.</p>
+<p>With 100 observations and <span class="math inline">\(\mu = 50\)</span>, then the <span class="math inline">\(n-1\)</span> values can take on any value, but the <em>n-th</em> value is <strong>constrained</strong> so <span class="math inline">\(\mu = 50\)</span>.</p>
+<p>The loss of a <strong>degree of freedom</strong> requires the use <span class="math inline">\(n-1\)</span> in the sample variance instead of <span class="math inline">\(n\)</span>.</p>
 </section>
-<section id="mean-deviations-example" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="mean-deviations-example"><span class="header-section-number">12.5</span> Mean Deviations Example</h2>
-<p>In the example below, we estimate the sample average deviation for the <strong>mtcars</strong> example. We <strong>select</strong> the miles per gallon variable, estimate the sample average, and then estimate the average deviation for every observation in the sample.</p>
-<p>We then output the first five observations to illustrate the estimation of average deviations.</p>
+<section id="sample-standard-deviation" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="sample-standard-deviation"><span class="header-section-number">13.7</span> Sample Standard Deviation</h2>
+<p>The sample variance, <span class="math inline">\(s^2\)</span>, is estimated by:</p>
+<p><span class="math display">\[s^2 = \frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2\]</span></p>
+<p>The sample standard deviation, <span class="math inline">\(s\)</span>, is estimated by:</p>
+<p><span class="math display">\[s = \sqrt{\frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2}\]</span> <strong>R</strong> (as with most programs) calculates the sample variance and sample standard deviation.</p>
+<p>As <span class="math inline">\(n\)</span> increases, the impact of dividing by <span class="math inline">\(n-1\)</span> rather than <span class="math inline">\(N\)</span> declines.</p>
+<p>If you are worried about <span class="math inline">\(n-1\)</span>, then you are likely to have other issues (sample size) of higher concern.</p>
+</section>
+<section id="sample-example" class="level2" data-number="13.8">
+<h2 data-number="13.8" class="anchored" data-anchor-id="sample-example"><span class="header-section-number">13.8</span> Sample Example</h2>
+<p>We simulate 100,000 observations from a normal distribution with <span class="math inline">\(\mu = 100\)</span> and <span class="math inline">\(\sigma = 8.5\)</span>.</p>
+<p>We then take a random sample of 1,000 observations from the population and estimate the variance manually and with the <strong>var</strong> function in <strong>summarize</strong></p>
+<p>The <strong>slice_sample</strong> function is used to randomly select rows from a data frame.</p>
+<p>The manually calculated sample variance using <span class="math inline">\((n-1)\)</span> is equal to the variance obtained from the <strong>var</strong> function in R illustrating that R generates its variance estimate using the sample variance formula.</p>
+<p>As <span class="math inline">\(\sigma\)</span> is the square root of <span class="math inline">\(\sigma^2\)</span>, the same discussion applies.</p>
+<p>It is interesting to note that a new set of values for <span class="math inline">\(X\)</span> is generated each time the code is run, changing the resulting sample descriptive statistics.</p>
+<p><em>Try changing the sample size, that is, changing from n = 1000 to n = 50, and observe what happens to the sample statistics for variance and standard deviation across several runs.</em></p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In this example, we select two variables: miles per gallon and weight.</p>
-<p>We estimate the sample average for both variables. We then sum the average deviations for each variable.</p>
-<p>The table illustrates, that for the sample, the sum of the average deviations is approximately zero for each of the variables.</p>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="trimmed-mean" class="level2" data-number="12.6">
-<h2 data-number="12.6" class="anchored" data-anchor-id="trimmed-mean"><span class="header-section-number">12.6</span> Trimmed Mean</h2>
-<p>The U.S. Census population data illustrates how an outlying observation (Los Angeles County) can ‘pull’ the population mean away from the “center” of the data.</p>
-<p>We can <strong>trim</strong> the data to account for the presence of outliers.</p>
-<p><strong>Trimming the data is a <em>transformation</em> of the data</strong></p>
-<p>In most cases, 5% to 25% of the data from the ends of the distribution are discarded to estimate the trimmed mean.</p>
-<p>The median is a fully truncated mean, that is, the median represents the discard of 50% of the observations from each end of the distribution.</p>
-<p>The trimmed mean is less sensitive to outliers and will provide a “reasonable” estimate of the population mean in many cases.</p>
-<p>Removing the highest and lowest scores in a competition to obtained a trimmed mean makes the resulting score more robust to outliers.</p>
+<section id="coefficient-of-variation" class="level2" data-number="13.9">
+<h2 data-number="13.9" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">13.9</span> Coefficient of Variation</h2>
+<p>The <strong>coefficient of variation</strong> is a measure of how “large” the standard deviation is relative to the mean.</p>
+<p>The coefficient of variation for the population is:</p>
+<p><span class="math display">\[\text{coefficient of variation} = \frac{\sigma}{\mu}\]</span> The coefficient of variation for a sample is:</p>
+<p><span class="math display">\[\text{coefficient of variation} = \frac{s}{\bar{x}}\]</span></p>
+<p>The higher the coefficient of variation, the greater the level of dispersion of observations around the mean.</p>
+<p>In finance, the coefficient of variation estimates how much volatility, or risk, is assumed in comparison to the amount of return expected from investments.</p>
+<p>The lower the coefficient of variation, the better risk-return trade-off.</p>
 </section>
-<section id="trimmed-mean-example" class="level2" data-number="12.7">
-<h2 data-number="12.7" class="anchored" data-anchor-id="trimmed-mean-example"><span class="header-section-number">12.7</span> Trimmed Mean Example</h2>
-<p>We estimate the number of observations, minimum and maximum values, and mean and median for population for all U.S. counties using the data from the U.S. Census.</p>
-<p>We note that several large counties “pull” the mean population away from the median population.</p>
-<p>We can estimate the trimmed mean using the <strong>mean</strong> function with the <strong>trim</strong> option.</p>
-<p>The <strong>trimmed mean</strong> removes a specified percentage of the smallest and largest values from a dataset to reduce the impact of outliers.</p>
-<p>Note how even with a 5% trim, the mean of the remaining observations quickly approaches the population mean.</p>
-<p>Note how the 50% trim results in the population mean.</p>
+<section id="tidyquant-example" class="level2" data-number="13.10">
+<h2 data-number="13.10" class="anchored" data-anchor-id="tidyquant-example"><span class="header-section-number">13.10</span> Tidyquant Example</h2>
+<p>We use the <strong>tidyquant</strong> package to obtain stock price data for Apple, Ford, General Motors, Gamestop, IBM, and Netflix.</p>
+<p>We then estimate the coefficient of variation for each of these corporations.</p>
+<p>From January 2020 to July 2025, IBM had the lowest coefficient of variation, that is, it was the least volatile relative to its mean.</p>
+<p>Over the same period, Netflix and Gamestop has the highest coefficients of variation, that is, these stocks were relatively volatile when compared to IBM or Ford.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2347,185 +2354,166 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">vintage =</span> <span class="dv">2023</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"B01001_001E"</span>),</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">region =</span> <span class="st">"county:*"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">pop =</span> B01001_001E) <span class="sc">%&gt;%</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">med_pop  =</span> <span class="fu">median</span>(pop),</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_pop =</span> <span class="fu">mean</span>(pop),</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_05  =</span> <span class="fu">mean</span>(pop, <span class="at">trim =</span> <span class="fl">0.05</span>),</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_10  =</span> <span class="fu">mean</span>(pop, <span class="at">trim =</span> <span class="fl">0.10</span>),</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_20  =</span> <span class="fu">mean</span>(pop, <span class="at">trim =</span> <span class="fl">0.20</span>),</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_50  =</span> <span class="fu">mean</span>(pop, <span class="at">trim =</span> <span class="fl">0.50</span>))</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(county_pop,</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Median'</span>, <span class="st">'Mean'</span>,</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Trim 0.05'</span>, <span class="st">'Trim 0.10'</span>,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Trim 0.20'</span>, <span class="st">'Trim 0.50'</span>),</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>,</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits    =</span> <span class="dv">2</span>,</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">'Mean and Trimmed Means, County Population'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>tickers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'AAPL'</span>, <span class="st">'F'</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">'GM'</span>, <span class="st">'GME'</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>             <span class="st">'IBM'</span>, <span class="st">'NFLX'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>prices <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(tickers, </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">from =</span> <span class="st">'2010-01-01'</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">to   =</span> <span class="st">"2025-07-31"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">get  =</span> <span class="st">"stock.prices"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>coef_var <span class="ot">&lt;-</span> prices <span class="sc">%&gt;%</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(symbol) <span class="sc">%&gt;%</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cv =</span> <span class="fu">sd</span>(close)<span class="sc">/</span><span class="fu">mean</span>(close)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(cv)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(coef_var,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Company'</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Coefficient of Variation'</span>),</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="fu">c</span>(<span class="st">'c'</span>,<span class="st">'c'</span>),</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption   =</span> <span class="st">'Coefficient of Variation'</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
-<caption>Mean and Trimmed Means, County Population</caption>
+<caption>Coefficient of Variation</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Median</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Mean</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Trim 0.05</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Trim 0.10</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Trim 0.20</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Trim 0.50</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Company</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Coefficient of Variation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">25967</td>
-<td style="text-align: center;">104172.1</td>
-<td style="text-align: center;">55627.37</td>
-<td style="text-align: center;">42982.97</td>
-<td style="text-align: center;">32445.04</td>
-<td style="text-align: center;">25967</td>
+<td style="text-align: center;">IBM</td>
+<td style="text-align: center;">0.2096402</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">0.2307120</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">GM</td>
+<td style="text-align: center;">0.2413333</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">AAPL</td>
+<td style="text-align: center;">0.9291908</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">GME</td>
+<td style="text-align: center;">0.9739563</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">NFLX</td>
+<td style="text-align: center;">0.9909600</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </section>
-<section id="weighted-mean" class="level2" data-number="12.8">
-<h2 data-number="12.8" class="anchored" data-anchor-id="weighted-mean"><span class="header-section-number">12.8</span> Weighted Mean</h2>
-<p>Given <span class="math inline">\(N\)</span> observations of <span class="math inline">\(x\)</span> and weights <span class="math inline">\(w_i\)</span>, the weighted population mean, <span class="math inline">\(\mu_w\)</span>, is</p>
-<p><span class="math display">\[\mu_w = \sum_{i = 1}^N w_i \times x_i\]</span></p>
-<p>For the population mean, <span class="math inline">\(\mu\)</span>, the weights are equal to <span class="math inline">\(1/N\)</span> or</p>
-<p><span class="math display">\[\mu = \frac{1}{N} \sum_{i = 1}^N = \frac{1}{N}x_1 + \frac{1}{N}x_2 + \dots + \frac{1}{N}x_N\]</span></p>
-<p>Given <span class="math inline">\(n\)</span> observations of <span class="math inline">\(x\)</span>, the weighted sampel average <span class="math inline">\(\bar{x}_w\)</span>, is defined as:</p>
-<p><span class="math display">\[\bar{x}_w = \sum_{i = 1}^n w_i \times x_i\]</span></p>
-<p>For the sample average, <span class="math inline">\(\bar{x}\)</span>, the weights are equal to <span class="math inline">\(1/n\)</span> or</p>
-<p><span class="math display">\[\bar{x} = \frac{1}{n} \sum_{i = 1}^n = \frac{1}{n}x_1 + \frac{1}{n}x_2 + \dots + \frac{1}{n}x_n\]</span></p>
+<section id="z-scores" class="level2" data-number="13.11">
+<h2 data-number="13.11" class="anchored" data-anchor-id="z-scores"><span class="header-section-number">13.11</span> Z-Scores</h2>
+<p>Recall that mean deviations, <span class="math inline">\(d_i = x_i - \mu\)</span> and <span class="math inline">\(d_i = x_i - \bar{x}\)</span> frame our discussion of the data in terms of the <strong>center</strong> of the data.</p>
+<p>We lack information, however, on whether the mean deviation is “large” or “small” relative to the dispersion of the data.</p>
+<p>The <strong>z-score</strong> is a measure of the mean deviation of an observation relative to the standard deviation of the variable.</p>
+<p>In the population, the z-score for an observation is:</p>
+<p><span class="math display">\[Z = \frac{x_i - \mu}{\sigma}\]</span> In the sample, the Z-score for an observation is:</p>
+<p><span class="math display">\[Z = \frac{x_i - \bar{x}}{s}\]</span> The Z-score provides a measure in <strong>standard deviation units</strong>.</p>
+<p>If <span class="math inline">\(Z_{x1} = 2\)</span> then the observation <span class="math inline">\(x_1\)</span> is two standard deviations to the right of <span class="math inline">\(\mu\)</span>.</p>
+<p>If <span class="math inline">\(Z_{x2} = -0.75\)</span>, then the observation <span class="math inline">\(x_2\)</span> is 0.75 observations to the left of <span class="math inline">\(\mu\)</span>.</p>
+<p>If a distribution has a mean and variance, you can estimate the Z-score.</p>
 </section>
-<section id="weighted-mean-example" class="level2" data-number="12.9">
-<h2 data-number="12.9" class="anchored" data-anchor-id="weighted-mean-example"><span class="header-section-number">12.9</span> Weighted Mean Example</h2>
-<p>Let’s create a data frame with three variables</p>
-<p>Let <strong>x</strong> be a vector of squares</p>
-<p>Let <strong>wt_1</strong> be a vector of equal weights.</p>
-<p>Let <strong>wt_2</strong> be a vector of unequal weights</p>
-<p>We estimate the mean using the <strong>mean</strong> function and the weighted mean using the <strong>weighted.mean</strong> function</p>
-<p>As expected, using equal weights returns the same value as the <strong>mean</strong> function.</p>
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="quantiles-and-percentiles" class="level2" data-number="12.10">
-<h2 data-number="12.10" class="anchored" data-anchor-id="quantiles-and-percentiles"><span class="header-section-number">12.10</span> Quantiles and Percentiles</h2>
-<p>Let the <em>p-th</em> quantile be the value in the data for which <span class="math inline">\(100 \times p\)</span> of the data are less than the value.</p>
-<p>A <strong>percentile</strong> is the same concept as the <strong>quantile</strong> but the range is 0 to 100.</p>
-<p>A <strong>quantile</strong> refers to the 0, 25, 50, 75, and 100 percentiles.</p>
-<p>A <strong>quintile</strong> refers to the 0, 20, 40, 60, 80, and 100 percentiles.</p>
-<p>A <strong>decile</strong> refers to the 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, and 100 percentiles.</p>
-<p>Given sorted data, the <em>p-th</em> quantile is at position</p>
-<p><span class="math display">\[1 + p \times (n+1)\]</span></p>
-<p>If you want to determine the location of the <em>p-th</em> percent,</p>
-<p><span class="math display">\[L_p = \frac{p}{100} \times (n+1)\]</span></p>
-</section>
-<section id="quantiles-and-percentiles-example" class="level2" data-number="12.11">
-<h2 data-number="12.11" class="anchored" data-anchor-id="quantiles-and-percentiles-example"><span class="header-section-number">12.11</span> Quantiles and Percentiles Example</h2>
-<ul>
-<li><p>Clears the environment:</p>
-<ul>
-<li>Removes all objects from memory using rm(list = ls()) to ensure a clean workspace.</li>
-</ul></li>
-<li><p>Loads the mtcars dataset:</p>
-<ul>
-<li>Uses the built-in R dataset containing car performance data such as miles per gallon, cylinders, and weight.</li>
-</ul></li>
-<li><p>Calculates quantiles for selected variables:</p></li>
-<li><p>Uses reframe() from dplyr to summarize key statistics.</p></li>
-<li><p>Computes quantiles at 0%, 25%, 50%, 75%, and 100% using quantile().</p>
-<ul>
-<li>These represent the minimum, first quartile (Q1), median (Q2), third quartile (Q3), and maximum values.</li>
-</ul></li>
-<li><p>Applies the scales::percent() function:</p>
-<ul>
-<li>Converts numeric quantile probabilities (0, 0.25, 0.5, etc.) into formatted percentages (0%, 25%, 50%, 75%, 100%).</li>
-</ul></li>
-<li><p>Creates a clean summary table:</p></li>
-<li><p>Uses kable() to display the quantile data in a readable format.</p>
-<ul>
-<li><p>Customizes column names: Percentile, MPG, Cylinders, and Weight.</p></li>
-<li><p>Centers all columns and adds a caption: “Quantiles of MTCARS”.</p></li>
-</ul></li>
-<li><p>Improves table appearance:</p>
-<ul>
-<li>Uses kable_styling(font_size = 12) from kableExtra to make the table more visually appealing.</li>
-</ul></li>
-</ul>
-<div class="cell" data-warnings="false">
+<section id="z-scores-example" class="level2" data-number="13.12">
+<h2 data-number="13.12" class="anchored" data-anchor-id="z-scores-example"><span class="header-section-number">13.12</span> Z-Scores Example</h2>
+<p>In the following example, we generate a simulated population of 10,000 observations with <span class="math inline">\(\mu = -25\)</span> and <span class="math inline">\(\sigma = 2.9\)</span>.</p>
+<p>We then generate the population mean and population standard deviation for the simulated population.</p>
+<p>The next step is estimating the z-score of each observation. We then output the first five observations to the table.</p>
+<ol type="1">
+<li><div>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">quantile   =</span> scales<span class="sc">::</span><span class="fu">percent</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span> ,<span class="dv">1</span>)),</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mpg      =</span> <span class="fu">quantile</span>(mpg, <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>)),</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">cyl      =</span> <span class="fu">quantile</span>(cyl, <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>)),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">wt       =</span> <span class="fu">quantile</span>(wt, <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>)))</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cars,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Percentile'</span>, </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'MPG'</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Cyliners'</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Weight'</span>),</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="fu">c</span>(<span class="st">'c'</span>,<span class="st">'c'</span>,<span class="st">'c'</span>,<span class="st">'c'</span>),</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">'Quantiles of MTCARS'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">25</span>, <span class="at">sd =</span> <span class="fl">2.9</span>)) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>z_norm <span class="ot">&lt;-</span> df_1 <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_x  =</span> <span class="fu">mean</span>(x),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">sd_x    =</span> <span class="fu">sd</span>(x),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">z_score =</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sd</span>(x))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(z_norm[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,],</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Observation'</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Mean X"</span>, <span class="st">"Standard Deviation X"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Z-Score"</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption   =</span> <span class="st">'Z-Scores'</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
-<caption>Quantiles of MTCARS</caption>
+<caption>Z-Scores</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Percentile</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">MPG</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Cyliners</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Weight</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Observation</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Mean X</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Standard Deviation X</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Z-Score</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0%</td>
-<td style="text-align: center;">10.400</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">1.51300</td>
+<td style="text-align: center;">-24.61549</td>
+<td style="text-align: center;">-24.99985</td>
+<td style="text-align: center;">2.915116</td>
+<td style="text-align: center;">0.1318513</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">25%</td>
-<td style="text-align: center;">15.425</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">2.58125</td>
+<td style="text-align: center;">-26.85273</td>
+<td style="text-align: center;">-24.99985</td>
+<td style="text-align: center;">2.915116</td>
+<td style="text-align: center;">-0.6356091</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">50%</td>
-<td style="text-align: center;">19.200</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">3.32500</td>
+<td style="text-align: center;">-17.10426</td>
+<td style="text-align: center;">-24.99985</td>
+<td style="text-align: center;">2.915116</td>
+<td style="text-align: center;">2.7084993</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">75%</td>
-<td style="text-align: center;">22.800</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.61000</td>
+<td style="text-align: center;">-30.11698</td>
+<td style="text-align: center;">-24.99985</td>
+<td style="text-align: center;">2.915116</td>
+<td style="text-align: center;">-1.7553786</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">100%</td>
-<td style="text-align: center;">33.900</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">5.42400</td>
+<td style="text-align: center;">-24.38497</td>
+<td style="text-align: center;">-24.99985</td>
+<td style="text-align: center;">2.915116</td>
+<td style="text-align: center;">0.2109300</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+</div></li>
+</ol>
+</section>
+<section id="module-summary" class="level2" data-number="13.13">
+<h2 data-number="13.13" class="anchored" data-anchor-id="module-summary"><span class="header-section-number">13.13</span> Module Summary</h2>
+<p>We use descriptive statistics to develop an understanding of the properties of the data.</p>
+<p>We have discussed two broad properties of the data:</p>
+<ul>
+<li><p>The center of the data</p></li>
+<li><p>The spread of the data</p></li>
+</ul>
+<p>We will work on the shape of the data in coming modules.</p>
+<p>Now, having worked with measures of the center and spread, we can turn our attention to the question of co-movement.</p>
+<p>Do two variables “move” together in some systematic fashion?</p>
+<p>What measures might suggest a potential relationship between two variables of interest?</p>
+<p>In our next module, we will focus on <strong>covariance</strong> and <strong>correlation</strong>.</p>
 
 
 </section>
@@ -2938,14 +2926,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-2-1-frequency.html" class="pagination-link" aria-label="Frequency Distributions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Frequency Distributions</span></span>
+      <a href="./mod-2-2-central.html" class="pagination-link" aria-label="Central Tendency">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-2-3-variance.html" class="pagination-link" aria-label="Measures of Disperson">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
