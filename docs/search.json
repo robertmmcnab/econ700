@@ -26,7 +26,7 @@
     "href": "index.html#module-01-introduction-to-r-and-descriptive-statistics",
     "title": "ECON 700",
     "section": "0.2 Module 01 – Introduction to R and Descriptive Statistics",
-    "text": "0.2 Module 01 – Introduction to R and Descriptive Statistics\n\n\nModule 1.0 - Module 1 Overview\n\n\nModule 1.1 - Data and the Challenge of Economic Analysis\n\n\nModule 1.2 – Introduction to R\n\n\nModule 1.3 – Variables and Assignments in R\n\n\nModule 1.4 – Data frames in R",
+    "text": "0.2 Module 01 – Introduction to R and Descriptive Statistics\n\n\nModule 1.0 - Module 1 Overview\n\n\nModule 1.1 - Data and the Challenge of Economic Analysis\n\n\nModule 1.2 – Introduction to R\n\n\nModule 1.3 – Variables and Assignments in R\n\n\nModule 1.4 – Data frames in R\n\n\nModule 1.5 – Using Quarto",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -37,7 +37,7 @@
     "href": "index.html#module-02---descriptive-statistics",
     "title": "ECON 700",
     "section": "0.3 Module 02 - Descriptive Statistics",
-    "text": "0.3 Module 02 - Descriptive Statistics\n\n\nModule 2.0 - Overview\n\n\nModule 2.1 – Frequency",
+    "text": "0.3 Module 02 - Descriptive Statistics\n\n\nModule 2.0 - Overview\n\n\nModule 2.1 – Frequency\n\n\nModule 2.1 – Measures of Central Tendency",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -378,7 +378,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n49.52\n51.03\n49.87",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n53.53\n52.25\n50.36",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -660,300 +660,377 @@
     ]
   },
   {
+    "objectID": "mod-1-5-quarto.html",
+    "href": "mod-1-5-quarto.html",
+    "title": "9  Using Quarto",
+    "section": "",
+    "text": "9.1 What is Quarto?\nQuatro is how we will work with R and RStudio to produce documents, assignments, and exams.\nOne way to think about Quarto is that it is like Microsoft Word, however, it is much more powerful and flexible.\nIn fact, the entire ECON 700 course is built with R, RStudio, and Quarto.\nAs with R and RStudio, the more you work with Quarto, the easier it comes to work with Quarto.",
+    "crumbs": [
+      "Introduction to R",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-quarto.html#getting-started",
+    "href": "mod-1-5-quarto.html#getting-started",
+    "title": "9  Using Quarto",
+    "section": "9.2 Getting Started",
+    "text": "9.2 Getting Started\nTo get started with Quarto, you have to install Quarto.\nThis step assumes you have already installed R and RStudio.\nTo install Quarto, go to https://quarto.org/docs/get-started/\n\n\n\nQuarto Installation Page\n\n\nOnce you have installed Quarto, go to the getting started in RStudio page.\nYou can find this page at: https://quarto.org/docs/get-started/hello/rstudio.html\nThe getting started page will help you understand the capabilities of Quarto.",
+    "crumbs": [
+      "Introduction to R",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-quarto.html#creating-a-file",
+    "href": "mod-1-5-quarto.html#creating-a-file",
+    "title": "9  Using Quarto",
+    "section": "9.3 Creating a File",
+    "text": "9.3 Creating a File\nIn RStudio, go to File -&gt; New File -&gt; New Quatro Document.\nYou will see the window below. Let’s say we name our document: Example-1.\n\nOnce you have created this file, you will see the following window in RStudio:\n\n\n\nScreenshot of New Quarto Document",
+    "crumbs": [
+      "Introduction to R",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-quarto.html#working-with-quartro",
+    "href": "mod-1-5-quarto.html#working-with-quartro",
+    "title": "9  Using Quarto",
+    "section": "9.4 Working with Quartro",
+    "text": "9.4 Working with Quartro\nWe want to create a text description of in our new Quarto document. We also want to create a simple code chunk in our Quarto document that will execute when we render our file.\nIn your new file, let’s write the following text:\nThis is an example Quarto file. You can write text here like a normal document.\nAnd let’s include the following code chunk:\n\nx &lt;- 3\ny &lt;- 6\nz &lt;- 10\n\nx*y\n\n[1] 18\n\ny*z\n\n[1] 60\n\nx/z\n\n[1] 0.3\n\n\nYour file should look like the following picture:\n\n\n\nScreenshot of Quarto Example Document",
+    "crumbs": [
+      "Introduction to R",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-quarto.html#code-chunks",
+    "href": "mod-1-5-quarto.html#code-chunks",
+    "title": "9  Using Quarto",
+    "section": "9.5 Code Chunks",
+    "text": "9.5 Code Chunks\nR code chunks can be identified with {r}.\nTo start a code chunk, you use ```{r} and you close off the code chunk with ```.\nYou can run the code chunk interactively in RStudio, that is, you can click on the green arrow icon at the top of the code chunk and RStudio will display the results.",
+    "crumbs": [
+      "Introduction to R",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-quarto.html#rendering",
+    "href": "mod-1-5-quarto.html#rendering",
+    "title": "9  Using Quarto",
+    "section": "9.6 Rendering",
+    "text": "9.6 Rendering\nUse the Render button in RStudio to render the file and previous the output. If you prefer to automatically render whenever you save, check the Render on Save button in RStudio.\nWhen you render, your can save your file as Example1.qmd and the rendered file should appear in a browser window.\nQuarto is a very powerful approach to displaying your work in R and RStudio.",
+    "crumbs": [
+      "Introduction to R",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-5-quarto.html#additional-resources",
+    "href": "mod-1-5-quarto.html#additional-resources",
+    "title": "9  Using Quarto",
+    "section": "9.7 Additional Resources",
+    "text": "9.7 Additional Resources\nGetting started with Quarto video from Posit: https://youtu.be/_f3latmOhew?si=FS-Ue1--z-hLGtKg\nQuarto crash course: https://www.youtube.com/watch?v=oYV1a9sWhgM\nR for Data Science: Quarto https://r4ds.hadley.nz/quarto.html\nIntroduction to Quarto, Klajdi Puka: https://kpuka.ca/resources/quarto_intro.html",
+    "crumbs": [
+      "Introduction to R",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Quarto</span>"
+    ]
+  },
+  {
     "objectID": "mod-2-0-overview.html",
     "href": "mod-2-0-overview.html",
-    "title": "9  Module 2 Overview",
+    "title": "10  Module 2 Overview",
     "section": "",
-    "text": "9.1 Introduction\nWelcome to Module 2 of ECON 700.\nIn this module, you will deepen your understanding of how to summarize and interpret data using descriptive statistics. You will learn to organize data into frequency and relative frequency distributions, calculate measures that describe the center and spread of data, and assess how individual observations compare to the overall dataset.\nEmphasis will be placed on using R to compute and visualize descriptive statistics, including the mean, median, mode, range, variance, standard deviation, coefficient of variation, and z-scores. By the end of this module, you will be able to use these tools to describe key features of economic data accurately and communicate your findings effectively through reproducible R-based analyses.",
+    "text": "10.1 Introduction\nWelcome to Module 2 of ECON 700.\nIn this module, you will deepen your understanding of how to summarize and interpret data using descriptive statistics. You will learn to organize data into frequency and relative frequency distributions, calculate measures that describe the center and spread of data, and assess how individual observations compare to the overall dataset.\nEmphasis will be placed on using R to compute and visualize descriptive statistics, including the mean, median, mode, range, variance, standard deviation, coefficient of variation, and z-scores. By the end of this module, you will be able to use these tools to describe key features of economic data accurately and communicate your findings effectively through reproducible R-based analyses.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 2 Overview</span>"
     ]
   },
   {
     "objectID": "mod-2-0-overview.html#learning-objectives",
     "href": "mod-2-0-overview.html#learning-objectives",
-    "title": "9  Module 2 Overview",
-    "section": "9.2 Learning Objectives",
-    "text": "9.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nConstruct and interpret frequency and relative frequency distributions to summarize quantitative data.\nCompute and interpret measures of central tendency, including the mean, median, mode, and trimmed and weighted means.\nCalculate and explain measures of variability, including the range, variance, standard deviation, and coefficient of variation.\nUse z-scores to assess relative position and identify outliers within a dataset.\nApply R to generate, visualize, and interpret descriptive statistics and graphical summaries of economic data.",
+    "title": "10  Module 2 Overview",
+    "section": "10.2 Learning Objectives",
+    "text": "10.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nConstruct and interpret frequency and relative frequency distributions to summarize quantitative data.\nCompute and interpret measures of central tendency, including the mean, median, mode, and trimmed and weighted means.\nCalculate and explain measures of variability, including the range, variance, standard deviation, and coefficient of variation.\nUse z-scores to assess relative position and identify outliers within a dataset.\nApply R to generate, visualize, and interpret descriptive statistics and graphical summaries of economic data.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 2 Overview</span>"
     ]
   },
   {
     "objectID": "mod-2-0-overview.html#readings-resources",
     "href": "mod-2-0-overview.html#readings-resources",
-    "title": "9  Module 2 Overview",
-    "section": "9.3 Readings & Resources",
-    "text": "9.3 Readings & Resources\n\nIrizarry, R. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. (Chapters 1-2). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-1/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\n\nOnline R documentation: https://cran.r-project.org/manuals.html\n\nRStudio Cheat Sheets",
+    "title": "10  Module 2 Overview",
+    "section": "10.3 Readings & Resources",
+    "text": "10.3 Readings & Resources\n\nIrizarry, R. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. (Chapters 1-2). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-1/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\n\nOnline R documentation: https://cran.r-project.org/manuals.html\n\nRStudio Cheat Sheets",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 2 Overview</span>"
     ]
   },
   {
     "objectID": "mod-2-0-overview.html#activities",
     "href": "mod-2-0-overview.html#activities",
-    "title": "9  Module 2 Overview",
-    "section": "9.4 Activities",
-    "text": "9.4 Activities\n\nComplete the hands-on coding exercises embedded in each lesson.\n\nComplete the weekly class assignment.\n\nParticipate in the discussion form.\n\nTake the weekly knowledge quiz.",
+    "title": "10  Module 2 Overview",
+    "section": "10.4 Activities",
+    "text": "10.4 Activities\n\nComplete the hands-on coding exercises embedded in each lesson.\n\nComplete the weekly class assignment.\n\nParticipate in the discussion form.\n\nTake the weekly knowledge quiz.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 2 Overview</span>"
     ]
   },
   {
     "objectID": "mod-2-0-overview.html#lessons-in-this-module",
     "href": "mod-2-0-overview.html#lessons-in-this-module",
-    "title": "9  Module 2 Overview",
-    "section": "9.5 Lessons in this Module",
-    "text": "9.5 Lessons in this Module\n\n2.1 – Frequency Distributions\n\n2.1 - Measures of Central Tendency\n\n\nNext: Start with Frequency Distributions.",
+    "title": "10  Module 2 Overview",
+    "section": "10.5 Lessons in this Module",
+    "text": "10.5 Lessons in this Module\n\n2.1 – Frequency Distributions\n\n2.1 - Measures of Central Tendency\n\n\nNext: Start with Frequency Distributions.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 2 Overview</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html",
     "href": "mod-2-1-frequency.html",
-    "title": "10  Frequency Distributions",
+    "title": "11  Frequency Distributions",
     "section": "",
-    "text": "10.1 Frequency Distributions\nThe frequency of a category, class, or value is the number of times it occurs in a data set.\nA frequency distribution is summary of data.\nA frequency distribution is the pattern of frequencies of variable of interest.\nGiven several non-overlapping categories or classes, a frequency distribution contains the number of observations per class or category.\nA frequency distribution, to be complete, must be:\nA frequency distribution may provide insights about the data that cannot be quickly obtained by examining the data itself.",
+    "text": "11.1 Frequency Distributions\nThe frequency of a category, class, or value is the number of times it occurs in a data set.\nA frequency distribution is summary of data.\nA frequency distribution is the pattern of frequencies of variable of interest.\nGiven several non-overlapping categories or classes, a frequency distribution contains the number of observations per class or category.\nA frequency distribution, to be complete, must be:\nA frequency distribution may provide insights about the data that cannot be quickly obtained by examining the data itself.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html#frequency-distributions",
     "href": "mod-2-1-frequency.html#frequency-distributions",
-    "title": "10  Frequency Distributions",
+    "title": "11  Frequency Distributions",
     "section": "",
     "text": "Mutually exclusive - the classes or categories do not overlap.\nCollectively exhaustive - all the observations are described by the distribution",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html#frequency-example",
     "href": "mod-2-1-frequency.html#frequency-example",
-    "title": "10  Frequency Distributions",
-    "section": "10.2 Frequency Example",
-    "text": "10.2 Frequency Example\nIn the example below, we have six observations (students).\nThe students can be grouped by their graduating year. There are 3 students that graduate in 2028 and 4 students that graduate in 2029.\nThe number of students for each group is the frequency (count) associated with the group, that is,\n\nGraduating Year 2028: 3\nGraduating Year 2029: 4\n\n\nTable of Observations\n\n\nStudent\nGraduating Year\nGrade Point Average\n\n\n\n\n1\n2028\n3.0\n\n\n2\n2028\n2.8\n\n\n3\n2028\n3.5\n\n\n4\n2029\n2.7\n\n\n5\n2029\n2.8\n\n\n6\n2029\n3.0\n\n\n7\n2029\n3.6",
+    "title": "11  Frequency Distributions",
+    "section": "11.2 Frequency Example",
+    "text": "11.2 Frequency Example\nIn the example below, we have six observations (students).\nThe students can be grouped by their graduating year. There are 3 students that graduate in 2028 and 4 students that graduate in 2029.\nThe number of students for each group is the frequency (count) associated with the group, that is,\n\nGraduating Year 2028: 3\nGraduating Year 2029: 4\n\n\nTable of Observations\n\n\nStudent\nGraduating Year\nGrade Point Average\n\n\n\n\n1\n2028\n3.0\n\n\n2\n2028\n2.8\n\n\n3\n2028\n3.5\n\n\n4\n2029\n2.7\n\n\n5\n2029\n2.8\n\n\n6\n2029\n3.0\n\n\n7\n2029\n3.6",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html#mtcars-frequency",
     "href": "mod-2-1-frequency.html#mtcars-frequency",
-    "title": "10  Frequency Distributions",
-    "section": "10.3 Mtcars Frequency",
-    "text": "10.3 Mtcars Frequency\nFor the following example, we use the mtcars data frame.\nFirst, we group the data by the cylinder variable. The group_by function notifies R that the data are organized by a specific variable or variables.\nHere, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.\nSecond, we create a new variable freq_cyl using the summarize function. The variable freq_cyl is equal to the number of observations in each group.\nWe then use the arrange function to sort the resulting frequencies from lowest number to the highest number.\nWe create a frequency table using the kable function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "11  Frequency Distributions",
+    "section": "11.3 Mtcars Frequency",
+    "text": "11.3 Mtcars Frequency\nFor the following example, we use the mtcars data frame.\nFirst, we group the data by the cylinder variable. The group_by function notifies R that the data are organized by a specific variable or variables.\nHere, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.\nSecond, we create a new variable freq_cyl using the summarize function. The variable freq_cyl is equal to the number of observations in each group.\nWe then use the arrange function to sort the resulting frequencies from lowest number to the highest number.\nWe create a frequency table using the kable function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html#census-frequency",
     "href": "mod-2-1-frequency.html#census-frequency",
-    "title": "10  Frequency Distributions",
-    "section": "10.4 Census Frequency",
-    "text": "10.4 Census Frequency\nIn the example below, we use the censusapi package to obtain data from the U.S. Census Bureau’s American Community Survey.\nWe use the API to download data on counties and county-equivalent geographies for the United States. We specify two variables, the name of each geography and the population of each geography.\nWe rename the census population variable, B01001_001E, to total_pop.\nWe want to create categories for different ranges of population. To do this, we use the case_when function.\nHaving created the population categories, we group_by the population category variable and then use the summarize function to obtain a count of the number of observations in each category.\n\n# Clear Memory \nrm(list = ls())\n\n# Load Libraries\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\n#B01001_001E is total population\n#Case When to Create Categories\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(total_pop = B01001_001E) %&gt;%\nmutate(pop_cat = case_when(total_pop &gt; 99999 ~ \"Greater than 99,999\",\n                           total_pop &gt; 49999 ~ \"50,000 - 99,999\",\n                           total_pop &gt; 24999 ~ \"25,000 - 49,999\",\n                           total_pop &gt; 9999  ~ \"10,000 - 24,999\",\n                           TRUE ~ \"0 - 9,999\"))\n\n# Summarize to Create Frequencies by Categories\n\ncounty_freq &lt;- county_pop %&gt;%\n  group_by(pop_cat) %&gt;%\n  summarize(freq_pop = n()) %&gt;%\n  arrange(pop_cat)\n\n# Use frequency data frame to produce table\n\nkable(county_freq,\n      col.names = c(\"Category\", \"Frequency\"),\n      align = c('c','c'),\n      caption = 'Frequency of County Population, 2023') %&gt;%\nkable_styling(font_size = 14)\n\n\nFrequency of County Population, 2023\n\n\nCategory\nFrequency\n\n\n\n\n0 - 9,999\n743\n\n\n10,000 - 24,999\n823\n\n\n25,000 - 49,999\n643\n\n\n50,000 - 99,999\n397\n\n\nGreater than 99,999\n616",
+    "title": "11  Frequency Distributions",
+    "section": "11.4 Census Frequency",
+    "text": "11.4 Census Frequency\nIn the example below, we use the censusapi package to obtain data from the U.S. Census Bureau’s American Community Survey.\nWe use the API to download data on counties and county-equivalent geographies for the United States. We specify two variables, the name of each geography and the population of each geography.\nWe rename the census population variable, B01001_001E, to total_pop.\nWe want to create categories for different ranges of population. To do this, we use the case_when function.\nHaving created the population categories, we group_by the population category variable and then use the summarize function to obtain a count of the number of observations in each category.\n\n# Clear Memory \nrm(list = ls())\n\n# Load Libraries\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\n#B01001_001E is total population\n#Case When to Create Categories\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(total_pop = B01001_001E) %&gt;%\nmutate(pop_cat = case_when(total_pop &gt; 99999 ~ \"Greater than 99,999\",\n                           total_pop &gt; 49999 ~ \"50,000 - 99,999\",\n                           total_pop &gt; 24999 ~ \"25,000 - 49,999\",\n                           total_pop &gt; 9999  ~ \"10,000 - 24,999\",\n                           TRUE ~ \"0 - 9,999\"))\n\n# Summarize to Create Frequencies by Categories\n\ncounty_freq &lt;- county_pop %&gt;%\n  group_by(pop_cat) %&gt;%\n  summarize(freq_pop = n()) %&gt;%\n  arrange(pop_cat)\n\n# Use frequency data frame to produce table\n\nkable(county_freq,\n      col.names = c(\"Category\", \"Frequency\"),\n      align = c('c','c'),\n      caption = 'Frequency of County Population, 2023') %&gt;%\nkable_styling(font_size = 14)\n\n\nFrequency of County Population, 2023\n\n\nCategory\nFrequency\n\n\n\n\n0 - 9,999\n743\n\n\n10,000 - 24,999\n823\n\n\n25,000 - 49,999\n643\n\n\n50,000 - 99,999\n397\n\n\nGreater than 99,999\n616",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html#frequency-distributions-1",
     "href": "mod-2-1-frequency.html#frequency-distributions-1",
-    "title": "10  Frequency Distributions",
-    "section": "10.5 Frequency Distributions",
-    "text": "10.5 Frequency Distributions\nWe can graphically depict the frequency distribution.\nWe use the ggplot package to create a graphical plot of the frequency distribution.\nTo learn more about the capabilities of ggplot, see https://ggplot2.tidyverse.org/.\nWe have categories (population size) on the x-axis and the frequencies on the y-axis.\nWe use the geom_col command to create a column chart of the frequencies. We choose to fill the columns with the darkblue color.\nThe labs command specifies the labels for the plot, to include the x-axis, y-axis, title, and subtitle.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "11  Frequency Distributions",
+    "section": "11.5 Frequency Distributions",
+    "text": "11.5 Frequency Distributions\nWe can graphically depict the frequency distribution.\nWe use the ggplot package to create a graphical plot of the frequency distribution.\nTo learn more about the capabilities of ggplot, see https://ggplot2.tidyverse.org/.\nWe have categories (population size) on the x-axis and the frequencies on the y-axis.\nWe use the geom_col command to create a column chart of the frequencies. We choose to fill the columns with the darkblue color.\nThe labs command specifies the labels for the plot, to include the x-axis, y-axis, title, and subtitle.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html#relative-frequency-distributions",
     "href": "mod-2-1-frequency.html#relative-frequency-distributions",
-    "title": "10  Frequency Distributions",
-    "section": "10.6 Relative Frequency Distributions",
-    "text": "10.6 Relative Frequency Distributions\nThe frequency distribution may not be as informative as we would like if the number of observations is sufficiently large.\nIn the frequency distribution for the population of U.S. counties, there were more than 600 counties with populations between 10,000 and 24,999 individuals. How does this compare with the number of counties with populations less than 10,000?\nA relative frequency distribution contains information on the proportion of observations in each class relative to the total number of observations.\nLet \\(n\\) be the total number of observations.\nLet \\(i\\) represent the number of classes or categories.\nLet \\(n_i\\) be the total number of observations in the i-th class.\n\\[\\text{Relative Frequency of Class}_i = \\frac{n_i}{n}\\]",
+    "title": "11  Frequency Distributions",
+    "section": "11.6 Relative Frequency Distributions",
+    "text": "11.6 Relative Frequency Distributions\nThe frequency distribution may not be as informative as we would like if the number of observations is sufficiently large.\nIn the frequency distribution for the population of U.S. counties, there were more than 600 counties with populations between 10,000 and 24,999 individuals. How does this compare with the number of counties with populations less than 10,000?\nA relative frequency distribution contains information on the proportion of observations in each class relative to the total number of observations.\nLet \\(n\\) be the total number of observations.\nLet \\(i\\) represent the number of classes or categories.\nLet \\(n_i\\) be the total number of observations in the i-th class.\n\\[\\text{Relative Frequency of Class}_i = \\frac{n_i}{n}\\]",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html#relative-frequency-mtcars",
     "href": "mod-2-1-frequency.html#relative-frequency-mtcars",
-    "title": "10  Frequency Distributions",
-    "section": "10.7 Relative Frequency: Mtcars",
-    "text": "10.7 Relative Frequency: Mtcars\nWe use the mtcars example data.\nWe group the data by the cylinder variable.\nWe estimate the frequency by cylinder.\nWe estimate the relative frequency using the mutate function.\nWe create a frequency table using the kable function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "11  Frequency Distributions",
+    "section": "11.7 Relative Frequency: Mtcars",
+    "text": "11.7 Relative Frequency: Mtcars\nWe use the mtcars example data.\nWe group the data by the cylinder variable.\nWe estimate the frequency by cylinder.\nWe estimate the relative frequency using the mutate function.\nWe create a frequency table using the kable function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html#relative-frequency-census",
     "href": "mod-2-1-frequency.html#relative-frequency-census",
-    "title": "10  Frequency Distributions",
-    "section": "10.8 Relative Frequency: Census",
-    "text": "10.8 Relative Frequency: Census\nWe can also graphically depict the frequency distribution.\nWe return to our previous example using data from the U.S. Census Bureau. We obtain data on population for counties and county-equivalent geographies in the United States.\nWe use case_when to create a categorical variable that groups geographies into population bins.\nAs before, we use summarize to count the number of observations in each bin.\nWe then estimate the relative frequency by diving the number of observations in each bin by the total number of observations or\n\\[\\text{Relative Frequency of Population Bin}_i = \\frac{\\text{Observations in Bin}_i}{\\text{Total Observations}}\\]\nIn other words, the relative frequency of the 0 to 9,999 population bin is equal to the number of counties in that bin divided by the total number of counties across all bins.\nWe then ggplot to create a graphical plot of the frequency distribution.\nWe have categories (population size) on the x-axis and the frequencies on the y-axis.\n\nrm(list = ls())\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\n#B01001_001E is total population\n#Case When to Create Categories\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(total_pop = B01001_001E) %&gt;%\nmutate(pop_cat = case_when(total_pop &gt; 99999 ~ \"Greater than 99,999\",\n                           total_pop &gt; 49999 ~ \"50,000 - 99,999\",\n                           total_pop &gt; 24999 ~ \"25,000 - 49,999\",\n                           total_pop &gt; 9999  ~ \"10,000 - 24,999\",\n                           TRUE ~ \"0 - 9,999\"))\n\ncounty_freq &lt;- county_pop %&gt;%\n  group_by(pop_cat) %&gt;%\n  summarize(freq_pop = n()) %&gt;%\n  mutate(rel_freq = freq_pop/sum(freq_pop)) %&gt;%\n  arrange(pop_cat)\n\nggplot(data = county_freq,\n       aes(x = pop_cat,\n           y = rel_freq,\n           fill = rel_freq)) +\ngeom_col() +\ntheme_minimal() +\ntheme(legend.position=\"none\") +\nlabs(title = \"Relative Frequency of Population Bins\",\n     x     = \"Population Bin\",\n     y     = \"Relative Frequency\")",
+    "title": "11  Frequency Distributions",
+    "section": "11.8 Relative Frequency: Census",
+    "text": "11.8 Relative Frequency: Census\nWe can also graphically depict the frequency distribution.\nWe return to our previous example using data from the U.S. Census Bureau. We obtain data on population for counties and county-equivalent geographies in the United States.\nWe use case_when to create a categorical variable that groups geographies into population bins.\nAs before, we use summarize to count the number of observations in each bin.\nWe then estimate the relative frequency by diving the number of observations in each bin by the total number of observations or\n\\[\\text{Relative Frequency of Population Bin}_i = \\frac{\\text{Observations in Bin}_i}{\\text{Total Observations}}\\]\nIn other words, the relative frequency of the 0 to 9,999 population bin is equal to the number of counties in that bin divided by the total number of counties across all bins.\nWe then ggplot to create a graphical plot of the frequency distribution.\nWe have categories (population size) on the x-axis and the frequencies on the y-axis.\n\nrm(list = ls())\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\n#B01001_001E is total population\n#Case When to Create Categories\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(total_pop = B01001_001E) %&gt;%\nmutate(pop_cat = case_when(total_pop &gt; 99999 ~ \"Greater than 99,999\",\n                           total_pop &gt; 49999 ~ \"50,000 - 99,999\",\n                           total_pop &gt; 24999 ~ \"25,000 - 49,999\",\n                           total_pop &gt; 9999  ~ \"10,000 - 24,999\",\n                           TRUE ~ \"0 - 9,999\"))\n\ncounty_freq &lt;- county_pop %&gt;%\n  group_by(pop_cat) %&gt;%\n  summarize(freq_pop = n()) %&gt;%\n  mutate(rel_freq = freq_pop/sum(freq_pop)) %&gt;%\n  arrange(pop_cat)\n\nggplot(data = county_freq,\n       aes(x = pop_cat,\n           y = rel_freq,\n           fill = rel_freq)) +\ngeom_col() +\ntheme_minimal() +\ntheme(legend.position=\"none\") +\nlabs(title = \"Relative Frequency of Population Bins\",\n     x     = \"Population Bin\",\n     y     = \"Relative Frequency\")",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-1-frequency.html#scatterplots",
     "href": "mod-2-1-frequency.html#scatterplots",
-    "title": "10  Frequency Distributions",
-    "section": "10.9 Scatterplots",
-    "text": "10.9 Scatterplots\nA scatterplot is a graphical display of a relationship between two variables of interest.\nBefore constructing a scatterplot, one must think about the nature of the relationship between the two variables.\nThe independent variable is typically represented on the horizontal axis while the dependent variable is typically represented on the vertical axis.\nThe hypothesized relationship between the \\(x\\) and \\(y\\) variables can be expressed as:\n\\[y = f(x)\\]\nCare must be taken to avoid interpreting the visual relationship.\nIn other words, what if the true relationship is:\n\\[y = f(x, w, z)\\]\nIf you plot \\(y\\) and \\(x\\) and interpret the visual relationship, you are ignoring the potential relationships between \\(y\\) and \\(w\\) and \\(y\\) and \\(z\\).\nScatterplots may inform, but we should always be careful with any conclusions we derive from merely observing the pattern of two variables.\nIn the code below, we plot weight in pounds on the x-axis and miles per gallon on the y-axis. It would seem that there is a negative relationship between the weight of cars and their fuel efficiency. Heavier cars appear to have lower fuel efficiency.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "11  Frequency Distributions",
+    "section": "11.9 Scatterplots",
+    "text": "11.9 Scatterplots\nA scatterplot is a graphical display of a relationship between two variables of interest.\nBefore constructing a scatterplot, one must think about the nature of the relationship between the two variables.\nThe independent variable is typically represented on the horizontal axis while the dependent variable is typically represented on the vertical axis.\nThe hypothesized relationship between the \\(x\\) and \\(y\\) variables can be expressed as:\n\\[y = f(x)\\]\nCare must be taken to avoid interpreting the visual relationship.\nIn other words, what if the true relationship is:\n\\[y = f(x, w, z)\\]\nIf you plot \\(y\\) and \\(x\\) and interpret the visual relationship, you are ignoring the potential relationships between \\(y\\) and \\(w\\) and \\(y\\) and \\(z\\).\nScatterplots may inform, but we should always be careful with any conclusions we derive from merely observing the pattern of two variables.\nIn the code below, we plot weight in pounds on the x-axis and miles per gallon on the y-axis. It would seem that there is a negative relationship between the weight of cars and their fuel efficiency. Heavier cars appear to have lower fuel efficiency.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Frequency Distributions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frequency Distributions</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html",
     "href": "mod-2-2-central.html",
-    "title": "11  Central Tendency",
+    "title": "12  Central Tendency",
     "section": "",
-    "text": "11.1 Data Properties\nThe properties of a set of data can be described (in general) by:\nThe center of the data refers to the measure of central tendency of the data, that is, what is an estimate of the “middle” of the data.\nThe spread of the data refers to how “far apart” observations are in the data relative to center of the data.\nThere are two typical measures of the shape of the data:\nThe measures of the center, spread, and shape of the data help us understand the properties of the data.",
+    "text": "12.1 Data Properties\nThe properties of a set of data can be described (in general) by:\nThe center of the data refers to the measure of central tendency of the data, that is, what is an estimate of the “middle” of the data.\nThe spread of the data refers to how “far apart” observations are in the data relative to center of the data.\nThere are two typical measures of the shape of the data:\nThe measures of the center, spread, and shape of the data help us understand the properties of the data.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#data-properties",
     "href": "mod-2-2-central.html#data-properties",
-    "title": "11  Central Tendency",
+    "title": "12  Central Tendency",
     "section": "",
     "text": "The center of the data.\nThe spread of the data.\nThe shape of the data\n\n\n\n\n\nAre the data symmetrically or asymmetrically distributed around the mean?\nAre the data concentrated in one tail of the distribution?",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#population-mean-and-sample-average",
     "href": "mod-2-2-central.html#population-mean-and-sample-average",
-    "title": "11  Central Tendency",
-    "section": "11.2 Population Mean and Sample Average",
-    "text": "11.2 Population Mean and Sample Average\nRecall that population data is comprehensive information collected on all members of a group or entity under study. The population is the universe of members of the group.\nRecall that sample data is a subset of the population data. Samples may range from 1 member of the population of interest to many members of a population of interest.\nLet \\(N\\) be the number of members of a specified group.\n\\(N\\) defines the size of the population of the group of interest.\nLet \\(n = N - j\\) where \\(0 \\le j \\le N\\).\n\\(n\\) is the size of a sample of the population size \\(N\\).\nGiven a population size \\(N\\), the population mean, \\(\\mu\\), is defined as:\n\\[\\mu = \\frac{1}{N} \\sum_{i = 1}^N x_i\\]\nFor a sample size \\(n\\) from a population size \\(N\\), then the sample average \\(\\bar{X}\\) is:\n\\[\\bar{x} = \\frac{1}{n} \\sum_{i = 1}^n x_i\\] Here we must be careful in our use of language. When we say mean we refer to the population mean, that is, the mean obtained using all the members of the population. When we say sample, we refer to the sample average, that is, the average obtained using a subset of the members of the population.\nIn the example below, we can use the summarize function to determine number of observations, the minimum value for mpg, the maximum value for mpg, and the sample average for mpg.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "12  Central Tendency",
+    "section": "12.2 Population Mean and Sample Average",
+    "text": "12.2 Population Mean and Sample Average\nRecall that population data is comprehensive information collected on all members of a group or entity under study. The population is the universe of members of the group.\nRecall that sample data is a subset of the population data. Samples may range from 1 member of the population of interest to many members of a population of interest.\nLet \\(N\\) be the number of members of a specified group.\n\\(N\\) defines the size of the population of the group of interest.\nLet \\(n = N - j\\) where \\(0 \\le j \\le N\\).\n\\(n\\) is the size of a sample of the population size \\(N\\).\nGiven a population size \\(N\\), the population mean, \\(\\mu\\), is defined as:\n\\[\\mu = \\frac{1}{N} \\sum_{i = 1}^N x_i\\]\nFor a sample size \\(n\\) from a population size \\(N\\), then the sample average \\(\\bar{X}\\) is:\n\\[\\bar{x} = \\frac{1}{n} \\sum_{i = 1}^n x_i\\] Here we must be careful in our use of language. When we say mean we refer to the population mean, that is, the mean obtained using all the members of the population. When we say sample, we refer to the sample average, that is, the average obtained using a subset of the members of the population.\nIn the example below, we can use the summarize function to determine number of observations, the minimum value for mpg, the maximum value for mpg, and the sample average for mpg.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#mean-and-median",
     "href": "mod-2-2-central.html#mean-and-median",
-    "title": "11  Central Tendency",
-    "section": "11.3 Mean and Median",
-    "text": "11.3 Mean and Median\nThe population mean, \\(\\mu\\), is one measure of the center of the data.\nThe population median is another measure of the center of the data.\nThe median is a value that separates the observations in half.\nFor a given median, 50% of the observations are below the median value and 50% of the observations are above the median value.Depending on the spread and shape of the data, the mean and median may be relatively close or far apart.\nOutlying observations can “pull” the mean far from the “center” of the data.\nIn the example below, we use the censusapi package to access the U.S. Census API to obtain data on total population for county and county-equivalent geographies.\nNote the difference between the mtcars example and the census example: the mtcars example is a sample while the census examine uses population data.\nWe then estimate the following descriptive statistics for the population of geographies:\n\nNumber of observations\nMinimum value for population\nMaximum value for population\nMedian value for population\nMean value for population\n\n\nrm(list = ls())\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(pop = B01001_001E) %&gt;%\nsummarize(n_pop    = n(),\n          min_pop  = min(pop),\n          max_pop  = max(pop),\n          med_pop  = median(pop),\n          mean_pop = mean(pop))\n\nkable(county_pop,\n      col.names = c(\"N\", \"Minimum\", \"Maximum\",\n                    \"Median\", \"Mean\"),\n      align     = 'c',\n      format.args = list(big.mark = \",\"),\n      caption = 'Descriptive Statistics of U.S. Counties - Population') %&gt;%\nkable_styling(font_size = 12)\n\n\nDescriptive Statistics of U.S. Counties - Population\n\n\nN\nMinimum\nMaximum\nMedian\nMean\n\n\n\n\n3,222\n43\n9,848,406\n25,967\n104,172.1",
+    "title": "12  Central Tendency",
+    "section": "12.3 Mean and Median",
+    "text": "12.3 Mean and Median\nThe population mean, \\(\\mu\\), is one measure of the center of the data.\nThe population median is another measure of the center of the data.\nThe median is a value that separates the observations in half.\nFor a given median, 50% of the observations are below the median value and 50% of the observations are above the median value.Depending on the spread and shape of the data, the mean and median may be relatively close or far apart.\nOutlying observations can “pull” the mean far from the “center” of the data.\nIn the example below, we use the censusapi package to access the U.S. Census API to obtain data on total population for county and county-equivalent geographies.\nNote the difference between the mtcars example and the census example: the mtcars example is a sample while the census examine uses population data.\nWe then estimate the following descriptive statistics for the population of geographies:\n\nNumber of observations\nMinimum value for population\nMaximum value for population\nMedian value for population\nMean value for population\n\n\nrm(list = ls())\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(pop = B01001_001E) %&gt;%\nsummarize(n_pop    = n(),\n          min_pop  = min(pop),\n          max_pop  = max(pop),\n          med_pop  = median(pop),\n          mean_pop = mean(pop))\n\nkable(county_pop,\n      col.names = c(\"N\", \"Minimum\", \"Maximum\",\n                    \"Median\", \"Mean\"),\n      align     = 'c',\n      format.args = list(big.mark = \",\"),\n      caption = 'Descriptive Statistics of U.S. Counties - Population') %&gt;%\nkable_styling(font_size = 12)\n\n\nDescriptive Statistics of U.S. Counties - Population\n\n\nN\nMinimum\nMaximum\nMedian\nMean\n\n\n\n\n3,222\n43\n9,848,406\n25,967\n104,172.1",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#mean-deviations",
     "href": "mod-2-2-central.html#mean-deviations",
-    "title": "11  Central Tendency",
-    "section": "11.4 Mean Deviations",
-    "text": "11.4 Mean Deviations\nWe have estimated the population mean (\\(\\mu\\)) and the sample average (\\(\\bar{x}\\)).\nWe can now construct an estimate of how much each observation deviates from the population mean or sample average.\nGiven the i-th observation for a variable \\(x\\), that is, \\(x_i\\), the mean deviation of \\(x_i\\) is:\n\\[d_i = x_i - \\mu\\] Given the i-th observation for a variable \\(x\\), that is, \\(x_i\\), the average deviation of \\(x_i\\) for a sample is:\n\\[d_i = x_i - \\bar{x}\\]\nThe sum of the mean deviations is zero for the population or approximately zero for a sample.\n\\[\\sum_{i = 1}^N d_i = \\sum_{i = 1}^N (x_i - \\mu) = 0\\]\n\\[\\sum_{i = 1}^N d_i = \\sum_{i = 1}^N (x_i - \\bar{x}) \\approx 0\\]",
+    "title": "12  Central Tendency",
+    "section": "12.4 Mean Deviations",
+    "text": "12.4 Mean Deviations\nWe have estimated the population mean (\\(\\mu\\)) and the sample average (\\(\\bar{x}\\)).\nWe can now construct an estimate of how much each observation deviates from the population mean or sample average.\nGiven the i-th observation for a variable \\(x\\), that is, \\(x_i\\), the mean deviation of \\(x_i\\) is:\n\\[d_i = x_i - \\mu\\] Given the i-th observation for a variable \\(x\\), that is, \\(x_i\\), the average deviation of \\(x_i\\) for a sample is:\n\\[d_i = x_i - \\bar{x}\\]\nThe sum of the mean deviations is zero for the population or approximately zero for a sample.\n\\[\\sum_{i = 1}^N d_i = \\sum_{i = 1}^N (x_i - \\mu) = 0\\]\n\\[\\sum_{i = 1}^N d_i = \\sum_{i = 1}^N (x_i - \\bar{x}) \\approx 0\\]",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#mean-deviations-example",
     "href": "mod-2-2-central.html#mean-deviations-example",
-    "title": "11  Central Tendency",
-    "section": "11.5 Mean Deviations Example",
-    "text": "11.5 Mean Deviations Example\nIn the example below, we estimate the sample average deviation for the mtcars example. We select the miles per gallon variable, estimate the sample average, and then estimate the average deviation for every observation in the sample.\nWe then output the first five observations to illustrate the estimation of average deviations.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIn this example, we select two variables: miles per gallon and weight.\nWe estimate the sample average for both variables. We then sum the average deviations for each variable.\nThe table illustrates, that for the sample, the sum of the average deviations is approximately zero for each of the variables.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "12  Central Tendency",
+    "section": "12.5 Mean Deviations Example",
+    "text": "12.5 Mean Deviations Example\nIn the example below, we estimate the sample average deviation for the mtcars example. We select the miles per gallon variable, estimate the sample average, and then estimate the average deviation for every observation in the sample.\nWe then output the first five observations to illustrate the estimation of average deviations.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIn this example, we select two variables: miles per gallon and weight.\nWe estimate the sample average for both variables. We then sum the average deviations for each variable.\nThe table illustrates, that for the sample, the sum of the average deviations is approximately zero for each of the variables.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#trimmed-mean",
     "href": "mod-2-2-central.html#trimmed-mean",
-    "title": "11  Central Tendency",
-    "section": "11.6 Trimmed Mean",
-    "text": "11.6 Trimmed Mean\nThe U.S. Census population data illustrates how an outlying observation (Los Angeles County) can ‘pull’ the population mean away from the “center” of the data.\nWe can trim the data to account for the presence of outliers.\nTrimming the data is a transformation of the data\nIn most cases, 5% to 25% of the data from the ends of the distribution are discarded to estimate the trimmed mean.\nThe median is a fully truncated mean, that is, the median represents the discard of 50% of the observations from each end of the distribution.\nThe trimmed mean is less sensitive to outliers and will provide a “reasonable” estimate of the population mean in many cases.\nRemoving the highest and lowest scores in a competition to obtained a trimmed mean makes the resulting score more robust to outliers.",
+    "title": "12  Central Tendency",
+    "section": "12.6 Trimmed Mean",
+    "text": "12.6 Trimmed Mean\nThe U.S. Census population data illustrates how an outlying observation (Los Angeles County) can ‘pull’ the population mean away from the “center” of the data.\nWe can trim the data to account for the presence of outliers.\nTrimming the data is a transformation of the data\nIn most cases, 5% to 25% of the data from the ends of the distribution are discarded to estimate the trimmed mean.\nThe median is a fully truncated mean, that is, the median represents the discard of 50% of the observations from each end of the distribution.\nThe trimmed mean is less sensitive to outliers and will provide a “reasonable” estimate of the population mean in many cases.\nRemoving the highest and lowest scores in a competition to obtained a trimmed mean makes the resulting score more robust to outliers.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#trimmed-mean-example",
     "href": "mod-2-2-central.html#trimmed-mean-example",
-    "title": "11  Central Tendency",
-    "section": "11.7 Trimmed Mean Example",
-    "text": "11.7 Trimmed Mean Example\nWe estimate the number of observations, minimum and maximum values, and mean and median for population for all U.S. counties using the data from the U.S. Census.\nWe note that several large counties “pull” the mean population away from the median population.\nWe can estimate the trimmed mean using the mean function with the trim option.\nThe trimmed mean removes a specified percentage of the smallest and largest values from a dataset to reduce the impact of outliers.\nNote how even with a 5% trim, the mean of the remaining observations quickly approaches the population mean.\nNote how the 50% trim results in the population mean.\n\nrm(list = ls())\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(pop = B01001_001E) %&gt;%\nsummarize(med_pop  = median(pop),\n          mean_pop = mean(pop),\n          mean_05  = mean(pop, trim = 0.05),\n          mean_10  = mean(pop, trim = 0.10),\n          mean_20  = mean(pop, trim = 0.20),\n          mean_50  = mean(pop, trim = 0.50))\n\nkable(county_pop,\n      col.names = c('Median', 'Mean',\n                    'Trim 0.05', 'Trim 0.10',\n                    'Trim 0.20', 'Trim 0.50'),\n      align     = 'c',\n      digits    = 2,\n      caption = 'Mean and Trimmed Means, County Population') %&gt;%\nkable_styling(font_size = 12)\n\n\nMean and Trimmed Means, County Population\n\n\nMedian\nMean\nTrim 0.05\nTrim 0.10\nTrim 0.20\nTrim 0.50\n\n\n\n\n25967\n104172.1\n55627.37\n42982.97\n32445.04\n25967",
+    "title": "12  Central Tendency",
+    "section": "12.7 Trimmed Mean Example",
+    "text": "12.7 Trimmed Mean Example\nWe estimate the number of observations, minimum and maximum values, and mean and median for population for all U.S. counties using the data from the U.S. Census.\nWe note that several large counties “pull” the mean population away from the median population.\nWe can estimate the trimmed mean using the mean function with the trim option.\nThe trimmed mean removes a specified percentage of the smallest and largest values from a dataset to reduce the impact of outliers.\nNote how even with a 5% trim, the mean of the remaining observations quickly approaches the population mean.\nNote how the 50% trim results in the population mean.\n\nrm(list = ls())\n\nlibrary(censusapi)\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\ncounty_pop &lt;- getCensus(name = \"acs/acs5\",\n            vintage = 2023,\n            key = \"9c1637a56ff93f0af6b4b1d0547ea048fe668175\",\n            vars = c(\"NAME\",\n                     \"B01001_001E\"),\n            region = \"county:*\") %&gt;%\nrename(pop = B01001_001E) %&gt;%\nsummarize(med_pop  = median(pop),\n          mean_pop = mean(pop),\n          mean_05  = mean(pop, trim = 0.05),\n          mean_10  = mean(pop, trim = 0.10),\n          mean_20  = mean(pop, trim = 0.20),\n          mean_50  = mean(pop, trim = 0.50))\n\nkable(county_pop,\n      col.names = c('Median', 'Mean',\n                    'Trim 0.05', 'Trim 0.10',\n                    'Trim 0.20', 'Trim 0.50'),\n      align     = 'c',\n      digits    = 2,\n      caption = 'Mean and Trimmed Means, County Population') %&gt;%\nkable_styling(font_size = 12)\n\n\nMean and Trimmed Means, County Population\n\n\nMedian\nMean\nTrim 0.05\nTrim 0.10\nTrim 0.20\nTrim 0.50\n\n\n\n\n25967\n104172.1\n55627.37\n42982.97\n32445.04\n25967",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#weighted-mean",
     "href": "mod-2-2-central.html#weighted-mean",
-    "title": "11  Central Tendency",
-    "section": "11.8 Weighted Mean",
-    "text": "11.8 Weighted Mean\nGiven \\(N\\) observations of \\(x\\) and weights \\(w_i\\), the weighted population mean, \\(\\mu_w\\), is\n\\[\\mu_w = \\sum_{i = 1}^N w_i \\times x_i\\]\nFor the population mean, \\(\\mu\\), the weights are equal to \\(1/N\\) or\n\\[\\mu = \\frac{1}{N} \\sum_{i = 1}^N = \\frac{1}{N}x_1 + \\frac{1}{N}x_2 + \\dots + \\frac{1}{N}x_N\\]\nGiven \\(n\\) observations of \\(x\\), the weighted sampel average \\(\\bar{x}_w\\), is defined as:\n\\[\\bar{x}_w = \\sum_{i = 1}^n w_i \\times x_i\\]\nFor the sample average, \\(\\bar{x}\\), the weights are equal to \\(1/n\\) or\n\\[\\bar{x} = \\frac{1}{n} \\sum_{i = 1}^n = \\frac{1}{n}x_1 + \\frac{1}{n}x_2 + \\dots + \\frac{1}{n}x_n\\]",
+    "title": "12  Central Tendency",
+    "section": "12.8 Weighted Mean",
+    "text": "12.8 Weighted Mean\nGiven \\(N\\) observations of \\(x\\) and weights \\(w_i\\), the weighted population mean, \\(\\mu_w\\), is\n\\[\\mu_w = \\sum_{i = 1}^N w_i \\times x_i\\]\nFor the population mean, \\(\\mu\\), the weights are equal to \\(1/N\\) or\n\\[\\mu = \\frac{1}{N} \\sum_{i = 1}^N = \\frac{1}{N}x_1 + \\frac{1}{N}x_2 + \\dots + \\frac{1}{N}x_N\\]\nGiven \\(n\\) observations of \\(x\\), the weighted sampel average \\(\\bar{x}_w\\), is defined as:\n\\[\\bar{x}_w = \\sum_{i = 1}^n w_i \\times x_i\\]\nFor the sample average, \\(\\bar{x}\\), the weights are equal to \\(1/n\\) or\n\\[\\bar{x} = \\frac{1}{n} \\sum_{i = 1}^n = \\frac{1}{n}x_1 + \\frac{1}{n}x_2 + \\dots + \\frac{1}{n}x_n\\]",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#weighted-mean-example",
     "href": "mod-2-2-central.html#weighted-mean-example",
-    "title": "11  Central Tendency",
-    "section": "11.9 Weighted Mean Example",
-    "text": "11.9 Weighted Mean Example\nLet’s create a data frame with three variables\nLet x be a vector of squares\nLet wt_1 be a vector of equal weights.\nLet wt_2 be a vector of unequal weights\nWe estimate the mean using the mean function and the weighted mean using the weighted.mean function\nAs expected, using equal weights returns the same value as the mean function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "12  Central Tendency",
+    "section": "12.9 Weighted Mean Example",
+    "text": "12.9 Weighted Mean Example\nLet’s create a data frame with three variables\nLet x be a vector of squares\nLet wt_1 be a vector of equal weights.\nLet wt_2 be a vector of unequal weights\nWe estimate the mean using the mean function and the weighted mean using the weighted.mean function\nAs expected, using equal weights returns the same value as the mean function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#quantiles-and-percentiles",
     "href": "mod-2-2-central.html#quantiles-and-percentiles",
-    "title": "11  Central Tendency",
-    "section": "11.10 Quantiles and Percentiles",
-    "text": "11.10 Quantiles and Percentiles\nLet the p-th quantile be the value in the data for which \\(100 \\times p\\) of the data are less than the value.\nA percentile is the same concept as the quantile but the range is 0 to 100.\nA quantile refers to the 0, 25, 50, 75, and 100 percentiles.\nA quintile refers to the 0, 20, 40, 60, 80, and 100 percentiles.\nA decile refers to the 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, and 100 percentiles.\nGiven sorted data, the p-th quantile is at position\n\\[1 + p \\times (n+1)\\]\nIf you want to determine the location of the p-th percent,\n\\[L_p = \\frac{p}{100} \\times (n+1)\\]",
+    "title": "12  Central Tendency",
+    "section": "12.10 Quantiles and Percentiles",
+    "text": "12.10 Quantiles and Percentiles\nLet the p-th quantile be the value in the data for which \\(100 \\times p\\) of the data are less than the value.\nA percentile is the same concept as the quantile but the range is 0 to 100.\nA quantile refers to the 0, 25, 50, 75, and 100 percentiles.\nA quintile refers to the 0, 20, 40, 60, 80, and 100 percentiles.\nA decile refers to the 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, and 100 percentiles.\nGiven sorted data, the p-th quantile is at position\n\\[1 + p \\times (n+1)\\]\nIf you want to determine the location of the p-th percent,\n\\[L_p = \\frac{p}{100} \\times (n+1)\\]",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   },
   {
     "objectID": "mod-2-2-central.html#quantiles-and-percentiles-example",
     "href": "mod-2-2-central.html#quantiles-and-percentiles-example",
-    "title": "11  Central Tendency",
-    "section": "11.11 Quantiles and Percentiles Example",
-    "text": "11.11 Quantiles and Percentiles Example\n\nClears the environment:\n\nRemoves all objects from memory using rm(list = ls()) to ensure a clean workspace.\n\nLoads the mtcars dataset:\n\nUses the built-in R dataset containing car performance data such as miles per gallon, cylinders, and weight.\n\nCalculates quantiles for selected variables:\nUses reframe() from dplyr to summarize key statistics.\nComputes quantiles at 0%, 25%, 50%, 75%, and 100% using quantile().\n\nThese represent the minimum, first quartile (Q1), median (Q2), third quartile (Q3), and maximum values.\n\nApplies the scales::percent() function:\n\nConverts numeric quantile probabilities (0, 0.25, 0.5, etc.) into formatted percentages (0%, 25%, 50%, 75%, 100%).\n\nCreates a clean summary table:\nUses kable() to display the quantile data in a readable format.\n\nCustomizes column names: Percentile, MPG, Cylinders, and Weight.\nCenters all columns and adds a caption: “Quantiles of MTCARS”.\n\nImproves table appearance:\n\nUses kable_styling(font_size = 12) from kableExtra to make the table more visually appealing.\n\n\n\nrm(list = ls())\n\ncars &lt;- mtcars %&gt;%\n  reframe(quantile   = scales::percent(c(0, 0.25, 0.5, 0.75 ,1)),\n            mpg      = quantile(mpg, c(0, 0.25, 0.5, 0.75, 1)),\n            cyl      = quantile(cyl, c(0, 0.25, 0.5, 0.75, 1)),\n            wt       = quantile(wt, c(0, 0.25, 0.5, 0.75, 1)))\n\nkable(cars,\n      col.names = c('Percentile', \n                    'MPG',\n                    'Cyliners',\n                    'Weight'),\n      align = c('c','c','c','c'),\n      caption = 'Quantiles of MTCARS') %&gt;%\nkable_styling(font_size = 12)\n\n\nQuantiles of MTCARS\n\n\nPercentile\nMPG\nCyliners\nWeight\n\n\n\n\n0%\n10.400\n4\n1.51300\n\n\n25%\n15.425\n4\n2.58125\n\n\n50%\n19.200\n6\n3.32500\n\n\n75%\n22.800\n8\n3.61000\n\n\n100%\n33.900\n8\n5.42400",
+    "title": "12  Central Tendency",
+    "section": "12.11 Quantiles and Percentiles Example",
+    "text": "12.11 Quantiles and Percentiles Example\n\nClears the environment:\n\nRemoves all objects from memory using rm(list = ls()) to ensure a clean workspace.\n\nLoads the mtcars dataset:\n\nUses the built-in R dataset containing car performance data such as miles per gallon, cylinders, and weight.\n\nCalculates quantiles for selected variables:\nUses reframe() from dplyr to summarize key statistics.\nComputes quantiles at 0%, 25%, 50%, 75%, and 100% using quantile().\n\nThese represent the minimum, first quartile (Q1), median (Q2), third quartile (Q3), and maximum values.\n\nApplies the scales::percent() function:\n\nConverts numeric quantile probabilities (0, 0.25, 0.5, etc.) into formatted percentages (0%, 25%, 50%, 75%, 100%).\n\nCreates a clean summary table:\nUses kable() to display the quantile data in a readable format.\n\nCustomizes column names: Percentile, MPG, Cylinders, and Weight.\nCenters all columns and adds a caption: “Quantiles of MTCARS”.\n\nImproves table appearance:\n\nUses kable_styling(font_size = 12) from kableExtra to make the table more visually appealing.\n\n\n\nrm(list = ls())\n\ncars &lt;- mtcars %&gt;%\n  reframe(quantile   = scales::percent(c(0, 0.25, 0.5, 0.75 ,1)),\n            mpg      = quantile(mpg, c(0, 0.25, 0.5, 0.75, 1)),\n            cyl      = quantile(cyl, c(0, 0.25, 0.5, 0.75, 1)),\n            wt       = quantile(wt, c(0, 0.25, 0.5, 0.75, 1)))\n\nkable(cars,\n      col.names = c('Percentile', \n                    'MPG',\n                    'Cyliners',\n                    'Weight'),\n      align = c('c','c','c','c'),\n      caption = 'Quantiles of MTCARS') %&gt;%\nkable_styling(font_size = 12)\n\n\nQuantiles of MTCARS\n\n\nPercentile\nMPG\nCyliners\nWeight\n\n\n\n\n0%\n10.400\n4\n1.51300\n\n\n25%\n15.425\n4\n2.58125\n\n\n50%\n19.200\n6\n3.32500\n\n\n75%\n22.800\n8\n3.61000\n\n\n100%\n33.900\n8\n5.42400",
     "crumbs": [
       "Descriptive Statistics",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Central Tendency</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Central Tendency</span>"
     ]
   }
 ]
