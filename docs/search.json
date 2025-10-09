@@ -697,7 +697,7 @@
     "href": "mod-1-5-quarto.html#working-with-quartro",
     "title": "9  Using Quarto",
     "section": "9.4 Working with Quartro",
-    "text": "9.4 Working with Quartro\nWe want to create a text description of in our new Quarto document. We also want to create a simple code chunk in our Quarto document that will execute when we render our file.\nIn your new file, let’s write the following text:\nThis is an example Quarto file. You can write text here like a normal document.\nAnd let’s include the following code chunk:\n\nx &lt;- 3\ny &lt;- 6\nz &lt;- 10\n\nx*y\n\n[1] 18\n\ny*z\n\n[1] 60\n\nx/z\n\n[1] 0.3\n\n\nYour file should look like the following picture:\n\n\n\nScreenshot of Quarto Example Document",
+    "text": "9.4 Working with Quartro\nWe want to create a text description of in our new Quarto document. We also want to create a simple code chunk in our Quarto document that will execute when we render our file.\nIn your new file, let’s write the following text:\nThis is an example Quarto file. You can write text here like a normal document.\nAnd let’s include the following code chunk:\n\n\n[1] 18\n\n\n[1] 60\n\n\n[1] 0.3\n\n\nYour file should look like the following picture:\n\n\n\nScreenshot of Quarto Example Document",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Quarto</span>"
@@ -719,7 +719,7 @@
     "href": "mod-1-5-quarto.html#rendering",
     "title": "9  Using Quarto",
     "section": "9.6 Rendering",
-    "text": "9.6 Rendering\nUse the Render button in RStudio to render the file and previous the output. If you prefer to automatically render whenever you save, check the Render on Save button in RStudio.\nWhen you render, your can save your file as Example1.qmd and the rendered file should appear in a browser window.\nQuarto is a very powerful approach to displaying your work in R and RStudio.",
+    "text": "9.6 Rendering\nUse the Render button in RStudio to render the file and previous the output. If you prefer to automatically render whenever you save, check the Render on Save button in RStudio.\nWhen you render, your can save your file as Example1.qmd and the rendered file should appear in a browser window.\nQuarto is a powerful approach to displaying your work in R and RStudio.",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Quarto</span>"
