@@ -36,6 +36,8 @@ All other course materials are on Canvas or can be accessed through Canvas. You 
 
 ## Required Texts
 
+Barbara Illowsky and Susan Dean. *Introductory Statistics 2e*. OpenStax. Available for free online at <https://openstax.org/books/introductory-statistics-2e/pages/1-introduction>
+
 Christoph Hanck, Martin Arnold, Alexander Gerber,and Martin Schmelzer. *Introduction to Econometrics with R*. Available for free online at <https://www.econometrics-with-r.org>, 2025.
 
 Rafael A. Irizarry. *Introduction to Data Science: Data Wrangling and Visualization with R.* Available for free at <https://rafalab.dfci.harvard.edu/dsbook-part-1/>.
@@ -46,8 +48,8 @@ David R. Anderson, Dennis J. Sweeney, Thomas A. Williams, Jeffrey D. Camm, and J
 
 Angrist, J.D. & Pischke, Jorn-Steffen. (2013). *Mostly Harmless Econometrics: An Empiricist’s Companion*. Content Technologies Inc.
 
-Baruffa, O. (2022). *The Big Book of R*. Available for free at: \url{https://www.bigbookofr.com/}
+Baruffa, O. (2022). *The Big Book of R*. Available for free at: <https://www.bigbookofr.com/>
 
-Chan, S. (2021) *ntroduction to Probability for Data Science*. Michigan Publishing. Available for free at: <https://probability4datascience.com>
+Chan, S. (2021) *Introduction to Probability for Data Science*. Michigan Publishing. Available for free at: <https://probability4datascience.com>
 
 Kennedy, P. (2003). *A Guide to Econometrics*. MIT Press.

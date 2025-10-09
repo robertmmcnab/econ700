@@ -37,7 +37,7 @@
     "href": "index.html#module-02---descriptive-statistics",
     "title": "ECON 700",
     "section": "0.3 Module 02 - Descriptive Statistics",
-    "text": "0.3 Module 02 - Descriptive Statistics\n\n\nModule 2.0 - Overview\n\n\nModule 2.1 – Frequency\n\n\nModule 2.2 – Measures of Central Tendency\n\n\nModule 2.3 – Measures of Dispersion",
+    "text": "0.3 Module 02 - Descriptive Statistics\n\n\nModule 2.0 - Module 2 Overview\n\n\nModule 2.1 – Frequency Distributions\n\n\nModule 2.2 – Measures of Central Tendency\n\n\nModule 2.3 – Measures of Dispersion",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -125,7 +125,7 @@
     "href": "about.html#required-texts",
     "title": "3  Course Objectives",
     "section": "3.4 Required Texts",
-    "text": "3.4 Required Texts\nChristoph Hanck, Martin Arnold, Alexander Gerber,and Martin Schmelzer. Introduction to Econometrics with R. Available for free online at https://www.econometrics-with-r.org, 2025.\nRafael A. Irizarry. Introduction to Data Science: Data Wrangling and Visualization with R. Available for free at https://rafalab.dfci.harvard.edu/dsbook-part-1/.",
+    "text": "3.4 Required Texts\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. Available for free online at https://openstax.org/books/introductory-statistics-2e/pages/1-introduction\nChristoph Hanck, Martin Arnold, Alexander Gerber,and Martin Schmelzer. Introduction to Econometrics with R. Available for free online at https://www.econometrics-with-r.org, 2025.\nRafael A. Irizarry. Introduction to Data Science: Data Wrangling and Visualization with R. Available for free at https://rafalab.dfci.harvard.edu/dsbook-part-1/.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Course Objectives</span>"
@@ -136,7 +136,7 @@
     "href": "about.html#reference-texts",
     "title": "3  Course Objectives",
     "section": "3.5 Reference Texts",
-    "text": "3.5 Reference Texts\nDavid R. Anderson, Dennis J. Sweeney, Thomas A. Williams, Jeffrey D. Camm, and James J. Cochran. Statistics for Business and Economics 14th Edition. Earlier editions will suffice.\nAngrist, J.D. & Pischke, Jorn-Steffen. (2013). Mostly Harmless Econometrics: An Empiricist’s Companion. Content Technologies Inc.\nBaruffa, O. (2022). The Big Book of R. Available for free at: \nChan, S. (2021) ntroduction to Probability for Data Science. Michigan Publishing. Available for free at: https://probability4datascience.com\nKennedy, P. (2003). A Guide to Econometrics. MIT Press.",
+    "text": "3.5 Reference Texts\nDavid R. Anderson, Dennis J. Sweeney, Thomas A. Williams, Jeffrey D. Camm, and James J. Cochran. Statistics for Business and Economics 14th Edition. Earlier editions will suffice.\nAngrist, J.D. & Pischke, Jorn-Steffen. (2013). Mostly Harmless Econometrics: An Empiricist’s Companion. Content Technologies Inc.\nBaruffa, O. (2022). The Big Book of R. Available for free at: https://www.bigbookofr.com/\nChan, S. (2021) Introduction to Probability for Data Science. Michigan Publishing. Available for free at: https://probability4datascience.com\nKennedy, P. (2003). A Guide to Econometrics. MIT Press.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Course Objectives</span>"
@@ -169,7 +169,7 @@
     "href": "mod-1-0-overview.html#readings-resources",
     "title": "4  Module 1 Overview",
     "section": "4.3 Readings & Resources",
-    "text": "4.3 Readings & Resources\n\nIrizarry, R. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. (Chapters 1-2). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-1/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\n\nOnline R documentation: https://cran.r-project.org/manuals.html\n\nRStudio Cheat Sheets",
+    "text": "4.3 Readings & Resources\n\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. (Chapter 1). Available for free online at https://openstax.org/books/introductory-statistics-2e/pages/1-introduction\nIrizarry, R. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. (Chapters 1-2). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-1/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\nOnline R documentation: https://cran.r-project.org/manuals.html\nRStudio Cheat Sheets",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
@@ -378,7 +378,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n45.12\n49.39\n50.5",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n46.78\n50.32\n50.18",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -763,7 +763,7 @@
     "href": "mod-2-0-overview.html#readings-resources",
     "title": "10  Module 2 Overview",
     "section": "10.3 Readings & Resources",
-    "text": "10.3 Readings & Resources\n\nIrizarry, R. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. (Chapters 1-2). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-1/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\n\nOnline R documentation: https://cran.r-project.org/manuals.html\n\nRStudio Cheat Sheets",
+    "text": "10.3 Readings & Resources\n\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. (Chapter 2). Available for free online at https://openstax.org/books/introductory-statistics-2e/pages/2-introduction\nIrizarry, R. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. (Chapters 1-2). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-1/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\n\nOnline R documentation: https://cran.r-project.org/manuals.html\n\nRStudio Cheat Sheets",
     "crumbs": [
       "Descriptive Statistics",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 2 Overview</span>"
@@ -785,7 +785,7 @@
     "href": "mod-2-0-overview.html#lessons-in-this-module",
     "title": "10  Module 2 Overview",
     "section": "10.5 Lessons in this Module",
-    "text": "10.5 Lessons in this Module\n\n2.1 – Frequency Distributions\n\n2.1 - Measures of Central Tendency\n\n\nNext: Start with Frequency Distributions.",
+    "text": "10.5 Lessons in this Module\n\n2.1 – Frequency Distributions\n\n2.2 - Measures of Central Tendency\n2.3 - Measures of Dispersion\n\n\nNext: Start with Frequency Distributions.",
     "crumbs": [
       "Descriptive Statistics",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 2 Overview</span>"
@@ -1159,7 +1159,7 @@
     "href": "mod-2-3-variance.html#z-scores-example",
     "title": "13  Measures of Disperson",
     "section": "13.12 Z-Scores Example",
-    "text": "13.12 Z-Scores Example\nIn the following example, we generate a simulated population of 10,000 observations with \\(\\mu = -25\\) and \\(\\sigma = 2.9\\).\nWe then generate the population mean and population standard deviation for the simulated population.\nThe next step is estimating the z-score of each observation. We then output the first five observations to the table.\n\n\n\nrm(list = ls())\n\ndf_1 &lt;- data.frame(x = rnorm(10000, mean = -25, sd = 2.9)) \n\nz_norm &lt;- df_1 %&gt;%\n  mutate(mean_x  = mean(x),\n         sd_x    = sd(x),\n         z_score = (x - mean(x))/sd(x))\n\nkable(z_norm[1:5,],\n      col.names = c('Observation',\n                    \"Mean X\", \"Standard Deviation X\",\n                    \"Z-Score\"),\n      align     = 'c',\n      caption   = 'Z-Scores') %&gt;%\nkable_styling(font_size = 12)\n\n\nZ-Scores\n\n\nObservation\nMean X\nStandard Deviation X\nZ-Score\n\n\n\n\n-24.61549\n-24.99985\n2.915116\n0.1318513\n\n\n-26.85273\n-24.99985\n2.915116\n-0.6356091\n\n\n-17.10426\n-24.99985\n2.915116\n2.7084993\n\n\n-30.11698\n-24.99985\n2.915116\n-1.7553786\n\n\n-24.38497\n-24.99985\n2.915116\n0.2109300",
+    "text": "13.12 Z-Scores Example\nIn the following example, we generate a simulated population of 10,000 observations with \\(\\mu = -25\\) and \\(\\sigma = 2.9\\).\nWe then generate the population mean and population standard deviation for the simulated population.\nThe next step is estimating the z-score of each observation. We then output the first five observations to the table.\n\n\n\nrm(list = ls())\n\ndf_1 &lt;- data.frame(x = rnorm(10000, mean = -25, sd = 2.9)) \n\nz_norm &lt;- df_1 %&gt;%\n  mutate(mean_x  = mean(x),\n         sd_x    = sd(x),\n         z_score = (x - mean(x))/sd(x))\n\nkable(z_norm[1:5,],\n      col.names = c('Observation',\n                    \"Mean X\", \"Standard Deviation X\",\n                    \"Z-Score\"),\n      align     = 'c',\n      caption   = 'Z-Scores') %&gt;%\nkable_styling(font_size = 12)\n\n\nZ-Scores\n\n\nObservation\nMean X\nStandard Deviation X\nZ-Score\n\n\n\n\n-28.46448\n-24.98225\n2.893074\n-1.2036440\n\n\n-22.66980\n-24.98225\n2.893074\n0.7993041\n\n\n-19.93863\n-24.98225\n2.893074\n1.7433420\n\n\n-29.17847\n-24.98225\n2.893074\n-1.4504379\n\n\n-23.43061\n-24.98225\n2.893074\n0.5363291",
     "crumbs": [
       "Descriptive Statistics",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Measures of Disperson</span>"
