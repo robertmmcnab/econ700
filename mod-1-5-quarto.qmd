@@ -60,6 +60,14 @@ Once you have created this file, you will see the following window in RStudio:
 
 ![Screenshot of New Quarto Document](images/quarto-new-doc-2.jpg){fig-alt="Screenshot of New Quarto Document"}
 
+## Code Chunks
+
+R code chunks can be identified with **{r}**.
+
+To start a code chunk, you use **\`\`\`{r}** and you close off the code chunk with **\`\`\`**.
+
+You can run the code chunk interactively in RStudio, that is, you can click on the green arrow icon at the top of the code chunk and RStudio will display the results.
+
 ## Working with Quartro
 
 We want to create a text description of in our new Quarto document. We also want to create a simple code chunk in our Quarto document that will execute when we **render** our file.
@@ -70,7 +78,7 @@ This is an example Quarto file. You can write text here like a normal document.
 
 And let's include the following code chunk:
 
-```{r, echo = FALSE}
+```{r, eval = FALSE}
 
 x <- 3
 y <- 6
@@ -85,14 +93,6 @@ x/z
 Your file should look like the following picture:
 
 ![Screenshot of Quarto Example Document](images/quarto-new-doc-3.jpg){fig-alt="Screenshot of Quatro Example Document"}
-
-## Code Chunks
-
-R code chunks can be identified with **{r}**.
-
-To start a code chunk, you use **\`\`\`{r}** and you close off the code chunk with **\`\`\`**.
-
-You can run the code chunk interactively in RStudio, that is, you can click on the green arrow icon at the top of the code chunk and RStudio will display the results.
 
 ## Rendering
 

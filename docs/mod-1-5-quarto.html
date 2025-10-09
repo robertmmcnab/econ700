@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -252,8 +287,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#what-is-quarto" id="toc-what-is-quarto" class="nav-link active" data-scroll-target="#what-is-quarto"><span class="header-section-number">9.1</span> What is Quarto?</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">9.2</span> Getting Started</a></li>
   <li><a href="#creating-a-file" id="toc-creating-a-file" class="nav-link" data-scroll-target="#creating-a-file"><span class="header-section-number">9.3</span> Creating a File</a></li>
-  <li><a href="#working-with-quartro" id="toc-working-with-quartro" class="nav-link" data-scroll-target="#working-with-quartro"><span class="header-section-number">9.4</span> Working with Quartro</a></li>
-  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">9.5</span> Code Chunks</a></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">9.4</span> Code Chunks</a></li>
+  <li><a href="#working-with-quartro" id="toc-working-with-quartro" class="nav-link" data-scroll-target="#working-with-quartro"><span class="header-section-number">9.5</span> Working with Quartro</a></li>
   <li><a href="#rendering" id="toc-rendering" class="nav-link" data-scroll-target="#rendering"><span class="header-section-number">9.6</span> Rendering</a></li>
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">9.7</span> Additional Resources</a></li>
   </ul>
@@ -316,22 +351,26 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="working-with-quartro" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="working-with-quartro"><span class="header-section-number">9.4</span> Working with Quartro</h2>
+<section id="code-chunks" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">9.4</span> Code Chunks</h2>
+<p>R code chunks can be identified with <strong>{r}</strong>.</p>
+<p>To start a code chunk, you use <strong>```{r}</strong> and you close off the code chunk with <strong>```</strong>.</p>
+<p>You can run the code chunk interactively in RStudio, that is, you can click on the green arrow icon at the top of the code chunk and RStudio will display the results.</p>
+</section>
+<section id="working-with-quartro" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="working-with-quartro"><span class="header-section-number">9.5</span> Working with Quartro</h2>
 <p>We want to create a text description of in our new Quarto document. We also want to create a simple code chunk in our Quarto document that will execute when we <strong>render</strong> our file.</p>
 <p>In your new file, let’s write the following text:</p>
 <p>This is an example Quarto file. You can write text here like a normal document.</p>
 <p>And let’s include the following code chunk:</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 18</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 60</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span>y</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y<span class="sc">*</span>z</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x<span class="sc">/</span>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Your file should look like the following picture:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -340,12 +379,6 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Screenshot of Quarto Example Document</figcaption>
 </figure>
 </div>
-</section>
-<section id="code-chunks" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">9.5</span> Code Chunks</h2>
-<p>R code chunks can be identified with <strong>{r}</strong>.</p>
-<p>To start a code chunk, you use <strong>```{r}</strong> and you close off the code chunk with <strong>```</strong>.</p>
-<p>You can run the code chunk interactively in RStudio, that is, you can click on the green arrow icon at the top of the code chunk and RStudio will display the results.</p>
 </section>
 <section id="rendering" class="level2" data-number="9.6">
 <h2 data-number="9.6" class="anchored" data-anchor-id="rendering"><span class="header-section-number">9.6</span> Rendering</h2>
