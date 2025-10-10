@@ -25,7 +25,10 @@ book:
         - mod-2-1-frequency.qmd
         - mod-2-2-central.qmd
         - mod-2-3-variance.qmd
+        - mod-2-4-zscores.qmd
     - part: "Covariance and Correlation"
+      chapters:
+        - mod-3-0-overview.qmd
     - part: "Introduction to Probability"
     - part: "Discrete Probability"
     - part: "Continuous Probability"

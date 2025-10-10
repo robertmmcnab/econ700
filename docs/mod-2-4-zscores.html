@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Measures of Disperson – ECON 700</title>
+<title>14&nbsp; Z-Scores – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-2-4-zscores.html" rel="next">
-<link href="./mod-2-2-central.html" rel="prev">
+<link href="./mod-3-0-overview.html" rel="next">
+<link href="./mod-2-3-variance.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -105,10 +70,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   
@@ -409,7 +370,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\npopulation <- tibble(pop = rnorm(1000000, mean = 50.5, sd = 5))\n\npop_stats <- population %>%\n  summarize(man_mean = sum(pop)/n(),\n            mean_pop = mean(pop),\n            man_var  = sum((pop-mean(pop))^2)/n(),\n            var_pop  = var(pop),\n            man_sd   = sqrt(sum((pop-mean(pop))^2)/n()),\n            sd_pop   = sd(pop))\n            \nkable(pop_stats,\n      align  = 'c',\n      digits = 2,\n      font   = 8,\n      col.names = c('M.Mean','Mean',\n                    'M.Variance', 'Variance',\n                    'M.Std. Dev', 'Std. Dev'))\n      ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndf_1 <- data.frame(x = rnorm(100000, mean = 100, sd = 8.5)) %>%\n        slice_sample(n = 1000)\n\nvar_df1 <- df_1 %>%\n  summarize(n = n(),\n            var_man_n  = (1/n())*sum((x - mean(x))^2),\n            var_man_n1 = (1/(n()-1))*sum((x - mean(x))^2),\n            var_auto   = var(x),\n            sd_auto    = sd(x))\n\ndf_2 <- slice_sample(df_1, n = 1000)\n\nkable(var_df1,\n      col.names = c('Observations',\n                    'Variance (N)', \n                    'Variance (n-1)',\n                    'Variance',\n                    'Standard Deviation'),\n      align     = 'c',\n      digits    = 3,\n      caption = 'Variance with N and n-1')","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\ndf_1 <- data.frame(x = rnorm(10000, mean = -25, sd = 2.9)) \n\nz_norm <- df_1 %>%\n    mutate(mean_x  = mean(x),\n           sd_x    = sd(x),\n           z_score = (x - mean(x))/sd(x))\n\nkable(z_norm[1:5,],\n        col.names = c('Observation',\n                      \"Mean X\", \"Standard Deviation X\",\n                      \"Z-Score\"),\n        align     = 'c',\n        caption   = 'Z-Scores') ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1704,7 +1665,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-4-zscores.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Z-Scores</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1836,13 +1797,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-2-3-variance.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-2-3-variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-2-4-zscores.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-2-4-zscores.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Z-Scores</span></span></a>
   </div>
 </li>
@@ -1895,16 +1856,10 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-properties" id="toc-data-properties" class="nav-link active" data-scroll-target="#data-properties"><span class="header-section-number">13.1</span> Data Properties</a></li>
-  <li><a href="#population-variance" id="toc-population-variance" class="nav-link" data-scroll-target="#population-variance"><span class="header-section-number">13.2</span> Population Variance</a></li>
-  <li><a href="#population-standard-deviation" id="toc-population-standard-deviation" class="nav-link" data-scroll-target="#population-standard-deviation"><span class="header-section-number">13.3</span> Population Standard Deviation</a></li>
-  <li><a href="#variance-example" id="toc-variance-example" class="nav-link" data-scroll-target="#variance-example"><span class="header-section-number">13.4</span> Variance Example</a></li>
-  <li><a href="#census-example" id="toc-census-example" class="nav-link" data-scroll-target="#census-example"><span class="header-section-number">13.5</span> Census Example</a></li>
-  <li><a href="#sample-variance" id="toc-sample-variance" class="nav-link" data-scroll-target="#sample-variance"><span class="header-section-number">13.6</span> Sample Variance</a></li>
-  <li><a href="#sample-standard-deviation" id="toc-sample-standard-deviation" class="nav-link" data-scroll-target="#sample-standard-deviation"><span class="header-section-number">13.7</span> Sample Standard Deviation</a></li>
-  <li><a href="#sample-example" id="toc-sample-example" class="nav-link" data-scroll-target="#sample-example"><span class="header-section-number">13.8</span> Sample Example</a></li>
-  <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation"><span class="header-section-number">13.9</span> Coefficient of Variation</a></li>
-  <li><a href="#tidyquant-example" id="toc-tidyquant-example" class="nav-link" data-scroll-target="#tidyquant-example"><span class="header-section-number">13.10</span> Tidyquant Example</a></li>
+  <li><a href="#z-scores" id="toc-z-scores" class="nav-link active" data-scroll-target="#z-scores"><span class="header-section-number">14.1</span> Z-Scores</a></li>
+  <li><a href="#calculating-z-scores" id="toc-calculating-z-scores" class="nav-link" data-scroll-target="#calculating-z-scores"><span class="header-section-number">14.2</span> Calculating Z-scores</a></li>
+  <li><a href="#z-scores-in-r" id="toc-z-scores-in-r" class="nav-link" data-scroll-target="#z-scores-in-r"><span class="header-section-number">14.3</span> Z-Scores in R</a></li>
+  <li><a href="#module-summary" id="toc-module-summary" class="nav-link" data-scroll-target="#module-summary"><span class="header-section-number">14.4</span> Module Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -2195,9 +2150,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-4-zscores.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Z-Scores</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Z-Scores</span></h1>
 </div>
 
 
@@ -2214,224 +2169,54 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="data-properties" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="data-properties"><span class="header-section-number">13.1</span> Data Properties</h2>
-<p>Previously, we discussed measures of the <strong>central tendency</strong> of the data.</p>
-<p>We used population data from the U.S. Census to estimate the population mean, <span class="math inline">\(/mu\)</span>, as well as the median.</p>
-<p>We used sample data from the <em>mtcars</em> dataset to estimate the sample average, <span class="math inline">\(\bar{x}\)</span>, as well as the sample median.</p>
-<p>We also used R and RStudio to estimate the number of observations, the minimum value for a variable, and the maximum value for a variable.</p>
-<p>The measures of central tendency estimate the <em>middle</em> of the data, however, we also noted that <strong>outliers</strong> can influence the sample average. We discussed how to <strong>trim</strong> the data to reduce the influence of outliers.</p>
-<p>The measures of central tendency do not provide us information about the <strong>spread</strong> or <strong>dispersion</strong> of the data.</p>
-<p>Are the data “tightly clustered” around the measure of central tendency or are the data “spread out?”</p>
-<p>We want to know the spread of the data relative to the center of the data.</p>
-<p>To this end, we will estimate measure of the <strong>variance</strong> and <strong>standard deviation</strong>.</p>
+<section id="z-scores" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="z-scores"><span class="header-section-number">14.1</span> Z-Scores</h2>
+<p>For <span class="math inline">\(i\)</span> observations in a population, the population mean deviations are equal to:</p>
+<p><span class="math display">\[d_i = x_i - \mu\]</span></p>
+<p>For <span class="math inline">\(i\)</span> observations in a sample, the sample mean deviations are equal to:</p>
+<p><span class="math display">\[d_i = x_i - \bar{x}\]</span> The mean deviations frame our discussion of the data in terms of the <strong>center</strong> of the data.</p>
+<p>We lack information, however, on whether the mean deviation is “large” or “small” relative to the dispersion of the data.</p>
+<p>The <strong>z-score</strong> or <strong>standard score</strong> is a measure of the mean deviation of an observation relative to the standard deviation of the variable.</p>
+<p>In the population, the z-score for an observation is:</p>
+<p><span class="math display">\[Z = \frac{x_i - \mu}{\sigma}\]</span></p>
+<p>In the sample, the Z-score for an observation is:</p>
+<p><span class="math display">\[Z = \frac{x_i - \bar{x}}{s}\]</span></p>
+<p>The Z-score can be placed on a <strong>normal distribution</strong> curve and provides a measure in <strong>standard deviation units</strong>.</p>
+<p>If <span class="math inline">\(Z_{x1} = 2\)</span> then the observation <span class="math inline">\(x_1\)</span> is two standard deviations to the right of <span class="math inline">\(\mu\)</span>.</p>
+<p>If <span class="math inline">\(Z_{x2} = -0.75\)</span>, then the observation <span class="math inline">\(x_2\)</span> is 0.75 observations to the left of <span class="math inline">\(\mu\)</span>.</p>
+<p>Z-scores allow you to compare results to a normally distributed population. If you know, for example, that someone’s weight is 175 pounds, you might want to compare it to the <em>average</em> persons weight. The z-score compares the difference of the individual’s weight with the average person’s weight and adjusts it for the dispersion of the data.</p>
 </section>
-<section id="population-variance" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="population-variance"><span class="header-section-number">13.2</span> Population Variance</h2>
-<p>One measure of the dispersion (spread) of the data is the <strong>range</strong> which is equal to the distance between the minimum and maximum observations in the data.</p>
-<p>We could estimate the average distance of the observations from the mean or:</p>
-<p><span class="math display">\[\text{average mean deviation} = \frac{1}{N} \sum_{i = 1}^N (x_i - \mu)\]</span></p>
-<p>However, if sum of the mean deviations is equal to zero in the population, the average of the mean deviations will also be zero in the population.</p>
-<p>We note that the sum of the <strong>squared mean deviations</strong> will not be zero.</p>
-<p>The <strong>population variance</strong>, <span class="math inline">\(\sigma^2\)</span>, is equal to the average of the sum of the squared mean deviations:</p>
-<p><span class="math display">\[\text{Population Variance} = \sigma^2 = \frac{1}{N} \sum_{i = 1}^N (x_i - \mu)^2\]</span></p>
+<section id="calculating-z-scores" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="calculating-z-scores"><span class="header-section-number">14.2</span> Calculating Z-scores</h2>
+<p>Assume that you have a standardized test where the mean is <span class="math inline">\(\mu = 150\)</span> and the standard deviation is <span class="math inline">\(\sigma = 25\)</span>.</p>
+<p>If we assume a normal distribution and an individual scores 190.</p>
+<p><span class="math display">\[Z_{190} = \frac{x_i - \mu}{\sigma} = \frac{190 - 150}{25} = 1.6\]</span> A Z-score of 1.6 means that the individual’s score of 190 is 1.6 standard deviations from the population mean. Given the value of the Z-score is positive, this means the score of 190 lies 1.6 standard deviations to the right of the population mean.</p>
+<p>What is an individual scored 100?</p>
+<p><span class="math display">\[Z_{100} = \frac{x_i - \mu}{\sigma} = \frac{100 - 150}{25} = -2\]</span> A Z-score of -2 means that the individual’s score is 2 standard deviations to the <strong>left</strong> of the population mean. The negative value of the Z-score means that the individual scored less than the population mean.</p>
+<p>Later in the class we will use a Z-table and then R to determine the probabilities associated with Z-scores.</p>
 </section>
-<section id="population-standard-deviation" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="population-standard-deviation"><span class="header-section-number">13.3</span> Population Standard Deviation</h2>
-<p>As noted previously, the population variance, <span class="math inline">\(\sigma^2\)</span>, is the average of the squared mean deviations:</p>
-<p><span class="math display">\[\sigma^2 = \frac{1}{N} \sum_{i = 1}^N (x_i - \mu)^2\]</span></p>
-<p>The population variance, <span class="math inline">\(\sigma^2\)</span>, may difficult to interpret as <span class="math inline">\(\sigma^2\)</span> is measured in the squared units of the variable of interest.</p>
-<p><em>In other words, if we were measuring the variance of total population, the variance would be in individuals-squared units. If we were measuring the variance of income, the variance would be in income-squared units.</em></p>
-<p>The <strong>population standard deviation</strong>, <span class="math inline">\(\sigma\)</span>, is the positive square root of the population standard deviation.</p>
-<p><span class="math display">\[\sigma = \sqrt{\frac{1}{N} \sum_{i = 1}^N (x_i - \mu)^2}\]</span>The standard deviation is measured in the same units as the variable of interest.</p>
-<p>Lastly, we note that if we have two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then <span class="math inline">\(x\)</span> is less dispersed than <span class="math inline">\(y\)</span> if <span class="math inline">\(\sigma_x &lt; \sigma_y\)</span>.</p>
-</section>
-<section id="variance-example" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="variance-example"><span class="header-section-number">13.4</span> Variance Example</h2>
-<p>In the example below, we create a tibble of <strong>simulated</strong> population data.</p>
-<p>There are 1,000,000 observations drawn from a <strong>random normal</strong> distribution with a population mean of 50.5 and a standard deviation of 5.</p>
-<p>In other words, we are creating a population with a known mean and known standard deviation.</p>
-<p>Since the variance is the square of the standard deviation, we know the variance also.</p>
-<p>For a random variable, <span class="math inline">\(X\)</span> that is distributed normally with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, we can express this distribution of <span class="math inline">\(X\)</span> as:</p>
-<p><span class="math display">\[X \sim N(\mu, \sigma^2 )\]</span></p>
-<p>We use the <strong>summarize</strong> function for this example.</p>
-<p>We estimate the population variance manually and using the <strong>var</strong> function.</p>
-<p>We then estimate the population standard deviation manually and using the <strong>sd</strong> function.</p>
-<p>We do this to illustrate the manual estimates and estimates using the functions are the same.</p>
-<p>An additional note that each time you run the code, a new population is generated, and the descriptive statistics may change.</p>
+<section id="z-scores-in-r" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="z-scores-in-r"><span class="header-section-number">14.3</span> Z-Scores in R</h2>
+<p>In the following example, we generate a simulated population of 10,000 observations with <span class="math inline">\(\mu = -25\)</span> and <span class="math inline">\(\sigma = 2.9\)</span>.</p>
+<p>We then generate the population mean and population standard deviation for the simulated population.</p>
+<p>The next step is estimating the z-score of each observation.</p>
+<p>We then output the first five observations to the table. Again, you may find it useful to note how the data in the table changes each time your run the code.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="census-example" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="census-example"><span class="header-section-number">13.5</span> Census Example</h2>
-<p>In the code chunk below, we replicate the example above but with actual data from the U.S. Census for the total population of counties and county-equivalent geographies in the United States.</p>
-<p>Note the difference between the mean and median population estimates. The relatively large counties influence the population mean and ‘pull’ it away from the population median.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">vintage =</span> <span class="dv">2023</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">key     =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">vars    =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"B01001_001E"</span>),</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">region  =</span> <span class="st">"county:*"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">pop =</span> B01001_001E) <span class="sc">%&gt;%</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">med_pop  =</span> <span class="fu">median</span>(pop),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_pop =</span> <span class="fu">mean</span>(pop),</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">var_pop  =</span> <span class="fu">var</span>(pop),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd_pop   =</span> <span class="fu">sd</span>(pop))</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(county_pop,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Median'</span>, <span class="st">'Mean'</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Variance'</span>, <span class="st">'Std. Dev'</span>),</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>,</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits    =</span> <span class="dv">2</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">'Mean, Variance, and Standard Deviation, County Population'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>Mean, Variance, and Standard Deviation, County Population</caption>
-<thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Median</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Mean</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Variance</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Std. Dev</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">25967</td>
-<td style="text-align: center;">104172.1</td>
-<td style="text-align: center;">108681584571</td>
-<td style="text-align: center;">329668.9</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="sample-variance" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="sample-variance"><span class="header-section-number">13.6</span> Sample Variance</h2>
-<p>The sample variance, <span class="math inline">\(s^2\)</span>, is estimated by:</p>
-<p><span class="math display">\[s^2 = \frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2\]</span></p>
-<p>One might ask, “why do we divide by <span class="math inline">\(n-1\)</span> instead of <span class="math inline">\(n\)</span>?”</p>
-<p>The population mean <span class="math inline">\(\mu\)</span> is a <strong>known, definite mean</strong>. It does not require estimation.</p>
-<p>The sample average, <span class="math inline">\(\bar{x}\)</span> is an <strong>estimate</strong> of the population mean <span class="math inline">\(\mu\)</span>.</p>
-<p>If <span class="math inline">\(\mu\)</span> is known, then we can reconstitute the data with <span class="math inline">\(n-1\)</span> values.</p>
-<p>With 100 observations and <span class="math inline">\(\mu = 50\)</span>, then the <span class="math inline">\(n-1\)</span> values can take on any value, but the <em>n-th</em> value is <strong>constrained</strong> so <span class="math inline">\(\mu = 50\)</span>.</p>
-<p>The loss of a <strong>degree of freedom</strong> requires the use <span class="math inline">\(n-1\)</span> in the sample variance instead of <span class="math inline">\(n\)</span>.</p>
-</section>
-<section id="sample-standard-deviation" class="level2" data-number="13.7">
-<h2 data-number="13.7" class="anchored" data-anchor-id="sample-standard-deviation"><span class="header-section-number">13.7</span> Sample Standard Deviation</h2>
-<p>The sample variance, <span class="math inline">\(s^2\)</span>, is estimated by:</p>
-<p><span class="math display">\[s^2 = \frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2\]</span></p>
-<p>The sample standard deviation, <span class="math inline">\(s\)</span>, is estimated by:</p>
-<p><span class="math display">\[s = \sqrt{\frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2}\]</span> <strong>R</strong> (as with most programs) calculates the sample variance and sample standard deviation.</p>
-<p>As <span class="math inline">\(n\)</span> increases, the impact of dividing by <span class="math inline">\(n-1\)</span> rather than <span class="math inline">\(N\)</span> declines.</p>
-<p>If you are worried about <span class="math inline">\(n-1\)</span>, then you are likely to have other issues (sample size) of higher concern.</p>
-</section>
-<section id="sample-example" class="level2" data-number="13.8">
-<h2 data-number="13.8" class="anchored" data-anchor-id="sample-example"><span class="header-section-number">13.8</span> Sample Example</h2>
-<p>We simulate 100,000 observations from a normal distribution with <span class="math inline">\(\mu = 100\)</span> and <span class="math inline">\(\sigma = 8.5\)</span>.</p>
-<p>We then take a random sample of 1,000 observations from the population and estimate the variance manually and with the <strong>var</strong> function in <strong>summarize</strong></p>
-<p>The <strong>slice_sample</strong> function is used to randomly select rows from a data frame.</p>
-<p>The manually calculated sample variance using <span class="math inline">\((n-1)\)</span> is equal to the variance obtained from the <strong>var</strong> function in R illustrating that R generates its variance estimate using the sample variance formula.</p>
-<p>As <span class="math inline">\(\sigma\)</span> is the square root of <span class="math inline">\(\sigma^2\)</span>, the same discussion applies.</p>
-<p>It is interesting to note that a new set of values for <span class="math inline">\(X\)</span> is generated each time the code is run, changing the resulting sample descriptive statistics.</p>
-<p><em>Try changing the sample size, that is, changing from n = 1000 to n = 50, and observe what happens to the sample statistics for variance and standard deviation across several runs.</em></p>
-<div id="qwebr-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="coefficient-of-variation" class="level2" data-number="13.9">
-<h2 data-number="13.9" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">13.9</span> Coefficient of Variation</h2>
-<p>The <strong>coefficient of variation</strong> is a measure of how “large” the standard deviation is relative to the mean.</p>
-<p>The coefficient of variation for the population is:</p>
-<p><span class="math display">\[\text{coefficient of variation} = \frac{\sigma}{\mu}\]</span> The coefficient of variation for a sample is:</p>
-<p><span class="math display">\[\text{coefficient of variation} = \frac{s}{\bar{x}}\]</span></p>
-<p>The higher the coefficient of variation, the greater the level of dispersion of observations around the mean.</p>
-<p>In finance, the coefficient of variation estimates how much volatility, or risk, is assumed in comparison to the amount of return expected from investments.</p>
-<p>The lower the coefficient of variation, the better risk-return trade-off.</p>
-</section>
-<section id="tidyquant-example" class="level2" data-number="13.10">
-<h2 data-number="13.10" class="anchored" data-anchor-id="tidyquant-example"><span class="header-section-number">13.10</span> Tidyquant Example</h2>
-<p>We use the <strong>tidyquant</strong> package to obtain stock price data for Apple, Ford, General Motors, Gamestop, IBM, and Netflix.</p>
-<p>We then estimate the coefficient of variation for each of these corporations.</p>
-<p>From January 2020 to July 2025, IBM had the lowest coefficient of variation, that is, it was the least volatile relative to its mean.</p>
-<p>Over the same period, Netflix and Gamestop has the highest coefficients of variation, that is, these stocks were relatively volatile when compared to IBM or Ford.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>tickers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'AAPL'</span>, <span class="st">'F'</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">'GM'</span>, <span class="st">'GME'</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>             <span class="st">'IBM'</span>, <span class="st">'NFLX'</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>prices <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(tickers, </span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">from =</span> <span class="st">'2010-01-01'</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">to   =</span> <span class="st">"2025-07-31"</span>,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">get  =</span> <span class="st">"stock.prices"</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>coef_var <span class="ot">&lt;-</span> prices <span class="sc">%&gt;%</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(symbol) <span class="sc">%&gt;%</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cv =</span> <span class="fu">sd</span>(close)<span class="sc">/</span><span class="fu">mean</span>(close)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(cv)</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(coef_var,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Company'</span>,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Coefficient of Variation'</span>),</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="fu">c</span>(<span class="st">'c'</span>,<span class="st">'c'</span>),</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption   =</span> <span class="st">'Coefficient of Variation'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>Coefficient of Variation</caption>
-<thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Company</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Coefficient of Variation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">IBM</td>
-<td style="text-align: center;">0.2096402</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">0.2307120</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">GM</td>
-<td style="text-align: center;">0.2413333</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">AAPL</td>
-<td style="text-align: center;">0.9291908</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">GME</td>
-<td style="text-align: center;">0.9739563</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">NFLX</td>
-<td style="text-align: center;">0.9909600</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<section id="module-summary" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="module-summary"><span class="header-section-number">14.4</span> Module Summary</h2>
+<p>We use descriptive statistics to develop an understanding of the properties of the data.</p>
+<p>We have discussed two broad properties of the data:</p>
+<ul>
+<li><p>The center of the data</p></li>
+<li><p>The spread of the data</p></li>
+</ul>
+<p>We will work on the shape of the data in coming modules.</p>
+<p>Now, having worked with measures of the center and spread, we can turn our attention to the question of co-movement.</p>
+<p>Do two variables “move” together in some systematic fashion?</p>
+<p>What measures might suggest a potential relationship between two variables of interest?</p>
+<p>In our next module, we will focus on <strong>covariance</strong> and <strong>correlation</strong>.</p>
 
 
 </section>
@@ -2844,13 +2629,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-2-2-central.html" class="pagination-link" aria-label="Central Tendency">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency</span></span>
+      <a href="./mod-2-3-variance.html" class="pagination-link" aria-label="Measures of Disperson">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-2-4-zscores.html" class="pagination-link" aria-label="Z-Scores">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Z-Scores</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mod-3-0-overview.html" class="pagination-link" aria-label="Module 2 Overview">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 2 Overview</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

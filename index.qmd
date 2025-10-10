@@ -30,11 +30,14 @@ Note: The course is under construction. Many links will not work.
   <li><a href="mod-2-1-frequency.qmd">Module 2.1 – Frequency Distributions</a></li>
   <li><a href="mod-2-2-central.qmd">Module 2.2 – Measures of Central Tendency</a></li>
   <li><a href="mod-2-3-variance.qmd">Module 2.3 – Measures of Dispersion</a></li>
+  <li><a href="mod-2-4-zscores.qmd">Module 2.4 – Z-Scores</a></li>
 </ul>
 
 ## Module 03 – Covariance and Correlation
 
-
+<ul>
+  <li><a href="mod-3-0-overview.qmd">Module 3.0 - Module 3 Overview</a></li>
+</ul>
 
 ---
 
