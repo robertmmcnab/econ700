@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Frequency Distributions – ECON 700</title>
+<title>18&nbsp; Correlation – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-2-2-central.html" rel="next">
-<link href="./mod-2-0-overview.html" rel="prev">
+<link href="./mod-3-2-normal.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -409,7 +408,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\ndata(\"mtcars\")\n\ncyl_freq <- mtcars %>%\n  group_by(cyl) %>%\n  summarize(freq_cyl = n()) %>%\n  arrange(freq_cyl)\n\nkable(cyl_freq,\n      col.names = c(\"Cylinders\", \"Frequency\"),\n      align = c('c','c'),\n      caption = 'Frequency Distribution of Cylinders') ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(\"mtcars\")\n\ncyl_freq <- mtcars %>%\n  group_by(cyl) %>%\n  summarize(freq_cyl = n()) %>%\n  arrange(freq_cyl)\n\nggplot(data = cyl_freq,\n       aes(x    = cyl,\n           y    = freq_cyl)) +\ngeom_col(fill = 'darkblue') +\nlabs(title    = 'Frequency Distribution for Cylinders',\n     subtitle = 'MTCARS data',\n     y        = 'Frequency',\n     x        = 'Number of Cylinders')","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(\"mtcars\")\n\ncyl_freq <- mtcars %>%\n  group_by(cyl) %>%\n  summarize(freq_cyl = n()) %>%\n  mutate(rel_freq = freq_cyl/sum(freq_cyl)) %>%\n  arrange(rel_freq)\n\nkable(cyl_freq,\n      col.names = c(\"Cylinders\", \"Frequency\", \n                    \"Relative Frequency\"),\n      align     = c('c','c','c'),\n      digits    = 2,\n      caption   = 'Frequency Distribution') ","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\n# Use GGPLOT\n# x-axis -> weight\n# y-axis -> mpg\n# geom_point -> scatterplot\n# theme_economic -> presentation\n\nggplot(data = mtcars,\n       aes(x = wt*1000,\n           y = mpg)) +\ngeom_point()+\ntheme_minimal() +\nlabs(x = \"Weight in Pounds\",\n     y = \"Miles per Gallon\",\n     title = 'Scatterplot of Car Weight and Miles per Gallon',\n     subtitle = 'MTCARS Data')","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\ndata(mtcars)\n\nggplot(data = mtcars,\n       aes(x = wt, \n           y = mpg)) +\ngeom_point() +\ntheme_minimal() +\nlabs(x = \"Weight in Thousands of Pounds\",\n     y = \"Miles Per Gallon\",\n     title = \"Scatterplot of Weight and Miles Per Gallon\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\nggplot(data = mtcars,\n       aes(x = mpg, \n           y = wt)) +\ngeom_point() +\ntheme_minimal() +\nlabs(x = \"Miles Per Gallon\",\n     y = \"Weight in Thousands of Pounds\",\n     title = \"Scatterplot of Weight and Miles Per Gallon\")","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndf_1 <- tibble(x = c(8, 10 , 23 , 59, 60, 72, 100),\n               y = c(-2, -10, -20, -43, -75, -90, -120))\n\ncov_x_y <- df_1 %>%\n           mutate(x_dev = x - mean(x),\n                  y_dev = y - mean(y),\n                  x_y   = x_dev * y_dev,\n                  x_y_n = x_y/(nrow(df_1)-1)) %>%\n           summarize(cov_x_y = sum(x_y_n))\n\ndf_2 <- tibble(cov_manual = cov_x_y$cov_x_y,\n               cov_auto   = cov(df_1$x, df_1$y))\n\nkable(df_2,\n      align  = 'c',\n      digits = 3,\n      col.names = c('Manual Covariance', 'Estimated Covariance'))","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\ncar_stats <- mtcars %>%\n             summarize(mean_mpg = mean(mpg),\n                       mean_wt  = mean(wt),\n                       cov_m_w  = cov(mpg, wt))\n\nkable(car_stats,\n      align   = 'c',\n      digits  = 3,\n      col.names = c('Mean MPG', 'Mean Weight',\n                    'Covariance between MPG and Weight'))","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\ncov_alt <- mtcars %>%\n  select(mpg, wt) %>%\n  mutate(mpg_ft = mpg*5280,\n         wt_oz  = wt*16) %>%\n  summarize(cov_mpg_wt   = cov(mpg,wt),\n            cov_ampg_wt  = cov(mpg_ft, wt),\n            cov_mpg_awt  = cov(mpg, wt_oz),\n            cov_ampg_awt = cov(mpg_ft, wt_oz))\n\nkable(cov_alt,\n      align  = 'c',\n      digits = 3,\n      col.names = c('Cov(MPG,WT)', 'Cov(MPG_FT, WT)',\n                    'Cov(MPG, WT_OZ', 'COV(MPG_FT, WT_OZ'))","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())  \n\ndf_4 <- tibble(x = c(8, 10 , 23 , 59, 60, 72, 100),                \n               y = c(-2, -10, -20, -43, -75, -90, -120))  \n\ndf_stats <- df_4 %>%\n            summarize(sd_x    = sd(x),\n                      sd_y    = sd(y), \n                      cov_x_y = cov(x,y),\n                      cor_man = cov(x,y)/(sd(x)*sd(y)),\n                      cor_x_y = cor(x,y))\n\nkable(df_stats,\n      align  = 'c',\n      digits = 3,\n      col.names = c('SD(X)', 'SD(Y)', 'COV(X,Y)',\n                    'Manual COR(X,Y)', 'COR(X,Y)'))\n","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\ncar_stats <- mtcars %>%\n             summarize(mean_mpg = mean(mpg),\n                       mean_wt  = mean(wt),\n                       cov_m_w  = cov(mpg, wt),\n                       cor_m_w  = cor(mpg, wt))\n\nkable(car_stats,\n      align   = 'c',\n      digits  = 3,\n      col.names = c('Mean MPG', 'Mean Weight',\n                    'Covariance between MPG and Weight',\n                    'Correlation between MPG and Weight'))","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1704,7 +1703,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-1-frequency.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Frequency Distributions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-3-correlation.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1824,7 +1823,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-2-1-frequency.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-2-1-frequency.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Frequency Distributions</span></span></a>
   </div>
 </li>
@@ -1877,7 +1876,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-3-3-correlation.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-3-3-correlation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
@@ -1913,15 +1912,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#frequency-distributions" id="toc-frequency-distributions" class="nav-link active" data-scroll-target="#frequency-distributions"><span class="header-section-number">11.1</span> Frequency Distributions</a></li>
-  <li><a href="#frequency-example" id="toc-frequency-example" class="nav-link" data-scroll-target="#frequency-example"><span class="header-section-number">11.2</span> Frequency Example</a></li>
-  <li><a href="#mtcars-frequency" id="toc-mtcars-frequency" class="nav-link" data-scroll-target="#mtcars-frequency"><span class="header-section-number">11.3</span> Mtcars Frequency</a></li>
-  <li><a href="#census-frequency" id="toc-census-frequency" class="nav-link" data-scroll-target="#census-frequency"><span class="header-section-number">11.4</span> Census Frequency</a></li>
-  <li><a href="#frequency-distributions-1" id="toc-frequency-distributions-1" class="nav-link" data-scroll-target="#frequency-distributions-1"><span class="header-section-number">11.5</span> Frequency Distributions</a></li>
-  <li><a href="#relative-frequency-distributions" id="toc-relative-frequency-distributions" class="nav-link" data-scroll-target="#relative-frequency-distributions"><span class="header-section-number">11.6</span> Relative Frequency Distributions</a></li>
-  <li><a href="#relative-frequency-mtcars" id="toc-relative-frequency-mtcars" class="nav-link" data-scroll-target="#relative-frequency-mtcars"><span class="header-section-number">11.7</span> Relative Frequency: Mtcars</a></li>
-  <li><a href="#relative-frequency-census" id="toc-relative-frequency-census" class="nav-link" data-scroll-target="#relative-frequency-census"><span class="header-section-number">11.8</span> Relative Frequency: Census</a></li>
-  <li><a href="#scatterplots" id="toc-scatterplots" class="nav-link" data-scroll-target="#scatterplots"><span class="header-section-number">11.9</span> Scatterplots</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">18.1</span> Introduction</a></li>
+  <li><a href="#the-expectations-operator" id="toc-the-expectations-operator" class="nav-link" data-scroll-target="#the-expectations-operator"><span class="header-section-number">18.2</span> The Expectations Operator</a></li>
+  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="header-section-number">18.3</span> Covariance</a></li>
+  <li><a href="#scatterplots" id="toc-scatterplots" class="nav-link" data-scroll-target="#scatterplots"><span class="header-section-number">18.4</span> Scatterplots</a></li>
+  <li><a href="#covariance-example" id="toc-covariance-example" class="nav-link" data-scroll-target="#covariance-example"><span class="header-section-number">18.5</span> Covariance Example</a></li>
+  <li><a href="#fred-covariance" id="toc-fred-covariance" class="nav-link" data-scroll-target="#fred-covariance"><span class="header-section-number">18.6</span> FRED Covariance</a></li>
+  <li><a href="#mtcars-covariance" id="toc-mtcars-covariance" class="nav-link" data-scroll-target="#mtcars-covariance"><span class="header-section-number">18.7</span> MTCARS Covariance</a></li>
+  <li><a href="#interpreting-the-covariance" id="toc-interpreting-the-covariance" class="nav-link" data-scroll-target="#interpreting-the-covariance"><span class="header-section-number">18.8</span> Interpreting the Covariance</a></li>
+  <li><a href="#scaling-and-covariance" id="toc-scaling-and-covariance" class="nav-link" data-scroll-target="#scaling-and-covariance"><span class="header-section-number">18.9</span> Scaling and Covariance</a></li>
+  <li><a href="#correlation-coefficient" id="toc-correlation-coefficient" class="nav-link" data-scroll-target="#correlation-coefficient"><span class="header-section-number">18.10</span> Correlation Coefficient</a></li>
+  <li><a href="#correlation-example" id="toc-correlation-example" class="nav-link" data-scroll-target="#correlation-example"><span class="header-section-number">18.11</span> Correlation Example</a></li>
+  <li><a href="#fred-correlation" id="toc-fred-correlation" class="nav-link" data-scroll-target="#fred-correlation"><span class="header-section-number">18.12</span> FRED Correlation</a></li>
+  <li><a href="#mtcars-correlation" id="toc-mtcars-correlation" class="nav-link" data-scroll-target="#mtcars-correlation"><span class="header-section-number">18.13</span> MTCARS Correlation</a></li>
+  <li><a href="#correlation-and-causation" id="toc-correlation-and-causation" class="nav-link" data-scroll-target="#correlation-and-causation"><span class="header-section-number">18.14</span> Correlation and Causation</a></li>
+  <li><a href="#module-summary" id="toc-module-summary" class="nav-link" data-scroll-target="#module-summary"><span class="header-section-number">18.15</span> Module Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -2212,9 +2217,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-1-frequency.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Frequency Distributions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-3-correlation.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Frequency Distributions</span></h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></h1>
 </div>
 
 
@@ -2231,276 +2236,355 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="frequency-distributions" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="frequency-distributions"><span class="header-section-number">11.1</span> Frequency Distributions</h2>
-<p>The <strong>frequency</strong> of a category, class, or value is the number of times it occurs in a data set.</p>
-<p>A <strong>frequency distribution</strong> is summary of data.</p>
-<p>A frequency distribution is the pattern of frequencies of variable of interest.</p>
-<p>Given several <strong>non-overlapping</strong> categories or classes, a frequency distribution contains the number of observations per class or category.</p>
-<p>A frequency distribution, to be complete, must be:</p>
-<ul>
-<li><p><strong>Mutually exclusive</strong> - the classes or categories do not overlap.</p></li>
-<li><p><strong>Collectively exhaustive</strong> - all the observations are described by the distribution</p></li>
-</ul>
-<p>A frequency distribution may provide insights about the data that cannot be quickly obtained by examining the data itself.</p>
+<section id="introduction" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">18.1</span> Introduction</h2>
+<p>To this point, we have mostly examined methods of describing one variable, that is, <strong>univariate</strong> analysis.</p>
+<p>However, we may wish to do more than describe the properties of one variable.</p>
+<p>We may want to explore a potential relationship (or absence of one) between two variables. Moving from univariate to <strong>bivariate</strong> analysis starts with a discussion of measures of association between two variables.</p>
+<p>To start our discussion, we need to understand the <strong>expectations operator</strong>.</p>
 </section>
-<section id="frequency-example" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="frequency-example"><span class="header-section-number">11.2</span> Frequency Example</h2>
-<p>In the example below, we have six observations (students).</p>
-<p>The students can be grouped by their graduating year. There are 3 students that graduate in 2028 and 4 students that graduate in 2029.</p>
-<p>The number of students for each group is the frequency (count) associated with the group, that is,</p>
-<ul>
-<li><p>Graduating Year 2028: 3</p></li>
-<li><p>Graduating Year 2029: 4</p></li>
-</ul>
-<table class="caption-top table">
-<caption>Table of Observations</caption>
-<thead>
-<tr class="header">
-<th>Student</th>
-<th>Graduating Year</th>
-<th>Grade Point Average</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>2028</td>
-<td>3.0</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>2028</td>
-<td>2.8</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>2028</td>
-<td>3.5</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>2029</td>
-<td>2.7</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>2029</td>
-<td>2.8</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>2029</td>
-<td>3.0</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>2029</td>
-<td>3.6</td>
-</tr>
-</tbody>
-</table>
+<section id="the-expectations-operator" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="the-expectations-operator"><span class="header-section-number">18.2</span> The Expectations Operator</h2>
+<p>Given a function <span class="math inline">\(f(x)\)</span> in the variable <span class="math inline">\(x\)</span>, the expectation value is denoted as <span class="math inline">\(E[X]\)</span>.</p>
+<p>For a single, discrete variable <span class="math inline">\(X\)</span> with probability density function <span class="math inline">\(P(X)\)</span>, the expectation of <span class="math inline">\(X\)</span> is defined as:</p>
+<p><span class="math display">\[
+E[X] = \sum_{X} f(x) P(x)
+\]</span></p>
+<p>If <span class="math inline">\(X\)</span> is a continuous variable, then <span class="math inline">\(E[X]\)</span> is defined as:</p>
+<p><span class="math display">\[
+E[X] = \int f(x) P(X) dx
+\]</span></p>
+<p>The expected value of a random variable is the arithmetic mean of that variable. This term has been retained in mathematical statistics to mean the long-run average for any random variable over an indefinite number of trials or samples. In other words,</p>
+<p><span class="math display">\[
+E[X] = \mu_x
+\]</span></p>
+<p>The variance of a random variable <span class="math inline">\(X\)</span> is defined as the expected (average) squared deviation of the values of this random variable about their mean. That is,</p>
+<p><span class="math display">\[var(x) = E[(X - \mu)^2] = E[X^2] - \mu^2 = \sigma_X^2\]</span></p>
+<p>The expectations operator adheres to the following rules.</p>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables and let <span class="math inline">\(k\)</span> and <span class="math inline">\(j\)</span> be constants.</p>
+<p>The first rule is that the expectation of a constant is a constant.</p>
+<p>In other words, if <span class="math inline">\(k=4\)</span>, then every observation of <span class="math inline">\(k\)</span> is 4 and the mean of <span class="math inline">\(k\)</span> is <span class="math inline">\(E[k] = \mu_k = 4\)</span>.</p>
+<p><span class="math display">\[
+E[k] = k
+\]</span></p>
+<p>The second rule is that the expectation of the product of a constant and a random variable is equal to the product of a constant and the expectation of a random variable. In other words, assume that we multiply every observation of a random variable by 3 and then find the long-run mean of the random variable. This is the same as finding the long-run mean and multiplying the mean by 3.</p>
+<p><span class="math display">\[
+E[kX] = kE[X] = k \mu_x
+\]</span></p>
+<p>The third rule is that the expectation of the sum of two random variables is equal to the addition of the expectiations of the two random variables. In other words, if we add two random variables, one with the mean of 5 and the other with the mean of 10, this is the same as adding the two means together.</p>
+<p><span class="math display">\[
+E[X+Y] = E[X] + E[Y]
+\]</span></p>
+<p>The fourth rule combines the second and third rules in that if you have the sum of the two random variables where each random variable is multiplied by a constant, then you can restate this as the product of the constant and the expectation of the first random variable plus the product of the constant and the expectation of the second random variable.</p>
+<p><span class="math display">\[
+E[kX + jY] = kE[X] + jE[Y]
+\]</span></p>
+<p>There are a number of other expectation rules which we will cover later on in the course.</p>
 </section>
-<section id="mtcars-frequency" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="mtcars-frequency"><span class="header-section-number">11.3</span> Mtcars Frequency</h2>
-<p>For the following example, we use the <strong>mtcars</strong> data frame.</p>
-<p>First, we <strong>group</strong> the data by the cylinder variable. The <strong>group_by</strong> function notifies R that the data are organized by a specific variable or variables.</p>
-<p>Here, we notify R that the cylinder variable is how the data are grouped together, that is, R should consider all the observations with 4 cylinders one group, all the observations with 6 cylinders one group, and all the observations with 8 cylinders one group.</p>
-<p>Second, we create a new variable <strong>freq_cyl</strong> using the <strong>summarize</strong> function. The variable <strong>freq_cyl</strong> is equal to the number of observations in each group.</p>
-<p>We then use the <strong>arrange</strong> function to sort the resulting frequencies from lowest number to the highest number.</p>
-<p>We create a frequency table using the <strong>kable</strong> function.</p>
+<section id="covariance" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="covariance"><span class="header-section-number">18.3</span> Covariance</h2>
+<p>Given two random variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the covariance between these two variables can be defined as:</p>
+<p><span class="math display">\[
+cov(X,Y) = E[(X - E[X])(Y - E[Y])]
+\]</span></p>
+<p><span class="math display">\[
+cov(X,Y) = E[(X - \mu_x)(Y - \mu_Y)] = E[XY] - E[X]E[Y]
+\]</span> The population covariance <span class="math inline">\(\sigma_{xy}\)</span> between two random variables is defined as:</p>
+<p><span class="math display">\[
+cov(X,Y) = \sigma_{XY} = \sum_{i=1}^{N} \frac{(x_i - \mu_x)(y_i - \mu_y)}{N}
+\]</span></p>
+<p>The sample covariance <span class="math inline">\(s_{xy}\)</span> between two random variables is defined as:</p>
+<p><span class="math display">\[
+cov(X,Y) = s_{XY} = \sum_{i=1}^{n-1} \frac{(x_i - \bar{x})(y_i - \bar{y})}{n-1}
+\]</span></p>
+<p>One point to note is that the covariance between a variable and itself is the variance of the variable.</p>
+<p>We can easily see this for the population covariance by substituting <span class="math inline">\(X\)</span> for <span class="math inline">\(Y\)</span> or</p>
+<p><span class="math display">\[
+cov(X,X) = \sigma_{XX} = \sigma_X^2 = \sum_{i=1}^{N} \frac{(x_i - \mu_x)(x_i - \mu_x)}{N} = \sum_{i=1}^{N} \frac{(x_i - \mu_x)^2}{N}
+\]</span></p>
+</section>
+<section id="scatterplots" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="scatterplots"><span class="header-section-number">18.4</span> Scatterplots</h2>
+<p>In the following code chunks, we create scatterplots of car weight and miles per gallon from the <em>mtcars</em> data set.</p>
+<p>The scatterplot of the two variables suggests that as car weight increases, miles per gallon declines.</p>
+<p>In the first scatterplot, we have weight on the x-axis and miles per gallon on the y-axis.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="census-frequency" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="census-frequency"><span class="header-section-number">11.4</span> Census Frequency</h2>
-<p>In the example below, we use the <strong>censusapi</strong> package to obtain data from the U.S. Census Bureau’s <em>American Community Survey</em>.</p>
-<p>We use the API to download data on counties and county-equivalent geographies for the United States. We specify two variables, the name of each geography and the population of each geography.</p>
-<p>We rename the census population variable, <strong>B01001_001E</strong>, to <strong>total_pop</strong>.</p>
-<p>We want to create categories for different ranges of population. To do this, we use the <strong>case_when</strong> function.</p>
-<p>Having created the population categories, we <strong>group_by</strong> the population category variable and then use the <strong>summarize</strong> function to obtain a count of the number of observations in each category.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear Memory </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Libraries</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#B01001_001E is total population</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Case When to Create Categories</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">vintage =</span> <span class="dv">2023</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"B01001_001E"</span>),</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">region =</span> <span class="st">"county:*"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">total_pop =</span> B01001_001E) <span class="sc">%&gt;%</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">pop_cat =</span> <span class="fu">case_when</span>(total_pop <span class="sc">&gt;</span> <span class="dv">99999</span> <span class="sc">~</span> <span class="st">"Greater than 99,999"</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                           total_pop <span class="sc">&gt;</span> <span class="dv">49999</span> <span class="sc">~</span> <span class="st">"50,000 - 99,999"</span>,</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                           total_pop <span class="sc">&gt;</span> <span class="dv">24999</span> <span class="sc">~</span> <span class="st">"25,000 - 49,999"</span>,</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                           total_pop <span class="sc">&gt;</span> <span class="dv">9999</span>  <span class="sc">~</span> <span class="st">"10,000 - 24,999"</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                           <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"0 - 9,999"</span>))</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize to Create Frequencies by Categories</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>county_freq <span class="ot">&lt;-</span> county_pop <span class="sc">%&gt;%</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pop_cat) <span class="sc">%&gt;%</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">freq_pop =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(pop_cat)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Use frequency data frame to produce table</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(county_freq,</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Category"</span>, <span class="st">"Frequency"</span>),</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="fu">c</span>(<span class="st">'c'</span>,<span class="st">'c'</span>),</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">'Frequency of County Population, 2023'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>Frequency of County Population, 2023</caption>
-<thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Category</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Frequency</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0 - 9,999</td>
-<td style="text-align: center;">743</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10,000 - 24,999</td>
-<td style="text-align: center;">823</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">25,000 - 49,999</td>
-<td style="text-align: center;">643</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">50,000 - 99,999</td>
-<td style="text-align: center;">397</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Greater than 99,999</td>
-<td style="text-align: center;">616</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="frequency-distributions-1" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="frequency-distributions-1"><span class="header-section-number">11.5</span> Frequency Distributions</h2>
-<p>We can graphically depict the frequency distribution.</p>
-<p>We use the <strong>ggplot</strong> package to create a graphical plot of the frequency distribution.</p>
-<p>To learn more about the capabilities of <strong>ggplot</strong>, see <a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a>.</p>
-<p>We have categories (population size) on the x-axis and the frequencies on the y-axis.</p>
-<p>We use the <strong>geom_col</strong> command to create a column chart of the frequencies. We choose to fill the columns with the <em>darkblue</em> color.</p>
-<p>The <strong>labs</strong> command specifies the labels for the plot, to include the x-axis, y-axis, title, and subtitle.</p>
+<p>What happens if we have miles per gallon on the x-axis and weight on the y-axis?</p>
+<p>The same negative association appears to be present between the two variables, however, the important point is that that association is not causation, that is, we do not know if variation in one variable causes variation in another variable.</p>
+<p>Another way to think about this is that we are investigating whether variables ‘move’ together in a systematic fashion.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="relative-frequency-distributions" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="relative-frequency-distributions"><span class="header-section-number">11.6</span> Relative Frequency Distributions</h2>
-<p>The frequency distribution may not be as informative as we would like if the number of observations is sufficiently large.</p>
-<p>In the frequency distribution for the population of U.S. counties, there were more than 600 counties with populations between 10,000 and 24,999 individuals. How does this compare with the number of counties with populations less than 10,000?</p>
-<p>A <strong>relative frequency</strong> distribution contains information on the <strong>proportion</strong> of observations in each class relative to the total number of observations.</p>
-<p>Let <span class="math inline">\(n\)</span> be the total number of observations.</p>
-<p>Let <span class="math inline">\(i\)</span> represent the number of classes or categories.</p>
-<p>Let <span class="math inline">\(n_i\)</span> be the total number of observations in the <em>i-th</em> class.</p>
-<p><span class="math display">\[\text{Relative Frequency of Class}_i = \frac{n_i}{n}\]</span></p>
-</section>
-<section id="relative-frequency-mtcars" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="relative-frequency-mtcars"><span class="header-section-number">11.7</span> Relative Frequency: Mtcars</h2>
-<p>We use the <strong>mtcars</strong> example data.</p>
-<p>We <strong>group</strong> the data by the cylinder variable.</p>
-<p>We estimate the frequency by cylinder.</p>
-<p>We estimate the relative frequency using the <strong>mutate</strong> function.</p>
-<p>We create a frequency table using the <strong>kable</strong> function.</p>
+<section id="covariance-example" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="covariance-example"><span class="header-section-number">18.5</span> Covariance Example</h2>
+<p>Let’s explore the covariance between two variables, <span class="math inline">\(X\)</span>, and <span class="math inline">\(Y\)</span> in the following code.</p>
+<p>We first create a tibble with <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p>We then estimate the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> manually:</p>
+<ul>
+<li><p>We estimate the mean deviations of <span class="math inline">\(X\)</span></p></li>
+<li><p>We estimate the mean deviations of <span class="math inline">\(Y\)</span></p></li>
+<li><p>We estimate the product of the mean deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
+<li><p>We estimate the product of <span class="math inline">\(1/(n-1)\)</span> and the product of the mean deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
+</ul>
+<p>The result is an estimate of the sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p>We then use the <strong>cov</strong> function to estimate the sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p>This also illustrate that R uses the sample covariance function to estimate the covariance between two variables.</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="relative-frequency-census" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="relative-frequency-census"><span class="header-section-number">11.8</span> Relative Frequency: Census</h2>
-<p>We can also graphically depict the frequency distribution.</p>
-<p>We return to our previous example using data from the U.S. Census Bureau. We obtain data on population for counties and county-equivalent geographies in the United States.</p>
-<p>We use <strong>case_when</strong> to create a categorical variable that groups geographies into population <strong>bins</strong>.</p>
-<p>As before, we use <strong>summarize</strong> to count the number of observations in each bin.</p>
-<p>We then estimate the <strong>relative frequency</strong> by diving the number of observations in each bin by the total number of observations or</p>
-<p><span class="math display">\[\text{Relative Frequency of Population Bin}_i = \frac{\text{Observations in Bin}_i}{\text{Total Observations}}\]</span></p>
-<p>In other words, the relative frequency of the 0 to 9,999 population bin is equal to the number of counties in that bin divided by the total number of counties across all bins.</p>
-<p>We then <strong>ggplot</strong> to create a graphical plot of the frequency distribution.</p>
-<p>We have categories (population size) on the x-axis and the frequencies on the y-axis.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#B01001_001E is total population</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Case When to Create Categories</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">vintage =</span> <span class="dv">2023</span>,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">key =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"B01001_001E"</span>),</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">region =</span> <span class="st">"county:*"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">total_pop =</span> B01001_001E) <span class="sc">%&gt;%</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">pop_cat =</span> <span class="fu">case_when</span>(total_pop <span class="sc">&gt;</span> <span class="dv">99999</span> <span class="sc">~</span> <span class="st">"Greater than 99,999"</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                           total_pop <span class="sc">&gt;</span> <span class="dv">49999</span> <span class="sc">~</span> <span class="st">"50,000 - 99,999"</span>,</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                           total_pop <span class="sc">&gt;</span> <span class="dv">24999</span> <span class="sc">~</span> <span class="st">"25,000 - 49,999"</span>,</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                           total_pop <span class="sc">&gt;</span> <span class="dv">9999</span>  <span class="sc">~</span> <span class="st">"10,000 - 24,999"</span>,</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                           <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"0 - 9,999"</span>))</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>county_freq <span class="ot">&lt;-</span> county_pop <span class="sc">%&gt;%</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pop_cat) <span class="sc">%&gt;%</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">freq_pop =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> freq_pop<span class="sc">/</span><span class="fu">sum</span>(freq_pop)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(pop_cat)</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> county_freq,</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> pop_cat,</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> rel_freq,</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> rel_freq)) <span class="sc">+</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relative Frequency of Population Bins"</span>,</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>     <span class="at">x     =</span> <span class="st">"Population Bin"</span>,</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>     <span class="at">y     =</span> <span class="st">"Relative Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="fred-covariance" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="fred-covariance"><span class="header-section-number">18.6</span> FRED Covariance</h2>
+<p>In the following code chunk, we want to estimate the covariance between the headline unemployment rate and the headline inflation rate.</p>
+<p>Using the <strong>tidyquant</strong> package, we obtain the data from <strong>FRED</strong>.</p>
+<p>However, the data from FRED are in ‘long’ format, that is, one column contains symbols that identify the series and another column contains the values. We want to translate the data into ‘wide’ format, where each row (date) contains several columns of data.</p>
+<p>We use the <strong>pivot_wider</strong> command to translate the data from long to wide format and then estimate the monthly inflation rate as the year-over-year change in the Consumer Price Index. Since the unemployment rate is not in decimal form, we divide the unemployment series by 100.</p>
+<p>We then create a scatterplot before estimating the mean of each series and the covariance between the two series.</p>
+<div class="cell" data-warnings="false" data-result="hold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="fu">c</span>(<span class="st">'UNRATE'</span>, <span class="st">'CPIAUCSL'</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">get  =</span> <span class="st">'economic.data'</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">from =</span> <span class="st">'1969-01-01'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> symbol, <span class="at">values_from =</span> price) <span class="sc">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inflation =</span> (CPIAUCSL <span class="sc">-</span> <span class="fu">lag</span>(CPIAUCSL, <span class="dv">12</span>)) <span class="sc">/</span> <span class="fu">lag</span>(CPIAUCSL, <span class="dv">12</span>),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">UNRATE    =</span> UNRATE<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(inflation))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df_3, </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> inflation, </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> UNRATE)) <span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Inflation (YoY %)"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Unemployment Rate (%)"</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Scatterplot of Inflation and Unemployment"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mod-2-1-frequency_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mod-3-3-correlation_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_4 <span class="ot">&lt;-</span> df_3 <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarize</span>(<span class="at">mean_inf =</span> <span class="fu">mean</span>(inflation),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_unr =</span> <span class="fu">mean</span>(UNRATE),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cov_i_u  =</span> <span class="fu">cov</span>(inflation, UNRATE))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df_4,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Mean Inflation'</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Mean Unemploymnet'</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Covariance Inflation and Unemployment'</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Mean Inflation</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Mean Unemploymnet</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Covariance Inflation and Unemployment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.0400282</td>
+<td style="text-align: center;">0.0606632</td>
+<td style="text-align: center;">2.76e-05</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </section>
-<section id="scatterplots" class="level2" data-number="11.9">
-<h2 data-number="11.9" class="anchored" data-anchor-id="scatterplots"><span class="header-section-number">11.9</span> Scatterplots</h2>
-<p>A <strong>scatterplot</strong> is a graphical display of a relationship between two variables of interest.</p>
-<p>Before constructing a scatterplot, one must think about the nature of the relationship between the two variables.</p>
-<p>The <strong>independent</strong> variable is typically represented on the horizontal axis while the <strong>dependent</strong> variable is typically represented on the vertical axis.</p>
-<p>The hypothesized relationship between the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> variables can be expressed as:</p>
-<p><span class="math display">\[y = f(x)\]</span></p>
-<p>Care must be taken to avoid interpreting the visual relationship.</p>
-<p>In other words, what if the true relationship is:</p>
-<p><span class="math display">\[y = f(x, w, z)\]</span></p>
-<p>If you plot <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> and interpret the visual relationship, you are ignoring the potential relationships between <span class="math inline">\(y\)</span> and <span class="math inline">\(w\)</span> and <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span>.</p>
-<p>Scatterplots may inform, but we should always be careful with any conclusions we derive from merely observing the pattern of two variables.</p>
-<p>In the code below, we plot <strong>weight in pounds</strong> on the x-axis and <strong>miles per gallon</strong> on the y-axis. It would seem that there is a negative relationship between the weight of cars and their fuel efficiency. Heavier cars appear to have lower fuel efficiency.</p>
+<section id="mtcars-covariance" class="level2" data-number="18.7">
+<h2 data-number="18.7" class="anchored" data-anchor-id="mtcars-covariance"><span class="header-section-number">18.7</span> MTCARS Covariance</h2>
+<p>In our last example of covariance, we return to the <em>mtcars</em> dataset and the variables for the weight of each car (in thousands of pounds) and the miles per gallon of each car.</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="interpreting-the-covariance" class="level2" data-number="18.8">
+<h2 data-number="18.8" class="anchored" data-anchor-id="interpreting-the-covariance"><span class="header-section-number">18.8</span> Interpreting the Covariance</h2>
+<p>Given that the sample covariance in the previous example is equal to approximately -5.12, what does this mean about the potential relationship between the two variables?</p>
+<p>If <span class="math inline">\(\sigma_{XY} &gt; 0\)</span> or <span class="math inline">\(s_{XY} &gt; 0\)</span>, this implies that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are positively linearly related, that is, as <span class="math inline">\(X\)</span> increases, <span class="math inline">\(Y\)</span> increases in a linear fashion.</p>
+<p>Likewise, If <span class="math inline">\(\sigma_{XY} &lt; 0\)</span> or <span class="math inline">\(s_{XY} &lt; 0\)</span>, this implies that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are negatively linearly related, that is, as <span class="math inline">\(X\)</span> increases, <span class="math inline">\(Y\)</span> declines in a linear fashion.</p>
+<p>If <span class="math inline">\(\sigma_{XY} \approx 0\)</span> or <span class="math inline">\(s_{XY} \approx 0\)</span>, this implies that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not linearly related, that is, an increase in <span class="math inline">\(X\)</span> does not appear to influence <span class="math inline">\(Y\)</span>.</p>
+<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(\sigma_{XY} = 0\)</span> and <span class="math inline">\(s_{XY} = 0\)</span>.</p>
+<p>However, we typically do not rely on covariance to measure the association between two variables.</p>
+</section>
+<section id="scaling-and-covariance" class="level2" data-number="18.9">
+<h2 data-number="18.9" class="anchored" data-anchor-id="scaling-and-covariance"><span class="header-section-number">18.9</span> Scaling and Covariance</h2>
+<p>The choice of units can alter the covariance measure. In other words, you can increase or decrease covariance between two variables by changing the units of measures of one or both variables.</p>
+<p>We can easily see this in the following example. We add two new variables, one that converts miles per gallon into feet per gallon <strong>mpg_ft</strong> and one that converts weight in pounds into weight in ounces <strong>wt_oz</strong>.</p>
+<p>The covariance is dependent upon how each variable is measured.</p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="correlation-coefficient" class="level2" data-number="18.10">
+<h2 data-number="18.10" class="anchored" data-anchor-id="correlation-coefficient"><span class="header-section-number">18.10</span> Correlation Coefficient</h2>
+<p>Given that the covariance measure is affected by the choice of units of measurement, we can use the <strong>correlation coefficient</strong> to examine the relationship between two random variables.</p>
+<p>The <strong>Pearson correlation coefficient</strong> is defined as the ratio of the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> to the product of the standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and is denoted as <span class="math inline">\(\rho_{XY}\)</span> in the population and <span class="math inline">\(r_{XY}\)</span> in the sample.</p>
+<p>In expectations, the Pearson correlation coefficient is equal to:</p>
+<p><span class="math display">\[\begin{equation}
+\rho_{XY} = \frac{E[(X - \mu_x)(Y - \mu_Y)]}{\sigma_X \sigma_Y}
+\end{equation}\]</span></p>
+<p>In the population, the Pearson correlation coefficient, <span class="math inline">\(\rho_{XY}\)</span>, is equal to:</p>
+<p><span class="math display">\[\begin{equation}
+\rho_{XY} = \frac{\sigma_{XY}}{\sigma_X \sigma_Y}
+\end{equation}\]</span></p>
+<p>In the sample, the Pearson correlation coefficient, <span class="math inline">\(r_{XY}\)</span>, is equal to:</p>
+<p><span class="math display">\[\begin{equation}
+r_{XY} = \frac{s_{XY}}{s_X s_Y}
+\end{equation}\]</span></p>
+<p><strong>The Pearson correlation coefficient is bounded between -1 and 1.</strong></p>
+<p>A negative sign implies a negative association between the two variables of interest, while a positive sign implies a positive association. The closer the correlation coefficient is to -1 or 1, the stronger the association between the two variables. If the correlation coefficient is equal to -1 or 1, the two variables are <strong>perfectly correlated</strong>. If the correlation coefficient is equal to 0, the two variables are <strong>uncorrelated</strong>.</p>
+<p>Returning to the previous example, we first manually calculate the sample covariance between car weight and miles per gallon and the sample standard deviations for these variables. We then calculate the sample correlation coefficient manually and compare it the results of the correlation function.</p>
+</section>
+<section id="correlation-example" class="level2" data-number="18.11">
+<h2 data-number="18.11" class="anchored" data-anchor-id="correlation-example"><span class="header-section-number">18.11</span> Correlation Example</h2>
+<p>Let’s explore the correlation between two variables, <span class="math inline">\(X\)</span>, and <span class="math inline">\(Y\)</span> in the following code.</p>
+<p>We return first to our previous example.</p>
+<ul>
+<li><p>We estimate the standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
+<li><p>We estimate the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
+<li><p>We manually estimate the correlation by dividing the covariance by the product of the standard deviations.</p></li>
+<li><p>We use the <strong>cor</strong> function to estimate the correlation between the two variables</p></li>
+</ul>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="fred-correlation" class="level2" data-number="18.12">
+<h2 data-number="18.12" class="anchored" data-anchor-id="fred-correlation"><span class="header-section-number">18.12</span> FRED Correlation</h2>
+<p>In the code chunk below, we again retrieve the headline unemployment rate and headline inflation series from FRED.</p>
+<p>This time, however, we create two new variables.</p>
+<ul>
+<li><p>Inflation_2 is equal to the inflation series times 1000</p></li>
+<li><p>Unemployment_2 is equal to the unemployment series time 100</p></li>
+</ul>
+<p>We then estimate the covariance between</p>
+<ul>
+<li><p>Inflation and unemployment</p></li>
+<li><p>Inflation_2 and unemployment</p></li>
+<li><p>Inflation and unemployment_2</p></li>
+</ul>
+<p>The results demonstrate that the covariance measure is dependent on the scale or units of measurement and that we can inflate (or deflate) the covariance measure by scaling one or both variables.</p>
+<p>We then estimate four correlation coefficients:</p>
+<ul>
+<li><p>Inflation and unemployment</p></li>
+<li><p>Inflation_2 and unemployment</p></li>
+<li><p>Inflation and unemployment_2</p></li>
+<li><p>Inflation_2 and unemployment_2</p></li>
+</ul>
+<p>The correlation coefficients are equal to each other. In other words, the correlation coefficient is <strong>invariant</strong> to the scale of the variables.</p>
+<div class="cell" data-warnings="false" data-result="hold">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>df_5 <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="fu">c</span>(<span class="st">'UNRATE'</span>, <span class="st">'CPIAUCSL'</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">get  =</span> <span class="st">'economic.data'</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">from =</span> <span class="st">'1969-01-01'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> symbol, <span class="at">values_from =</span> price) <span class="sc">%&gt;%</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inflation =</span> (CPIAUCSL <span class="sc">-</span> <span class="fu">lag</span>(CPIAUCSL, <span class="dv">12</span>)) <span class="sc">/</span> <span class="fu">lag</span>(CPIAUCSL, <span class="dv">12</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">unrate    =</span> UNRATE<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(inflation)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">unrate_2 =</span> unrate <span class="sc">*</span><span class="dv">100</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">inflation_2 =</span> inflation <span class="sc">*</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cov_i_u     =</span> <span class="fu">cov</span>(inflation, unrate),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">cov_i2_u    =</span> <span class="fu">cov</span>(inflation_2, unrate),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">cov_i_u2    =</span> <span class="fu">cov</span>(inflation, unrate_2),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">cor_i_u     =</span> <span class="fu">cor</span>(inflation, unrate),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">cor_i2_u    =</span> <span class="fu">cor</span>(inflation_2, unrate),</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">cor_i_u2    =</span> <span class="fu">cor</span>(inflation, unrate_2),</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">cor_i2_u2   =</span> <span class="fu">cor</span>(inflation_2, unrate_2))</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df_5,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">'c'</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'COV(Inf, Unemp)'</span>, <span class="st">'COV(Inf2, Unemp)'</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'COV(Inf, Unemp2)'</span>, <span class="st">'COR(Inf,Unemp)'</span>,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'COR(Inf2, Unemp)'</span>, <span class="st">'COR(Inf, Unemp2)'</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'COR(Inf2, Unemp2)'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">COV(Inf, Unemp)</th>
+<th style="text-align: center;">COV(Inf2, Unemp)</th>
+<th style="text-align: center;">COV(Inf, Unemp2)</th>
+<th style="text-align: center;">COR(Inf,Unemp)</th>
+<th style="text-align: center;">COR(Inf2, Unemp)</th>
+<th style="text-align: center;">COR(Inf, Unemp2)</th>
+<th style="text-align: center;">COR(Inf2, Unemp2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.028</td>
+<td style="text-align: center;">0.003</td>
+<td style="text-align: center;">0.056</td>
+<td style="text-align: center;">0.056</td>
+<td style="text-align: center;">0.056</td>
+<td style="text-align: center;">0.056</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="mtcars-correlation" class="level2" data-number="18.13">
+<h2 data-number="18.13" class="anchored" data-anchor-id="mtcars-correlation"><span class="header-section-number">18.13</span> MTCARS Correlation</h2>
+<p>We return to the <em>mtcars</em> dataset and the variables for the weight of each car (in thousands of pounds) and the miles per gallon of each car.</p>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="correlation-and-causation" class="level2" data-number="18.14">
+<h2 data-number="18.14" class="anchored" data-anchor-id="correlation-and-causation"><span class="header-section-number">18.14</span> Correlation and Causation</h2>
+<p>To this point, we have examined <strong>measures of association</strong> rather than <strong>measures of causation</strong>.</p>
+<p>We must be careful to understand that while association may imply causation, association, by itself, is not sufficient to conclude a causal relationship exists.</p>
+<p><strong>Association is necessary, but not sufficient, for causation</strong></p>
+<p>Correlation between two variables may be the product of one or more confounding variables. Observational studies may fall victim to confounding variables, leading one to conclude causation exists. For example, assume that 100 patients were sick with a disease with 5% mortality after two weeks. All the patients were given an experimental drug and at the end of two weeks, only 1 patient has died. Obviously the drug has reduced mortality, or has it? What if 10,000 patients were treated and only 1% died?</p>
+<p>While the drug is associated with decreased mortality, we have not controlled for other potential confounding variables. The general health of the patients may have been different than the general population. The patients may have received other drugs that are known to reduce mortality. The age of the patients may be lower (higher) than the general population. This is why scientists use double-blind, randomized, placebo-controlled trials to examine the efficacy of new drugs. These trials reduce (but do not eliminate) the possibility of confounding so investigators can examine whether the outcomes of the control (receive placebo) and treatment (receive drug) groups are statistically different.</p>
+<p>A strong association between two variables is <strong>suggestive</strong> of a causal relationship but we must be cautious. How were the data gathered? Was there a mechanism to reduce the presence of confounding variables? Are the data experimental, that is, random assignment into control and treatment groups? As we move from observational studies to experimental studies, the ability to suggest that association implies causation increases, but, in the end, we must find other methods to explore whether two (or more) variables are causally related.</p>
+</section>
+<section id="module-summary" class="level2" data-number="18.15">
+<h2 data-number="18.15" class="anchored" data-anchor-id="module-summary"><span class="header-section-number">18.15</span> Module Summary</h2>
+<p>We use descriptive statistics to develop an understanding of the properties of the data.</p>
+<ul>
+<li><p>We have discussed two broad properties of the data:</p>
+<ul>
+<li><p>The center of the data</p></li>
+<li><p>The spread of the data</p></li>
+</ul></li>
+<li><p>We developed two measures of association (co-movement)</p>
+<ul>
+<li><p>Covariance</p></li>
+<li><p>Correlation</p></li>
+</ul></li>
+<li><p>In the coming modules, we will discuss randomness, the concept of probability, and probability distributions.</p></li>
+</ul>
 
 
 </section>
@@ -2913,14 +2997,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-2-0-overview.html" class="pagination-link" aria-label="Module 2 Overview">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 2 Overview</span></span>
+      <a href="./mod-3-2-normal.html" class="pagination-link" aria-label="Chebyshev's Theorem">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-2-2-central.html" class="pagination-link" aria-label="Central Tendency">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

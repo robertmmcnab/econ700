@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; Module 3 Overview – ECON 700</title>
+<title>16&nbsp; Skewness – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-3-1-skewness.html" rel="next">
-<link href="./mod-2-4-zscores.html" rel="prev">
+<link href="./mod-3-2-normal.html" rel="next">
+<link href="./mod-3-0-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -70,7 +105,40 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-0-overview.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-1-skewness.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Skewness</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -238,13 +306,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-3-0-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-3-0-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-3-1-skewness.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-3-1-skewness.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Skewness</span></span></a>
   </div>
 </li>
@@ -292,20 +360,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">15.1</span> Introduction</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">15.2</span> Learning Objectives</a></li>
-  <li><a href="#readings-resources" id="toc-readings-resources" class="nav-link" data-scroll-target="#readings-resources"><span class="header-section-number">15.3</span> Readings &amp; Resources</a></li>
-  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities"><span class="header-section-number">15.4</span> Activities</a></li>
-  <li><a href="#lessons-in-this-module" id="toc-lessons-in-this-module" class="nav-link" data-scroll-target="#lessons-in-this-module"><span class="header-section-number">15.5</span> Lessons in this Module</a></li>
+  <li><a href="#defining-skewness" id="toc-defining-skewness" class="nav-link active" data-scroll-target="#defining-skewness"><span class="header-section-number">16.1</span> Defining Skewness</a></li>
+  <li><a href="#skewness-example" id="toc-skewness-example" class="nav-link" data-scroll-target="#skewness-example"><span class="header-section-number">16.2</span> Skewness Example</a></li>
+  <li><a href="#interpreting-skewness" id="toc-interpreting-skewness" class="nav-link" data-scroll-target="#interpreting-skewness"><span class="header-section-number">16.3</span> Interpreting Skewness</a></li>
+  <li><a href="#skewness-illustration" id="toc-skewness-illustration" class="nav-link" data-scroll-target="#skewness-illustration"><span class="header-section-number">16.4</span> Skewness Illustration</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-0-overview.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-1-skewness.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Skewness</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></h1>
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Skewness</span></h1>
 </div>
 
 
@@ -322,64 +389,136 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">15.1</span> Introduction</h2>
-<p>Welcome to <strong>Module 3</strong> of ECON 700.</p>
-<p>This module introduces students to bivariate data analysis through the concepts of covariance and correlation. Building on prior discussions of univariate statistics, it explores how two variables move together and the extent to which their relationship can be quantified. Covariance is presented as a measure of joint variability that indicates whether two variables tend to increase or decrease together. Students learn that while the sign of covariance conveys direction (positive or negative association), its magnitude is difficult to interpret due to dependence on the units of measurement.</p>
-<p>To overcome this limitation, the module introduces the Pearson correlation coefficient—a standardized, unitless measure that captures the strength and direction of linear relationships between two variables. Through practical examples using R and real-world data such as mtcars and World Bank indicators, students compute, interpret, and compare covariance and correlation values. The module concludes by emphasizing that correlation measures association, not causation, and that careful interpretation is required when evaluating statistical relationships.</p>
-<hr>
+<section id="defining-skewness" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="defining-skewness"><span class="header-section-number">16.1</span> Defining Skewness</h2>
+<p>In addition to measures of central tendency (population mean and sample average) and measures of dispersion (variance and standard deviation), we can investigate the <strong>skew</strong> of data.</p>
+<p>Are the data “shifted” to the left or right of the center? Are the data “clustered” around the measure of central tendency?</p>
+<p><strong>Skewness</strong> measures the asymmetry of a probability distribution of a real-valued random variable around its mean. Skewness can be positive, negative, or undefined.</p>
+<p>For a distribution with a single peak, a <em>negative skew</em> implies that the tail is on the left side of the distribution. A <em>positive skew</em> implies that the tail is on the right side of the distribution. A <em>zero skew</em> implies that the tails ‘balance’ which may mean the distribution is symmetric.</p>
+<p>The <strong>Fisher-Pearson standardized moment coefficient</strong> is used by R and other major statistical software packages to measure skewness in a univariate sample. The sample skewness measure is equal to:</p>
+<p><span class="math display">\[G_1 = \frac{n}{(n-1)(n-2)}\sum_{i=1}^{n} \Big( \frac{x_i - \bar{x}}{s} \Big)^3\]</span></p>
 </section>
-<section id="learning-objectives" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">15.2</span> Learning Objectives</h2>
-<p>By the end of this module, you should be able to:</p>
-<ul>
-<li><p><strong>Define</strong> covariance and correlation as measures of association between two quantitative variables.</p></li>
-<li><p><strong>Compute</strong> sample and population covariance and correlation using R.</p></li>
-<li><p><strong>Interpret</strong> the sign and magnitude of covariance and correlation coefficients in applied examples.</p></li>
-<li><p><strong>Explain</strong> how changes in units of measurement affect covariance but not correlation.</p></li>
-<li><p><strong>Distinguish</strong> between statistical association and causal relationships in bivariate data.</p></li>
-<li><p><strong>Apply</strong> covariance and correlation measures to real-world datasets to evaluate linear relationships.</p></li>
-</ul>
-<hr>
+<section id="skewness-example" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="skewness-example"><span class="header-section-number">16.2</span> Skewness Example</h2>
+<p>In the following example, we construct a vector of observations for the variables <strong>x</strong>, <strong>y</strong>, and <strong>z</strong>.</p>
+<p>We install and use the <strong>moments</strong> package to estimate skewness.</p>
+<p>The first vector, <strong>x</strong>, has a mean of 7 and a median of 7. The observations are symmetrically distributed around 7, that is, the mirror are ‘reflected’ around the mean.</p>
+<p>In a <strong>perfectly symmetrical</strong> distribution, the mean and median are the same. Note also that the estimate of skewness is equal to zero, that is, the tails of the distribution are symmetrical.</p>
+<p>The second vector, <strong>y</strong>, has a mean of 6.3 and a median of 6.5. The estimate of skewness is -0.613. The <strong>negative skew</strong> means that the tail of the left side of the distribution is longer than the tail on the right side of the distribution.</p>
+<p><em>In other words, if skewness is negative, the mass of the distribution is concentrated to the right, that is, the left tail is longer.</em></p>
+<p>The third vector, <strong>z</strong> has a mean of 7.214 and a median of 7.0. The estimate of skewness of is 0.442. The <strong>positive skew</strong> means that the right tail of the distribution longer.</p>
+<p><em>In other words, if skewness is positive, the mass of the distribution is concentrated to the left, that is, the right tail is longer.</em></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Use moments package for skewness</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define data vectors</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>x_stats <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="st">'X-Stats'</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean   =</span> <span class="fu">mean</span>(x),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                  <span class="at">median =</span> <span class="fu">median</span>(x),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                  <span class="at">skew   =</span> <span class="fu">skewness</span>(x))</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>y_stats <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="st">'Y-Stats'</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean   =</span> <span class="fu">mean</span>(y),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">median =</span> <span class="fu">median</span>(y),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                  <span class="at">skew   =</span> <span class="fu">skewness</span>(y))</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>z_stats <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="st">'Z-Stats'</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean   =</span> <span class="fu">mean</span>(z),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                  <span class="at">median =</span> <span class="fu">median</span>(z),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                  <span class="at">skew   =</span> <span class="fu">skewness</span>(z))</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">rbind</span>(x_stats, y_stats, z_stats)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(stats,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits    =</span> <span class="dv">3</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Source'</span>,<span class="st">'Mean'</span>,<span class="st">'Median'</span>,<span class="st">'Skew'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Source</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Median</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Skew</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">X-Stats</td>
+<td style="text-align: center;">7.000</td>
+<td style="text-align: center;">7.0</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Y-Stats</td>
+<td style="text-align: center;">6.300</td>
+<td style="text-align: center;">6.5</td>
+<td style="text-align: center;">-0.613</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Z-Stats</td>
+<td style="text-align: center;">7.214</td>
+<td style="text-align: center;">7.0</td>
+<td style="text-align: center;">0.442</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-<section id="readings-resources" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="readings-resources"><span class="header-section-number">15.3</span> Readings &amp; Resources</h2>
+<section id="interpreting-skewness" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="interpreting-skewness"><span class="header-section-number">16.3</span> Interpreting Skewness</h2>
+<p>Skewness is a measure of the symmetry of the data. Negative skewness generally implies that the mean is less than the median. Negative skewness means that the left tail of the data is longer than the right tail of the data. Positive skewness implies that the mean is greater than the median and implies that the right tail of the data are longer than the left tail of the data.</p>
+<p>If skewness is negative, the data are <em>left-skewed</em>.</p>
+<p>If skewness is positive, the data are <em>right-skewed</em>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Following Bulmer (1979), the following rules of thumb are useful in interpreting skewness.</p>
 <ul>
-<li><p>Barbara Illowsky and Susan Dean. <em>Introductory Statistics 2e</em>. OpenStax. (Chapter 2). Available for free online at <a href="https://openstax.org/books/introductory-statistics-2e/pages/2-introduction" class="uri">https://openstax.org/books/introductory-statistics-2e/pages/2-introduction</a></p></li>
-<li><p>Irizarry, R. (2025). <em>Introduction to Data Science: Data Wrangling and Visualization with R</em>. (Chapters 1-2). Available for free at: <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/" class="uri">https://rafalab.dfci.harvard.edu/dsbook-part-1/</a></p></li>
-<li><p>Wickham, H., &amp; Grolemund, G. (2017). <em>R for Data Science</em>. (Chapters 1–3).<br>
-</p></li>
-<li><p>Online R documentation: <a href="https://cran.r-project.org/manuals.html" class="uri">https://cran.r-project.org/manuals.html</a><br>
-</p></li>
-<li><p><a href="https://posit.co/resources/cheatsheets/">RStudio Cheat Sheets</a></p></li>
+<li><p>If skewness is less than -1 or greater than 1, the data are <strong>highly skewed</strong>.</p></li>
+<li><p>If skewness is between -1 and -1/2 or between 1/2 and 1, the data are <strong>moderately skewed</strong>.</p></li>
+<li><p>If skewness is between -1/2 and 1/2, the data are <strong>approximately symmetric</strong>.</p></li>
+<li><p>If skewness is 0, the data are <strong>perfectly symmetric</strong>.</p></li>
 </ul>
-<hr>
+<p>At a minimum, the following points regarding the skewness measure can be made:</p>
+<ul>
+<li><p>The sign represents the direction of skewness.</p></li>
+<li><p>The measure compares to a symmetric distribution (i.e.&nbsp;the normal distribution).</p></li>
+<li><p>Values that are far from zero imply a non-normal or skewed population.</p></li>
+<li><p>The measure has an adjustment for sample size.</p></li>
+<li><p>In large samples, the adjustment is of little consequence.</p></li>
+</ul>
 </section>
-<section id="activities" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="activities"><span class="header-section-number">15.4</span> Activities</h2>
-<ul>
-<li>Complete the hands-on coding exercises embedded in each lesson.<br>
-</li>
-<li>Complete the weekly class assignment.<br>
-</li>
-<li>Participate in the discussion form.<br>
-</li>
-<li>Take the weekly knowledge quiz.<br>
-</li>
-</ul>
-<hr>
-</section>
-<section id="lessons-in-this-module" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="lessons-in-this-module"><span class="header-section-number">15.5</span> Lessons in this Module</h2>
-<ul>
-<li><a href="./mod-3-1-skewness.html">3.1 – Skewness</a></li>
-<li><a href="./mod-3-2-normal.html">3.2 – Chebyshev’s Theorem</a></li>
-<li><a href="./mod-3-3-correlation.html">3.3 - Covariance and Correlation</a></li>
-</ul>
-<hr>
-<p>Next: Start with <a href="./mod-3-1-skewness.html"><strong>Skewness</strong></a>.</p>
+<section id="skewness-illustration" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="skewness-illustration"><span class="header-section-number">16.4</span> Skewness Illustration</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Relationship_between_mean_and_median_under_different_skewness.png" class="img-fluid figure-img" alt="Relationship Between Mean, Median, and Mode"></p>
+<figcaption>Relationship Between Mean, Median, and Mode</figcaption>
+</figure>
+</div>
+<p>By Diva Jain - <a href="https://codeburst.io/2-important-statistics-terms-you-need-to-know-in-data-science-skewness-and-kurtosis-388fef94eeaa," class="uri">https://codeburst.io/2-important-statistics-terms-you-need-to-know-in-data-science-skewness-and-kurtosis-388fef94eeaa,</a> CC BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=84219892" class="uri">https://commons.wikimedia.org/w/index.php?curid=84219892</a></p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>For an extended discussion, see Doane and Seward (2011), “Measuring Skewness: A Forgotten Statistic?” Available at: http://jse.amstat.org/v19n2/doane.pdf<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -790,13 +929,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-2-4-zscores.html" class="pagination-link" aria-label="Z-Scores">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Z-Scores</span></span>
+      <a href="./mod-3-0-overview.html" class="pagination-link" aria-label="Module 3 Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-3-1-skewness.html" class="pagination-link" aria-label="Skewness">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Skewness</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mod-3-2-normal.html" class="pagination-link" aria-label="Chebyshev's Theorem">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

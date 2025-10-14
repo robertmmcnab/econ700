@@ -1,14 +1,14 @@
 ---
-title: "Module 2 Overview"
+title: "Module 3 Overview"
 ---
 
 ## Introduction
 
-Welcome to **Module 2** of ECON 700.
+Welcome to **Module 3** of ECON 700.
 
-In this module, you will deepen your understanding of how to summarize and interpret data using descriptive statistics. You will learn to organize data into frequency and relative frequency distributions, calculate measures that describe the center and spread of data, and assess how individual observations compare to the overall dataset.
+This module introduces students to bivariate data analysis through the concepts of covariance and correlation. Building on prior discussions of univariate statistics, it explores how two variables move together and the extent to which their relationship can be quantified. Covariance is presented as a measure of joint variability that indicates whether two variables tend to increase or decrease together. Students learn that while the sign of covariance conveys direction (positive or negative association), its magnitude is difficult to interpret due to dependence on the units of measurement.
 
-Emphasis will be placed on using R to compute and visualize descriptive statistics, including the mean, median, mode, range, variance, standard deviation, coefficient of variation, and z-scores. By the end of this module, you will be able to use these tools to describe key features of economic data accurately and communicate your findings effectively through reproducible R-based analyses.
+To overcome this limitation, the module introduces the Pearson correlation coefficient—a standardized, unitless measure that captures the strength and direction of linear relationships between two variables. Through practical examples using R and real-world data such as mtcars and World Bank indicators, students compute, interpret, and compare covariance and correlation values. The module concludes by emphasizing that correlation measures association, not causation, and that careful interpretation is required when evaluating statistical relationships.
 
 ------------------------------------------------------------------------
 
@@ -16,21 +16,23 @@ Emphasis will be placed on using R to compute and visualize descriptive statisti
 
 By the end of this module, you should be able to:
 
--   Construct and interpret **frequency and relative frequency distributions** to summarize quantitative data.
+-   **Define** covariance and correlation as measures of association between two quantitative variables.
 
--   Compute and interpret **measures of central tendency**, including the mean, median, mode, and trimmed and weighted means.
+-   **Compute** sample and population covariance and correlation using R.
 
--   Calculate and explain **measures of variability**, including the range, variance, standard deviation, and coefficient of variation.
+-   **Interpret** the sign and magnitude of covariance and correlation coefficients in applied examples.
 
--   Use **z-scores** to assess relative position and identify outliers within a dataset.
+-   **Explain** how changes in units of measurement affect covariance but not correlation.
 
--   Apply R to **generate, visualize, and interpret** descriptive statistics and graphical summaries of economic data.
+-   **Distinguish** between statistical association and causal relationships in bivariate data.
+
+-   **Apply** covariance and correlation measures to real-world datasets to evaluate linear relationships.
 
 ------------------------------------------------------------------------
 
 ## Readings & Resources
 
-- Barbara Illowsky and Susan Dean. *Introductory Statistics 2e*. OpenStax. (Chapter 2). Available for free online at <https://openstax.org/books/introductory-statistics-2e/pages/2-introduction>
+-   Barbara Illowsky and Susan Dean. *Introductory Statistics 2e*. OpenStax. (Chapter 2). Available for free online at <https://openstax.org/books/introductory-statistics-2e/pages/2-introduction>
 
 -   Irizarry, R. (2025). *Introduction to Data Science: Data Wrangling and Visualization with R*. (Chapters 1-2). Available for free at: <https://rafalab.dfci.harvard.edu/dsbook-part-1/>
 
@@ -53,10 +55,10 @@ By the end of this module, you should be able to:
 
 ## Lessons in this Module
 
--   [2.1 – Frequency Distributions](mod-2-1-frequency.qmd)\
--   [2.2 - Measures of Central Tendency](mod-2-2-central.qmd)
--   [2.3 - Measures of Dispersion](mod-2-3-variance.qmd)
+-   [3.1 – Skewness](mod-3-1-skewness.qmd)
+-   [3.2 – Chebyshev's Theorem](mod-3-2-normal.qmd)
+-   [3.3 - Covariance and Correlation](mod-3-3-correlation.qmd)
 
 ------------------------------------------------------------------------
 
-Next: Start with [**Frequency Distributions**](mod-2-1-frequency.qmd).
+Next: Start with [**Skewness**](mod-3-1-skewness.qmd).

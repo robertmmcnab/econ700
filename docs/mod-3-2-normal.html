@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; Module 3 Overview – ECON 700</title>
+<title>17&nbsp; Chebyshev’s Theorem – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-3-1-skewness.html" rel="next">
-<link href="./mod-2-4-zscores.html" rel="prev">
+<link href="./mod-3-3-correlation.html" rel="next">
+<link href="./mod-3-1-skewness.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -71,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-0-overview.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-2-normal.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -238,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-3-0-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-3-0-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></span></a>
   </div>
 </li>
@@ -250,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-3-2-normal.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-3-2-normal.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></span></a>
   </div>
 </li>
@@ -292,20 +321,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">15.1</span> Introduction</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">15.2</span> Learning Objectives</a></li>
-  <li><a href="#readings-resources" id="toc-readings-resources" class="nav-link" data-scroll-target="#readings-resources"><span class="header-section-number">15.3</span> Readings &amp; Resources</a></li>
-  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities"><span class="header-section-number">15.4</span> Activities</a></li>
-  <li><a href="#lessons-in-this-module" id="toc-lessons-in-this-module" class="nav-link" data-scroll-target="#lessons-in-this-module"><span class="header-section-number">15.5</span> Lessons in this Module</a></li>
+  <li><a href="#z-scores" id="toc-z-scores" class="nav-link active" data-scroll-target="#z-scores"><span class="header-section-number">17.1</span> Z-Scores</a></li>
+  <li><a href="#chebyshevs-theorem" id="toc-chebyshevs-theorem" class="nav-link" data-scroll-target="#chebyshevs-theorem"><span class="header-section-number">17.2</span> Chebyshev’s Theorem</a></li>
+  <li><a href="#chebyshevs-examples" id="toc-chebyshevs-examples" class="nav-link" data-scroll-target="#chebyshevs-examples"><span class="header-section-number">17.3</span> Chebyshev’s Examples</a>
+  <ul class="collapse">
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">17.3.1</span> Example 1</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">17.3.2</span> Example 2</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3"><span class="header-section-number">17.3.3</span> Example 3</a></li>
+  </ul></li>
+  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link" data-scroll-target="#the-normal-distribution"><span class="header-section-number">17.4</span> The Normal Distribution</a></li>
+  <li><a href="#the-empirical-rule" id="toc-the-empirical-rule" class="nav-link" data-scroll-target="#the-empirical-rule"><span class="header-section-number">17.5</span> The Empirical Rule</a>
+  <ul class="collapse">
+  <li><a href="#example-1-1" id="toc-example-1-1" class="nav-link" data-scroll-target="#example-1-1"><span class="header-section-number">17.5.1</span> Example 1</a></li>
+  <li><a href="#example-2-1" id="toc-example-2-1" class="nav-link" data-scroll-target="#example-2-1"><span class="header-section-number">17.5.2</span> Example 2</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-0-overview.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-2-normal.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></h1>
 </div>
 
 
@@ -322,64 +360,138 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">15.1</span> Introduction</h2>
-<p>Welcome to <strong>Module 3</strong> of ECON 700.</p>
-<p>This module introduces students to bivariate data analysis through the concepts of covariance and correlation. Building on prior discussions of univariate statistics, it explores how two variables move together and the extent to which their relationship can be quantified. Covariance is presented as a measure of joint variability that indicates whether two variables tend to increase or decrease together. Students learn that while the sign of covariance conveys direction (positive or negative association), its magnitude is difficult to interpret due to dependence on the units of measurement.</p>
-<p>To overcome this limitation, the module introduces the Pearson correlation coefficient—a standardized, unitless measure that captures the strength and direction of linear relationships between two variables. Through practical examples using R and real-world data such as mtcars and World Bank indicators, students compute, interpret, and compare covariance and correlation values. The module concludes by emphasizing that correlation measures association, not causation, and that careful interpretation is required when evaluating statistical relationships.</p>
-<hr>
+<section id="z-scores" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="z-scores"><span class="header-section-number">17.1</span> Z-Scores</h2>
+<p>Recall that we previously defined a <strong>Z-score</strong> as a measure of the number of standardized deviations an observation is from the mean.</p>
+<p>Given population data distributed with mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>, the <strong>Z-score</strong> for an observation, <span class="math inline">\(x\)</span>, is denoted as:</p>
+<p><span class="math display">\[
+Z_x = \frac{x - \mu}{\sigma}
+\]</span></p>
+<p>If the Z-score of an observation was -2.5, then we would state that the observation lies 2.5 standard deviations to the left of the mean. If the Z-score is equal to 1.75, then we would state that the observation lies 1.75 standard deviations to the right of the population mean.</p>
+<p>Let <span class="math inline">\(x_1 = 50\)</span>, <span class="math inline">\(\mu_{x_1} = 20\)</span>, and <span class="math inline">\(\sigma_{x_1}=5\)</span>, then the <span class="math inline">\(z_{x_1}\)</span> is equal to</p>
+<p><span class="math display">\[
+z_{x_1} = \frac{x_1 - \mu}{\sigma} = \frac{50-20}{5} = 6
+\]</span></p>
+<p>The observation <span class="math inline">\(x_1\)</span> is 6 standard deviations from the mean of 20. Given that <span class="math inline">\(z_{x_1}\)</span> is positive, we know that the observation <span class="math inline">\(x_1\)</span> is 6 standard deviations to the right of <span class="math inline">\(\mu_{x_1}\)</span>.</p>
 </section>
-<section id="learning-objectives" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">15.2</span> Learning Objectives</h2>
-<p>By the end of this module, you should be able to:</p>
-<ul>
-<li><p><strong>Define</strong> covariance and correlation as measures of association between two quantitative variables.</p></li>
-<li><p><strong>Compute</strong> sample and population covariance and correlation using R.</p></li>
-<li><p><strong>Interpret</strong> the sign and magnitude of covariance and correlation coefficients in applied examples.</p></li>
-<li><p><strong>Explain</strong> how changes in units of measurement affect covariance but not correlation.</p></li>
-<li><p><strong>Distinguish</strong> between statistical association and causal relationships in bivariate data.</p></li>
-<li><p><strong>Apply</strong> covariance and correlation measures to real-world datasets to evaluate linear relationships.</p></li>
-</ul>
-<hr>
+<section id="chebyshevs-theorem" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="chebyshevs-theorem"><span class="header-section-number">17.2</span> Chebyshev’s Theorem</h2>
+<p><strong>Chebyshev’s Theorem</strong> states at least <span class="math inline">\((1 - 1 / z^2)\)</span> of the data values must be within <span class="math inline">\(z\)</span> standard deviations of the mean where <span class="math inline">\(z\)</span> is any value greater than 1.</p>
+<p><u><em>Since the theorem is independent of the underlying distribution, we can apply Chebyshev’s theorem to a data set without worrying about how the data are distributed.</em></u></p>
+<p>With this in mind, let <span class="math inline">\(z = 2\)</span>, <span class="math inline">\(z = 3\)</span>, and <span class="math inline">\(z=6\)</span>, then</p>
+<p><span class="math display">\[z = 2 \rightarrow (1 - \frac{1}{2^2}) = 1 - 1/4 = 0.750 \]</span></p>
+<p><span class="math display">\[z = 3 \rightarrow (1 - \frac{1}{3^2}) = 1 - 1/9 = 0.889\]</span> <span class="math display">\[z = 4 \rightarrow (1 - \frac{1}{4^2}) = 1 - 1/16 = 0.972\]</span></p>
+<p>Chebyshev’s theorem implies that at least 75% of observations will lie within 2 standard deviations of the mean and at least 88.9% of observations with lie within 3 standard deviations of the mean.</p>
+<p>This is quite useful when you do not know the underlying distribution of the data. The theorem provides a conservative estimate relative to the <strong>Empirical Rule</strong> which applies only to normal distributions and that we will explore later.</p>
 </section>
-<section id="readings-resources" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="readings-resources"><span class="header-section-number">15.3</span> Readings &amp; Resources</h2>
-<ul>
-<li><p>Barbara Illowsky and Susan Dean. <em>Introductory Statistics 2e</em>. OpenStax. (Chapter 2). Available for free online at <a href="https://openstax.org/books/introductory-statistics-2e/pages/2-introduction" class="uri">https://openstax.org/books/introductory-statistics-2e/pages/2-introduction</a></p></li>
-<li><p>Irizarry, R. (2025). <em>Introduction to Data Science: Data Wrangling and Visualization with R</em>. (Chapters 1-2). Available for free at: <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/" class="uri">https://rafalab.dfci.harvard.edu/dsbook-part-1/</a></p></li>
-<li><p>Wickham, H., &amp; Grolemund, G. (2017). <em>R for Data Science</em>. (Chapters 1–3).<br>
-</p></li>
-<li><p>Online R documentation: <a href="https://cran.r-project.org/manuals.html" class="uri">https://cran.r-project.org/manuals.html</a><br>
-</p></li>
-<li><p><a href="https://posit.co/resources/cheatsheets/">RStudio Cheat Sheets</a></p></li>
-</ul>
-<hr>
+<section id="chebyshevs-examples" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="chebyshevs-examples"><span class="header-section-number">17.3</span> Chebyshev’s Examples</h2>
+<section id="example-1" class="level3" data-number="17.3.1">
+<h3 data-number="17.3.1" class="anchored" data-anchor-id="example-1"><span class="header-section-number">17.3.1</span> Example 1</h3>
+<p>Assume that you have a dataset with a mean of 100 and a standard deviation of 10.</p>
+<p><span class="math display">\[
+\mu = 100 \\
+\sigma = 10
+\]</span></p>
+<p>You are interested in a range of 3 standard deviations.</p>
+<p><span class="math display">\[
+\mu - 2\sigma = 100 - 3 \times 10 = 70 \\
+\mu + 2\sigma = 100 + 3 \times 10 = 130
+\]</span></p>
+<p>Chebyshev’s Theorem tells you at least 89% of observations fall between 70 and 130. This implies that no more than 11% of observations fall outside this range.</p>
 </section>
-<section id="activities" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="activities"><span class="header-section-number">15.4</span> Activities</h2>
-<ul>
-<li>Complete the hands-on coding exercises embedded in each lesson.<br>
-</li>
-<li>Complete the weekly class assignment.<br>
-</li>
-<li>Participate in the discussion form.<br>
-</li>
-<li>Take the weekly knowledge quiz.<br>
-</li>
-</ul>
-<hr>
+<section id="example-2" class="level3" data-number="17.3.2">
+<h3 data-number="17.3.2" class="anchored" data-anchor-id="example-2"><span class="header-section-number">17.3.2</span> Example 2</h3>
+<p>Assume that a class takes a test. The mean score on the test is 75 and the standard deviation is 5. What proportion of scores fall between 65 and 85?</p>
+<p>Given the mean is 75, you should note that 65 is 2 standard deviations less than the mean and 85 is 2 standard deviations greater than the mean.</p>
+<p>By Chebyshev’s Theorem, this means that at least 75% of observations fall between 65 and 85. This implies that no more than 25% of observations fall outside this range.</p>
 </section>
-<section id="lessons-in-this-module" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="lessons-in-this-module"><span class="header-section-number">15.5</span> Lessons in this Module</h2>
+<section id="example-3" class="level3" data-number="17.3.3">
+<h3 data-number="17.3.3" class="anchored" data-anchor-id="example-3"><span class="header-section-number">17.3.3</span> Example 3</h3>
+<p>Let <span class="math inline">\(\mu = 80\)</span> and <span class="math inline">\(\sigma = 4\)</span>.</p>
+<p><span class="math display">\[ \mu - 2\sigma = 80 - (2 \times 4) = 72 \\ \mu + 2\sigma = 80 + (2 \times 4) = 88\]</span></p>
+<p>At least 75% of observations for a distribution with <span class="math inline">\(\mu = 80\)</span> and <span class="math inline">\(\sigma = 4\)</span> lie in the (72,88) range.</p>
+<p><span class="math display">\[ \mu - 3\sigma = 80 - (3 \times 4) = 68 \\ \mu + 3\sigma = 80 + (3 \times 4) = 92 \]</span></p>
+<p>At least 75% of observations lie in the (68,92) range.</p>
+</section>
+</section>
+<section id="the-normal-distribution" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="the-normal-distribution"><span class="header-section-number">17.4</span> The Normal Distribution</h2>
+<p>The <strong>normal distribution</strong> is undoubtedly one of the most important, if not the most important, distribution in statistics. While there are technically an infinite number of normal distributions, we often refer to “the normal distribution” to discuss the properties of the distribution. Unlike the previous examples which have been collections of <strong>discrete</strong> observations, the normal distribution is <strong>continuous</strong>.</p>
+<p>A normal distribution in <span class="math inline">\(X\)</span> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> is a distribution resulting from the <strong>probability distribution function</strong> that is defined on the <span class="math inline">\(x \in (-\infty, \infty)\)</span> interval and is equal to:</p>
+<p><span class="math display">\[
+P(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-(x - \mu) / (2 \sigma^2)}
+\]</span></p>
+<p>We will discuss the properties of the normal and other distributions at greater length in coming modules.</p>
+<p>For now, we will focus on the general properties that help us think about measures of central tendency, variability, and the shape of the data.</p>
+<p>The normal distribution has the following properties.</p>
 <ul>
-<li><a href="./mod-3-1-skewness.html">3.1 – Skewness</a></li>
-<li><a href="./mod-3-2-normal.html">3.2 – Chebyshev’s Theorem</a></li>
-<li><a href="./mod-3-3-correlation.html">3.3 - Covariance and Correlation</a></li>
+<li><p>The mean, mode, and median are all equal.</p></li>
+<li><p>The normal distribution is symmetric around <span class="math inline">\(\mu\)</span></p></li>
+<li><p>Exactly 50% of the values lie to the left of <span class="math inline">\(\mu\)</span></p></li>
+<li><p>Exactly 50% of the values lie to the right of <span class="math inline">\(\mu\)</span></p></li>
+<li><p>The total area under the curve is equal to 1</p></li>
 </ul>
-<hr>
-<p>Next: Start with <a href="./mod-3-1-skewness.html"><strong>Skewness</strong></a>.</p>
+</section>
+<section id="the-empirical-rule" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="the-empirical-rule"><span class="header-section-number">17.5</span> The Empirical Rule</h2>
+<p>The <strong>Empirical rule</strong> is based on Chebyshev’s theorem and, given a normal distribution, states that:</p>
+<ul>
+<li><p>Approximately 68% of observations lie within one standard deviation of <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>Approximately 95% of observations lie within two standard deviations of <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>Approximately 99% of observations lie within three standard deviations of <span class="math inline">\(\mu\)</span>.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Normal.png" class="img-fluid figure-img" alt="Screenshot of the normal distribution" width="497"></p>
+<figcaption>The Normal Distribution</figcaption>
+</figure>
+</div>
+<section id="example-1-1" class="level3" data-number="17.5.1">
+<h3 data-number="17.5.1" class="anchored" data-anchor-id="example-1-1"><span class="header-section-number">17.5.1</span> Example 1</h3>
+<p>Let <span class="math inline">\(\mu = 25\)</span> and <span class="math inline">\(\sigma = 5\)</span> then, by the empirical rule for a normal distribution, we know:</p>
+<ul>
+<li><p>Approximately 68% of observations lie between 20 and 30 or <span class="math inline">\(\mu \pm \sigma\)</span>.</p></li>
+<li><p>Approximately 95% of observations lie between 15 and 35 or <span class="math inline">\(\mu \pm 2\sigma\)</span>.</p></li>
+<li><p>Approximately 99% of observations lie between 10 and 40 or <span class="math inline">\(\mu \pm 3\sigma\)</span>.</p></li>
+</ul>
+<p>We can confirm this by estimating the Z-Score for 10, 15, 20, 30, 35, and 40.</p>
+<p><span class="math display">\[
+Z(10) = \frac{10 - 25}{5} = -3
+\]</span></p>
+<p><span class="math display">\[
+Z(15) = \frac{15 - 25}{5} = -2
+\]</span></p>
+<p><span class="math display">\[
+Z(20) = \frac{20 - 25}{5} = -1
+\]</span></p>
+<p><span class="math display">\[
+Z(30) = \frac{30 - 25}{5} = 1
+\]</span></p>
+<p><span class="math display">\[
+Z(35) = \frac{35 - 35}{5} = 2
+\]</span></p>
+<p><span class="math display">\[
+Z(40) = \frac{40 - 25}{5} = 3
+\]</span></p>
+</section>
+<section id="example-2-1" class="level3" data-number="17.5.2">
+<h3 data-number="17.5.2" class="anchored" data-anchor-id="example-2-1"><span class="header-section-number">17.5.2</span> Example 2</h3>
+<p>Assume that a pizza delivery restaurant has a mean delivery time of 32 minutes with a standard deviation of 4 minutes. Assume that delivery times are normally distributed.</p>
+<p>What is the range of times in which 68%, 95%, and 95% of deliveries occur?</p>
+<p>According to the Empirical Rule,</p>
+<p><span class="math display">\[
+\text{68\%} \rightarrow  \mu \pm \sigma = 32 \pm 4 = (28,36)
+\]</span></p>
+<p><span class="math display">\[
+\text{95\%} \rightarrow \mu \pm 2\sigma = 32 \pm 8 = (24,40)
+\]</span></p>
+<p><span class="math display">\[
+\text{99\%} \rightarrow \mu \pm 3\sigma = 32 \pm 12 = (20,44)
+\]</span></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -790,13 +902,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-2-4-zscores.html" class="pagination-link" aria-label="Z-Scores">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Z-Scores</span></span>
+      <a href="./mod-3-1-skewness.html" class="pagination-link" aria-label="Skewness">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Skewness</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-3-1-skewness.html" class="pagination-link" aria-label="Skewness">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Skewness</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mod-3-3-correlation.html" class="pagination-link" aria-label="Correlation">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

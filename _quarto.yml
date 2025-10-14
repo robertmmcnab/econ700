@@ -29,6 +29,9 @@ book:
     - part: "Covariance and Correlation"
       chapters:
         - mod-3-0-overview.qmd
+        - mod-3-1-skewness.qmd
+        - mod-3-2-normal.qmd
+        - mod-3-3-correlation.qmd
     - part: "Introduction to Probability"
     - part: "Discrete Probability"
     - part: "Continuous Probability"

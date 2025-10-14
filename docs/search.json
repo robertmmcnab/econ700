@@ -48,7 +48,7 @@
     "href": "index.html#module-03-covariance-and-correlation",
     "title": "ECON 700",
     "section": "0.4 Module 03 – Covariance and Correlation",
-    "text": "0.4 Module 03 – Covariance and Correlation\n\n\nModule 3.0 - Module 3 Overview\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.4 Module 03 – Covariance and Correlation\n\n\nModule 3.0 - Module 3 Overview\n\n\nModule 3.1 - Skewness\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -378,7 +378,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n47.36\n50.45\n50.38",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n47.71\n50.43\n50.59",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -1190,56 +1190,331 @@
   {
     "objectID": "mod-3-0-overview.html",
     "href": "mod-3-0-overview.html",
-    "title": "15  Module 2 Overview",
+    "title": "15  Module 3 Overview",
     "section": "",
-    "text": "15.1 Introduction\nWelcome to Module 2 of ECON 700.\nIn this module, you will deepen your understanding of how to summarize and interpret data using descriptive statistics. You will learn to organize data into frequency and relative frequency distributions, calculate measures that describe the center and spread of data, and assess how individual observations compare to the overall dataset.\nEmphasis will be placed on using R to compute and visualize descriptive statistics, including the mean, median, mode, range, variance, standard deviation, coefficient of variation, and z-scores. By the end of this module, you will be able to use these tools to describe key features of economic data accurately and communicate your findings effectively through reproducible R-based analyses.",
+    "text": "15.1 Introduction\nWelcome to Module 3 of ECON 700.\nThis module introduces students to bivariate data analysis through the concepts of covariance and correlation. Building on prior discussions of univariate statistics, it explores how two variables move together and the extent to which their relationship can be quantified. Covariance is presented as a measure of joint variability that indicates whether two variables tend to increase or decrease together. Students learn that while the sign of covariance conveys direction (positive or negative association), its magnitude is difficult to interpret due to dependence on the units of measurement.\nTo overcome this limitation, the module introduces the Pearson correlation coefficient—a standardized, unitless measure that captures the strength and direction of linear relationships between two variables. Through practical examples using R and real-world data such as mtcars and World Bank indicators, students compute, interpret, and compare covariance and correlation values. The module concludes by emphasizing that correlation measures association, not causation, and that careful interpretation is required when evaluating statistical relationships.",
     "crumbs": [
       "Covariance and Correlation",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 3 Overview</span>"
     ]
   },
   {
     "objectID": "mod-3-0-overview.html#learning-objectives",
     "href": "mod-3-0-overview.html#learning-objectives",
-    "title": "15  Module 2 Overview",
+    "title": "15  Module 3 Overview",
     "section": "15.2 Learning Objectives",
-    "text": "15.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nConstruct and interpret frequency and relative frequency distributions to summarize quantitative data.\nCompute and interpret measures of central tendency, including the mean, median, mode, and trimmed and weighted means.\nCalculate and explain measures of variability, including the range, variance, standard deviation, and coefficient of variation.\nUse z-scores to assess relative position and identify outliers within a dataset.\nApply R to generate, visualize, and interpret descriptive statistics and graphical summaries of economic data.",
+    "text": "15.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nDefine covariance and correlation as measures of association between two quantitative variables.\nCompute sample and population covariance and correlation using R.\nInterpret the sign and magnitude of covariance and correlation coefficients in applied examples.\nExplain how changes in units of measurement affect covariance but not correlation.\nDistinguish between statistical association and causal relationships in bivariate data.\nApply covariance and correlation measures to real-world datasets to evaluate linear relationships.",
     "crumbs": [
       "Covariance and Correlation",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 3 Overview</span>"
     ]
   },
   {
     "objectID": "mod-3-0-overview.html#readings-resources",
     "href": "mod-3-0-overview.html#readings-resources",
-    "title": "15  Module 2 Overview",
+    "title": "15  Module 3 Overview",
     "section": "15.3 Readings & Resources",
     "text": "15.3 Readings & Resources\n\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. (Chapter 2). Available for free online at https://openstax.org/books/introductory-statistics-2e/pages/2-introduction\nIrizarry, R. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. (Chapters 1-2). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-1/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\n\nOnline R documentation: https://cran.r-project.org/manuals.html\n\nRStudio Cheat Sheets",
     "crumbs": [
       "Covariance and Correlation",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 3 Overview</span>"
     ]
   },
   {
     "objectID": "mod-3-0-overview.html#activities",
     "href": "mod-3-0-overview.html#activities",
-    "title": "15  Module 2 Overview",
+    "title": "15  Module 3 Overview",
     "section": "15.4 Activities",
     "text": "15.4 Activities\n\nComplete the hands-on coding exercises embedded in each lesson.\n\nComplete the weekly class assignment.\n\nParticipate in the discussion form.\n\nTake the weekly knowledge quiz.",
     "crumbs": [
       "Covariance and Correlation",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 3 Overview</span>"
     ]
   },
   {
     "objectID": "mod-3-0-overview.html#lessons-in-this-module",
     "href": "mod-3-0-overview.html#lessons-in-this-module",
-    "title": "15  Module 2 Overview",
+    "title": "15  Module 3 Overview",
     "section": "15.5 Lessons in this Module",
-    "text": "15.5 Lessons in this Module\n\n2.1 – Frequency Distributions\n\n2.2 - Measures of Central Tendency\n2.3 - Measures of Dispersion\n\n\nNext: Start with Frequency Distributions.",
+    "text": "15.5 Lessons in this Module\n\n3.1 – Skewness\n3.2 – Chebyshev’s Theorem\n3.3 - Covariance and Correlation\n\n\nNext: Start with Skewness.",
     "crumbs": [
       "Covariance and Correlation",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 2 Overview</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Module 3 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-1-skewness.html",
+    "href": "mod-3-1-skewness.html",
+    "title": "16  Skewness",
+    "section": "",
+    "text": "16.1 Defining Skewness\nIn addition to measures of central tendency (population mean and sample average) and measures of dispersion (variance and standard deviation), we can investigate the skew of data.\nAre the data “shifted” to the left or right of the center? Are the data “clustered” around the measure of central tendency?\nSkewness measures the asymmetry of a probability distribution of a real-valued random variable around its mean. Skewness can be positive, negative, or undefined.\nFor a distribution with a single peak, a negative skew implies that the tail is on the left side of the distribution. A positive skew implies that the tail is on the right side of the distribution. A zero skew implies that the tails ‘balance’ which may mean the distribution is symmetric.\nThe Fisher-Pearson standardized moment coefficient is used by R and other major statistical software packages to measure skewness in a univariate sample. The sample skewness measure is equal to:\n\\[G_1 = \\frac{n}{(n-1)(n-2)}\\sum_{i=1}^{n} \\Big( \\frac{x_i - \\bar{x}}{s} \\Big)^3\\]",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Skewness</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-1-skewness.html#skewness-example",
+    "href": "mod-3-1-skewness.html#skewness-example",
+    "title": "16  Skewness",
+    "section": "16.2 Skewness Example",
+    "text": "16.2 Skewness Example\nIn the following example, we construct a vector of observations for the variables x, y, and z.\nWe install and use the moments package to estimate skewness.\nThe first vector, x, has a mean of 7 and a median of 7. The observations are symmetrically distributed around 7, that is, the mirror are ‘reflected’ around the mean.\nIn a perfectly symmetrical distribution, the mean and median are the same. Note also that the estimate of skewness is equal to zero, that is, the tails of the distribution are symmetrical.\nThe second vector, y, has a mean of 6.3 and a median of 6.5. The estimate of skewness is -0.613. The negative skew means that the tail of the left side of the distribution is longer than the tail on the right side of the distribution.\nIn other words, if skewness is negative, the mass of the distribution is concentrated to the right, that is, the left tail is longer.\nThe third vector, z has a mean of 7.214 and a median of 7.0. The estimate of skewness of is 0.442. The positive skew means that the right tail of the distribution longer.\nIn other words, if skewness is positive, the mass of the distribution is concentrated to the left, that is, the right tail is longer.\n\nrm(list = ls())\n\n#Use moments package for skewness\n\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(moments)\n\n# Define data vectors\n\nx &lt;- c(4, 5, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 9, 10)\n\ny &lt;- c(4, 5, 6, 6, 6, 7, 7, 7, 7, 8)\n\nz &lt;- c(5, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 9, 10)\n\nx_stats &lt;- tibble(name = 'X-Stats',\n                  mean   = mean(x),\n                  median = median(x),\n                  skew   = skewness(x))\n\ny_stats &lt;- tibble(name = 'Y-Stats',\n                  mean   = mean(y),\n                  median = median(y),\n                  skew   = skewness(y))\n\nz_stats &lt;- tibble(name = 'Z-Stats',\n                  mean   = mean(z),\n                  median = median(z),\n                  skew   = skewness(z))\n\nstats &lt;- rbind(x_stats, y_stats, z_stats)\n\nkable(stats,\n      align     = 'c',\n      digits    = 3,\n      col.names = c('Source','Mean','Median','Skew')) %&gt;%\nkable_classic()\n\n\n\n\nSource\nMean\nMedian\nSkew\n\n\n\n\nX-Stats\n7.000\n7.0\n0.000\n\n\nY-Stats\n6.300\n6.5\n-0.613\n\n\nZ-Stats\n7.214\n7.0\n0.442",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Skewness</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-1-skewness.html#interpreting-skewness",
+    "href": "mod-3-1-skewness.html#interpreting-skewness",
+    "title": "16  Skewness",
+    "section": "16.3 Interpreting Skewness",
+    "text": "16.3 Interpreting Skewness\nSkewness is a measure of the symmetry of the data. Negative skewness generally implies that the mean is less than the median. Negative skewness means that the left tail of the data is longer than the right tail of the data. Positive skewness implies that the mean is greater than the median and implies that the right tail of the data are longer than the left tail of the data.\nIf skewness is negative, the data are left-skewed.\nIf skewness is positive, the data are right-skewed.1\nFollowing Bulmer (1979), the following rules of thumb are useful in interpreting skewness.\n\nIf skewness is less than -1 or greater than 1, the data are highly skewed.\nIf skewness is between -1 and -1/2 or between 1/2 and 1, the data are moderately skewed.\nIf skewness is between -1/2 and 1/2, the data are approximately symmetric.\nIf skewness is 0, the data are perfectly symmetric.\n\nAt a minimum, the following points regarding the skewness measure can be made:\n\nThe sign represents the direction of skewness.\nThe measure compares to a symmetric distribution (i.e. the normal distribution).\nValues that are far from zero imply a non-normal or skewed population.\nThe measure has an adjustment for sample size.\nIn large samples, the adjustment is of little consequence.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Skewness</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-1-skewness.html#skewness-illustration",
+    "href": "mod-3-1-skewness.html#skewness-illustration",
+    "title": "16  Skewness",
+    "section": "16.4 Skewness Illustration",
+    "text": "16.4 Skewness Illustration\n\n\n\nRelationship Between Mean, Median, and Mode\n\n\nBy Diva Jain - https://codeburst.io/2-important-statistics-terms-you-need-to-know-in-data-science-skewness-and-kurtosis-388fef94eeaa, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=84219892",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Skewness</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-1-skewness.html#footnotes",
+    "href": "mod-3-1-skewness.html#footnotes",
+    "title": "16  Skewness",
+    "section": "",
+    "text": "For an extended discussion, see Doane and Seward (2011), “Measuring Skewness: A Forgotten Statistic?” Available at: http://jse.amstat.org/v19n2/doane.pdf↩︎",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Skewness</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-2-normal.html",
+    "href": "mod-3-2-normal.html",
+    "title": "17  Chebyshev’s Theorem",
+    "section": "",
+    "text": "17.1 Z-Scores\nRecall that we previously defined a Z-score as a measure of the number of standardized deviations an observation is from the mean.\nGiven population data distributed with mean, \\(\\mu\\), and standard deviation, \\(\\sigma\\), the Z-score for an observation, \\(x\\), is denoted as:\n\\[\nZ_x = \\frac{x - \\mu}{\\sigma}\n\\]\nIf the Z-score of an observation was -2.5, then we would state that the observation lies 2.5 standard deviations to the left of the mean. If the Z-score is equal to 1.75, then we would state that the observation lies 1.75 standard deviations to the right of the population mean.\nLet \\(x_1 = 50\\), \\(\\mu_{x_1} = 20\\), and \\(\\sigma_{x_1}=5\\), then the \\(z_{x_1}\\) is equal to\n\\[\nz_{x_1} = \\frac{x_1 - \\mu}{\\sigma} = \\frac{50-20}{5} = 6\n\\]\nThe observation \\(x_1\\) is 6 standard deviations from the mean of 20. Given that \\(z_{x_1}\\) is positive, we know that the observation \\(x_1\\) is 6 standard deviations to the right of \\(\\mu_{x_1}\\).",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Chebyshev's Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-2-normal.html#chebyshevs-theorem",
+    "href": "mod-3-2-normal.html#chebyshevs-theorem",
+    "title": "17  Chebyshev’s Theorem",
+    "section": "17.2 Chebyshev’s Theorem",
+    "text": "17.2 Chebyshev’s Theorem\nChebyshev’s Theorem states at least \\((1 - 1 / z^2)\\) of the data values must be within \\(z\\) standard deviations of the mean where \\(z\\) is any value greater than 1.\nSince the theorem is independent of the underlying distribution, we can apply Chebyshev’s theorem to a data set without worrying about how the data are distributed.\nWith this in mind, let \\(z = 2\\), \\(z = 3\\), and \\(z=6\\), then\n\\[z = 2 \\rightarrow (1 - \\frac{1}{2^2}) = 1 - 1/4 = 0.750 \\]\n\\[z = 3 \\rightarrow (1 - \\frac{1}{3^2}) = 1 - 1/9 = 0.889\\] \\[z = 4 \\rightarrow (1 - \\frac{1}{4^2}) = 1 - 1/16 = 0.972\\]\nChebyshev’s theorem implies that at least 75% of observations will lie within 2 standard deviations of the mean and at least 88.9% of observations with lie within 3 standard deviations of the mean.\nThis is quite useful when you do not know the underlying distribution of the data. The theorem provides a conservative estimate relative to the Empirical Rule which applies only to normal distributions and that we will explore later.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Chebyshev's Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-2-normal.html#chebyshevs-examples",
+    "href": "mod-3-2-normal.html#chebyshevs-examples",
+    "title": "17  Chebyshev’s Theorem",
+    "section": "17.3 Chebyshev’s Examples",
+    "text": "17.3 Chebyshev’s Examples\n\n17.3.1 Example 1\nAssume that you have a dataset with a mean of 100 and a standard deviation of 10.\n\\[\n\\mu = 100 \\\\\n\\sigma = 10\n\\]\nYou are interested in a range of 3 standard deviations.\n\\[\n\\mu - 2\\sigma = 100 - 3 \\times 10 = 70 \\\\\n\\mu + 2\\sigma = 100 + 3 \\times 10 = 130\n\\]\nChebyshev’s Theorem tells you at least 89% of observations fall between 70 and 130. This implies that no more than 11% of observations fall outside this range.\n\n\n17.3.2 Example 2\nAssume that a class takes a test. The mean score on the test is 75 and the standard deviation is 5. What proportion of scores fall between 65 and 85?\nGiven the mean is 75, you should note that 65 is 2 standard deviations less than the mean and 85 is 2 standard deviations greater than the mean.\nBy Chebyshev’s Theorem, this means that at least 75% of observations fall between 65 and 85. This implies that no more than 25% of observations fall outside this range.\n\n\n17.3.3 Example 3\nLet \\(\\mu = 80\\) and \\(\\sigma = 4\\).\n\\[ \\mu - 2\\sigma = 80 - (2 \\times 4) = 72 \\\\ \\mu + 2\\sigma = 80 + (2 \\times 4) = 88\\]\nAt least 75% of observations for a distribution with \\(\\mu = 80\\) and \\(\\sigma = 4\\) lie in the (72,88) range.\n\\[ \\mu - 3\\sigma = 80 - (3 \\times 4) = 68 \\\\ \\mu + 3\\sigma = 80 + (3 \\times 4) = 92 \\]\nAt least 75% of observations lie in the (68,92) range.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Chebyshev's Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-2-normal.html#the-normal-distribution",
+    "href": "mod-3-2-normal.html#the-normal-distribution",
+    "title": "17  Chebyshev’s Theorem",
+    "section": "17.4 The Normal Distribution",
+    "text": "17.4 The Normal Distribution\nThe normal distribution is undoubtedly one of the most important, if not the most important, distribution in statistics. While there are technically an infinite number of normal distributions, we often refer to “the normal distribution” to discuss the properties of the distribution. Unlike the previous examples which have been collections of discrete observations, the normal distribution is continuous.\nA normal distribution in \\(X\\) with mean \\(\\mu\\) and variance \\(\\sigma^2\\) is a distribution resulting from the probability distribution function that is defined on the \\(x \\in (-\\infty, \\infty)\\) interval and is equal to:\n\\[\nP(x) = \\frac{1}{\\sigma \\sqrt{2 \\pi}} e^{-(x - \\mu) / (2 \\sigma^2)}\n\\]\nWe will discuss the properties of the normal and other distributions at greater length in coming modules.\nFor now, we will focus on the general properties that help us think about measures of central tendency, variability, and the shape of the data.\nThe normal distribution has the following properties.\n\nThe mean, mode, and median are all equal.\nThe normal distribution is symmetric around \\(\\mu\\)\nExactly 50% of the values lie to the left of \\(\\mu\\)\nExactly 50% of the values lie to the right of \\(\\mu\\)\nThe total area under the curve is equal to 1",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Chebyshev's Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-2-normal.html#the-empirical-rule",
+    "href": "mod-3-2-normal.html#the-empirical-rule",
+    "title": "17  Chebyshev’s Theorem",
+    "section": "17.5 The Empirical Rule",
+    "text": "17.5 The Empirical Rule\nThe Empirical rule is based on Chebyshev’s theorem and, given a normal distribution, states that:\n\nApproximately 68% of observations lie within one standard deviation of \\(\\mu\\).\nApproximately 95% of observations lie within two standard deviations of \\(\\mu\\).\nApproximately 99% of observations lie within three standard deviations of \\(\\mu\\).\n\n\n\n\nThe Normal Distribution\n\n\n\n17.5.1 Example 1\nLet \\(\\mu = 25\\) and \\(\\sigma = 5\\) then, by the empirical rule for a normal distribution, we know:\n\nApproximately 68% of observations lie between 20 and 30 or \\(\\mu \\pm \\sigma\\).\nApproximately 95% of observations lie between 15 and 35 or \\(\\mu \\pm 2\\sigma\\).\nApproximately 99% of observations lie between 10 and 40 or \\(\\mu \\pm 3\\sigma\\).\n\nWe can confirm this by estimating the Z-Score for 10, 15, 20, 30, 35, and 40.\n\\[\nZ(10) = \\frac{10 - 25}{5} = -3\n\\]\n\\[\nZ(15) = \\frac{15 - 25}{5} = -2\n\\]\n\\[\nZ(20) = \\frac{20 - 25}{5} = -1\n\\]\n\\[\nZ(30) = \\frac{30 - 25}{5} = 1\n\\]\n\\[\nZ(35) = \\frac{35 - 35}{5} = 2\n\\]\n\\[\nZ(40) = \\frac{40 - 25}{5} = 3\n\\]\n\n\n17.5.2 Example 2\nAssume that a pizza delivery restaurant has a mean delivery time of 32 minutes with a standard deviation of 4 minutes. Assume that delivery times are normally distributed.\nWhat is the range of times in which 68%, 95%, and 95% of deliveries occur?\nAccording to the Empirical Rule,\n\\[\n\\text{68\\%} \\rightarrow  \\mu \\pm \\sigma = 32 \\pm 4 = (28,36)\n\\]\n\\[\n\\text{95\\%} \\rightarrow \\mu \\pm 2\\sigma = 32 \\pm 8 = (24,40)\n\\]\n\\[\n\\text{99\\%} \\rightarrow \\mu \\pm 3\\sigma = 32 \\pm 12 = (20,44)\n\\]",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Chebyshev's Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html",
+    "href": "mod-3-3-correlation.html",
+    "title": "18  Correlation",
+    "section": "",
+    "text": "18.1 Introduction\nTo this point, we have mostly examined methods of describing one variable, that is, univariate analysis.\nHowever, we may wish to do more than describe the properties of one variable.\nWe may want to explore a potential relationship (or absence of one) between two variables. Moving from univariate to bivariate analysis starts with a discussion of measures of association between two variables.\nTo start our discussion, we need to understand the expectations operator.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#the-expectations-operator",
+    "href": "mod-3-3-correlation.html#the-expectations-operator",
+    "title": "18  Correlation",
+    "section": "18.2 The Expectations Operator",
+    "text": "18.2 The Expectations Operator\nGiven a function \\(f(x)\\) in the variable \\(x\\), the expectation value is denoted as \\(E[X]\\).\nFor a single, discrete variable \\(X\\) with probability density function \\(P(X)\\), the expectation of \\(X\\) is defined as:\n\\[\nE[X] = \\sum_{X} f(x) P(x)\n\\]\nIf \\(X\\) is a continuous variable, then \\(E[X]\\) is defined as:\n\\[\nE[X] = \\int f(x) P(X) dx\n\\]\nThe expected value of a random variable is the arithmetic mean of that variable. This term has been retained in mathematical statistics to mean the long-run average for any random variable over an indefinite number of trials or samples. In other words,\n\\[\nE[X] = \\mu_x\n\\]\nThe variance of a random variable \\(X\\) is defined as the expected (average) squared deviation of the values of this random variable about their mean. That is,\n\\[var(x) = E[(X - \\mu)^2] = E[X^2] - \\mu^2 = \\sigma_X^2\\]\nThe expectations operator adheres to the following rules.\nLet \\(X\\) and \\(Y\\) be random variables and let \\(k\\) and \\(j\\) be constants.\nThe first rule is that the expectation of a constant is a constant.\nIn other words, if \\(k=4\\), then every observation of \\(k\\) is 4 and the mean of \\(k\\) is \\(E[k] = \\mu_k = 4\\).\n\\[\nE[k] = k\n\\]\nThe second rule is that the expectation of the product of a constant and a random variable is equal to the product of a constant and the expectation of a random variable. In other words, assume that we multiply every observation of a random variable by 3 and then find the long-run mean of the random variable. This is the same as finding the long-run mean and multiplying the mean by 3.\n\\[\nE[kX] = kE[X] = k \\mu_x\n\\]\nThe third rule is that the expectation of the sum of two random variables is equal to the addition of the expectiations of the two random variables. In other words, if we add two random variables, one with the mean of 5 and the other with the mean of 10, this is the same as adding the two means together.\n\\[\nE[X+Y] = E[X] + E[Y]\n\\]\nThe fourth rule combines the second and third rules in that if you have the sum of the two random variables where each random variable is multiplied by a constant, then you can restate this as the product of the constant and the expectation of the first random variable plus the product of the constant and the expectation of the second random variable.\n\\[\nE[kX + jY] = kE[X] + jE[Y]\n\\]\nThere are a number of other expectation rules which we will cover later on in the course.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#covariance",
+    "href": "mod-3-3-correlation.html#covariance",
+    "title": "18  Correlation",
+    "section": "18.3 Covariance",
+    "text": "18.3 Covariance\nGiven two random variables, \\(X\\) and \\(Y\\), the covariance between these two variables can be defined as:\n\\[\ncov(X,Y) = E[(X - E[X])(Y - E[Y])]\n\\]\n\\[\ncov(X,Y) = E[(X - \\mu_x)(Y - \\mu_Y)] = E[XY] - E[X]E[Y]\n\\] The population covariance \\(\\sigma_{xy}\\) between two random variables is defined as:\n\\[\ncov(X,Y) = \\sigma_{XY} = \\sum_{i=1}^{N} \\frac{(x_i - \\mu_x)(y_i - \\mu_y)}{N}\n\\]\nThe sample covariance \\(s_{xy}\\) between two random variables is defined as:\n\\[\ncov(X,Y) = s_{XY} = \\sum_{i=1}^{n-1} \\frac{(x_i - \\bar{x})(y_i - \\bar{y})}{n-1}\n\\]\nOne point to note is that the covariance between a variable and itself is the variance of the variable.\nWe can easily see this for the population covariance by substituting \\(X\\) for \\(Y\\) or\n\\[\ncov(X,X) = \\sigma_{XX} = \\sigma_X^2 = \\sum_{i=1}^{N} \\frac{(x_i - \\mu_x)(x_i - \\mu_x)}{N} = \\sum_{i=1}^{N} \\frac{(x_i - \\mu_x)^2}{N}\n\\]",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#scatterplots",
+    "href": "mod-3-3-correlation.html#scatterplots",
+    "title": "18  Correlation",
+    "section": "18.4 Scatterplots",
+    "text": "18.4 Scatterplots\nIn the following code chunks, we create scatterplots of car weight and miles per gallon from the mtcars data set.\nThe scatterplot of the two variables suggests that as car weight increases, miles per gallon declines.\nIn the first scatterplot, we have weight on the x-axis and miles per gallon on the y-axis.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWhat happens if we have miles per gallon on the x-axis and weight on the y-axis?\nThe same negative association appears to be present between the two variables, however, the important point is that that association is not causation, that is, we do not know if variation in one variable causes variation in another variable.\nAnother way to think about this is that we are investigating whether variables ‘move’ together in a systematic fashion.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#covariance-example",
+    "href": "mod-3-3-correlation.html#covariance-example",
+    "title": "18  Correlation",
+    "section": "18.5 Covariance Example",
+    "text": "18.5 Covariance Example\nLet’s explore the covariance between two variables, \\(X\\), and \\(Y\\) in the following code.\nWe first create a tibble with \\(X\\) and \\(Y\\).\nWe then estimate the covariance between \\(X\\) and \\(Y\\) manually:\n\nWe estimate the mean deviations of \\(X\\)\nWe estimate the mean deviations of \\(Y\\)\nWe estimate the product of the mean deviations of \\(X\\) and \\(Y\\)\nWe estimate the product of \\(1/(n-1)\\) and the product of the mean deviations of \\(X\\) and \\(Y\\)\n\nThe result is an estimate of the sample covariance between \\(X\\) and \\(Y\\).\nWe then use the cov function to estimate the sample covariance between \\(X\\) and \\(Y\\).\nThis also illustrate that R uses the sample covariance function to estimate the covariance between two variables.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#fred-covariance",
+    "href": "mod-3-3-correlation.html#fred-covariance",
+    "title": "18  Correlation",
+    "section": "18.6 FRED Covariance",
+    "text": "18.6 FRED Covariance\nIn the following code chunk, we want to estimate the covariance between the headline unemployment rate and the headline inflation rate.\nUsing the tidyquant package, we obtain the data from FRED.\nHowever, the data from FRED are in ‘long’ format, that is, one column contains symbols that identify the series and another column contains the values. We want to translate the data into ‘wide’ format, where each row (date) contains several columns of data.\nWe use the pivot_wider command to translate the data from long to wide format and then estimate the monthly inflation rate as the year-over-year change in the Consumer Price Index. Since the unemployment rate is not in decimal form, we divide the unemployment series by 100.\nWe then create a scatterplot before estimating the mean of each series and the covariance between the two series.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyverse)\nlibrary(tidyquant)\nlibrary(scales)\n\ndf_3 &lt;- tq_get(c('UNRATE', 'CPIAUCSL'),\n               get  = 'economic.data',\n               from = '1969-01-01') %&gt;%\n  pivot_wider(names_from = symbol, values_from = price) %&gt;%\n  mutate(inflation = (CPIAUCSL - lag(CPIAUCSL, 12)) / lag(CPIAUCSL, 12),\n         UNRATE    = UNRATE/100) %&gt;%\n  filter(!is.na(inflation))\n\nggplot(data = df_3, \n       aes(x = inflation, \n           y = UNRATE)) +\ngeom_point() +\nscale_x_continuous(labels = scales::percent) +\nscale_y_continuous(labels = scales::percent) +\ntheme_classic() +\nlabs(x = \"Inflation (YoY %)\",\n     y = \"Unemployment Rate (%)\",\n     title = \"Scatterplot of Inflation and Unemployment\")\n\n\n\n\n\n\n\ndf_4 &lt;- df_3 %&gt;%\n        summarize(mean_inf = mean(inflation),\n                  mean_unr = mean(UNRATE),\n                  cov_i_u  = cov(inflation, UNRATE))\n\nkable(df_4,\n      col.names = c('Mean Inflation',\n                    'Mean Unemploymnet',\n                    'Covariance Inflation and Unemployment'),\n      align     = 'c') %&gt;%\nkable_classic()\n\n\n\n\nMean Inflation\nMean Unemploymnet\nCovariance Inflation and Unemployment\n\n\n\n\n0.0400282\n0.0606632\n2.76e-05",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#mtcars-covariance",
+    "href": "mod-3-3-correlation.html#mtcars-covariance",
+    "title": "18  Correlation",
+    "section": "18.7 MTCARS Covariance",
+    "text": "18.7 MTCARS Covariance\nIn our last example of covariance, we return to the mtcars dataset and the variables for the weight of each car (in thousands of pounds) and the miles per gallon of each car.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#interpreting-the-covariance",
+    "href": "mod-3-3-correlation.html#interpreting-the-covariance",
+    "title": "18  Correlation",
+    "section": "18.8 Interpreting the Covariance",
+    "text": "18.8 Interpreting the Covariance\nGiven that the sample covariance in the previous example is equal to approximately -5.12, what does this mean about the potential relationship between the two variables?\nIf \\(\\sigma_{XY} &gt; 0\\) or \\(s_{XY} &gt; 0\\), this implies that \\(X\\) and \\(Y\\) are positively linearly related, that is, as \\(X\\) increases, \\(Y\\) increases in a linear fashion.\nLikewise, If \\(\\sigma_{XY} &lt; 0\\) or \\(s_{XY} &lt; 0\\), this implies that \\(X\\) and \\(Y\\) are negatively linearly related, that is, as \\(X\\) increases, \\(Y\\) declines in a linear fashion.\nIf \\(\\sigma_{XY} \\approx 0\\) or \\(s_{XY} \\approx 0\\), this implies that \\(X\\) and \\(Y\\) are not linearly related, that is, an increase in \\(X\\) does not appear to influence \\(Y\\).\nIf \\(X\\) and \\(Y\\) are independent, then \\(\\sigma_{XY} = 0\\) and \\(s_{XY} = 0\\).\nHowever, we typically do not rely on covariance to measure the association between two variables.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#scaling-and-covariance",
+    "href": "mod-3-3-correlation.html#scaling-and-covariance",
+    "title": "18  Correlation",
+    "section": "18.9 Scaling and Covariance",
+    "text": "18.9 Scaling and Covariance\nThe choice of units can alter the covariance measure. In other words, you can increase or decrease covariance between two variables by changing the units of measures of one or both variables.\nWe can easily see this in the following example. We add two new variables, one that converts miles per gallon into feet per gallon mpg_ft and one that converts weight in pounds into weight in ounces wt_oz.\nThe covariance is dependent upon how each variable is measured.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#correlation-coefficient",
+    "href": "mod-3-3-correlation.html#correlation-coefficient",
+    "title": "18  Correlation",
+    "section": "18.10 Correlation Coefficient",
+    "text": "18.10 Correlation Coefficient\nGiven that the covariance measure is affected by the choice of units of measurement, we can use the correlation coefficient to examine the relationship between two random variables.\nThe Pearson correlation coefficient is defined as the ratio of the covariance between \\(X\\) and \\(Y\\) to the product of the standard deviations of \\(X\\) and \\(Y\\) and is denoted as \\(\\rho_{XY}\\) in the population and \\(r_{XY}\\) in the sample.\nIn expectations, the Pearson correlation coefficient is equal to:\n\\[\\begin{equation}\n\\rho_{XY} = \\frac{E[(X - \\mu_x)(Y - \\mu_Y)]}{\\sigma_X \\sigma_Y}\n\\end{equation}\\]\nIn the population, the Pearson correlation coefficient, \\(\\rho_{XY}\\), is equal to:\n\\[\\begin{equation}\n\\rho_{XY} = \\frac{\\sigma_{XY}}{\\sigma_X \\sigma_Y}\n\\end{equation}\\]\nIn the sample, the Pearson correlation coefficient, \\(r_{XY}\\), is equal to:\n\\[\\begin{equation}\nr_{XY} = \\frac{s_{XY}}{s_X s_Y}\n\\end{equation}\\]\nThe Pearson correlation coefficient is bounded between -1 and 1.\nA negative sign implies a negative association between the two variables of interest, while a positive sign implies a positive association. The closer the correlation coefficient is to -1 or 1, the stronger the association between the two variables. If the correlation coefficient is equal to -1 or 1, the two variables are perfectly correlated. If the correlation coefficient is equal to 0, the two variables are uncorrelated.\nReturning to the previous example, we first manually calculate the sample covariance between car weight and miles per gallon and the sample standard deviations for these variables. We then calculate the sample correlation coefficient manually and compare it the results of the correlation function.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#correlation-example",
+    "href": "mod-3-3-correlation.html#correlation-example",
+    "title": "18  Correlation",
+    "section": "18.11 Correlation Example",
+    "text": "18.11 Correlation Example\nLet’s explore the correlation between two variables, \\(X\\), and \\(Y\\) in the following code.\nWe return first to our previous example.\n\nWe estimate the standard deviations of \\(X\\) and \\(Y\\)\nWe estimate the covariance between \\(X\\) and \\(Y\\)\nWe manually estimate the correlation by dividing the covariance by the product of the standard deviations.\nWe use the cor function to estimate the correlation between the two variables\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#fred-correlation",
+    "href": "mod-3-3-correlation.html#fred-correlation",
+    "title": "18  Correlation",
+    "section": "18.12 FRED Correlation",
+    "text": "18.12 FRED Correlation\nIn the code chunk below, we again retrieve the headline unemployment rate and headline inflation series from FRED.\nThis time, however, we create two new variables.\n\nInflation_2 is equal to the inflation series times 1000\nUnemployment_2 is equal to the unemployment series time 100\n\nWe then estimate the covariance between\n\nInflation and unemployment\nInflation_2 and unemployment\nInflation and unemployment_2\n\nThe results demonstrate that the covariance measure is dependent on the scale or units of measurement and that we can inflate (or deflate) the covariance measure by scaling one or both variables.\nWe then estimate four correlation coefficients:\n\nInflation and unemployment\nInflation_2 and unemployment\nInflation and unemployment_2\nInflation_2 and unemployment_2\n\nThe correlation coefficients are equal to each other. In other words, the correlation coefficient is invariant to the scale of the variables.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyverse)\nlibrary(tidyquant)\nlibrary(scales)\n\ndf_5 &lt;- tq_get(c('UNRATE', 'CPIAUCSL'),\n               get  = 'economic.data',\n               from = '1969-01-01') %&gt;%\n  pivot_wider(names_from = symbol, values_from = price) %&gt;%\n  mutate(inflation = (CPIAUCSL - lag(CPIAUCSL, 12)) / lag(CPIAUCSL, 12),\n         unrate    = UNRATE/100) %&gt;%\n  filter(!is.na(inflation)) %&gt;%\n  mutate(unrate_2 = unrate *100,\n         inflation_2 = inflation * 1000) %&gt;%\n  summarize(cov_i_u     = cov(inflation, unrate),\n            cov_i2_u    = cov(inflation_2, unrate),\n            cov_i_u2    = cov(inflation, unrate_2),\n            cor_i_u     = cor(inflation, unrate),\n            cor_i2_u    = cor(inflation_2, unrate),\n            cor_i_u2    = cor(inflation, unrate_2),\n            cor_i2_u2   = cor(inflation_2, unrate_2))\n\nkable(df_5,\n      align = 'c',\n      digits = 3,\n      col.names = c('COV(Inf, Unemp)', 'COV(Inf2, Unemp)',\n                    'COV(Inf, Unemp2)', 'COR(Inf,Unemp)',\n                    'COR(Inf2, Unemp)', 'COR(Inf, Unemp2)',\n                    'COR(Inf2, Unemp2)'))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCOV(Inf, Unemp)\nCOV(Inf2, Unemp)\nCOV(Inf, Unemp2)\nCOR(Inf,Unemp)\nCOR(Inf2, Unemp)\nCOR(Inf, Unemp2)\nCOR(Inf2, Unemp2)\n\n\n\n\n0\n0.028\n0.003\n0.056\n0.056\n0.056\n0.056",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#mtcars-correlation",
+    "href": "mod-3-3-correlation.html#mtcars-correlation",
+    "title": "18  Correlation",
+    "section": "18.13 MTCARS Correlation",
+    "text": "18.13 MTCARS Correlation\nWe return to the mtcars dataset and the variables for the weight of each car (in thousands of pounds) and the miles per gallon of each car.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#correlation-and-causation",
+    "href": "mod-3-3-correlation.html#correlation-and-causation",
+    "title": "18  Correlation",
+    "section": "18.14 Correlation and Causation",
+    "text": "18.14 Correlation and Causation\nTo this point, we have examined measures of association rather than measures of causation.\nWe must be careful to understand that while association may imply causation, association, by itself, is not sufficient to conclude a causal relationship exists.\nAssociation is necessary, but not sufficient, for causation\nCorrelation between two variables may be the product of one or more confounding variables. Observational studies may fall victim to confounding variables, leading one to conclude causation exists. For example, assume that 100 patients were sick with a disease with 5% mortality after two weeks. All the patients were given an experimental drug and at the end of two weeks, only 1 patient has died. Obviously the drug has reduced mortality, or has it? What if 10,000 patients were treated and only 1% died?\nWhile the drug is associated with decreased mortality, we have not controlled for other potential confounding variables. The general health of the patients may have been different than the general population. The patients may have received other drugs that are known to reduce mortality. The age of the patients may be lower (higher) than the general population. This is why scientists use double-blind, randomized, placebo-controlled trials to examine the efficacy of new drugs. These trials reduce (but do not eliminate) the possibility of confounding so investigators can examine whether the outcomes of the control (receive placebo) and treatment (receive drug) groups are statistically different.\nA strong association between two variables is suggestive of a causal relationship but we must be cautious. How were the data gathered? Was there a mechanism to reduce the presence of confounding variables? Are the data experimental, that is, random assignment into control and treatment groups? As we move from observational studies to experimental studies, the ability to suggest that association implies causation increases, but, in the end, we must find other methods to explore whether two (or more) variables are causally related.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-3-3-correlation.html#module-summary",
+    "href": "mod-3-3-correlation.html#module-summary",
+    "title": "18  Correlation",
+    "section": "18.15 Module Summary",
+    "text": "18.15 Module Summary\nWe use descriptive statistics to develop an understanding of the properties of the data.\n\nWe have discussed two broad properties of the data:\n\nThe center of the data\nThe spread of the data\n\nWe developed two measures of association (co-movement)\n\nCovariance\nCorrelation\n\nIn the coming modules, we will discuss randomness, the concept of probability, and probability distributions.",
+    "crumbs": [
+      "Covariance and Correlation",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
     ]
   }
 ]
