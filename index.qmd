@@ -2,7 +2,7 @@
 title: "ECON 700"
 ---
 
-Note: The course is under construction. Many links will not work.
+Note: The course is under construction. Some links will not work.
 
 ## Course Introduction
 
@@ -38,6 +38,8 @@ Note: The course is under construction. Many links will not work.
 <ul>
   <li><a href="mod-3-0-overview.qmd">Module 3.0 - Module 3 Overview</a></li>
   <li><a href="mod-3-1-skewness.qmd">Module 3.1 - Skewness</a></li>
+  <li><a href="mod-3-2-normal.qmd">Module 3.2 - Chebyshev's Theorem</a></li>
+  <li><a href="mod-3-3-correlation.qmd">Module 3.3 - Covariance and Correlation</a></li>
 </ul>
 
 ---
