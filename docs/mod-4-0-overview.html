@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Using Quarto – ECON 700</title>
+<title>19&nbsp; Module 4 Overview – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-2-0-overview.html" rel="next">
-<link href="./mod-1-4-intro-to-r-dataframes.html" rel="prev">
+<link href="./mod-4-1-probability.html" rel="next">
+<link href="./mod-3-3-correlation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -118,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-5-quarto.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using Quarto</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-4-0-overview.html">Introduction to Probability</a></li><li class="breadcrumb-item"><a href="./mod-4-0-overview.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 4 Overview</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -215,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-1-5-quarto.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-1-5-quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using Quarto</span></span></a>
   </div>
 </li>
@@ -308,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-4-0-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-4-0-overview.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 4 Overview</span></span></a>
   </div>
 </li>
@@ -346,22 +311,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-quarto" id="toc-what-is-quarto" class="nav-link active" data-scroll-target="#what-is-quarto"><span class="header-section-number">9.1</span> What is Quarto?</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">9.2</span> Getting Started</a></li>
-  <li><a href="#creating-a-file" id="toc-creating-a-file" class="nav-link" data-scroll-target="#creating-a-file"><span class="header-section-number">9.3</span> Creating a File</a></li>
-  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">9.4</span> Code Chunks</a></li>
-  <li><a href="#working-with-quartro" id="toc-working-with-quartro" class="nav-link" data-scroll-target="#working-with-quartro"><span class="header-section-number">9.5</span> Working with Quartro</a></li>
-  <li><a href="#rendering" id="toc-rendering" class="nav-link" data-scroll-target="#rendering"><span class="header-section-number">9.6</span> Rendering</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">9.7</span> Additional Resources</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">19.1</span> Introduction</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">19.2</span> Learning Objectives</a></li>
+  <li><a href="#readings-resources" id="toc-readings-resources" class="nav-link" data-scroll-target="#readings-resources"><span class="header-section-number">19.3</span> Readings &amp; Resources</a></li>
+  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities"><span class="header-section-number">19.4</span> Activities</a></li>
+  <li><a href="#lessons-in-this-module" id="toc-lessons-in-this-module" class="nav-link" data-scroll-target="#lessons-in-this-module"><span class="header-section-number">19.5</span> Lessons in this Module</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-5-quarto.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using Quarto</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-4-0-overview.html">Introduction to Probability</a></li><li class="breadcrumb-item"><a href="./mod-4-0-overview.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 4 Overview</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using Quarto</span></h1>
+<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 4 Overview</span></h1>
 </div>
 
 
@@ -378,82 +341,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="what-is-quarto" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="what-is-quarto"><span class="header-section-number">9.1</span> What is Quarto?</h2>
-<p><strong>Quatro</strong> is how we will work with R and RStudio to produce documents, assignments, and exams.</p>
-<p>One way to think about Quarto is that it is like Microsoft Word, however, it is much more powerful and flexible.</p>
-<p>In fact, the entire ECON 700 course is built with R, RStudio, and Quarto.</p>
-<p>As with R and RStudio, the more you work with Quarto, the easier it comes to work with Quarto.</p>
+<section id="introduction" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">19.1</span> Introduction</h2>
+<p>Welcome to <strong>Module 4</strong> of ECON 700.</p>
+<p>This module introduces the foundational concepts of probability as a measure of uncertainty and likelihood. Students learn how random experiments generate outcomes that form a sample space, and how probability quantifies the chance that specific outcomes occur. The module progresses through the building blocks of probability theory, including combinations, permutations, complements, unions, and intersections of events. Through these principles, students develop an understanding of mutually exclusive and independent events and how they shape probability calculations.</p>
+<p>The second half of the module applies probability rules to real-world decision-making and data analysis. Learners explore conditional probability, the multiplication and addition laws, and the distinction between joint and marginal probabilities. The module culminates in an introduction to Bayes’ Theorem, illustrating how prior beliefs are updated with new evidence—first conceptually, then through applications like medical testing and the Monty Hall problem. This approach emphasizes the interpretive and practical power of probability in economic reasoning, uncertainty, and risk assessment.</p>
+<hr>
 </section>
-<section id="getting-started" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">9.2</span> Getting Started</h2>
-<p>To get started with Quarto, you have to install Quarto.</p>
-<p>This step assumes you have already installed R and RStudio.</p>
-<p>To install Quarto, go to <a href="https://quarto.org/docs/get-started/" class="uri">https://quarto.org/docs/get-started/</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://quarto.org/docs/get-started/"><img src="images/quarto-start.jpg" class="img-fluid figure-img" alt="Screenshot of Quarto Installation Page"></a></p>
-<figcaption>Quarto Installation Page</figcaption>
-</figure>
-</div>
-<p>Once you have installed Quarto, go to the getting started in RStudio page.</p>
-<p>You can find this page at: <a href="https://quarto.org/docs/get-started/hello/rstudio.html" class="uri">https://quarto.org/docs/get-started/hello/rstudio.html</a></p>
-<p>The getting started page will help you understand the capabilities of Quarto.</p>
+<section id="learning-objectives" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">19.2</span> Learning Objectives</h2>
+<p>By the end of this module, you should be able to:</p>
+<ul>
+<li><p><strong>Define</strong> key probability concepts, including random experiments, sample spaces, and events.</p></li>
+<li><p><strong>Compute</strong> probabilities using basic rules (addition, multiplication, complement) for mutually exclusive and independent events.</p></li>
+<li><p><strong>Differentiate</strong> between permutations and combinations in counting possible outcomes.</p></li>
+<li><p><strong>Interpret</strong> conditional probabilities and construct joint and marginal probability tables.</p></li>
+<li><p><strong>Apply</strong> Bayes’ Theorem to update probabilities based on new information.</p></li>
+<li><p><strong>Analyze</strong> real-world scenarios, such as the Monty Hall problem or medical testing, to evaluate decision-making under uncertainty.</p></li>
+</ul>
+<hr>
 </section>
-<section id="creating-a-file" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="creating-a-file"><span class="header-section-number">9.3</span> Creating a File</h2>
-<p>In RStudio, go to File -&gt; New File -&gt; New Quatro Document.</p>
-<p>You will see the window below. Let’s say we name our document: <strong>Example-1</strong>.</p>
-<p><img src="images/clipboard-2356369663.jpeg" class="img-fluid" width="395"></p>
-<p>Once you have created this file, you will see the following window in RStudio:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/quarto-new-doc-2.jpg" class="img-fluid figure-img" alt="Screenshot of New Quarto Document"></p>
-<figcaption>Screenshot of New Quarto Document</figcaption>
-</figure>
-</div>
+<section id="readings-resources" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="readings-resources"><span class="header-section-number">19.3</span> Readings &amp; Resources</h2>
+<ul>
+<li><p>Barbara Illowsky and Susan Dean. <em>Introductory Statistics 2e</em>. OpenStax. (Chapter 3). Available for free online at <a href="https://openstax.org/books/introductory-statistics-2e/pages/2-introduction" class="uri">https://openstax.org/books/introductory-statistics-2e/pages/2-introduction</a></p></li>
+<li><p>Irizarry, R. (2025). <em>Introduction to Data Science: Statistics and Prediction Algorithms Through Case Studies</em> (Chapters 1-3). Available for free at: <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/" class="uri">https://rafalab.dfci.harvard.edu/dsbook-part-2/</a></p></li>
+<li><p>Wickham, H., &amp; Grolemund, G. (2017). <em>R for Data Science</em>. (Chapters 1–3).</p></li>
+<li><p>Online R documentation: <a href="https://cran.r-project.org/manuals.html" class="uri">https://cran.r-project.org/manuals.html</a></p></li>
+<li><p><a href="https://posit.co/resources/cheatsheets/">RStudio Cheat Sheets</a></p></li>
+</ul>
+<hr>
 </section>
-<section id="code-chunks" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">9.4</span> Code Chunks</h2>
-<p>R code chunks can be identified with <strong>{r}</strong>.</p>
-<p>To start a code chunk, you use <strong>```{r}</strong> and you close off the code chunk with <strong>```</strong>.</p>
-<p>You can run the code chunk interactively in RStudio, that is, you can click on the green arrow icon at the top of the code chunk and RStudio will display the results.</p>
+<section id="activities" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="activities"><span class="header-section-number">19.4</span> Activities</h2>
+<ul>
+<li>Complete the hands-on coding exercises embedded in each lesson.<br>
+</li>
+<li>Complete the weekly class assignment.<br>
+</li>
+<li>Participate in the discussion form.<br>
+</li>
+<li>Take the weekly knowledge quiz.<br>
+</li>
+</ul>
+<hr>
 </section>
-<section id="working-with-quartro" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="working-with-quartro"><span class="header-section-number">9.5</span> Working with Quartro</h2>
-<p>We want to create a text description of in our new Quarto document. We also want to create a simple code chunk in our Quarto document that will execute when we <strong>render</strong> our file.</p>
-<p>In your new file, let’s write the following text:</p>
-<p>This is an example Quarto file. You can write text here like a normal document.</p>
-<p>And let’s include the following code chunk:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span>y</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y<span class="sc">*</span>z</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x<span class="sc">/</span>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Your file should look like the following picture:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/quarto-new-doc-3.jpg" class="img-fluid figure-img" alt="Screenshot of Quatro Example Document"></p>
-<figcaption>Screenshot of Quarto Example Document</figcaption>
-</figure>
-</div>
-</section>
-<section id="rendering" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="rendering"><span class="header-section-number">9.6</span> Rendering</h2>
-<p>Use the <strong>Render</strong> button in RStudio to render the file and previous the output. If you prefer to automatically render whenever you save, check the <strong>Render on Save</strong> button in RStudio.</p>
-<p>When you render, your can save your file as Example1.qmd and the rendered file should appear in a browser window.</p>
-<p>Quarto is a powerful approach to displaying your work in R and RStudio.</p>
-</section>
-<section id="additional-resources" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">9.7</span> Additional Resources</h2>
-<p>Getting started with Quarto video from Posit: <a href="https://youtu.be/_f3latmOhew?si=FS-Ue1--z-hLGtKg" class="uri">https://youtu.be/_f3latmOhew?si=FS-Ue1--z-hLGtKg</a></p>
-<p>Quarto crash course: <a href="https://www.youtube.com/watch?v=oYV1a9sWhgM" class="uri">https://www.youtube.com/watch?v=oYV1a9sWhgM</a></p>
-<p>R for Data Science: Quarto <a href="https://r4ds.hadley.nz/quarto.html" class="uri">https://r4ds.hadley.nz/quarto.html</a></p>
-<p>Introduction to Quarto, Klajdi Puka: <a href="https://kpuka.ca/resources/quarto_intro.html" class="uri">https://kpuka.ca/resources/quarto_intro.html</a></p>
+<section id="lessons-in-this-module" class="level2" data-number="19.5">
+<h2 data-number="19.5" class="anchored" data-anchor-id="lessons-in-this-module"><span class="header-section-number">19.5</span> Lessons in this Module</h2>
+<ul>
+<li><a href="./mod-4-1-probability.html">4.1 – Introduction to Probability</a></li>
+</ul>
+<hr>
+<p>Next: Start with <a href="./mod-4-1-probability.html"><strong>Introduction to Probability</strong></a>.</p>
 
 
 </section>
@@ -866,13 +805,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-1-4-intro-to-r-dataframes.html" class="pagination-link" aria-label="Data frames in R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data frames in R</span></span>
+      <a href="./mod-3-3-correlation.html" class="pagination-link" aria-label="Correlation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-2-0-overview.html" class="pagination-link" aria-label="Module 2 Overview">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 2 Overview</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mod-4-1-probability.html" class="pagination-link" aria-label="Introduction to Probability">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Probability</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Using Quarto – ECON 700</title>
+<title>20&nbsp; Introduction to Probability – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-2-0-overview.html" rel="next">
-<link href="./mod-1-4-intro-to-r-dataframes.html" rel="prev">
+<link href="./mod-4-0-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -106,6 +105,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -118,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-5-quarto.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using Quarto</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-4-0-overview.html">Introduction to Probability</a></li><li class="breadcrumb-item"><a href="./mod-4-1-probability.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Probability</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -215,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-1-5-quarto.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-1-5-quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using Quarto</span></span></a>
   </div>
 </li>
@@ -314,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-4-1-probability.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-4-1-probability.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Probability</span></span></a>
   </div>
 </li>
@@ -346,22 +374,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-quarto" id="toc-what-is-quarto" class="nav-link active" data-scroll-target="#what-is-quarto"><span class="header-section-number">9.1</span> What is Quarto?</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">9.2</span> Getting Started</a></li>
-  <li><a href="#creating-a-file" id="toc-creating-a-file" class="nav-link" data-scroll-target="#creating-a-file"><span class="header-section-number">9.3</span> Creating a File</a></li>
-  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">9.4</span> Code Chunks</a></li>
-  <li><a href="#working-with-quartro" id="toc-working-with-quartro" class="nav-link" data-scroll-target="#working-with-quartro"><span class="header-section-number">9.5</span> Working with Quartro</a></li>
-  <li><a href="#rendering" id="toc-rendering" class="nav-link" data-scroll-target="#rendering"><span class="header-section-number">9.6</span> Rendering</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">9.7</span> Additional Resources</a></li>
+  <li><a href="#defining-probablity" id="toc-defining-probablity" class="nav-link active" data-scroll-target="#defining-probablity"><span class="header-section-number">20.1</span> Defining Probablity</a></li>
+  <li><a href="#experiments-and-randomness" id="toc-experiments-and-randomness" class="nav-link" data-scroll-target="#experiments-and-randomness"><span class="header-section-number">20.2</span> Experiments and Randomness</a></li>
+  <li><a href="#multistep-counting-rules" id="toc-multistep-counting-rules" class="nav-link" data-scroll-target="#multistep-counting-rules"><span class="header-section-number">20.3</span> Multistep Counting Rules</a></li>
+  <li><a href="#multistep-examples" id="toc-multistep-examples" class="nav-link" data-scroll-target="#multistep-examples"><span class="header-section-number">20.4</span> Multistep Examples</a></li>
+  <li><a href="#combinations" id="toc-combinations" class="nav-link" data-scroll-target="#combinations"><span class="header-section-number">20.5</span> Combinations</a></li>
+  <li><a href="#factorials" id="toc-factorials" class="nav-link" data-scroll-target="#factorials"><span class="header-section-number">20.6</span> Factorials</a></li>
+  <li><a href="#combination-formula" id="toc-combination-formula" class="nav-link" data-scroll-target="#combination-formula"><span class="header-section-number">20.7</span> Combination Formula</a></li>
+  <li><a href="#combination-code" id="toc-combination-code" class="nav-link" data-scroll-target="#combination-code"><span class="header-section-number">20.8</span> Combination Code</a></li>
+  <li><a href="#lottery-example" id="toc-lottery-example" class="nav-link" data-scroll-target="#lottery-example"><span class="header-section-number">20.9</span> Lottery Example</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-5-quarto.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using Quarto</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-4-0-overview.html">Introduction to Probability</a></li><li class="breadcrumb-item"><a href="./mod-4-1-probability.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Probability</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using Quarto</span></h1>
+<h1 class="title"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Probability</span></h1>
 </div>
 
 
@@ -378,82 +408,165 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="what-is-quarto" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="what-is-quarto"><span class="header-section-number">9.1</span> What is Quarto?</h2>
-<p><strong>Quatro</strong> is how we will work with R and RStudio to produce documents, assignments, and exams.</p>
-<p>One way to think about Quarto is that it is like Microsoft Word, however, it is much more powerful and flexible.</p>
-<p>In fact, the entire ECON 700 course is built with R, RStudio, and Quarto.</p>
-<p>As with R and RStudio, the more you work with Quarto, the easier it comes to work with Quarto.</p>
+<section id="defining-probablity" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="defining-probablity"><span class="header-section-number">20.1</span> Defining Probablity</h2>
+<p><strong>Probability</strong> is a measure of the likelihood that an outcome will occur.</p>
+<p>If a fair coin has tails on one side and heads on the other side, we understand, over thousands of flips (trials), that we will observe heads 50% of the time and tails 50% of the time. Assuming that no flips end up on the edge, the <strong>likelihood</strong> of heads for a fair coin is 0.50 while the <strong>likelihood</strong> of tails is 0.50.</p>
+<p>Probability is a numerical measure of the likelihood of an outcome and is bounded between 0 and 1, including 0 and 1. If the probability of an outcome is ‘close’ to zero, then it is likely to occur than an outcome that is ‘closer’ to 1.</p>
+<p>In other words, if the outcome of the outcome is beneficial (winning a prize), we would prefer that the probability of the outcome be higher (closer to 1) than lower. Likewise, if the outcome of the outcome if not beneficial (incurring a costly bill), we would prefer the probability of the outcome be lower (closer to 0) than higher.</p>
 </section>
-<section id="getting-started" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">9.2</span> Getting Started</h2>
-<p>To get started with Quarto, you have to install Quarto.</p>
-<p>This step assumes you have already installed R and RStudio.</p>
-<p>To install Quarto, go to <a href="https://quarto.org/docs/get-started/" class="uri">https://quarto.org/docs/get-started/</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://quarto.org/docs/get-started/"><img src="images/quarto-start.jpg" class="img-fluid figure-img" alt="Screenshot of Quarto Installation Page"></a></p>
-<figcaption>Quarto Installation Page</figcaption>
-</figure>
-</div>
-<p>Once you have installed Quarto, go to the getting started in RStudio page.</p>
-<p>You can find this page at: <a href="https://quarto.org/docs/get-started/hello/rstudio.html" class="uri">https://quarto.org/docs/get-started/hello/rstudio.html</a></p>
-<p>The getting started page will help you understand the capabilities of Quarto.</p>
+<section id="experiments-and-randomness" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="experiments-and-randomness"><span class="header-section-number">20.2</span> Experiments and Randomness</h2>
+<p><strong>A random experiment is a process that generates outcomes.</strong></p>
+<p>In our coin flipping example, the process of flipping the coin generates two possible outcomes, heads or tails. The outcomes are well defined prior to the start of the experiment and the outcomes are mutually exclusive. In other words, an outcome must be either heads or tails and there is not a possible outcome where heads and tails occur simultaneously.</p>
+<p><strong>Each repetition of the experiment is a trial.</strong></p>
+<p>An experiment may consist of one trial, several trials, or many trials. However many trials there are in an experiment, the outcome of each trial is a random event, that is, the outcome is not pre-determined and occurs by chance.</p>
+<p>Consider an unfair six-sided die that is weighted so that it lands on six on every throw. Throwing the die is not a random experiment because the outcome of every trial is known prior to the experiment. Regardless of whether you throw the die one time or fifty times, the outcome is always six. Now compare this to a fair six sided die. On any given trial, the die could land on 1, 2, 3, 4, 5, or 6. The outcome of any specific trial is unknown prior to its occurrence but, over repeated trials, we know the probability of each outcome.</p>
+<p>We have now discussed two random experiments, the flipping of a fair coin and the toss of a fair six sided tie. In the case of the fair coin, we have identified two possible outcomes: heads and tails. In the case of the fair six sided die, we have identified six possible outcomes: 1, 2, 3, 4, 5, and 6.</p>
+<p><strong>The set of possible outcomes for each random experiment is known as the sample space.</strong></p>
+<p>The sample space consists of the mutually exclusive and collectively exhaustive outcomes of a random experiment.</p>
+<p><em>Mutually exclusive implies that a random experiment cannot have the same outcome simultaneously.</em></p>
+<p><em>Collectively exhaustive implies that all the outcomes of the random experiment are contained in the sample space.</em></p>
 </section>
-<section id="creating-a-file" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="creating-a-file"><span class="header-section-number">9.3</span> Creating a File</h2>
-<p>In RStudio, go to File -&gt; New File -&gt; New Quatro Document.</p>
-<p>You will see the window below. Let’s say we name our document: <strong>Example-1</strong>.</p>
-<p><img src="images/clipboard-2356369663.jpeg" class="img-fluid" width="395"></p>
-<p>Once you have created this file, you will see the following window in RStudio:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/quarto-new-doc-2.jpg" class="img-fluid figure-img" alt="Screenshot of New Quarto Document"></p>
-<figcaption>Screenshot of New Quarto Document</figcaption>
-</figure>
-</div>
+<section id="multistep-counting-rules" class="level2" data-number="20.3">
+<h2 data-number="20.3" class="anchored" data-anchor-id="multistep-counting-rules"><span class="header-section-number">20.3</span> Multistep Counting Rules</h2>
+<p>Consider a fair 10-sided tie.</p>
+<p>The potential outcomes of any trial are</p>
+<p><span class="math display">\[s = \{1, 2, 3, 4, 5, 6, 7, 8 , 9, 10\}\]</span> What happens if we conduct two trails?</p>
+<p>There are ten possible outcomes of the first trial and ten possible outcomes in the second trial. But what are number of outcomes for the multistep experiment?</p>
+<p>Assume that you roll a 1 on the first trial. The set of possible outcomes of the first trial <span class="math inline">\(o_1\)</span> are:</p>
+<p><span class="math display">\[o_1 = \{(1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (1,7), (1,8), (1,9), (1,10) \}\]</span></p>
+<p>And if you roll a 2 on the first trial, then the set of possible outcomes are:</p>
+<p><span class="math display">\[o_2 = \{(2,1), (2,2), (2,3), (2,4), (2,5), (2,6), (2,7), (2,8), (2,9), (2,10) \}\]</span></p>
+<p>If the first roll produces a 1, there are 10 possible outcomes. If the first roll produces a 2, there are 10 different outcomes, and so on.</p>
+<p>Extending this logic yields 100 possible outcomes for the two trial experiment with a fair ten-sided tie.</p>
+<p>Given a random experiment with a sequence of <span class="math inline">\(k\)</span>-steps and <span class="math inline">\(n_1, n_2, ..., n_k\)</span> outcomes for each step, then the number of outcomes in the sample space is equal to:</p>
+<p><span class="math display">\[n_1 \times n_2 \times ... \times n_k\]</span> The random experiment of rolling a 10-sided die two times has <span class="math inline">\(k = 2\)</span> steps and the number of outcomes of each step is equal to <span class="math inline">\(n_1 = 10, n_2 = 10\)</span>. The number of outcomes is equal to</p>
+<p><span class="math display">\[n_1 \times n_2 = 10 \times 10 = 100\]</span></p>
 </section>
-<section id="code-chunks" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">9.4</span> Code Chunks</h2>
-<p>R code chunks can be identified with <strong>{r}</strong>.</p>
-<p>To start a code chunk, you use <strong>```{r}</strong> and you close off the code chunk with <strong>```</strong>.</p>
-<p>You can run the code chunk interactively in RStudio, that is, you can click on the green arrow icon at the top of the code chunk and RStudio will display the results.</p>
+<section id="multistep-examples" class="level2" data-number="20.4">
+<h2 data-number="20.4" class="anchored" data-anchor-id="multistep-examples"><span class="header-section-number">20.4</span> Multistep Examples</h2>
+<p>In our first example, assume we are flipping a fair two-sided coin five times.</p>
+<p>Given that <span class="math inline">\(k = 5\)</span> and <span class="math inline">\(n_1 = 5, n_2 = 5, n_3 = 5, n_4 = 5, n_5 = 5\)</span>, then number outcomes in the sample space of the random experiment is equal to:</p>
+<p><span class="math display">\[s = n_1 \times n_2 \times n_3 \times n_4 \times n_5 = 2 \times 2 \times 2 \times 2 \times 2 = 2^5 = 32\]</span></p>
+<p>In our second example, assume that we are throwing a fair six-sided die followed by a fair two-sided coin followed by a fair twenty-sided die.</p>
+<p>Given that <span class="math inline">\(k =3\)</span> and <span class="math inline">\(n_1 = 6, n_2 = 2, n_3 = 20\)</span>, then the number of outcomes in the sample space is equal to:</p>
+<p><span class="math display">\[n_1 \times n_2 \times n_3 = 6 \times 2 \times20 = 240\]</span></p>
 </section>
-<section id="working-with-quartro" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="working-with-quartro"><span class="header-section-number">9.5</span> Working with Quartro</h2>
-<p>We want to create a text description of in our new Quarto document. We also want to create a simple code chunk in our Quarto document that will execute when we <strong>render</strong> our file.</p>
-<p>In your new file, let’s write the following text:</p>
-<p>This is an example Quarto file. You can write text here like a normal document.</p>
-<p>And let’s include the following code chunk:</p>
+<section id="combinations" class="level2" data-number="20.5">
+<h2 data-number="20.5" class="anchored" data-anchor-id="combinations"><span class="header-section-number">20.5</span> Combinations</h2>
+<p>In our previous examples, the number of steps and outcomes for each step was relatively small. Determining the number of outcomes in a sample space can quickly become tedious, or, as complexity increases, hard. We can, however, rely on two counting rules to assist us in determining the number of outcomes in a sample space. The difference between the two counting rules is whether the order of the outcomes matters.</p>
+<p><strong>A combination examines the number of ways the objects can be selected, without regard to the order in which they are selected.</strong></p>
+<p>A bowl of vegetable soup contains a different vegetables and the number of vegetables may differ by type. We don’t care about ordering since all the vegetables together make soup.</p>
+<p><em>Assume we have four objects, and we select objects one at a time without replacement.</em></p>
+<p>How many ways can the four objects be drawn given we draw one object at a time?</p>
+<ul>
+<li><p>First draw: 4 possible objects</p></li>
+<li><p>Second draw: 3 possible objects</p></li>
+<li><p>Third draw: 2 possible objects</p></li>
+<li><p>Fourth draw: 1 possible object</p></li>
+</ul>
+<p>In other words, there are <span class="math inline">\(4 \times 3 \times 2 \times 1 = 24\)</span> possible combinations.</p>
+<p><em>Assume now that we have the four objects and we select two objects at a time without replacement.</em></p>
+<p>Assume the objects are labeled A, B, C, D and the order of drawing is not important (AC is the same as drawing CA), then the number of possible combinations:</p>
+<ul>
+<li><p>AB</p></li>
+<li><p>AC</p></li>
+<li><p>AD</p></li>
+<li><p>BC</p></li>
+<li><p>BD</p></li>
+<li><p>CD</p></li>
+</ul>
+<p>In other words, given four objects and two objects are selected at a time, there are six possible combinations.</p>
+<p><em>Lastly, consider the same number of objects (4) and three objects are selected at a time without replacement.</em></p>
+<p>Assume the objects are labeled A, B, C, D and the order of drawing is not important (AC is the same as drawing CA), then the number of possible combinations:</p>
+<ul>
+<li><p>ABC</p></li>
+<li><p>ABD</p></li>
+<li><p>ACD</p></li>
+<li><p>BCD</p></li>
+</ul>
+<p>There are four possible combinations.</p>
+</section>
+<section id="factorials" class="level2" data-number="20.6">
+<h2 data-number="20.6" class="anchored" data-anchor-id="factorials"><span class="header-section-number">20.6</span> Factorials</h2>
+<p>Assume that there are <span class="math inline">\(N\)</span> objects.</p>
+<p>The <span class="math inline">\(N\)</span> objects can be ordered in <span class="math inline">\(N(n-1)(n-2)...(3)(2)(1)\)</span> times.</p>
+<p>This product is represented by <span class="math inline">\(N!\)</span> which is called <strong>N factorial</strong>.</p>
+</section>
+<section id="combination-formula" class="level2" data-number="20.7">
+<h2 data-number="20.7" class="anchored" data-anchor-id="combination-formula"><span class="header-section-number">20.7</span> Combination Formula</h2>
+<p>The number of combinations of <span class="math inline">\(N\)</span> objects taken <span class="math inline">\(n\)</span> at a time is equal:</p>
+<p><span class="math display">\[C_n^N =  \binom{N}{n} = \frac{N!}{n!(N-n)!}\]</span></p>
+<p>Returning to the example where there were four objects and two objects were selected at a time without replacement, note that <span class="math inline">\(N = 4\)</span> and <span class="math inline">\(n = 2\)</span>, we can calculate that there are 6 possible combinations that can be drawn.</p>
+<p><span class="math display">\[C_2^4 =  \binom{4}{2} = \frac{4!}{2!(4-2)!} = \frac{24}{4} = 6\]</span></p>
+</section>
+<section id="combination-code" class="level2" data-number="20.8">
+<h2 data-number="20.8" class="anchored" data-anchor-id="combination-code"><span class="header-section-number">20.8</span> Combination Code</h2>
+<p>In the following examples, we show how to calculate the factorial of a value in R, the manual calculation of combination without replacement, and using the function to calculate the combination without replacement.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span>y</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y<span class="sc">*</span>z</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x<span class="sc">/</span>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtools)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine the factorial of 4</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
 </div>
-<p>Your file should look like the following picture:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/quarto-new-doc-3.jpg" class="img-fluid figure-img" alt="Screenshot of Quatro Example Document"></p>
-<figcaption>Screenshot of Quarto Example Document</figcaption>
-</figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combination Manually - N = 4, n = 2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># N!/n!(N-n)!</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">4</span>)<span class="sc">/</span>(<span class="fu">factorial</span>(<span class="dv">2</span>)<span class="sc">*</span><span class="fu">factorial</span>(<span class="dv">4-2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combination without repetition or replacement</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># N = 4, n = 2</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">combinations</span>(<span class="dv">4</span>,<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    2
+[2,]    1    3
+[3,]    1    4
+[4,]    2    3
+[5,]    2    4
+[6,]    3    4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">4</span>,<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combination without repetition or replacement, N = 100, n = 10</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinations generates a matrix of outcomes (which takes a while)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">50</span>)<span class="sc">/</span>(<span class="fu">factorial</span>(<span class="dv">10</span>)<span class="sc">*</span><span class="fu">factorial</span>(<span class="dv">50-10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10272278170</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">50</span>,<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10272278170</code></pre>
+</div>
 </div>
 </section>
-<section id="rendering" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="rendering"><span class="header-section-number">9.6</span> Rendering</h2>
-<p>Use the <strong>Render</strong> button in RStudio to render the file and previous the output. If you prefer to automatically render whenever you save, check the <strong>Render on Save</strong> button in RStudio.</p>
-<p>When you render, your can save your file as Example1.qmd and the rendered file should appear in a browser window.</p>
-<p>Quarto is a powerful approach to displaying your work in R and RStudio.</p>
-</section>
-<section id="additional-resources" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">9.7</span> Additional Resources</h2>
-<p>Getting started with Quarto video from Posit: <a href="https://youtu.be/_f3latmOhew?si=FS-Ue1--z-hLGtKg" class="uri">https://youtu.be/_f3latmOhew?si=FS-Ue1--z-hLGtKg</a></p>
-<p>Quarto crash course: <a href="https://www.youtube.com/watch?v=oYV1a9sWhgM" class="uri">https://www.youtube.com/watch?v=oYV1a9sWhgM</a></p>
-<p>R for Data Science: Quarto <a href="https://r4ds.hadley.nz/quarto.html" class="uri">https://r4ds.hadley.nz/quarto.html</a></p>
-<p>Introduction to Quarto, Klajdi Puka: <a href="https://kpuka.ca/resources/quarto_intro.html" class="uri">https://kpuka.ca/resources/quarto_intro.html</a></p>
+<section id="lottery-example" class="level2" data-number="20.9">
+<h2 data-number="20.9" class="anchored" data-anchor-id="lottery-example"><span class="header-section-number">20.9</span> Lottery Example</h2>
+<p>A good example is lottery. Assume that the lottery requires you to pick six numbers from 1 to 70. The numbers are picked without replacement. In other words, there are 70 objects (<span class="math inline">\(N\)</span>) and 6 objects (<span class="math inline">\(n\)</span>) are selected without replacement?</p>
+<p>How many possible outcomes are there in the sample space for this lottery? The example code below demonstrates how to calculate the number of outcomes in the sample space when there are 70 objects and 6 objects are selected without replacement. There are 131,115,985 possible combinations or outcomes in the sample space for this experiment.</p>
+<p>However, lotteries found that larger jackpots attracted more customers. How do you boost the jackpot? One method is to have players pick a number of balls from one set of numbers without replacement and then another ball from another set of numbers. This “megaball” or “powerball” increases the number of possible combinations.</p>
+<p>In the Virginia lottery Megamillions game, you pick 5 balls from 70 balls and then one ball from a separate 25 balls. The number of possible outcomes is equal to the combination of 70 balls picking 5 without replacement and then 1 ball from 25 possible balls. As you can see in the example below, the number of potential combinations increases to 302,575,350.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Combination - Draw 6 from 70 Outcomes</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">70</span>,<span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 131115985</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Combination - Draw 5 from 70 and 1 from 25</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">70</span>,<span class="dv">5</span>)<span class="sc">*</span><span class="dv">25</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 302575350</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -866,14 +979,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-1-4-intro-to-r-dataframes.html" class="pagination-link" aria-label="Data frames in R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data frames in R</span></span>
+      <a href="./mod-4-0-overview.html" class="pagination-link" aria-label="Module 4 Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 4 Overview</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-2-0-overview.html" class="pagination-link" aria-label="Module 2 Overview">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 2 Overview</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

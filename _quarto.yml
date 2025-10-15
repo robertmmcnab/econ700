@@ -33,6 +33,9 @@ book:
         - mod-3-2-normal.qmd
         - mod-3-3-correlation.qmd
     - part: "Introduction to Probability"
+      chapters: 
+        - mod-4-0-overview.qmd
+        - mod-4-1-probability.qmd
     - part: "Discrete Probability"
     - part: "Continuous Probability"
     - part: "Sampling Distributions"

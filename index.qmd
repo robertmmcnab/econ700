@@ -42,6 +42,13 @@ Note: The course is under construction. Some links will not work.
   <li><a href="mod-3-3-correlation.qmd">Module 3.3 - Covariance and Correlation</a></li>
 </ul>
 
+## Module 04 - Introduction to Probability
+
+<ul>
+  <li><a href="mod-4-0-overview.qmd">Module 4.0 - Module 4 Overview</a></li>
+  <li><a href="mod-4-1-probability.qmd">Module 4.1 - Introduction to Probability</a></li>
+</ul>
+
 ---
 
 <p>This site provides <strong>interactive and static examples</strong> for economic data analysis using R and WebR. Click on the links above to explore each section.</p>

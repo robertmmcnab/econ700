@@ -48,7 +48,18 @@
     "href": "index.html#module-03-covariance-and-correlation",
     "title": "ECON 700",
     "section": "0.4 Module 03 – Covariance and Correlation",
-    "text": "0.4 Module 03 – Covariance and Correlation\n\n\nModule 3.0 - Module 3 Overview\n\n\nModule 3.1 - Skewness\n\n\nModule 3.2 - Chebyshev’s Theorem\n\n\nModule 3.3 - Covariance and Correlation\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.4 Module 03 – Covariance and Correlation\n\n\nModule 3.0 - Module 3 Overview\n\n\nModule 3.1 - Skewness\n\n\nModule 3.2 - Chebyshev’s Theorem\n\n\nModule 3.3 - Covariance and Correlation",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-04---introduction-to-probability",
+    "href": "index.html#module-04---introduction-to-probability",
+    "title": "ECON 700",
+    "section": "0.5 Module 04 - Introduction to Probability",
+    "text": "0.5 Module 04 - Introduction to Probability\n\n\nModule 4.0 - Module 4 Overview\n\n\nModule 4.1 - Introduction to Probability\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -378,7 +389,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n48.28\n50.35\n50.33",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n48.1\n49.67\n50.32",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -1515,6 +1526,160 @@
     "crumbs": [
       "Covariance and Correlation",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-0-overview.html",
+    "href": "mod-4-0-overview.html",
+    "title": "19  Module 4 Overview",
+    "section": "",
+    "text": "19.1 Introduction\nWelcome to Module 4 of ECON 700.\nThis module introduces the foundational concepts of probability as a measure of uncertainty and likelihood. Students learn how random experiments generate outcomes that form a sample space, and how probability quantifies the chance that specific outcomes occur. The module progresses through the building blocks of probability theory, including combinations, permutations, complements, unions, and intersections of events. Through these principles, students develop an understanding of mutually exclusive and independent events and how they shape probability calculations.\nThe second half of the module applies probability rules to real-world decision-making and data analysis. Learners explore conditional probability, the multiplication and addition laws, and the distinction between joint and marginal probabilities. The module culminates in an introduction to Bayes’ Theorem, illustrating how prior beliefs are updated with new evidence—first conceptually, then through applications like medical testing and the Monty Hall problem. This approach emphasizes the interpretive and practical power of probability in economic reasoning, uncertainty, and risk assessment.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Module 4 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-0-overview.html#learning-objectives",
+    "href": "mod-4-0-overview.html#learning-objectives",
+    "title": "19  Module 4 Overview",
+    "section": "19.2 Learning Objectives",
+    "text": "19.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nDefine key probability concepts, including random experiments, sample spaces, and events.\nCompute probabilities using basic rules (addition, multiplication, complement) for mutually exclusive and independent events.\nDifferentiate between permutations and combinations in counting possible outcomes.\nInterpret conditional probabilities and construct joint and marginal probability tables.\nApply Bayes’ Theorem to update probabilities based on new information.\nAnalyze real-world scenarios, such as the Monty Hall problem or medical testing, to evaluate decision-making under uncertainty.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Module 4 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-0-overview.html#readings-resources",
+    "href": "mod-4-0-overview.html#readings-resources",
+    "title": "19  Module 4 Overview",
+    "section": "19.3 Readings & Resources",
+    "text": "19.3 Readings & Resources\n\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. (Chapter 3). Available for free online at https://openstax.org/books/introductory-statistics-2e/pages/2-introduction\nIrizarry, R. (2025). Introduction to Data Science: Statistics and Prediction Algorithms Through Case Studies (Chapters 1-3). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-2/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\nOnline R documentation: https://cran.r-project.org/manuals.html\nRStudio Cheat Sheets",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Module 4 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-0-overview.html#activities",
+    "href": "mod-4-0-overview.html#activities",
+    "title": "19  Module 4 Overview",
+    "section": "19.4 Activities",
+    "text": "19.4 Activities\n\nComplete the hands-on coding exercises embedded in each lesson.\n\nComplete the weekly class assignment.\n\nParticipate in the discussion form.\n\nTake the weekly knowledge quiz.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Module 4 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-0-overview.html#lessons-in-this-module",
+    "href": "mod-4-0-overview.html#lessons-in-this-module",
+    "title": "19  Module 4 Overview",
+    "section": "19.5 Lessons in this Module",
+    "text": "19.5 Lessons in this Module\n\n4.1 – Introduction to Probability\n\n\nNext: Start with Introduction to Probability.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Module 4 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html",
+    "href": "mod-4-1-probability.html",
+    "title": "20  Introduction to Probability",
+    "section": "",
+    "text": "20.1 Defining Probablity\nProbability is a measure of the likelihood that an outcome will occur.\nIf a fair coin has tails on one side and heads on the other side, we understand, over thousands of flips (trials), that we will observe heads 50% of the time and tails 50% of the time. Assuming that no flips end up on the edge, the likelihood of heads for a fair coin is 0.50 while the likelihood of tails is 0.50.\nProbability is a numerical measure of the likelihood of an outcome and is bounded between 0 and 1, including 0 and 1. If the probability of an outcome is ‘close’ to zero, then it is likely to occur than an outcome that is ‘closer’ to 1.\nIn other words, if the outcome of the outcome is beneficial (winning a prize), we would prefer that the probability of the outcome be higher (closer to 1) than lower. Likewise, if the outcome of the outcome if not beneficial (incurring a costly bill), we would prefer the probability of the outcome be lower (closer to 0) than higher.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#experiments-and-randomness",
+    "href": "mod-4-1-probability.html#experiments-and-randomness",
+    "title": "20  Introduction to Probability",
+    "section": "20.2 Experiments and Randomness",
+    "text": "20.2 Experiments and Randomness\nA random experiment is a process that generates outcomes.\nIn our coin flipping example, the process of flipping the coin generates two possible outcomes, heads or tails. The outcomes are well defined prior to the start of the experiment and the outcomes are mutually exclusive. In other words, an outcome must be either heads or tails and there is not a possible outcome where heads and tails occur simultaneously.\nEach repetition of the experiment is a trial.\nAn experiment may consist of one trial, several trials, or many trials. However many trials there are in an experiment, the outcome of each trial is a random event, that is, the outcome is not pre-determined and occurs by chance.\nConsider an unfair six-sided die that is weighted so that it lands on six on every throw. Throwing the die is not a random experiment because the outcome of every trial is known prior to the experiment. Regardless of whether you throw the die one time or fifty times, the outcome is always six. Now compare this to a fair six sided die. On any given trial, the die could land on 1, 2, 3, 4, 5, or 6. The outcome of any specific trial is unknown prior to its occurrence but, over repeated trials, we know the probability of each outcome.\nWe have now discussed two random experiments, the flipping of a fair coin and the toss of a fair six sided tie. In the case of the fair coin, we have identified two possible outcomes: heads and tails. In the case of the fair six sided die, we have identified six possible outcomes: 1, 2, 3, 4, 5, and 6.\nThe set of possible outcomes for each random experiment is known as the sample space.\nThe sample space consists of the mutually exclusive and collectively exhaustive outcomes of a random experiment.\nMutually exclusive implies that a random experiment cannot have the same outcome simultaneously.\nCollectively exhaustive implies that all the outcomes of the random experiment are contained in the sample space.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#multistep-counting-rules",
+    "href": "mod-4-1-probability.html#multistep-counting-rules",
+    "title": "20  Introduction to Probability",
+    "section": "20.3 Multistep Counting Rules",
+    "text": "20.3 Multistep Counting Rules\nConsider a fair 10-sided tie.\nThe potential outcomes of any trial are\n\\[s = \\{1, 2, 3, 4, 5, 6, 7, 8 , 9, 10\\}\\] What happens if we conduct two trails?\nThere are ten possible outcomes of the first trial and ten possible outcomes in the second trial. But what are number of outcomes for the multistep experiment?\nAssume that you roll a 1 on the first trial. The set of possible outcomes of the first trial \\(o_1\\) are:\n\\[o_1 = \\{(1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (1,7), (1,8), (1,9), (1,10) \\}\\]\nAnd if you roll a 2 on the first trial, then the set of possible outcomes are:\n\\[o_2 = \\{(2,1), (2,2), (2,3), (2,4), (2,5), (2,6), (2,7), (2,8), (2,9), (2,10) \\}\\]\nIf the first roll produces a 1, there are 10 possible outcomes. If the first roll produces a 2, there are 10 different outcomes, and so on.\nExtending this logic yields 100 possible outcomes for the two trial experiment with a fair ten-sided tie.\nGiven a random experiment with a sequence of \\(k\\)-steps and \\(n_1, n_2, ..., n_k\\) outcomes for each step, then the number of outcomes in the sample space is equal to:\n\\[n_1 \\times n_2 \\times ... \\times n_k\\] The random experiment of rolling a 10-sided die two times has \\(k = 2\\) steps and the number of outcomes of each step is equal to \\(n_1 = 10, n_2 = 10\\). The number of outcomes is equal to\n\\[n_1 \\times n_2 = 10 \\times 10 = 100\\]",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#multistep-examples",
+    "href": "mod-4-1-probability.html#multistep-examples",
+    "title": "20  Introduction to Probability",
+    "section": "20.4 Multistep Examples",
+    "text": "20.4 Multistep Examples\nIn our first example, assume we are flipping a fair two-sided coin five times.\nGiven that \\(k = 5\\) and \\(n_1 = 5, n_2 = 5, n_3 = 5, n_4 = 5, n_5 = 5\\), then number outcomes in the sample space of the random experiment is equal to:\n\\[s = n_1 \\times n_2 \\times n_3 \\times n_4 \\times n_5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 2^5 = 32\\]\nIn our second example, assume that we are throwing a fair six-sided die followed by a fair two-sided coin followed by a fair twenty-sided die.\nGiven that \\(k =3\\) and \\(n_1 = 6, n_2 = 2, n_3 = 20\\), then the number of outcomes in the sample space is equal to:\n\\[n_1 \\times n_2 \\times n_3 = 6 \\times 2 \\times20 = 240\\]",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#combinations",
+    "href": "mod-4-1-probability.html#combinations",
+    "title": "20  Introduction to Probability",
+    "section": "20.5 Combinations",
+    "text": "20.5 Combinations\nIn our previous examples, the number of steps and outcomes for each step was relatively small. Determining the number of outcomes in a sample space can quickly become tedious, or, as complexity increases, hard. We can, however, rely on two counting rules to assist us in determining the number of outcomes in a sample space. The difference between the two counting rules is whether the order of the outcomes matters.\nA combination examines the number of ways the objects can be selected, without regard to the order in which they are selected.\nA bowl of vegetable soup contains a different vegetables and the number of vegetables may differ by type. We don’t care about ordering since all the vegetables together make soup.\nAssume we have four objects, and we select objects one at a time without replacement.\nHow many ways can the four objects be drawn given we draw one object at a time?\n\nFirst draw: 4 possible objects\nSecond draw: 3 possible objects\nThird draw: 2 possible objects\nFourth draw: 1 possible object\n\nIn other words, there are \\(4 \\times 3 \\times 2 \\times 1 = 24\\) possible combinations.\nAssume now that we have the four objects and we select two objects at a time without replacement.\nAssume the objects are labeled A, B, C, D and the order of drawing is not important (AC is the same as drawing CA), then the number of possible combinations:\n\nAB\nAC\nAD\nBC\nBD\nCD\n\nIn other words, given four objects and two objects are selected at a time, there are six possible combinations.\nLastly, consider the same number of objects (4) and three objects are selected at a time without replacement.\nAssume the objects are labeled A, B, C, D and the order of drawing is not important (AC is the same as drawing CA), then the number of possible combinations:\n\nABC\nABD\nACD\nBCD\n\nThere are four possible combinations.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#factorials",
+    "href": "mod-4-1-probability.html#factorials",
+    "title": "20  Introduction to Probability",
+    "section": "20.6 Factorials",
+    "text": "20.6 Factorials\nAssume that there are \\(N\\) objects.\nThe \\(N\\) objects can be ordered in \\(N(n-1)(n-2)...(3)(2)(1)\\) times.\nThis product is represented by \\(N!\\) which is called N factorial.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#combination-formula",
+    "href": "mod-4-1-probability.html#combination-formula",
+    "title": "20  Introduction to Probability",
+    "section": "20.7 Combination Formula",
+    "text": "20.7 Combination Formula\nThe number of combinations of \\(N\\) objects taken \\(n\\) at a time is equal:\n\\[C_n^N =  \\binom{N}{n} = \\frac{N!}{n!(N-n)!}\\]\nReturning to the example where there were four objects and two objects were selected at a time without replacement, note that \\(N = 4\\) and \\(n = 2\\), we can calculate that there are 6 possible combinations that can be drawn.\n\\[C_2^4 =  \\binom{4}{2} = \\frac{4!}{2!(4-2)!} = \\frac{24}{4} = 6\\]",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#combination-code",
+    "href": "mod-4-1-probability.html#combination-code",
+    "title": "20  Introduction to Probability",
+    "section": "20.8 Combination Code",
+    "text": "20.8 Combination Code\nIn the following examples, we show how to calculate the factorial of a value in R, the manual calculation of combination without replacement, and using the function to calculate the combination without replacement.\n\nlibrary(gtools)\n\n# Determine the factorial of 4\nfactorial(4)\n\n[1] 24\n\n# Combination Manually - N = 4, n = 2\n# N!/n!(N-n)!\n\nfactorial(4)/(factorial(2)*factorial(4-2))\n\n[1] 6\n\n# Combination without repetition or replacement\n# N = 4, n = 2\n\ncombinations(4,2)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    1    3\n[3,]    1    4\n[4,]    2    3\n[5,]    2    4\n[6,]    3    4\n\nchoose(4,2)\n\n[1] 6\n\n# Combination without repetition or replacement, N = 100, n = 10\n# Combinations generates a matrix of outcomes (which takes a while)\n\nfactorial(50)/(factorial(10)*factorial(50-10))\n\n[1] 10272278170\n\nchoose(50,10)\n\n[1] 10272278170",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#lottery-example",
+    "href": "mod-4-1-probability.html#lottery-example",
+    "title": "20  Introduction to Probability",
+    "section": "20.9 Lottery Example",
+    "text": "20.9 Lottery Example\nA good example is lottery. Assume that the lottery requires you to pick six numbers from 1 to 70. The numbers are picked without replacement. In other words, there are 70 objects (\\(N\\)) and 6 objects (\\(n\\)) are selected without replacement?\nHow many possible outcomes are there in the sample space for this lottery? The example code below demonstrates how to calculate the number of outcomes in the sample space when there are 70 objects and 6 objects are selected without replacement. There are 131,115,985 possible combinations or outcomes in the sample space for this experiment.\nHowever, lotteries found that larger jackpots attracted more customers. How do you boost the jackpot? One method is to have players pick a number of balls from one set of numbers without replacement and then another ball from another set of numbers. This “megaball” or “powerball” increases the number of possible combinations.\nIn the Virginia lottery Megamillions game, you pick 5 balls from 70 balls and then one ball from a separate 25 balls. The number of possible outcomes is equal to the combination of 70 balls picking 5 without replacement and then 1 ball from 25 possible balls. As you can see in the example below, the number of potential combinations increases to 302,575,350.\n\n#Combination - Draw 6 from 70 Outcomes\nchoose(70,6)\n\n[1] 131115985\n\n#Combination - Draw 5 from 70 and 1 from 25\nchoose(70,5)*25\n\n[1] 302575350",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
     ]
   }
 ]
