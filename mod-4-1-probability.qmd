@@ -96,6 +96,36 @@ Given that $k =3$ and $n_1 = 6, n_2 = 2, n_3 = 20$, then the number of outcomes 
 
 $$n_1 \times n_2 \times n_3 = 6 \times 2 \times20 = 240$$
 
+## Factorials
+
+A factorial is merely a series of products and are indicated by an exclamation mark.
+
+The factorial function of a positive integer $n$ is defined as the product of all the positive integers not greater than $n$.
+
+$$
+n! = 1 \times 2 \times 3\ \times 4 \dots (n-2) \times (n-1) \times n
+$$ For example, 5 factorial can be represented as
+
+$$
+5! = 5 \times 4 \times 3 \times 2 \times 1 = 120
+$$
+
+In R, the function **factorial** allows one to estimate the factorial of a positive integer
+
+```{webr-r}
+
+rm(list = ls())
+
+factorials <- tibble(w = factorial(3), 
+                     x = factorial(5), 
+                     y = factorial(6), 
+                     z = factorial(8))
+
+kable(factorials,
+      align = 'c')
+
+```
+
 ## Combinations
 
 In our previous examples, the number of steps and outcomes for each step was relatively small. Determining the number of outcomes in a sample space can quickly become tedious, or, as complexity increases, hard. We can, however, rely on two counting rules to assist us in determining the number of outcomes in a sample space. The difference between the two counting rules is whether the order of the outcomes matters.
@@ -104,19 +134,21 @@ In our previous examples, the number of steps and outcomes for each step was rel
 
 A bowl of vegetable soup contains a different vegetables and the number of vegetables may differ by type. We don't care about ordering since all the vegetables together make soup.
 
-*Assume we have four objects, and we select objects one at a time without replacement.*
+*Assume we have four objects, and we select one object at a time without replacement.*
 
-How many ways can the four objects be drawn given we draw one object at a time?
+How many ways can the four objects be drawn given we draw one object at a time without replacement?
 
--   First draw: 4 possible objects
+Let's list the possible combinations:
 
--   Second draw: 3 possible objects
+-   ABC
 
--   Third draw: 2 possible objects
+-   ABD
 
--   Fourth draw: 1 possible object
+-   ACD
 
-In other words, there are $4 \times 3 \times 2 \times 1 = 24$ possible combinations.
+-   BCD
+
+Why are there only four combinations? Remember, the order does not matter. In other words, ABC is the same as BCA which is the same as CAB which is the same as BAC and so on.
 
 *Assume now that we have the four objects and we select two objects at a time without replacement.*
 
@@ -150,57 +182,59 @@ Assume the objects are labeled A, B, C, D and the order of drawing is not import
 
 There are four possible combinations.
 
-## Factorials
-
-Assume that there are $N$ objects.
-
-The $N$ objects can be ordered in $N(n-1)(n-2)...(3)(2)(1)$ times.
-
-This product is represented by $N!$ which is called **N factorial**.
+Obviously, if the number of objects becomes 'large,' it would be quite difficult to list all the possible combinations.
 
 ## Combination Formula
 
 The number of combinations of $N$ objects taken $n$ at a time is equal:
 
-$$C_n^N =  \binom{N}{n} = \frac{N!}{n!(N-n)!}$$
+$$C_n^N =  \binom{N}{n} = \frac{N!}{n!(N-n)!}$$ Returning to the example where there were four objects and one object is selected at a time without replacement, note that $N = 4$ and $n = 1$, we can calculate that there are 4 possible combinations that can be drawn.
+
+$$C_1^4 =  \binom{4}{1} = \frac{4!}{1!(4-1)!} = \frac{24}{6} = 4$$
 
 Returning to the example where there were four objects and two objects were selected at a time without replacement, note that $N = 4$ and $n = 2$, we can calculate that there are 6 possible combinations that can be drawn.
 
-$$C_2^4 =  \binom{4}{2} = \frac{4!}{2!(4-2)!} = \frac{24}{4} = 6$$
+$$C_2^4 =  \binom{4}{2} = \frac{4!}{2!(4-2)!} = \frac{24}{4} = 6$$ Returning to the example where there were four objects and two objects were selected at a time without replacement, note that $N = 4$ and $n = 3$, we can calculate that there are 4 possible combinations that can be drawn.
 
-## Combination Code
+$$C_3^4 =  \binom{4}{3} = \frac{4!}{3!(4-3)!} = \frac{24}{6} = 4$$
 
-In the following examples, we show how to calculate the factorial of a value in R, the manual calculation of combination without replacement, and using the \textit{choose} function to calculate the combination without replacement.
+## Combinations in R
 
-```{r}
+In the following examples, we show how to calculate the factorial of a value in R, the manual calculation of combination without replacement, and using the **choose}** function to calculate the combination without replacement.
+
+```{webr-r}
+
+rm(list = ls())
 
 library(gtools)
-
-# Determine the factorial of 4
-factorial(4)
 
 # Combination Manually - N = 4, n = 2
 # N!/n!(N-n)!
 
-factorial(4)/(factorial(2)*factorial(4-2))
+w <- factorial(4)/(factorial(2)*factorial(4-2))
 
 # Combination without repetition or replacement
 # N = 4, n = 2
 
-combinations(4,2)
-choose(4,2)
+x <- choose(4,2)
 
-# Combination without repetition or replacement, N = 100, n = 10
-# Combinations generates a matrix of outcomes (which takes a while)
+# Combination without replacement
+# N = 50, n = 10
 
-factorial(50)/(factorial(10)*factorial(50-10))
+y <- factorial(50)/(factorial(10)*factorial(50-10))
 
-choose(50,10)
+z <- choose(50,10)
+
+combos <- tibble(w,x,y,z)
+
+kable(combos,
+      align     = 'c',
+      col.names = c('C(4,2)','C(4,2)','C(50,10)', 'C(50,10)'))
 ```
 
 ## Lottery Example
 
-A good example is lottery. Assume that the lottery requires you to pick six numbers from 1 to 70. The numbers are picked without replacement. In other words, there are 70 objects ($N$) and 6 objects ($n$) are selected without replacement?
+A good example is a lottery. Assume that the lottery requires you to pick six numbers from 1 to 70. The numbers are picked without replacement. In other words, there are 70 objects ($N$) and 6 objects ($n$) are selected without replacement?
 
 How many possible outcomes are there in the sample space for this lottery? The example code below demonstrates how to calculate the number of outcomes in the sample space when there are 70 objects and 6 objects are selected without replacement. There are 131,115,985 possible combinations or outcomes in the sample space for this experiment.
 
@@ -208,10 +242,115 @@ However, lotteries found that larger jackpots attracted more customers. How do y
 
 In the Virginia lottery Megamillions game, you pick 5 balls from 70 balls and then one ball from a separate 25 balls. The number of possible outcomes is equal to the combination of 70 balls picking 5 without replacement and then 1 ball from 25 possible balls. As you can see in the example below, the number of potential combinations increases to 302,575,350.
 
-```{r}
+```{webr-r}
+
+rm(list = ls())
+
+library(gtools)
+
 #Combination - Draw 6 from 70 Outcomes
-choose(70,6)
+
+w <- factorial(70)/(factorial(6)*factorial(70-6))
+  
+x <- choose(70,6)
 
 #Combination - Draw 5 from 70 and 1 from 25
-choose(70,5)*25
+
+y <- (factorial(70)/(factorial(5)*factorial(70-5)))*25
+
+z <- choose(70,5)*25
+
+combos <- tibble(w,x,y,z)
+
+kable(combos,
+      align     = 'c',
+      col.names = c('C(4,2)','C(4,2)','C(50,10)', 'C(50,10)'))
 ```
+
+## Permutations
+
+While a combination does not require the objects to be drawn in a specific order, a **permutation** requires a specific ordering of objects.
+
+One way to think about permutations is "this, then that." In other words, one object must be drawn before another object for each possible outcome. Think about throwing a fair six-sided die two times. A roll of 1 on the first throw and 2 on the second throw is different than a roll of 2 on the first roll and 1 on the second roll. The order of selection is important unlike combinations.
+
+Let $N$ be the number of objects and $n$ are the number of objects that are selected without replacement. The number of permutations of $N$ objects taken $n$ at a time is defined as:
+
+$$
+P_n^N = n! \binom{N}{n} = \frac{N!}{(N-n)!}
+$$
+
+Because the ordering matters, the number of outcomes from an ordered experiment is higher than the number of outcomes in an unordered experiment. In other words $P_n^N \ge C_n^N$.
+
+To see this, assume that there are four possible objects:
+
+-   Black (B)
+
+-   Green (G)
+
+-   Red (R)
+
+-   White (W)
+
+Given four objects, assume that two objects are selected without replacement.
+
+Combinations (6): BG, BR, BW, GR, GW, RW
+
+Permutations (12): BG, BR, BW, GB, GR, GW, RB, RG, RW, WB, WG, WR
+
+In the example code below, the number of combinations and permutations are calculated manually.
+
+```{webr-r}
+
+rm(list = ls())
+
+# 4 objects, select 2
+
+object <- tibble(combos = factorial(4)/(factorial(2)*factorial(4-2)),
+                 perms  = factorial(4)/factorial(4-2))
+
+kable(object,
+      align = 'c',
+      col.names = c('C(4,2)', 'P(4,2)'))
+```
+
+## Permutation Example
+
+In the example code below, the number of combinations and permutations are calculated using the **choose** and **permutations** functions.
+
+The **combination** and **permutations** functions will create a matrix of outcomes for the random experiment. 
+
+These matrices grow large quickly and it may be more efficient to manually code the combinations and permutations.
+
+```{webr-r}
+
+rm(list = ls())
+
+library(gtools)
+
+x <- c("Black", "Green", "Red", "White")
+
+object <-tibble(combos_m = factorial(4)/(factorial(2)*factorial(4-2)),
+                combos_a = choose(4,2),
+                perms    = factorial(4)/factorial(4-2),
+                perms_a  = nrow(permutations(n=4,r=2,v=x)))
+
+kable(object,
+      align = 'c',
+      col.names = c('C(4,2)', 'C(4,2)', 'P(4,2)', 'P(4,2)'))
+
+# Create Matrices of the Possible Combinations and Permutations
+
+combo_1 <- combinations(n = 4, r = 2, v = x)
+
+perm_1 <- permutations(n=4,r=2,v=x)
+
+kable(combo_1,
+      align = 'c',
+      caption = 'C(4,2)')
+
+kable(perm_1,
+      align = 'c',
+      caption = 'P(4,2)')
+
+```
+

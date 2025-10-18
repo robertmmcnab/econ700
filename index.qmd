@@ -47,6 +47,7 @@ Note: The course is under construction. Some links will not work.
 <ul>
   <li><a href="mod-4-0-overview.qmd">Module 4.0 - Module 4 Overview</a></li>
   <li><a href="mod-4-1-probability.qmd">Module 4.1 - Introduction to Probability</a></li>
+  <li><a href="mod-4-2-rules.qmd">Module 4.2 - Probability Rules</a></li>
 </ul>
 
 ---

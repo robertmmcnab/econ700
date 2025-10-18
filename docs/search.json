@@ -59,7 +59,7 @@
     "href": "index.html#module-04---introduction-to-probability",
     "title": "ECON 700",
     "section": "0.5 Module 04 - Introduction to Probability",
-    "text": "0.5 Module 04 - Introduction to Probability\n\n\nModule 4.0 - Module 4 Overview\n\n\nModule 4.1 - Introduction to Probability\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.5 Module 04 - Introduction to Probability\n\n\nModule 4.0 - Module 4 Overview\n\n\nModule 4.1 - Introduction to Probability\n\n\nModule 4.2 - Probability Rules\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -389,7 +389,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n48.1\n49.67\n50.32",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n54.55\n51.39\n50.29",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -1577,7 +1577,7 @@
     "href": "mod-4-0-overview.html#lessons-in-this-module",
     "title": "19  Module 4 Overview",
     "section": "19.5 Lessons in this Module",
-    "text": "19.5 Lessons in this Module\n\n4.1 – Introduction to Probability\n\n\nNext: Start with Introduction to Probability.",
+    "text": "19.5 Lessons in this Module\n\n4.1 – Introduction to Probability\n4.2 – Probability Rules\n\n\nNext: Start with Introduction to Probability.",
     "crumbs": [
       "Introduction to Probability",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>Module 4 Overview</span>"
@@ -1628,22 +1628,22 @@
     ]
   },
   {
-    "objectID": "mod-4-1-probability.html#combinations",
-    "href": "mod-4-1-probability.html#combinations",
+    "objectID": "mod-4-1-probability.html#factorials",
+    "href": "mod-4-1-probability.html#factorials",
     "title": "20  Introduction to Probability",
-    "section": "20.5 Combinations",
-    "text": "20.5 Combinations\nIn our previous examples, the number of steps and outcomes for each step was relatively small. Determining the number of outcomes in a sample space can quickly become tedious, or, as complexity increases, hard. We can, however, rely on two counting rules to assist us in determining the number of outcomes in a sample space. The difference between the two counting rules is whether the order of the outcomes matters.\nA combination examines the number of ways the objects can be selected, without regard to the order in which they are selected.\nA bowl of vegetable soup contains a different vegetables and the number of vegetables may differ by type. We don’t care about ordering since all the vegetables together make soup.\nAssume we have four objects, and we select objects one at a time without replacement.\nHow many ways can the four objects be drawn given we draw one object at a time?\n\nFirst draw: 4 possible objects\nSecond draw: 3 possible objects\nThird draw: 2 possible objects\nFourth draw: 1 possible object\n\nIn other words, there are \\(4 \\times 3 \\times 2 \\times 1 = 24\\) possible combinations.\nAssume now that we have the four objects and we select two objects at a time without replacement.\nAssume the objects are labeled A, B, C, D and the order of drawing is not important (AC is the same as drawing CA), then the number of possible combinations:\n\nAB\nAC\nAD\nBC\nBD\nCD\n\nIn other words, given four objects and two objects are selected at a time, there are six possible combinations.\nLastly, consider the same number of objects (4) and three objects are selected at a time without replacement.\nAssume the objects are labeled A, B, C, D and the order of drawing is not important (AC is the same as drawing CA), then the number of possible combinations:\n\nABC\nABD\nACD\nBCD\n\nThere are four possible combinations.",
+    "section": "20.5 Factorials",
+    "text": "20.5 Factorials\nA factorial is merely a series of products and are indicated by an exclamation mark.\nThe factorial function of a positive integer \\(n\\) is defined as the product of all the positive integers not greater than \\(n\\).\n\\[\nn! = 1 \\times 2 \\times 3\\ \\times 4 \\dots (n-2) \\times (n-1) \\times n\n\\] For example, 5 factorial can be represented as\n\\[\n5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120\n\\]\nIn R, the function factorial allows one to estimate the factorial of a positive integer\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Introduction to Probability",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
     ]
   },
   {
-    "objectID": "mod-4-1-probability.html#factorials",
-    "href": "mod-4-1-probability.html#factorials",
+    "objectID": "mod-4-1-probability.html#combinations",
+    "href": "mod-4-1-probability.html#combinations",
     "title": "20  Introduction to Probability",
-    "section": "20.6 Factorials",
-    "text": "20.6 Factorials\nAssume that there are \\(N\\) objects.\nThe \\(N\\) objects can be ordered in \\(N(n-1)(n-2)...(3)(2)(1)\\) times.\nThis product is represented by \\(N!\\) which is called N factorial.",
+    "section": "20.6 Combinations",
+    "text": "20.6 Combinations\nIn our previous examples, the number of steps and outcomes for each step was relatively small. Determining the number of outcomes in a sample space can quickly become tedious, or, as complexity increases, hard. We can, however, rely on two counting rules to assist us in determining the number of outcomes in a sample space. The difference between the two counting rules is whether the order of the outcomes matters.\nA combination examines the number of ways the objects can be selected, without regard to the order in which they are selected.\nA bowl of vegetable soup contains a different vegetables and the number of vegetables may differ by type. We don’t care about ordering since all the vegetables together make soup.\nAssume we have four objects, and we select one object at a time without replacement.\nHow many ways can the four objects be drawn given we draw one object at a time without replacement?\nLet’s list the possible combinations:\n\nABC\nABD\nACD\nBCD\n\nWhy are there only four combinations? Remember, the order does not matter. In other words, ABC is the same as BCA which is the same as CAB which is the same as BAC and so on.\nAssume now that we have the four objects and we select two objects at a time without replacement.\nAssume the objects are labeled A, B, C, D and the order of drawing is not important (AC is the same as drawing CA), then the number of possible combinations:\n\nAB\nAC\nAD\nBC\nBD\nCD\n\nIn other words, given four objects and two objects are selected at a time, there are six possible combinations.\nLastly, consider the same number of objects (4) and three objects are selected at a time without replacement.\nAssume the objects are labeled A, B, C, D and the order of drawing is not important (AC is the same as drawing CA), then the number of possible combinations:\n\nABC\nABD\nACD\nBCD\n\nThere are four possible combinations.\nObviously, if the number of objects becomes ‘large,’ it would be quite difficult to list all the possible combinations.",
     "crumbs": [
       "Introduction to Probability",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
@@ -1654,18 +1654,18 @@
     "href": "mod-4-1-probability.html#combination-formula",
     "title": "20  Introduction to Probability",
     "section": "20.7 Combination Formula",
-    "text": "20.7 Combination Formula\nThe number of combinations of \\(N\\) objects taken \\(n\\) at a time is equal:\n\\[C_n^N =  \\binom{N}{n} = \\frac{N!}{n!(N-n)!}\\]\nReturning to the example where there were four objects and two objects were selected at a time without replacement, note that \\(N = 4\\) and \\(n = 2\\), we can calculate that there are 6 possible combinations that can be drawn.\n\\[C_2^4 =  \\binom{4}{2} = \\frac{4!}{2!(4-2)!} = \\frac{24}{4} = 6\\]",
+    "text": "20.7 Combination Formula\nThe number of combinations of \\(N\\) objects taken \\(n\\) at a time is equal:\n\\[C_n^N =  \\binom{N}{n} = \\frac{N!}{n!(N-n)!}\\] Returning to the example where there were four objects and one object is selected at a time without replacement, note that \\(N = 4\\) and \\(n = 1\\), we can calculate that there are 4 possible combinations that can be drawn.\n\\[C_1^4 =  \\binom{4}{1} = \\frac{4!}{1!(4-1)!} = \\frac{24}{6} = 4\\]\nReturning to the example where there were four objects and two objects were selected at a time without replacement, note that \\(N = 4\\) and \\(n = 2\\), we can calculate that there are 6 possible combinations that can be drawn.\n\\[C_2^4 =  \\binom{4}{2} = \\frac{4!}{2!(4-2)!} = \\frac{24}{4} = 6\\] Returning to the example where there were four objects and two objects were selected at a time without replacement, note that \\(N = 4\\) and \\(n = 3\\), we can calculate that there are 4 possible combinations that can be drawn.\n\\[C_3^4 =  \\binom{4}{3} = \\frac{4!}{3!(4-3)!} = \\frac{24}{6} = 4\\]",
     "crumbs": [
       "Introduction to Probability",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
     ]
   },
   {
-    "objectID": "mod-4-1-probability.html#combination-code",
-    "href": "mod-4-1-probability.html#combination-code",
+    "objectID": "mod-4-1-probability.html#combinations-in-r",
+    "href": "mod-4-1-probability.html#combinations-in-r",
     "title": "20  Introduction to Probability",
-    "section": "20.8 Combination Code",
-    "text": "20.8 Combination Code\nIn the following examples, we show how to calculate the factorial of a value in R, the manual calculation of combination without replacement, and using the function to calculate the combination without replacement.\n\nlibrary(gtools)\n\n# Determine the factorial of 4\nfactorial(4)\n\n[1] 24\n\n# Combination Manually - N = 4, n = 2\n# N!/n!(N-n)!\n\nfactorial(4)/(factorial(2)*factorial(4-2))\n\n[1] 6\n\n# Combination without repetition or replacement\n# N = 4, n = 2\n\ncombinations(4,2)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    1    3\n[3,]    1    4\n[4,]    2    3\n[5,]    2    4\n[6,]    3    4\n\nchoose(4,2)\n\n[1] 6\n\n# Combination without repetition or replacement, N = 100, n = 10\n# Combinations generates a matrix of outcomes (which takes a while)\n\nfactorial(50)/(factorial(10)*factorial(50-10))\n\n[1] 10272278170\n\nchoose(50,10)\n\n[1] 10272278170",
+    "section": "20.8 Combinations in R",
+    "text": "20.8 Combinations in R\nIn the following examples, we show how to calculate the factorial of a value in R, the manual calculation of combination without replacement, and using the choose} function to calculate the combination without replacement.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Introduction to Probability",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
@@ -1676,10 +1676,142 @@
     "href": "mod-4-1-probability.html#lottery-example",
     "title": "20  Introduction to Probability",
     "section": "20.9 Lottery Example",
-    "text": "20.9 Lottery Example\nA good example is lottery. Assume that the lottery requires you to pick six numbers from 1 to 70. The numbers are picked without replacement. In other words, there are 70 objects (\\(N\\)) and 6 objects (\\(n\\)) are selected without replacement?\nHow many possible outcomes are there in the sample space for this lottery? The example code below demonstrates how to calculate the number of outcomes in the sample space when there are 70 objects and 6 objects are selected without replacement. There are 131,115,985 possible combinations or outcomes in the sample space for this experiment.\nHowever, lotteries found that larger jackpots attracted more customers. How do you boost the jackpot? One method is to have players pick a number of balls from one set of numbers without replacement and then another ball from another set of numbers. This “megaball” or “powerball” increases the number of possible combinations.\nIn the Virginia lottery Megamillions game, you pick 5 balls from 70 balls and then one ball from a separate 25 balls. The number of possible outcomes is equal to the combination of 70 balls picking 5 without replacement and then 1 ball from 25 possible balls. As you can see in the example below, the number of potential combinations increases to 302,575,350.\n\n#Combination - Draw 6 from 70 Outcomes\nchoose(70,6)\n\n[1] 131115985\n\n#Combination - Draw 5 from 70 and 1 from 25\nchoose(70,5)*25\n\n[1] 302575350",
+    "text": "20.9 Lottery Example\nA good example is a lottery. Assume that the lottery requires you to pick six numbers from 1 to 70. The numbers are picked without replacement. In other words, there are 70 objects (\\(N\\)) and 6 objects (\\(n\\)) are selected without replacement?\nHow many possible outcomes are there in the sample space for this lottery? The example code below demonstrates how to calculate the number of outcomes in the sample space when there are 70 objects and 6 objects are selected without replacement. There are 131,115,985 possible combinations or outcomes in the sample space for this experiment.\nHowever, lotteries found that larger jackpots attracted more customers. How do you boost the jackpot? One method is to have players pick a number of balls from one set of numbers without replacement and then another ball from another set of numbers. This “megaball” or “powerball” increases the number of possible combinations.\nIn the Virginia lottery Megamillions game, you pick 5 balls from 70 balls and then one ball from a separate 25 balls. The number of possible outcomes is equal to the combination of 70 balls picking 5 without replacement and then 1 ball from 25 possible balls. As you can see in the example below, the number of potential combinations increases to 302,575,350.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Introduction to Probability",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#permutations",
+    "href": "mod-4-1-probability.html#permutations",
+    "title": "20  Introduction to Probability",
+    "section": "20.10 Permutations",
+    "text": "20.10 Permutations\nWhile a combination does not require the objects to be drawn in a specific order, a permutation requires a specific ordering of objects.\nOne way to think about permutations is “this, then that.” In other words, one object must be drawn before another object for each possible outcome. Think about throwing a fair six-sided die two times. A roll of 1 on the first throw and 2 on the second throw is different than a roll of 2 on the first roll and 1 on the second roll. The order of selection is important unlike combinations.\nLet \\(N\\) be the number of objects and \\(n\\) are the number of objects that are selected without replacement. The number of permutations of \\(N\\) objects taken \\(n\\) at a time is defined as:\n\\[\nP_n^N = n! \\binom{N}{n} = \\frac{N!}{(N-n)!}\n\\]\nBecause the ordering matters, the number of outcomes from an ordered experiment is higher than the number of outcomes in an unordered experiment. In other words \\(P_n^N \\ge C_n^N\\).\nTo see this, assume that there are four possible objects:\n\nBlack (B)\nGreen (G)\nRed (R)\nWhite (W)\n\nGiven four objects, assume that two objects are selected without replacement.\nCombinations (6): BG, BR, BW, GR, GW, RW\nPermutations (12): BG, BR, BW, GB, GR, GW, RB, RG, RW, WB, WG, WR\nIn the example code below, the number of combinations and permutations are calculated manually.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-1-probability.html#permutation-example",
+    "href": "mod-4-1-probability.html#permutation-example",
+    "title": "20  Introduction to Probability",
+    "section": "20.11 Permutation Example",
+    "text": "20.11 Permutation Example\nIn the example code below, the number of combinations and permutations are calculated using the choose and permutations functions.\nThe combination and permutations functions will create a matrix of outcomes for the random experiment.\nThese matrices grow large quickly and it may be more efficient to manually code the combinations and permutations.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html",
+    "href": "mod-4-2-rules.html",
+    "title": "21  Probability Rules",
+    "section": "",
+    "text": "21.1 Probability\nWe have already touched on the idea of probability.\nWe calculated the number of combinations of a lottery and one could ask what are the odds of having a winning lottery ticket in any given draw of the lottery. We have also discussed rolling a fair die and tossing a fair coin.\nProbabilities, in general, must adhere to some basic rules. Each outcome of a random experiment is assigned a probability, each assigned probability must lie on the [0,1] interval, and the sum of the probabilities across the outcomes of an experiment must equal 1.\nMore formally:",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html#probability",
+    "href": "mod-4-2-rules.html#probability",
+    "title": "21  Probability Rules",
+    "section": "",
+    "text": "For a random experiment with sample space \\(s\\), each outcome \\(o_i \\in s\\) must be assigned a probability of occurrence.\nThe probability assigned to an outcome in the sample space, \\(P(o_i)\\), must lie on the [0,1] interval, that is, \\(0 \\le P(o_i) \\le 1\\).\nGiven \\(n\\) outcomes in \\(s\\), the sum of probabilities must be equal to 1 or \\(\\sum_i^n P(o_i) = 1\\).",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html#subjective-assessment",
+    "href": "mod-4-2-rules.html#subjective-assessment",
+    "title": "21  Probability Rules",
+    "section": "21.2 Subjective Assessment",
+    "text": "21.2 Subjective Assessment\nThe quickest method of assigning probabilities is to subjectively assign to the outcomes in the sample space. For example, what is the probability of a random student at Old Dominion University having a height less than 60 inches, 70 inches, and 80 inches?\nWe don’t have data readily on hand to compute these probabilities. In this case, the best we can do is to assign our own evaluations of the probabilities of occurrence of each outcome.\nOf course, if three people are posed this question and assign their subjective probabilities, there is a strong likelihood that the subjective probabilities will not be in exact agreement. And, without data, we cannot determine which set of subjective probabilities are correct.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html#equal-outcomes",
+    "href": "mod-4-2-rules.html#equal-outcomes",
+    "title": "21  Probability Rules",
+    "section": "21.3 Equal Outcomes",
+    "text": "21.3 Equal Outcomes\nAssume that we have a random experiment with \\(n\\) equally likely outcomes in the sample space.\nThe probability of any outcome occurring is \\(1/n\\).\nReturning to the 10-sided fair die, then the probability of any of the outcomes in the sample space is\n\\[P(s) = 1/10 = 0.1\\]\nDoes this adhere to the rules of assigning probabilities?\nFirst, each outcome in the sample space is assigned a probability of \\(1/10\\).\nSecond, the probability of any outcome in the sample space is \\(1/10\\) and we can state that \\(0 \\le 1/10 \\le 1\\).\nThird, if we sum the probabilities of each outcome across all outcomes then the resulting summmation is equal to 1 or \\(\\sum_1^{10} 1/10 = 1\\).",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html#relative-frequency",
+    "href": "mod-4-2-rules.html#relative-frequency",
+    "title": "21  Probability Rules",
+    "section": "21.4 Relative Frequency",
+    "text": "21.4 Relative Frequency\nAssume we have a random experiment with \\(n\\) outcomes in the sample space. We can compute the probability of each outcome using the proportion of occurrence of each outcome to the total number of occurrences. In other words, the probability of an outcome \\(o_i\\) is equal to ratio of the number of times \\(o_i\\) occurs relative to the total number of occurrences across all outcomes.\nIn the following code, we create a data frame with for the reactions to the administration of a drug. We calculate the relative frequency of each type of reaction by:\n\\[\nP(Reaction_i) = \\frac{Cases_i}{sum_{i=1}^{N} Cases_i}\n\\]\nBased upon these relative frequencies, we would assign a probability of 21.8% to patients having no reaction to the administration of the drug. Likewise, we would assign a probability of 67.6% to patients having a mild reaction to the drug, and so on.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html#complement",
+    "href": "mod-4-2-rules.html#complement",
+    "title": "21  Probability Rules",
+    "section": "21.5 Complement",
+    "text": "21.5 Complement\nIn the previous example, the sample space consisted of four outcomes: no reaction (None), a mild reaction (Mild), a moderate reaction (Moderate), and a severe reaction (Severe).\nAn event is defined as a collection of outcomes in a sample space.\nFor example, if we defined an event as having any type of reaction, then the event space would consist of three outcomes: Mild, Moderate, and Severe.\nAn event can consist of one outcome in the sample space up to all the outcomes in the sample space. Continuing our example, if one event is having any type of reaction to the administration of the drug, then there is also another event: not having any reaction to the drug in question.\nWe thus have two events:\n\nHaving a reaction \\(E\\)\nNot having a reaction \\(E^c\\) where \\(c\\) denotes the complement.\n\nWe can more formally state this as:\n\nAn event, \\(E_i\\) consists of \\(n\\) outcomes in sample space \\(s\\) where \\(s\\) has \\(N\\) outcomes.\nThe number of outcomes for \\(E_i\\) is such that \\(1 \\le n \\le N\\).\nThe probability of \\(E_i\\) is equal to sum of probabilities of all the outcomes in \\(E_i\\) such that \\(P(E_i) = \\sum_{i=1}^{n} o_i\\).\nThe probability of all the outcomes not in \\(E_i\\) is equal to \\(P(E_i)^C = 1 - P(E_i) = 1 - \\sum_{i=1}^n o_i\\).\n\nIn the code below, we summarize the number of cases that had any reaction and calculate the relative frequency of the event. The probability of having any type of reaction to the administration of the drug is 78.2% and the complement, which is having no reaction to the administration of the drug, is \\(1 - 0.782 = 0.118\\) or 11.8%.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ lubridate 1.9.4     ✔ tibble    3.3.0\n✔ purrr     1.1.0     ✔ tidyr     1.3.1\n✔ readr     2.1.5     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter()          masks stats::filter()\n✖ xts::first()             masks dplyr::first()\n✖ kableExtra::group_rows() masks dplyr::group_rows()\n✖ dplyr::lag()             masks stats::lag()\n✖ xts::last()              masks dplyr::last()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n#Create Tibble with Example Data\n\nreactions &lt;- tibble(\"reaction\" = c(\"None\", \"Mild\", \"Moderate\", \"Severe\"),\n                    \"cases\"    = c(2420, 7502, 1149, 32))\n\n#Calculate relative frequencies\n#Use scales function to convert relative frequencies from decimal to percent format\n\nrel_freq &lt;- reactions %&gt;%\n  mutate(rel_freq = scales::label_percent(a = 0.1)(cases / sum(cases)))\n\nevent_reaction &lt;- reactions %&gt;%\n  mutate(rel_freq = cases / sum(cases)) %&gt;%\n  filter(reaction != \"None\") %&gt;%\n  summarize(cases = sum(cases),\n            rel_freq = scales::label_percent(a=0.1)(sum(as.numeric(rel_freq))))\n\nkable(event_reaction,\n      align       = \"lc\",\n      col.names   = c(\"Cases in Event\", \"Relative Frequency\"),\n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Relative Frequency Table\")\n\n\nRelative Frequency Table\n\n\nCases in Event\nRelative Frequency\n\n\n\n\n8,683\n78.2%",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html#union",
+    "href": "mod-4-2-rules.html#union",
+    "title": "21  Probability Rules",
+    "section": "21.6 Union",
+    "text": "21.6 Union\nAssume that we have two events, A and B, where the two events are part of the sample space \\(s\\) of a random experiment.\nIf we combine the two events, that is, we create theunion of the two events.\nThe union of A and B is an event containing all the sample outcomes of A and B and is:\n\\[\nA \\cup B\n\\]\nLet’s return to the 10-sided die experiment.\nAssume that event A consists of the outcomes \\(A \\in \\{1, 2, 3 \\}\\) and B is an event consisting of the outcomes \\(B \\in \\{9. 10 \\}\\).\nThe union of A and B, \\(A \\cup B\\) is an event consisting of the outcomes \\(A \\cup B \\in \\{1, 2, 3, 9, 10 \\}\\).\nConsider the same experiment where \\(C \\in \\{4, 6, 8 \\}\\) and \\(D \\in \\{4, 5, 8, 10 \\}\\).\nThe union of the two events would be \\(C \\cup D \\in \\{4, 5, 6, 8, 10 \\}\\).",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html#intersection",
+    "href": "mod-4-2-rules.html#intersection",
+    "title": "21  Probability Rules",
+    "section": "21.7 Intersection",
+    "text": "21.7 Intersection\nAssume that we have two events, C and D, where the two events are part of the sample space \\(s\\) of a random experiment.\nIf we select only those outcomes that occur in each event, that is, we create the intersection of the two events.\nThe intersection of C and D is an event containing the sample outcomes belonging to both C and D and is denoted as:\n\\[\nC \\cap D\n\\]\nRecall from the previous discussion of the union of two events that \\(C \\in \\{4, 6, 8 \\}\\) and \\(D \\in \\{4, 5, 8, 10 \\}\\). The intersection of C and D is \\(C \\cap D \\in \\{4, 8 \\}\\).",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html#mutually-exclusive-events",
+    "href": "mod-4-2-rules.html#mutually-exclusive-events",
+    "title": "21  Probability Rules",
+    "section": "21.8 Mutually Exclusive Events",
+    "text": "21.8 Mutually Exclusive Events\nThe addition law provides a method of computing the probability of the union of two events. First, note that the probability of the union of two events is not equal to the sum of the probabilities of each event unless the two events are mutually exclusive, that is, there are no outcomes in common between the two events.\nIn other words, if \\(A \\cap B \\in 0\\) then \\(P(A \\cup B) = P(A) + P(B)\\).\nIntuitively, if two elements contain no elements in common, then the probability of the two events occurring is equal to the sum of the probability of two events.\nAssume a 52-card deck of cars. Let A consist of all the Kings in the deck while B consists of all the Queens.\n\\[A \\in \\{K_c, K_d, K_h, K_s \\}\\]\n\\[B \\in \\{Q_c, Q_d, Q_h, Q_d \\}\\]\nThere are no elements in common between the two events, that is,\n\\[A \\cap B = 0\\]\nGiven that A and B are mutually exclusive\n\\[$P(A) = 4/52 = 0.077\\]\n\\[P(B) = 4/52 = 0.077\\]\n\\[P(A \\cup B) = P(A) + P(B) = 0.077 + 0.077 = 0.154\\]",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
+    ]
+  },
+  {
+    "objectID": "mod-4-2-rules.html#addition-rule",
+    "href": "mod-4-2-rules.html#addition-rule",
+    "title": "21  Probability Rules",
+    "section": "21.9 Addition Rule",
+    "text": "21.9 Addition Rule\nIf two events are not mutually exclusive, then the probability of the union of the two events is equal to:\n\\[\nP(A \\cup B) = P(A) + P(B) - P(A \\cap B)\n\\]\nSince A and B share outcomes in common, then the probability of either event occurring is equal to the probability of each event occurring minus the probability that of A and B occurring. The subtraction of the intersection of the event events avoids double-counting.\nReturning to the 52-card deck example, what is the probability that a card is either a King or a Heart? There are 4 Kings in a deck and 13 Hearts in a deck. 1 of the 13 hearts in the deck is a King.\n\\[P(K)        = 4/52\\]\n\\[P(H)        = 13/52\\]\n\\[P(K \\cap H) = 1/52\\]\n\\[P(K \\cup H) = P(K) + P(H) - P(K \\cap H)\\]\n\\[P(K \\cup H) = 4/52 + 13/52 - 1/52 = 16/52 = 4/13 = 0.308\\]\nThe probability of drawing a King or a Heart from a 52-card deck is 0.308 or 30.8%.",
+    "crumbs": [
+      "Introduction to Probability",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Probability Rules</span>"
     ]
   }
 ]

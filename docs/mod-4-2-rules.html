@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>18&nbsp; Correlation – ECON 700</title>
+<title>21&nbsp; Probability Rules – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-4-0-overview.html" rel="next">
-<link href="./mod-3-2-normal.html" rel="prev">
+<link href="./mod-4-1-probability.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -105,10 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   
@@ -409,7 +404,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\ndata(mtcars)\n\nggplot(data = mtcars,\n       aes(x = wt, \n           y = mpg)) +\ngeom_point() +\ntheme_minimal() +\nlabs(x = \"Weight in Thousands of Pounds\",\n     y = \"Miles Per Gallon\",\n     title = \"Scatterplot of Weight and Miles Per Gallon\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\nggplot(data = mtcars,\n       aes(x = mpg, \n           y = wt)) +\ngeom_point() +\ntheme_minimal() +\nlabs(x = \"Miles Per Gallon\",\n     y = \"Weight in Thousands of Pounds\",\n     title = \"Scatterplot of Weight and Miles Per Gallon\")","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndf_1 <- tibble(x = c(8, 10 , 23 , 59, 60, 72, 100),\n               y = c(-2, -10, -20, -43, -75, -90, -120))\n\ncov_x_y <- df_1 %>%\n           mutate(x_dev = x - mean(x),\n                  y_dev = y - mean(y),\n                  x_y   = x_dev * y_dev,\n                  x_y_n = x_y/(nrow(df_1)-1)) %>%\n           summarize(cov_x_y = sum(x_y_n))\n\ndf_2 <- tibble(cov_manual = cov_x_y$cov_x_y,\n               cov_auto   = cov(df_1$x, df_1$y))\n\nkable(df_2,\n      align  = 'c',\n      digits = 3,\n      col.names = c('Manual Covariance', 'Estimated Covariance'))","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\ncar_stats <- mtcars %>%\n             summarize(mean_mpg = mean(mpg),\n                       mean_wt  = mean(wt),\n                       cov_m_w  = cov(mpg, wt))\n\nkable(car_stats,\n      align   = 'c',\n      digits  = 3,\n      col.names = c('Mean MPG', 'Mean Weight',\n                    'Covariance between MPG and Weight'))","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\ncov_alt <- mtcars %>%\n  select(mpg, wt) %>%\n  mutate(mpg_ft = mpg*5280,\n         wt_oz  = wt*16) %>%\n  summarize(cov_mpg_wt   = cov(mpg,wt),\n            cov_ampg_wt  = cov(mpg_ft, wt),\n            cov_mpg_awt  = cov(mpg, wt_oz),\n            cov_ampg_awt = cov(mpg_ft, wt_oz))\n\nkable(cov_alt,\n      align  = 'c',\n      digits = 3,\n      col.names = c('Cov(MPG,WT)', 'Cov(MPG_FT, WT)',\n                    'Cov(MPG, WT_OZ', 'COV(MPG_FT, WT_OZ'))","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())  \n\ndf_4 <- tibble(x = c(8, 10 , 23 , 59, 60, 72, 100),                \n               y = c(-2, -10, -20, -43, -75, -90, -120))  \n\ndf_stats <- df_4 %>%\n            summarize(sd_x    = sd(x),\n                      sd_y    = sd(y), \n                      cov_x_y = cov(x,y),\n                      cor_man = cov(x,y)/(sd(x)*sd(y)),\n                      cor_x_y = cor(x,y))\n\nkable(df_stats,\n      align  = 'c',\n      digits = 3,\n      col.names = c('SD(X)', 'SD(Y)', 'COV(X,Y)',\n                    'Manual COR(X,Y)', 'COR(X,Y)'))\n","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndata(mtcars)\n\ncar_stats <- mtcars %>%\n             summarize(mean_mpg = mean(mpg),\n                       mean_wt  = mean(wt),\n                       cov_m_w  = cov(mpg, wt),\n                       cor_m_w  = cor(mpg, wt))\n\nkable(car_stats,\n      align   = 'c',\n      digits  = 3,\n      col.names = c('Mean MPG', 'Mean Weight',\n                    'Covariance between MPG and Weight',\n                    'Correlation between MPG and Weight'))","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\nlibrary(dplyr)\nlibrary(tidyverse)\n\n#Create Tibble with Example Data\n\nreactions <- tibble(\"reaction\" = c(\"None\", \"Mild\", \"Moderate\", \"Severe\"),\n                    \"cases\"    = c(2420, 7502, 1149, 32))\n\n#Calculate relative frequencies\n#Use scales function to convert relative frequencies from decimal to percent format\n\nrel_freq <- reactions %>%\n  mutate(rel_freq = scales::label_percent(a = 0.1)(cases / sum(cases)))\n\n#Use kable function to output data frame to formatted table\n#Align - left or center alignment of columsn\n#Col.names - use these column names instead of data frame names\n#format.args - use a comma for large numbers, no scentific noation\n#Caption - add a caption to the table\n\nkable(rel_freq,\n      align       = \"lcc\",\n      col.names   = c(\"Drug Reaction\", \"Number of Cases\", \"Relative Frequency\"),\n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Relative Frequency Table\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1704,7 +1699,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-3-correlation.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-4-0-overview.html">Introduction to Probability</a></li><li class="breadcrumb-item"><a href="./mod-4-2-rules.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Probability Rules</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1877,7 +1872,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-3-3-correlation.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-3-3-correlation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
@@ -1906,7 +1901,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-4-2-rules.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-4-2-rules.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Probability Rules</span></span></a>
   </div>
 </li>
@@ -1938,21 +1933,15 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">18.1</span> Introduction</a></li>
-  <li><a href="#the-expectations-operator" id="toc-the-expectations-operator" class="nav-link" data-scroll-target="#the-expectations-operator"><span class="header-section-number">18.2</span> The Expectations Operator</a></li>
-  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="header-section-number">18.3</span> Covariance</a></li>
-  <li><a href="#scatterplots" id="toc-scatterplots" class="nav-link" data-scroll-target="#scatterplots"><span class="header-section-number">18.4</span> Scatterplots</a></li>
-  <li><a href="#covariance-example" id="toc-covariance-example" class="nav-link" data-scroll-target="#covariance-example"><span class="header-section-number">18.5</span> Covariance Example</a></li>
-  <li><a href="#fred-covariance" id="toc-fred-covariance" class="nav-link" data-scroll-target="#fred-covariance"><span class="header-section-number">18.6</span> FRED Covariance</a></li>
-  <li><a href="#mtcars-covariance" id="toc-mtcars-covariance" class="nav-link" data-scroll-target="#mtcars-covariance"><span class="header-section-number">18.7</span> MTCARS Covariance</a></li>
-  <li><a href="#interpreting-the-covariance" id="toc-interpreting-the-covariance" class="nav-link" data-scroll-target="#interpreting-the-covariance"><span class="header-section-number">18.8</span> Interpreting the Covariance</a></li>
-  <li><a href="#scaling-and-covariance" id="toc-scaling-and-covariance" class="nav-link" data-scroll-target="#scaling-and-covariance"><span class="header-section-number">18.9</span> Scaling and Covariance</a></li>
-  <li><a href="#correlation-coefficient" id="toc-correlation-coefficient" class="nav-link" data-scroll-target="#correlation-coefficient"><span class="header-section-number">18.10</span> Correlation Coefficient</a></li>
-  <li><a href="#correlation-example" id="toc-correlation-example" class="nav-link" data-scroll-target="#correlation-example"><span class="header-section-number">18.11</span> Correlation Example</a></li>
-  <li><a href="#fred-correlation" id="toc-fred-correlation" class="nav-link" data-scroll-target="#fred-correlation"><span class="header-section-number">18.12</span> FRED Correlation</a></li>
-  <li><a href="#mtcars-correlation" id="toc-mtcars-correlation" class="nav-link" data-scroll-target="#mtcars-correlation"><span class="header-section-number">18.13</span> MTCARS Correlation</a></li>
-  <li><a href="#correlation-and-causation" id="toc-correlation-and-causation" class="nav-link" data-scroll-target="#correlation-and-causation"><span class="header-section-number">18.14</span> Correlation and Causation</a></li>
-  <li><a href="#module-summary" id="toc-module-summary" class="nav-link" data-scroll-target="#module-summary"><span class="header-section-number">18.15</span> Module Summary</a></li>
+  <li><a href="#probability" id="toc-probability" class="nav-link active" data-scroll-target="#probability"><span class="header-section-number">21.1</span> Probability</a></li>
+  <li><a href="#subjective-assessment" id="toc-subjective-assessment" class="nav-link" data-scroll-target="#subjective-assessment"><span class="header-section-number">21.2</span> Subjective Assessment</a></li>
+  <li><a href="#equal-outcomes" id="toc-equal-outcomes" class="nav-link" data-scroll-target="#equal-outcomes"><span class="header-section-number">21.3</span> Equal Outcomes</a></li>
+  <li><a href="#relative-frequency" id="toc-relative-frequency" class="nav-link" data-scroll-target="#relative-frequency"><span class="header-section-number">21.4</span> Relative Frequency</a></li>
+  <li><a href="#complement" id="toc-complement" class="nav-link" data-scroll-target="#complement"><span class="header-section-number">21.5</span> Complement</a></li>
+  <li><a href="#union" id="toc-union" class="nav-link" data-scroll-target="#union"><span class="header-section-number">21.6</span> Union</a></li>
+  <li><a href="#intersection" id="toc-intersection" class="nav-link" data-scroll-target="#intersection"><span class="header-section-number">21.7</span> Intersection</a></li>
+  <li><a href="#mutually-exclusive-events" id="toc-mutually-exclusive-events" class="nav-link" data-scroll-target="#mutually-exclusive-events"><span class="header-section-number">21.8</span> Mutually Exclusive Events</a></li>
+  <li><a href="#addition-rule" id="toc-addition-rule" class="nav-link" data-scroll-target="#addition-rule"><span class="header-section-number">21.9</span> Addition Rule</a></li>
   </ul>
 </nav>
     </div>
@@ -2243,9 +2232,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-3-correlation.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-4-0-overview.html">Introduction to Probability</a></li><li class="breadcrumb-item"><a href="./mod-4-2-rules.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Probability Rules</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></h1>
+<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Probability Rules</span></h1>
 </div>
 
 
@@ -2262,355 +2251,178 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="introduction" class="level2" data-number="18.1">
-<h2 data-number="18.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">18.1</span> Introduction</h2>
-<p>To this point, we have mostly examined methods of describing one variable, that is, <strong>univariate</strong> analysis.</p>
-<p>However, we may wish to do more than describe the properties of one variable.</p>
-<p>We may want to explore a potential relationship (or absence of one) between two variables. Moving from univariate to <strong>bivariate</strong> analysis starts with a discussion of measures of association between two variables.</p>
-<p>To start our discussion, we need to understand the <strong>expectations operator</strong>.</p>
+<section id="probability" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="probability"><span class="header-section-number">21.1</span> Probability</h2>
+<p>We have already touched on the idea of probability.</p>
+<p>We calculated the number of combinations of a lottery and one could ask what are the odds of having a winning lottery ticket in any given draw of the lottery. We have also discussed rolling a fair die and tossing a fair coin.</p>
+<p>Probabilities, in general, must adhere to some basic rules. Each outcome of a random experiment is assigned a probability, each assigned probability must lie on the [0,1] interval, and the sum of the probabilities across the outcomes of an experiment must equal 1.</p>
+<p>More formally:</p>
+<ol type="1">
+<li><p>For a random experiment with sample space <span class="math inline">\(s\)</span>, each outcome <span class="math inline">\(o_i \in s\)</span> must be assigned a probability of occurrence.</p></li>
+<li><p>The probability assigned to an outcome in the sample space, <span class="math inline">\(P(o_i)\)</span>, must lie on the [0,1] interval, that is, <span class="math inline">\(0 \le P(o_i) \le 1\)</span>.</p></li>
+<li><p>Given <span class="math inline">\(n\)</span> outcomes in <span class="math inline">\(s\)</span>, the sum of probabilities must be equal to 1 or <span class="math inline">\(\sum_i^n P(o_i) = 1\)</span>.</p></li>
+</ol>
 </section>
-<section id="the-expectations-operator" class="level2" data-number="18.2">
-<h2 data-number="18.2" class="anchored" data-anchor-id="the-expectations-operator"><span class="header-section-number">18.2</span> The Expectations Operator</h2>
-<p>Given a function <span class="math inline">\(f(x)\)</span> in the variable <span class="math inline">\(x\)</span>, the expectation value is denoted as <span class="math inline">\(E[X]\)</span>.</p>
-<p>For a single, discrete variable <span class="math inline">\(X\)</span> with probability density function <span class="math inline">\(P(X)\)</span>, the expectation of <span class="math inline">\(X\)</span> is defined as:</p>
-<p><span class="math display">\[
-E[X] = \sum_{X} f(x) P(x)
-\]</span></p>
-<p>If <span class="math inline">\(X\)</span> is a continuous variable, then <span class="math inline">\(E[X]\)</span> is defined as:</p>
-<p><span class="math display">\[
-E[X] = \int f(x) P(X) dx
-\]</span></p>
-<p>The expected value of a random variable is the arithmetic mean of that variable. This term has been retained in mathematical statistics to mean the long-run average for any random variable over an indefinite number of trials or samples. In other words,</p>
-<p><span class="math display">\[
-E[X] = \mu_x
-\]</span></p>
-<p>The variance of a random variable <span class="math inline">\(X\)</span> is defined as the expected (average) squared deviation of the values of this random variable about their mean. That is,</p>
-<p><span class="math display">\[var(x) = E[(X - \mu)^2] = E[X^2] - \mu^2 = \sigma_X^2\]</span></p>
-<p>The expectations operator adheres to the following rules.</p>
-<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables and let <span class="math inline">\(k\)</span> and <span class="math inline">\(j\)</span> be constants.</p>
-<p>The first rule is that the expectation of a constant is a constant.</p>
-<p>In other words, if <span class="math inline">\(k=4\)</span>, then every observation of <span class="math inline">\(k\)</span> is 4 and the mean of <span class="math inline">\(k\)</span> is <span class="math inline">\(E[k] = \mu_k = 4\)</span>.</p>
-<p><span class="math display">\[
-E[k] = k
-\]</span></p>
-<p>The second rule is that the expectation of the product of a constant and a random variable is equal to the product of a constant and the expectation of a random variable. In other words, assume that we multiply every observation of a random variable by 3 and then find the long-run mean of the random variable. This is the same as finding the long-run mean and multiplying the mean by 3.</p>
-<p><span class="math display">\[
-E[kX] = kE[X] = k \mu_x
-\]</span></p>
-<p>The third rule is that the expectation of the sum of two random variables is equal to the addition of the expectiations of the two random variables. In other words, if we add two random variables, one with the mean of 5 and the other with the mean of 10, this is the same as adding the two means together.</p>
-<p><span class="math display">\[
-E[X+Y] = E[X] + E[Y]
-\]</span></p>
-<p>The fourth rule combines the second and third rules in that if you have the sum of the two random variables where each random variable is multiplied by a constant, then you can restate this as the product of the constant and the expectation of the first random variable plus the product of the constant and the expectation of the second random variable.</p>
-<p><span class="math display">\[
-E[kX + jY] = kE[X] + jE[Y]
-\]</span></p>
-<p>There are a number of other expectation rules which we will cover later on in the course.</p>
+<section id="subjective-assessment" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="subjective-assessment"><span class="header-section-number">21.2</span> Subjective Assessment</h2>
+<p>The quickest method of assigning probabilities is to subjectively assign to the outcomes in the sample space. For example, what is the probability of a random student at Old Dominion University having a height less than 60 inches, 70 inches, and 80 inches?</p>
+<p>We don’t have data readily on hand to compute these probabilities. In this case, the best we can do is to assign our own evaluations of the probabilities of occurrence of each outcome.</p>
+<p>Of course, if three people are posed this question and assign their subjective probabilities, there is a strong likelihood that the subjective probabilities will not be in exact agreement. And, without data, we cannot determine which set of subjective probabilities are correct.</p>
 </section>
-<section id="covariance" class="level2" data-number="18.3">
-<h2 data-number="18.3" class="anchored" data-anchor-id="covariance"><span class="header-section-number">18.3</span> Covariance</h2>
-<p>Given two random variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the covariance between these two variables can be defined as:</p>
-<p><span class="math display">\[
-cov(X,Y) = E[(X - E[X])(Y - E[Y])]
-\]</span></p>
-<p><span class="math display">\[
-cov(X,Y) = E[(X - \mu_x)(Y - \mu_Y)] = E[XY] - E[X]E[Y]
-\]</span> The population covariance <span class="math inline">\(\sigma_{xy}\)</span> between two random variables is defined as:</p>
-<p><span class="math display">\[
-cov(X,Y) = \sigma_{XY} = \sum_{i=1}^{N} \frac{(x_i - \mu_x)(y_i - \mu_y)}{N}
-\]</span></p>
-<p>The sample covariance <span class="math inline">\(s_{xy}\)</span> between two random variables is defined as:</p>
-<p><span class="math display">\[
-cov(X,Y) = s_{XY} = \sum_{i=1}^{n-1} \frac{(x_i - \bar{x})(y_i - \bar{y})}{n-1}
-\]</span></p>
-<p>One point to note is that the covariance between a variable and itself is the variance of the variable.</p>
-<p>We can easily see this for the population covariance by substituting <span class="math inline">\(X\)</span> for <span class="math inline">\(Y\)</span> or</p>
-<p><span class="math display">\[
-cov(X,X) = \sigma_{XX} = \sigma_X^2 = \sum_{i=1}^{N} \frac{(x_i - \mu_x)(x_i - \mu_x)}{N} = \sum_{i=1}^{N} \frac{(x_i - \mu_x)^2}{N}
-\]</span></p>
+<section id="equal-outcomes" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="equal-outcomes"><span class="header-section-number">21.3</span> Equal Outcomes</h2>
+<p>Assume that we have a random experiment with <span class="math inline">\(n\)</span> equally likely outcomes in the sample space.</p>
+<p>The probability of any outcome occurring is <span class="math inline">\(1/n\)</span>.</p>
+<p>Returning to the 10-sided fair die, then the probability of any of the outcomes in the sample space is</p>
+<p><span class="math display">\[P(s) = 1/10 = 0.1\]</span></p>
+<p>Does this adhere to the rules of assigning probabilities?</p>
+<p>First, each outcome in the sample space is assigned a probability of <span class="math inline">\(1/10\)</span>.</p>
+<p>Second, the probability of any outcome in the sample space is <span class="math inline">\(1/10\)</span> and we can state that <span class="math inline">\(0 \le 1/10 \le 1\)</span>.</p>
+<p>Third, if we sum the probabilities of each outcome across all outcomes then the resulting summmation is equal to 1 or <span class="math inline">\(\sum_1^{10} 1/10 = 1\)</span>.</p>
 </section>
-<section id="scatterplots" class="level2" data-number="18.4">
-<h2 data-number="18.4" class="anchored" data-anchor-id="scatterplots"><span class="header-section-number">18.4</span> Scatterplots</h2>
-<p>In the following code chunks, we create scatterplots of car weight and miles per gallon from the <em>mtcars</em> data set.</p>
-<p>The scatterplot of the two variables suggests that as car weight increases, miles per gallon declines.</p>
-<p>In the first scatterplot, we have weight on the x-axis and miles per gallon on the y-axis.</p>
+<section id="relative-frequency" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="relative-frequency"><span class="header-section-number">21.4</span> Relative Frequency</h2>
+<p>Assume we have a random experiment with <span class="math inline">\(n\)</span> outcomes in the sample space. We can compute the probability of each outcome using the proportion of occurrence of each outcome to the total number of occurrences. In other words, the probability of an outcome <span class="math inline">\(o_i\)</span> is equal to ratio of the number of times <span class="math inline">\(o_i\)</span> occurs relative to the total number of occurrences across all outcomes.</p>
+<p>In the following code, we create a data frame with for the reactions to the administration of a drug. We calculate the relative frequency of each type of reaction by:</p>
+<p><span class="math display">\[
+P(Reaction_i) = \frac{Cases_i}{sum_{i=1}^{N} Cases_i}
+\]</span></p>
+<p>Based upon these relative frequencies, we would assign a probability of 21.8% to patients having no reaction to the administration of the drug. Likewise, we would assign a probability of 67.6% to patients having a mild reaction to the drug, and so on.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>What happens if we have miles per gallon on the x-axis and weight on the y-axis?</p>
-<p>The same negative association appears to be present between the two variables, however, the important point is that that association is not causation, that is, we do not know if variation in one variable causes variation in another variable.</p>
-<p>Another way to think about this is that we are investigating whether variables ‘move’ together in a systematic fashion.</p>
-<div id="qwebr-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="covariance-example" class="level2" data-number="18.5">
-<h2 data-number="18.5" class="anchored" data-anchor-id="covariance-example"><span class="header-section-number">18.5</span> Covariance Example</h2>
-<p>Let’s explore the covariance between two variables, <span class="math inline">\(X\)</span>, and <span class="math inline">\(Y\)</span> in the following code.</p>
-<p>We first create a tibble with <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
-<p>We then estimate the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> manually:</p>
+<section id="complement" class="level2" data-number="21.5">
+<h2 data-number="21.5" class="anchored" data-anchor-id="complement"><span class="header-section-number">21.5</span> Complement</h2>
+<p>In the previous example, the sample space consisted of four outcomes: no reaction (None), a mild reaction (Mild), a moderate reaction (Moderate), and a severe reaction (Severe).</p>
+<p><strong>An event is defined as a collection of outcomes in a sample space.</strong></p>
+<p>For example, if we defined an event as having <strong>any type of reaction</strong>, then the event space would consist of three outcomes: Mild, Moderate, and Severe.</p>
+<p>An event can consist of one outcome in the sample space up to all the outcomes in the sample space. Continuing our example, if one event is having any type of reaction to the administration of the drug, then there is also another event: not having any reaction to the drug in question.</p>
+<p>We thus have two events:</p>
 <ul>
-<li><p>We estimate the mean deviations of <span class="math inline">\(X\)</span></p></li>
-<li><p>We estimate the mean deviations of <span class="math inline">\(Y\)</span></p></li>
-<li><p>We estimate the product of the mean deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
-<li><p>We estimate the product of <span class="math inline">\(1/(n-1)\)</span> and the product of the mean deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
+<li><p>Having a reaction <span class="math inline">\(E\)</span></p></li>
+<li><p>Not having a reaction <span class="math inline">\(E^c\)</span> where <span class="math inline">\(c\)</span> denotes the complement.</p></li>
 </ul>
-<p>The result is an estimate of the sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
-<p>We then use the <strong>cov</strong> function to estimate the sample covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
-<p>This also illustrate that R uses the sample covariance function to estimate the covariance between two variables.</p>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="fred-covariance" class="level2" data-number="18.6">
-<h2 data-number="18.6" class="anchored" data-anchor-id="fred-covariance"><span class="header-section-number">18.6</span> FRED Covariance</h2>
-<p>In the following code chunk, we want to estimate the covariance between the headline unemployment rate and the headline inflation rate.</p>
-<p>Using the <strong>tidyquant</strong> package, we obtain the data from <strong>FRED</strong>.</p>
-<p>However, the data from FRED are in ‘long’ format, that is, one column contains symbols that identify the series and another column contains the values. We want to translate the data into ‘wide’ format, where each row (date) contains several columns of data.</p>
-<p>We use the <strong>pivot_wider</strong> command to translate the data from long to wide format and then estimate the monthly inflation rate as the year-over-year change in the Consumer Price Index. Since the unemployment rate is not in decimal form, we divide the unemployment series by 100.</p>
-<p>We then create a scatterplot before estimating the mean of each series and the covariance between the two series.</p>
-<div class="cell" data-warnings="false" data-result="hold">
+<p>We can more formally state this as:</p>
+<ol type="1">
+<li><p>An event, <span class="math inline">\(E_i\)</span> consists of <span class="math inline">\(n\)</span> outcomes in sample space <span class="math inline">\(s\)</span> where <span class="math inline">\(s\)</span> has <span class="math inline">\(N\)</span> outcomes.</p></li>
+<li><p>The number of outcomes for <span class="math inline">\(E_i\)</span> is such that <span class="math inline">\(1 \le n \le N\)</span>.</p></li>
+<li><p>The probability of <span class="math inline">\(E_i\)</span> is equal to sum of probabilities of all the outcomes in <span class="math inline">\(E_i\)</span> such that <span class="math inline">\(P(E_i) = \sum_{i=1}^{n} o_i\)</span>.</p></li>
+<li><p>The probability of all the outcomes not in <span class="math inline">\(E_i\)</span> is equal to <span class="math inline">\(P(E_i)^C = 1 - P(E_i) = 1 - \sum_{i=1}^n o_i\)</span>.</p></li>
+</ol>
+<p>In the code below, we summarize the number of cases that had any reaction and calculate the relative frequency of the event. The probability of having any type of reaction to the administration of the drug is 78.2% and the complement, which is having no reaction to the administration of the drug, is <span class="math inline">\(1 - 0.782 = 0.118\)</span> or 11.8%.</p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="fu">c</span>(<span class="st">'UNRATE'</span>, <span class="st">'CPIAUCSL'</span>),</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">get  =</span> <span class="st">'economic.data'</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">from =</span> <span class="st">'1969-01-01'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> symbol, <span class="at">values_from =</span> price) <span class="sc">%&gt;%</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inflation =</span> (CPIAUCSL <span class="sc">-</span> <span class="fu">lag</span>(CPIAUCSL, <span class="dv">12</span>)) <span class="sc">/</span> <span class="fu">lag</span>(CPIAUCSL, <span class="dv">12</span>),</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">UNRATE    =</span> UNRATE<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(inflation))</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df_3, </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> inflation, </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> UNRATE)) <span class="sc">+</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Inflation (YoY %)"</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Unemployment Rate (%)"</span>,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Scatterplot of Inflation and Unemployment"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="mod-3-3-correlation_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ lubridate 1.9.4     ✔ tibble    3.3.0
+✔ purrr     1.1.0     ✔ tidyr     1.3.1
+✔ readr     2.1.5     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter()          masks stats::filter()
+✖ xts::first()             masks dplyr::first()
+✖ kableExtra::group_rows() masks dplyr::group_rows()
+✖ dplyr::lag()             masks stats::lag()
+✖ xts::last()              masks dplyr::last()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_4 <span class="ot">&lt;-</span> df_3 <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarize</span>(<span class="at">mean_inf =</span> <span class="fu">mean</span>(inflation),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_unr =</span> <span class="fu">mean</span>(UNRATE),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cov_i_u  =</span> <span class="fu">cov</span>(inflation, UNRATE))</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df_4,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Mean Inflation'</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Mean Unemploymnet'</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Covariance Inflation and Unemployment'</span>),</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="lightable-classic caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Mean Inflation</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Mean Unemploymnet</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Covariance Inflation and Unemployment</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0.0400282</td>
-<td style="text-align: center;">0.0606632</td>
-<td style="text-align: center;">2.76e-05</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="mtcars-covariance" class="level2" data-number="18.7">
-<h2 data-number="18.7" class="anchored" data-anchor-id="mtcars-covariance"><span class="header-section-number">18.7</span> MTCARS Covariance</h2>
-<p>In our last example of covariance, we return to the <em>mtcars</em> dataset and the variables for the weight of each car (in thousands of pounds) and the miles per gallon of each car.</p>
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="interpreting-the-covariance" class="level2" data-number="18.8">
-<h2 data-number="18.8" class="anchored" data-anchor-id="interpreting-the-covariance"><span class="header-section-number">18.8</span> Interpreting the Covariance</h2>
-<p>Given that the sample covariance in the previous example is equal to approximately -5.12, what does this mean about the potential relationship between the two variables?</p>
-<p>If <span class="math inline">\(\sigma_{XY} &gt; 0\)</span> or <span class="math inline">\(s_{XY} &gt; 0\)</span>, this implies that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are positively linearly related, that is, as <span class="math inline">\(X\)</span> increases, <span class="math inline">\(Y\)</span> increases in a linear fashion.</p>
-<p>Likewise, If <span class="math inline">\(\sigma_{XY} &lt; 0\)</span> or <span class="math inline">\(s_{XY} &lt; 0\)</span>, this implies that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are negatively linearly related, that is, as <span class="math inline">\(X\)</span> increases, <span class="math inline">\(Y\)</span> declines in a linear fashion.</p>
-<p>If <span class="math inline">\(\sigma_{XY} \approx 0\)</span> or <span class="math inline">\(s_{XY} \approx 0\)</span>, this implies that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not linearly related, that is, an increase in <span class="math inline">\(X\)</span> does not appear to influence <span class="math inline">\(Y\)</span>.</p>
-<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(\sigma_{XY} = 0\)</span> and <span class="math inline">\(s_{XY} = 0\)</span>.</p>
-<p>However, we typically do not rely on covariance to measure the association between two variables.</p>
-</section>
-<section id="scaling-and-covariance" class="level2" data-number="18.9">
-<h2 data-number="18.9" class="anchored" data-anchor-id="scaling-and-covariance"><span class="header-section-number">18.9</span> Scaling and Covariance</h2>
-<p>The choice of units can alter the covariance measure. In other words, you can increase or decrease covariance between two variables by changing the units of measures of one or both variables.</p>
-<p>We can easily see this in the following example. We add two new variables, one that converts miles per gallon into feet per gallon <strong>mpg_ft</strong> and one that converts weight in pounds into weight in ounces <strong>wt_oz</strong>.</p>
-<p>The covariance is dependent upon how each variable is measured.</p>
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="correlation-coefficient" class="level2" data-number="18.10">
-<h2 data-number="18.10" class="anchored" data-anchor-id="correlation-coefficient"><span class="header-section-number">18.10</span> Correlation Coefficient</h2>
-<p>Given that the covariance measure is affected by the choice of units of measurement, we can use the <strong>correlation coefficient</strong> to examine the relationship between two random variables.</p>
-<p>The <strong>Pearson correlation coefficient</strong> is defined as the ratio of the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> to the product of the standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and is denoted as <span class="math inline">\(\rho_{XY}\)</span> in the population and <span class="math inline">\(r_{XY}\)</span> in the sample.</p>
-<p>In expectations, the Pearson correlation coefficient is equal to:</p>
-<p><span class="math display">\[\begin{equation}
-\rho_{XY} = \frac{E[(X - \mu_x)(Y - \mu_Y)]}{\sigma_X \sigma_Y}
-\end{equation}\]</span></p>
-<p>In the population, the Pearson correlation coefficient, <span class="math inline">\(\rho_{XY}\)</span>, is equal to:</p>
-<p><span class="math display">\[\begin{equation}
-\rho_{XY} = \frac{\sigma_{XY}}{\sigma_X \sigma_Y}
-\end{equation}\]</span></p>
-<p>In the sample, the Pearson correlation coefficient, <span class="math inline">\(r_{XY}\)</span>, is equal to:</p>
-<p><span class="math display">\[\begin{equation}
-r_{XY} = \frac{s_{XY}}{s_X s_Y}
-\end{equation}\]</span></p>
-<p><strong>The Pearson correlation coefficient is bounded between -1 and 1.</strong></p>
-<p>A negative sign implies a negative association between the two variables of interest, while a positive sign implies a positive association. The closer the correlation coefficient is to -1 or 1, the stronger the association between the two variables. If the correlation coefficient is equal to -1 or 1, the two variables are <strong>perfectly correlated</strong>. If the correlation coefficient is equal to 0, the two variables are <strong>uncorrelated</strong>.</p>
-<p>Returning to the previous example, we first manually calculate the sample covariance between car weight and miles per gallon and the sample standard deviations for these variables. We then calculate the sample correlation coefficient manually and compare it the results of the correlation function.</p>
-</section>
-<section id="correlation-example" class="level2" data-number="18.11">
-<h2 data-number="18.11" class="anchored" data-anchor-id="correlation-example"><span class="header-section-number">18.11</span> Correlation Example</h2>
-<p>Let’s explore the correlation between two variables, <span class="math inline">\(X\)</span>, and <span class="math inline">\(Y\)</span> in the following code.</p>
-<p>We return first to our previous example.</p>
-<ul>
-<li><p>We estimate the standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
-<li><p>We estimate the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
-<li><p>We manually estimate the correlation by dividing the covariance by the product of the standard deviations.</p></li>
-<li><p>We use the <strong>cor</strong> function to estimate the correlation between the two variables</p></li>
-</ul>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="fred-correlation" class="level2" data-number="18.12">
-<h2 data-number="18.12" class="anchored" data-anchor-id="fred-correlation"><span class="header-section-number">18.12</span> FRED Correlation</h2>
-<p>In the code chunk below, we again retrieve the headline unemployment rate and headline inflation series from FRED.</p>
-<p>This time, however, we create two new variables.</p>
-<ul>
-<li><p>Inflation_2 is equal to the inflation series times 1000</p></li>
-<li><p>Unemployment_2 is equal to the unemployment series time 100</p></li>
-</ul>
-<p>We then estimate the covariance between</p>
-<ul>
-<li><p>Inflation and unemployment</p></li>
-<li><p>Inflation_2 and unemployment</p></li>
-<li><p>Inflation and unemployment_2</p></li>
-</ul>
-<p>The results demonstrate that the covariance measure is dependent on the scale or units of measurement and that we can inflate (or deflate) the covariance measure by scaling one or both variables.</p>
-<p>We then estimate four correlation coefficients:</p>
-<ul>
-<li><p>Inflation and unemployment</p></li>
-<li><p>Inflation_2 and unemployment</p></li>
-<li><p>Inflation and unemployment_2</p></li>
-<li><p>Inflation_2 and unemployment_2</p></li>
-</ul>
-<p>The correlation coefficients are equal to each other. In other words, the correlation coefficient is <strong>invariant</strong> to the scale of the variables.</p>
-<div class="cell" data-warnings="false" data-result="hold">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create Tibble with Example Data</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>reactions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"reaction"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"None"</span>, <span class="st">"Mild"</span>, <span class="st">"Moderate"</span>, <span class="st">"Severe"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"cases"</span>    <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2420</span>, <span class="dv">7502</span>, <span class="dv">1149</span>, <span class="dv">32</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate relative frequencies</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Use scales function to convert relative frequencies from decimal to percent format</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>df_5 <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="fu">c</span>(<span class="st">'UNRATE'</span>, <span class="st">'CPIAUCSL'</span>),</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">get  =</span> <span class="st">'economic.data'</span>,</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">from =</span> <span class="st">'1969-01-01'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> symbol, <span class="at">values_from =</span> price) <span class="sc">%&gt;%</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inflation =</span> (CPIAUCSL <span class="sc">-</span> <span class="fu">lag</span>(CPIAUCSL, <span class="dv">12</span>)) <span class="sc">/</span> <span class="fu">lag</span>(CPIAUCSL, <span class="dv">12</span>),</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">unrate    =</span> UNRATE<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(inflation)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">unrate_2 =</span> unrate <span class="sc">*</span><span class="dv">100</span>,</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">inflation_2 =</span> inflation <span class="sc">*</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cov_i_u     =</span> <span class="fu">cov</span>(inflation, unrate),</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">cov_i2_u    =</span> <span class="fu">cov</span>(inflation_2, unrate),</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">cov_i_u2    =</span> <span class="fu">cov</span>(inflation, unrate_2),</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">cor_i_u     =</span> <span class="fu">cor</span>(inflation, unrate),</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">cor_i2_u    =</span> <span class="fu">cor</span>(inflation_2, unrate),</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">cor_i_u2    =</span> <span class="fu">cor</span>(inflation, unrate_2),</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">cor_i2_u2   =</span> <span class="fu">cor</span>(inflation_2, unrate_2))</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df_5,</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">'c'</span>,</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>,</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'COV(Inf, Unemp)'</span>, <span class="st">'COV(Inf2, Unemp)'</span>,</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'COV(Inf, Unemp2)'</span>, <span class="st">'COR(Inf,Unemp)'</span>,</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'COR(Inf2, Unemp)'</span>, <span class="st">'COR(Inf, Unemp2)'</span>,</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'COR(Inf2, Unemp2)'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>rel_freq <span class="ot">&lt;-</span> reactions <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">a =</span> <span class="fl">0.1</span>)(cases <span class="sc">/</span> <span class="fu">sum</span>(cases)))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>event_reaction <span class="ot">&lt;-</span> reactions <span class="sc">%&gt;%</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> cases <span class="sc">/</span> <span class="fu">sum</span>(cases)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(reaction <span class="sc">!=</span> <span class="st">"None"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cases =</span> <span class="fu">sum</span>(cases),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">rel_freq =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">a=</span><span class="fl">0.1</span>)(<span class="fu">sum</span>(<span class="fu">as.numeric</span>(rel_freq))))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(event_reaction,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"lc"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Cases in Event"</span>, <span class="st">"Relative Frequency"</span>),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Relative Frequency Table"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 15%">
-</colgroup>
+<caption>Relative Frequency Table</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;">COV(Inf, Unemp)</th>
-<th style="text-align: center;">COV(Inf2, Unemp)</th>
-<th style="text-align: center;">COV(Inf, Unemp2)</th>
-<th style="text-align: center;">COR(Inf,Unemp)</th>
-<th style="text-align: center;">COR(Inf2, Unemp)</th>
-<th style="text-align: center;">COR(Inf, Unemp2)</th>
-<th style="text-align: center;">COR(Inf2, Unemp2)</th>
+<th style="text-align: left;">Cases in Event</th>
+<th style="text-align: center;">Relative Frequency</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0.028</td>
-<td style="text-align: center;">0.003</td>
-<td style="text-align: center;">0.056</td>
-<td style="text-align: center;">0.056</td>
-<td style="text-align: center;">0.056</td>
-<td style="text-align: center;">0.056</td>
+<td style="text-align: left;">8,683</td>
+<td style="text-align: center;">78.2%</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </section>
-<section id="mtcars-correlation" class="level2" data-number="18.13">
-<h2 data-number="18.13" class="anchored" data-anchor-id="mtcars-correlation"><span class="header-section-number">18.13</span> MTCARS Correlation</h2>
-<p>We return to the <em>mtcars</em> dataset and the variables for the weight of each car (in thousands of pounds) and the miles per gallon of each car.</p>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<section id="union" class="level2" data-number="21.6">
+<h2 data-number="21.6" class="anchored" data-anchor-id="union"><span class="header-section-number">21.6</span> Union</h2>
+<p>Assume that we have two events, <strong>A</strong> and <strong>B</strong>, where the two events are part of the sample space <span class="math inline">\(s\)</span> of a random experiment.</p>
+<p>If we combine the two events, that is, we create the<strong>union</strong> of the two events.</p>
+<p><strong>The union of A and B is an event containing all the sample outcomes of A and B and is:</strong></p>
+<p><span class="math display">\[
+A \cup B
+\]</span></p>
+<p>Let’s return to the 10-sided die experiment.</p>
+<p>Assume that event A consists of the outcomes <span class="math inline">\(A \in \{1, 2, 3 \}\)</span> and B is an event consisting of the outcomes <span class="math inline">\(B \in \{9. 10 \}\)</span>.</p>
+<p>The union of A and B, <span class="math inline">\(A \cup B\)</span> is an event consisting of the outcomes <span class="math inline">\(A \cup B \in \{1, 2, 3, 9, 10 \}\)</span>.</p>
+<p>Consider the same experiment where <span class="math inline">\(C \in \{4, 6, 8 \}\)</span> and <span class="math inline">\(D \in \{4, 5, 8, 10 \}\)</span>.</p>
+<p>The union of the two events would be <span class="math inline">\(C \cup D \in \{4, 5, 6, 8, 10 \}\)</span>.</p>
 </section>
-<section id="correlation-and-causation" class="level2" data-number="18.14">
-<h2 data-number="18.14" class="anchored" data-anchor-id="correlation-and-causation"><span class="header-section-number">18.14</span> Correlation and Causation</h2>
-<p>To this point, we have examined <strong>measures of association</strong> rather than <strong>measures of causation</strong>.</p>
-<p>We must be careful to understand that while association may imply causation, association, by itself, is not sufficient to conclude a causal relationship exists.</p>
-<p><strong>Association is necessary, but not sufficient, for causation</strong></p>
-<p>Correlation between two variables may be the product of one or more confounding variables. Observational studies may fall victim to confounding variables, leading one to conclude causation exists. For example, assume that 100 patients were sick with a disease with 5% mortality after two weeks. All the patients were given an experimental drug and at the end of two weeks, only 1 patient has died. Obviously the drug has reduced mortality, or has it? What if 10,000 patients were treated and only 1% died?</p>
-<p>While the drug is associated with decreased mortality, we have not controlled for other potential confounding variables. The general health of the patients may have been different than the general population. The patients may have received other drugs that are known to reduce mortality. The age of the patients may be lower (higher) than the general population. This is why scientists use double-blind, randomized, placebo-controlled trials to examine the efficacy of new drugs. These trials reduce (but do not eliminate) the possibility of confounding so investigators can examine whether the outcomes of the control (receive placebo) and treatment (receive drug) groups are statistically different.</p>
-<p>A strong association between two variables is <strong>suggestive</strong> of a causal relationship but we must be cautious. How were the data gathered? Was there a mechanism to reduce the presence of confounding variables? Are the data experimental, that is, random assignment into control and treatment groups? As we move from observational studies to experimental studies, the ability to suggest that association implies causation increases, but, in the end, we must find other methods to explore whether two (or more) variables are causally related.</p>
+<section id="intersection" class="level2" data-number="21.7">
+<h2 data-number="21.7" class="anchored" data-anchor-id="intersection"><span class="header-section-number">21.7</span> Intersection</h2>
+<p>Assume that we have two events, <strong>C</strong> and <strong>D</strong>, where the two events are part of the sample space <span class="math inline">\(s\)</span> of a random experiment.</p>
+<p>If we select only those outcomes that occur in each event, that is, we create the <strong>intersection</strong> of the two events.</p>
+<p><strong>The intersection of C and D is an event containing the sample outcomes belonging to both C and D and is denoted as:</strong></p>
+<p><span class="math display">\[
+C \cap D
+\]</span></p>
+<p>Recall from the previous discussion of the union of two events that <span class="math inline">\(C \in \{4, 6, 8 \}\)</span> and <span class="math inline">\(D \in \{4, 5, 8, 10 \}\)</span>. The intersection of C and D is <span class="math inline">\(C \cap D \in \{4, 8 \}\)</span>.</p>
 </section>
-<section id="module-summary" class="level2" data-number="18.15">
-<h2 data-number="18.15" class="anchored" data-anchor-id="module-summary"><span class="header-section-number">18.15</span> Module Summary</h2>
-<p>We use descriptive statistics to develop an understanding of the properties of the data.</p>
-<ul>
-<li><p>We have discussed two broad properties of the data:</p>
-<ul>
-<li><p>The center of the data</p></li>
-<li><p>The spread of the data</p></li>
-</ul></li>
-<li><p>We developed two measures of association (co-movement)</p>
-<ul>
-<li><p>Covariance</p></li>
-<li><p>Correlation</p></li>
-</ul></li>
-<li><p>In the coming modules, we will discuss randomness, the concept of probability, and probability distributions.</p></li>
-</ul>
+<section id="mutually-exclusive-events" class="level2" data-number="21.8">
+<h2 data-number="21.8" class="anchored" data-anchor-id="mutually-exclusive-events"><span class="header-section-number">21.8</span> Mutually Exclusive Events</h2>
+<p>The <strong>addition law</strong> provides a method of computing the probability of the union of two events. First, note that the probability of the union of two events is not equal to the sum of the probabilities of each event unless the two events are <strong>mutually exclusive</strong>, that is, there are no outcomes in common between the two events.</p>
+<p>In other words, if <span class="math inline">\(A \cap B \in 0\)</span> then <span class="math inline">\(P(A \cup B) = P(A) + P(B)\)</span>.</p>
+<p>Intuitively, if two elements contain no elements in common, then the probability of the two events occurring is equal to the sum of the probability of two events.</p>
+<p>Assume a 52-card deck of cars. Let <strong>A</strong> consist of all the Kings in the deck while <strong>B</strong> consists of all the Queens.</p>
+<p><span class="math display">\[A \in \{K_c, K_d, K_h, K_s \}\]</span></p>
+<p><span class="math display">\[B \in \{Q_c, Q_d, Q_h, Q_d \}\]</span></p>
+<p>There are no elements in common between the two events, that is,</p>
+<p><span class="math display">\[A \cap B = 0\]</span></p>
+<p>Given that A and B are mutually exclusive</p>
+<p><span class="math display">\[$P(A) = 4/52 = 0.077\]</span></p>
+<p><span class="math display">\[P(B) = 4/52 = 0.077\]</span></p>
+<p><span class="math display">\[P(A \cup B) = P(A) + P(B) = 0.077 + 0.077 = 0.154\]</span></p>
+</section>
+<section id="addition-rule" class="level2" data-number="21.9">
+<h2 data-number="21.9" class="anchored" data-anchor-id="addition-rule"><span class="header-section-number">21.9</span> Addition Rule</h2>
+<p>If two events are not mutually exclusive, then the probability of the union of the two events is equal to:</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]</span></p>
+<p>Since A and B share outcomes in common, then the probability of either event occurring is equal to the probability of each event occurring minus the probability that of A and B occurring. The subtraction of the intersection of the event events avoids double-counting.</p>
+<p>Returning to the 52-card deck example, what is the probability that a card is either a King or a Heart? There are 4 Kings in a deck and 13 Hearts in a deck. 1 of the 13 hearts in the deck is a King.</p>
+<p><span class="math display">\[P(K)        = 4/52\]</span></p>
+<p><span class="math display">\[P(H)        = 13/52\]</span></p>
+<p><span class="math display">\[P(K \cap H) = 1/52\]</span></p>
+<p><span class="math display">\[P(K \cup H) = P(K) + P(H) - P(K \cap H)\]</span></p>
+<p><span class="math display">\[P(K \cup H) = 4/52 + 13/52 - 1/52 = 16/52 = 4/13 = 0.308\]</span></p>
+<p>The probability of drawing a King or a Heart from a 52-card deck is 0.308 or 30.8%.</p>
 
 
 </section>
@@ -3023,14 +2835,11 @@ r_{XY} = \frac{s_{XY}}{s_X s_Y}
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-3-2-normal.html" class="pagination-link" aria-label="Chebyshev's Theorem">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></span>
+      <a href="./mod-4-1-probability.html" class="pagination-link" aria-label="Introduction to Probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Probability</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-4-0-overview.html" class="pagination-link" aria-label="Module 4 Overview">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 4 Overview</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

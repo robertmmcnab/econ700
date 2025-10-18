@@ -36,6 +36,7 @@ book:
       chapters: 
         - mod-4-0-overview.qmd
         - mod-4-1-probability.qmd
+        - mod-4-2-rules.qmd
     - part: "Discrete Probability"
     - part: "Continuous Probability"
     - part: "Sampling Distributions"
