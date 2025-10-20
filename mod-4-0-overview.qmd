@@ -57,6 +57,7 @@ By the end of this module, you should be able to:
 
 -   [4.1 – Introduction to Probability](mod-4-1-probability.qmd)
 -   [4.2 – Probability Rules](mod-4-2-rules.qmd)
+-   [4.3 – Conditional Probability](mod-4-3-conditional.qmd)
 
 ------------------------------------------------------------------------
 

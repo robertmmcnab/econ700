@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -404,7 +369,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\nlibrary(dplyr)\nlibrary(tidyverse)\n\n#Create Tibble with Example Data\n\nreactions <- tibble(\"reaction\" = c(\"None\", \"Mild\", \"Moderate\", \"Severe\"),\n                    \"cases\"    = c(2420, 7502, 1149, 32))\n\n#Calculate relative frequencies\n#Use scales function to convert relative frequencies from decimal to percent format\n\nrel_freq <- reactions %>%\n  mutate(rel_freq = scales::label_percent(a = 0.1)(cases / sum(cases)))\n\n#Use kable function to output data frame to formatted table\n#Align - left or center alignment of columsn\n#Col.names - use these column names instead of data frame names\n#format.args - use a comma for large numbers, no scentific noation\n#Caption - add a caption to the table\n\nkable(rel_freq,\n      align       = \"lcc\",\n      col.names   = c(\"Drug Reaction\", \"Number of Cases\", \"Relative Frequency\"),\n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Relative Frequency Table\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\n#Create Tibble with Example Data\n\nreactions <- tibble(\"reaction\" = c(\"None\", \n                                   \"Mild\", \n                                   \"Moderate\", \n                                   \"Severe\"),\n                    \"cases\"    = c(2420, \n                                   7502, \n                                   1149, \n                                   32))\n\n#Calculate relative frequencies\n#Use scales function to convert relative frequencies from decimal to percent format\n\nrel_freq <- reactions %>%\n  mutate(rel_freq = scales::label_percent(a = 0.1)(cases / sum(cases)))\n\n#Use kable function to output data frame to formatted table\n#Align - left or center alignment of columns\n#Col.names - use these column names instead of data frame names\n#format.args - use a comma for large numbers, no scientific notation\n#Caption - add a caption to the table\n\nkable(rel_freq,\n      align       = \"lcc\",\n      col.names   = c(\"Drug Reaction\", \"Number of Cases\", \"Relative Frequency\"),\n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Relative Frequency Table\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\n#Create Tibble with Example Data\n\nreactions <- tibble(\"reaction\" = c(\"None\", \n                                   \"Mild\", \n                                   \"Moderate\", \n                                   \"Severe\"),\n                    \"cases\"    = c(2420, \n                                   7502, \n                                   1149, \n                                   32))\n\n#Calculate relative frequencies\n#Use scales function to convert relative frequencies from decimal to percent format\n\nrel_freq <- reactions %>%\n  mutate(rel_freq = scales::label_percent(a = 0.1)(cases / sum(cases)))\n\nevent_reaction <- reactions %>%\n  mutate(rel_freq = cases / sum(cases)) %>%\n  filter(reaction != \"None\") %>%\n  summarize(cases = sum(cases),\n            rel_freq = scales::label_percent(a=0.1)(sum(as.numeric(rel_freq))))\n\nkable(event_reaction,\n      align       = \"lc\",\n      col.names   = c(\"Cases in Event\", \"Relative Frequency\"),\n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Relative Frequency Table\")","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -2310,65 +2275,8 @@ P(Reaction_i) = \frac{Cases_i}{sum_{i=1}^{N} Cases_i}
 <li><p>The probability of all the outcomes not in <span class="math inline">\(E_i\)</span> is equal to <span class="math inline">\(P(E_i)^C = 1 - P(E_i) = 1 - \sum_{i=1}^n o_i\)</span>.</p></li>
 </ol>
 <p>In the code below, we summarize the number of cases that had any reaction and calculate the relative frequency of the event. The probability of having any type of reaction to the administration of the drug is 78.2% and the complement, which is having no reaction to the administration of the drug, is <span class="math inline">\(1 - 0.782 = 0.118\)</span> or 11.8%.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ lubridate 1.9.4     ✔ tibble    3.3.0
-✔ purrr     1.1.0     ✔ tidyr     1.3.1
-✔ readr     2.1.5     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter()          masks stats::filter()
-✖ xts::first()             masks dplyr::first()
-✖ kableExtra::group_rows() masks dplyr::group_rows()
-✖ dplyr::lag()             masks stats::lag()
-✖ xts::last()              masks dplyr::last()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create Tibble with Example Data</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>reactions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"reaction"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"None"</span>, <span class="st">"Mild"</span>, <span class="st">"Moderate"</span>, <span class="st">"Severe"</span>),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"cases"</span>    <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2420</span>, <span class="dv">7502</span>, <span class="dv">1149</span>, <span class="dv">32</span>))</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate relative frequencies</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Use scales function to convert relative frequencies from decimal to percent format</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>rel_freq <span class="ot">&lt;-</span> reactions <span class="sc">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">a =</span> <span class="fl">0.1</span>)(cases <span class="sc">/</span> <span class="fu">sum</span>(cases)))</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>event_reaction <span class="ot">&lt;-</span> reactions <span class="sc">%&gt;%</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> cases <span class="sc">/</span> <span class="fu">sum</span>(cases)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(reaction <span class="sc">!=</span> <span class="st">"None"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cases =</span> <span class="fu">sum</span>(cases),</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">rel_freq =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">a=</span><span class="fl">0.1</span>)(<span class="fu">sum</span>(<span class="fu">as.numeric</span>(rel_freq))))</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(event_reaction,</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"lc"</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Cases in Event"</span>, <span class="st">"Relative Frequency"</span>),</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Relative Frequency Table"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Relative Frequency Table</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Cases in Event</th>
-<th style="text-align: center;">Relative Frequency</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">8,683</td>
-<td style="text-align: center;">78.2%</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="union" class="level2" data-number="21.6">
 <h2 data-number="21.6" class="anchored" data-anchor-id="union"><span class="header-section-number">21.6</span> Union</h2>

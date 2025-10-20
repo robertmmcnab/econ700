@@ -80,13 +80,16 @@ Based upon these relative frequencies, we would assign a probability of 21.8% to
 
 rm(list = ls())
 
-library(dplyr)
-library(tidyverse)
-
 #Create Tibble with Example Data
 
-reactions <- tibble("reaction" = c("None", "Mild", "Moderate", "Severe"),
-                    "cases"    = c(2420, 7502, 1149, 32))
+reactions <- tibble("reaction" = c("None", 
+                                   "Mild", 
+                                   "Moderate", 
+                                   "Severe"),
+                    "cases"    = c(2420, 
+                                   7502, 
+                                   1149, 
+                                   32))
 
 #Calculate relative frequencies
 #Use scales function to convert relative frequencies from decimal to percent format
@@ -95,9 +98,9 @@ rel_freq <- reactions %>%
   mutate(rel_freq = scales::label_percent(a = 0.1)(cases / sum(cases)))
 
 #Use kable function to output data frame to formatted table
-#Align - left or center alignment of columsn
+#Align - left or center alignment of columns
 #Col.names - use these column names instead of data frame names
-#format.args - use a comma for large numbers, no scentific noation
+#format.args - use a comma for large numbers, no scientific notation
 #Caption - add a caption to the table
 
 kable(rel_freq,
@@ -136,17 +139,20 @@ We can more formally state this as:
 
 In the code below, we summarize the number of cases that had any reaction and calculate the relative frequency of the event. The probability of having any type of reaction to the administration of the drug is 78.2% and the complement, which is having no reaction to the administration of the drug, is $1 - 0.782 = 0.118$ or 11.8%.
 
-```{r}
+```{webr-r}
 
 rm(list = ls())
 
-library(dplyr)
-library(tidyverse)
-
 #Create Tibble with Example Data
 
-reactions <- tibble("reaction" = c("None", "Mild", "Moderate", "Severe"),
-                    "cases"    = c(2420, 7502, 1149, 32))
+reactions <- tibble("reaction" = c("None", 
+                                   "Mild", 
+                                   "Moderate", 
+                                   "Severe"),
+                    "cases"    = c(2420, 
+                                   7502, 
+                                   1149, 
+                                   32))
 
 #Calculate relative frequencies
 #Use scales function to convert relative frequencies from decimal to percent format
