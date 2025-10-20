@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -69,6 +104,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   
@@ -369,7 +408,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\nthrows = 10000\n\nthrow_list <- list()\n\nrolls <- tibble(throw = sample(1:6, size = throws, replace = TRUE)) %>%\n  group_by(throw) %>%\n  summarize(freq     = n(),\n            rel_freq = n()/throws)\n\nggplot(data = rolls,\n        aes(x = throw,\n            y = rel_freq,\n            fill = throw)) +\ngeom_bar(stat = 'identity') +\ngeom_text(data  = rolls,\n          aes(x = throw,\n              y = rel_freq,\n              label = scales::label_number(a=0.01)(rel_freq)),\n          nudge_y   = 0.01) +\ntheme_minimal() +\ntheme(legend.position = \" \") +\nlabs(title    = \"Throws of a Six Sided Die\",\n     x        = \" \",\n     y        = \"Relative Frequency\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\nthrows = 10000\n\nthrow_list <- list()\n\nrolls <- tibble(throw = sample(1:6, size = throws, replace = TRUE)) %>%\n  group_by(throw) %>%\n  summarize(freq     = n(),\n            rel_freq = n()/throws)\n\nkable(rolls,\n      align       = \"lcc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Probability Distribution for Number\\n\n                     Obtained on One Roll of Six Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\"))","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\nlibrary(janitor)\n\nthrows = 10000\n\nthrow_list <- list()\n\nrolls <- tibble(throw = sample(1:6, size = throws, replace = TRUE)) %>%\n  group_by(throw) %>%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %>%\n  mutate(xfx = throw * rel_freq) %>%\n  adorn_totals(where = \"row\", name = \"Sums\")\n\n\nkable(rolls,\n      align       = \"lcccc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x * f(x)\")) ","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\nthrows = 10000\n\nrolls <- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %>%\n  group_by(throw) %>%\n  summarize(freq     = n(),\n            rel_freq = n()/throws)\n\nggplot(data = rolls,\n        aes(x = throw,\n            y = rel_freq,\n            fill = throw)) +\ngeom_bar(stat = 'identity') +\ngeom_text(data  = rolls,\n          aes(x = throw,\n              y = rel_freq,\n              label = scales::label_number(a=0.01)(rel_freq)),\n          nudge_y   = 0.01) +\ntheme_minimal() +\ntheme(legend.position = \" \") +\nlabs(title    = \"Throws of a Six Sided Die\",\n     x        = \" \",\n     y        = \"Relative Frequency\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\nthrows = 10000\n\nrolls <- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %>%\n  group_by(throw) %>%\n  summarize(freq     = n(),\n            rel_freq = n()/throws)\n\nkable(rolls,\n      align       = \"lcc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Probability Distribution for Number\\n\n                     Obtained on One Roll of Six Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\"))","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1929,6 +1968,9 @@ window.Quarto = {
   <li><a href="#frequency-tables" id="toc-frequency-tables" class="nav-link" data-scroll-target="#frequency-tables"><span class="header-section-number">24.4</span> Frequency Tables</a></li>
   <li><a href="#discrete-probability-distribution" id="toc-discrete-probability-distribution" class="nav-link" data-scroll-target="#discrete-probability-distribution"><span class="header-section-number">24.5</span> Discrete Probability Distribution</a></li>
   <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">24.6</span> Expected Value</a></li>
+  <li><a href="#expected-value-example" id="toc-expected-value-example" class="nav-link" data-scroll-target="#expected-value-example"><span class="header-section-number">24.7</span> Expected Value Example</a></li>
+  <li><a href="#expected-value-example-1" id="toc-expected-value-example-1" class="nav-link" data-scroll-target="#expected-value-example-1"><span class="header-section-number">24.8</span> Expected Value Example</a></li>
+  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">24.9</span> Variance</a></li>
   </ul>
 </nav>
     </div>
@@ -2303,13 +2345,224 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="expected-value" class="level2" data-number="24.6">
 <h2 data-number="24.6" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">24.6</span> Expected Value</h2>
-<p>The <strong>expected value</strong>, or mean, of a random variable is a measure of the central location of the random variable.</p>
+<p>The <strong>expected value</strong> of a random variable is a measure of the central tendency of the random variable.</p>
 <p>The expected value of <span class="math inline">\(x\)</span> is defined as</p>
 <p><span class="math display">\[E(x) = \mu = \sum x \, f(x)\]</span></p>
-<p>For the six-side die experiment, the expected value will approach 3.5 as the number of rolls increases.</p>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>]]</p>
+<p>The expected value of a random variable is essentially a <strong>weighted average</strong>.</p>
+<p>Each value of the random variable, <span class="math inline">\(x\)</span>, is multiplied by the probability that the random variable takes that value or <span class="math inline">\(p(x_i)\)</span>. The <span class="math inline">\(x_i \times p(x_i)\)</span> are then summed over all possible values.</p>
+<p>The expected value of a random variable can also be interpreted as the <strong>long-run value</strong> of the random variable. If we repeat the random experiment ‘many’ times and take the average of all the outcomes, we would obtain the expected value of the random variable.</p>
+<p>The expected value, as it is the mean of the random variable, is also the <strong>measure of central tendency</strong> of the random variable and, as such, represents the <strong>center of mass</strong> of the probability mass function.</p>
+</section>
+<section id="expected-value-example" class="level2" data-number="24.7">
+<h2 data-number="24.7" class="anchored" data-anchor-id="expected-value-example"><span class="header-section-number">24.7</span> Expected Value Example</h2>
+<p>Assume that you have a game where you can win various prizes with the following probabilities:</p>
+<ul>
+<li><p>$0 with <span class="math inline">\(P(X = 0) = 0.1\)</span></p></li>
+<li><p>$1 with <span class="math inline">\(P(X = 1) = 0.15\)</span></p></li>
+<li><p>$2 with <span class="math inline">\(P(X = 2) = 0.4\)</span></p></li>
+<li><p>$3 with <span class="math inline">\(P(X = 3) = 0.25\)</span></p></li>
+<li><p>$4 with <span class="math inline">\(P(X = 4) = 0.1\)</span></p></li>
+</ul>
+<p>What is the expected value of the game? In other words, if the game were played ‘many’ times, what would be the average expected gross winnings?</p>
+<p><span class="math display">\[
+E(X) = \sum_{i=1}^{5} x_i f(x_i)
+\]</span></p>
+<p><span class="math display">\[
+E(X) = (0 \times 0.1) + (1 \times 0.15) + (2 \times 0.4) + (3 \times 0.25) + (4 \times 0.1)
+\]</span></p>
+<p><span class="math display">\[
+E(X) = 2.1
+\]</span></p>
+<p>The expected value of the game is $2.1. On average, over repeated trials, one would expect to win $2.1 from this game. If the game cost less than $2.1 per play, it would make sense to play the game.</p>
+</section>
+<section id="expected-value-example-1" class="level2" data-number="24.8">
+<h2 data-number="24.8" class="anchored" data-anchor-id="expected-value-example-1"><span class="header-section-number">24.8</span> Expected Value Example</h2>
+<p>Let’s return to our experiment where we simulate rolling a fair six-sided die.</p>
+<p>We increase the number of simulated rolls in this experiment to 1,000,000.</p>
+<p>We estimate the expected value as:</p>
+<p><span class="math display">\[
+EV(X) = \sum_{i=1}^6 x_i f(x_i)
+\]</span></p>
+<p>We produce the table of frequencies and relative frequencies as well as a histogram.</p>
+<p>The expected value of our experiment mirrors that obtained manually.</p>
+<ul>
+<li><p>1 with <span class="math inline">\(P(X = 1) = 0.167\)</span></p></li>
+<li><p>2 with <span class="math inline">\(P(X = 2) = 0.167\)</span></p></li>
+<li><p>3 with <span class="math inline">\(P(X = 3) = 0.167\)</span></p></li>
+<li><p>4 with <span class="math inline">\(P(X = 4) = 0.167\)</span></p></li>
+<li><p>5 with <span class="math inline">\(P(X = 5) = 0.167\)</span></p></li>
+<li><p>6 with <span class="math inline">\(P(X = 6) = 0.167\)</span></p></li>
+</ul>
+<p><span class="math display">\[
+E(X) = (1 \times 0.167) + (2 \times 0.167) + (3 \times 0.167) \\+ (4 \times 0.167) + (5 \times 0.167) + (6 \times 0.167)
+\]</span></p>
+<p><span class="math display">\[
+EV = 3.5
+\]</span></p>
+<div class="cell" data-warnings="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>throws <span class="ot">=</span> <span class="dv">1000000</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>rolls <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">throw =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                               <span class="at">size =</span> throws, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                               <span class="at">replace =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(throw) <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">freq     =</span> <span class="fu">n</span>(),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">rel_freq =</span> <span class="fu">n</span>()<span class="sc">/</span>throws) <span class="sc">%&gt;%</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">xfx =</span> throw <span class="sc">*</span> rel_freq) </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rolls <span class="sc">%&gt;%</span>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="st">"row"</span>, <span class="at">name =</span> <span class="st">"Sums"</span>),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"lcccc"</span>, </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits      =</span> <span class="dv">3</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                         <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Rolls of Six-Sided Die"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Number (x)"</span>, <span class="st">"Frequency of X"</span>, </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Probability of X - f(x)"</span>, <span class="st">"x * f(x)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> rolls,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> throw,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> rel_freq,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> throw)) <span class="sc">+</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_text</span>(<span class="at">data  =</span> rolls,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>          <span class="fu">aes</span>(<span class="at">x =</span> throw,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> rel_freq,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">a=</span><span class="fl">0.01</span>)(rel_freq)),</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>          <span class="at">nudge_y   =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">" "</span>) <span class="sc">+</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title    =</span> <span class="st">"Throws of a Six Sided Die"</span>,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>     <span class="at">x        =</span> <span class="st">" "</span>,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>     <span class="at">y        =</span> <span class="st">"Relative Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-5-1-discrete_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small">
+<caption>Rolls of Six-Sided Die</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Number (x)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Frequency of X</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Probability of X - f(x)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">x * f(x)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">166,497</td>
+<td style="text-align: center;">0.166</td>
+<td style="text-align: center;">0.166</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">166,504</td>
+<td style="text-align: center;">0.167</td>
+<td style="text-align: center;">0.333</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: center;">165,908</td>
+<td style="text-align: center;">0.166</td>
+<td style="text-align: center;">0.498</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: center;">167,362</td>
+<td style="text-align: center;">0.167</td>
+<td style="text-align: center;">0.669</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: center;">167,048</td>
+<td style="text-align: center;">0.167</td>
+<td style="text-align: center;">0.835</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: center;">166,681</td>
+<td style="text-align: center;">0.167</td>
+<td style="text-align: center;">1.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: center;">1,000,000</td>
+<td style="text-align: center;">1.000</td>
+<td style="text-align: center;">3.502</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="variance" class="level2" data-number="24.9">
+<h2 data-number="24.9" class="anchored" data-anchor-id="variance"><span class="header-section-number">24.9</span> Variance</h2>
+<p>The expected value, <span class="math inline">\(\mu\)</span>, provides a measure of central tendency of a random variable.</p>
+<p>The <strong>variance</strong> is a measure of the dispersion of the values of the random variable.</p>
+<p>The variance of a discrete random variable is defined as:</p>
+<p><span class="math display">\[var(x) = \sigma^2 = \sum (x - \mu)^2 \, f(x)\]</span></p>
+<p>One can think about the variance as the weighted average of the squared mean deviations, where the weights are the probabilities of the values of <span class="math inline">\(x\)</span>.</p>
+<p>The standard deviation of a discrete random variable is defined as:</p>
+<p><span class="math display">\[sd(x) = \sqrt{\sigma^2} = \sqrt{\sum (x - \mu)^2 \, f(x)}\]</span></p>
+<p>The standard deviation is preferred in describing the dispersion of a random variable as it is in the same units of the random variable as opposed to the variance which is measured in squared units and is more difficult to interpret.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>throws <span class="ot">=</span> <span class="dv">1000000</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>rolls <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">throw =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                               <span class="at">size =</span> throws, </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                               <span class="at">replace =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(throw) <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">freq     =</span> <span class="fu">n</span>(),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">rel_freq =</span> <span class="fu">n</span>()<span class="sc">/</span>throws) <span class="sc">%&gt;%</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">xfx =</span> throw <span class="sc">*</span> rel_freq,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">deviations    =</span> <span class="fu">as.numeric</span>(throw) <span class="sc">-</span> <span class="fu">sum</span>(xfx),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">sq_deviations =</span> deviations<span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">sqdev_fx      =</span> sq_deviations <span class="sc">*</span> rel_freq) <span class="sc">%&gt;%</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="st">"row"</span>, <span class="at">name =</span> <span class="st">"Sums"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rolls,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"lcccccc"</span>, </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                         <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Rolls of Six-Sided Die"</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Number (x)"</span>, <span class="st">"Frequency of X"</span>, </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Probability of X - f(x)"</span>, <span class="st">"x f(x)"</span>,</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mean Deviations"</span>, <span class="st">"Squared Deviations"</span>,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Squared Deviations * f(x)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">10</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> rolls <span class="sc">%&gt;%</span> </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>       <span class="fu">filter</span>(throw <span class="sc">!=</span> <span class="st">"Sums"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>       <span class="fu">summarize</span>(<span class="at">var_x =</span> <span class="fu">sum</span>(sqdev_fx),</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sd_x  =</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(sqdev_fx)))</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(vars,</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Variance (X)"</span>, <span class="st">"Standard Deviation (X)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
 </section>
