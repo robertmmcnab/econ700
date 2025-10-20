@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Conditional Probability</title>
+<title>22&nbsp; Conditional Probability – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,21 +58,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="mod-4-3-conditional_files/libs/clipboard/clipboard.min.js"></script>
-<script src="mod-4-3-conditional_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="mod-4-3-conditional_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="mod-4-3-conditional_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="mod-4-3-conditional_files/libs/quarto-html/popper.min.js"></script>
-<script src="mod-4-3-conditional_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="mod-4-3-conditional_files/libs/quarto-html/anchor.min.js"></script>
-<link href="mod-4-3-conditional_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="mod-4-3-conditional_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="mod-4-3-conditional_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="mod-4-3-conditional_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="mod-4-3-conditional_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="mod-4-3-conditional_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./mod-4-2-rules.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 
-<link href="mod-4-3-conditional_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -107,33 +141,275 @@ window.Quarto = {
 
 </head>
 
-<body class="quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-4-0-overview.html">Introduction to Probability</a></li><li class="breadcrumb-item"><a href="./mod-4-3-conditional.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Conditional Probability</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">ECON 700</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">ECON 700</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mcnab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Meet Your Instructor</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Course Objectives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction to R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-0-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-1-intro-to-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Economic Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-2-intro-to-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-3-intro-to-r-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-4-intro-to-r-dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data frames in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-1-5-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using Quarto</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Descriptive Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-2-0-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 2 Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-2-1-frequency.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Frequency Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-2-2-central.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-2-3-variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-2-4-zscores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Z-Scores</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Covariance and Correlation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-3-0-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module 3 Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-3-1-skewness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Skewness</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-3-2-normal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-3-3-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction to Probability</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-4-0-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 4 Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-4-1-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-4-2-rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Probability Rules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-4-3-conditional.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Conditional Probability</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Discrete Probability</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Continuous Probability</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Sampling Distributions</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Inference</span></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability">Conditional Probability</a></li>
-  <li><a href="#conditional-probability-example" id="toc-conditional-probability-example" class="nav-link" data-scroll-target="#conditional-probability-example">Conditional Probability Example</a></li>
-  <li><a href="#multiplication-law" id="toc-multiplication-law" class="nav-link" data-scroll-target="#multiplication-law">Multiplication Law</a></li>
-  <li><a href="#conditional-probability-example-1" id="toc-conditional-probability-example-1" class="nav-link" data-scroll-target="#conditional-probability-example-1">Conditional Probability Example</a></li>
-  <li><a href="#independent-events" id="toc-independent-events" class="nav-link" data-scroll-target="#independent-events">Independent Events</a></li>
-  <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ Theorem</a></li>
-  <li><a href="#bayes-theorem-example" id="toc-bayes-theorem-example" class="nav-link" data-scroll-target="#bayes-theorem-example">Bayes’ Theorem Example</a></li>
-  <li><a href="#bayes-theorem-example-1" id="toc-bayes-theorem-example-1" class="nav-link" data-scroll-target="#bayes-theorem-example-1">Bayes’ Theorem Example</a></li>
-  <li><a href="#smallpox-vs-chickenpox" id="toc-smallpox-vs-chickenpox" class="nav-link" data-scroll-target="#smallpox-vs-chickenpox">Smallpox vs Chickenpox</a></li>
-  <li><a href="#cancer-example" id="toc-cancer-example" class="nav-link" data-scroll-target="#cancer-example">Cancer Example</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">22.1</span> Introduction</a></li>
+  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability"><span class="header-section-number">22.2</span> Conditional Probability</a></li>
+  <li><a href="#conditional-probability-example" id="toc-conditional-probability-example" class="nav-link" data-scroll-target="#conditional-probability-example"><span class="header-section-number">22.3</span> Conditional Probability Example</a></li>
+  <li><a href="#multiplication-law" id="toc-multiplication-law" class="nav-link" data-scroll-target="#multiplication-law"><span class="header-section-number">22.4</span> Multiplication Law</a></li>
+  <li><a href="#conditional-probability-example-1" id="toc-conditional-probability-example-1" class="nav-link" data-scroll-target="#conditional-probability-example-1"><span class="header-section-number">22.5</span> Conditional Probability Example</a></li>
+  <li><a href="#independent-events" id="toc-independent-events" class="nav-link" data-scroll-target="#independent-events"><span class="header-section-number">22.6</span> Independent Events</a></li>
+  <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem"><span class="header-section-number">22.7</span> Bayes’ Theorem</a></li>
+  <li><a href="#bayes-theorem-example" id="toc-bayes-theorem-example" class="nav-link" data-scroll-target="#bayes-theorem-example"><span class="header-section-number">22.8</span> Bayes’ Theorem Example</a></li>
+  <li><a href="#bayes-theorem-example-1" id="toc-bayes-theorem-example-1" class="nav-link" data-scroll-target="#bayes-theorem-example-1"><span class="header-section-number">22.9</span> Bayes’ Theorem Example</a></li>
+  <li><a href="#smallpox-vs-chickenpox" id="toc-smallpox-vs-chickenpox" class="nav-link" data-scroll-target="#smallpox-vs-chickenpox"><span class="header-section-number">22.10</span> Smallpox vs Chickenpox</a></li>
+  <li><a href="#cancer-example" id="toc-cancer-example" class="nav-link" data-scroll-target="#cancer-example"><span class="header-section-number">22.11</span> Cancer Example</a></li>
   </ul>
 </nav>
-</div>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-4-0-overview.html">Introduction to Probability</a></li><li class="breadcrumb-item"><a href="./mod-4-3-conditional.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Conditional Probability</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Conditional Probability</h1>
+<h1 class="title"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Conditional Probability</span></h1>
 </div>
 
 
@@ -150,8 +426,8 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="introduction" class="level2" data-number="22.1">
+<h2 data-number="22.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">22.1</span> Introduction</h2>
 <p>Given a standard 52-card deck, we know the probability of drawing a King from a 52-card deck is:</p>
 <p><span class="math display">\[P(K) = 4/52 = 1/13 = 0.077\]</span></p>
 <p>This is an <strong>unconditional probability</strong> which is the likelihood of an event occurring without considering any other events.</p>
@@ -165,8 +441,8 @@ window.Quarto = {
 P(A | B)
 \]</span></p>
 </section>
-<section id="conditional-probability" class="level2">
-<h2 class="anchored" data-anchor-id="conditional-probability">Conditional Probability</h2>
+<section id="conditional-probability" class="level2" data-number="22.2">
+<h2 data-number="22.2" class="anchored" data-anchor-id="conditional-probability"><span class="header-section-number">22.2</span> Conditional Probability</h2>
 <p>The conditional probability of A given B, denoted <span class="math inline">\(P(A|B)\)</span>, is the probability of that event A has occurred in a trial of a random experiment for which it is known that event B has definitely occurred. It may be computed by means of the following:</p>
 <p><span class="math display">\[
 P(A|B) = \frac{P(A \cap B)}{P(B)}
@@ -189,8 +465,8 @@ P(Five | Odd) = P(F | O) = \frac{P(F \cap O)}{P(O)} = \frac{1/6}{3/6} = 1/3
 P(Odd | Five) = P(O | F) = \frac{P(O \cap F)}{P(F)} = \frac{1/6}{1/6} = 1
 \]</span></p>
 </section>
-<section id="conditional-probability-example" class="level2">
-<h2 class="anchored" data-anchor-id="conditional-probability-example">Conditional Probability Example</h2>
+<section id="conditional-probability-example" class="level2" data-number="22.3">
+<h2 data-number="22.3" class="anchored" data-anchor-id="conditional-probability-example"><span class="header-section-number">22.3</span> Conditional Probability Example</h2>
 <p>In the following example, data are presented for the administration of two drugs. After administration of each drug, individuals are observed and any reactions to the drug are recorded for analysis.</p>
 <ul>
 <li><p>A = event when drug Adival (A) is administered</p></li>
@@ -385,8 +661,8 @@ P(B \cap Mi) = 0.163
 </div>
 </div>
 </section>
-<section id="multiplication-law" class="level2">
-<h2 class="anchored" data-anchor-id="multiplication-law">Multiplication Law</h2>
+<section id="multiplication-law" class="level2" data-number="22.4">
+<h2 data-number="22.4" class="anchored" data-anchor-id="multiplication-law"><span class="header-section-number">22.4</span> Multiplication Law</h2>
 <p>Recall that the <strong>addition law</strong> is used to compute the probability of the union of two events that are not mutually exclusive, that is:</p>
 <p><span class="math display">\[
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
@@ -407,8 +683,8 @@ P(A \cap B) = P(B) P(A|B)
 P(B \cap A) = P(A) P(B|A)
 \]</span></p>
 </section>
-<section id="conditional-probability-example-1" class="level2">
-<h2 class="anchored" data-anchor-id="conditional-probability-example-1">Conditional Probability Example</h2>
+<section id="conditional-probability-example-1" class="level2" data-number="22.5">
+<h2 data-number="22.5" class="anchored" data-anchor-id="conditional-probability-example-1"><span class="header-section-number">22.5</span> Conditional Probability Example</h2>
 <p>Another way to think of conditional probability is through the use of a tree diagram.</p>
 <p>Assume there are 6 blue marbles and 4 red marbles in a bag. On the first draw from bag:</p>
 <ul>
@@ -432,8 +708,8 @@ P(B \cap A) = P(A) P(B|A)
 </ul>
 <p>Note that when we add all the conditional probabilities together, the sum is equal to 1.</p>
 </section>
-<section id="independent-events" class="level2">
-<h2 class="anchored" data-anchor-id="independent-events">Independent Events</h2>
+<section id="independent-events" class="level2" data-number="22.6">
+<h2 data-number="22.6" class="anchored" data-anchor-id="independent-events"><span class="header-section-number">22.6</span> Independent Events</h2>
 <p>In the previous example, each time we drew a marble, we did not replace it in the bag. The probabilities of the second draw where dependent on the first draw.</p>
 <p>What would occur if we replaced the marble?</p>
 <p>What is the probability of drawing a red marble on the second draw after drawing a red marble on the first draw and putting the drawn ball back in the bag?</p>
@@ -447,16 +723,16 @@ P(B \cap A) = P(A) P(B|A)
 P(A \cap B) = P(A) \times P(B)
 \]</span></p>
 </section>
-<section id="bayes-theorem" class="level2">
-<h2 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h2>
+<section id="bayes-theorem" class="level2" data-number="22.7">
+<h2 data-number="22.7" class="anchored" data-anchor-id="bayes-theorem"><span class="header-section-number">22.7</span> Bayes’ Theorem</h2>
 <p>Bayes’ Theorem is a method of using known probabilities and new information to obtain updated probabilities. Bayes’ Theorem is:</p>
 <p><span class="math display">\[
 P(A|B) = \frac{P(A)P(B|A)}{P(B)}
 \]</span></p>
 <p>In other words, the conditional probability of A given B is determined by the probability of A, the conditional probability of B given A, and the probability of B.</p>
 </section>
-<section id="bayes-theorem-example" class="level2">
-<h2 class="anchored" data-anchor-id="bayes-theorem-example">Bayes’ Theorem Example</h2>
+<section id="bayes-theorem-example" class="level2" data-number="22.8">
+<h2 data-number="22.8" class="anchored" data-anchor-id="bayes-theorem-example"><span class="header-section-number">22.8</span> Bayes’ Theorem Example</h2>
 <p>Assume the following:</p>
 <ul>
 <li><p>P(Fire) be the probability of fire occurring</p></li>
@@ -473,8 +749,8 @@ P(A|B) = \frac{P(A)P(B|A)}{P(B)}
 P(Fire|Smoke) = \frac{P(F)P(S|F)}{P(S)} = \frac{0.01 \times 0.9}{0.1} = 0.09
 \]</span></p>
 </section>
-<section id="bayes-theorem-example-1" class="level2">
-<h2 class="anchored" data-anchor-id="bayes-theorem-example-1">Bayes’ Theorem Example</h2>
+<section id="bayes-theorem-example-1" class="level2" data-number="22.9">
+<h2 data-number="22.9" class="anchored" data-anchor-id="bayes-theorem-example-1"><span class="header-section-number">22.9</span> Bayes’ Theorem Example</h2>
 <p>Assume that you are trying to determine whether you have a false positive diagnostic test.</p>
 <ul>
 <li><p>For individuals who have the disease, the test registers a positive value 90% of the time.</p></li>
@@ -510,8 +786,8 @@ P(Disease | Positive) = \frac{P(D)P(P|D)}{P(P)} = \frac{0.03 \times 0.9}{0.0755}
 \]</span></p>
 <p>In other words, if you receive a positive test result, there is a 35.8% chance you have the disease.</p>
 </section>
-<section id="smallpox-vs-chickenpox" class="level2">
-<h2 class="anchored" data-anchor-id="smallpox-vs-chickenpox">Smallpox vs Chickenpox</h2>
+<section id="smallpox-vs-chickenpox" class="level2" data-number="22.10">
+<h2 data-number="22.10" class="anchored" data-anchor-id="smallpox-vs-chickenpox"><span class="header-section-number">22.10</span> Smallpox vs Chickenpox</h2>
 <p>A patient arrives with spots that appear to be smallpox. It could also be chickenpox.</p>
 <ul>
 <li><p>The probability a person with smallpox has spots is 0.9.</p></li>
@@ -532,8 +808,8 @@ P(Disease | Positive) = \frac{P(D)P(P|D)}{P(P)} = \frac{0.03 \times 0.9}{0.0755}
 <p><span class="math display">\[\frac{0.8 \times 0.1}{0.081} = 0.977\]</span></p>
 <p>While a patient presenting with symptoms appears to be more consistent with smallpox, the background rate of chickenpox in the population is higher than smallpox, which makes it more likely that the patient has chickenpox.</p>
 </section>
-<section id="cancer-example" class="level2">
-<h2 class="anchored" data-anchor-id="cancer-example">Cancer Example</h2>
+<section id="cancer-example" class="level2" data-number="22.11">
+<h2 data-number="22.11" class="anchored" data-anchor-id="cancer-example"><span class="header-section-number">22.11</span> Cancer Example</h2>
 <p>Assume that 1% of women over 50 have breast cancer.</p>
 <p>90% of women who have breast cancer test positive on mammograms.</p>
 <p>8% of women who do not have breast cancer test positive on mammograms.</p>
@@ -559,10 +835,11 @@ P(Disease | Positive) = \frac{P(D)P(P|D)}{P(P)} = \frac{0.03 \times 0.9}{0.0755}
 <p>We can now see what happens</p>
 <p><span class="math display">\[P(B|A) = \frac{P(A|B) \, P(B)}{P(A)} = \frac{P(B \cap A)}{P(A)} = \frac{0.009}{0.0189} = 0.476\]</span></p>
 <p>Lowering the rate of false positives increases the probability that, if you have a positive test, that you have breast cancer.</p>
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -650,6 +927,11 @@ P(Disease | Positive) = \frac{P(D)P(P|D)}{P(P)} = \frac{0.03 \times 0.9}{0.0755}
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -963,6 +1245,15 @@ P(Disease | Positive) = \frac{P(D)P(P|D)}{P(P)} = \frac{0.03 \times 0.9}{0.0755}
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./mod-4-2-rules.html" class="pagination-link" aria-label="Probability Rules">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Probability Rules</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
