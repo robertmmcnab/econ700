@@ -174,5 +174,203 @@
       "Introduction to Probability",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction to Probability</span>"
     ]
+  },
+  {
+    "objectID": "mod-5-0-overview.html",
+    "href": "mod-5-0-overview.html",
+    "title": "23  Module 5 Overview",
+    "section": "",
+    "text": "23.1 Introduction\nWelcome to Module 5 of ECON 700.\nThis module introduces students to the foundational concepts of probability and their application in data-driven analysis. Students begin by exploring the difference between discrete and continuous random variables, followed by the construction and interpretation of probability distributions. Using examples such as coin tosses, dice rolls, and manufacturing outcomes, the module develops an understanding of how randomness, expected value, and variance describe uncertainty and predict long-run behavior. Students will also examine empirical probability distributions using simulated and real-world data in R.\nBuilding on these principles, the module introduces the binomial and Poisson distributions—two key models for analyzing the likelihood of events within defined conditions. Learners use R to calculate and visualize probability mass functions, cumulative distribution functions, and inverse functions, as well as to simulate random variables. By the end of the module, students will understand how probability distributions underpin inferential statistics and decision-making in economics and data analysis.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Module 5 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-0-overview.html#learning-objectives",
+    "href": "mod-5-0-overview.html#learning-objectives",
+    "title": "23  Module 5 Overview",
+    "section": "23.2 Learning Objectives",
+    "text": "23.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nDifferentiate between discrete and continuous random variables and explain their roles in probability analysis.\nConstruct and interpret discrete probability distributions using empirical and theoretical data.\nCalculate expected value, variance, and standard deviation for discrete random variables.\nApply the binomial and Poisson probability functions to model real-world random processes.\nUse R to compute and visualize probability mass, cumulative, and inverse distribution functions.\nEvaluate how probability models support statistical reasoning and decision-making in economics.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Module 5 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-0-overview.html#readings-resources",
+    "href": "mod-5-0-overview.html#readings-resources",
+    "title": "23  Module 5 Overview",
+    "section": "23.3 Readings & Resources",
+    "text": "23.3 Readings & Resources\n\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. (Chapter 4). Available for free online at https://openstax.org/books/introductory-statistics-2e/pages/2-introduction\nIrizarry, R. (2025). Introduction to Data Science: Statistics and Prediction Algorithms Through Case Studies (Chapters 1-3). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-2/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\nOnline R documentation: https://cran.r-project.org/manuals.html\nRStudio Cheat Sheets",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Module 5 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-0-overview.html#activities",
+    "href": "mod-5-0-overview.html#activities",
+    "title": "23  Module 5 Overview",
+    "section": "23.4 Activities",
+    "text": "23.4 Activities\n\nComplete the hands-on coding exercises embedded in each lesson.\n\nComplete the weekly class assignment.\n\nParticipate in the discussion form.\n\nTake the weekly knowledge quiz.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Module 5 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-0-overview.html#lessons-in-this-module",
+    "href": "mod-5-0-overview.html#lessons-in-this-module",
+    "title": "23  Module 5 Overview",
+    "section": "23.5 Lessons in this Module",
+    "text": "23.5 Lessons in this Module\n\n5.1 – Discrete Random Variables\n\n\nNext: Start with **Discrete Random Variables*.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Module 5 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ECON 700",
+    "section": "",
+    "text": "0.1 Course Introduction\nNote: The course is under construction. Some links will not work.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#course-introduction",
+    "href": "index.html#course-introduction",
+    "title": "ECON 700",
+    "section": "",
+    "text": "Course Objectives and Materials\n\n\nMeet Your Instructor\n\n\nSyllabus",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-01-introduction-to-r-and-descriptive-statistics",
+    "href": "index.html#module-01-introduction-to-r-and-descriptive-statistics",
+    "title": "ECON 700",
+    "section": "0.2 Module 01 – Introduction to R and Descriptive Statistics",
+    "text": "0.2 Module 01 – Introduction to R and Descriptive Statistics\n\n\nModule 1.0 - Module 1 Overview\n\n\nModule 1.1 - Data and the Challenge of Economic Analysis\n\n\nModule 1.2 – Introduction to R\n\n\nModule 1.3 – Variables and Assignments in R\n\n\nModule 1.4 – Data frames in R\n\n\nModule 1.5 – Using Quarto",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-02---descriptive-statistics",
+    "href": "index.html#module-02---descriptive-statistics",
+    "title": "ECON 700",
+    "section": "0.3 Module 02 - Descriptive Statistics",
+    "text": "0.3 Module 02 - Descriptive Statistics\n\n\nModule 2.0 - Module 2 Overview\n\n\nModule 2.1 – Frequency Distributions\n\n\nModule 2.2 – Measures of Central Tendency\n\n\nModule 2.3 – Measures of Dispersion\n\n\nModule 2.4 – Z-Scores",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-03-covariance-and-correlation",
+    "href": "index.html#module-03-covariance-and-correlation",
+    "title": "ECON 700",
+    "section": "0.4 Module 03 – Covariance and Correlation",
+    "text": "0.4 Module 03 – Covariance and Correlation\n\n\nModule 3.0 - Module 3 Overview\n\n\nModule 3.1 - Skewness\n\n\nModule 3.2 - Chebyshev’s Theorem\n\n\nModule 3.3 - Covariance and Correlation",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-04---introduction-to-probability",
+    "href": "index.html#module-04---introduction-to-probability",
+    "title": "ECON 700",
+    "section": "0.5 Module 04 - Introduction to Probability",
+    "text": "0.5 Module 04 - Introduction to Probability\n\n\nModule 4.0 - Module 4 Overview\n\n\nModule 4.1 - Introduction to Probability\n\n\nModule 4.2 - Probability Rules\n\n\nModule 4.3 - Conditional Probability",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-05---discrete-probability-distributions",
+    "href": "index.html#module-05---discrete-probability-distributions",
+    "title": "ECON 700",
+    "section": "0.6 Module 05 - Discrete Probability Distributions",
+    "text": "0.6 Module 05 - Discrete Probability Distributions\n\n\nModule 5.0 - Module 5 Overview\n\n\nModule 5.1 - Discrete Random Variables\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-1-discrete.html",
+    "href": "mod-5-1-discrete.html",
+    "title": "24  Discrete Random Variables",
+    "section": "",
+    "text": "24.1 Discrete Random Variables\nA random variable is a numerical description of an outcome of an example.\nA discrete random variable may assume a finite or infinite number of values.\nA fair coin flip or roll of a six-sided die is a random experiment with a finite number of outcomes.\nFor the coin flip, the random variable is the face of the coin, the values of which are: heads (1) and tails (0).\nFor the six-sided die, the random variable the number of dots showing on the die, the values of which are: 1,2,3,4,5,6.\nIf the random experiment is operating a website for a 24-hour period, the random variable is the number of unique visitors to the website.\nThe values of the random variable are: 0, 1, 2, 3 ……",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-1-discrete.html#continuous-random-variables",
+    "href": "mod-5-1-discrete.html#continuous-random-variables",
+    "title": "24  Discrete Random Variables",
+    "section": "24.2 Continuous Random Variables",
+    "text": "24.2 Continuous Random Variables\nA continuous random variable may assume any value in an interval or collection of intervals.\nIf we select 1,000 students at random who come to ODU today, the driving distance is bounded below at 0.\nThe driving distance is practically bounded above (maybe 200 miles?).\nDriving distance is a continuous random variable as it can take on any value from 0 to infinity (and beyond!).\nIf the random experiment is a visit to a webpage by a customer, the random variable is the time spent on the page, with values of the random variable being \\(x \\ge 0\\).\nIf the random experiment is to fill a kiloliter container, the random variable is the amount of liquid in the container, with values of the random variable being \\(0 \\le x \\le 1\\, kl\\).",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-1-discrete.html#discrete-probability-distributions",
+    "href": "mod-5-1-discrete.html#discrete-probability-distributions",
+    "title": "24  Discrete Random Variables",
+    "section": "24.3 Discrete Probability Distributions",
+    "text": "24.3 Discrete Probability Distributions\nThe probability distribution for a random variable describes how probabilities are distributed over the values of the random variable.\nGiven a discrete random variable, \\(x\\), a probability function, \\(f(x)\\), provides the probability for each value of the random variable.\nThe classical method of assigning probabilities of the values of a random variable is used when the experimental outcomes generate values of the random variable that are equally likely.\nConsider the experiment of rolling a six-sided die.\n\nWe know the sample space is \\(s = \\{1, 2, 3, 4, 5, 6\\}\\)\nLet \\(x\\) be the number obtained on one throw of the die\nLet \\(f(x)\\) be the probability of \\(x\\)\nWe can represent the probability of \\(x\\) with a frequency table or graph.\n\nIn the code below, we run a simulated six-sided die 10,000 times.\n\nThe sample function takes a sample of the sequence of integers from 1 to 6\nThe size option sets the number of samples to be taken\nThe replace = TRUE replaces the number sampled\nThe group_by identifies the bins\nThe summarize command estimates the frequencies and relative frequencies\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-1-discrete.html#frequency-tables",
+    "href": "mod-5-1-discrete.html#frequency-tables",
+    "title": "24  Discrete Random Variables",
+    "section": "24.4 Frequency Tables",
+    "text": "24.4 Frequency Tables\nThe relative frequency method is applicable when the data are “reasonably” large.\nThe discrete probability distribution that is developed using the relative frequency method is known as the empirical discrete distribution.\nTwo conditions are required for a discrete probability distribution.\n\\[f(x) \\ge 0\\]\n\\[\\sum f(x) = 1\\] In the code below, we replicate the experiment of throwing a six-sided die 10,000 times. We estimate the relative frequency for each of the outcomes of the experiment and create a relative frequency table that missors the graph.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-1-discrete.html#discrete-probability-distribution",
+    "href": "mod-5-1-discrete.html#discrete-probability-distribution",
+    "title": "24  Discrete Random Variables",
+    "section": "24.5 Discrete Probability Distribution",
+    "text": "24.5 Discrete Probability Distribution\nA formula that gives the probability function, \\(f(x)\\) for every value of \\(x\\) is known as a discrete probability distribution.\nUsing data, we developed the empirical discrete probability function for a fair six-sided die.\nLet \\(n\\) be equal to the number of values of that the random variable can take.\nThe discrete uniform probability distribution is then defined as:\n\\[f(x) = \\frac{1}{n}\\]\nNote that we can apply the discrete uniform probability distribution function to several of our previous examples.\nFlipping a fair coin: \\[f(x) = \\frac{1}{2}\\]\nRolling a fair six-sided die: \\[f(x) = \\frac{1}{6}\\]",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-1-discrete.html#expected-value",
+    "href": "mod-5-1-discrete.html#expected-value",
+    "title": "24  Discrete Random Variables",
+    "section": "24.6 Expected Value",
+    "text": "24.6 Expected Value\nThe expected value, or mean, of a random variable is a measure of the central location of the random variable.\nThe expected value of \\(x\\) is defined as\n\\[E(x) = \\mu = \\sum x \\, f(x)\\]\nFor the six-side die experiment, the expected value will approach 3.5 as the number of rolls increases.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n]]",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Discrete Random Variables</span>"
+    ]
   }
 ]

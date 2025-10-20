@@ -39,6 +39,9 @@ book:
         - mod-4-2-rules.qmd
         - mod-4-3-conditional.qmd
     - part: "Discrete Probability"
+      chapters: 
+        - mod-5-0-overview.qmd
+        - mod-5-1-discrete.qmd
     - part: "Continuous Probability"
     - part: "Sampling Distributions"
     - part: "Inference"

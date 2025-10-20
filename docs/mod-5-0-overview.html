@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Robert M. McNab">
 
-<title>ECON 700</title>
+<title>23&nbsp; Module 5 Overview – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mcnab.html" rel="next">
+<link href="./mod-5-1-discrete.html" rel="next">
+<link href="./mod-4-3-conditional.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">ECON 700</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-5-0-overview.html">Discrete Probability</a></li><li class="breadcrumb-item"><a href="./mod-5-0-overview.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Module 5 Overview</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">ECON 700</span></span></a>
   </div>
 </li>
@@ -308,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-5-0-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-5-0-overview.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Module 5 Overview</span></span></a>
   </div>
 </li>
@@ -342,33 +342,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#course-introduction" id="toc-course-introduction" class="nav-link active" data-scroll-target="#course-introduction"><span class="header-section-number">0.1</span> Course Introduction</a></li>
-  <li><a href="#module-01-introduction-to-r-and-descriptive-statistics" id="toc-module-01-introduction-to-r-and-descriptive-statistics" class="nav-link" data-scroll-target="#module-01-introduction-to-r-and-descriptive-statistics"><span class="header-section-number">0.2</span> Module 01 – Introduction to R and Descriptive Statistics</a></li>
-  <li><a href="#module-02---descriptive-statistics" id="toc-module-02---descriptive-statistics" class="nav-link" data-scroll-target="#module-02---descriptive-statistics"><span class="header-section-number">0.3</span> Module 02 - Descriptive Statistics</a></li>
-  <li><a href="#module-03-covariance-and-correlation" id="toc-module-03-covariance-and-correlation" class="nav-link" data-scroll-target="#module-03-covariance-and-correlation"><span class="header-section-number">0.4</span> Module 03 – Covariance and Correlation</a></li>
-  <li><a href="#module-04---introduction-to-probability" id="toc-module-04---introduction-to-probability" class="nav-link" data-scroll-target="#module-04---introduction-to-probability"><span class="header-section-number">0.5</span> Module 04 - Introduction to Probability</a></li>
-  <li><a href="#module-05---discrete-probability-distributions" id="toc-module-05---discrete-probability-distributions" class="nav-link" data-scroll-target="#module-05---discrete-probability-distributions"><span class="header-section-number">0.6</span> Module 05 - Discrete Probability Distributions</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">23.1</span> Introduction</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">23.2</span> Learning Objectives</a></li>
+  <li><a href="#readings-resources" id="toc-readings-resources" class="nav-link" data-scroll-target="#readings-resources"><span class="header-section-number">23.3</span> Readings &amp; Resources</a></li>
+  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities"><span class="header-section-number">23.4</span> Activities</a></li>
+  <li><a href="#lessons-in-this-module" id="toc-lessons-in-this-module" class="nav-link" data-scroll-target="#lessons-in-this-module"><span class="header-section-number">23.5</span> Lessons in this Module</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">ECON 700</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-5-0-overview.html">Discrete Probability</a></li><li class="breadcrumb-item"><a href="./mod-5-0-overview.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Module 5 Overview</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">ECON 700</h1>
+<h1 class="title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Module 5 Overview</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Robert M. McNab </p>
-          </div>
-  </div>
     
   
     
@@ -379,112 +372,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Note: The course is under construction. Some links will not work.</p>
-<section id="course-introduction" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="course-introduction"><span class="header-section-number">0.1</span> Course Introduction</h2>
-<ul>
-<li>
-<a href="./about.html">Course Objectives and Materials</a>
-</li>
-<li>
-<a href="./mcnab.html">Meet Your Instructor</a>
-</li>
-<li>
-<a href="ECON-700---Fall-2026.pdf">Syllabus</a>
-</li>
-</ul>
+<section id="introduction" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">23.1</span> Introduction</h2>
+<p>Welcome to <strong>Module 5</strong> of ECON 700.</p>
+<p>This module introduces students to the foundational concepts of probability and their application in data-driven analysis. Students begin by exploring the difference between discrete and continuous random variables, followed by the construction and interpretation of probability distributions. Using examples such as coin tosses, dice rolls, and manufacturing outcomes, the module develops an understanding of how randomness, expected value, and variance describe uncertainty and predict long-run behavior. Students will also examine empirical probability distributions using simulated and real-world data in R.</p>
+<p>Building on these principles, the module introduces the binomial and Poisson distributions—two key models for analyzing the likelihood of events within defined conditions. Learners use R to calculate and visualize probability mass functions, cumulative distribution functions, and inverse functions, as well as to simulate random variables. By the end of the module, students will understand how probability distributions underpin inferential statistics and decision-making in economics and data analysis.</p>
+<hr>
 </section>
-<section id="module-01-introduction-to-r-and-descriptive-statistics" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="module-01-introduction-to-r-and-descriptive-statistics"><span class="header-section-number">0.2</span> Module 01 – Introduction to R and Descriptive Statistics</h2>
+<section id="learning-objectives" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">23.2</span> Learning Objectives</h2>
+<p>By the end of this module, you should be able to:</p>
 <ul>
-<li>
-<a href="./mod-1-0-overview.html">Module 1.0 - Module 1 Overview</a>
-</li>
-<li>
-<a href="./mod-1-1-intro-to-data.html">Module 1.1 - Data and the Challenge of Economic Analysis</a>
-</li>
-<li>
-<a href="./mod-1-2-intro-to-r.html">Module 1.2 – Introduction to R</a>
-</li>
-<li>
-<a href="./mod-1-3-intro-to-r-variables.html">Module 1.3 – Variables and Assignments in R</a>
-</li>
-<li>
-<a href="./mod-1-4-intro-to-r-dataframes.html">Module 1.4 – Data frames in R</a>
-</li>
-<li>
-<a href="./mod-1-5-quarto.html">Module 1.5 – Using Quarto</a>
-</li>
+<li><p><strong>Differentiate</strong> between discrete and continuous random variables and explain their roles in probability analysis.</p></li>
+<li><p><strong>Construct</strong> and interpret discrete probability distributions using empirical and theoretical data.</p></li>
+<li><p><strong>Calculate</strong> expected value, variance, and standard deviation for discrete random variables.</p></li>
+<li><p><strong>Apply</strong> the binomial and Poisson probability functions to model real-world random processes.</p></li>
+<li><p><strong>Use</strong> R to compute and visualize probability mass, cumulative, and inverse distribution functions.</p></li>
+<li><p><strong>Evaluate</strong> how probability models support statistical reasoning and decision-making in economics.</p></li>
 </ul>
+<hr>
 </section>
-<section id="module-02---descriptive-statistics" class="level2" data-number="0.3">
-<h2 data-number="0.3" class="anchored" data-anchor-id="module-02---descriptive-statistics"><span class="header-section-number">0.3</span> Module 02 - Descriptive Statistics</h2>
+<section id="readings-resources" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="readings-resources"><span class="header-section-number">23.3</span> Readings &amp; Resources</h2>
 <ul>
-<li>
-<a href="./mod-2-0-overview.html">Module 2.0 - Module 2 Overview</a>
-</li>
-<li>
-<a href="./mod-2-1-frequency.html">Module 2.1 – Frequency Distributions</a>
-</li>
-<li>
-<a href="./mod-2-2-central.html">Module 2.2 – Measures of Central Tendency</a>
-</li>
-<li>
-<a href="./mod-2-3-variance.html">Module 2.3 – Measures of Dispersion</a>
-</li>
-<li>
-<a href="./mod-2-4-zscores.html">Module 2.4 – Z-Scores</a>
-</li>
+<li><p>Barbara Illowsky and Susan Dean. <em>Introductory Statistics 2e</em>. OpenStax. (Chapter 4). Available for free online at <a href="https://openstax.org/books/introductory-statistics-2e/pages/2-introduction" class="uri">https://openstax.org/books/introductory-statistics-2e/pages/2-introduction</a></p></li>
+<li><p>Irizarry, R. (2025). <em>Introduction to Data Science: Statistics and Prediction Algorithms Through Case Studies</em> (Chapters 1-3). Available for free at: <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/" class="uri">https://rafalab.dfci.harvard.edu/dsbook-part-2/</a></p></li>
+<li><p>Wickham, H., &amp; Grolemund, G. (2017). <em>R for Data Science</em>. (Chapters 1–3).</p></li>
+<li><p>Online R documentation: <a href="https://cran.r-project.org/manuals.html" class="uri">https://cran.r-project.org/manuals.html</a></p></li>
+<li><p><a href="https://posit.co/resources/cheatsheets/">RStudio Cheat Sheets</a></p></li>
 </ul>
+<hr>
 </section>
-<section id="module-03-covariance-and-correlation" class="level2" data-number="0.4">
-<h2 data-number="0.4" class="anchored" data-anchor-id="module-03-covariance-and-correlation"><span class="header-section-number">0.4</span> Module 03 – Covariance and Correlation</h2>
+<section id="activities" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="activities"><span class="header-section-number">23.4</span> Activities</h2>
 <ul>
-<li>
-<a href="./mod-3-0-overview.html">Module 3.0 - Module 3 Overview</a>
+<li>Complete the hands-on coding exercises embedded in each lesson.<br>
 </li>
-<li>
-<a href="./mod-3-1-skewness.html">Module 3.1 - Skewness</a>
+<li>Complete the weekly class assignment.<br>
 </li>
-<li>
-<a href="./mod-3-2-normal.html">Module 3.2 - Chebyshev’s Theorem</a>
+<li>Participate in the discussion form.<br>
 </li>
-<li>
-<a href="./mod-3-3-correlation.html">Module 3.3 - Covariance and Correlation</a>
-</li>
-</ul>
-</section>
-<section id="module-04---introduction-to-probability" class="level2" data-number="0.5">
-<h2 data-number="0.5" class="anchored" data-anchor-id="module-04---introduction-to-probability"><span class="header-section-number">0.5</span> Module 04 - Introduction to Probability</h2>
-<ul>
-<li>
-<a href="./mod-4-0-overview.html">Module 4.0 - Module 4 Overview</a>
-</li>
-<li>
-<a href="./mod-4-1-probability.html">Module 4.1 - Introduction to Probability</a>
-</li>
-<li>
-<a href="./mod-4-2-rules.html">Module 4.2 - Probability Rules</a>
-</li>
-<li>
-<a href="./mod-4-3-conditional.html">Module 4.3 - Conditional Probability</a>
-</li>
-</ul>
-</section>
-<section id="module-05---discrete-probability-distributions" class="level2" data-number="0.6">
-<h2 data-number="0.6" class="anchored" data-anchor-id="module-05---discrete-probability-distributions"><span class="header-section-number">0.6</span> Module 05 - Discrete Probability Distributions</h2>
-<ul>
-<li>
-<a href="./mod-5-0-overview.html">Module 5.0 - Module 5 Overview</a>
-</li>
-<li>
-<a href="./mod-5-1-discrete.html">Module 5.1 - Discrete Random Variables</a>
+<li>Take the weekly knowledge quiz.<br>
 </li>
 </ul>
 <hr>
-<p>
-This site provides <strong>interactive and static examples</strong> for economic data analysis using R and WebR. Click on the links above to explore each section.
-</p>
+</section>
+<section id="lessons-in-this-module" class="level2" data-number="23.5">
+<h2 data-number="23.5" class="anchored" data-anchor-id="lessons-in-this-module"><span class="header-section-number">23.5</span> Lessons in this Module</h2>
+<ul>
+<li><a href="./mod-5-1-discrete.html">5.1 – Discrete Random Variables</a></li>
+</ul>
+<hr>
+<p>Next: Start with <a href="./mod-5-1-discrete.html">**Discrete Random Variables*</a>.</p>
 
 
 </section>
@@ -897,10 +836,13 @@ This site provides <strong>interactive and static examples</strong> for economic
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./mod-4-3-conditional.html" class="pagination-link" aria-label="Conditional Probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Conditional Probability</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mcnab.html" class="pagination-link" aria-label="Meet Your Instructor">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Meet Your Instructor</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mod-5-1-discrete.html" class="pagination-link" aria-label="Discrete Random Variables">
+        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Discrete Random Variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

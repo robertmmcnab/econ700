@@ -51,6 +51,14 @@ Note: The course is under construction. Some links will not work.
   <li><a href="mod-4-3-conditional.qmd">Module 4.3 - Conditional Probability</a></li>
 </ul>
 
+## Module 05 - Discrete Probability Distributions
+
+<ul>
+  <li><a href="mod-5-0-overview.qmd">Module 5.0 - Module 5 Overview</a></li>
+  <li><a href="mod-5-1-discrete.qmd">Module 5.1 - Discrete Random Variables</a></li>
+</ul>
+
+
 ---
 
 <p>This site provides <strong>interactive and static examples</strong> for economic data analysis using R and WebR. Click on the links above to explore each section.</p>
