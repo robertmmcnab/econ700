@@ -56,6 +56,7 @@ By the end of this module, you should be able to:
 ## Lessons in this Module
 
 -   [5.1 – Discrete Random Variables](mod-5-1-discrete.qmd)
+-   [5.2 – Binomial Probability Distribution](mod-5-2-binomial.qmd)
 
 ------------------------------------------------------------------------
 

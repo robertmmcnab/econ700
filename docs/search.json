@@ -70,7 +70,7 @@
     "href": "index.html#module-05---discrete-probability-distributions",
     "title": "ECON 700",
     "section": "0.6 Module 05 - Discrete Probability Distributions",
-    "text": "0.6 Module 05 - Discrete Probability Distributions\n\n\nModule 5.0 - Module 5 Overview\n\n\nModule 5.1 - Discrete Random Variables\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.6 Module 05 - Discrete Probability Distributions\n\n\nModule 5.0 - Module 5 Overview\n\n\nModule 5.1 - Discrete Random Variables\n\n\nModule 5.2 - Binomial Probability Distribution\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -1995,7 +1995,7 @@
     "href": "mod-5-0-overview.html#lessons-in-this-module",
     "title": "23  Module 5 Overview",
     "section": "23.5 Lessons in this Module",
-    "text": "23.5 Lessons in this Module\n\n5.1 – Discrete Random Variables\n\n\nNext: Start with **Discrete Random Variables*.",
+    "text": "23.5 Lessons in this Module\n\n5.1 – Discrete Random Variables\n5.2 – Binomial Probability Distribution\n\n\nNext: Start with **Discrete Random Variables*.",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>Module 5 Overview</span>"
@@ -2083,7 +2083,7 @@
     "href": "mod-5-1-discrete.html#expected-value-example-1",
     "title": "24  Discrete Random Variables",
     "section": "24.8 Expected Value Example",
-    "text": "24.8 Expected Value Example\nLet’s return to our experiment where we simulate rolling a fair six-sided die.\nWe increase the number of simulated rolls in this experiment to 1,000,000.\nWe estimate the expected value as:\n\\[\nEV(X) = \\sum_{i=1}^6 x_i f(x_i)\n\\]\nWe produce the table of frequencies and relative frequencies as well as a histogram.\nThe expected value of our experiment mirrors that obtained manually.\n\n1 with \\(P(X = 1) = 0.167\\)\n2 with \\(P(X = 2) = 0.167\\)\n3 with \\(P(X = 3) = 0.167\\)\n4 with \\(P(X = 4) = 0.167\\)\n5 with \\(P(X = 5) = 0.167\\)\n6 with \\(P(X = 6) = 0.167\\)\n\n\\[\nE(X) = (1 \\times 0.167) + (2 \\times 0.167) + (3 \\times 0.167) \\\\+ (4 \\times 0.167) + (5 \\times 0.167) + (6 \\times 0.167)\n\\]\n\\[\nEV = 3.5\n\\]\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\nthrows = 1000000\n\nrolls &lt;- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %&gt;%\n  group_by(throw) %&gt;%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %&gt;%\n  mutate(xfx = throw * rel_freq) \n\n\nkable(rolls %&gt;%  \n      adorn_totals(where = \"row\", name = \"Sums\"),\n      align       = \"lcccc\", \n      digits      = 3,\n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x * f(x)\")) %&gt;%\nkable_classic(full_width = TRUE)\n\nggplot(data = rolls,\n        aes(x = throw,\n            y = rel_freq,\n            fill = throw)) +\ngeom_bar(stat = 'identity') +\ngeom_text(data  = rolls,\n          aes(x = throw,\n              y = rel_freq,\n              label = scales::label_number(a=0.01)(rel_freq)),\n          nudge_y   = 0.01) +\ntheme_minimal() +\ntheme(legend.position = \" \") +\nlabs(title    = \"Throws of a Six Sided Die\",\n     x        = \" \",\n     y        = \"Relative Frequency\")\n\n\n\n\n\n\n\n\n\nRolls of Six-Sided Die\n\n\nNumber (x)\nFrequency of X\nProbability of X - f(x)\nx * f(x)\n\n\n\n\n1\n166,497\n0.166\n0.166\n\n\n2\n166,504\n0.167\n0.333\n\n\n3\n165,908\n0.166\n0.498\n\n\n4\n167,362\n0.167\n0.669\n\n\n5\n167,048\n0.167\n0.835\n\n\n6\n166,681\n0.167\n1.000\n\n\nSums\n1,000,000\n1.000\n3.502",
+    "text": "24.8 Expected Value Example\nLet’s return to our experiment where we simulate rolling a fair six-sided die.\nWe increase the number of simulated rolls in this experiment to 1,000,000.\nWe estimate the expected value as:\n\\[\nEV(X) = \\sum_{i=1}^6 x_i f(x_i)\n\\]\nWe produce the table of frequencies and relative frequencies as well as a histogram.\nThe expected value of our experiment mirrors that obtained manually.\n\n1 with \\(P(X = 1) = 0.167\\)\n2 with \\(P(X = 2) = 0.167\\)\n3 with \\(P(X = 3) = 0.167\\)\n4 with \\(P(X = 4) = 0.167\\)\n5 with \\(P(X = 5) = 0.167\\)\n6 with \\(P(X = 6) = 0.167\\)\n\n\\[\nE(X) = (1 \\times 0.167) + (2 \\times 0.167) + (3 \\times 0.167) \\\\+ (4 \\times 0.167) + (5 \\times 0.167) + (6 \\times 0.167)\n\\]\n\\[\nEV = 3.5\n\\]\n\nrm(list = ls())\n\nset.seed(1234)\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\nthrows = 1000000\n\nrolls &lt;- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %&gt;%\n  group_by(throw) %&gt;%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %&gt;%\n  mutate(xfx = throw * rel_freq) \n\n\nkable(rolls %&gt;%  \n      adorn_totals(where = \"row\", name = \"Sums\"),\n      align       = \"lcccc\", \n      digits      = 3,\n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x * f(x)\")) %&gt;%\nkable_classic(full_width = TRUE)\n\nggplot(data = rolls,\n        aes(x = throw,\n            y = rel_freq,\n            fill = throw)) +\ngeom_bar(stat = 'identity') +\ngeom_text(data  = rolls,\n          aes(x = throw,\n              y = rel_freq,\n              label = scales::label_number(a=0.01)(rel_freq)),\n          nudge_y   = 0.01) +\ntheme_minimal() +\ntheme(legend.position = \" \") +\nlabs(title    = \"Throws of a Six Sided Die\",\n     x        = \" \",\n     y        = \"Relative Frequency\")\n\n\n\n\n\n\n\n\n\nRolls of Six-Sided Die\n\n\nNumber (x)\nFrequency of X\nProbability of X - f(x)\nx * f(x)\n\n\n\n\n1\n166,642\n0.167\n0.167\n\n\n2\n167,094\n0.167\n0.334\n\n\n3\n166,137\n0.166\n0.498\n\n\n4\n166,539\n0.167\n0.666\n\n\n5\n167,400\n0.167\n0.837\n\n\n6\n166,188\n0.166\n0.997\n\n\nSums\n1,000,000\n1.000\n3.500",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>Discrete Random Variables</span>"
@@ -2094,10 +2094,109 @@
     "href": "mod-5-1-discrete.html#variance",
     "title": "24  Discrete Random Variables",
     "section": "24.9 Variance",
-    "text": "24.9 Variance\nThe expected value, \\(\\mu\\), provides a measure of central tendency of a random variable.\nThe variance is a measure of the dispersion of the values of the random variable.\nThe variance of a discrete random variable is defined as:\n\\[var(x) = \\sigma^2 = \\sum (x - \\mu)^2 \\, f(x)\\]\nOne can think about the variance as the weighted average of the squared mean deviations, where the weights are the probabilities of the values of \\(x\\).\nThe standard deviation of a discrete random variable is defined as:\n\\[sd(x) = \\sqrt{\\sigma^2} = \\sqrt{\\sum (x - \\mu)^2 \\, f(x)}\\]\nThe standard deviation is preferred in describing the dispersion of a random variable as it is in the same units of the random variable as opposed to the variance which is measured in squared units and is more difficult to interpret.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\nthrows = 1000000\n\nrolls &lt;- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %&gt;%\n  group_by(throw) %&gt;%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %&gt;%\n  mutate(xfx = throw * rel_freq,\n         deviations    = as.numeric(throw) - sum(xfx),\n         sq_deviations = deviations^2,\n         sqdev_fx      = sq_deviations * rel_freq) %&gt;%\n  adorn_totals(where = \"row\", name = \"Sums\")\n\nkable(rolls,\n      align       = \"lcccccc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x f(x)\",\n                      \"Mean Deviations\", \"Squared Deviations\",\n                      \"Squared Deviations * f(x)\")) %&gt;%\n  kable_styling(font_size = 10)\n\nvar &lt;- rolls %&gt;% \n       filter(throw != \"Sums\") %&gt;% \n       summarize(var_x = sum(sqdev_fx),\n                 sd_x  = sqrt(sum(sqdev_fx)))\n\nkable(vars,\n      col.names = c(\"Variance (X)\", \"Standard Deviation (X)\"))",
+    "text": "24.9 Variance\nThe expected value, \\(\\mu\\), provides a measure of central tendency of a random variable.\nThe variance is a measure of the dispersion of the values of the random variable.\nThe variance of a discrete random variable is defined as:\n\\[var(x) = \\sigma^2 = \\sum (x - \\mu)^2 \\, f(x)\\]\nOne can think about the variance as the weighted average of the squared mean deviations, where the weights are the probabilities of the values of \\(x\\).\nThe standard deviation of a discrete random variable is defined as:\n\\[sd(x) = \\sqrt{\\sigma^2} = \\sqrt{\\sum (x - \\mu)^2 \\, f(x)}\\]\nThe standard deviation is preferred in describing the dispersion of a random variable as it is in the same units of the random variable as opposed to the variance which is measured in squared units and is more difficult to interpret.\n\nrm(list = ls())\n\nset.seed(1234)\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\nthrows = 1000000\n\nrolls &lt;- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %&gt;%\n  group_by(throw) %&gt;%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %&gt;%\n  mutate(xfx = throw * rel_freq,\n         deviations    = as.numeric(throw) - sum(xfx),\n         sq_deviations = deviations^2,\n         sqdev_fx      = sq_deviations * rel_freq) %&gt;%\n  adorn_totals(where = \"row\", name = \"Sums\")\n\nkable(rolls,\n      align       = \"lcccccc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x f(x)\",\n                      \"Mean Deviations\", \"Squared Deviations\",\n                      \"Squared Deviations * f(x)\")) %&gt;%\n  kable_styling(font_size = 10)\n\nvars &lt;- rolls %&gt;% \n       filter(throw != \"Sums\") %&gt;% \n       summarize(var_x = sum(sqdev_fx),\n                 sd_x  = sqrt(sum(sqdev_fx)))\n\nkable(vars,\n      col.names = c(\"Variance (X)\", \"Standard Deviation (X)\"),\n      align     = 'c',\n      digits    = 3) %&gt;%\nkable_styling()\n\n\nRolls of Six-Sided Die\n\n\nNumber (x)\nFrequency of X\nProbability of X - f(x)\nx f(x)\nMean Deviations\nSquared Deviations\nSquared Deviations * f(x)\n\n\n\n\n1\n166,642\n0.166642\n0.166642\n-2.499525\n6.2476252\n1.0411168\n\n\n2\n167,094\n0.167094\n0.334188\n-1.499525\n2.2485752\n0.3757234\n\n\n3\n166,137\n0.166137\n0.498411\n-0.499525\n0.2495252\n0.0414554\n\n\n4\n166,539\n0.166539\n0.666156\n0.500475\n0.2504752\n0.0417139\n\n\n5\n167,400\n0.167400\n0.837000\n1.500475\n2.2514252\n0.3768886\n\n\n6\n166,188\n0.166188\n0.997128\n2.500475\n6.2523752\n1.0390697\n\n\nSums\n1,000,000\n1.000000\n3.499525\n0.002850\n17.5000014\n2.9159678\n\n\n\n\n\n\n\n\n\nVariance (X)\nStandard Deviation (X)\n\n\n\n\n2.916\n1.708",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html",
+    "href": "mod-5-2-binomial.html",
+    "title": "25  Binomial Distribution",
+    "section": "",
+    "text": "25.1 Bivariate Discrete Distribtuions\nA probability distribution involving two random variables is known as a bivariate probability distribution.\nAn outcome of a bivariate experiment consists of two values, one from each random variable.\nIf we roll two six-sided die once, this is a bivariate experiment with one trial.\nAssume we administer two drugs. If the random variable for each drug is the severity (or absence) of side effects, then the outcome of the experiment consists of the side effects of each drug.\nWe can also look at the mtcars data set and conduct a cross tabulation by cylinder and gear to calculate the joint and marginal probabilities empirically (assuming the cars are “random”)",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#continuous-random-variables",
+    "href": "mod-5-2-binomial.html#continuous-random-variables",
+    "title": "25  Binomial Distribution",
+    "section": "25.2 Continuous Random Variables",
+    "text": "25.2 Continuous Random Variables\nA continuous random variable may assume any value in an interval or collection of intervals.\nIf we select 1,000 students at random who come to ODU today, the driving distance is bounded below at 0.\nThe driving distance is practically bounded above (maybe 200 miles?).\nDriving distance is a continuous random variable as it can take on any value from 0 to infinity (and beyond!).\nIf the random experiment is a visit to a webpage by a customer, the random variable is the time spent on the page, with values of the random variable being \\(x \\ge 0\\).\nIf the random experiment is to fill a kiloliter container, the random variable is the amount of liquid in the container, with values of the random variable being \\(0 \\le x \\le 1\\, kl\\).",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#discrete-probability-distributions",
+    "href": "mod-5-2-binomial.html#discrete-probability-distributions",
+    "title": "25  Binomial Distribution",
+    "section": "25.3 Discrete Probability Distributions",
+    "text": "25.3 Discrete Probability Distributions\nThe probability distribution for a random variable describes how probabilities are distributed over the values of the random variable.\nGiven a discrete random variable, \\(x\\), a probability function, \\(f(x)\\), provides the probability for each value of the random variable.\nThe classical method of assigning probabilities of the values of a random variable is used when the experimental outcomes generate values of the random variable that are equally likely.\nConsider the experiment of rolling a six-sided die.\n\nWe know the sample space is \\(s = \\{1, 2, 3, 4, 5, 6\\}\\)\nLet \\(x\\) be the number obtained on one throw of the die\nLet \\(f(x)\\) be the probability of \\(x\\)\nWe can represent the probability of \\(x\\) with a frequency table or graph.\n\nIn the code below, we run a simulated six-sided die 10,000 times.\n\nThe sample function takes a sample of the sequence of integers from 1 to 6\nThe size option sets the number of samples to be taken\nThe replace = TRUE replaces the number sampled\nThe group_by identifies the bins\nThe summarize command estimates the frequencies and relative frequencies\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#frequency-tables",
+    "href": "mod-5-2-binomial.html#frequency-tables",
+    "title": "25  Binomial Distribution",
+    "section": "25.4 Frequency Tables",
+    "text": "25.4 Frequency Tables\nThe relative frequency method is applicable when the data are “reasonably” large.\nThe discrete probability distribution that is developed using the relative frequency method is known as the empirical discrete distribution.\nTwo conditions are required for a discrete probability distribution.\n\\[f(x) \\ge 0\\]\n\\[\\sum f(x) = 1\\] In the code below, we replicate the experiment of throwing a six-sided die 10,000 times. We estimate the relative frequency for each of the outcomes of the experiment and create a relative frequency table that missors the graph.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#discrete-probability-distribution",
+    "href": "mod-5-2-binomial.html#discrete-probability-distribution",
+    "title": "25  Binomial Distribution",
+    "section": "25.5 Discrete Probability Distribution",
+    "text": "25.5 Discrete Probability Distribution\nA formula that gives the probability function, \\(f(x)\\) for every value of \\(x\\) is known as a discrete probability distribution.\nUsing data, we developed the empirical discrete probability function for a fair six-sided die.\nLet \\(n\\) be equal to the number of values of that the random variable can take.\nThe discrete uniform probability distribution is then defined as:\n\\[f(x) = \\frac{1}{n}\\]\nNote that we can apply the discrete uniform probability distribution function to several of our previous examples.\nFlipping a fair coin: \\[f(x) = \\frac{1}{2}\\]\nRolling a fair six-sided die: \\[f(x) = \\frac{1}{6}\\]",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#expected-value",
+    "href": "mod-5-2-binomial.html#expected-value",
+    "title": "25  Binomial Distribution",
+    "section": "25.6 Expected Value",
+    "text": "25.6 Expected Value\nThe expected value of a random variable is a measure of the central tendency of the random variable.\nThe expected value of \\(x\\) is defined as\n\\[E(x) = \\mu = \\sum x \\, f(x)\\]\nThe expected value of a random variable is essentially a weighted average.\nEach value of the random variable, \\(x\\), is multiplied by the probability that the random variable takes that value or \\(p(x_i)\\). The \\(x_i \\times p(x_i)\\) are then summed over all possible values.\nThe expected value of a random variable can also be interpreted as the long-run value of the random variable. If we repeat the random experiment ‘many’ times and take the average of all the outcomes, we would obtain the expected value of the random variable.\nThe expected value, as it is the mean of the random variable, is also the measure of central tendency of the random variable and, as such, represents the center of mass of the probability mass function.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#expected-value-example",
+    "href": "mod-5-2-binomial.html#expected-value-example",
+    "title": "25  Binomial Distribution",
+    "section": "25.7 Expected Value Example",
+    "text": "25.7 Expected Value Example\nAssume that you have a game where you can win various prizes with the following probabilities:\n\n$0 with \\(P(X = 0) = 0.1\\)\n$1 with \\(P(X = 1) = 0.15\\)\n$2 with \\(P(X = 2) = 0.4\\)\n$3 with \\(P(X = 3) = 0.25\\)\n$4 with \\(P(X = 4) = 0.1\\)\n\nWhat is the expected value of the game? In other words, if the game were played ‘many’ times, what would be the average expected gross winnings?\n\\[\nE(X) = \\sum_{i=1}^{5} x_i f(x_i)\n\\]\n\\[\nE(X) = (0 \\times 0.1) + (1 \\times 0.15) + (2 \\times 0.4) + (3 \\times 0.25) + (4 \\times 0.1)\n\\]\n\\[\nE(X) = 2.1\n\\]\nThe expected value of the game is $2.1. On average, over repeated trials, one would expect to win $2.1 from this game. If the game cost less than $2.1 per play, it would make sense to play the game.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#expected-value-example-1",
+    "href": "mod-5-2-binomial.html#expected-value-example-1",
+    "title": "25  Binomial Distribution",
+    "section": "25.8 Expected Value Example",
+    "text": "25.8 Expected Value Example\nLet’s return to our experiment where we simulate rolling a fair six-sided die.\nWe increase the number of simulated rolls in this experiment to 1,000,000.\nWe estimate the expected value as:\n\\[\nEV(X) = \\sum_{i=1}^6 x_i f(x_i)\n\\]\nWe produce the table of frequencies and relative frequencies as well as a histogram.\nThe expected value of our experiment mirrors that obtained manually.\n\n1 with \\(P(X = 1) = 0.167\\)\n2 with \\(P(X = 2) = 0.167\\)\n3 with \\(P(X = 3) = 0.167\\)\n4 with \\(P(X = 4) = 0.167\\)\n5 with \\(P(X = 5) = 0.167\\)\n6 with \\(P(X = 6) = 0.167\\)\n\n\\[\nE(X) = (1 \\times 0.167) + (2 \\times 0.167) + (3 \\times 0.167) \\\\+ (4 \\times 0.167) + (5 \\times 0.167) + (6 \\times 0.167)\n\\]\n\\[\nEV = 3.5\n\\]\n\nrm(list = ls())\n\nset.seed(1234)\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\nthrows = 1000000\n\nrolls &lt;- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %&gt;%\n  group_by(throw) %&gt;%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %&gt;%\n  mutate(xfx = throw * rel_freq) \n\n\nkable(rolls %&gt;%  \n      adorn_totals(where = \"row\", name = \"Sums\"),\n      align       = \"lcccc\", \n      digits      = 3,\n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x * f(x)\")) %&gt;%\nkable_classic(full_width = TRUE)\n\nggplot(data = rolls,\n        aes(x = throw,\n            y = rel_freq,\n            fill = throw)) +\ngeom_bar(stat = 'identity') +\ngeom_text(data  = rolls,\n          aes(x = throw,\n              y = rel_freq,\n              label = scales::label_number(a=0.01)(rel_freq)),\n          nudge_y   = 0.01) +\ntheme_minimal() +\ntheme(legend.position = \" \") +\nlabs(title    = \"Throws of a Six Sided Die\",\n     x        = \" \",\n     y        = \"Relative Frequency\")\n\n\n\n\n\n\n\n\n\nRolls of Six-Sided Die\n\n\nNumber (x)\nFrequency of X\nProbability of X - f(x)\nx * f(x)\n\n\n\n\n1\n166,642\n0.167\n0.167\n\n\n2\n167,094\n0.167\n0.334\n\n\n3\n166,137\n0.166\n0.498\n\n\n4\n166,539\n0.167\n0.666\n\n\n5\n167,400\n0.167\n0.837\n\n\n6\n166,188\n0.166\n0.997\n\n\nSums\n1,000,000\n1.000\n3.500",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#variance",
+    "href": "mod-5-2-binomial.html#variance",
+    "title": "25  Binomial Distribution",
+    "section": "25.9 Variance",
+    "text": "25.9 Variance\nThe expected value, \\(\\mu\\), provides a measure of central tendency of a random variable.\nThe variance is a measure of the dispersion of the values of the random variable.\nThe variance of a discrete random variable is defined as:\n\\[var(x) = \\sigma^2 = \\sum (x - \\mu)^2 \\, f(x)\\]\nOne can think about the variance as the weighted average of the squared mean deviations, where the weights are the probabilities of the values of \\(x\\).\nThe standard deviation of a discrete random variable is defined as:\n\\[sd(x) = \\sqrt{\\sigma^2} = \\sqrt{\\sum (x - \\mu)^2 \\, f(x)}\\]\nThe standard deviation is preferred in describing the dispersion of a random variable as it is in the same units of the random variable as opposed to the variance which is measured in squared units and is more difficult to interpret.\n\nrm(list = ls())\n\nset.seed(1234)\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\nthrows = 1000000\n\nrolls &lt;- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %&gt;%\n  group_by(throw) %&gt;%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %&gt;%\n  mutate(xfx = throw * rel_freq,\n         deviations    = as.numeric(throw) - sum(xfx),\n         sq_deviations = deviations^2,\n         sqdev_fx      = sq_deviations * rel_freq) %&gt;%\n  adorn_totals(where = \"row\", name = \"Sums\")\n\nkable(rolls,\n      align       = \"lcccccc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x f(x)\",\n                      \"Mean Deviations\", \"Squared Deviations\",\n                      \"Squared Deviations * f(x)\")) %&gt;%\n  kable_styling(font_size = 10)\n\nvars &lt;- rolls %&gt;% \n       filter(throw != \"Sums\") %&gt;% \n       summarize(var_x = sum(sqdev_fx),\n                 sd_x  = sqrt(sum(sqdev_fx)))\n\nkable(vars,\n      col.names = c(\"Variance (X)\", \"Standard Deviation (X)\"),\n      align     = 'c',\n      digits    = 3) %&gt;%\nkable_styling()\n\n\nRolls of Six-Sided Die\n\n\nNumber (x)\nFrequency of X\nProbability of X - f(x)\nx f(x)\nMean Deviations\nSquared Deviations\nSquared Deviations * f(x)\n\n\n\n\n1\n166,642\n0.166642\n0.166642\n-2.499525\n6.2476252\n1.0411168\n\n\n2\n167,094\n0.167094\n0.334188\n-1.499525\n2.2485752\n0.3757234\n\n\n3\n166,137\n0.166137\n0.498411\n-0.499525\n0.2495252\n0.0414554\n\n\n4\n166,539\n0.166539\n0.666156\n0.500475\n0.2504752\n0.0417139\n\n\n5\n167,400\n0.167400\n0.837000\n1.500475\n2.2514252\n0.3768886\n\n\n6\n166,188\n0.166188\n0.997128\n2.500475\n6.2523752\n1.0390697\n\n\nSums\n1,000,000\n1.000000\n3.499525\n0.002850\n17.5000014\n2.9159678\n\n\n\n\n\n\n\n\n\nVariance (X)\nStandard Deviation (X)\n\n\n\n\n2.916\n1.708",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
     ]
   }
 ]

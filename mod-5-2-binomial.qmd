@@ -1,0 +1,75 @@
+---
+title: "Binomial Distribution"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    self-contained: false     # must be false when using webr
+urlcolor: blue
+filters:
+  - webr
+execute:
+  webR: true
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+
+library(dplyr, quietly = TRUE)
+library(ggplot2, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(tidyquant, quietly = TRUE)
+
+```
+
+## Bivariate Discrete Distribtuions
+
+A probability distribution involving two random variables is known as a **bivariate probability distribution**.
+
+An outcome of a bivariate experiment consists of two values, one from each random variable.
+
+If we roll two six-sided die once, this is a bivariate experiment with one trial. 
+
+Assume we administer two drugs. If the random variable for each drug is the severity (or absence) of side effects, then the outcome of the experiment consists of the side effects of each drug.
+
+We can also look at the *mtcars* data set and conduct a cross tabulation by cylinder and gear to calculate the joint and marginal probabilities empirically (assuming the cars are "random")
+
+# Bivariate Discrete Example
+
+
+
+```{r, eval = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(ggplot2)
+library(janitor)
+library(kableExtra)
+library(tidyverse)
+
+#adorn_totals is column by row
+
+freqs <- tabyl(mtcars, cyl, gear) %>%
+  adorn_totals(c("col", "row"))
+
+kable(freqs,
+      align       = "lcccc", 
+      format.args = list(big.mark = ",", scientific = FALSE),
+      caption     = "Cars Frequency Table",
+      col.names   = c(" ", "3 Gear", "4 Gear", "5 Gear", 
+                      "Total")) %>%
+  kable_styling(font_size = 14)
+
+rel_freqs <- freqs %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting(digits = 2) %>%
+  adorn_ns()
+
+kable(rel_freqs,
+      align       = "lcccc", 
+      format.args = list(big.mark = ",", scientific = FALSE),
+      caption     = "Cars Frequency Table",
+      col.names   = c(" ", "3 Gear", "4 Gear", "5 Gear", 
+                      "Total")) %>%
+  kable_styling(font_size = 14)

@@ -251,6 +251,8 @@ $$
 
 rm(list = ls())
 
+set.seed(1234)
+
 library(dplyr)
 library(ggplot2)
 library(janitor)
@@ -300,7 +302,7 @@ labs(title    = "Throws of a Six Sided Die",
 
 The expected value, $\mu$, provides a measure of central tendency of a random variable.
 
-The **variance** is a measure of the dispersion of the values of the random variable.
+**The variance is a measure of the dispersion of the values of the random variable.**
 
 The variance of a discrete random variable is defined as:
 
@@ -314,12 +316,11 @@ $$sd(x) = \sqrt{\sigma^2} = \sqrt{\sum (x - \mu)^2 \, f(x)}$$
 
 The standard deviation is preferred in describing the dispersion of a random variable as it is in the same units of the random variable as opposed to the variance which is measured in squared units and is more difficult to interpret.
 
-
-
-
-```{r, eval = FALSE}
+```{r, message = FALSE, warnings = FALSE, results = 'hold'}
 
 rm(list = ls())
+
+set.seed(1234)
 
 library(dplyr)
 library(ggplot2)
@@ -352,16 +353,15 @@ kable(rolls,
                       "Squared Deviations * f(x)")) %>%
   kable_styling(font_size = 10)
 
-var <- rolls %>% 
+vars <- rolls %>% 
        filter(throw != "Sums") %>% 
        summarize(var_x = sum(sqdev_fx),
                  sd_x  = sqrt(sum(sqdev_fx)))
 
 kable(vars,
-      col.names = c("Variance (X)", "Standard Deviation (X)"))
+      col.names = c("Variance (X)", "Standard Deviation (X)"),
+      align     = 'c',
+      digits    = 3) %>%
+kable_styling()
 
 ```
-
-
-
-

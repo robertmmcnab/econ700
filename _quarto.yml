@@ -42,6 +42,7 @@ book:
       chapters: 
         - mod-5-0-overview.qmd
         - mod-5-1-discrete.qmd
+        - mod-5-2-binomial.qmd
     - part: "Continuous Probability"
     - part: "Sampling Distributions"
     - part: "Inference"
