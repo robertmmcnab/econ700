@@ -28,17 +28,13 @@ A probability distribution involving two random variables is known as a **bivari
 
 An outcome of a bivariate experiment consists of two values, one from each random variable.
 
-If we roll two six-sided die once, this is a bivariate experiment with one trial. 
+If we roll two six-sided die once, this is a bivariate experiment with one trial.
 
 Assume we administer two drugs. If the random variable for each drug is the severity (or absence) of side effects, then the outcome of the experiment consists of the side effects of each drug.
 
 We can also look at the *mtcars* data set and conduct a cross tabulation by cylinder and gear to calculate the joint and marginal probabilities empirically (assuming the cars are "random")
 
-# Bivariate Discrete Example
-
-
-
-```{r, eval = FALSE}
+```{r, message = FALSE, warning = FALSE, results = 'hold'}
 
 rm(list = ls())
 
@@ -73,3 +69,147 @@ kable(rel_freqs,
       col.names   = c(" ", "3 Gear", "4 Gear", "5 Gear", 
                       "Total")) %>%
   kable_styling(font_size = 14)
+
+```
+
+## Binomial Experiments
+
+Previously, we have used **empirical** data to generate distributions.
+
+The **binomial probability distribution** is a discrete probability distribution.
+
+In a **binomial experiment**, we are interested in the **number of success** relative to the **number of trials**.
+
+If $x$ denotes the number of successes occurring in $n$ trials, then $x$ is a discrete random variable.
+
+Assume that we will flip a fair two-sided coin 5 times.
+
+We define success as having a head appear on the upward face of the coin.
+
+We count the number of successes out of the 5 trials.
+
+## Properties of Binomial Experiments
+
+A binomial experiment exhibits the following four properties:
+
+-   The experiment consists of a sequence of $n$ identical trails.
+
+-   Two outcomes: **success** and **failure** are possible on each trial.
+
+-   The probability of success, denoted by $p$, does not change from trial to trial.
+
+-   The trials are independent.
+
+In the previous example, we flipped a fair two-sided coin 5 times.
+
+The experiment consisted of 5 trials, the outcomes were heads (success) and tails (failure), the probability of success, $p = 0.5$, did not change from trial to trial, and the trials were independent.
+
+*We would conclude that the coin flip experiment was a binomial experiment.*
+
+## Combinations and Experiments
+
+We first need determine the number of successes, $x$, in the trials, $n$.
+
+A combination examines the number of ways objects can be selected, without regard to the order in which they are selected.
+
+The number of experimental outcomes providing exactly $x$ successes in $n$ trials is:
+
+$$\binom{n}{x} = \frac{n!}{x!(n-x)!}$$ If the number of successes is 2 and number of trials is 3, then $x = 2$ and $n = 3$ and:
+
+$$\binom{3}{2} = \frac{3!}{2!(3-2)!} = 3$$
+
+If the number of successes is 5 and the number of trails is 10, the $x = 5$ and $n = 10$ and:
+
+$$\binom{10}{5} = \frac{10!}{5!(10-5)!} = 252$$
+
+```{webr-r}
+
+rm(list = ls())
+
+combos <- tibble(ex_1 = factorial(3)/(factorial(2)*factorial(3-2)),
+                 ex_2 = factorial(10)/(factorial(5)*factorial(10-5)))
+
+kable(combos,
+      align = 'c',
+      col.names = c('C(3,2)', 'C(10,5)'))
+
+```
+
+## Binominal Probability Function
+
+Let $x$ be the number of successes.
+
+Let $p$ be the probability of success on one trial.
+
+Let $n$ be the number of trials.
+
+Let $f(x)$ be the probability of $x$ successes in $n$ trials.
+
+Let $n!$ be $n$ factorial.
+
+The **binomial probability function** is defined as:
+
+$$f(x) = \binom{n}{x} p^x (1-p)^{(n-x)}$$ $$f(x) = \frac{n!}{x!(n-x)!} \, p^x (1-p)^{(n-x)}$$
+
+## Binomial Example
+
+Assume that we have a toggle switch that determines whether a manufacturing line continues to work.
+
+-   When the toggle switch is observed to be in the "on" position, this is considered a success.
+
+-   When the toggle switch is observed to be in the "off" position, this is considered a failure.
+
+-   We know that the probability of the switch being on is $p = 0.95$.
+
+-   We assume that the probability remains constant,
+
+-   We assume hat the current switch position is independent of the previous switch position.
+
+**What is the probability of 92 successes in 100 trials?**
+
+Given $n = 100$, $x = 92$, and $p = 0.95$, the probability of $x$ successes in $n$ trials is
+
+$$f(x) = \frac{100!}{92!(100-92)!} \times$$
+
+$$0.95^{92} \, \times (1-0.95)^{(100-92)}$$
+
+We can use R to calculate the probability of 92 successes in 100 trials and $p=0.95$.
+
+In the code below, we perform four calculations:
+
+-   We first declare $n$, $x$, and $p$.
+
+-   We estimate the number of combinations with $n = 100$ and $x = 92$.
+
+-   We estimate the binomial probability with $n = 100$ and $x = 92$.
+
+-   We estimate the binomial probability using the choose function for combinations
+
+-   We estimate the binomial probability using the **dbinom function**.
+
+```{r}
+
+rm(list = ls())
+
+n = 100
+x = 92
+p = 0.95
+
+fx <- tibble(combo_x <- factorial(n)/(factorial(x)*factorial(n - x)),
+             fx_calc <- combo_x *p^(x)*(1-p)^(n-x),
+             fx_calc2 <- choose(n,x)*p^(x)*(1-p)^(n-x),
+             fx_func <- dbinom(x, n, p))
+
+kable(fx,
+      align       = "cccc", 
+      digits      = 3,
+      format.args = list(big.mark = ",", scientific = FALSE),
+      caption     = "P(x=92) with n = 100 and p = 0.95",
+      col.names   = c("Combinations",
+                      "Calculated ", 
+                      "Combination Function", 
+                      "Binomial Function")) %>%
+  kable_styling(font_size = 14)
+
+
+```

@@ -2105,7 +2105,7 @@
     "href": "mod-5-2-binomial.html",
     "title": "25  Binomial Distribution",
     "section": "",
-    "text": "25.1 Bivariate Discrete Distribtuions\nA probability distribution involving two random variables is known as a bivariate probability distribution.\nAn outcome of a bivariate experiment consists of two values, one from each random variable.\nIf we roll two six-sided die once, this is a bivariate experiment with one trial.\nAssume we administer two drugs. If the random variable for each drug is the severity (or absence) of side effects, then the outcome of the experiment consists of the side effects of each drug.\nWe can also look at the mtcars data set and conduct a cross tabulation by cylinder and gear to calculate the joint and marginal probabilities empirically (assuming the cars are “random”)",
+    "text": "25.1 Bivariate Discrete Distribtuions\nA probability distribution involving two random variables is known as a bivariate probability distribution.\nAn outcome of a bivariate experiment consists of two values, one from each random variable.\nIf we roll two six-sided die once, this is a bivariate experiment with one trial.\nAssume we administer two drugs. If the random variable for each drug is the severity (or absence) of side effects, then the outcome of the experiment consists of the side effects of each drug.\nWe can also look at the mtcars data set and conduct a cross tabulation by cylinder and gear to calculate the joint and marginal probabilities empirically (assuming the cars are “random”)\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\n#adorn_totals is column by row\n\nfreqs &lt;- tabyl(mtcars, cyl, gear) %&gt;%\n  adorn_totals(c(\"col\", \"row\"))\n\nkable(freqs,\n      align       = \"lcccc\", \n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Cars Frequency Table\",\n      col.names   = c(\" \", \"3 Gear\", \"4 Gear\", \"5 Gear\", \n                      \"Total\")) %&gt;%\n  kable_styling(font_size = 14)\n\nrel_freqs &lt;- freqs %&gt;%\n  adorn_percentages(\"row\") %&gt;%\n  adorn_pct_formatting(digits = 2) %&gt;%\n  adorn_ns()\n\nkable(rel_freqs,\n      align       = \"lcccc\", \n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Cars Frequency Table\",\n      col.names   = c(\" \", \"3 Gear\", \"4 Gear\", \"5 Gear\", \n                      \"Total\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nCars Frequency Table\n\n\n\n3 Gear\n4 Gear\n5 Gear\nTotal\n\n\n\n\n4\n1\n8\n2\n11\n\n\n6\n2\n4\n1\n7\n\n\n8\n12\n0\n2\n14\n\n\nTotal\n15\n12\n5\n32\n\n\n\n\n\n\n\nCars Frequency Table\n\n\n\n3 Gear\n4 Gear\n5 Gear\nTotal\n\n\n\n\n4\n9.09% (1)\n72.73% (8)\n18.18% (2)\n100.00% (11)\n\n\n6\n28.57% (2)\n57.14% (4)\n14.29% (1)\n100.00% (7)\n\n\n8\n85.71% (12)\n0.00% (0)\n14.29% (2)\n100.00% (14)\n\n\nTotal\n46.88% (15)\n37.50% (12)\n15.62% (5)\n100.00% (32)",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
@@ -2194,6 +2194,61 @@
     "title": "25  Binomial Distribution",
     "section": "25.9 Variance",
     "text": "25.9 Variance\nThe expected value, \\(\\mu\\), provides a measure of central tendency of a random variable.\nThe variance is a measure of the dispersion of the values of the random variable.\nThe variance of a discrete random variable is defined as:\n\\[var(x) = \\sigma^2 = \\sum (x - \\mu)^2 \\, f(x)\\]\nOne can think about the variance as the weighted average of the squared mean deviations, where the weights are the probabilities of the values of \\(x\\).\nThe standard deviation of a discrete random variable is defined as:\n\\[sd(x) = \\sqrt{\\sigma^2} = \\sqrt{\\sum (x - \\mu)^2 \\, f(x)}\\]\nThe standard deviation is preferred in describing the dispersion of a random variable as it is in the same units of the random variable as opposed to the variance which is measured in squared units and is more difficult to interpret.\n\nrm(list = ls())\n\nset.seed(1234)\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\nthrows = 1000000\n\nrolls &lt;- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %&gt;%\n  group_by(throw) %&gt;%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %&gt;%\n  mutate(xfx = throw * rel_freq,\n         deviations    = as.numeric(throw) - sum(xfx),\n         sq_deviations = deviations^2,\n         sqdev_fx      = sq_deviations * rel_freq) %&gt;%\n  adorn_totals(where = \"row\", name = \"Sums\")\n\nkable(rolls,\n      align       = \"lcccccc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x f(x)\",\n                      \"Mean Deviations\", \"Squared Deviations\",\n                      \"Squared Deviations * f(x)\")) %&gt;%\n  kable_styling(font_size = 10)\n\nvars &lt;- rolls %&gt;% \n       filter(throw != \"Sums\") %&gt;% \n       summarize(var_x = sum(sqdev_fx),\n                 sd_x  = sqrt(sum(sqdev_fx)))\n\nkable(vars,\n      col.names = c(\"Variance (X)\", \"Standard Deviation (X)\"),\n      align     = 'c',\n      digits    = 3) %&gt;%\nkable_styling()\n\n\nRolls of Six-Sided Die\n\n\nNumber (x)\nFrequency of X\nProbability of X - f(x)\nx f(x)\nMean Deviations\nSquared Deviations\nSquared Deviations * f(x)\n\n\n\n\n1\n166,642\n0.166642\n0.166642\n-2.499525\n6.2476252\n1.0411168\n\n\n2\n167,094\n0.167094\n0.334188\n-1.499525\n2.2485752\n0.3757234\n\n\n3\n166,137\n0.166137\n0.498411\n-0.499525\n0.2495252\n0.0414554\n\n\n4\n166,539\n0.166539\n0.666156\n0.500475\n0.2504752\n0.0417139\n\n\n5\n167,400\n0.167400\n0.837000\n1.500475\n2.2514252\n0.3768886\n\n\n6\n166,188\n0.166188\n0.997128\n2.500475\n6.2523752\n1.0390697\n\n\nSums\n1,000,000\n1.000000\n3.499525\n0.002850\n17.5000014\n2.9159678\n\n\n\n\n\n\n\n\n\nVariance (X)\nStandard Deviation (X)\n\n\n\n\n2.916\n1.708",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#binomial-experiments",
+    "href": "mod-5-2-binomial.html#binomial-experiments",
+    "title": "25  Binomial Distribution",
+    "section": "25.2 Binomial Experiments",
+    "text": "25.2 Binomial Experiments\nPreviously, we have used empirical data to generate distributions.\nThe binomial probability distribution is a discrete probability distribution.\nIn a binomial experiment, we are interested in the number of success relative to the number of trials.\nIf \\(x\\) denotes the number of successes occurring in \\(n\\) trials, then \\(x\\) is a discrete random variable.\nAssume that we will flip a fair two-sided coin 5 times.\nWe define success as having a head appear on the upward face of the coin.\nWe count the number of successes out of the 5 trials.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#properties-of-binomial-experiments",
+    "href": "mod-5-2-binomial.html#properties-of-binomial-experiments",
+    "title": "25  Binomial Distribution",
+    "section": "25.3 Properties of Binomial Experiments",
+    "text": "25.3 Properties of Binomial Experiments\nA binomial experiment exhibits the following four properties:\n\nThe experiment consists of a sequence of \\(n\\) identical trails.\nTwo outcomes: success and failure are possible on each trial.\nThe probability of success, denoted by \\(p\\), does not change from trial to trial.\nThe trials are independent.\n\nIn the previous example, we flipped a fair two-sided coin 5 times.\nThe experiment consisted of 5 trials, the outcomes were heads (success) and tails (failure), the probability of success, \\(p = 0.5\\), did not change from trial to trial, and the trials were independent.\nWe would conclude that the coin flip experiment was a binomial experiment.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#combinations-and-experiments",
+    "href": "mod-5-2-binomial.html#combinations-and-experiments",
+    "title": "25  Binomial Distribution",
+    "section": "25.4 Combinations and Experiments",
+    "text": "25.4 Combinations and Experiments\nWe first need determine the number of successes, \\(x\\), in the trials, \\(n\\).\nA combination examines the number of ways objects can be selected, without regard to the order in which they are selected.\nThe number of experimental outcomes providing exactly \\(x\\) successes in \\(n\\) trials is:\n\\[\\binom{n}{x} = \\frac{n!}{x!(n-x)!}\\] If the number of successes is 2 and number of trials is 3, then \\(x = 2\\) and \\(n = 3\\) and:\n\\[\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = 3\\]\nIf the number of successes is 5 and the number of trails is 10, the \\(x = 5\\) and \\(n = 10\\) and:\n\\[\\binom{10}{5} = \\frac{10!}{5!(10-5)!} = 252\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#binominal-probability-function",
+    "href": "mod-5-2-binomial.html#binominal-probability-function",
+    "title": "25  Binomial Distribution",
+    "section": "25.5 Binominal Probability Function",
+    "text": "25.5 Binominal Probability Function\nLet \\(x\\) be the number of successes.\nLet \\(p\\) be the probability of success on one trial.\nLet \\(n\\) be the number of trials.\nLet \\(f(x)\\) be the probability of \\(x\\) successes in \\(n\\) trials.\nLet \\(n!\\) be \\(n\\) factorial.\nThe binomial probability function is defined as:\n\\[f(x) = \\binom{n}{x} p^x (1-p)^{(n-x)}\\] \\[f(x) = \\frac{n!}{x!(n-x)!} \\, p^x (1-p)^{(n-x)}\\]",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#binomial-example",
+    "href": "mod-5-2-binomial.html#binomial-example",
+    "title": "25  Binomial Distribution",
+    "section": "25.6 Binomial Example",
+    "text": "25.6 Binomial Example\nAssume that we have a toggle switch that determines whether a manufacturing line continues to work.\n\nWhen the toggle switch is observed to be in the “on” position, this is considered a success.\nWhen the toggle switch is observed to be in the “off” position, this is considered a failure.\nWe know that the probability of the switch being on is \\(p = 0.95\\).\nWe assume that the probability remains constant,\nWe assume hat the current switch position is independent of the previous switch position.\n\nWhat is the probability of 92 successes in 100 trials?\nGiven \\(n = 100\\), \\(x = 92\\), and \\(p = 0.95\\), the probability of \\(x\\) successes in \\(n\\) trials is\n\\[f(x) = \\frac{100!}{92!(100-92)!} \\times\\]\n\\[0.95^{92} \\, \\times (1-0.95)^{(100-92)}\\]\nWe can use R to calculate the probability of 92 successes in 100 trials and \\(p=0.95\\).\nIn the code below, we perform four calculations:\n\nWe first declare \\(n\\), \\(x\\), and \\(p\\).\nWe estimate the number of combinations with \\(n = 100\\) and \\(x = 92\\).\nWe estimate the binomial probability with \\(n = 100\\) and \\(x = 92\\).\nWe estimate the binomial probability using the choose function for combinations\nWe estimate the binomial probability using the dbinom function.\n\n\nrm(list = ls())\n\nn = 100\nx = 92\np = 0.95\n\nfx &lt;- tibble(combo_x &lt;- factorial(n)/(factorial(x)*factorial(n - x)),\n             fx_calc &lt;- combo_x *p^(x)*(1-p)^(n-x),\n             fx_calc2 &lt;- choose(n,x)*p^(x)*(1-p)^(n-x),\n             fx_func &lt;- dbinom(x, n, p))\n\nkable(fx,\n      align       = \"cccc\", \n      digits      = 3,\n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"P(x=92) with n = 100 and p = 0.95\",\n      col.names   = c(\"Combinations\",\n                      \"Calculated \", \n                      \"Combination Function\", \n                      \"Binomial Function\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nP(x=92) with n = 100 and p = 0.95\n\n\nCombinations\nCalculated\nCombination Function\nBinomial Function\n\n\n\n\n186,087,894,300\n0.065\n0.065\n0.065",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
