@@ -22,55 +22,93 @@ library(tidyquant, quietly = TRUE)
 
 ```
 
-## Bivariate Discrete Distribtuions
+## Probability Mass Functions
 
-A probability distribution involving two random variables is known as a **bivariate probability distribution**.
+A discrete random variable $X$ is a function from the sample space $\Omega$ of a probability space to a finite, or countably infinite, set of real numbers. Together with the function $P$ mapping elements
 
-An outcome of a bivariate experiment consists of two values, one from each random variable.
+$$
+\omega \in \Omega
+$$
 
-If we roll two six-sided die once, this is a bivariate experiment with one trial.
+a random variable determine the **Probability Mass Function**
 
-Assume we administer two drugs. If the random variable for each drug is the severity (or absence) of side effects, then the outcome of the experiment consists of the side effects of each drug.
+$$
+P(X(\omega))
+$$
 
-We can also look at the *mtcars* data set and conduct a cross tabulation by cylinder and gear to calculate the joint and marginal probabilities empirically (assuming the cars are "random")
+The Probability Mass Function (PMF) is typically denoted as
 
-```{r, message = FALSE, warning = FALSE, results = 'hold'}
+$$
+P(X)
+$$
 
-rm(list = ls())
+and maps **real numbers to probabilities**.
 
-library(dplyr)
-library(ggplot2)
-library(janitor)
-library(kableExtra)
-library(tidyverse)
+More formally, for any value $x$ in the range of the random variable $X$, let $A$ be part of the sample space of whose members map $X$ to $x$. The probability that $X$ will take on the value $x$ is the value that the probability function assigns to $A$ or:
 
-#adorn_totals is column by row
+$$
+P(X = x) = P(A)
+$$
 
-freqs <- tabyl(mtcars, cyl, gear) %>%
-  adorn_totals(c("col", "row"))
+Imagine we have a bag with four chips. Two chips are labeled "A" and two chips are labeled "B". Two chips are drawn at the same time. The sample space for the total number of "A" chips that can be drawn is defined as:
 
-kable(freqs,
-      align       = "lcccc", 
-      format.args = list(big.mark = ",", scientific = FALSE),
-      caption     = "Cars Frequency Table",
-      col.names   = c(" ", "3 Gear", "4 Gear", "5 Gear", 
-                      "Total")) %>%
-  kable_styling(font_size = 14)
+$$
+\Omega = \{AA, AB, BA, BB \}
+$$
 
-rel_freqs <- freqs %>%
-  adorn_percentages("row") %>%
-  adorn_pct_formatting(digits = 2) %>%
-  adorn_ns()
+Since we are not concerned with ordering, the outcome $AB$ is concerned the same as the outcome $BA$.
 
-kable(rel_freqs,
-      align       = "lcccc", 
-      format.args = list(big.mark = ",", scientific = FALSE),
-      caption     = "Cars Frequency Table",
-      col.names   = c(" ", "3 Gear", "4 Gear", "5 Gear", 
-                      "Total")) %>%
-  kable_styling(font_size = 14)
+**The function** $X$ **maps each possible pair of observations to the total number of A's obtained.**
 
-```
+-   $X(AA) =2$ and the probability of observing $X$ is $P(X) = 1/4$.
+
+-   $X(AB) = 1$ and $X(BA) = 1$ so $P(X) = 1/4 + 1/4 = 1/2$.
+
+-   $X(BB) = 0$ and the probability of observing $X$ is $P(X) = 1/4$ .
+
++--------------------+---------------------+--------------------+
+| $\omega$           | $X(\omega)$         | $P(X)$             |
++====================+=====================+====================+
+| AA                 | 2                   | $\frac{1}{4}$      |
++--------------------+---------------------+--------------------+
+| AB                 | 1                   | $\frac{1}{2}$      |
+|                    |                     |                    |
+| BA                 | 1                   |                    |
++--------------------+---------------------+--------------------+
+| BB                 | 0                   | $\frac{1}{4}$      |
++--------------------+---------------------+--------------------+
+
+: PMF Example
+
+## Cumulative Distribution Functions
+
+In the above example, the random variable $X$ determines the probability mass function, $P(X)$.
+
+We can use the PMF to ask: what is the probability of observing no A's when drawing two chips from a bag in which there are two A chips and two B chips?
+
+$$
+P(X = x) = P(X = BB) = P(0) = 1/4 = 0.25
+$$
+
+What is we want to know the likelihood of observing 1 or fewer A's?
+
+In other words, we want to know
+
+$$
+P(X \le x) = P(X \le 1)
+$$
+
+The probability mass function (PMF) determines the **Cumulative Distribution Function.**
+
+The cumulative distribution function (CDF) examines the aggregation of probabilities.
+
+What is the likelihood of observing 1 or fewer A's?
+
+This will be the sum of likelihoods of observing 1 A or 0 A, that is:
+
+$$
+P(X \le x) = P(X \le 1) = P(X = 1) + P(X = 0) = 1/2 + 1/4 = 0.75
+$$
 
 ## Binomial Experiments
 
@@ -151,7 +189,7 @@ The **binomial probability function** is defined as:
 
 $$f(x) = \binom{n}{x} p^x (1-p)^{(n-x)}$$ $$f(x) = \frac{n!}{x!(n-x)!} \, p^x (1-p)^{(n-x)}$$
 
-## Binomial Example
+## Binomial PMF Example
 
 Assume that we have a toggle switch that determines whether a manufacturing line continues to work.
 
@@ -163,7 +201,7 @@ Assume that we have a toggle switch that determines whether a manufacturing line
 
 -   We assume that the probability remains constant,
 
--   We assume hat the current switch position is independent of the previous switch position.
+-   We assume that the current switch position is independent of the previous switch position.
 
 **What is the probability of 92 successes in 100 trials?**
 
@@ -187,9 +225,12 @@ In the code below, we perform four calculations:
 
 -   We estimate the binomial probability using the **dbinom function**.
 
-```{r}
+```{r, warning = FALSE, message = FALSE}
 
 rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
 
 n = 100
 x = 92
@@ -208,8 +249,231 @@ kable(fx,
       col.names   = c("Combinations",
                       "Calculated ", 
                       "Combination Function", 
-                      "Binomial Function")) %>%
+                      "Binomial PMF")) %>%
   kable_styling(font_size = 14)
+```
 
+## Binomial CDF Example
+
+In our previous example, we were interested in the likelihood of observing 92 successes in 100 trials where the probability of success in any given trial was 0.95 and the conditions of a binomial experiment were met.
+
+Let's change the problem so we can demonstrate how a binomial CDF works.
+
+The problem statement:
+
+-   A toggle switch that determines whether a manufacturing line continues to work.
+
+-   When the toggle switch is observed to be in the "on" position, this is considered a success.
+
+-   When the toggle switch is observed to be in the "off" position, this is considered a failure.
+
+-   We know that the probability of the switch being on is $p = 0.95$.
+
+-   We assume that the probability remains constant,
+
+-   We assume that the current switch position is independent of the previous switch position.
+
+-   Assume that $n = 10$
+
+-   Assume $x = 7$
+
+-   Assume $p = 0.95$
+
+What is the probability that $x = 7$, that is, $P(X = 7)$?
+
+What is the probability that $x$ is less than 7, that is $P(x \le 7)$?
+
+The code below does the following:
+
+-   We declare the variables
+
+-   We estimate the PMF for the binomial using **dbinom**
+
+-   We estimate the CDF for the binomial using **pbinom**
+
+-   We show the CDF is equal to the sum of the PMFs
+
+In other words:
+
+-   We evaluate $P(X = 7)$ using the **dbinom** function
+
+-   We evaluate $P(X \le 7)$ using the **pbinom** function
+
+-   We show $P(X \le 7) = \sum_{i = 1}^7 P(X = x_i)$
+
+We find that the probability of observing 7 successes in an experiment with 10 trials and a probability of success of 0.95 in any given trial is equal to 0.0195.
+
+We find that probability of observing 7 or fewer successes in an experiment with 10 trials and a probability of success of 0.95 in any given trail is equal to 0.0115.
+
+```{r, warning = FALSE, message = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
+
+n = 10
+x = 7
+p = 0.95
+
+fx <- tibble(pmf <- dbinom(x, n, p),
+             cdf <- pbinom(x, n, p),
+             cdf_a <- dbinom(0, 10, 0.95) + dbinom(1, 10, 0.95) +
+                      dbinom(2, 10, 0.95) + dbinom(3, 10, 0.95) +
+                      dbinom(4, 10, 0.95) + dbinom(5, 10, 0.95) +
+                      dbinom(6, 10, 0.95) + dbinom(7, 10, 0.95))
+
+kable(fx,
+      align       = "c", 
+      digits      = 4,
+      caption     = "N = 10 and p = 0.95",
+      col.names   = c("PMF(X = x) ", "CDF(X <= x)", "CDF(X <= x)")) %>%
+kable_styling(font_size = 14,
+              full_width = TRUE)
+
+```
+
+## Graphical Binomial PMF
+
+The code below provides a graphical illustrate of three binomial PMFs.
+
+The number of trials is equal to 100.
+
+The variable, $x$, is a sequence of integers from 1 to 100.
+
+In the first case, the probability of success in any given trial is 0.3.
+
+In the second case, the probability of success in any given trial is 0.4.
+
+In the third case, the probability of success in any given trial is 0.5.
+
+You should observe that the center of each PFM shifts right as the probability of success in any given independent trail increases.
+
+```{r, warning = FALSE, message = FALSE}
+
+rm(list = ls())
+
+x <- 1:100
+
+lines_1 <- tibble(x, p_x = dbinom(x, size = 100, prob = 0.3), 
+                      prob = 0.1)
+lines_2 <- tibble(x, p_x = dbinom(x, size = 100, prob = 0.4), 
+                      prob = 0.3)
+lines_3 <- tibble(x, p_x = dbinom(x, size = 100, prob = 0.5), 
+                      prob = 0.5)
+
+lines <- bind_rows(lines_1, lines_2, lines_3)
+
+ggplot(lines,
+       aes(x     = x,
+           y     = p_x,
+           group = prob,
+           fill  = prob)) + 
+geom_col() +
+facet_wrap(vars(prob)) +
+theme_minimal() + 
+theme(legend.position = " ") +
+labs(title = "Binomial Probability Mass Function",
+     x     = " ",
+     y     = "P(X = x)")
+```
+
+## Graphical Binomial CDF
+
+The code below provides a graphical illustrate of three binomial CDFs.
+
+The number of trials is equal to 100.
+
+The variable, $x$, is a sequence of integers from 1 to 100.
+
+In the first case, the probability of success in any given trial is 0.3.
+
+In the second case, the probability of success in any given trial is 0.4.
+
+In the third case, the probability of success in any given trial is 0.5.
+
+```{r, warning = FALSE, message = FALSE}
+
+rm(list = ls())
+
+x <- 1:100
+
+lines_1 <- tibble(x, p_x = pbinom(x, size = 100, prob = 0.3), 
+                      prob = 0.1)
+lines_2 <- tibble(x, p_x = pbinom(x, size = 100, prob = 0.4), 
+                      prob = 0.3)
+lines_3 <- tibble(x, p_x = pbinom(x, size = 100, prob = 0.5), 
+                      prob = 0.5)
+
+lines <- bind_rows(lines_1, lines_2, lines_3)
+
+ggplot(lines,
+       aes(x     = x,
+           y     = p_x,
+           group = prob,
+           fill  = prob)) + 
+geom_col() +
+facet_wrap(vars(prob)) +
+theme_minimal() + 
+theme(legend.position = " ") +
+labs(title = "Binomial Cumulative Distribution Function",
+     x     = " ",
+     y     = "P(X = x)")
+
+```
+
+## Expected Value and Variance
+
+Given $x$, $n$, and $p$, the expected value for the binomial distribution is:
+
+$$E(x) = \mu = np$$
+
+The variance of the binomial distribution is:
+
+$$var(x) = \sigma^2 = np \, (1-p)$$
+
+Let
+
+-   $n$ = 50
+
+-   $x = 23$
+
+-   $p$ = 0.55
+
+The expected value, variance, and standard deviation are equal to:
+
+$$E(x) = \mu = 50 \times 0.55 = 27.5$$ 
+$$var(x) = \sigma ^2 = np \, (1-p) = 50 \times 0.55 \times (1 - 0.55) = 12.375$$ 
+
+$$sd(x) = \sqrt{(\sigma^2)} = \sqrt{(12.375)} = 3.52$$
+
+```{r, warning = FALSE, message = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
+
+n = 50
+x = 23
+p = 0.55
+
+fx <- tibble(pmf <- dbinom(x, n, p),
+             cdf <- pbinom(x, n, p),
+             ev  <- n*p,
+             var <- n*p*(1-p),
+             sd  <- sqrt(n*p*(1-p)))
+
+kable(fx,
+      align       = "c", 
+      digits      = 4,
+      caption     = "N = 50, X = 23, and p = 0.55",
+      col.names   = c("PMF(X = x) ", 
+                      "CDF(X <= x)", 
+                      "Expected Value",
+                      "Variance",
+                      "Standard Deviation")) %>%
+kable_styling(font_size = 14,
+              full_width = TRUE)
 
 ```

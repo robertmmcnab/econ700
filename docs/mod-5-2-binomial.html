@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./mod-5-3-poisson.html" rel="next">
 <link href="./mod-5-1-discrete.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -1944,6 +1945,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Binomial Distribution</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-5-3-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Poisson Distribution</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -1968,12 +1975,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bivariate-discrete-distribtuions" id="toc-bivariate-discrete-distribtuions" class="nav-link active" data-scroll-target="#bivariate-discrete-distribtuions"><span class="header-section-number">25.1</span> Bivariate Discrete Distribtuions</a></li>
-  <li><a href="#binomial-experiments" id="toc-binomial-experiments" class="nav-link" data-scroll-target="#binomial-experiments"><span class="header-section-number">25.2</span> Binomial Experiments</a></li>
-  <li><a href="#properties-of-binomial-experiments" id="toc-properties-of-binomial-experiments" class="nav-link" data-scroll-target="#properties-of-binomial-experiments"><span class="header-section-number">25.3</span> Properties of Binomial Experiments</a></li>
-  <li><a href="#combinations-and-experiments" id="toc-combinations-and-experiments" class="nav-link" data-scroll-target="#combinations-and-experiments"><span class="header-section-number">25.4</span> Combinations and Experiments</a></li>
-  <li><a href="#binominal-probability-function" id="toc-binominal-probability-function" class="nav-link" data-scroll-target="#binominal-probability-function"><span class="header-section-number">25.5</span> Binominal Probability Function</a></li>
-  <li><a href="#binomial-example" id="toc-binomial-example" class="nav-link" data-scroll-target="#binomial-example"><span class="header-section-number">25.6</span> Binomial Example</a></li>
+  <li><a href="#probability-mass-functions" id="toc-probability-mass-functions" class="nav-link active" data-scroll-target="#probability-mass-functions"><span class="header-section-number">25.1</span> Probability Mass Functions</a></li>
+  <li><a href="#cumulative-distribution-functions" id="toc-cumulative-distribution-functions" class="nav-link" data-scroll-target="#cumulative-distribution-functions"><span class="header-section-number">25.2</span> Cumulative Distribution Functions</a></li>
+  <li><a href="#binomial-experiments" id="toc-binomial-experiments" class="nav-link" data-scroll-target="#binomial-experiments"><span class="header-section-number">25.3</span> Binomial Experiments</a></li>
+  <li><a href="#properties-of-binomial-experiments" id="toc-properties-of-binomial-experiments" class="nav-link" data-scroll-target="#properties-of-binomial-experiments"><span class="header-section-number">25.4</span> Properties of Binomial Experiments</a></li>
+  <li><a href="#combinations-and-experiments" id="toc-combinations-and-experiments" class="nav-link" data-scroll-target="#combinations-and-experiments"><span class="header-section-number">25.5</span> Combinations and Experiments</a></li>
+  <li><a href="#binominal-probability-function" id="toc-binominal-probability-function" class="nav-link" data-scroll-target="#binominal-probability-function"><span class="header-section-number">25.6</span> Binominal Probability Function</a></li>
+  <li><a href="#binomial-pmf-example" id="toc-binomial-pmf-example" class="nav-link" data-scroll-target="#binomial-pmf-example"><span class="header-section-number">25.7</span> Binomial PMF Example</a></li>
+  <li><a href="#binomial-cdf-example" id="toc-binomial-cdf-example" class="nav-link" data-scroll-target="#binomial-cdf-example"><span class="header-section-number">25.8</span> Binomial CDF Example</a></li>
+  <li><a href="#graphical-binomial-pmf" id="toc-graphical-binomial-pmf" class="nav-link" data-scroll-target="#graphical-binomial-pmf"><span class="header-section-number">25.9</span> Graphical Binomial PMF</a></li>
+  <li><a href="#graphical-binomial-cdf" id="toc-graphical-binomial-cdf" class="nav-link" data-scroll-target="#graphical-binomial-cdf"><span class="header-section-number">25.10</span> Graphical Binomial CDF</a></li>
+  <li><a href="#expected-value-and-variance" id="toc-expected-value-and-variance" class="nav-link" data-scroll-target="#expected-value-and-variance"><span class="header-section-number">25.11</span> Expected Value and Variance</a></li>
   </ul>
 </nav>
     </div>
@@ -2283,140 +2295,93 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="bivariate-discrete-distribtuions" class="level2" data-number="25.1">
-<h2 data-number="25.1" class="anchored" data-anchor-id="bivariate-discrete-distribtuions"><span class="header-section-number">25.1</span> Bivariate Discrete Distribtuions</h2>
-<p>A probability distribution involving two random variables is known as a <strong>bivariate probability distribution</strong>.</p>
-<p>An outcome of a bivariate experiment consists of two values, one from each random variable.</p>
-<p>If we roll two six-sided die once, this is a bivariate experiment with one trial.</p>
-<p>Assume we administer two drugs. If the random variable for each drug is the severity (or absence) of side effects, then the outcome of the experiment consists of the side effects of each drug.</p>
-<p>We can also look at the <em>mtcars</em> data set and conduct a cross tabulation by cylinder and gear to calculate the joint and marginal probabilities empirically (assuming the cars are “random”)</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#adorn_totals is column by row</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>freqs <span class="ot">&lt;-</span> <span class="fu">tabyl</span>(mtcars, cyl, gear) <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="fu">c</span>(<span class="st">"col"</span>, <span class="st">"row"</span>))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(freqs,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"lcccc"</span>, </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Cars Frequency Table"</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">" "</span>, <span class="st">"3 Gear"</span>, <span class="st">"4 Gear"</span>, <span class="st">"5 Gear"</span>, </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Total"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>rel_freqs <span class="ot">&lt;-</span> freqs <span class="sc">%&gt;%</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">"row"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_ns</span>()</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rel_freqs,</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"lcccc"</span>, </span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Cars Frequency Table"</span>,</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">" "</span>, <span class="st">"3 Gear"</span>, <span class="st">"4 Gear"</span>, <span class="st">"5 Gear"</span>, </span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Total"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>Cars Frequency Table</caption>
+<section id="probability-mass-functions" class="level2" data-number="25.1">
+<h2 data-number="25.1" class="anchored" data-anchor-id="probability-mass-functions"><span class="header-section-number">25.1</span> Probability Mass Functions</h2>
+<p>A discrete random variable <span class="math inline">\(X\)</span> is a function from the sample space <span class="math inline">\(\Omega\)</span> of a probability space to a finite, or countably infinite, set of real numbers. Together with the function <span class="math inline">\(P\)</span> mapping elements</p>
+<p><span class="math display">\[
+\omega \in \Omega
+\]</span></p>
+<p>a random variable determine the <strong>Probability Mass Function</strong></p>
+<p><span class="math display">\[
+P(X(\omega))
+\]</span></p>
+<p>The Probability Mass Function (PMF) is typically denoted as</p>
+<p><span class="math display">\[
+P(X)
+\]</span></p>
+<p>and maps <strong>real numbers to probabilities</strong>.</p>
+<p>More formally, for any value <span class="math inline">\(x\)</span> in the range of the random variable <span class="math inline">\(X\)</span>, let <span class="math inline">\(A\)</span> be part of the sample space of whose members map <span class="math inline">\(X\)</span> to <span class="math inline">\(x\)</span>. The probability that <span class="math inline">\(X\)</span> will take on the value <span class="math inline">\(x\)</span> is the value that the probability function assigns to <span class="math inline">\(A\)</span> or:</p>
+<p><span class="math display">\[
+P(X = x) = P(A)
+\]</span></p>
+<p>Imagine we have a bag with four chips. Two chips are labeled “A” and two chips are labeled “B”. Two chips are drawn at the same time. The sample space for the total number of “A” chips that can be drawn is defined as:</p>
+<p><span class="math display">\[
+\Omega = \{AA, AB, BA, BB \}
+\]</span></p>
+<p>Since we are not concerned with ordering, the outcome <span class="math inline">\(AB\)</span> is concerned the same as the outcome <span class="math inline">\(BA\)</span>.</p>
+<p><strong>The function</strong> <span class="math inline">\(X\)</span> <strong>maps each possible pair of observations to the total number of A’s obtained.</strong></p>
+<ul>
+<li><p><span class="math inline">\(X(AA) =2\)</span> and the probability of observing <span class="math inline">\(X\)</span> is <span class="math inline">\(P(X) = 1/4\)</span>.</p></li>
+<li><p><span class="math inline">\(X(AB) = 1\)</span> and <span class="math inline">\(X(BA) = 1\)</span> so <span class="math inline">\(P(X) = 1/4 + 1/4 = 1/2\)</span>.</p></li>
+<li><p><span class="math inline">\(X(BB) = 0\)</span> and the probability of observing <span class="math inline">\(X\)</span> is <span class="math inline">\(P(X) = 1/4\)</span> .</p></li>
+</ul>
+<table class="caption-top table">
+<caption>PMF Example</caption>
+<colgroup>
+<col style="width: 29%">
+<col style="width: 30%">
+<col style="width: 29%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">3 Gear</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">4 Gear</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">5 Gear</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Total</th>
+<th><span class="math inline">\(\omega\)</span></th>
+<th><span class="math inline">\(X(\omega)\)</span></th>
+<th><span class="math inline">\(P(X)\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">4</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">11</td>
+<td>AA</td>
+<td>2</td>
+<td><span class="math inline">\(\frac{1}{4}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">7</td>
+<td><p>AB</p>
+<p>BA</p></td>
+<td><p>1</p>
+<p>1</p></td>
+<td><span class="math inline">\(\frac{1}{2}\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">8</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">14</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Total</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">32</td>
+<td>BB</td>
+<td>0</td>
+<td><span class="math inline">\(\frac{1}{4}\)</span></td>
 </tr>
 </tbody>
 </table>
-
-
-
-<table class="table caption-top table-sm table-striped small">
-<caption>Cars Frequency Table</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">3 Gear</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">4 Gear</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">5 Gear</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">4</td>
-<td style="text-align: center;">9.09% (1)</td>
-<td style="text-align: center;">72.73% (8)</td>
-<td style="text-align: center;">18.18% (2)</td>
-<td style="text-align: center;">100.00% (11)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: center;">28.57% (2)</td>
-<td style="text-align: center;">57.14% (4)</td>
-<td style="text-align: center;">14.29% (1)</td>
-<td style="text-align: center;">100.00% (7)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">8</td>
-<td style="text-align: center;">85.71% (12)</td>
-<td style="text-align: center;">0.00% (0)</td>
-<td style="text-align: center;">14.29% (2)</td>
-<td style="text-align: center;">100.00% (14)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Total</td>
-<td style="text-align: center;">46.88% (15)</td>
-<td style="text-align: center;">37.50% (12)</td>
-<td style="text-align: center;">15.62% (5)</td>
-<td style="text-align: center;">100.00% (32)</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </section>
-<section id="binomial-experiments" class="level2" data-number="25.2">
-<h2 data-number="25.2" class="anchored" data-anchor-id="binomial-experiments"><span class="header-section-number">25.2</span> Binomial Experiments</h2>
+<section id="cumulative-distribution-functions" class="level2" data-number="25.2">
+<h2 data-number="25.2" class="anchored" data-anchor-id="cumulative-distribution-functions"><span class="header-section-number">25.2</span> Cumulative Distribution Functions</h2>
+<p>In the above example, the random variable <span class="math inline">\(X\)</span> determines the probability mass function, <span class="math inline">\(P(X)\)</span>.</p>
+<p>We can use the PMF to ask: what is the probability of observing no A’s when drawing two chips from a bag in which there are two A chips and two B chips?</p>
+<p><span class="math display">\[
+P(X = x) = P(X = BB) = P(0) = 1/4 = 0.25
+\]</span></p>
+<p>What is we want to know the likelihood of observing 1 or fewer A’s?</p>
+<p>In other words, we want to know</p>
+<p><span class="math display">\[
+P(X \le x) = P(X \le 1)
+\]</span></p>
+<p>The probability mass function (PMF) determines the <strong>Cumulative Distribution Function.</strong></p>
+<p>The cumulative distribution function (CDF) examines the aggregation of probabilities.</p>
+<p>What is the likelihood of observing 1 or fewer A’s?</p>
+<p>This will be the sum of likelihoods of observing 1 A or 0 A, that is:</p>
+<p><span class="math display">\[
+P(X \le x) = P(X \le 1) = P(X = 1) + P(X = 0) = 1/2 + 1/4 = 0.75
+\]</span></p>
+</section>
+<section id="binomial-experiments" class="level2" data-number="25.3">
+<h2 data-number="25.3" class="anchored" data-anchor-id="binomial-experiments"><span class="header-section-number">25.3</span> Binomial Experiments</h2>
 <p>Previously, we have used <strong>empirical</strong> data to generate distributions.</p>
 <p>The <strong>binomial probability distribution</strong> is a discrete probability distribution.</p>
 <p>In a <strong>binomial experiment</strong>, we are interested in the <strong>number of success</strong> relative to the <strong>number of trials</strong>.</p>
@@ -2425,8 +2390,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>We define success as having a head appear on the upward face of the coin.</p>
 <p>We count the number of successes out of the 5 trials.</p>
 </section>
-<section id="properties-of-binomial-experiments" class="level2" data-number="25.3">
-<h2 data-number="25.3" class="anchored" data-anchor-id="properties-of-binomial-experiments"><span class="header-section-number">25.3</span> Properties of Binomial Experiments</h2>
+<section id="properties-of-binomial-experiments" class="level2" data-number="25.4">
+<h2 data-number="25.4" class="anchored" data-anchor-id="properties-of-binomial-experiments"><span class="header-section-number">25.4</span> Properties of Binomial Experiments</h2>
 <p>A binomial experiment exhibits the following four properties:</p>
 <ul>
 <li><p>The experiment consists of a sequence of <span class="math inline">\(n\)</span> identical trails.</p></li>
@@ -2438,8 +2403,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>The experiment consisted of 5 trials, the outcomes were heads (success) and tails (failure), the probability of success, <span class="math inline">\(p = 0.5\)</span>, did not change from trial to trial, and the trials were independent.</p>
 <p><em>We would conclude that the coin flip experiment was a binomial experiment.</em></p>
 </section>
-<section id="combinations-and-experiments" class="level2" data-number="25.4">
-<h2 data-number="25.4" class="anchored" data-anchor-id="combinations-and-experiments"><span class="header-section-number">25.4</span> Combinations and Experiments</h2>
+<section id="combinations-and-experiments" class="level2" data-number="25.5">
+<h2 data-number="25.5" class="anchored" data-anchor-id="combinations-and-experiments"><span class="header-section-number">25.5</span> Combinations and Experiments</h2>
 <p>We first need determine the number of successes, <span class="math inline">\(x\)</span>, in the trials, <span class="math inline">\(n\)</span>.</p>
 <p>A combination examines the number of ways objects can be selected, without regard to the order in which they are selected.</p>
 <p>The number of experimental outcomes providing exactly <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> trials is:</p>
@@ -2450,8 +2415,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="binominal-probability-function" class="level2" data-number="25.5">
-<h2 data-number="25.5" class="anchored" data-anchor-id="binominal-probability-function"><span class="header-section-number">25.5</span> Binominal Probability Function</h2>
+<section id="binominal-probability-function" class="level2" data-number="25.6">
+<h2 data-number="25.6" class="anchored" data-anchor-id="binominal-probability-function"><span class="header-section-number">25.6</span> Binominal Probability Function</h2>
 <p>Let <span class="math inline">\(x\)</span> be the number of successes.</p>
 <p>Let <span class="math inline">\(p\)</span> be the probability of success on one trial.</p>
 <p>Let <span class="math inline">\(n\)</span> be the number of trials.</p>
@@ -2460,15 +2425,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>The <strong>binomial probability function</strong> is defined as:</p>
 <p><span class="math display">\[f(x) = \binom{n}{x} p^x (1-p)^{(n-x)}\]</span> <span class="math display">\[f(x) = \frac{n!}{x!(n-x)!} \, p^x (1-p)^{(n-x)}\]</span></p>
 </section>
-<section id="binomial-example" class="level2" data-number="25.6">
-<h2 data-number="25.6" class="anchored" data-anchor-id="binomial-example"><span class="header-section-number">25.6</span> Binomial Example</h2>
+<section id="binomial-pmf-example" class="level2" data-number="25.7">
+<h2 data-number="25.7" class="anchored" data-anchor-id="binomial-pmf-example"><span class="header-section-number">25.7</span> Binomial PMF Example</h2>
 <p>Assume that we have a toggle switch that determines whether a manufacturing line continues to work.</p>
 <ul>
 <li><p>When the toggle switch is observed to be in the “on” position, this is considered a success.</p></li>
 <li><p>When the toggle switch is observed to be in the “off” position, this is considered a failure.</p></li>
 <li><p>We know that the probability of the switch being on is <span class="math inline">\(p = 0.95\)</span>.</p></li>
 <li><p>We assume that the probability remains constant,</p></li>
-<li><p>We assume hat the current switch position is independent of the previous switch position.</p></li>
+<li><p>We assume that the current switch position is independent of the previous switch position.</p></li>
 </ul>
 <p><strong>What is the probability of 92 successes in 100 trials?</strong></p>
 <p>Given <span class="math inline">\(n = 100\)</span>, <span class="math inline">\(x = 92\)</span>, and <span class="math inline">\(p = 0.95\)</span>, the probability of <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> trials is</p>
@@ -2484,27 +2449,30 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li><p>We estimate the binomial probability using the <strong>dbinom function</strong>.</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">100</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">92</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fl">0.95</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">tibble</span>(combo_x <span class="ot">&lt;-</span> <span class="fu">factorial</span>(n)<span class="sc">/</span>(<span class="fu">factorial</span>(x)<span class="sc">*</span><span class="fu">factorial</span>(n <span class="sc">-</span> x)),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>             fx_calc <span class="ot">&lt;-</span> combo_x <span class="sc">*</span>p<span class="sc">^</span>(x)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span>(n<span class="sc">-</span>x),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>             fx_calc2 <span class="ot">&lt;-</span> <span class="fu">choose</span>(n,x)<span class="sc">*</span>p<span class="sc">^</span>(x)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span>(n<span class="sc">-</span>x),</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>             fx_func <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, n, p))</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(fx,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"cccc"</span>, </span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits      =</span> <span class="dv">3</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"P(x=92) with n = 100 and p = 0.95"</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Combinations"</span>,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Calculated "</span>, </span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Combination Function"</span>, </span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Binomial Function"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">92</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fl">0.95</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">tibble</span>(combo_x <span class="ot">&lt;-</span> <span class="fu">factorial</span>(n)<span class="sc">/</span>(<span class="fu">factorial</span>(x)<span class="sc">*</span><span class="fu">factorial</span>(n <span class="sc">-</span> x)),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>             fx_calc <span class="ot">&lt;-</span> combo_x <span class="sc">*</span>p<span class="sc">^</span>(x)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span>(n<span class="sc">-</span>x),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>             fx_calc2 <span class="ot">&lt;-</span> <span class="fu">choose</span>(n,x)<span class="sc">*</span>p<span class="sc">^</span>(x)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span>(n<span class="sc">-</span>x),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>             fx_func <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, n, p))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(fx,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"cccc"</span>, </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits      =</span> <span class="dv">3</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"P(x=92) with n = 100 and p = 0.95"</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Combinations"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Calculated "</span>, </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Combination Function"</span>, </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Binomial PMF"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
 <caption>P(x=92) with n = 100 and p = 0.95</caption>
@@ -2513,7 +2481,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <th style="text-align: center;" data-quarto-table-cell-role="th">Combinations</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Calculated</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Combination Function</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Binomial Function</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Binomial PMF</th>
 </tr>
 </thead>
 <tbody>
@@ -2522,6 +2490,238 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <td style="text-align: center;">0.065</td>
 <td style="text-align: center;">0.065</td>
 <td style="text-align: center;">0.065</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="binomial-cdf-example" class="level2" data-number="25.8">
+<h2 data-number="25.8" class="anchored" data-anchor-id="binomial-cdf-example"><span class="header-section-number">25.8</span> Binomial CDF Example</h2>
+<p>In our previous example, we were interested in the likelihood of observing 92 successes in 100 trials where the probability of success in any given trial was 0.95 and the conditions of a binomial experiment were met.</p>
+<p>Let’s change the problem so we can demonstrate how a binomial CDF works.</p>
+<p>The problem statement:</p>
+<ul>
+<li><p>A toggle switch that determines whether a manufacturing line continues to work.</p></li>
+<li><p>When the toggle switch is observed to be in the “on” position, this is considered a success.</p></li>
+<li><p>When the toggle switch is observed to be in the “off” position, this is considered a failure.</p></li>
+<li><p>We know that the probability of the switch being on is <span class="math inline">\(p = 0.95\)</span>.</p></li>
+<li><p>We assume that the probability remains constant,</p></li>
+<li><p>We assume that the current switch position is independent of the previous switch position.</p></li>
+<li><p>Assume that <span class="math inline">\(n = 10\)</span></p></li>
+<li><p>Assume <span class="math inline">\(x = 7\)</span></p></li>
+<li><p>Assume <span class="math inline">\(p = 0.95\)</span></p></li>
+</ul>
+<p>What is the probability that <span class="math inline">\(x = 7\)</span>, that is, <span class="math inline">\(P(X = 7)\)</span>?</p>
+<p>What is the probability that <span class="math inline">\(x\)</span> is less than 7, that is <span class="math inline">\(P(x \le 7)\)</span>?</p>
+<p>The code below does the following:</p>
+<ul>
+<li><p>We declare the variables</p></li>
+<li><p>We estimate the PMF for the binomial using <strong>dbinom</strong></p></li>
+<li><p>We estimate the CDF for the binomial using <strong>pbinom</strong></p></li>
+<li><p>We show the CDF is equal to the sum of the PMFs</p></li>
+</ul>
+<p>In other words:</p>
+<ul>
+<li><p>We evaluate <span class="math inline">\(P(X = 7)\)</span> using the <strong>dbinom</strong> function</p></li>
+<li><p>We evaluate <span class="math inline">\(P(X \le 7)\)</span> using the <strong>pbinom</strong> function</p></li>
+<li><p>We show <span class="math inline">\(P(X \le 7) = \sum_{i = 1}^7 P(X = x_i)\)</span></p></li>
+</ul>
+<p>We find that the probability of observing 7 successes in an experiment with 10 trials and a probability of success of 0.95 in any given trial is equal to 0.0195.</p>
+<p>We find that probability of observing 7 or fewer successes in an experiment with 10 trials and a probability of success of 0.95 in any given trail is equal to 0.0115.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">7</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fl">0.95</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">tibble</span>(pmf <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, n, p),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>             cdf <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(x, n, p),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>             cdf_a <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.95</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="fl">0.95</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">dbinom</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="fl">0.95</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="fl">0.95</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">dbinom</span>(<span class="dv">4</span>, <span class="dv">10</span>, <span class="fl">0.95</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">0.95</span>) <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">dbinom</span>(<span class="dv">6</span>, <span class="dv">10</span>, <span class="fl">0.95</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.95</span>))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(fx,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"c"</span>, </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits      =</span> <span class="dv">4</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"N = 10 and p = 0.95"</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"PMF(X = x) "</span>, <span class="st">"CDF(X &lt;= x)"</span>, <span class="st">"CDF(X &lt;= x)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>N = 10 and p = 0.95</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">PMF(X = x)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">CDF(X &lt;= x)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">CDF(X &lt;= x)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.0105</td>
+<td style="text-align: center;">0.0115</td>
+<td style="text-align: center;">0.0115</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="graphical-binomial-pmf" class="level2" data-number="25.9">
+<h2 data-number="25.9" class="anchored" data-anchor-id="graphical-binomial-pmf"><span class="header-section-number">25.9</span> Graphical Binomial PMF</h2>
+<p>The code below provides a graphical illustrate of three binomial PMFs.</p>
+<p>The number of trials is equal to 100.</p>
+<p>The variable, <span class="math inline">\(x\)</span>, is a sequence of integers from 1 to 100.</p>
+<p>In the first case, the probability of success in any given trial is 0.3.</p>
+<p>In the second case, the probability of success in any given trial is 0.4.</p>
+<p>In the third case, the probability of success in any given trial is 0.5.</p>
+<p>You should observe that the center of each PFM shifts right as the probability of success in any given independent trail increases.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>lines_1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.3</span>), </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">prob =</span> <span class="fl">0.1</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>lines_2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.4</span>), </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">prob =</span> <span class="fl">0.3</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>lines_3 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.5</span>), </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>lines <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(lines_1, lines_2, lines_3)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lines,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x     =</span> x,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">y     =</span> p_x,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> prob,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill  =</span> prob)) <span class="sc">+</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="fu">vars</span>(prob)) <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">" "</span>) <span class="sc">+</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Binomial Probability Mass Function"</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">x     =</span> <span class="st">" "</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">y     =</span> <span class="st">"P(X = x)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-5-2-binomial_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graphical-binomial-cdf" class="level2" data-number="25.10">
+<h2 data-number="25.10" class="anchored" data-anchor-id="graphical-binomial-cdf"><span class="header-section-number">25.10</span> Graphical Binomial CDF</h2>
+<p>The code below provides a graphical illustrate of three binomial CDFs.</p>
+<p>The number of trials is equal to 100.</p>
+<p>The variable, <span class="math inline">\(x\)</span>, is a sequence of integers from 1 to 100.</p>
+<p>In the first case, the probability of success in any given trial is 0.3.</p>
+<p>In the second case, the probability of success in any given trial is 0.4.</p>
+<p>In the third case, the probability of success in any given trial is 0.5.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>lines_1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.3</span>), </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">prob =</span> <span class="fl">0.1</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>lines_2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.4</span>), </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">prob =</span> <span class="fl">0.3</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>lines_3 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.5</span>), </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>lines <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(lines_1, lines_2, lines_3)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lines,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x     =</span> x,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">y     =</span> p_x,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> prob,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill  =</span> prob)) <span class="sc">+</span> </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="fu">vars</span>(prob)) <span class="sc">+</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">" "</span>) <span class="sc">+</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Binomial Cumulative Distribution Function"</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">x     =</span> <span class="st">" "</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">y     =</span> <span class="st">"P(X = x)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-5-2-binomial_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="expected-value-and-variance" class="level2" data-number="25.11">
+<h2 data-number="25.11" class="anchored" data-anchor-id="expected-value-and-variance"><span class="header-section-number">25.11</span> Expected Value and Variance</h2>
+<p>Given <span class="math inline">\(x\)</span>, <span class="math inline">\(n\)</span>, and <span class="math inline">\(p\)</span>, the expected value for the binomial distribution is:</p>
+<p><span class="math display">\[E(x) = \mu = np\]</span></p>
+<p>The variance of the binomial distribution is:</p>
+<p><span class="math display">\[var(x) = \sigma^2 = np \, (1-p)\]</span></p>
+<p>Let</p>
+<ul>
+<li><p><span class="math inline">\(n\)</span> = 50</p></li>
+<li><p><span class="math inline">\(x = 23\)</span></p></li>
+<li><p><span class="math inline">\(p\)</span> = 0.55</p></li>
+</ul>
+<p>The expected value, variance, and standard deviation are equal to:</p>
+<p><span class="math display">\[E(x) = \mu = 50 \times 0.55 = 27.5\]</span> <span class="math display">\[var(x) = \sigma ^2 = np \, (1-p) = 50 \times 0.55 \times (1 - 0.55) = 12.375\]</span></p>
+<p><span class="math display">\[sd(x) = \sqrt{(\sigma^2)} = \sqrt{(12.375)} = 3.52\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">23</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fl">0.55</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">tibble</span>(pmf <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, n, p),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>             cdf <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(x, n, p),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>             ev  <span class="ot">&lt;-</span> n<span class="sc">*</span>p,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>             var <span class="ot">&lt;-</span> n<span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>             sd  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n<span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(fx,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"c"</span>, </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits      =</span> <span class="dv">4</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"N = 50, X = 23, and p = 0.55"</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"PMF(X = x) "</span>, </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"CDF(X &lt;= x)"</span>, </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Expected Value"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Variance"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Standard Deviation"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>              <span class="at">full_width =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>N = 50, X = 23, and p = 0.55</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">PMF(X = x)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">CDF(X &lt;= x)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Expected Value</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Variance</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Standard Deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">0.1279</td>
+<td style="text-align: center;">27.5</td>
+<td style="text-align: center;">12.375</td>
+<td style="text-align: center;">3.5178</td>
 </tr>
 </tbody>
 </table>
@@ -2944,6 +3144,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./mod-5-3-poisson.html" class="pagination-link" aria-label="Poisson Distribution">
+        <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Poisson Distribution</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

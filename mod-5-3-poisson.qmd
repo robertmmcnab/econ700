@@ -1,0 +1,235 @@
+---
+title: "Poisson Distribution"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    self-contained: false     # must be false when using webr
+urlcolor: blue
+filters:
+  - webr
+execute:
+  webR: true
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+
+library(dplyr, quietly = TRUE)
+library(ggplot2, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(tidyquant, quietly = TRUE)
+
+```
+
+## Poisson Probability Distribution
+
+A **Poisson probability distribution** is often used with the number of occurrences within an interval of time or space.
+
+The number of arrivals at a bank teller window in one hour, the number of passengers screened over an 8 hour shift, the number of leaks in 100 miles of pipeline are questions that may be addressed by a Poisson distribution.
+
+There are two conditions that must be satisfied for a **Poisson experiment**.
+
+-   First, the probability of occurrence is the same for any two intervals of equal length.
+
+-   Second, the occurrence or nonoccurrence in any interval is independent of the occurrence or nonoccurrence in any other interval.
+
+As $x$ is without an upper limit, the probability of $x$ occurrences, $f(x)$, will approach zero as $x$ becomes sufficiently large.
+
+If you are examining the number of arrivals at an screening site in an hour, then as $x$ increases from $1,2,3....$, $f(x)$ becomes approximately zero for "large" values of $x$.
+
+For example, you are observing how many passengers arrive at a security checkpoint in an hour. Assume this is a relatively small airport and that you are observing the checkpoint mid-day.
+
+The probability of observing 1 passenger is likely close to 1. The probability of observing 100 passengers is likely less than 1. The probability of observing 1,000 passengers is likely close to 0. The probability of observing 10,000 passengers is likely very close to 0.
+
+## Poisson Probability Distribution
+
+Let $x$ be the discrete number of occurrences in an interval
+
+Let $\lambda$ be the expected value or mean number of occurrences in an interval
+
+Let $e = 2.71828$
+
+Let $f(x)$ be the probability of $x$ occurrences in an interval.
+
+The **Poisson probability mass function** is defined as:
+
+$$P(X) = \frac{\lambda^x \, e^{-\lambda}}{x!}$$ Let $x$ be the number of patients arriving in a 15-minute interval and the average number of patients observed is 10.
+
+What is the probability of observing 5 patients in a 15-minute interval?
+
+$$P(X = 5) = \frac{10^5 \, e^{-10}}{5!} = 0.0378$$
+
+## Poisson Example
+
+Airline passengers arrive randomly, independently, with a mean arrival rate of 10 passengers/minute.
+
+$$
+\mu = 10
+$$
+
+What is the probability of no arrivals in a one-minute period?
+
+$$
+P(X = 0)
+$$
+
+What is the probability 12 or fewer arrivals in a one-minute period?
+
+$$
+P(X \le 12)
+$$
+
+What is the probability of three or fewer passengers in a one-minute period?
+
+$$
+P(X \le 3)
+$$
+
+What is the probability of no arrivals in a 15-second period?
+
+$$
+\mu = (10/60) \times 15 = 2.5
+$$
+
+$$
+P(X \le 15)
+$$
+
+What is the probability of at least one arrival in a 15-second period?
+
+$$
+P(X \ge 0)
+$$
+
+```{r, message = FALSE, warning = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
+
+# mu_60 = 10 per 60 seconds
+# mu_15 = 2.5 per 15 second
+
+poissons <- tibble(p_x0_1min <- ppois(0, 10),
+                   p_x12_1min <- ppois(12, 10),
+                   p_xle3_1min <- ppois(3, 10),
+                   p_x0_15sec <- ppois(0, 2.5),
+                   p_xge1_15sec <- 1-dpois(0, 2.5))
+
+kable(poissons,
+      align       = "ccccc", 
+      format.args = list(big.mark = ",", scientific = FALSE),
+      caption     = "Poisson Distribution Example",
+      col.names   = c("P(x = 0, 1 min)", 
+                      "P(x <= 12, 1 min)", 
+                      "P(x <= 3, 1 min)",
+                      "P(x=0, 15 sec)",
+                      "P(x>0, 15 sec)")) %>%
+  kable_styling(font_size = 14)
+
+```
+
+## Graphic Poisson PMF
+
+In the follow example, we create a sequence of integers from 1 to 20 and then evaluate the Poisson PFM with
+
+-   $\mu = 10$
+
+-   $\mu = 20$
+
+```{r, eval = TRUE, warning = FALSE, message = FALSE}
+
+
+x <- 1:20
+
+lines_1 <- tibble(x, p_x = dpois(x, 5), mu = 5)
+lines_2 <- tibble(x, p_x = dpois(x, 10), mu = 10)
+
+lines <- bind_rows(lines_1, lines_2)
+
+ggplot(lines,
+       aes(x     = x,
+           y     = p_x,
+           group = mu,
+           fill  = mu)) + 
+  geom_col(colour = "black") +
+  facet_wrap(vars(mu)) +
+  theme_minimal() + 
+  theme(legend.position = " ") +
+  labs(title = "Poisson Probability Function",
+       x     = " ",
+       y     = "P(X = x)")
+
+
+```
+
+## Graphical Poisson CDF
+
+In the follow example, we create a sequence of integers from 1 to 20 and then evaluate the Poisson CDF with
+
+-   $\mu = 10$
+
+-   $\mu = 20$
+
+```{r, eval = TRUE, warning = FALSE, message = FALSE}
+
+
+x <- 1:20
+
+lines_1 <- tibble(x, p_x = ppois(x, 5), mu = 10)
+lines_2 <- tibble(x, p_x = ppois(x, 10), mu = 20)
+
+lines <- bind_rows(lines_1, lines_2)
+
+ggplot(lines,
+       aes(x     = x,
+           y     = p_x,
+           group = mu,
+           fill  = mu)) + 
+  geom_col(colour = "black") +
+  facet_wrap(vars(mu)) +
+  theme_minimal() + 
+  theme(legend.position = " ") +
+  labs(title = "Cumulative Poisson Probability Function",
+       x     = " ",
+       y     = "P(X = x)")
+
+
+
+```
+
+## Expected Value and Variance
+
+The expected value or mean of a Poisson distribution is
+
+$$
+\mu = E(X) = \lambda
+$$
+
+The variance of a Poisson distribution is:
+
+$$
+\sigma^2 = Var(X) = \lambda
+$$
+
+So, if the mean arrival rate of passengers at a checkpoint every 60 minutes is 10 then
+
+$$
+\mu = 10 \quad var = 10 \quad sd=\sqrt{10}
+$$
+
+## Wrapping Up
+
+-   A random variable is a numerical description of an outcome of an example.
+
+-   A discrete random variable may assume a finite of infinite number of values.
+
+-   If we use empirical data to estimate probabilities, we are developing an empirical discrete distribution.
+
+-   We discussed three discrete probability functions: uniform, binomial, and Poisson.
+
+-   We explored the expected value, variance, and standard deviation of a discrete random variable and the probability functions.
+
+-   We used R to generate discrete empirical probabilities as well as use discrete probability functions.

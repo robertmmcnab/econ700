@@ -70,7 +70,7 @@
     "href": "index.html#module-05---discrete-probability-distributions",
     "title": "ECON 700",
     "section": "0.6 Module 05 - Discrete Probability Distributions",
-    "text": "0.6 Module 05 - Discrete Probability Distributions\n\n\nModule 5.0 - Module 5 Overview\n\n\nModule 5.1 - Discrete Random Variables\n\n\nModule 5.2 - Binomial Probability Distribution\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.6 Module 05 - Discrete Probability Distributions\n\n\nModule 5.0 - Module 5 Overview\n\n\nModule 5.1 - Discrete Random Variables\n\n\nModule 5.2 - Binomial Probability Distribution\n\n\nModule 5.3 - Poisson Probability Distribution\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -400,7 +400,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n54.03\n51.79\n50.55",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n45.83\n50.66\n50.75",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -1995,7 +1995,7 @@
     "href": "mod-5-0-overview.html#lessons-in-this-module",
     "title": "23  Module 5 Overview",
     "section": "23.5 Lessons in this Module",
-    "text": "23.5 Lessons in this Module\n\n5.1 – Discrete Random Variables\n5.2 – Binomial Probability Distribution\n\n\nNext: Start with **Discrete Random Variables*.",
+    "text": "23.5 Lessons in this Module\n\n5.1 – Discrete Random Variables\n5.2 – Binomial Probability Distribution\n5.3 – Poisson Probability Distribution\n\n\nNext: Start with **Discrete Random Variables*.",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>Module 5 Overview</span>"
@@ -2105,95 +2105,29 @@
     "href": "mod-5-2-binomial.html",
     "title": "25  Binomial Distribution",
     "section": "",
-    "text": "25.1 Bivariate Discrete Distribtuions\nA probability distribution involving two random variables is known as a bivariate probability distribution.\nAn outcome of a bivariate experiment consists of two values, one from each random variable.\nIf we roll two six-sided die once, this is a bivariate experiment with one trial.\nAssume we administer two drugs. If the random variable for each drug is the severity (or absence) of side effects, then the outcome of the experiment consists of the side effects of each drug.\nWe can also look at the mtcars data set and conduct a cross tabulation by cylinder and gear to calculate the joint and marginal probabilities empirically (assuming the cars are “random”)\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\n#adorn_totals is column by row\n\nfreqs &lt;- tabyl(mtcars, cyl, gear) %&gt;%\n  adorn_totals(c(\"col\", \"row\"))\n\nkable(freqs,\n      align       = \"lcccc\", \n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Cars Frequency Table\",\n      col.names   = c(\" \", \"3 Gear\", \"4 Gear\", \"5 Gear\", \n                      \"Total\")) %&gt;%\n  kable_styling(font_size = 14)\n\nrel_freqs &lt;- freqs %&gt;%\n  adorn_percentages(\"row\") %&gt;%\n  adorn_pct_formatting(digits = 2) %&gt;%\n  adorn_ns()\n\nkable(rel_freqs,\n      align       = \"lcccc\", \n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Cars Frequency Table\",\n      col.names   = c(\" \", \"3 Gear\", \"4 Gear\", \"5 Gear\", \n                      \"Total\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nCars Frequency Table\n\n\n\n3 Gear\n4 Gear\n5 Gear\nTotal\n\n\n\n\n4\n1\n8\n2\n11\n\n\n6\n2\n4\n1\n7\n\n\n8\n12\n0\n2\n14\n\n\nTotal\n15\n12\n5\n32\n\n\n\n\n\n\n\nCars Frequency Table\n\n\n\n3 Gear\n4 Gear\n5 Gear\nTotal\n\n\n\n\n4\n9.09% (1)\n72.73% (8)\n18.18% (2)\n100.00% (11)\n\n\n6\n28.57% (2)\n57.14% (4)\n14.29% (1)\n100.00% (7)\n\n\n8\n85.71% (12)\n0.00% (0)\n14.29% (2)\n100.00% (14)\n\n\nTotal\n46.88% (15)\n37.50% (12)\n15.62% (5)\n100.00% (32)",
+    "text": "25.1 Probability Mass Functions\nA discrete random variable \\(X\\) is a function from the sample space \\(\\Omega\\) of a probability space to a finite, or countably infinite, set of real numbers. Together with the function \\(P\\) mapping elements\n\\[\n\\omega \\in \\Omega\n\\]\na random variable determine the Probability Mass Function\n\\[\nP(X(\\omega))\n\\]\nThe Probability Mass Function (PMF) is typically denoted as\n\\[\nP(X)\n\\]\nand maps real numbers to probabilities.\nMore formally, for any value \\(x\\) in the range of the random variable \\(X\\), let \\(A\\) be part of the sample space of whose members map \\(X\\) to \\(x\\). The probability that \\(X\\) will take on the value \\(x\\) is the value that the probability function assigns to \\(A\\) or:\n\\[\nP(X = x) = P(A)\n\\]\nImagine we have a bag with four chips. Two chips are labeled “A” and two chips are labeled “B”. Two chips are drawn at the same time. The sample space for the total number of “A” chips that can be drawn is defined as:\n\\[\n\\Omega = \\{AA, AB, BA, BB \\}\n\\]\nSince we are not concerned with ordering, the outcome \\(AB\\) is concerned the same as the outcome \\(BA\\).\nThe function \\(X\\) maps each possible pair of observations to the total number of A’s obtained.",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
     ]
   },
   {
-    "objectID": "mod-5-2-binomial.html#continuous-random-variables",
-    "href": "mod-5-2-binomial.html#continuous-random-variables",
+    "objectID": "mod-5-2-binomial.html#probability-mass-functions",
+    "href": "mod-5-2-binomial.html#probability-mass-functions",
     "title": "25  Binomial Distribution",
-    "section": "25.2 Continuous Random Variables",
-    "text": "25.2 Continuous Random Variables\nA continuous random variable may assume any value in an interval or collection of intervals.\nIf we select 1,000 students at random who come to ODU today, the driving distance is bounded below at 0.\nThe driving distance is practically bounded above (maybe 200 miles?).\nDriving distance is a continuous random variable as it can take on any value from 0 to infinity (and beyond!).\nIf the random experiment is a visit to a webpage by a customer, the random variable is the time spent on the page, with values of the random variable being \\(x \\ge 0\\).\nIf the random experiment is to fill a kiloliter container, the random variable is the amount of liquid in the container, with values of the random variable being \\(0 \\le x \\le 1\\, kl\\).",
+    "section": "",
+    "text": "\\(X(AA) =2\\) and the probability of observing \\(X\\) is \\(P(X) = 1/4\\).\n\\(X(AB) = 1\\) and \\(X(BA) = 1\\) so \\(P(X) = 1/4 + 1/4 = 1/2\\).\n\\(X(BB) = 0\\) and the probability of observing \\(X\\) is \\(P(X) = 1/4\\) .\n\n\nPMF Example\n\n\n\n\n\n\n\n\\(\\omega\\)\n\\(X(\\omega)\\)\n\\(P(X)\\)\n\n\n\n\nAA\n2\n\\(\\frac{1}{4}\\)\n\n\nAB\nBA\n1\n1\n\\(\\frac{1}{2}\\)\n\n\nBB\n0\n\\(\\frac{1}{4}\\)",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
     ]
   },
   {
-    "objectID": "mod-5-2-binomial.html#discrete-probability-distributions",
-    "href": "mod-5-2-binomial.html#discrete-probability-distributions",
+    "objectID": "mod-5-2-binomial.html#cumulative-distribution-functions",
+    "href": "mod-5-2-binomial.html#cumulative-distribution-functions",
     "title": "25  Binomial Distribution",
-    "section": "25.3 Discrete Probability Distributions",
-    "text": "25.3 Discrete Probability Distributions\nThe probability distribution for a random variable describes how probabilities are distributed over the values of the random variable.\nGiven a discrete random variable, \\(x\\), a probability function, \\(f(x)\\), provides the probability for each value of the random variable.\nThe classical method of assigning probabilities of the values of a random variable is used when the experimental outcomes generate values of the random variable that are equally likely.\nConsider the experiment of rolling a six-sided die.\n\nWe know the sample space is \\(s = \\{1, 2, 3, 4, 5, 6\\}\\)\nLet \\(x\\) be the number obtained on one throw of the die\nLet \\(f(x)\\) be the probability of \\(x\\)\nWe can represent the probability of \\(x\\) with a frequency table or graph.\n\nIn the code below, we run a simulated six-sided die 10,000 times.\n\nThe sample function takes a sample of the sequence of integers from 1 to 6\nThe size option sets the number of samples to be taken\nThe replace = TRUE replaces the number sampled\nThe group_by identifies the bins\nThe summarize command estimates the frequencies and relative frequencies\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Discrete Probability",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
-    ]
-  },
-  {
-    "objectID": "mod-5-2-binomial.html#frequency-tables",
-    "href": "mod-5-2-binomial.html#frequency-tables",
-    "title": "25  Binomial Distribution",
-    "section": "25.4 Frequency Tables",
-    "text": "25.4 Frequency Tables\nThe relative frequency method is applicable when the data are “reasonably” large.\nThe discrete probability distribution that is developed using the relative frequency method is known as the empirical discrete distribution.\nTwo conditions are required for a discrete probability distribution.\n\\[f(x) \\ge 0\\]\n\\[\\sum f(x) = 1\\] In the code below, we replicate the experiment of throwing a six-sided die 10,000 times. We estimate the relative frequency for each of the outcomes of the experiment and create a relative frequency table that missors the graph.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Discrete Probability",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
-    ]
-  },
-  {
-    "objectID": "mod-5-2-binomial.html#discrete-probability-distribution",
-    "href": "mod-5-2-binomial.html#discrete-probability-distribution",
-    "title": "25  Binomial Distribution",
-    "section": "25.5 Discrete Probability Distribution",
-    "text": "25.5 Discrete Probability Distribution\nA formula that gives the probability function, \\(f(x)\\) for every value of \\(x\\) is known as a discrete probability distribution.\nUsing data, we developed the empirical discrete probability function for a fair six-sided die.\nLet \\(n\\) be equal to the number of values of that the random variable can take.\nThe discrete uniform probability distribution is then defined as:\n\\[f(x) = \\frac{1}{n}\\]\nNote that we can apply the discrete uniform probability distribution function to several of our previous examples.\nFlipping a fair coin: \\[f(x) = \\frac{1}{2}\\]\nRolling a fair six-sided die: \\[f(x) = \\frac{1}{6}\\]",
-    "crumbs": [
-      "Discrete Probability",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
-    ]
-  },
-  {
-    "objectID": "mod-5-2-binomial.html#expected-value",
-    "href": "mod-5-2-binomial.html#expected-value",
-    "title": "25  Binomial Distribution",
-    "section": "25.6 Expected Value",
-    "text": "25.6 Expected Value\nThe expected value of a random variable is a measure of the central tendency of the random variable.\nThe expected value of \\(x\\) is defined as\n\\[E(x) = \\mu = \\sum x \\, f(x)\\]\nThe expected value of a random variable is essentially a weighted average.\nEach value of the random variable, \\(x\\), is multiplied by the probability that the random variable takes that value or \\(p(x_i)\\). The \\(x_i \\times p(x_i)\\) are then summed over all possible values.\nThe expected value of a random variable can also be interpreted as the long-run value of the random variable. If we repeat the random experiment ‘many’ times and take the average of all the outcomes, we would obtain the expected value of the random variable.\nThe expected value, as it is the mean of the random variable, is also the measure of central tendency of the random variable and, as such, represents the center of mass of the probability mass function.",
-    "crumbs": [
-      "Discrete Probability",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
-    ]
-  },
-  {
-    "objectID": "mod-5-2-binomial.html#expected-value-example",
-    "href": "mod-5-2-binomial.html#expected-value-example",
-    "title": "25  Binomial Distribution",
-    "section": "25.7 Expected Value Example",
-    "text": "25.7 Expected Value Example\nAssume that you have a game where you can win various prizes with the following probabilities:\n\n$0 with \\(P(X = 0) = 0.1\\)\n$1 with \\(P(X = 1) = 0.15\\)\n$2 with \\(P(X = 2) = 0.4\\)\n$3 with \\(P(X = 3) = 0.25\\)\n$4 with \\(P(X = 4) = 0.1\\)\n\nWhat is the expected value of the game? In other words, if the game were played ‘many’ times, what would be the average expected gross winnings?\n\\[\nE(X) = \\sum_{i=1}^{5} x_i f(x_i)\n\\]\n\\[\nE(X) = (0 \\times 0.1) + (1 \\times 0.15) + (2 \\times 0.4) + (3 \\times 0.25) + (4 \\times 0.1)\n\\]\n\\[\nE(X) = 2.1\n\\]\nThe expected value of the game is $2.1. On average, over repeated trials, one would expect to win $2.1 from this game. If the game cost less than $2.1 per play, it would make sense to play the game.",
-    "crumbs": [
-      "Discrete Probability",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
-    ]
-  },
-  {
-    "objectID": "mod-5-2-binomial.html#expected-value-example-1",
-    "href": "mod-5-2-binomial.html#expected-value-example-1",
-    "title": "25  Binomial Distribution",
-    "section": "25.8 Expected Value Example",
-    "text": "25.8 Expected Value Example\nLet’s return to our experiment where we simulate rolling a fair six-sided die.\nWe increase the number of simulated rolls in this experiment to 1,000,000.\nWe estimate the expected value as:\n\\[\nEV(X) = \\sum_{i=1}^6 x_i f(x_i)\n\\]\nWe produce the table of frequencies and relative frequencies as well as a histogram.\nThe expected value of our experiment mirrors that obtained manually.\n\n1 with \\(P(X = 1) = 0.167\\)\n2 with \\(P(X = 2) = 0.167\\)\n3 with \\(P(X = 3) = 0.167\\)\n4 with \\(P(X = 4) = 0.167\\)\n5 with \\(P(X = 5) = 0.167\\)\n6 with \\(P(X = 6) = 0.167\\)\n\n\\[\nE(X) = (1 \\times 0.167) + (2 \\times 0.167) + (3 \\times 0.167) \\\\+ (4 \\times 0.167) + (5 \\times 0.167) + (6 \\times 0.167)\n\\]\n\\[\nEV = 3.5\n\\]\n\nrm(list = ls())\n\nset.seed(1234)\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\nthrows = 1000000\n\nrolls &lt;- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %&gt;%\n  group_by(throw) %&gt;%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %&gt;%\n  mutate(xfx = throw * rel_freq) \n\n\nkable(rolls %&gt;%  \n      adorn_totals(where = \"row\", name = \"Sums\"),\n      align       = \"lcccc\", \n      digits      = 3,\n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x * f(x)\")) %&gt;%\nkable_classic(full_width = TRUE)\n\nggplot(data = rolls,\n        aes(x = throw,\n            y = rel_freq,\n            fill = throw)) +\ngeom_bar(stat = 'identity') +\ngeom_text(data  = rolls,\n          aes(x = throw,\n              y = rel_freq,\n              label = scales::label_number(a=0.01)(rel_freq)),\n          nudge_y   = 0.01) +\ntheme_minimal() +\ntheme(legend.position = \" \") +\nlabs(title    = \"Throws of a Six Sided Die\",\n     x        = \" \",\n     y        = \"Relative Frequency\")\n\n\n\n\n\n\n\n\n\nRolls of Six-Sided Die\n\n\nNumber (x)\nFrequency of X\nProbability of X - f(x)\nx * f(x)\n\n\n\n\n1\n166,642\n0.167\n0.167\n\n\n2\n167,094\n0.167\n0.334\n\n\n3\n166,137\n0.166\n0.498\n\n\n4\n166,539\n0.167\n0.666\n\n\n5\n167,400\n0.167\n0.837\n\n\n6\n166,188\n0.166\n0.997\n\n\nSums\n1,000,000\n1.000\n3.500",
-    "crumbs": [
-      "Discrete Probability",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
-    ]
-  },
-  {
-    "objectID": "mod-5-2-binomial.html#variance",
-    "href": "mod-5-2-binomial.html#variance",
-    "title": "25  Binomial Distribution",
-    "section": "25.9 Variance",
-    "text": "25.9 Variance\nThe expected value, \\(\\mu\\), provides a measure of central tendency of a random variable.\nThe variance is a measure of the dispersion of the values of the random variable.\nThe variance of a discrete random variable is defined as:\n\\[var(x) = \\sigma^2 = \\sum (x - \\mu)^2 \\, f(x)\\]\nOne can think about the variance as the weighted average of the squared mean deviations, where the weights are the probabilities of the values of \\(x\\).\nThe standard deviation of a discrete random variable is defined as:\n\\[sd(x) = \\sqrt{\\sigma^2} = \\sqrt{\\sum (x - \\mu)^2 \\, f(x)}\\]\nThe standard deviation is preferred in describing the dispersion of a random variable as it is in the same units of the random variable as opposed to the variance which is measured in squared units and is more difficult to interpret.\n\nrm(list = ls())\n\nset.seed(1234)\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(janitor)\nlibrary(kableExtra)\nlibrary(tidyverse)\n\nthrows = 1000000\n\nrolls &lt;- tibble(throw = sample(1:6, \n                               size = throws, \n                               replace = TRUE)) %&gt;%\n  group_by(throw) %&gt;%\n  summarize(freq     = n(),\n            rel_freq = n()/throws) %&gt;%\n  mutate(xfx = throw * rel_freq,\n         deviations    = as.numeric(throw) - sum(xfx),\n         sq_deviations = deviations^2,\n         sqdev_fx      = sq_deviations * rel_freq) %&gt;%\n  adorn_totals(where = \"row\", name = \"Sums\")\n\nkable(rolls,\n      align       = \"lcccccc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Rolls of Six-Sided Die\",\n      col.names   = c(\"Number (x)\", \"Frequency of X\", \n                      \"Probability of X - f(x)\", \"x f(x)\",\n                      \"Mean Deviations\", \"Squared Deviations\",\n                      \"Squared Deviations * f(x)\")) %&gt;%\n  kable_styling(font_size = 10)\n\nvars &lt;- rolls %&gt;% \n       filter(throw != \"Sums\") %&gt;% \n       summarize(var_x = sum(sqdev_fx),\n                 sd_x  = sqrt(sum(sqdev_fx)))\n\nkable(vars,\n      col.names = c(\"Variance (X)\", \"Standard Deviation (X)\"),\n      align     = 'c',\n      digits    = 3) %&gt;%\nkable_styling()\n\n\nRolls of Six-Sided Die\n\n\nNumber (x)\nFrequency of X\nProbability of X - f(x)\nx f(x)\nMean Deviations\nSquared Deviations\nSquared Deviations * f(x)\n\n\n\n\n1\n166,642\n0.166642\n0.166642\n-2.499525\n6.2476252\n1.0411168\n\n\n2\n167,094\n0.167094\n0.334188\n-1.499525\n2.2485752\n0.3757234\n\n\n3\n166,137\n0.166137\n0.498411\n-0.499525\n0.2495252\n0.0414554\n\n\n4\n166,539\n0.166539\n0.666156\n0.500475\n0.2504752\n0.0417139\n\n\n5\n167,400\n0.167400\n0.837000\n1.500475\n2.2514252\n0.3768886\n\n\n6\n166,188\n0.166188\n0.997128\n2.500475\n6.2523752\n1.0390697\n\n\nSums\n1,000,000\n1.000000\n3.499525\n0.002850\n17.5000014\n2.9159678\n\n\n\n\n\n\n\n\n\nVariance (X)\nStandard Deviation (X)\n\n\n\n\n2.916\n1.708",
+    "section": "25.2 Cumulative Distribution Functions",
+    "text": "25.2 Cumulative Distribution Functions\nIn the above example, the random variable \\(X\\) determines the probability mass function, \\(P(X)\\).\nWe can use the PMF to ask: what is the probability of observing no A’s when drawing two chips from a bag in which there are two A chips and two B chips?\n\\[\nP(X = x) = P(X = BB) = P(0) = 1/4 = 0.25\n\\]\nWhat is we want to know the likelihood of observing 1 or fewer A’s?\nIn other words, we want to know\n\\[\nP(X \\le x) = P(X \\le 1)\n\\]\nThe probability mass function (PMF) determines the Cumulative Distribution Function.\nThe cumulative distribution function (CDF) examines the aggregation of probabilities.\nWhat is the likelihood of observing 1 or fewer A’s?\nThis will be the sum of likelihoods of observing 1 A or 0 A, that is:\n\\[\nP(X \\le x) = P(X \\le 1) = P(X = 1) + P(X = 0) = 1/2 + 1/4 = 0.75\n\\]",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
@@ -2203,8 +2137,8 @@
     "objectID": "mod-5-2-binomial.html#binomial-experiments",
     "href": "mod-5-2-binomial.html#binomial-experiments",
     "title": "25  Binomial Distribution",
-    "section": "25.2 Binomial Experiments",
-    "text": "25.2 Binomial Experiments\nPreviously, we have used empirical data to generate distributions.\nThe binomial probability distribution is a discrete probability distribution.\nIn a binomial experiment, we are interested in the number of success relative to the number of trials.\nIf \\(x\\) denotes the number of successes occurring in \\(n\\) trials, then \\(x\\) is a discrete random variable.\nAssume that we will flip a fair two-sided coin 5 times.\nWe define success as having a head appear on the upward face of the coin.\nWe count the number of successes out of the 5 trials.",
+    "section": "25.3 Binomial Experiments",
+    "text": "25.3 Binomial Experiments\nPreviously, we have used empirical data to generate distributions.\nThe binomial probability distribution is a discrete probability distribution.\nIn a binomial experiment, we are interested in the number of success relative to the number of trials.\nIf \\(x\\) denotes the number of successes occurring in \\(n\\) trials, then \\(x\\) is a discrete random variable.\nAssume that we will flip a fair two-sided coin 5 times.\nWe define success as having a head appear on the upward face of the coin.\nWe count the number of successes out of the 5 trials.",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
@@ -2214,8 +2148,8 @@
     "objectID": "mod-5-2-binomial.html#properties-of-binomial-experiments",
     "href": "mod-5-2-binomial.html#properties-of-binomial-experiments",
     "title": "25  Binomial Distribution",
-    "section": "25.3 Properties of Binomial Experiments",
-    "text": "25.3 Properties of Binomial Experiments\nA binomial experiment exhibits the following four properties:\n\nThe experiment consists of a sequence of \\(n\\) identical trails.\nTwo outcomes: success and failure are possible on each trial.\nThe probability of success, denoted by \\(p\\), does not change from trial to trial.\nThe trials are independent.\n\nIn the previous example, we flipped a fair two-sided coin 5 times.\nThe experiment consisted of 5 trials, the outcomes were heads (success) and tails (failure), the probability of success, \\(p = 0.5\\), did not change from trial to trial, and the trials were independent.\nWe would conclude that the coin flip experiment was a binomial experiment.",
+    "section": "25.4 Properties of Binomial Experiments",
+    "text": "25.4 Properties of Binomial Experiments\nA binomial experiment exhibits the following four properties:\n\nThe experiment consists of a sequence of \\(n\\) identical trails.\nTwo outcomes: success and failure are possible on each trial.\nThe probability of success, denoted by \\(p\\), does not change from trial to trial.\nThe trials are independent.\n\nIn the previous example, we flipped a fair two-sided coin 5 times.\nThe experiment consisted of 5 trials, the outcomes were heads (success) and tails (failure), the probability of success, \\(p = 0.5\\), did not change from trial to trial, and the trials were independent.\nWe would conclude that the coin flip experiment was a binomial experiment.",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
@@ -2225,8 +2159,8 @@
     "objectID": "mod-5-2-binomial.html#combinations-and-experiments",
     "href": "mod-5-2-binomial.html#combinations-and-experiments",
     "title": "25  Binomial Distribution",
-    "section": "25.4 Combinations and Experiments",
-    "text": "25.4 Combinations and Experiments\nWe first need determine the number of successes, \\(x\\), in the trials, \\(n\\).\nA combination examines the number of ways objects can be selected, without regard to the order in which they are selected.\nThe number of experimental outcomes providing exactly \\(x\\) successes in \\(n\\) trials is:\n\\[\\binom{n}{x} = \\frac{n!}{x!(n-x)!}\\] If the number of successes is 2 and number of trials is 3, then \\(x = 2\\) and \\(n = 3\\) and:\n\\[\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = 3\\]\nIf the number of successes is 5 and the number of trails is 10, the \\(x = 5\\) and \\(n = 10\\) and:\n\\[\\binom{10}{5} = \\frac{10!}{5!(10-5)!} = 252\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "section": "25.5 Combinations and Experiments",
+    "text": "25.5 Combinations and Experiments\nWe first need determine the number of successes, \\(x\\), in the trials, \\(n\\).\nA combination examines the number of ways objects can be selected, without regard to the order in which they are selected.\nThe number of experimental outcomes providing exactly \\(x\\) successes in \\(n\\) trials is:\n\\[\\binom{n}{x} = \\frac{n!}{x!(n-x)!}\\] If the number of successes is 2 and number of trials is 3, then \\(x = 2\\) and \\(n = 3\\) and:\n\\[\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = 3\\]\nIf the number of successes is 5 and the number of trails is 10, the \\(x = 5\\) and \\(n = 10\\) and:\n\\[\\binom{10}{5} = \\frac{10!}{5!(10-5)!} = 252\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
@@ -2236,22 +2170,154 @@
     "objectID": "mod-5-2-binomial.html#binominal-probability-function",
     "href": "mod-5-2-binomial.html#binominal-probability-function",
     "title": "25  Binomial Distribution",
-    "section": "25.5 Binominal Probability Function",
-    "text": "25.5 Binominal Probability Function\nLet \\(x\\) be the number of successes.\nLet \\(p\\) be the probability of success on one trial.\nLet \\(n\\) be the number of trials.\nLet \\(f(x)\\) be the probability of \\(x\\) successes in \\(n\\) trials.\nLet \\(n!\\) be \\(n\\) factorial.\nThe binomial probability function is defined as:\n\\[f(x) = \\binom{n}{x} p^x (1-p)^{(n-x)}\\] \\[f(x) = \\frac{n!}{x!(n-x)!} \\, p^x (1-p)^{(n-x)}\\]",
+    "section": "25.6 Binominal Probability Function",
+    "text": "25.6 Binominal Probability Function\nLet \\(x\\) be the number of successes.\nLet \\(p\\) be the probability of success on one trial.\nLet \\(n\\) be the number of trials.\nLet \\(f(x)\\) be the probability of \\(x\\) successes in \\(n\\) trials.\nLet \\(n!\\) be \\(n\\) factorial.\nThe binomial probability function is defined as:\n\\[f(x) = \\binom{n}{x} p^x (1-p)^{(n-x)}\\] \\[f(x) = \\frac{n!}{x!(n-x)!} \\, p^x (1-p)^{(n-x)}\\]",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
     ]
   },
   {
-    "objectID": "mod-5-2-binomial.html#binomial-example",
-    "href": "mod-5-2-binomial.html#binomial-example",
+    "objectID": "mod-5-2-binomial.html#binomial-pmf-example",
+    "href": "mod-5-2-binomial.html#binomial-pmf-example",
     "title": "25  Binomial Distribution",
-    "section": "25.6 Binomial Example",
-    "text": "25.6 Binomial Example\nAssume that we have a toggle switch that determines whether a manufacturing line continues to work.\n\nWhen the toggle switch is observed to be in the “on” position, this is considered a success.\nWhen the toggle switch is observed to be in the “off” position, this is considered a failure.\nWe know that the probability of the switch being on is \\(p = 0.95\\).\nWe assume that the probability remains constant,\nWe assume hat the current switch position is independent of the previous switch position.\n\nWhat is the probability of 92 successes in 100 trials?\nGiven \\(n = 100\\), \\(x = 92\\), and \\(p = 0.95\\), the probability of \\(x\\) successes in \\(n\\) trials is\n\\[f(x) = \\frac{100!}{92!(100-92)!} \\times\\]\n\\[0.95^{92} \\, \\times (1-0.95)^{(100-92)}\\]\nWe can use R to calculate the probability of 92 successes in 100 trials and \\(p=0.95\\).\nIn the code below, we perform four calculations:\n\nWe first declare \\(n\\), \\(x\\), and \\(p\\).\nWe estimate the number of combinations with \\(n = 100\\) and \\(x = 92\\).\nWe estimate the binomial probability with \\(n = 100\\) and \\(x = 92\\).\nWe estimate the binomial probability using the choose function for combinations\nWe estimate the binomial probability using the dbinom function.\n\n\nrm(list = ls())\n\nn = 100\nx = 92\np = 0.95\n\nfx &lt;- tibble(combo_x &lt;- factorial(n)/(factorial(x)*factorial(n - x)),\n             fx_calc &lt;- combo_x *p^(x)*(1-p)^(n-x),\n             fx_calc2 &lt;- choose(n,x)*p^(x)*(1-p)^(n-x),\n             fx_func &lt;- dbinom(x, n, p))\n\nkable(fx,\n      align       = \"cccc\", \n      digits      = 3,\n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"P(x=92) with n = 100 and p = 0.95\",\n      col.names   = c(\"Combinations\",\n                      \"Calculated \", \n                      \"Combination Function\", \n                      \"Binomial Function\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nP(x=92) with n = 100 and p = 0.95\n\n\nCombinations\nCalculated\nCombination Function\nBinomial Function\n\n\n\n\n186,087,894,300\n0.065\n0.065\n0.065",
+    "section": "25.7 Binomial PMF Example",
+    "text": "25.7 Binomial PMF Example\nAssume that we have a toggle switch that determines whether a manufacturing line continues to work.\n\nWhen the toggle switch is observed to be in the “on” position, this is considered a success.\nWhen the toggle switch is observed to be in the “off” position, this is considered a failure.\nWe know that the probability of the switch being on is \\(p = 0.95\\).\nWe assume that the probability remains constant,\nWe assume that the current switch position is independent of the previous switch position.\n\nWhat is the probability of 92 successes in 100 trials?\nGiven \\(n = 100\\), \\(x = 92\\), and \\(p = 0.95\\), the probability of \\(x\\) successes in \\(n\\) trials is\n\\[f(x) = \\frac{100!}{92!(100-92)!} \\times\\]\n\\[0.95^{92} \\, \\times (1-0.95)^{(100-92)}\\]\nWe can use R to calculate the probability of 92 successes in 100 trials and \\(p=0.95\\).\nIn the code below, we perform four calculations:\n\nWe first declare \\(n\\), \\(x\\), and \\(p\\).\nWe estimate the number of combinations with \\(n = 100\\) and \\(x = 92\\).\nWe estimate the binomial probability with \\(n = 100\\) and \\(x = 92\\).\nWe estimate the binomial probability using the choose function for combinations\nWe estimate the binomial probability using the dbinom function.\n\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\nn = 100\nx = 92\np = 0.95\n\nfx &lt;- tibble(combo_x &lt;- factorial(n)/(factorial(x)*factorial(n - x)),\n             fx_calc &lt;- combo_x *p^(x)*(1-p)^(n-x),\n             fx_calc2 &lt;- choose(n,x)*p^(x)*(1-p)^(n-x),\n             fx_func &lt;- dbinom(x, n, p))\n\nkable(fx,\n      align       = \"cccc\", \n      digits      = 3,\n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"P(x=92) with n = 100 and p = 0.95\",\n      col.names   = c(\"Combinations\",\n                      \"Calculated \", \n                      \"Combination Function\", \n                      \"Binomial PMF\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nP(x=92) with n = 100 and p = 0.95\n\n\nCombinations\nCalculated\nCombination Function\nBinomial PMF\n\n\n\n\n186,087,894,300\n0.065\n0.065\n0.065",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#binomial-cdf-example",
+    "href": "mod-5-2-binomial.html#binomial-cdf-example",
+    "title": "25  Binomial Distribution",
+    "section": "25.8 Binomial CDF Example",
+    "text": "25.8 Binomial CDF Example\nIn our previous example, we were interested in the likelihood of observing 92 successes in 100 trials where the probability of success in any given trial was 0.95 and the conditions of a binomial experiment were met.\nLet’s change the problem so we can demonstrate how a binomial CDF works.\nThe problem statement:\n\nA toggle switch that determines whether a manufacturing line continues to work.\nWhen the toggle switch is observed to be in the “on” position, this is considered a success.\nWhen the toggle switch is observed to be in the “off” position, this is considered a failure.\nWe know that the probability of the switch being on is \\(p = 0.95\\).\nWe assume that the probability remains constant,\nWe assume that the current switch position is independent of the previous switch position.\nAssume that \\(n = 10\\)\nAssume \\(x = 7\\)\nAssume \\(p = 0.95\\)\n\nWhat is the probability that \\(x = 7\\), that is, \\(P(X = 7)\\)?\nWhat is the probability that \\(x\\) is less than 7, that is \\(P(x \\le 7)\\)?\nThe code below does the following:\n\nWe declare the variables\nWe estimate the PMF for the binomial using dbinom\nWe estimate the CDF for the binomial using pbinom\nWe show the CDF is equal to the sum of the PMFs\n\nIn other words:\n\nWe evaluate \\(P(X = 7)\\) using the dbinom function\nWe evaluate \\(P(X \\le 7)\\) using the pbinom function\nWe show \\(P(X \\le 7) = \\sum_{i = 1}^7 P(X = x_i)\\)\n\nWe find that the probability of observing 7 successes in an experiment with 10 trials and a probability of success of 0.95 in any given trial is equal to 0.0195.\nWe find that probability of observing 7 or fewer successes in an experiment with 10 trials and a probability of success of 0.95 in any given trail is equal to 0.0115.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\nn = 10\nx = 7\np = 0.95\n\nfx &lt;- tibble(pmf &lt;- dbinom(x, n, p),\n             cdf &lt;- pbinom(x, n, p),\n             cdf_a &lt;- dbinom(0, 10, 0.95) + dbinom(1, 10, 0.95) +\n                      dbinom(2, 10, 0.95) + dbinom(3, 10, 0.95) +\n                      dbinom(4, 10, 0.95) + dbinom(5, 10, 0.95) +\n                      dbinom(6, 10, 0.95) + dbinom(7, 10, 0.95))\n\nkable(fx,\n      align       = \"c\", \n      digits      = 4,\n      caption     = \"N = 10 and p = 0.95\",\n      col.names   = c(\"PMF(X = x) \", \"CDF(X &lt;= x)\", \"CDF(X &lt;= x)\")) %&gt;%\nkable_styling(font_size = 14,\n              full_width = TRUE)\n\n\nN = 10 and p = 0.95\n\n\nPMF(X = x)\nCDF(X &lt;= x)\nCDF(X &lt;= x)\n\n\n\n\n0.0105\n0.0115\n0.0115",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#graphical-binomial-pmf",
+    "href": "mod-5-2-binomial.html#graphical-binomial-pmf",
+    "title": "25  Binomial Distribution",
+    "section": "25.9 Graphical Binomial PMF",
+    "text": "25.9 Graphical Binomial PMF\nThe code below provides a graphical illustrate of three binomial PMFs.\nThe number of trials is equal to 100.\nThe variable, \\(x\\), is a sequence of integers from 1 to 100.\nIn the first case, the probability of success in any given trial is 0.3.\nIn the second case, the probability of success in any given trial is 0.4.\nIn the third case, the probability of success in any given trial is 0.5.\nYou should observe that the center of each PFM shifts right as the probability of success in any given independent trail increases.\n\nrm(list = ls())\n\nx &lt;- 1:100\n\nlines_1 &lt;- tibble(x, p_x = dbinom(x, size = 100, prob = 0.3), \n                      prob = 0.1)\nlines_2 &lt;- tibble(x, p_x = dbinom(x, size = 100, prob = 0.4), \n                      prob = 0.3)\nlines_3 &lt;- tibble(x, p_x = dbinom(x, size = 100, prob = 0.5), \n                      prob = 0.5)\n\nlines &lt;- bind_rows(lines_1, lines_2, lines_3)\n\nggplot(lines,\n       aes(x     = x,\n           y     = p_x,\n           group = prob,\n           fill  = prob)) + \ngeom_col() +\nfacet_wrap(vars(prob)) +\ntheme_minimal() + \ntheme(legend.position = \" \") +\nlabs(title = \"Binomial Probability Mass Function\",\n     x     = \" \",\n     y     = \"P(X = x)\")",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#graphical-binomial-cdf",
+    "href": "mod-5-2-binomial.html#graphical-binomial-cdf",
+    "title": "25  Binomial Distribution",
+    "section": "25.10 Graphical Binomial CDF",
+    "text": "25.10 Graphical Binomial CDF\nThe code below provides a graphical illustrate of three binomial CDFs.\nThe number of trials is equal to 100.\nThe variable, \\(x\\), is a sequence of integers from 1 to 100.\nIn the first case, the probability of success in any given trial is 0.3.\nIn the second case, the probability of success in any given trial is 0.4.\nIn the third case, the probability of success in any given trial is 0.5.\n\nrm(list = ls())\n\nx &lt;- 1:100\n\nlines_1 &lt;- tibble(x, p_x = pbinom(x, size = 100, prob = 0.3), \n                      prob = 0.1)\nlines_2 &lt;- tibble(x, p_x = pbinom(x, size = 100, prob = 0.4), \n                      prob = 0.3)\nlines_3 &lt;- tibble(x, p_x = pbinom(x, size = 100, prob = 0.5), \n                      prob = 0.5)\n\nlines &lt;- bind_rows(lines_1, lines_2, lines_3)\n\nggplot(lines,\n       aes(x     = x,\n           y     = p_x,\n           group = prob,\n           fill  = prob)) + \ngeom_col() +\nfacet_wrap(vars(prob)) +\ntheme_minimal() + \ntheme(legend.position = \" \") +\nlabs(title = \"Binomial Cumulative Distribution Function\",\n     x     = \" \",\n     y     = \"P(X = x)\")",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-2-binomial.html#expected-value-and-variance",
+    "href": "mod-5-2-binomial.html#expected-value-and-variance",
+    "title": "25  Binomial Distribution",
+    "section": "25.11 Expected Value and Variance",
+    "text": "25.11 Expected Value and Variance\nGiven \\(x\\), \\(n\\), and \\(p\\), the expected value for the binomial distribution is:\n\\[E(x) = \\mu = np\\]\nThe variance of the binomial distribution is:\n\\[var(x) = \\sigma^2 = np \\, (1-p)\\]\nLet\n\n\\(n\\) = 50\n\\(x = 23\\)\n\\(p\\) = 0.55\n\nThe expected value, variance, and standard deviation are equal to:\n\\[E(x) = \\mu = 50 \\times 0.55 = 27.5\\] \\[var(x) = \\sigma ^2 = np \\, (1-p) = 50 \\times 0.55 \\times (1 - 0.55) = 12.375\\]\n\\[sd(x) = \\sqrt{(\\sigma^2)} = \\sqrt{(12.375)} = 3.52\\]\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\nn = 50\nx = 23\np = 0.55\n\nfx &lt;- tibble(pmf &lt;- dbinom(x, n, p),\n             cdf &lt;- pbinom(x, n, p),\n             ev  &lt;- n*p,\n             var &lt;- n*p*(1-p),\n             sd  &lt;- sqrt(n*p*(1-p)))\n\nkable(fx,\n      align       = \"c\", \n      digits      = 4,\n      caption     = \"N = 50, X = 23, and p = 0.55\",\n      col.names   = c(\"PMF(X = x) \", \n                      \"CDF(X &lt;= x)\", \n                      \"Expected Value\",\n                      \"Variance\",\n                      \"Standard Deviation\")) %&gt;%\nkable_styling(font_size = 14,\n              full_width = TRUE)\n\n\nN = 50, X = 23, and p = 0.55\n\n\nPMF(X = x)\nCDF(X &lt;= x)\nExpected Value\nVariance\nStandard Deviation\n\n\n\n\n0.05\n0.1279\n27.5\n12.375\n3.5178",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Binomial Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-3-poisson.html",
+    "href": "mod-5-3-poisson.html",
+    "title": "26  Poisson Distribution",
+    "section": "",
+    "text": "26.1 Poisson Probability Distribution\nA Poisson probability distribution is often used with the number of occurrences within an interval of time or space.\nThe number of arrivals at a bank teller window in one hour, the number of passengers screened over an 8 hour shift, the number of leaks in 100 miles of pipeline are questions that may be addressed by a Poisson distribution.\nThere are two conditions that must be satisfied for a Poisson experiment.\nAs \\(x\\) is without an upper limit, the probability of \\(x\\) occurrences, \\(f(x)\\), will approach zero as \\(x\\) becomes sufficiently large.\nIf you are examining the number of arrivals at an screening site in an hour, then as \\(x\\) increases from \\(1,2,3....\\), \\(f(x)\\) becomes approximately zero for “large” values of \\(x\\).\nFor example, you are observing how many passengers arrive at a security checkpoint in an hour. Assume this is a relatively small airport and that you are observing the checkpoint mid-day.\nThe probability of observing 1 passenger is likely close to 1. The probability of observing 100 passengers is likely less than 1. The probability of observing 1,000 passengers is likely close to 0. The probability of observing 10,000 passengers is likely very close to 0.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-3-poisson.html#poisson-probability-distribution",
+    "href": "mod-5-3-poisson.html#poisson-probability-distribution",
+    "title": "26  Poisson Distribution",
+    "section": "",
+    "text": "First, the probability of occurrence is the same for any two intervals of equal length.\nSecond, the occurrence or nonoccurrence in any interval is independent of the occurrence or nonoccurrence in any other interval.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-3-poisson.html#poisson-probability-distribution-1",
+    "href": "mod-5-3-poisson.html#poisson-probability-distribution-1",
+    "title": "26  Poisson Distribution",
+    "section": "26.2 Poisson Probability Distribution",
+    "text": "26.2 Poisson Probability Distribution\nLet \\(x\\) be the discrete number of occurrences in an interval\nLet \\(\\lambda\\) be the expected value or mean number of occurrences in an interval\nLet \\(e = 2.71828\\)\nLet \\(f(x)\\) be the probability of \\(x\\) occurrences in an interval.\nThe Poisson probability mass function is defined as:\n\\[P(X) = \\frac{\\lambda^x \\, e^{-\\lambda}}{x!}\\] Let \\(x\\) be the number of patients arriving in a 15-minute interval and the average number of patients observed is 10.\nWhat is the probability of observing 5 patients in a 15-minute interval?\n\\[P(X = 5) = \\frac{10^5 \\, e^{-10}}{5!} = 0.0378\\]",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-3-poisson.html#poisson-example",
+    "href": "mod-5-3-poisson.html#poisson-example",
+    "title": "26  Poisson Distribution",
+    "section": "26.3 Poisson Example",
+    "text": "26.3 Poisson Example\nAirline passengers arrive randomly, independently, with a mean arrival rate of 10 passengers/minute.\n\\[\n\\mu = 10\n\\]\nWhat is the probability of no arrivals in a one-minute period?\n\\[\nP(X = 0)\n\\]\nWhat is the probability 12 or fewer arrivals in a one-minute period?\n\\[\nP(X \\le 12)\n\\]\nWhat is the probability of three or fewer passengers in a one-minute period?\n\\[\nP(X \\le 3)\n\\]\nWhat is the probability of no arrivals in a 15-second period?\n\\[\n\\mu = (10/60) \\times 15 = 2.5\n\\]\n\\[\nP(X \\le 15)\n\\]\nWhat is the probability of at least one arrival in a 15-second period?\n\\[\nP(X \\ge 0)\n\\]\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\n# mu_60 = 10 per 60 seconds\n# mu_15 = 2.5 per 15 second\n\npoissons &lt;- tibble(p_x0_1min &lt;- ppois(0, 10),\n                   p_x12_1min &lt;- ppois(12, 10),\n                   p_xle3_1min &lt;- ppois(3, 10),\n                   p_x0_15sec &lt;- ppois(0, 2.5),\n                   p_xge1_15sec &lt;- 1-dpois(0, 2.5))\n\nkable(poissons,\n      align       = \"ccccc\", \n      format.args = list(big.mark = \",\", scientific = FALSE),\n      caption     = \"Poisson Distribution Example\",\n      col.names   = c(\"P(x = 0, 1 min)\", \n                      \"P(x &lt;= 12, 1 min)\", \n                      \"P(x &lt;= 3, 1 min)\",\n                      \"P(x=0, 15 sec)\",\n                      \"P(x&gt;0, 15 sec)\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nPoisson Distribution Example\n\n\nP(x = 0, 1 min)\nP(x &lt;= 12, 1 min)\nP(x &lt;= 3, 1 min)\nP(x=0, 15 sec)\nP(x&gt;0, 15 sec)\n\n\n\n\n0.0000454\n0.7915565\n0.0103361\n0.082085\n0.917915",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-3-poisson.html#graphic-poisson-pmf",
+    "href": "mod-5-3-poisson.html#graphic-poisson-pmf",
+    "title": "26  Poisson Distribution",
+    "section": "26.4 Graphic Poisson PMF",
+    "text": "26.4 Graphic Poisson PMF\nIn the follow example, we create a sequence of integers from 1 to 20 and then evaluate the Poisson PFM with\n\n\\(\\mu = 10\\)\n\\(\\mu = 20\\)\n\n\nx &lt;- 1:20\n\nlines_1 &lt;- tibble(x, p_x = dpois(x, 5), mu = 5)\nlines_2 &lt;- tibble(x, p_x = dpois(x, 10), mu = 10)\n\nlines &lt;- bind_rows(lines_1, lines_2)\n\nggplot(lines,\n       aes(x     = x,\n           y     = p_x,\n           group = mu,\n           fill  = mu)) + \n  geom_col(colour = \"black\") +\n  facet_wrap(vars(mu)) +\n  theme_minimal() + \n  theme(legend.position = \" \") +\n  labs(title = \"Poisson Probability Function\",\n       x     = \" \",\n       y     = \"P(X = x)\")",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-3-poisson.html#graphical-poisson-cdf",
+    "href": "mod-5-3-poisson.html#graphical-poisson-cdf",
+    "title": "26  Poisson Distribution",
+    "section": "26.5 Graphical Poisson CDF",
+    "text": "26.5 Graphical Poisson CDF\nIn the follow example, we create a sequence of integers from 1 to 20 and then evaluate the Poisson CDF with\n\n\\(\\mu = 10\\)\n\\(\\mu = 20\\)\n\n\nx &lt;- 1:20\n\nlines_1 &lt;- tibble(x, p_x = ppois(x, 5), mu = 10)\nlines_2 &lt;- tibble(x, p_x = ppois(x, 10), mu = 20)\n\nlines &lt;- bind_rows(lines_1, lines_2)\n\nggplot(lines,\n       aes(x     = x,\n           y     = p_x,\n           group = mu,\n           fill  = mu)) + \n  geom_col(colour = \"black\") +\n  facet_wrap(vars(mu)) +\n  theme_minimal() + \n  theme(legend.position = \" \") +\n  labs(title = \"Cumulative Poisson Probability Function\",\n       x     = \" \",\n       y     = \"P(X = x)\")",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-3-poisson.html#expected-value-and-variance",
+    "href": "mod-5-3-poisson.html#expected-value-and-variance",
+    "title": "26  Poisson Distribution",
+    "section": "26.6 Expected Value and Variance",
+    "text": "26.6 Expected Value and Variance\nThe expected value or mean of a Poisson distribution is\n\\[\n\\mu = E(X) = \\lambda\n\\]\nThe variance of a Poisson distribution is:\n\\[\n\\sigma^2 = Var(X) = \\lambda\n\\]\nSo, if the mean arrival rate of passengers at a checkpoint every 60 minutes is 10 then\n\\[\n\\mu = 10 \\quad var = 10 \\quad sd=\\sqrt{10}\n\\]",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-5-3-poisson.html#wrapping-up",
+    "href": "mod-5-3-poisson.html#wrapping-up",
+    "title": "26  Poisson Distribution",
+    "section": "26.7 Wrapping Up",
+    "text": "26.7 Wrapping Up\n\nA random variable is a numerical description of an outcome of an example.\nA discrete random variable may assume a finite of infinite number of values.\nIf we use empirical data to estimate probabilities, we are developing an empirical discrete distribution.\nWe discussed three discrete probability functions: uniform, binomial, and Poisson.\nWe explored the expected value, variance, and standard deviation of a discrete random variable and the probability functions.\nWe used R to generate discrete empirical probabilities as well as use discrete probability functions.",
+    "crumbs": [
+      "Discrete Probability",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
     ]
   }
 ]

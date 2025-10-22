@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>17&nbsp; Chebyshev’s Theorem – ECON 700</title>
+<title>26&nbsp; Poisson Distribution – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-3-3-correlation.html" rel="next">
-<link href="./mod-3-1-skewness.html" rel="prev">
+<link href="./mod-5-2-binomial.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -70,6 +104,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -112,7 +150,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-2-normal.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-5-0-overview.html">Discrete Probability</a></li><li class="breadcrumb-item"><a href="./mod-5-3-poisson.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Poisson Distribution</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -279,7 +317,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-3-2-normal.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-3-2-normal.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></span></a>
   </div>
 </li>
@@ -355,7 +393,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-5-3-poisson.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-5-3-poisson.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Poisson Distribution</span></span></a>
   </div>
 </li>
@@ -383,29 +421,22 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#z-scores" id="toc-z-scores" class="nav-link active" data-scroll-target="#z-scores"><span class="header-section-number">17.1</span> Z-Scores</a></li>
-  <li><a href="#chebyshevs-theorem" id="toc-chebyshevs-theorem" class="nav-link" data-scroll-target="#chebyshevs-theorem"><span class="header-section-number">17.2</span> Chebyshev’s Theorem</a></li>
-  <li><a href="#chebyshevs-examples" id="toc-chebyshevs-examples" class="nav-link" data-scroll-target="#chebyshevs-examples"><span class="header-section-number">17.3</span> Chebyshev’s Examples</a>
-  <ul class="collapse">
-  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">17.3.1</span> Example 1</a></li>
-  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">17.3.2</span> Example 2</a></li>
-  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3"><span class="header-section-number">17.3.3</span> Example 3</a></li>
-  </ul></li>
-  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link" data-scroll-target="#the-normal-distribution"><span class="header-section-number">17.4</span> The Normal Distribution</a></li>
-  <li><a href="#the-empirical-rule" id="toc-the-empirical-rule" class="nav-link" data-scroll-target="#the-empirical-rule"><span class="header-section-number">17.5</span> The Empirical Rule</a>
-  <ul class="collapse">
-  <li><a href="#example-1-1" id="toc-example-1-1" class="nav-link" data-scroll-target="#example-1-1"><span class="header-section-number">17.5.1</span> Example 1</a></li>
-  <li><a href="#example-2-1" id="toc-example-2-1" class="nav-link" data-scroll-target="#example-2-1"><span class="header-section-number">17.5.2</span> Example 2</a></li>
-  </ul></li>
+  <li><a href="#poisson-probability-distribution" id="toc-poisson-probability-distribution" class="nav-link active" data-scroll-target="#poisson-probability-distribution"><span class="header-section-number">26.1</span> Poisson Probability Distribution</a></li>
+  <li><a href="#poisson-probability-distribution-1" id="toc-poisson-probability-distribution-1" class="nav-link" data-scroll-target="#poisson-probability-distribution-1"><span class="header-section-number">26.2</span> Poisson Probability Distribution</a></li>
+  <li><a href="#poisson-example" id="toc-poisson-example" class="nav-link" data-scroll-target="#poisson-example"><span class="header-section-number">26.3</span> Poisson Example</a></li>
+  <li><a href="#graphic-poisson-pmf" id="toc-graphic-poisson-pmf" class="nav-link" data-scroll-target="#graphic-poisson-pmf"><span class="header-section-number">26.4</span> Graphic Poisson PMF</a></li>
+  <li><a href="#graphical-poisson-cdf" id="toc-graphical-poisson-cdf" class="nav-link" data-scroll-target="#graphical-poisson-cdf"><span class="header-section-number">26.5</span> Graphical Poisson CDF</a></li>
+  <li><a href="#expected-value-and-variance" id="toc-expected-value-and-variance" class="nav-link" data-scroll-target="#expected-value-and-variance"><span class="header-section-number">26.6</span> Expected Value and Variance</a></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up"><span class="header-section-number">26.7</span> Wrapping Up</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-3-0-overview.html">Covariance and Correlation</a></li><li class="breadcrumb-item"><a href="./mod-3-2-normal.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-5-0-overview.html">Discrete Probability</a></li><li class="breadcrumb-item"><a href="./mod-5-3-poisson.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Poisson Distribution</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chebyshev’s Theorem</span></h1>
+<h1 class="title"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Poisson Distribution</span></h1>
 </div>
 
 
@@ -422,138 +453,209 @@ window.Quarto = {
 </header>
 
 
-<section id="z-scores" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="z-scores"><span class="header-section-number">17.1</span> Z-Scores</h2>
-<p>Recall that we previously defined a <strong>Z-score</strong> as a measure of the number of standardized deviations an observation is from the mean.</p>
-<p>Given population data distributed with mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>, the <strong>Z-score</strong> for an observation, <span class="math inline">\(x\)</span>, is denoted as:</p>
-<p><span class="math display">\[
-Z_x = \frac{x - \mu}{\sigma}
-\]</span></p>
-<p>If the Z-score of an observation was -2.5, then we would state that the observation lies 2.5 standard deviations to the left of the mean. If the Z-score is equal to 1.75, then we would state that the observation lies 1.75 standard deviations to the right of the population mean.</p>
-<p>Let <span class="math inline">\(x_1 = 50\)</span>, <span class="math inline">\(\mu_{x_1} = 20\)</span>, and <span class="math inline">\(\sigma_{x_1}=5\)</span>, then the <span class="math inline">\(z_{x_1}\)</span> is equal to</p>
-<p><span class="math display">\[
-z_{x_1} = \frac{x_1 - \mu}{\sigma} = \frac{50-20}{5} = 6
-\]</span></p>
-<p>The observation <span class="math inline">\(x_1\)</span> is 6 standard deviations from the mean of 20. Given that <span class="math inline">\(z_{x_1}\)</span> is positive, we know that the observation <span class="math inline">\(x_1\)</span> is 6 standard deviations to the right of <span class="math inline">\(\mu_{x_1}\)</span>.</p>
-</section>
-<section id="chebyshevs-theorem" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="chebyshevs-theorem"><span class="header-section-number">17.2</span> Chebyshev’s Theorem</h2>
-<p><strong>Chebyshev’s Theorem</strong> states at least <span class="math inline">\((1 - 1 / z^2)\)</span> of the data values must be within <span class="math inline">\(z\)</span> standard deviations of the mean where <span class="math inline">\(z\)</span> is any value greater than 1.</p>
-<p><u><em>Since the theorem is independent of the underlying distribution, we can apply Chebyshev’s theorem to a data set without worrying about how the data are distributed.</em></u></p>
-<p>With this in mind, let <span class="math inline">\(z = 2\)</span>, <span class="math inline">\(z = 3\)</span>, and <span class="math inline">\(z=6\)</span>, then</p>
-<p><span class="math display">\[z = 2 \rightarrow (1 - \frac{1}{2^2}) = 1 - 1/4 = 0.750 \]</span></p>
-<p><span class="math display">\[z = 3 \rightarrow (1 - \frac{1}{3^2}) = 1 - 1/9 = 0.889\]</span> <span class="math display">\[z = 4 \rightarrow (1 - \frac{1}{4^2}) = 1 - 1/16 = 0.972\]</span></p>
-<p>Chebyshev’s theorem implies that at least 75% of observations will lie within 2 standard deviations of the mean and at least 88.9% of observations with lie within 3 standard deviations of the mean.</p>
-<p>This is quite useful when you do not know the underlying distribution of the data. The theorem provides a conservative estimate relative to the <strong>Empirical Rule</strong> which applies only to normal distributions and that we will explore later.</p>
-</section>
-<section id="chebyshevs-examples" class="level2" data-number="17.3">
-<h2 data-number="17.3" class="anchored" data-anchor-id="chebyshevs-examples"><span class="header-section-number">17.3</span> Chebyshev’s Examples</h2>
-<section id="example-1" class="level3" data-number="17.3.1">
-<h3 data-number="17.3.1" class="anchored" data-anchor-id="example-1"><span class="header-section-number">17.3.1</span> Example 1</h3>
-<p>Assume that you have a dataset with a mean of 100 and a standard deviation of 10.</p>
-<p><span class="math display">\[
-\mu = 100 \\
-\sigma = 10
-\]</span></p>
-<p>You are interested in a range of 3 standard deviations.</p>
-<p><span class="math display">\[
-\mu - 2\sigma = 100 - 3 \times 10 = 70 \\
-\mu + 2\sigma = 100 + 3 \times 10 = 130
-\]</span></p>
-<p>Chebyshev’s Theorem tells you at least 89% of observations fall between 70 and 130. This implies that no more than 11% of observations fall outside this range.</p>
-</section>
-<section id="example-2" class="level3" data-number="17.3.2">
-<h3 data-number="17.3.2" class="anchored" data-anchor-id="example-2"><span class="header-section-number">17.3.2</span> Example 2</h3>
-<p>Assume that a class takes a test. The mean score on the test is 75 and the standard deviation is 5. What proportion of scores fall between 65 and 85?</p>
-<p>Given the mean is 75, you should note that 65 is 2 standard deviations less than the mean and 85 is 2 standard deviations greater than the mean.</p>
-<p>By Chebyshev’s Theorem, this means that at least 75% of observations fall between 65 and 85. This implies that no more than 25% of observations fall outside this range.</p>
-</section>
-<section id="example-3" class="level3" data-number="17.3.3">
-<h3 data-number="17.3.3" class="anchored" data-anchor-id="example-3"><span class="header-section-number">17.3.3</span> Example 3</h3>
-<p>Let <span class="math inline">\(\mu = 80\)</span> and <span class="math inline">\(\sigma = 4\)</span>.</p>
-<p><span class="math display">\[ \mu - 2\sigma = 80 - (2 \times 4) = 72 \\ \mu + 2\sigma = 80 + (2 \times 4) = 88\]</span></p>
-<p>At least 75% of observations for a distribution with <span class="math inline">\(\mu = 80\)</span> and <span class="math inline">\(\sigma = 4\)</span> lie in the (72,88) range.</p>
-<p><span class="math display">\[ \mu - 3\sigma = 80 - (3 \times 4) = 68 \\ \mu + 3\sigma = 80 + (3 \times 4) = 92 \]</span></p>
-<p>At least 75% of observations lie in the (68,92) range.</p>
-</section>
-</section>
-<section id="the-normal-distribution" class="level2" data-number="17.4">
-<h2 data-number="17.4" class="anchored" data-anchor-id="the-normal-distribution"><span class="header-section-number">17.4</span> The Normal Distribution</h2>
-<p>The <strong>normal distribution</strong> is undoubtedly one of the most important, if not the most important, distribution in statistics. While there are technically an infinite number of normal distributions, we often refer to “the normal distribution” to discuss the properties of the distribution. Unlike the previous examples which have been collections of <strong>discrete</strong> observations, the normal distribution is <strong>continuous</strong>.</p>
-<p>A normal distribution in <span class="math inline">\(X\)</span> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> is a distribution resulting from the <strong>probability distribution function</strong> that is defined on the <span class="math inline">\(x \in (-\infty, \infty)\)</span> interval and is equal to:</p>
-<p><span class="math display">\[
-P(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-(x - \mu) / (2 \sigma^2)}
-\]</span></p>
-<p>We will discuss the properties of the normal and other distributions at greater length in coming modules.</p>
-<p>For now, we will focus on the general properties that help us think about measures of central tendency, variability, and the shape of the data.</p>
-<p>The normal distribution has the following properties.</p>
+<section id="poisson-probability-distribution" class="level2" data-number="26.1">
+<h2 data-number="26.1" class="anchored" data-anchor-id="poisson-probability-distribution"><span class="header-section-number">26.1</span> Poisson Probability Distribution</h2>
+<p>A <strong>Poisson probability distribution</strong> is often used with the number of occurrences within an interval of time or space.</p>
+<p>The number of arrivals at a bank teller window in one hour, the number of passengers screened over an 8 hour shift, the number of leaks in 100 miles of pipeline are questions that may be addressed by a Poisson distribution.</p>
+<p>There are two conditions that must be satisfied for a <strong>Poisson experiment</strong>.</p>
 <ul>
-<li><p>The mean, mode, and median are all equal.</p></li>
-<li><p>The normal distribution is symmetric around <span class="math inline">\(\mu\)</span></p></li>
-<li><p>Exactly 50% of the values lie to the left of <span class="math inline">\(\mu\)</span></p></li>
-<li><p>Exactly 50% of the values lie to the right of <span class="math inline">\(\mu\)</span></p></li>
-<li><p>The total area under the curve is equal to 1</p></li>
+<li><p>First, the probability of occurrence is the same for any two intervals of equal length.</p></li>
+<li><p>Second, the occurrence or nonoccurrence in any interval is independent of the occurrence or nonoccurrence in any other interval.</p></li>
 </ul>
+<p>As <span class="math inline">\(x\)</span> is without an upper limit, the probability of <span class="math inline">\(x\)</span> occurrences, <span class="math inline">\(f(x)\)</span>, will approach zero as <span class="math inline">\(x\)</span> becomes sufficiently large.</p>
+<p>If you are examining the number of arrivals at an screening site in an hour, then as <span class="math inline">\(x\)</span> increases from <span class="math inline">\(1,2,3....\)</span>, <span class="math inline">\(f(x)\)</span> becomes approximately zero for “large” values of <span class="math inline">\(x\)</span>.</p>
+<p>For example, you are observing how many passengers arrive at a security checkpoint in an hour. Assume this is a relatively small airport and that you are observing the checkpoint mid-day.</p>
+<p>The probability of observing 1 passenger is likely close to 1. The probability of observing 100 passengers is likely less than 1. The probability of observing 1,000 passengers is likely close to 0. The probability of observing 10,000 passengers is likely very close to 0.</p>
 </section>
-<section id="the-empirical-rule" class="level2" data-number="17.5">
-<h2 data-number="17.5" class="anchored" data-anchor-id="the-empirical-rule"><span class="header-section-number">17.5</span> The Empirical Rule</h2>
-<p>The <strong>Empirical rule</strong> is based on Chebyshev’s theorem and, given a normal distribution, states that:</p>
+<section id="poisson-probability-distribution-1" class="level2" data-number="26.2">
+<h2 data-number="26.2" class="anchored" data-anchor-id="poisson-probability-distribution-1"><span class="header-section-number">26.2</span> Poisson Probability Distribution</h2>
+<p>Let <span class="math inline">\(x\)</span> be the discrete number of occurrences in an interval</p>
+<p>Let <span class="math inline">\(\lambda\)</span> be the expected value or mean number of occurrences in an interval</p>
+<p>Let <span class="math inline">\(e = 2.71828\)</span></p>
+<p>Let <span class="math inline">\(f(x)\)</span> be the probability of <span class="math inline">\(x\)</span> occurrences in an interval.</p>
+<p>The <strong>Poisson probability mass function</strong> is defined as:</p>
+<p><span class="math display">\[P(X) = \frac{\lambda^x \, e^{-\lambda}}{x!}\]</span> Let <span class="math inline">\(x\)</span> be the number of patients arriving in a 15-minute interval and the average number of patients observed is 10.</p>
+<p>What is the probability of observing 5 patients in a 15-minute interval?</p>
+<p><span class="math display">\[P(X = 5) = \frac{10^5 \, e^{-10}}{5!} = 0.0378\]</span></p>
+</section>
+<section id="poisson-example" class="level2" data-number="26.3">
+<h2 data-number="26.3" class="anchored" data-anchor-id="poisson-example"><span class="header-section-number">26.3</span> Poisson Example</h2>
+<p>Airline passengers arrive randomly, independently, with a mean arrival rate of 10 passengers/minute.</p>
+<p><span class="math display">\[
+\mu = 10
+\]</span></p>
+<p>What is the probability of no arrivals in a one-minute period?</p>
+<p><span class="math display">\[
+P(X = 0)
+\]</span></p>
+<p>What is the probability 12 or fewer arrivals in a one-minute period?</p>
+<p><span class="math display">\[
+P(X \le 12)
+\]</span></p>
+<p>What is the probability of three or fewer passengers in a one-minute period?</p>
+<p><span class="math display">\[
+P(X \le 3)
+\]</span></p>
+<p>What is the probability of no arrivals in a 15-second period?</p>
+<p><span class="math display">\[
+\mu = (10/60) \times 15 = 2.5
+\]</span></p>
+<p><span class="math display">\[
+P(X \le 15)
+\]</span></p>
+<p>What is the probability of at least one arrival in a 15-second period?</p>
+<p><span class="math display">\[
+P(X \ge 0)
+\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># mu_60 = 10 per 60 seconds</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># mu_15 = 2.5 per 15 second</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>poissons <span class="ot">&lt;-</span> <span class="fu">tibble</span>(p_x0_1min <span class="ot">&lt;-</span> <span class="fu">ppois</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                   p_x12_1min <span class="ot">&lt;-</span> <span class="fu">ppois</span>(<span class="dv">12</span>, <span class="dv">10</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                   p_xle3_1min <span class="ot">&lt;-</span> <span class="fu">ppois</span>(<span class="dv">3</span>, <span class="dv">10</span>),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                   p_x0_15sec <span class="ot">&lt;-</span> <span class="fu">ppois</span>(<span class="dv">0</span>, <span class="fl">2.5</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                   p_xge1_15sec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">dpois</span>(<span class="dv">0</span>, <span class="fl">2.5</span>))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(poissons,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"ccccc"</span>, </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Poisson Distribution Example"</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"P(x = 0, 1 min)"</span>, </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(x &lt;= 12, 1 min)"</span>, </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(x &lt;= 3, 1 min)"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(x=0, 15 sec)"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(x&gt;0, 15 sec)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Poisson Distribution Example</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(x = 0, 1 min)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(x &lt;= 12, 1 min)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(x &lt;= 3, 1 min)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(x=0, 15 sec)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(x&gt;0, 15 sec)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.0000454</td>
+<td style="text-align: center;">0.7915565</td>
+<td style="text-align: center;">0.0103361</td>
+<td style="text-align: center;">0.082085</td>
+<td style="text-align: center;">0.917915</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="graphic-poisson-pmf" class="level2" data-number="26.4">
+<h2 data-number="26.4" class="anchored" data-anchor-id="graphic-poisson-pmf"><span class="header-section-number">26.4</span> Graphic Poisson PMF</h2>
+<p>In the follow example, we create a sequence of integers from 1 to 20 and then evaluate the Poisson PFM with</p>
 <ul>
-<li><p>Approximately 68% of observations lie within one standard deviation of <span class="math inline">\(\mu\)</span>.</p></li>
-<li><p>Approximately 95% of observations lie within two standard deviations of <span class="math inline">\(\mu\)</span>.</p></li>
-<li><p>Approximately 99% of observations lie within three standard deviations of <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p><span class="math inline">\(\mu = 10\)</span></p></li>
+<li><p><span class="math inline">\(\mu = 20\)</span></p></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>lines_1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">dpois</span>(x, <span class="dv">5</span>), <span class="at">mu =</span> <span class="dv">5</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>lines_2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">dpois</span>(x, <span class="dv">10</span>), <span class="at">mu =</span> <span class="dv">10</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>lines <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(lines_1, lines_2)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lines,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x     =</span> x,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">y     =</span> p_x,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> mu,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill  =</span> mu)) <span class="sc">+</span> </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(mu)) <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">" "</span>) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Poisson Probability Function"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">" "</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y     =</span> <span class="st">"P(X = x)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="images/Normal.png" class="img-fluid figure-img" alt="Screenshot of the normal distribution" width="497"></p>
-<figcaption>The Normal Distribution</figcaption>
+<p><img src="mod-5-3-poisson_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
-<section id="example-1-1" class="level3" data-number="17.5.1">
-<h3 data-number="17.5.1" class="anchored" data-anchor-id="example-1-1"><span class="header-section-number">17.5.1</span> Example 1</h3>
-<p>Let <span class="math inline">\(\mu = 25\)</span> and <span class="math inline">\(\sigma = 5\)</span> then, by the empirical rule for a normal distribution, we know:</p>
+</div>
+</div>
+</section>
+<section id="graphical-poisson-cdf" class="level2" data-number="26.5">
+<h2 data-number="26.5" class="anchored" data-anchor-id="graphical-poisson-cdf"><span class="header-section-number">26.5</span> Graphical Poisson CDF</h2>
+<p>In the follow example, we create a sequence of integers from 1 to 20 and then evaluate the Poisson CDF with</p>
 <ul>
-<li><p>Approximately 68% of observations lie between 20 and 30 or <span class="math inline">\(\mu \pm \sigma\)</span>.</p></li>
-<li><p>Approximately 95% of observations lie between 15 and 35 or <span class="math inline">\(\mu \pm 2\sigma\)</span>.</p></li>
-<li><p>Approximately 99% of observations lie between 10 and 40 or <span class="math inline">\(\mu \pm 3\sigma\)</span>.</p></li>
+<li><p><span class="math inline">\(\mu = 10\)</span></p></li>
+<li><p><span class="math inline">\(\mu = 20\)</span></p></li>
 </ul>
-<p>We can confirm this by estimating the Z-Score for 10, 15, 20, 30, 35, and 40.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>lines_1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">ppois</span>(x, <span class="dv">5</span>), <span class="at">mu =</span> <span class="dv">10</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>lines_2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, <span class="at">p_x =</span> <span class="fu">ppois</span>(x, <span class="dv">10</span>), <span class="at">mu =</span> <span class="dv">20</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>lines <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(lines_1, lines_2)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lines,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x     =</span> x,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">y     =</span> p_x,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> mu,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill  =</span> mu)) <span class="sc">+</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(mu)) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">" "</span>) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cumulative Poisson Probability Function"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">" "</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y     =</span> <span class="st">"P(X = x)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-5-3-poisson_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="expected-value-and-variance" class="level2" data-number="26.6">
+<h2 data-number="26.6" class="anchored" data-anchor-id="expected-value-and-variance"><span class="header-section-number">26.6</span> Expected Value and Variance</h2>
+<p>The expected value or mean of a Poisson distribution is</p>
 <p><span class="math display">\[
-Z(10) = \frac{10 - 25}{5} = -3
+\mu = E(X) = \lambda
 \]</span></p>
+<p>The variance of a Poisson distribution is:</p>
 <p><span class="math display">\[
-Z(15) = \frac{15 - 25}{5} = -2
+\sigma^2 = Var(X) = \lambda
 \]</span></p>
+<p>So, if the mean arrival rate of passengers at a checkpoint every 60 minutes is 10 then</p>
 <p><span class="math display">\[
-Z(20) = \frac{20 - 25}{5} = -1
-\]</span></p>
-<p><span class="math display">\[
-Z(30) = \frac{30 - 25}{5} = 1
-\]</span></p>
-<p><span class="math display">\[
-Z(35) = \frac{35 - 35}{5} = 2
-\]</span></p>
-<p><span class="math display">\[
-Z(40) = \frac{40 - 25}{5} = 3
+\mu = 10 \quad var = 10 \quad sd=\sqrt{10}
 \]</span></p>
 </section>
-<section id="example-2-1" class="level3" data-number="17.5.2">
-<h3 data-number="17.5.2" class="anchored" data-anchor-id="example-2-1"><span class="header-section-number">17.5.2</span> Example 2</h3>
-<p>Assume that a pizza delivery restaurant has a mean delivery time of 32 minutes with a standard deviation of 4 minutes. Assume that delivery times are normally distributed.</p>
-<p>What is the range of times in which 68%, 95%, and 95% of deliveries occur?</p>
-<p>According to the Empirical Rule,</p>
-<p><span class="math display">\[
-\text{68\%} \rightarrow  \mu \pm \sigma = 32 \pm 4 = (28,36)
-\]</span></p>
-<p><span class="math display">\[
-\text{95\%} \rightarrow \mu \pm 2\sigma = 32 \pm 8 = (24,40)
-\]</span></p>
-<p><span class="math display">\[
-\text{99\%} \rightarrow \mu \pm 3\sigma = 32 \pm 12 = (20,44)
-\]</span></p>
+<section id="wrapping-up" class="level2" data-number="26.7">
+<h2 data-number="26.7" class="anchored" data-anchor-id="wrapping-up"><span class="header-section-number">26.7</span> Wrapping Up</h2>
+<ul>
+<li><p>A random variable is a numerical description of an outcome of an example.</p></li>
+<li><p>A discrete random variable may assume a finite of infinite number of values.</p></li>
+<li><p>If we use empirical data to estimate probabilities, we are developing an empirical discrete distribution.</p></li>
+<li><p>We discussed three discrete probability functions: uniform, binomial, and Poisson.</p></li>
+<li><p>We explored the expected value, variance, and standard deviation of a discrete random variable and the probability functions.</p></li>
+<li><p>We used R to generate discrete empirical probabilities as well as use discrete probability functions.</p></li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -964,14 +1066,11 @@ Z(40) = \frac{40 - 25}{5} = 3
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-3-1-skewness.html" class="pagination-link" aria-label="Skewness">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Skewness</span></span>
+      <a href="./mod-5-2-binomial.html" class="pagination-link" aria-label="Binomial Distribution">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Binomial Distribution</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-3-3-correlation.html" class="pagination-link" aria-label="Correlation">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlation</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
