@@ -1,0 +1,158 @@
+---
+title: "Uniform Distributions"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    self-contained: false     # must be false when using webr
+urlcolor: blue
+filters:
+  - webr
+execute:
+  webR: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+
+library(dplyr, quietly = TRUE)
+library(ggplot2, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(tidyquant, quietly = TRUE)
+
+```
+
+## Discrete Random Variables
+
+A **random variable** is a numerical description of an outcome of an
+example.
+
+A **discrete random variable** may assume a **finite** of **infinite**
+number of values.
+
+The **probability mass function** or **PMF**, $P(X)$, generates the
+probability of $X$ occurring for a specific value of $x$.
+
+The probability mass function is also referred to as the **discrete
+probability density function**.
+
+The **cumulative distribution function** or **CDF** generates the
+probability of $X$ being less than or equal to a specific value of $x$.
+
+The cumulative distribution function is also referred to as the
+**discrete cumulative density function**.
+
+Given a binomial experiment with the following properties, answer the
+following questions using either the PDF or CDF.
+
+-   $n = 50$
+
+-   $p = .8$
+
+-   $x = 42$
+
+-   What is $P(X = x) = P(X = 42)$?
+
+-   What is $P(X \le x) = P(X \le 42)$?
+
+-   What is $P(X > x) = 1 - P(X \le X) = 1 - P(X \le 42)$?
+
+```{r}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
+
+n = 50
+p = .8
+x = 42
+
+probs <- tibble(p_1 <- dbinom(x, n, p),
+                p_2 <- pbinom(x, n, p),
+                p_3 <- pbinom(x, n, p, lower.tail = FALSE))
+
+kable(probs,
+      align = 'c',
+      digits = 3,
+      col.names = c('P(X = 42)', 'P(X <= 42)', 'P(X > 42)')) %>%
+kable_classic()
+
+```
+
+## Continuous Random Variables
+
+A **continuous random variable** may assume any value in an interval or
+collection of intervals.
+
+The **probability density function**, $f(x)$, is the counterpart of the
+discrete probability density function.
+
+The probability density function for a continuous random variable is
+typically referred to as the **PDF**.
+
+The PDF, $f(x)$, generates a curve for a given interval of $x$.
+
+The PDF provides the probability that $x$ takes on any value in the
+given interval of $x$.
+
+This implies that the area under $f(x)$ for a specific value of $x$ is
+zero.
+
+In other words, given a continuous random value, the probability that
+the continuous variable, $x$, is equal to a specific value is zero.
+
+## Uniform Probability Distribution
+
+The **continuous uniform probability distribution** describes an
+experiment where there is a random outcome that is within specific
+bounds.
+
+The bounds of the random outcome are defined by the parameters, $a$ and
+$b$.
+
+$a$ is the minimum value of the random outcome.
+
+$b$ is the maximum value of the random outcome.
+
+The probability density function of the continuous uniform distribution
+is:
+
+$$f(x)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]$$
+
+$$f(x) = 0 \quad \text{for} \, x \not\in[a,b]$$
+
+## Continuous Uniform Distribution
+
+The PDF of the continuous uniform probability distribution is
+
+$$f(x)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]$$
+
+$$\text{for} \, x \in[10,30]$$
+
+For a continuous probability distribution, we know that:
+
+$$f(X) \ge 0$$ $$\int_{-\infty}^{\infty} \, f(x) \, dx = 1$$
+
+For the continuous uniform distribution:
+
+$$a < b \rightarrow \frac{1}{b-a} \ge 0 \quad \forall \, a \le x \le b \rightarrow \, f(x) \ge 0 \quad \forall x$$
+-
+
+This means that $f(x) \ge 0$ for all $x \in [a,b]$.
+
+Does the area defined by the PDF equal to one?
+
+Here we can integrate the PDF and note that when $x < a$ and $x > b$
+that $f(x) = 0$.
+
+$$lim_{n \rightarrow \infty} \int_{-n}^{n} f(x)d(x) = lim_{n \rightarrow \infty} \int_{-n}^{a} (0)d(x) +\int_{a}^{b} \frac{1}{b-a}dx + \int_{b}^{n} (0)d(x)$$
+
+$$lim_{n \rightarrow \infty} \int_{-n}^{n} f(x)d(x) = \frac{1}{b-a}[x]_{b}^{a} = \frac{1}{b-a}(b -a) = 1$$
+-
+
+The PDF of the continuous uniform probability distribution fulfills the
+conditions for a PDF of a continuous random variable.

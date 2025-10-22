@@ -70,7 +70,18 @@
     "href": "index.html#module-05---discrete-probability-distributions",
     "title": "ECON 700",
     "section": "0.6 Module 05 - Discrete Probability Distributions",
-    "text": "0.6 Module 05 - Discrete Probability Distributions\n\n\nModule 5.0 - Module 5 Overview\n\n\nModule 5.1 - Discrete Random Variables\n\n\nModule 5.2 - Binomial Probability Distribution\n\n\nModule 5.3 - Poisson Probability Distribution\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.6 Module 05 - Discrete Probability Distributions\n\n\nModule 5.0 - Module 5 Overview\n\n\nModule 5.1 - Discrete Random Variables\n\n\nModule 5.2 - Binomial Probability Distribution\n\n\nModule 5.3 - Poisson Probability Distribution",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-06---continuous-probability-distributions",
+    "href": "index.html#module-06---continuous-probability-distributions",
+    "title": "ECON 700",
+    "section": "0.7 Module 06 - Continuous Probability Distributions",
+    "text": "0.7 Module 06 - Continuous Probability Distributions\n\n\nModule 6.0 - Module 6 Overview\n\n\nModule 6.1 - Uniform Probability Distributions\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -400,7 +411,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n52.3\n48.71\n50.8",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n54.93\n51.93\n50.5",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -2347,7 +2358,7 @@
     "href": "mod-5-3-poisson.html#the-r-function-in-r",
     "title": "26  Poisson Distribution",
     "section": "26.10 The R Function in R",
-    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n44\n16\n7.337061\n\n\n48\n19\n10.727947\n\n\n49\n7\n6.850353\n\n\n46\n13\n10.229160\n\n\n44\n8\n11.151516",
+    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n41\n7\n8.207825\n\n\n41\n8\n7.783200\n\n\n46\n12\n7.317911\n\n\n43\n11\n9.787119\n\n\n53\n13\n11.181256",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
@@ -2362,6 +2373,138 @@
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-0-overview.html",
+    "href": "mod-6-0-overview.html",
+    "title": "27  Module 6 Overview",
+    "section": "",
+    "text": "27.1 Introduction\nWelcome to Module 6 of ECON 700.\nThis module extends probability theory to the study of continuous random variables and their probability distributions. Students begin by differentiating discrete from continuous variables and exploring the concept of a probability density function (PDF) as the continuous counterpart to the probability mass function (PMF). The module introduces three key continuous distributions—the uniform, normal, and exponential—each representing a different type of process.\nThe module emphasizes the normal distribution as the cornerstone of statistical analysis due to its relationship with the Central Limit Theorem. Through practical applications, students use R to compute probabilities (dnorm, pnorm, and qnorm), visualize areas under the curve, and identify key percentiles and standard deviations. The module concludes with the exponential distribution as a model of waiting times in Poisson processes, illustrating the connection between continuous distributions and real-world timing or reliability problems.",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Module 6 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-0-overview.html#learning-objectives",
+    "href": "mod-6-0-overview.html#learning-objectives",
+    "title": "27  Module 6 Overview",
+    "section": "27.2 Learning Objectives",
+    "text": "27.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nDifferentiate between discrete and continuous random variables and describe the role of probability density functions.\nCompute and interpret probabilities using the uniform, normal, and exponential distributions.\nApply R functions (dnorm, pnorm, qnorm, dunif, punif, pexp) to calculate and visualize probability densities and cumulative distributions.\nExplain the properties of the normal distribution and its connection to the Central Limit Theorem.\nCalculate expected values, variances, and probabilities for continuous random variables.\nEvaluate real-world examples that demonstrate how continuous distributions model random events such as arrival times, measurement variation, and economic outcomes.",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Module 6 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-0-overview.html#readings-resources",
+    "href": "mod-6-0-overview.html#readings-resources",
+    "title": "27  Module 6 Overview",
+    "section": "27.3 Readings & Resources",
+    "text": "27.3 Readings & Resources\n\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. (Chapter 5). Available for free online at https://openstax.org/books/introductory-statistics-2e/pages/2-introduction\nIrizarry, R. (2025). Introduction to Data Science: Statistics and Prediction Algorithms Through Case Studies (Chapters 1-3). Available for free at: https://rafalab.dfci.harvard.edu/dsbook-part-2/\nWickham, H., & Grolemund, G. (2017). R for Data Science. (Chapters 1–3).\nOnline R documentation: https://cran.r-project.org/manuals.html\nRStudio Cheat Sheets",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Module 6 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-0-overview.html#activities",
+    "href": "mod-6-0-overview.html#activities",
+    "title": "27  Module 6 Overview",
+    "section": "27.4 Activities",
+    "text": "27.4 Activities\n\nComplete the hands-on coding exercises embedded in each lesson.\n\nComplete the weekly class assignment.\n\nParticipate in the discussion form.\n\nTake the weekly knowledge quiz.",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Module 6 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-0-overview.html#lessons-in-this-module",
+    "href": "mod-6-0-overview.html#lessons-in-this-module",
+    "title": "27  Module 6 Overview",
+    "section": "27.5 Lessons in this Module",
+    "text": "27.5 Lessons in this Module\n\n6.1 – Uniform Probability Distributions\n\n\nNext: Start with Uniform Probability Distributions.",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Module 6 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html",
+    "href": "mod-6-1-uniform.html",
+    "title": "28  Uniform Distributions",
+    "section": "",
+    "text": "28.1 Discrete Random Variables\nA random variable is a numerical description of an outcome of an example.\nA discrete random variable may assume a finite of infinite number of values.\nThe probability mass function or PMF, \\(P(X)\\), generates the probability of \\(X\\) occurring for a specific value of \\(x\\).\nThe probability mass function is also referred to as the discrete probability density function.\nThe cumulative distribution function or CDF generates the probability of \\(X\\) being less than or equal to a specific value of \\(x\\).\nThe cumulative distribution function is also referred to as the discrete cumulative density function.\nGiven a binomial experiment with the following properties, answer the following questions using either the PDF or CDF.\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\nn = 50\np = .8\nx = 42\n\nprobs &lt;- tibble(p_1 &lt;- dbinom(x, n, p),\n                p_2 &lt;- pbinom(x, n, p),\n                p_3 &lt;- pbinom(x, n, p, lower.tail = FALSE))\n\nkable(probs,\n      align = 'c',\n      digits = 3,\n      col.names = c('P(X = 42)', 'P(X &lt;= 42)', 'P(X &gt; 42)')) %&gt;%\nkable_classic()\n\n\n\n\nP(X = 42)\nP(X &lt;= 42)\nP(X &gt; 42)\n\n\n\n\n0.117\n0.81\n0.19",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#discrete-random-variables",
+    "href": "mod-6-1-uniform.html#discrete-random-variables",
+    "title": "28  Uniform Distributions",
+    "section": "",
+    "text": "\\(n = 50\\)\n\\(p = .8\\)\n\\(x = 42\\)\nWhat is \\(P(X = x) = P(X = 42)\\)?\nWhat is \\(P(X \\le x) = P(X \\le 42)\\)?\nWhat is \\(P(X &gt; x) = 1 - P(X \\le X) = 1 - P(X \\le 42)\\)?",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#continuous-random-variables",
+    "href": "mod-6-1-uniform.html#continuous-random-variables",
+    "title": "28  Uniform Distributions",
+    "section": "28.2 Continuous Random Variables",
+    "text": "28.2 Continuous Random Variables\nA continuous random variable may assume any value in an interval or collection of intervals.\nThe probability density function, \\(f(x)\\), is the counterpart of the discrete probability density function.\nThe probability density function for a continuous random variable is typically referred to as the PDF.\nThe PDF, \\(f(x)\\), generates a curve for a given interval of \\(x\\).\nThe PDF provides the probability that \\(x\\) takes on any value in the given interval of \\(x\\).\nThis implies that the area under \\(f(x)\\) for a specific value of \\(x\\) is zero.\nIn other words, given a continuous random value, the probability that the continuous variable, \\(x\\), is equal to a specific value is zero.",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#uniform-probability-distribution",
+    "href": "mod-6-1-uniform.html#uniform-probability-distribution",
+    "title": "28  Uniform Distributions",
+    "section": "28.3 Uniform Probability Distribution",
+    "text": "28.3 Uniform Probability Distribution\nThe continuous uniform probability distribution describes an experiment where there is a random outcome that is within specific bounds.\nThe bounds of the random outcome are defined by the parameters, \\(a\\) and \\(b\\).\n\\(a\\) is the minimum value of the random outcome.\n\\(b\\) is the maximum value of the random outcome.\nThe probability density function of the continuous uniform distribution is:\n\\[f(x)  = \\frac{1}{b-a} \\quad \\text{for} \\, x\\in[a,b]\\]\n\\[f(x) = 0 \\quad \\text{for} \\, x \\not\\in[a,b]\\]",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#continuous-uniform-distribution",
+    "href": "mod-6-1-uniform.html#continuous-uniform-distribution",
+    "title": "28  Uniform Distributions",
+    "section": "28.4 Continuous Uniform Distribution",
+    "text": "28.4 Continuous Uniform Distribution\nThe PDF of the continuous uniform probability distribution is\n\\[f(x)  = \\frac{1}{b-a} \\quad \\text{for} \\, x\\in[a,b]\\]\n\\[\\text{for} \\, x \\in[10,30]\\]\nFor a continuous probability distribution, we know that:\n\\[f(X) \\ge 0\\] \\[\\int_{-\\infty}^{\\infty} \\, f(x) \\, dx = 1\\]\nFor the continuous uniform distribution:",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#a-b-rightarrow-frac1b-a-ge-0-quad-forall-a-le-x-le-b-rightarrow-fx-ge-0-quad-forall-x",
+    "href": "mod-6-1-uniform.html#a-b-rightarrow-frac1b-a-ge-0-quad-forall-a-le-x-le-b-rightarrow-fx-ge-0-quad-forall-x",
+    "title": "28  Uniform Distributions",
+    "section": "28.5 \\[a < b \\rightarrow \\frac{1}{b-a} \\ge 0 \\quad \\forall \\, a \\le x \\le b \\rightarrow \\, f(x) \\ge 0 \\quad \\forall x\\]",
+    "text": "28.5 \\[a &lt; b \\rightarrow \\frac{1}{b-a} \\ge 0 \\quad \\forall \\, a \\le x \\le b \\rightarrow \\, f(x) \\ge 0 \\quad \\forall x\\]\nThis means that \\(f(x) \\ge 0\\) for all \\(x \\in [a,b]\\).\nDoes the area defined by the PDF equal to one?\nHere we can integrate the PDF and note that when \\(x &lt; a\\) and \\(x &gt; b\\) that \\(f(x) = 0\\).\n\\[lim_{n \\rightarrow \\infty} \\int_{-n}^{n} f(x)d(x) = lim_{n \\rightarrow \\infty} \\int_{-n}^{a} (0)d(x) +\\int_{a}^{b} \\frac{1}{b-a}dx + \\int_{b}^{n} (0)d(x)\\]",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#lim_n-rightarrow-infty-int_-nn-fxdx-frac1b-ax_ba-frac1b-ab--a-1",
+    "href": "mod-6-1-uniform.html#lim_n-rightarrow-infty-int_-nn-fxdx-frac1b-ax_ba-frac1b-ab--a-1",
+    "title": "28  Uniform Distributions",
+    "section": "28.6 \\[lim_{n \\rightarrow \\infty} \\int_{-n}^{n} f(x)d(x) = \\frac{1}{b-a}[x]_{b}^{a} = \\frac{1}{b-a}(b -a) = 1\\]",
+    "text": "28.6 \\[lim_{n \\rightarrow \\infty} \\int_{-n}^{n} f(x)d(x) = \\frac{1}{b-a}[x]_{b}^{a} = \\frac{1}{b-a}(b -a) = 1\\]\nThe PDF of the continuous uniform probability distribution fulfills the conditions for a PDF of a continuous random variable.",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
     ]
   }
 ]

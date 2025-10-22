@@ -45,6 +45,9 @@ book:
         - mod-5-2-binomial.qmd
         - mod-5-3-poisson.qmd
     - part: "Continuous Probability"
+      chapters:
+        - mod-6-0-overview.qmd
+        - mod-6-1-uniform.qmd
     - part: "Sampling Distributions"
     - part: "Inference"
 

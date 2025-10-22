@@ -60,6 +60,13 @@ Note: The course is under construction. Some links will not work.
   <li><a href="mod-5-3-poisson.qmd">Module 5.3 - Poisson Probability Distribution</a></li>
 </ul>
 
+## Module 06 - Continuous Probability Distributions
+
+<ul>
+  <li><a href="mod-6-0-overview.qmd">Module 6.0 - Module 6 Overview</a></li>
+  <li><a href="mod-6-1-uniform.qmd">Module 6.1 - Uniform Probability Distributions</a></li>
+</ul>
+
 
 ---
 

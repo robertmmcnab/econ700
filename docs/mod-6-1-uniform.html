@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Meet Your Instructor – ECON 700</title>
+<title>28&nbsp; Uniform Distributions – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./about.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./mod-6-0-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -70,7 +104,40 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li><li class="breadcrumb-item"><a href="./mcnab.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Meet Your Instructor</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-6-0-overview.html">Continuous Probability</a></li><li class="breadcrumb-item"><a href="./mod-6-1-uniform.html"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Uniform Distributions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -127,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mcnab.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mcnab.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Meet Your Instructor</span></span></a>
   </div>
 </li>
@@ -349,7 +416,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-6-1-uniform.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-6-1-uniform.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Uniform Distributions</span></span></a>
   </div>
 </li>
@@ -373,18 +440,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about"><span class="header-section-number">2.1</span> About</a></li>
-  <li><a href="#contact-policy" id="toc-contact-policy" class="nav-link" data-scroll-target="#contact-policy"><span class="header-section-number">2.2</span> Contact Policy</a></li>
-  <li><a href="#virtual-office-hours" id="toc-virtual-office-hours" class="nav-link" data-scroll-target="#virtual-office-hours"><span class="header-section-number">2.3</span> Virtual Office Hours</a></li>
+  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link active" data-scroll-target="#discrete-random-variables"><span class="header-section-number">28.1</span> Discrete Random Variables</a></li>
+  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables"><span class="header-section-number">28.2</span> Continuous Random Variables</a></li>
+  <li><a href="#uniform-probability-distribution" id="toc-uniform-probability-distribution" class="nav-link" data-scroll-target="#uniform-probability-distribution"><span class="header-section-number">28.3</span> Uniform Probability Distribution</a></li>
+  <li><a href="#continuous-uniform-distribution" id="toc-continuous-uniform-distribution" class="nav-link" data-scroll-target="#continuous-uniform-distribution"><span class="header-section-number">28.4</span> Continuous Uniform Distribution</a></li>
+  <li><a href="#a-b-rightarrow-frac1b-a-ge-0-quad-forall-a-le-x-le-b-rightarrow-fx-ge-0-quad-forall-x" id="toc-a-b-rightarrow-frac1b-a-ge-0-quad-forall-a-le-x-le-b-rightarrow-fx-ge-0-quad-forall-x" class="nav-link" data-scroll-target="#a-b-rightarrow-frac1b-a-ge-0-quad-forall-a-le-x-le-b-rightarrow-fx-ge-0-quad-forall-x"><span class="header-section-number">28.5</span> <span class="math display">\[a &lt; b \rightarrow \frac{1}{b-a} \ge 0 \quad \forall \, a \le x \le b \rightarrow \, f(x) \ge 0 \quad \forall x\]</span></a></li>
+  <li><a href="#lim_n-rightarrow-infty-int_-nn-fxdx-frac1b-ax_ba-frac1b-ab--a-1" id="toc-lim_n-rightarrow-infty-int_-nn-fxdx-frac1b-ax_ba-frac1b-ab--a-1" class="nav-link" data-scroll-target="#lim_n-rightarrow-infty-int_-nn-fxdx-frac1b-ax_ba-frac1b-ab--a-1"><span class="header-section-number">28.6</span> <span class="math display">\[lim_{n \rightarrow \infty} \int_{-n}^{n} f(x)d(x) = \frac{1}{b-a}[x]_{b}^{a} = \frac{1}{b-a}(b -a) = 1\]</span></a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li><li class="breadcrumb-item"><a href="./mcnab.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Meet Your Instructor</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-6-0-overview.html">Continuous Probability</a></li><li class="breadcrumb-item"><a href="./mod-6-1-uniform.html"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Uniform Distributions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Meet Your Instructor</span></h1>
+<h1 class="title"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Uniform Distributions</span></h1>
 </div>
 
 
@@ -401,26 +471,101 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/COVABIZ24DUO_ODUDSC_9401.jpg" class="img-fluid figure-img" alt="Picture of Bob McNab" width="167"></p>
-<figcaption>Bob McNab</figcaption>
-</figure>
+<section id="discrete-random-variables" class="level2" data-number="28.1">
+<h2 data-number="28.1" class="anchored" data-anchor-id="discrete-random-variables"><span class="header-section-number">28.1</span> Discrete Random Variables</h2>
+<p>A <strong>random variable</strong> is a numerical description of an outcome of an example.</p>
+<p>A <strong>discrete random variable</strong> may assume a <strong>finite</strong> of <strong>infinite</strong> number of values.</p>
+<p>The <strong>probability mass function</strong> or <strong>PMF</strong>, <span class="math inline">\(P(X)\)</span>, generates the probability of <span class="math inline">\(X\)</span> occurring for a specific value of <span class="math inline">\(x\)</span>.</p>
+<p>The probability mass function is also referred to as the <strong>discrete probability density function</strong>.</p>
+<p>The <strong>cumulative distribution function</strong> or <strong>CDF</strong> generates the probability of <span class="math inline">\(X\)</span> being less than or equal to a specific value of <span class="math inline">\(x\)</span>.</p>
+<p>The cumulative distribution function is also referred to as the <strong>discrete cumulative density function</strong>.</p>
+<p>Given a binomial experiment with the following properties, answer the following questions using either the PDF or CDF.</p>
+<ul>
+<li><p><span class="math inline">\(n = 50\)</span></p></li>
+<li><p><span class="math inline">\(p = .8\)</span></p></li>
+<li><p><span class="math inline">\(x = 42\)</span></p></li>
+<li><p>What is <span class="math inline">\(P(X = x) = P(X = 42)\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(P(X \le x) = P(X \le 42)\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(P(X &gt; x) = 1 - P(X \le X) = 1 - P(X \le 42)\)</span>?</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> .<span class="dv">8</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">42</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>probs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(p_1 <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, n, p),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                p_2 <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(x, n, p),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                p_3 <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(x, n, p, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(probs,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">'c'</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'P(X = 42)'</span>, <span class="st">'P(X &lt;= 42)'</span>, <span class="st">'P(X &gt; 42)'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(X = 42)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(X &lt;= 42)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(X &gt; 42)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.117</td>
+<td style="text-align: center;">0.81</td>
+<td style="text-align: center;">0.19</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Chair, Department of Economics | rmcnab@odu.edu | 757-683-3153</p>
-<section id="about" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="about"><span class="header-section-number">2.1</span> About</h2>
-<p>Professor Robert M. McNab currently serves as the Chair of the Department of Economics in the Strome College of Business at Old Dominion University. Dr.&nbsp;McNab is also the Director of the Dragas Center for Economic Analysis and Policy at Old Dominion University. He is a member of the Federal Reserve Bank of Philadelphia’s Survey of Professional Forecasters and, from 2018 to 2022, he was a member of the Joint Advisory Board of Economists for the Commonwealth of Virginia. Professor McNab has published in Applied Economics, Cornell Hospitality Quarterly, Defense and Peace Economics, National Tax Journal, Public Budgeting and Finance, and World Development, among others. He edits the annual State of the Region: Hampton Roads and State of the Commonwealth reports Professor McNab has appeared in the Associated Press, China Global Television Network, CNN, LiveNow from Fox News, Forbes, Newsweek, Wall Street Journal, Washington Post, Welt am Sonntag, Yahoo News, Yahoo Finance, Richmond Times-Dispatch, Virginian Pilot, Virginia Public Media, and Daily Press, among others. Dr.&nbsp;McNab joined the faculty of the Department of Economics in the Strome College of Business of Old Dominion University in July 2016 and previously was a member of the faculty of the Naval Postgraduate School in Monterey, California from 2000 to 2016.</p>
+</div>
 </section>
-<section id="contact-policy" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="contact-policy"><span class="header-section-number">2.2</span> Contact Policy</h2>
-<p>Students should feel welcome to contact me via email at <a href="mailto:rmcnab@odu.edu" class="email">rmcnab@odu.edu</a> or drop by Zoom office hours. I strongly encourage students to communicate with me. I will try to answer emails within 48 business hours (often much sooner) for course related topics.</p>
-<p>Students should take the time to craft complete, professional emails. The more information that you can provide about a question or problem, the more likely that my response will be helpful. Avoid non-professional language and practice communicating in the corporate workplace. Emails that are unprofessional will be returned with no action.</p>
-<p>Students should proactively address issues with the class and scheduling rather than waiting until an assignment or case study discussion is overdue. In many cases, accommodations can be made for ‘life events,’ however, clear and prompt communication is necessary.</p>
+<section id="continuous-random-variables" class="level2" data-number="28.2">
+<h2 data-number="28.2" class="anchored" data-anchor-id="continuous-random-variables"><span class="header-section-number">28.2</span> Continuous Random Variables</h2>
+<p>A <strong>continuous random variable</strong> may assume any value in an interval or collection of intervals.</p>
+<p>The <strong>probability density function</strong>, <span class="math inline">\(f(x)\)</span>, is the counterpart of the discrete probability density function.</p>
+<p>The probability density function for a continuous random variable is typically referred to as the <strong>PDF</strong>.</p>
+<p>The PDF, <span class="math inline">\(f(x)\)</span>, generates a curve for a given interval of <span class="math inline">\(x\)</span>.</p>
+<p>The PDF provides the probability that <span class="math inline">\(x\)</span> takes on any value in the given interval of <span class="math inline">\(x\)</span>.</p>
+<p>This implies that the area under <span class="math inline">\(f(x)\)</span> for a specific value of <span class="math inline">\(x\)</span> is zero.</p>
+<p>In other words, given a continuous random value, the probability that the continuous variable, <span class="math inline">\(x\)</span>, is equal to a specific value is zero.</p>
 </section>
-<section id="virtual-office-hours" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="virtual-office-hours"><span class="header-section-number">2.3</span> Virtual Office Hours</h2>
-<p>Office hours will be held on a rotating schedule and are available by appointment. Check the class announcements for the schedule of office hours, which vary to accommodate students with different schedules.</p>
+<section id="uniform-probability-distribution" class="level2" data-number="28.3">
+<h2 data-number="28.3" class="anchored" data-anchor-id="uniform-probability-distribution"><span class="header-section-number">28.3</span> Uniform Probability Distribution</h2>
+<p>The <strong>continuous uniform probability distribution</strong> describes an experiment where there is a random outcome that is within specific bounds.</p>
+<p>The bounds of the random outcome are defined by the parameters, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
+<p><span class="math inline">\(a\)</span> is the minimum value of the random outcome.</p>
+<p><span class="math inline">\(b\)</span> is the maximum value of the random outcome.</p>
+<p>The probability density function of the continuous uniform distribution is:</p>
+<p><span class="math display">\[f(x)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]\]</span></p>
+<p><span class="math display">\[f(x) = 0 \quad \text{for} \, x \not\in[a,b]\]</span></p>
+</section>
+<section id="continuous-uniform-distribution" class="level2" data-number="28.4">
+<h2 data-number="28.4" class="anchored" data-anchor-id="continuous-uniform-distribution"><span class="header-section-number">28.4</span> Continuous Uniform Distribution</h2>
+<p>The PDF of the continuous uniform probability distribution is</p>
+<p><span class="math display">\[f(x)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]\]</span></p>
+<p><span class="math display">\[\text{for} \, x \in[10,30]\]</span></p>
+<p>For a continuous probability distribution, we know that:</p>
+<p><span class="math display">\[f(X) \ge 0\]</span> <span class="math display">\[\int_{-\infty}^{\infty} \, f(x) \, dx = 1\]</span></p>
+<p>For the continuous uniform distribution:</p>
+</section>
+<section id="a-b-rightarrow-frac1b-a-ge-0-quad-forall-a-le-x-le-b-rightarrow-fx-ge-0-quad-forall-x" class="level2" data-number="28.5">
+<h2 data-number="28.5" class="anchored" data-anchor-id="a-b-rightarrow-frac1b-a-ge-0-quad-forall-a-le-x-le-b-rightarrow-fx-ge-0-quad-forall-x"><span class="header-section-number">28.5</span> <span class="math display">\[a &lt; b \rightarrow \frac{1}{b-a} \ge 0 \quad \forall \, a \le x \le b \rightarrow \, f(x) \ge 0 \quad \forall x\]</span></h2>
+<p>This means that <span class="math inline">\(f(x) \ge 0\)</span> for all <span class="math inline">\(x \in [a,b]\)</span>.</p>
+<p>Does the area defined by the PDF equal to one?</p>
+<p>Here we can integrate the PDF and note that when <span class="math inline">\(x &lt; a\)</span> and <span class="math inline">\(x &gt; b\)</span> that <span class="math inline">\(f(x) = 0\)</span>.</p>
+<p><span class="math display">\[lim_{n \rightarrow \infty} \int_{-n}^{n} f(x)d(x) = lim_{n \rightarrow \infty} \int_{-n}^{a} (0)d(x) +\int_{a}^{b} \frac{1}{b-a}dx + \int_{b}^{n} (0)d(x)\]</span></p>
+</section>
+<section id="lim_n-rightarrow-infty-int_-nn-fxdx-frac1b-ax_ba-frac1b-ab--a-1" class="level2" data-number="28.6">
+<h2 data-number="28.6" class="anchored" data-anchor-id="lim_n-rightarrow-infty-int_-nn-fxdx-frac1b-ax_ba-frac1b-ab--a-1"><span class="header-section-number">28.6</span> <span class="math display">\[lim_{n \rightarrow \infty} \int_{-n}^{n} f(x)d(x) = \frac{1}{b-a}[x]_{b}^{a} = \frac{1}{b-a}(b -a) = 1\]</span></h2>
+<p>The PDF of the continuous uniform probability distribution fulfills the conditions for a PDF of a continuous random variable.</p>
 
 
 </section>
@@ -833,14 +978,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="ECON 700">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">ECON 700</span></span>
+      <a href="./mod-6-0-overview.html" class="pagination-link" aria-label="Module 6 Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 6 Overview</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./about.html" class="pagination-link" aria-label="Course Objectives">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Course Objectives</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
