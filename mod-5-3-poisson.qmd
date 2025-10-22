@@ -220,16 +220,213 @@ $$
 \mu = 10 \quad var = 10 \quad sd=\sqrt{10}
 $$
 
+## The D Function in R
+
+The **d** function returns the value of the probability mass function (PMF) for a discrete distribution or the probability density function (PDF) for a continuous distribution.
+
+The probability mass function, sometimes referred to as the discrete density function, given the probability that a discrete random variable is **exactly** equal to some value.
+
+For a binomial distribution, to find $f(x)$, we need the value of a certain random variable $x$, the number of independent trials $n$, and the probability of success in any given trial $p$.
+
+The **binomial probability mass function** or binomial density function is defined as:
+
+$$f(x) = \binom{n}{x} p^x (1-p)^{(n-x)}$$
+
+$$f(x) = \frac{n!}{x!(n-x)!} \, p^x (1-p)^{(n-x)}$$
+
+We conduct 1,000 trials of an experiment.
+
+The probability of success in any given trial is equal to 0.75.
+
+We want to know the probability of having 752 successes
+
+We also want to know the probability of having 775 successes.
+
+In other words, we want to know
+
+$$P(X = 752)$$
+
+$$
+P(X = 775)
+$$
+
+```{r, message = FALSE, warning = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
+
+n  = 1000
+p  = 0.75
+x1 = 752
+x2 = 775
+
+fx <- tibble(fx_1 <- dbinom(x1,n,p),
+             fx_2 <- dbinom(x2,n,p))
+kable(fx,
+      align       = "cc", 
+      digits      = 3,
+      caption     = "Binomial PMF",
+      col.names   = c("P(X = 752)", 
+                      "P(X = 775)")) %>%
+kable_styling(font_size = 14)
+
+```
+
+## The P Function in R
+
+The cumulative density function (CDF) of a distribution is the sum of the probabilities equal to and less than certain given values of a random variable $x$.
+
+For example, assume that $n = 10$, $x = 3$ and $p = 0.4$, then the cumulative density is equal to
+
+$$\sum f(x \in {0,3}) = P(x = 0) + P(x = 1) + P(x = 2) + P(x = 3)$$
+
+Returning to the binomial distribution, we can estimate this using the probability mass function **dbinom** for each of the values of $x$.
+
+We can also calculate this using the function **pbinom** which returns the value of the cumulative density function of the binomial distribution given a certain random variable $x$.
+
+The **pbinom** function can be used to find $P(x \le 3)$ and $P(x > 3)$.
+
+-   Assume we are conducting a binomial experiment.
+
+-   Assume that $n$ = 10, $x = 3$ and $p = 0.3$.
+
+-   What is the probability that $x \le 4$?
+
+-   What is the probability that $x > 4$?
+
+-   We can use the **lower.tail** option to estimate $P(x > 4)$ by setting the lower.tail option to **FALSE**.
+
+```{r, message = FALSE, warning = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
+
+n <- 10
+x <- 3 
+p <- 0.3
+
+x_1 <- 4
+
+
+cdf <- tibble(cdf_x1_d <- dbinom(0,10,0.3) + dbinom(1,10,0.3) +
+                          dbinom(2,10,0.3) + dbinom(3,10,0.3) +
+                          dbinom(4,10,0.3),
+              cdf_x1_p <- pbinom(4,10,0.3,lower.tail = TRUE),
+              cdf_x1_right <- 1 - pbinom(4,10,0.3,lower.tail = TRUE),
+              cdf_x1_right2 <- pbinom(4,10,0.3,lower.tail = FALSE))
+
+kable(cdf,
+      align       = "c", 
+      caption     = "Binomial CDF",
+      col.names   = c("P(X <= 4)", 
+                      "P(X <= 4)",
+                      "P(X > 4)",
+                      "P(X > 4)")) %>%
+kable_styling(font_size = 14)
+
+```
+
+## The Q Function in R
+
+Let $f(x)$ be the discrete probability density function and $F(x)$ be the discrete cumulative density function.
+
+Recall that $F(x)$ for a specific value $k$ implies that $F(x = k) = P(x \le k)$.
+
+Let $F^{-1}(x)$ be the inverse discrete cumulative density function.
+
+$$F^{-1}(x) = c$$ $$P(x \le c) = q \quad \text{for} \; 0 \le q \le 1$$
+
+In other words, given a probability $q$, the inverse cumulative density function returns the value $c$ from the discrete distribution function such that $P(X \le c) = q$.
+
+Note that with discrete distributions that the probabilities from the cumulative and inverse cumulative functions will not match exactly.
+
+You can use the **qbinom** or **qpois** function to determine the value of $x$ at which a cumulative density occurs.
+
+For a binomial with $n = 100$ and $p = 0.45$, if the cumulative density is $q=0.25$, then $x = 42$.
+
+For a Poisson given that $\mu = 50$, if the cumulative density is $q=0.8$, then $x = 56$.
+
+Remember, probabilities won't exactly match when you go for $CDF^{-1}$ to $x$ to $CDF$. Try increasing the density and see what happens.
+
+```{r, message = FALSE, warning = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
+
+c <- 0.25
+n <- 100
+p <- 0.45
+
+mu = 50
+d  = 0.8
+
+q_est <- tibble(q_b = c,
+                q_binom <- qbinom(c, n, p),
+                p_binom <- pbinom(q_binom, n, p),
+                q_p = d,
+                q_poisson <- qpois(d, mu),
+                p_poisson <- ppois(q_poisson, mu))
+
+kable(q_est,
+      align       = "cccccc", 
+      caption     = "Inverse CDF",
+      col.names   = c("q",
+                      "Inverse CDF(q)",
+                      "CDF(x)",
+                      "q",
+                      "Inverse CDF(q)",
+                      "CDF(x)")) %>%
+kable_styling(font_size = 14)
+
+```
+
+## The R Function in R
+
+The function **rbinom** generates a vector of binomial distributed random variables given the number of experiments $m$, the number of trials in each experiment $n$, and the probability of success $p$.
+
+The function **rpois** generates a vector of Poisson distributed random variables given the number of experiments $m$ and the arrival rate $\mu$.
+
+The function **rnorm** generates a vector of normally distributed random variables given $\mu$ and $\sigma$.
+
+```{r}
+
+#set the number of observations (experiments) to 5
+
+r_binom <- rbinom(5,100,0.5)
+
+r_poisson <- rpois(5, 10)
+
+r_norm <- rnorm(5, 10, 2)
+
+r_dist <- data.frame(r_binom, r_poisson, r_norm)
+
+
+kable(r_dist,
+      align       = "ccc", 
+      caption     = "Random Numbers",
+      col.names   = c("Binomal", 
+                      "Poisson",
+                      "Normal")) %>%
+  kable_styling(font_size = 14)
+
+```
+
 ## Wrapping Up
 
--   A random variable is a numerical description of an outcome of an example.
+A random variable is a numerical description of an outcome of an example.
 
--   A discrete random variable may assume a finite of infinite number of values.
+A discrete random variable may assume a finite of infinite number of values.
 
--   If we use empirical data to estimate probabilities, we are developing an empirical discrete distribution.
+If we use empirical data to estimate probabilities, we are developing an empirical discrete distribution.
 
--   We discussed three discrete probability functions: uniform, binomial, and Poisson.
+We discussed three discrete probability functions: uniform, binomial, and Poisson.
 
--   We explored the expected value, variance, and standard deviation of a discrete random variable and the probability functions.
+We explored the expected value, variance, and standard deviation of a discrete random variable and the probability functions.
 
--   We used R to generate discrete empirical probabilities as well as use discrete probability functions.
+We used R to generate discrete empirical probabilities as well as use discrete probability functions.

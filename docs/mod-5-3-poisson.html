@@ -427,7 +427,11 @@ window.Quarto = {
   <li><a href="#graphic-poisson-pmf" id="toc-graphic-poisson-pmf" class="nav-link" data-scroll-target="#graphic-poisson-pmf"><span class="header-section-number">26.4</span> Graphic Poisson PMF</a></li>
   <li><a href="#graphical-poisson-cdf" id="toc-graphical-poisson-cdf" class="nav-link" data-scroll-target="#graphical-poisson-cdf"><span class="header-section-number">26.5</span> Graphical Poisson CDF</a></li>
   <li><a href="#expected-value-and-variance" id="toc-expected-value-and-variance" class="nav-link" data-scroll-target="#expected-value-and-variance"><span class="header-section-number">26.6</span> Expected Value and Variance</a></li>
-  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up"><span class="header-section-number">26.7</span> Wrapping Up</a></li>
+  <li><a href="#the-d-function-in-r" id="toc-the-d-function-in-r" class="nav-link" data-scroll-target="#the-d-function-in-r"><span class="header-section-number">26.7</span> The D Function in R</a></li>
+  <li><a href="#the-p-function-in-r" id="toc-the-p-function-in-r" class="nav-link" data-scroll-target="#the-p-function-in-r"><span class="header-section-number">26.8</span> The P Function in R</a></li>
+  <li><a href="#the-q-function-in-r" id="toc-the-q-function-in-r" class="nav-link" data-scroll-target="#the-q-function-in-r"><span class="header-section-number">26.9</span> The Q Function in R</a></li>
+  <li><a href="#the-r-function-in-r" id="toc-the-r-function-in-r" class="nav-link" data-scroll-target="#the-r-function-in-r"><span class="header-section-number">26.10</span> The R Function in R</a></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up"><span class="header-section-number">26.11</span> Wrapping Up</a></li>
   </ul>
 </nav>
     </div>
@@ -644,16 +648,270 @@ P(X \ge 0)
 \mu = 10 \quad var = 10 \quad sd=\sqrt{10}
 \]</span></p>
 </section>
-<section id="wrapping-up" class="level2" data-number="26.7">
-<h2 data-number="26.7" class="anchored" data-anchor-id="wrapping-up"><span class="header-section-number">26.7</span> Wrapping Up</h2>
+<section id="the-d-function-in-r" class="level2" data-number="26.7">
+<h2 data-number="26.7" class="anchored" data-anchor-id="the-d-function-in-r"><span class="header-section-number">26.7</span> The D Function in R</h2>
+<p>The <strong>d</strong> function returns the value of the probability mass function (PMF) for a discrete distribution or the probability density function (PDF) for a continuous distribution.</p>
+<p>The probability mass function, sometimes referred to as the discrete density function, given the probability that a discrete random variable is <strong>exactly</strong> equal to some value.</p>
+<p>For a binomial distribution, to find <span class="math inline">\(f(x)\)</span>, we need the value of a certain random variable <span class="math inline">\(x\)</span>, the number of independent trials <span class="math inline">\(n\)</span>, and the probability of success in any given trial <span class="math inline">\(p\)</span>.</p>
+<p>The <strong>binomial probability mass function</strong> or binomial density function is defined as:</p>
+<p><span class="math display">\[f(x) = \binom{n}{x} p^x (1-p)^{(n-x)}\]</span></p>
+<p><span class="math display">\[f(x) = \frac{n!}{x!(n-x)!} \, p^x (1-p)^{(n-x)}\]</span></p>
+<p>We conduct 1,000 trials of an experiment.</p>
+<p>The probability of success in any given trial is equal to 0.75.</p>
+<p>We want to know the probability of having 752 successes</p>
+<p>We also want to know the probability of having 775 successes.</p>
+<p>In other words, we want to know</p>
+<p><span class="math display">\[P(X = 752)\]</span></p>
+<p><span class="math display">\[
+P(X = 775)
+\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>n  <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>p  <span class="ot">=</span> <span class="fl">0.75</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="dv">752</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="dv">775</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">tibble</span>(fx_1 <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x1,n,p),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>             fx_2 <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x2,n,p))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(fx,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"cc"</span>, </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits      =</span> <span class="dv">3</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Binomial PMF"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"P(X = 752)"</span>, </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(X = 775)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Binomial PMF</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(X = 752)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(X = 775)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.029</td>
+<td style="text-align: center;">0.005</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="the-p-function-in-r" class="level2" data-number="26.8">
+<h2 data-number="26.8" class="anchored" data-anchor-id="the-p-function-in-r"><span class="header-section-number">26.8</span> The P Function in R</h2>
+<p>The cumulative density function (CDF) of a distribution is the sum of the probabilities equal to and less than certain given values of a random variable <span class="math inline">\(x\)</span>.</p>
+<p>For example, assume that <span class="math inline">\(n = 10\)</span>, <span class="math inline">\(x = 3\)</span> and <span class="math inline">\(p = 0.4\)</span>, then the cumulative density is equal to</p>
+<p><span class="math display">\[\sum f(x \in {0,3}) = P(x = 0) + P(x = 1) + P(x = 2) + P(x = 3)\]</span></p>
+<p>Returning to the binomial distribution, we can estimate this using the probability mass function <strong>dbinom</strong> for each of the values of <span class="math inline">\(x\)</span>.</p>
+<p>We can also calculate this using the function <strong>pbinom</strong> which returns the value of the cumulative density function of the binomial distribution given a certain random variable <span class="math inline">\(x\)</span>.</p>
+<p>The <strong>pbinom</strong> function can be used to find <span class="math inline">\(P(x \le 3)\)</span> and <span class="math inline">\(P(x &gt; 3)\)</span>.</p>
 <ul>
-<li><p>A random variable is a numerical description of an outcome of an example.</p></li>
-<li><p>A discrete random variable may assume a finite of infinite number of values.</p></li>
-<li><p>If we use empirical data to estimate probabilities, we are developing an empirical discrete distribution.</p></li>
-<li><p>We discussed three discrete probability functions: uniform, binomial, and Poisson.</p></li>
-<li><p>We explored the expected value, variance, and standard deviation of a discrete random variable and the probability functions.</p></li>
-<li><p>We used R to generate discrete empirical probabilities as well as use discrete probability functions.</p></li>
+<li><p>Assume we are conducting a binomial experiment.</p></li>
+<li><p>Assume that <span class="math inline">\(n\)</span> = 10, <span class="math inline">\(x = 3\)</span> and <span class="math inline">\(p = 0.3\)</span>.</p></li>
+<li><p>What is the probability that <span class="math inline">\(x \le 4\)</span>?</p></li>
+<li><p>What is the probability that <span class="math inline">\(x &gt; 4\)</span>?</p></li>
+<li><p>We can use the <strong>lower.tail</strong> option to estimate <span class="math inline">\(P(x &gt; 4)\)</span> by setting the lower.tail option to <strong>FALSE</strong>.</p></li>
 </ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>x_1 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>cdf <span class="ot">&lt;-</span> <span class="fu">tibble</span>(cdf_x1_d <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="fl">0.3</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="fl">0.3</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">10</span>,<span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">dbinom</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="fl">0.3</span>),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>              cdf_x1_p <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="fl">0.3</span>,<span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>              cdf_x1_right <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="fl">0.3</span>,<span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>              cdf_x1_right2 <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="fl">0.3</span>,<span class="at">lower.tail =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cdf,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"c"</span>, </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Binomial CDF"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"P(X &lt;= 4)"</span>, </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(X &lt;= 4)"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(X &gt; 4)"</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(X &gt; 4)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Binomial CDF</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(X &lt;= 4)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(X &lt;= 4)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(X &gt; 4)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(X &gt; 4)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.8497317</td>
+<td style="text-align: center;">0.8497317</td>
+<td style="text-align: center;">0.1502683</td>
+<td style="text-align: center;">0.1502683</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="the-q-function-in-r" class="level2" data-number="26.9">
+<h2 data-number="26.9" class="anchored" data-anchor-id="the-q-function-in-r"><span class="header-section-number">26.9</span> The Q Function in R</h2>
+<p>Let <span class="math inline">\(f(x)\)</span> be the discrete probability density function and <span class="math inline">\(F(x)\)</span> be the discrete cumulative density function.</p>
+<p>Recall that <span class="math inline">\(F(x)\)</span> for a specific value <span class="math inline">\(k\)</span> implies that <span class="math inline">\(F(x = k) = P(x \le k)\)</span>.</p>
+<p>Let <span class="math inline">\(F^{-1}(x)\)</span> be the inverse discrete cumulative density function.</p>
+<p><span class="math display">\[F^{-1}(x) = c\]</span> <span class="math display">\[P(x \le c) = q \quad \text{for} \; 0 \le q \le 1\]</span></p>
+<p>In other words, given a probability <span class="math inline">\(q\)</span>, the inverse cumulative density function returns the value <span class="math inline">\(c\)</span> from the discrete distribution function such that <span class="math inline">\(P(X \le c) = q\)</span>.</p>
+<p>Note that with discrete distributions that the probabilities from the cumulative and inverse cumulative functions will not match exactly.</p>
+<p>You can use the <strong>qbinom</strong> or <strong>qpois</strong> function to determine the value of <span class="math inline">\(x\)</span> at which a cumulative density occurs.</p>
+<p>For a binomial with <span class="math inline">\(n = 100\)</span> and <span class="math inline">\(p = 0.45\)</span>, if the cumulative density is <span class="math inline">\(q=0.25\)</span>, then <span class="math inline">\(x = 42\)</span>.</p>
+<p>For a Poisson given that <span class="math inline">\(\mu = 50\)</span>, if the cumulative density is <span class="math inline">\(q=0.8\)</span>, then <span class="math inline">\(x = 56\)</span>.</p>
+<p>Remember, probabilities won’t exactly match when you go for <span class="math inline">\(CDF^{-1}\)</span> to <span class="math inline">\(x\)</span> to <span class="math inline">\(CDF\)</span>. Try increasing the density and see what happens.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.45</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>d  <span class="ot">=</span> <span class="fl">0.8</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>q_est <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">q_b =</span> c,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                q_binom <span class="ot">&lt;-</span> <span class="fu">qbinom</span>(c, n, p),</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                p_binom <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(q_binom, n, p),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">q_p =</span> d,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                q_poisson <span class="ot">&lt;-</span> <span class="fu">qpois</span>(d, mu),</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                p_poisson <span class="ot">&lt;-</span> <span class="fu">ppois</span>(q_poisson, mu))</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(q_est,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"cccccc"</span>, </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Inverse CDF"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"q"</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Inverse CDF(q)"</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"CDF(x)"</span>,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"q"</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Inverse CDF(q)"</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"CDF(x)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Inverse CDF</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">q</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Inverse CDF(q)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">CDF(x)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">q</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Inverse CDF(q)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">CDF(x)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">0.3086513</td>
+<td style="text-align: center;">0.8</td>
+<td style="text-align: center;">56</td>
+<td style="text-align: center;">0.8221171</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="the-r-function-in-r" class="level2" data-number="26.10">
+<h2 data-number="26.10" class="anchored" data-anchor-id="the-r-function-in-r"><span class="header-section-number">26.10</span> The R Function in R</h2>
+<p>The function <strong>rbinom</strong> generates a vector of binomial distributed random variables given the number of experiments <span class="math inline">\(m\)</span>, the number of trials in each experiment <span class="math inline">\(n\)</span>, and the probability of success <span class="math inline">\(p\)</span>.</p>
+<p>The function <strong>rpois</strong> generates a vector of Poisson distributed random variables given the number of experiments <span class="math inline">\(m\)</span> and the arrival rate <span class="math inline">\(\mu\)</span>.</p>
+<p>The function <strong>rnorm</strong> generates a vector of normally distributed random variables given <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#set the number of observations (experiments) to 5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>r_binom <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">5</span>,<span class="dv">100</span>,<span class="fl">0.5</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>r_poisson <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">5</span>, <span class="dv">10</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>r_norm <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>r_dist <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(r_binom, r_poisson, r_norm)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(r_dist,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"ccc"</span>, </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Random Numbers"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Binomal"</span>, </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Poisson"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Normal"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Random Numbers</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Binomal</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Poisson</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Normal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">44</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">7.337061</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">10.727947</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">6.850353</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">10.229160</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">44</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">11.151516</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="wrapping-up" class="level2" data-number="26.11">
+<h2 data-number="26.11" class="anchored" data-anchor-id="wrapping-up"><span class="header-section-number">26.11</span> Wrapping Up</h2>
+<p>A random variable is a numerical description of an outcome of an example.</p>
+<p>A discrete random variable may assume a finite of infinite number of values.</p>
+<p>If we use empirical data to estimate probabilities, we are developing an empirical discrete distribution.</p>
+<p>We discussed three discrete probability functions: uniform, binomial, and Poisson.</p>
+<p>We explored the expected value, variance, and standard deviation of a discrete random variable and the probability functions.</p>
+<p>We used R to generate discrete empirical probabilities as well as use discrete probability functions.</p>
 
 
 </section>
