@@ -180,7 +180,7 @@
     "href": "mod-1-0-overview.html",
     "title": "4  Module 1 Overview",
     "section": "",
-    "text": "4.1 Introduction\nWelcome to Module 1 of ECON 700.\nIn this module, you will be introduced to R and the RStudio environment.\nYou will also start working with data in R.",
+    "text": "4.1 Introduction\nWelcome to Module 1 of ECON 700.\nIn this module, you will be introduced to the R programming environment and its integrated interface, RStudio. You will learn how to install and navigate both tools while becoming familiar with R’s basic syntax and data types. You will also learn how to import, view, and explore datasets to build a foundational understanding of data handling in R. Finally, you will apply descriptive statistical techniques to perform initial data exploration and summarize key insights from the datasets.",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
@@ -191,7 +191,7 @@
     "href": "mod-1-0-overview.html#learning-objectives",
     "title": "4  Module 1 Overview",
     "section": "4.2 Learning Objectives",
-    "text": "4.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nInstall and navigate R and RStudio.\n\nUnderstand R’s basic syntax and data types.\n\nWork with variables and simple operations in R.\n\nImport, view, and explore datasets.\n\nApply descriptive statistics for initial data exploration.",
+    "text": "4.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nMLO 1: Install and navigate R and RStudio.\n\nMLO 2: Identify R’s basic syntax and data types.\n\nMLO 3: Work with variables and simple operations in R.\n\nMLO 4: Explore data frames and tibbles in R\n\nMLO 5: Apply descriptive statistics for initial data exploration.",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
@@ -224,7 +224,7 @@
     "href": "mod-1-0-overview.html#lessons-in-this-module",
     "title": "4  Module 1 Overview",
     "section": "4.5 Lessons in this Module",
-    "text": "4.5 Lessons in this Module\n\n1.1 – Introduction to Economic Analysis\n\n1.2 – Introduction to R\n\n1.3 – Variables in R\n\n1.4 - Data frames in R\n\n\nNext: Start with Economic Analysis.",
+    "text": "4.5 Lessons in this Module\n\n1.1 – Introduction to Economic Analysis\n\n1.2 – Introduction to R\n\n1.3 – Variables in R\n\n1.4 - Data frames in R\n1.5 - Using Quarto in R\n\n\nNext: Start with Economic Analysis.",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
@@ -2560,6 +2560,28 @@
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-0-overview.html#required-texts",
+    "href": "mod-1-0-overview.html#required-texts",
+    "title": "4  Module 1 Overview",
+    "section": "4.3 Required Texts",
+    "text": "4.3 Required Texts\nThe following textbooks are available for free. Please select the links provided to access.\n\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. Chapter 1.\nRafael Irizarry. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. Chapters 1-2.\nHadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund. (2025) R for Data Science. Sections 1-19.\nOnline R documentation\nRStudio Cheat Sheets",
+    "crumbs": [
+      "Introduction to R",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-1-0-overview.html#module-to-do-list",
+    "href": "mod-1-0-overview.html#module-to-do-list",
+    "title": "4  Module 1 Overview",
+    "section": "4.4 Module To Do List",
+    "text": "4.4 Module To Do List\n\nComplete the hands-on coding exercises embedded in each lesson (MLO 3,4)\n\nUse WebR to experiment directly in your browser (MLO 2, 3, 4)\n\nComplete the weekly class assignment (MLO 1-5)\n\nTake the weekly knowledge quiz.",
+    "crumbs": [
+      "Introduction to R",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Module 1 Overview</span>"
     ]
   }
 ]
