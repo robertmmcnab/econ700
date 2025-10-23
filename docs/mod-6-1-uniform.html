@@ -532,20 +532,26 @@ window.Quarto = {
 <p>A <strong>continuous random variable</strong> may assume any value in an interval or collection of intervals.</p>
 <p>The <strong>probability density function</strong>, <span class="math inline">\(f(x)\)</span>, is the counterpart of the discrete probability density function.</p>
 <p>The probability density function for a continuous random variable is typically referred to as the <strong>PDF</strong>.</p>
-<p>The PDF, <span class="math inline">\(f(x)\)</span>, generates a curve for a given interval of <span class="math inline">\(x\)</span>.</p>
+<p>The PDF, <span class="math inline">\(p(X)\)</span>, generates a curve for a given interval of <span class="math inline">\(x\)</span>.</p>
 <p>The PDF provides the probability that <span class="math inline">\(x\)</span> takes on any value in the given interval of <span class="math inline">\(x\)</span>.</p>
-<p>This implies that the area under <span class="math inline">\(f(x)\)</span> for a specific value of <span class="math inline">\(x\)</span> is zero.</p>
+<p>This implies that the area under <span class="math inline">\(p(X)\)</span> for a specific value of <span class="math inline">\(x\)</span> is zero.</p>
 <p>In other words, given a continuous random value, the probability that the continuous variable, <span class="math inline">\(x\)</span>, is equal to a specific value is zero.</p>
 </section>
 <section id="uniform-probability-distribution" class="level2" data-number="28.3">
 <h2 data-number="28.3" class="anchored" data-anchor-id="uniform-probability-distribution"><span class="header-section-number">28.3</span> Uniform Probability Distribution</h2>
 <p>The <strong>continuous uniform probability distribution</strong> describes an experiment where there is a random outcome that is within specific bounds.</p>
 <p>The bounds of the random outcome are defined by the parameters, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
-<p><span class="math inline">\(a\)</span> is the minimum value of the random outcome.</p>
-<p><span class="math inline">\(b\)</span> is the maximum value of the random outcome.</p>
-<p>The probability density function of the continuous uniform distribution is:</p>
-<p><span class="math display">\[f(x)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]\]</span></p>
-<p><span class="math display">\[f(x) = 0 \quad \text{for} \, x \not\in[a,b]\]</span></p>
+<ul>
+<li><p><span class="math inline">\(a\)</span> is the minimum value of the random outcome.</p></li>
+<li><p><span class="math inline">\(b\)</span> is the maximum value of the random outcome.</p></li>
+</ul>
+<p>The uniform distribution is defined by the parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> which define the region where the density function <span class="math inline">\(p(x)\)</span> is constant and outside of which <span class="math inline">\(p(x) = 0\)</span>. Since the area under the probability density function must total 1, the probability density function of the continuous uniform distribution is:</p>
+<p><span class="math display">\[P(x | a,b)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]\]</span></p>
+<p><span class="math display">\[P(x |a,b) = 0 \quad \text{for} \, x \not\in[a,b]\]</span></p>
+<p>We often denote the random variable <span class="math inline">\(X\)</span> as uniformly distributed on the interval <span class="math inline">\([a,b]\)</span> as:</p>
+<p><span class="math display">\[
+X \sim U(a,b)
+\]</span></p>
 </section>
 <section id="continuous-uniform-distribution" class="level2" data-number="28.4">
 <h2 data-number="28.4" class="anchored" data-anchor-id="continuous-uniform-distribution"><span class="header-section-number">28.4</span> Continuous Uniform Distribution</h2>

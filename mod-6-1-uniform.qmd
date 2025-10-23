@@ -94,12 +94,12 @@ discrete probability density function.
 The probability density function for a continuous random variable is
 typically referred to as the **PDF**.
 
-The PDF, $f(x)$, generates a curve for a given interval of $x$.
+The PDF, $p(X)$, generates a curve for a given interval of $x$.
 
 The PDF provides the probability that $x$ takes on any value in the
 given interval of $x$.
 
-This implies that the area under $f(x)$ for a specific value of $x$ is
+This implies that the area under $p(X)$ for a specific value of $x$ is
 zero.
 
 In other words, given a continuous random value, the probability that
@@ -114,16 +114,26 @@ bounds.
 The bounds of the random outcome are defined by the parameters, $a$ and
 $b$.
 
-$a$ is the minimum value of the random outcome.
+-   $a$ is the minimum value of the random outcome.
 
-$b$ is the maximum value of the random outcome.
+-   $b$ is the maximum value of the random outcome.
 
-The probability density function of the continuous uniform distribution
-is:
+The uniform distribution is defined by the parameters $a$ and $b$ which
+define the region where the density function $p(x)$ is constant and
+outside of which $p(x) = 0$. Since the area under the probability
+density function must total 1, the probability density function of the
+continuous uniform distribution is:
 
-$$f(x)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]$$
+$$P(x | a,b)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]$$
 
-$$f(x) = 0 \quad \text{for} \, x \not\in[a,b]$$
+$$P(x |a,b) = 0 \quad \text{for} \, x \not\in[a,b]$$
+
+We often denote the random variable $X$ as uniformly distributed on the
+interval $[a,b]$ as:
+
+$$
+X \sim U(a,b)
+$$
 
 ## Continuous Uniform Distribution
 
