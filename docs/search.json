@@ -411,7 +411,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n54.93\n51.93\n50.5",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n49.09\n48.8\n50.24",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -2358,7 +2358,7 @@
     "href": "mod-5-3-poisson.html#the-r-function-in-r",
     "title": "26  Poisson Distribution",
     "section": "26.10 The R Function in R",
-    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n41\n7\n8.207825\n\n\n41\n8\n7.783200\n\n\n46\n12\n7.317911\n\n\n43\n11\n9.787119\n\n\n53\n13\n11.181256",
+    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n61\n6\n10.042503\n\n\n53\n5\n8.699854\n\n\n53\n14\n10.736050\n\n\n47\n13\n9.998027\n\n\n44\n10\n10.345072",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
@@ -2475,33 +2475,88 @@
     ]
   },
   {
-    "objectID": "mod-6-1-uniform.html#continuous-uniform-distribution",
-    "href": "mod-6-1-uniform.html#continuous-uniform-distribution",
+    "objectID": "mod-6-1-uniform.html#pdf-of-continuous-uniform",
+    "href": "mod-6-1-uniform.html#pdf-of-continuous-uniform",
     "title": "28  Uniform Distributions",
-    "section": "28.4 Continuous Uniform Distribution",
-    "text": "28.4 Continuous Uniform Distribution\nThe PDF of the continuous uniform probability distribution is\n\\[f(x)  = \\frac{1}{b-a} \\quad \\text{for} \\, x\\in[a,b]\\]\n\\[\\text{for} \\, x \\in[10,30]\\]\nFor a continuous probability distribution, we know that:\n\\[f(X) \\ge 0\\] \\[\\int_{-\\infty}^{\\infty} \\, f(x) \\, dx = 1\\]\nFor the continuous uniform distribution:",
+    "section": "28.4 PDF of Continuous Uniform",
+    "text": "28.4 PDF of Continuous Uniform\nThe PDF of the continuous uniform probability distribution is\n\\[P(x|a,b)  = \\frac{1}{b-a} \\quad \\text{for} \\, x\\in[a,b]\\]\n\\[\\text{for} \\, x \\in[10,30]\\]\nFor a continuous probability distribution, we know that:\n\\[P(x) \\ge 0\\] \\[\\int_{-\\infty}^{\\infty} \\, f(x) \\, dx = 1\\]\nFor the continuous uniform distribution:\n\\[a &lt; b \\rightarrow \\frac{1}{b-a} \\ge 0 \\quad \\forall \\, a \\le x \\le b \\rightarrow \\, f(x) \\ge 0 \\quad \\forall x\\]\nThis means that \\(f(x) \\ge 0\\) for all \\(x \\in [a,b]\\).\nDoes the area defined by the PDF equal to one?\nHere we can integrate the PDF and note that when \\(x &lt; a\\) and \\(x &gt; b\\) that \\(f(x) = 0\\).\n\\[lim_{n \\rightarrow \\infty} \\int_{-n}^{n} f(x)d(x) = lim_{n \\rightarrow \\infty} \\int_{-n}^{a} (0)d(x) +\\int_{a}^{b} \\frac{1}{b-a}dx + \\int_{b}^{n} (0)d(x)\\]\n\\[lim_{n \\rightarrow \\infty} \\int_{-n}^{n} f(x)d(x) = \\frac{1}{b-a}[x]_{b}^{a} = \\frac{1}{b-a}(b -a) = 1\\]\nThe PDF of the continuous uniform probability distribution fulfills the conditions for a PDF of a continuous random variable.\nThe continuous uniform is often referred to as a rectangular distribution given the shape of its PDF.\nIn the following code, we create a tibble with the following variables:\n\nA sequence of numbers from 0 to 40, in 0.01 increments\nThe probabilities associated with a continuous uniform with a = 10 and b = 30 for the numbers\nA plot with the numbers on the x-axis and the probabilities on the y-axis\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
     ]
   },
   {
-    "objectID": "mod-6-1-uniform.html#a-b-rightarrow-frac1b-a-ge-0-quad-forall-a-le-x-le-b-rightarrow-fx-ge-0-quad-forall-x",
-    "href": "mod-6-1-uniform.html#a-b-rightarrow-frac1b-a-ge-0-quad-forall-a-le-x-le-b-rightarrow-fx-ge-0-quad-forall-x",
+    "objectID": "mod-6-1-uniform.html#uniform-example",
+    "href": "mod-6-1-uniform.html#uniform-example",
     "title": "28  Uniform Distributions",
-    "section": "28.5 \\[a < b \\rightarrow \\frac{1}{b-a} \\ge 0 \\quad \\forall \\, a \\le x \\le b \\rightarrow \\, f(x) \\ge 0 \\quad \\forall x\\]",
-    "text": "28.5 \\[a &lt; b \\rightarrow \\frac{1}{b-a} \\ge 0 \\quad \\forall \\, a \\le x \\le b \\rightarrow \\, f(x) \\ge 0 \\quad \\forall x\\]\nThis means that \\(f(x) \\ge 0\\) for all \\(x \\in [a,b]\\).\nDoes the area defined by the PDF equal to one?\nHere we can integrate the PDF and note that when \\(x &lt; a\\) and \\(x &gt; b\\) that \\(f(x) = 0\\).\n\\[lim_{n \\rightarrow \\infty} \\int_{-n}^{n} f(x)d(x) = lim_{n \\rightarrow \\infty} \\int_{-n}^{a} (0)d(x) +\\int_{a}^{b} \\frac{1}{b-a}dx + \\int_{b}^{n} (0)d(x)\\]",
+    "section": "28.5 Uniform Example",
+    "text": "28.5 Uniform Example\n\nLet the continuous uniform distribution be defined over \\([a,b]\\).\nThe probability that \\(x\\) is in specific interval \\([c,d]\\) is:\n\n\\[P(c \\le x \\le d) = \\int_{c}^{d} f(x) dx = \\int_{c}^{d} \\frac{1}{b-a}dx\\]\n\\[P(c \\le x \\le d) = \\int_{c}^{d} \\frac{1}{b-a} [x]_x^d = \\frac{1}{b-a}(d-c) = \\frac{d-c}{b-a}\\]\nLet an elevator arrive randomly between 10 and 30 seconds after a button is pushed.\nWhat is the probability that the elevator arrives between 15 and 20 seconds?\n\\[P(15 \\le x \\le 20) = \\frac{20-15}{30-10} = 0.25\\]",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
     ]
   },
   {
-    "objectID": "mod-6-1-uniform.html#lim_n-rightarrow-infty-int_-nn-fxdx-frac1b-ax_ba-frac1b-ab--a-1",
-    "href": "mod-6-1-uniform.html#lim_n-rightarrow-infty-int_-nn-fxdx-frac1b-ax_ba-frac1b-ab--a-1",
+    "objectID": "mod-6-1-uniform.html#cdf-of-continuous-uniform",
+    "href": "mod-6-1-uniform.html#cdf-of-continuous-uniform",
     "title": "28  Uniform Distributions",
-    "section": "28.6 \\[lim_{n \\rightarrow \\infty} \\int_{-n}^{n} f(x)d(x) = \\frac{1}{b-a}[x]_{b}^{a} = \\frac{1}{b-a}(b -a) = 1\\]",
-    "text": "28.6 \\[lim_{n \\rightarrow \\infty} \\int_{-n}^{n} f(x)d(x) = \\frac{1}{b-a}[x]_{b}^{a} = \\frac{1}{b-a}(b -a) = 1\\]\nThe PDF of the continuous uniform probability distribution fulfills the conditions for a PDF of a continuous random variable.",
+    "section": "28.6 CDF of Continuous Uniform",
+    "text": "28.6 CDF of Continuous Uniform\nGiven a uniform distribution defined over \\([a,b]\\), what is \\(P(X \\le x)\\) if \\(a &lt; x &lt; b\\).\nWe have found that \\(P(c \\le x \\le d) = \\frac{d - c}{b - c}\\), so\n\\[F_X(x) = P(X \\le x) = \\int_{-\\infty}^{x} f_x(t)dt\\]\n\\[F_X(d) = \\int_{-\\infty}^{a}f_x(t)dt + \\int_{a}^{x}f_x(t)dt\\]\n\\[F_X(d) = \\int_{-\\infty}^{a}0 \\, dt + \\int_{a}^{x} \\frac{1}{b-a}dt = \\frac{1}{b-a} \\, [t]_a^x = \\frac{x-a}{b-a}\\]\nThis yields the properties of the CDF of the uniform probability distribution:\n\\[F_X(x) = 0 \\quad \\forall x \\le a\\]\n\\[F_X(x) = \\frac{x-a}{b-a} \\quad a &lt; x &lt; b\\]\n\\[F_X(x) = 1 \\quad \\forall x \\ge b\\]",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#example-of-pdf-and-cdf",
+    "href": "mod-6-1-uniform.html#example-of-pdf-and-cdf",
+    "title": "28  Uniform Distributions",
+    "section": "28.7 Example of PDF and CDF",
+    "text": "28.7 Example of PDF and CDF\nWe can use the dunif and punif functions in R.\nThe dunif function calculates the uniform density function.\nThe punif function calculates the cumulative uniform density function.\nAssume that the \\(a = 10\\) and \\(b=30\\) then \\(f(x) =\\) 0.05\nWe can find \\(P(15 \\le x \\le 20) = 0.25\\) manually or by multiplying \\(f(x)\\) by the range of the interval.\nWe can also find \\(P(X &lt; 20) = P(X \\le 20)\\) by using the cumulative density function.\n\na = 10\nb = 30\nc = 15\nd = 20\n\nd_uni_man &lt;- 1/(b-a)\nd_uni_calc &lt;- dunif(c, min = a, max = b)\n\nd_uni_man_range &lt;- (d-c)/(b-a)\nd_uni_calc_range &lt;- (d-c)*dunif(20, min = a, max = b)\n\np_uni_man &lt;- (d-a)/(b-a)\np_uni_calc &lt;- punif(d, min = a, max = b)\n\nuni_frame &lt;- data.frame(d_uni_calc, d_uni_calc_range, \n                        p_uni_calc)\n\nkable(uni_frame,\n      align       = \"ccc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Continuous Uniform Distribution\n                     a=10 and b=30\",\n      col.names   = c(\"f(x)\", \"P(15 &lt; x &lt; 20)\", \n                      \"P(X &lt; 20)\")) %&gt;%\n  kable_styling(font_size = 12)\n\n\nContinuous Uniform Distribution a=10 and b=30\n\n\nf(x)\nP(15 &lt; x &lt; 20)\nP(X &lt; 20)\n\n\n\n\n0.05\n0.25\n0.5",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#expected-value",
+    "href": "mod-6-1-uniform.html#expected-value",
+    "title": "28  Uniform Distributions",
+    "section": "28.8 Expected Value",
+    "text": "28.8 Expected Value\nThe expected value of a continuous uniform distribution is\n\\[\\mu = E[x] = lim_{n \\rightarrow \\infty} \\int_{-n}^{n} x \\, f(x) \\, dx\\]\n\\[\\mu = lim_{n \\rightarrow \\infty} \\int_{-\\infty}^{a} x \\, f(x) \\, dx + \\int_{a}^{b} x \\, f(x) \\, dx + \\int_{b}^{\\infty} x \\, f(x) \\, dx\\]\n\\[\\mu = \\int_{-\\infty}^{a} x \\, (0) \\, dx + \\int_{a}^{b} x \\, \\frac{1}{b-a} \\, dx + \\int_b^{\\infty} x \\, (0) \\, dx\\]\n\\[\\mu = \\int_{a}^{b} x \\, \\frac{1}{b-a} \\, dx = \\frac{1}{b-a} \\int_a^b x \\, dx = \\frac{1}{2(b-a)} \\, [x^2]_b^a\\]\n\\[\\mu = \\frac{1}{2(b-a)} \\, [x^2]_b^a = \\frac{1}{2(b-a)}(b^2 - a^2) = \\frac{(b - a)(b + a)}{2(b-a)}\\]\n\\[\\mu = E[x] = \\frac{a+b}{2}\\]",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#expected-value-and-variance",
+    "href": "mod-6-1-uniform.html#expected-value-and-variance",
+    "title": "28  Uniform Distributions",
+    "section": "28.9 Expected Value and Variance",
+    "text": "28.9 Expected Value and Variance\nThe expected value of a continuous uniform distribution is:\n\\[\\mu = E[x] = \\frac{a+b}{2}\\]\nThe variance of a continuous uniform distribution is:\n\\[\\sigma^2 = var(x) = \\frac{(b-a)^2}{12}\\]\nLet \\(a = 10\\) and \\(b = 30\\) and \\(x\\) be continuously, uniformly distributed over this range.\n\\[\\mu = \\frac{a+b}{2} = \\frac{10+30}{2} = 20\\]\n\\[\\sigma^2 = \\frac{(b-a)^2}{12} = \\frac{(30-10)^2}{12} = 33.33\\]\n\\[\\sigma = \\frac{\\sqrt{3}(b-a)}{6} = \\frac{\\sqrt{3}(30-10)}{6} = 5.78\\]",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#uniform-inverse-cdf",
+    "href": "mod-6-1-uniform.html#uniform-inverse-cdf",
+    "title": "28  Uniform Distributions",
+    "section": "28.10 Uniform Inverse CDF",
+    "text": "28.10 Uniform Inverse CDF\nqunif is the inverse cumulative density function for a continuous uniform distribution.\nGiven \\(a = 30\\) and \\(b = 70\\), what is \\(x\\) such that \\(P(X \\le x) = 0.1\\)?\nWe can use the inverse CDF to generate \\(x\\) given \\(p\\).\nWe can use the CDF to generate \\(p\\) given \\(x\\).\nNote that the probabilities are equal unlike the discrete CDF and inverse CDF.\n\nx &lt;- 1:100\na = 30\nb = 70\np = 0.10\n\nuni_frame &lt;- tibble(inv_cdf &lt;- qunif(p, min = a, max = b, lower.tail = TRUE),\n                    cdf &lt;- punif(inv_cdf, min = a, max = b, lower.tail = TRUE))\n\nkable(uni_frame,\n      align       = \"cc\", \n      caption     = \"Inverse CDF and CDF\",\n      col.names   = c(\"Inverse CDF(p=0.1)\", \"CDF(X &lt; 34)\")) %&gt;%\n  kable_styling(font_size = 12)\n\n\nInverse CDF and CDF\n\n\nInverse CDF(p=0.1)\nCDF(X &lt; 34)\n\n\n\n\n34\n0.1",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-1-uniform.html#uniform---random-observations",
+    "href": "mod-6-1-uniform.html#uniform---random-observations",
+    "title": "28  Uniform Distributions",
+    "section": "28.11 Uniform - Random Observations",
+    "text": "28.11 Uniform - Random Observations\nrunif generates random deviates using the uniform PDF.\nGiven \\(a\\) and \\(b\\), we can generate 5 observations from a uniform distribution.\nIn this example, we use a loop to generate 3 sets of random observations from a uniform distribution with \\(a = 30\\) and \\(b = 70\\).\n\na = 30\nb = 70\n\nuni_list &lt;- list()\n\nfor(i in 1:3){\n  temp &lt;- runif(5, min = a, max = b)\n  uni_list[[i]] &lt;- temp\n}\n\nran_unif &lt;- bind_cols(uni_list)\n\nkable(ran_unif,\n      align     = \"ccc\",\n      caption   = \" Uniform Random Observations\",\n      col.names = c(\"1\", \"2\", \"3\")) %&gt;%\n  kable_styling(font_size = 12)\n\n\nUniform Random Observations\n\n\n1\n2\n3\n\n\n\n\n52.36864\n35.35981\n33.57459\n\n\n59.14393\n49.95597\n50.23428\n\n\n30.56685\n41.87064\n38.33012\n\n\n52.48881\n56.21665\n62.32455\n\n\n56.96013\n57.76365\n36.64061",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
