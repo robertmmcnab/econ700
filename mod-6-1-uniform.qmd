@@ -105,7 +105,7 @@ zero.
 In other words, given a continuous random value, the probability that
 the continuous variable, $x$, is equal to a specific value is zero.
 
-## Uniform Probability Distribution
+## Uniform Distribution
 
 The **continuous uniform probability distribution** describes an
 experiment where there is a random outcome that is within specific
@@ -241,42 +241,67 @@ The **dunif** function calculates the uniform density function.
 The **punif** function calculates the cumulative uniform density
 function.
 
-Assume that the $a = 10$ and $b=30$ then $f(x) =$ `r dunif(20,10,30)`
+Assume that the $a = 10$ and $b=30$ then the PDF of the continuous
+uniform is:
 
-We can find $P(15 \le x \le 20) = 0.25$ manually or by multiplying
-$f(x)$ by the range of the interval.
+$$P(x|a,b)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]$$
+$$P(x|10,30)  = \frac{1}{30-10} = 0.05 \quad \text{for} \, x\in[10,30]$$
 
-We can also find $P(X < 20) = P(X \le 20)$ by using the cumulative
-density function.
+We estimate this probability manually and using the **duinf** function
+in the code chunk below.
 
-```{r}
+We then want to find $P(15 \le x \le 20)$.
+
+$$P(c \le x \le d) = \int_{c}^{d} \frac{1}{b-a} [x]_x^d = \frac{1}{b-a}(d-c) = \frac{d-c}{b-a}$$
+
+$$P(15 \le x \le 20) = \int_{10}^{30} \frac{1}{30-10} [x]_x^d = \frac{1}{30-10}(20-15) = \frac{20-15}{30-10} = 0.25$$
+
+We estimate this probability manually and using the **punif** function.
+Here we estimate
+
+$$
+P(15 \le x \le 20) = P(x \le 20) - P(x \le 15) \quad \text{for} \, x \in [10,30]
+$$
+
+We also find $P(X \le 20)$ by manually and using the the cumulative
+density function. Note the we are evaluating the area between 20 and the
+lower bound of the continuous uniform.
+
+$$P(10 \le x \le 20) = \int_{10}^{30} \frac{1}{30-10} [x]_x^d = \frac{1}{30-10}(20-10) = \frac{20-10}{30-10} = 0.5$$
+
+```{r, warning = FALSE, message = FALSE}
+
+rm(list = ls())
+
+library(tidyverse)
+library(kableExtra)
 
 a = 10
 b = 30
 c = 15
 d = 20
 
-d_uni_man <- 1/(b-a)
-d_uni_calc <- dunif(c, min = a, max = b)
-
-d_uni_man_range <- (d-c)/(b-a)
-d_uni_calc_range <- (d-c)*dunif(20, min = a, max = b)
-
-p_uni_man <- (d-a)/(b-a)
-p_uni_calc <- punif(d, min = a, max = b)
-
-uni_frame <- data.frame(d_uni_calc, d_uni_calc_range, 
-                        p_uni_calc)
+uni_frame <- tibble(d_uni_man <- 1/(b-a),
+                    d_uni_calc <- dunif(c, min = a, max = b),
+                    d_uni_man_range <- (d-c)/(b-a),
+                    d_uni_calc_range <- punif(20, min = a, max = b) - 
+                                        punif(15, min = a, max = b),
+                    p_uni_man <- (d-a)/(b-a),
+                    p_uni_calc <- punif(d, min = a, max = b))
 
 kable(uni_frame,
-      align       = "ccc", 
-      format.args = list(big.mark = ",", 
-                         scientific = FALSE),
-      caption     = "Continuous Uniform Distribution
-                     a=10 and b=30",
-      col.names   = c("f(x)", "P(15 < x < 20)", 
-                      "P(X < 20)")) %>%
-  kable_styling(font_size = 12)
+      align       = 'c', 
+      digits      = 4,
+      caption     = 'Continuous Uniform Distribution
+                     a=10 and b=30',
+      col.names   = c('Manual', 
+                      'Uniform(10,30)',
+                      'Manual P(15 <= X <= 20)',
+                      'P(15 <= X <= 20)',
+                      'Manual P(X < 20)',
+                      'P(X < 20)')) %>%
+kable_classic()
+                      
 
 ```
 
@@ -329,26 +354,26 @@ We can use the CDF to generate $p$ given $x$.
 Note that the probabilities are equal unlike the discrete CDF and
 inverse CDF.
 
-```{r}
+```{webr-r}
+
+rm(list = ls())
 
 x <- 1:100
 a = 30
 b = 70
 p = 0.10
 
-uni_frame <- tibble(inv_cdf <- qunif(p, min = a, max = b, lower.tail = TRUE),
-                    cdf <- punif(inv_cdf, min = a, max = b, lower.tail = TRUE))
+uni <- tibble(inv_cdf <- qunif(p, min = a, max = b),
+              cdf <- punif(inv_cdf, min = a, max = b))
 
-kable(uni_frame,
+kable(uni,
       align       = "cc", 
       caption     = "Inverse CDF and CDF",
-      col.names   = c("Inverse CDF(p=0.1)", "CDF(X < 34)")) %>%
-  kable_styling(font_size = 12)
-
+      col.names   = c("Inverse CDF(p=0.1)", "CDF(X < 34)")) 
 
 ```
 
-## Uniform - Random Observations
+## Random Uniform
 
 **runif** generates random deviates using the uniform PDF.
 
@@ -360,23 +385,25 @@ from a uniform distribution with $a = 30$ and $b = 70$.
 
 ```{r, message = FALSE}
 
-a = 30
-b = 70
+rm(list = ls())
 
-uni_list <- list()
+library(tidyverse)
+library(kableExtra)
 
-for(i in 1:3){
-  temp <- runif(5, min = a, max = b)
-  uni_list[[i]] <- temp
-}
+a <- 30
+b <- 70
 
-ran_unif <- bind_cols(uni_list)
+# Generate 3 columns of 5 uniform random observations
+ran_unif <- as_tibble(
+  replicate(3, runif(5, min = a, max = b)),
+    .name_repair = ~ paste0("Sample_", seq_along(.))) %>%
+    mutate(Observation = paste0("Observation_", row_number())) %>%
+    relocate(Observation)
 
 kable(ran_unif,
-      align     = "ccc",
-      caption   = " Uniform Random Observations",
-      col.names = c("1", "2", "3")) %>%
-  kable_styling(font_size = 12)
-
+      align     = "c",
+      caption   = "Uniform Random Observations",
+      col.names = c("Observation", "Sample 1", "Sample 2", "Sample 3")) %>%
+kable_styling(font_size = 12)
 
 ```

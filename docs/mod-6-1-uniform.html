@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./mod-6-2-normal.html" rel="next">
 <link href="./mod-6-0-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -408,7 +409,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"uni_graph <- tibble(x  = seq(0,40, by = 0.01), \n                    fx = dunif(x, min = 10, max = 30))\n\nggplot(uni_graph,\n       aes(x = x,\n           y = fx)) +\ngeom_line() +\ntheme_minimal() + \nlabs(x = \"x\",\n     y = \"P(x)\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"uni_graph <- tibble(x  = seq(0,40, by = 0.01), \n                    fx = dunif(x, min = 10, max = 30))\n\nggplot(uni_graph,\n       aes(x = x,\n           y = fx)) +\ngeom_line() +\ntheme_minimal() + \nlabs(x = \"x\",\n     y = \"P(x)\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\nx <- 1:100\na = 30\nb = 70\np = 0.10\n\nuni <- tibble(inv_cdf <- qunif(p, min = a, max = b),\n              cdf <- punif(inv_cdf, min = a, max = b))\n\nkable(uni,\n      align       = \"cc\", \n      caption     = \"Inverse CDF and CDF\",\n      col.names   = c(\"Inverse CDF(p=0.1)\", \"CDF(X < 34)\")) ","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1973,6 +1974,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Uniform Distributions</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-6-2-normal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Normal Distributions</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -1995,7 +2002,7 @@ window.Quarto = {
   <ul>
   <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link active" data-scroll-target="#discrete-random-variables"><span class="header-section-number">28.1</span> Discrete Random Variables</a></li>
   <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables"><span class="header-section-number">28.2</span> Continuous Random Variables</a></li>
-  <li><a href="#uniform-probability-distribution" id="toc-uniform-probability-distribution" class="nav-link" data-scroll-target="#uniform-probability-distribution"><span class="header-section-number">28.3</span> Uniform Probability Distribution</a></li>
+  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="header-section-number">28.3</span> Uniform Distribution</a></li>
   <li><a href="#pdf-of-continuous-uniform" id="toc-pdf-of-continuous-uniform" class="nav-link" data-scroll-target="#pdf-of-continuous-uniform"><span class="header-section-number">28.4</span> PDF of Continuous Uniform</a></li>
   <li><a href="#uniform-example" id="toc-uniform-example" class="nav-link" data-scroll-target="#uniform-example"><span class="header-section-number">28.5</span> Uniform Example</a></li>
   <li><a href="#cdf-of-continuous-uniform" id="toc-cdf-of-continuous-uniform" class="nav-link" data-scroll-target="#cdf-of-continuous-uniform"><span class="header-section-number">28.6</span> CDF of Continuous Uniform</a></li>
@@ -2003,7 +2010,7 @@ window.Quarto = {
   <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">28.8</span> Expected Value</a></li>
   <li><a href="#expected-value-and-variance" id="toc-expected-value-and-variance" class="nav-link" data-scroll-target="#expected-value-and-variance"><span class="header-section-number">28.9</span> Expected Value and Variance</a></li>
   <li><a href="#uniform-inverse-cdf" id="toc-uniform-inverse-cdf" class="nav-link" data-scroll-target="#uniform-inverse-cdf"><span class="header-section-number">28.10</span> Uniform Inverse CDF</a></li>
-  <li><a href="#uniform---random-observations" id="toc-uniform---random-observations" class="nav-link" data-scroll-target="#uniform---random-observations"><span class="header-section-number">28.11</span> Uniform - Random Observations</a></li>
+  <li><a href="#random-uniform" id="toc-random-uniform" class="nav-link" data-scroll-target="#random-uniform"><span class="header-section-number">28.11</span> Random Uniform</a></li>
   </ul>
 </nav>
     </div>
@@ -2379,8 +2386,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>This implies that the area under <span class="math inline">\(p(X)\)</span> for a specific value of <span class="math inline">\(x\)</span> is zero.</p>
 <p>In other words, given a continuous random value, the probability that the continuous variable, <span class="math inline">\(x\)</span>, is equal to a specific value is zero.</p>
 </section>
-<section id="uniform-probability-distribution" class="level2" data-number="28.3">
-<h2 data-number="28.3" class="anchored" data-anchor-id="uniform-probability-distribution"><span class="header-section-number">28.3</span> Uniform Probability Distribution</h2>
+<section id="uniform-distribution" class="level2" data-number="28.3">
+<h2 data-number="28.3" class="anchored" data-anchor-id="uniform-distribution"><span class="header-section-number">28.3</span> Uniform Distribution</h2>
 <p>The <strong>continuous uniform probability distribution</strong> describes an experiment where there is a random outcome that is within specific bounds.</p>
 <p>The bounds of the random outcome are defined by the parameters, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
 <ul>
@@ -2449,50 +2456,69 @@ X \sim U(a,b)
 <p>We can use the <strong>dunif</strong> and <strong>punif</strong> functions in R.</p>
 <p>The <strong>dunif</strong> function calculates the uniform density function.</p>
 <p>The <strong>punif</strong> function calculates the cumulative uniform density function.</p>
-<p>Assume that the <span class="math inline">\(a = 10\)</span> and <span class="math inline">\(b=30\)</span> then <span class="math inline">\(f(x) =\)</span> 0.05</p>
-<p>We can find <span class="math inline">\(P(15 \le x \le 20) = 0.25\)</span> manually or by multiplying <span class="math inline">\(f(x)\)</span> by the range of the interval.</p>
-<p>We can also find <span class="math inline">\(P(X &lt; 20) = P(X \le 20)\)</span> by using the cumulative density function.</p>
+<p>Assume that the <span class="math inline">\(a = 10\)</span> and <span class="math inline">\(b=30\)</span> then the PDF of the continuous uniform is:</p>
+<p><span class="math display">\[P(x|a,b)  = \frac{1}{b-a} \quad \text{for} \, x\in[a,b]\]</span> <span class="math display">\[P(x|10,30)  = \frac{1}{30-10} = 0.05 \quad \text{for} \, x\in[10,30]\]</span></p>
+<p>We estimate this probability manually and using the <strong>duinf</strong> function in the code chunk below.</p>
+<p>We then want to find <span class="math inline">\(P(15 \le x \le 20)\)</span>.</p>
+<p><span class="math display">\[P(c \le x \le d) = \int_{c}^{d} \frac{1}{b-a} [x]_x^d = \frac{1}{b-a}(d-c) = \frac{d-c}{b-a}\]</span></p>
+<p><span class="math display">\[P(15 \le x \le 20) = \int_{10}^{30} \frac{1}{30-10} [x]_x^d = \frac{1}{30-10}(20-15) = \frac{20-15}{30-10} = 0.25\]</span></p>
+<p>We estimate this probability manually and using the <strong>punif</strong> function. Here we estimate</p>
+<p><span class="math display">\[
+P(15 \le x \le 20) = P(x \le 20) - P(x \le 15) \quad \text{for} \, x \in [10,30]
+\]</span></p>
+<p>We also find <span class="math inline">\(P(X \le 20)\)</span> by manually and using the the cumulative density function. Note the we are evaluating the area between 20 and the lower bound of the continuous uniform.</p>
+<p><span class="math display">\[P(10 \le x \le 20) = \int_{10}^{30} \frac{1}{30-10} [x]_x^d = \frac{1}{30-10}(20-10) = \frac{20-10}{30-10} = 0.5\]</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">30</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="dv">15</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="dv">20</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>d_uni_man <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(b<span class="sc">-</span>a)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>d_uni_calc <span class="ot">&lt;-</span> <span class="fu">dunif</span>(c, <span class="at">min =</span> a, <span class="at">max =</span> b)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>d_uni_man_range <span class="ot">&lt;-</span> (d<span class="sc">-</span>c)<span class="sc">/</span>(b<span class="sc">-</span>a)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>d_uni_calc_range <span class="ot">&lt;-</span> (d<span class="sc">-</span>c)<span class="sc">*</span><span class="fu">dunif</span>(<span class="dv">20</span>, <span class="at">min =</span> a, <span class="at">max =</span> b)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>p_uni_man <span class="ot">&lt;-</span> (d<span class="sc">-</span>a)<span class="sc">/</span>(b<span class="sc">-</span>a)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>p_uni_calc <span class="ot">&lt;-</span> <span class="fu">punif</span>(d, <span class="at">min =</span> a, <span class="at">max =</span> b)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>uni_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(d_uni_calc, d_uni_calc_range, </span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                        p_uni_calc)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(uni_frame,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"ccc"</span>, </span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, </span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                         <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Continuous Uniform Distribution</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="st">                     a=10 and b=30"</span>,</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"f(x)"</span>, <span class="st">"P(15 &lt; x &lt; 20)"</span>, </span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(X &lt; 20)"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="dv">15</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>uni_frame <span class="ot">&lt;-</span> <span class="fu">tibble</span>(d_uni_man <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(b<span class="sc">-</span>a),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                    d_uni_calc <span class="ot">&lt;-</span> <span class="fu">dunif</span>(c, <span class="at">min =</span> a, <span class="at">max =</span> b),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                    d_uni_man_range <span class="ot">&lt;-</span> (d<span class="sc">-</span>c)<span class="sc">/</span>(b<span class="sc">-</span>a),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                    d_uni_calc_range <span class="ot">&lt;-</span> <span class="fu">punif</span>(<span class="dv">20</span>, <span class="at">min =</span> a, <span class="at">max =</span> b) <span class="sc">-</span> </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">punif</span>(<span class="dv">15</span>, <span class="at">min =</span> a, <span class="at">max =</span> b),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                    p_uni_man <span class="ot">&lt;-</span> (d<span class="sc">-</span>a)<span class="sc">/</span>(b<span class="sc">-</span>a),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                    p_uni_calc <span class="ot">&lt;-</span> <span class="fu">punif</span>(d, <span class="at">min =</span> a, <span class="at">max =</span> b))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(uni_frame,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">'c'</span>, </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits      =</span> <span class="dv">4</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">'Continuous Uniform Distribution</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="st">                     a=10 and b=30'</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">'Manual'</span>, </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'Uniform(10,30)'</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'Manual P(15 &lt;= X &lt;= 20)'</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'P(15 &lt;= X &lt;= 20)'</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'Manual P(X &lt; 20)'</span>,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'P(X &lt; 20)'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
+<table class="lightable-classic caption-top table table-sm table-striped small">
 <caption>Continuous Uniform Distribution a=10 and b=30</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">f(x)</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">P(15 &lt; x &lt; 20)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Manual</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Uniform(10,30)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Manual P(15 &lt;= X &lt;= 20)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(15 &lt;= X &lt;= 20)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Manual P(X &lt; 20)</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">P(X &lt; 20)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">0.05</td>
+<td style="text-align: center;">0.05</td>
 <td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.5</td>
 <td style="text-align: center;">0.5</td>
 </tr>
 </tbody>
@@ -2528,97 +2554,76 @@ X \sim U(a,b)
 <p>We can use the inverse CDF to generate <span class="math inline">\(x\)</span> given <span class="math inline">\(p\)</span>.</p>
 <p>We can use the CDF to generate <span class="math inline">\(p\)</span> given <span class="math inline">\(x\)</span>.</p>
 <p>Note that the probabilities are equal unlike the discrete CDF and inverse CDF.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">30</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">70</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fl">0.10</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>uni_frame <span class="ot">&lt;-</span> <span class="fu">tibble</span>(inv_cdf <span class="ot">&lt;-</span> <span class="fu">qunif</span>(p, <span class="at">min =</span> a, <span class="at">max =</span> b, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                    cdf <span class="ot">&lt;-</span> <span class="fu">punif</span>(inv_cdf, <span class="at">min =</span> a, <span class="at">max =</span> b, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(uni_frame,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"cc"</span>, </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Inverse CDF and CDF"</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Inverse CDF(p=0.1)"</span>, <span class="st">"CDF(X &lt; 34)"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>Inverse CDF and CDF</caption>
-<thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Inverse CDF(p=0.1)</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">CDF(X &lt; 34)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">34</td>
-<td style="text-align: center;">0.1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="uniform---random-observations" class="level2" data-number="28.11">
-<h2 data-number="28.11" class="anchored" data-anchor-id="uniform---random-observations"><span class="header-section-number">28.11</span> Uniform - Random Observations</h2>
+<section id="random-uniform" class="level2" data-number="28.11">
+<h2 data-number="28.11" class="anchored" data-anchor-id="random-uniform"><span class="header-section-number">28.11</span> Random Uniform</h2>
 <p><strong>runif</strong> generates random deviates using the uniform PDF.</p>
 <p>Given <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, we can generate 5 observations from a uniform distribution.</p>
 <p>In this example, we use a loop to generate 3 sets of random observations from a uniform distribution with <span class="math inline">\(a = 30\)</span> and <span class="math inline">\(b = 70\)</span>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">30</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">70</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>uni_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">5</span>, <span class="at">min =</span> a, <span class="at">max =</span> b)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  uni_list[[i]] <span class="ot">&lt;-</span> temp</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ran_unif <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(uni_list)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(ran_unif,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">"ccc"</span>,</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption   =</span> <span class="st">" Uniform Random Observations"</span>,</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">70</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 3 columns of 5 uniform random observations</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ran_unif <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replicate</span>(<span class="dv">3</span>, <span class="fu">runif</span>(<span class="dv">5</span>, <span class="at">min =</span> a, <span class="at">max =</span> b)),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">.name_repair =</span> <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">"Sample_"</span>, <span class="fu">seq_along</span>(.))) <span class="sc">%&gt;%</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Observation =</span> <span class="fu">paste0</span>(<span class="st">"Observation_"</span>, <span class="fu">row_number</span>())) <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">relocate</span>(Observation)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(ran_unif,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">"c"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption   =</span> <span class="st">"Uniform Random Observations"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Observation"</span>, <span class="st">"Sample 1"</span>, <span class="st">"Sample 2"</span>, <span class="st">"Sample 3"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
 <caption>Uniform Random Observations</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">1</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">2</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">3</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Observation</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sample 1</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sample 2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sample 3</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">66.14340</td>
-<td style="text-align: center;">55.28766</td>
-<td style="text-align: center;">30.61769</td>
+<td style="text-align: center;">Observation_1</td>
+<td style="text-align: center;">59.05405</td>
+<td style="text-align: center;">54.30727</td>
+<td style="text-align: center;">61.93917</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">39.47719</td>
-<td style="text-align: center;">57.95195</td>
-<td style="text-align: center;">45.53331</td>
+<td style="text-align: center;">Observation_2</td>
+<td style="text-align: center;">56.29969</td>
+<td style="text-align: center;">41.98346</td>
+<td style="text-align: center;">50.58727</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">56.51257</td>
-<td style="text-align: center;">50.07163</td>
-<td style="text-align: center;">35.32716</td>
+<td style="text-align: center;">Observation_3</td>
+<td style="text-align: center;">56.48285</td>
+<td style="text-align: center;">65.60834</td>
+<td style="text-align: center;">53.04380</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">44.66531</td>
-<td style="text-align: center;">37.88815</td>
-<td style="text-align: center;">57.65421</td>
+<td style="text-align: center;">Observation_4</td>
+<td style="text-align: center;">40.39665</td>
+<td style="text-align: center;">51.92466</td>
+<td style="text-align: center;">53.03893</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">62.93725</td>
-<td style="text-align: center;">51.62585</td>
-<td style="text-align: center;">40.52558</td>
+<td style="text-align: center;">Observation_5</td>
+<td style="text-align: center;">68.99726</td>
+<td style="text-align: center;">41.62788</td>
+<td style="text-align: center;">63.77473</td>
 </tr>
 </tbody>
 </table>
@@ -3041,6 +3046,9 @@ X \sim U(a,b)
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./mod-6-2-normal.html" class="pagination-link" aria-label="Normal Distributions">
+        <span class="nav-page-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Normal Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

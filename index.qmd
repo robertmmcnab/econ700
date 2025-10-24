@@ -100,6 +100,7 @@ Note: The course is under construction. Some links will not work.
 
 <li><a href="mod-6-1-uniform.qmd">Module 6.1 - Uniform Probability Distributions</a></li>
 
+<li><a href="mod-6-2-normal.qmd">Module 6.2 - Normal Probability Distributions</a></li>
 </ul>
 
 ------------------------------------------------------------------------

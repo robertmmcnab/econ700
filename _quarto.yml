@@ -48,6 +48,7 @@ book:
       chapters:
         - mod-6-0-overview.qmd
         - mod-6-1-uniform.qmd
+        - mod-6-2-normal.qmd
     - part: "Sampling Distributions"
     - part: "Inference"
 

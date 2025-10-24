@@ -1,0 +1,151 @@
+---
+title: "Normal Distributions"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    self-contained: false     # must be false when using webr
+urlcolor: blue
+filters:
+  - webr
+execute:
+  webR: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+
+library(dplyr, quietly = TRUE)
+library(ggplot2, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(tidyquant, quietly = TRUE)
+
+```
+
+## Normal Probability Distribution
+
+The **normal** or **Gaussian** probability distribution is one (if not
+the one) of the most widely used probability distributions in
+statistics.
+
+Why is the normal so useful?
+
+*According to the Central Limit Theorem, the average of a random
+variable with finite mean and variance is a random variable whose
+distribution converges to a normal distribution as the number of samples
+increases.*
+
+A continuous random variable $X$ with mean $\mu$ and variance $\sigma^2$
+is said to be a **normal** random variable if its PDF is given by:
+
+$$f(x) = \frac{1}{\sigma \sqrt{2 \pi}} \, e^{-\frac{1}{2} (\frac{x - \mu}{\sigma})^2}$$
+
+A continuous random variable $x$ is said to be a **standard normal**
+random variable if $\mu = 1$ and $\sigma^2 = 1$, shown as
+$x \sim N(0,1)$ and its PDF is given by:
+
+$$f(x) = \frac{1}{\sqrt{2 \pi}} \, e^{-\frac{x^2}{2}}$$
+
+## Expected Value
+
+The expected value of a normally distributed random variable given
+$X \sim N(0,1)$ is
+
+$$E[X] = \int_{-\infty}^{\infty} \, x \, f(x) \, dx$$
+
+$$E[X] = \int_{-\infty}^{\infty} \, x \, \frac{1}{\sqrt{2 \pi}} \, e^{-\frac{x^2}{2}} \, dx$$
+
+$$E[X] =\frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{\infty} \, x  \, e^{-\frac{x^2}{2}} \, dx$$
+-
+
+Since $d(-\frac{x^2}{2})=-xdx$ then
+
+$$E[X] =\frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{\infty} \, e^{-\frac{x^2}{2}} \, d(-\frac{x^2}{2})$$
+
+$$E[X] =\frac{1}{\sqrt{2 \pi}} \,  [e^{-\frac{x^2}{2}}]_{-\infty}^{\infty} = 0$$
+
+## Variance of a Standard Normal
+
+To find the variance of the standard normal, note that
+
+$$var(X) = E[X^2] - (E[X])^2 = E[X^2] = \int_{-\infty}^{\infty} \, x^2 \, f(x) \, dx$$
+
+$$var(X) = \frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{\infty} \, x^2 \,  \, e^{-\frac{x^2}{2}} \, dx$$
+
+Since $d(-\frac{x^2}{2})=-xdx$ then
+
+$$var[X] = \frac{1}{\sqrt{2 \pi}} \, [-x  e^{-\frac{x^2}{2}} ]_{-\infty}^{\infty} + \frac{1}{\sqrt{2 \pi}} \,
+\int_{-\infty}^{\infty} \, e^{-\frac{x^2}{2}} \, dx$$
+
+$$var[X] = \int_{-\infty}^{\infty} \, \frac{1}{\sqrt{2 \pi}} \,  \, e^{-\frac{x^2}{2}} \, dx = 1$$
+
+The variance of the standard normal probability distribution is equal to
+1 because it is the equal to the integration of the standard normal PDF
+from $-\infty$ to $\infty$.
+
+Thus, we have shown that if $X \sim N(0,1)$ that $E[X] = 0$ and
+$var(X) = 1$.
+
+## CDF of Standard Normal
+
+To find the CDF of the standard normal, we would need to integrate the
+PDF of the standard normal or
+
+$$F_X(x) = \int_{-\infty}^{x} \, \frac{1}{\sqrt{2 \pi}} \,  \, e^{-\frac{x^2}{2}} \, dx$$
+-
+
+However, since this integral does not have a closed-form solution, this
+cannot be done and the values of the CDF are available through tables
+and software.
+
+The CDF of the standard normal is denoted with the $\Phi$ function or:
+
+$$\Phi(x) = P(Z \le x) = \frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{x} \,   \, e^{-\frac{x^2}{2}} \, dx$$
+
+Where $lim_{x \rightarrow \infty} \Phi(x) = 1$ and
+$lim_{x \rightarrow -\infty} \Phi(x) = 0$
+
+-   Where $\Phi(0) = 1/2$
+
+-   Where $\Phi(-x) = 1 - \Phi(x) \quad \forall x \, \in \,\mathbb{R}$
+
+## Normal Example
+
+Here we can use the **dnorm** function to generate probabilities that
+are then graphed to provide a visual representation of the normal
+distribution.
+
+The **stat_function** is part of **ggplot2** and allows use to
+superimpose a function on top of an existing plot.
+
+Here we generate 600 observations observations that are normally
+distributed using the **rnorm** function.
+
+We then generate the density plot using for a normal distribution with
+$\mu = 500$ and $\sigma = 100$.
+
+```{r, fig.height=4, fig.width=4}
+
+rm(list = ls())
+
+set.seed(2525)
+
+df_norm <- data.frame(x = rnorm(600, mean = 500, sd = 100))
+
+ggplot(data = df_norm, 
+       aes(x),
+       size  = 1.2) +
+geom_density(linewidth = 1.2,
+             color = "dark blue") +
+stat_function(fun  = dnorm,
+              args  = list(mean = 500, sd = 100),
+              linewidth  = 1.2,
+              color = "red") +
+theme_minimal() +
+labs(x = "x",
+     y = "Density")
+
+```

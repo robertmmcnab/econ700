@@ -81,7 +81,7 @@
     "href": "index.html#module-06---continuous-probability-distributions",
     "title": "ECON 700",
     "section": "0.7 Module 06 - Continuous Probability Distributions",
-    "text": "0.7 Module 06 - Continuous Probability Distributions\n\n\nModule 6.0 - Module 6 Overview\n\n\nModule 6.1 - Uniform Probability Distributions\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.7 Module 06 - Continuous Probability Distributions\n\n\nModule 6.0 - Module 6 Overview\n\n\nModule 6.1 - Uniform Probability Distributions\n\n\nModule 6.2 - Normal Probability Distributions\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -411,7 +411,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n49.26\n49.42\n51.49",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n51.8\n49.54\n50.14",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -2358,7 +2358,7 @@
     "href": "mod-5-3-poisson.html#the-r-function-in-r",
     "title": "26  Poisson Distribution",
     "section": "26.10 The R Function in R",
-    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n50\n11\n8.398894\n\n\n44\n6\n10.378413\n\n\n49\n5\n8.094267\n\n\n53\n14\n6.839927\n\n\n46\n7\n11.738628",
+    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n52\n15\n13.394463\n\n\n59\n12\n7.307335\n\n\n52\n10\n6.743377\n\n\n44\n7\n10.501478\n\n\n49\n7\n8.276433",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
@@ -2424,7 +2424,7 @@
     "href": "mod-6-0-overview.html#lessons-in-this-module",
     "title": "27  Module 6 Overview",
     "section": "27.5 Lessons in this Module",
-    "text": "27.5 Lessons in this Module\n\n6.1 – Uniform Probability Distributions\n\n\nNext: Start with Uniform Probability Distributions.",
+    "text": "27.5 Lessons in this Module\n\n6.1 – Uniform Probability Distributions\n6.2 – Normal Probability Distributions\n\n\nNext: Start with Uniform Probability Distributions.",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>27</span>  <span class='chapter-title'>Module 6 Overview</span>"
@@ -2464,11 +2464,11 @@
     ]
   },
   {
-    "objectID": "mod-6-1-uniform.html#uniform-probability-distribution",
-    "href": "mod-6-1-uniform.html#uniform-probability-distribution",
+    "objectID": "mod-6-1-uniform.html#uniform-distribution",
+    "href": "mod-6-1-uniform.html#uniform-distribution",
     "title": "28  Uniform Distributions",
-    "section": "28.3 Uniform Probability Distribution",
-    "text": "28.3 Uniform Probability Distribution\nThe continuous uniform probability distribution describes an experiment where there is a random outcome that is within specific bounds.\nThe bounds of the random outcome are defined by the parameters, \\(a\\) and \\(b\\).\n\n\\(a\\) is the minimum value of the random outcome.\n\\(b\\) is the maximum value of the random outcome.\n\nThe uniform distribution is defined by the parameters \\(a\\) and \\(b\\) which define the region where the density function \\(p(x)\\) is constant and outside of which \\(p(x) = 0\\). Since the area under the probability density function must total 1, the probability density function of the continuous uniform distribution is:\n\\[P(x | a,b)  = \\frac{1}{b-a} \\quad \\text{for} \\, x\\in[a,b]\\]\n\\[P(x |a,b) = 0 \\quad \\text{for} \\, x \\not\\in[a,b]\\]\nWe often denote the random variable \\(X\\) as uniformly distributed on the interval \\([a,b]\\) as:\n\\[\nX \\sim U(a,b)\n\\]",
+    "section": "28.3 Uniform Distribution",
+    "text": "28.3 Uniform Distribution\nThe continuous uniform probability distribution describes an experiment where there is a random outcome that is within specific bounds.\nThe bounds of the random outcome are defined by the parameters, \\(a\\) and \\(b\\).\n\n\\(a\\) is the minimum value of the random outcome.\n\\(b\\) is the maximum value of the random outcome.\n\nThe uniform distribution is defined by the parameters \\(a\\) and \\(b\\) which define the region where the density function \\(p(x)\\) is constant and outside of which \\(p(x) = 0\\). Since the area under the probability density function must total 1, the probability density function of the continuous uniform distribution is:\n\\[P(x | a,b)  = \\frac{1}{b-a} \\quad \\text{for} \\, x\\in[a,b]\\]\n\\[P(x |a,b) = 0 \\quad \\text{for} \\, x \\not\\in[a,b]\\]\nWe often denote the random variable \\(X\\) as uniformly distributed on the interval \\([a,b]\\) as:\n\\[\nX \\sim U(a,b)\n\\]",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
@@ -2512,7 +2512,7 @@
     "href": "mod-6-1-uniform.html#example-of-pdf-and-cdf",
     "title": "28  Uniform Distributions",
     "section": "28.7 Example of PDF and CDF",
-    "text": "28.7 Example of PDF and CDF\nWe can use the dunif and punif functions in R.\nThe dunif function calculates the uniform density function.\nThe punif function calculates the cumulative uniform density function.\nAssume that the \\(a = 10\\) and \\(b=30\\) then \\(f(x) =\\) 0.05\nWe can find \\(P(15 \\le x \\le 20) = 0.25\\) manually or by multiplying \\(f(x)\\) by the range of the interval.\nWe can also find \\(P(X &lt; 20) = P(X \\le 20)\\) by using the cumulative density function.\n\na = 10\nb = 30\nc = 15\nd = 20\n\nd_uni_man &lt;- 1/(b-a)\nd_uni_calc &lt;- dunif(c, min = a, max = b)\n\nd_uni_man_range &lt;- (d-c)/(b-a)\nd_uni_calc_range &lt;- (d-c)*dunif(20, min = a, max = b)\n\np_uni_man &lt;- (d-a)/(b-a)\np_uni_calc &lt;- punif(d, min = a, max = b)\n\nuni_frame &lt;- data.frame(d_uni_calc, d_uni_calc_range, \n                        p_uni_calc)\n\nkable(uni_frame,\n      align       = \"ccc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Continuous Uniform Distribution\n                     a=10 and b=30\",\n      col.names   = c(\"f(x)\", \"P(15 &lt; x &lt; 20)\", \n                      \"P(X &lt; 20)\")) %&gt;%\n  kable_styling(font_size = 12)\n\n\nContinuous Uniform Distribution a=10 and b=30\n\n\nf(x)\nP(15 &lt; x &lt; 20)\nP(X &lt; 20)\n\n\n\n\n0.05\n0.25\n0.5",
+    "text": "28.7 Example of PDF and CDF\nWe can use the dunif and punif functions in R.\nThe dunif function calculates the uniform density function.\nThe punif function calculates the cumulative uniform density function.\nAssume that the \\(a = 10\\) and \\(b=30\\) then the PDF of the continuous uniform is:\n\\[P(x|a,b)  = \\frac{1}{b-a} \\quad \\text{for} \\, x\\in[a,b]\\] \\[P(x|10,30)  = \\frac{1}{30-10} = 0.05 \\quad \\text{for} \\, x\\in[10,30]\\]\nWe estimate this probability manually and using the duinf function in the code chunk below.\nWe then want to find \\(P(15 \\le x \\le 20)\\).\n\\[P(c \\le x \\le d) = \\int_{c}^{d} \\frac{1}{b-a} [x]_x^d = \\frac{1}{b-a}(d-c) = \\frac{d-c}{b-a}\\]\n\\[P(15 \\le x \\le 20) = \\int_{10}^{30} \\frac{1}{30-10} [x]_x^d = \\frac{1}{30-10}(20-15) = \\frac{20-15}{30-10} = 0.25\\]\nWe estimate this probability manually and using the punif function. Here we estimate\n\\[\nP(15 \\le x \\le 20) = P(x \\le 20) - P(x \\le 15) \\quad \\text{for} \\, x \\in [10,30]\n\\]\nWe also find \\(P(X \\le 20)\\) by manually and using the the cumulative density function. Note the we are evaluating the area between 20 and the lower bound of the continuous uniform.\n\\[P(10 \\le x \\le 20) = \\int_{10}^{30} \\frac{1}{30-10} [x]_x^d = \\frac{1}{30-10}(20-10) = \\frac{20-10}{30-10} = 0.5\\]\n\nrm(list = ls())\n\nlibrary(tidyverse)\nlibrary(kableExtra)\n\na = 10\nb = 30\nc = 15\nd = 20\n\nuni_frame &lt;- tibble(d_uni_man &lt;- 1/(b-a),\n                    d_uni_calc &lt;- dunif(c, min = a, max = b),\n                    d_uni_man_range &lt;- (d-c)/(b-a),\n                    d_uni_calc_range &lt;- punif(20, min = a, max = b) - \n                                        punif(15, min = a, max = b),\n                    p_uni_man &lt;- (d-a)/(b-a),\n                    p_uni_calc &lt;- punif(d, min = a, max = b))\n\nkable(uni_frame,\n      align       = 'c', \n      digits      = 4,\n      caption     = 'Continuous Uniform Distribution\n                     a=10 and b=30',\n      col.names   = c('Manual', \n                      'Uniform(10,30)',\n                      'Manual P(15 &lt;= X &lt;= 20)',\n                      'P(15 &lt;= X &lt;= 20)',\n                      'Manual P(X &lt; 20)',\n                      'P(X &lt; 20)')) %&gt;%\nkable_classic()\n\n\nContinuous Uniform Distribution a=10 and b=30\n\n\nManual\nUniform(10,30)\nManual P(15 &lt;= X &lt;= 20)\nP(15 &lt;= X &lt;= 20)\nManual P(X &lt; 20)\nP(X &lt; 20)\n\n\n\n\n0.05\n0.05\n0.25\n0.25\n0.5\n0.5",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
@@ -2545,21 +2545,98 @@
     "href": "mod-6-1-uniform.html#uniform-inverse-cdf",
     "title": "28  Uniform Distributions",
     "section": "28.10 Uniform Inverse CDF",
-    "text": "28.10 Uniform Inverse CDF\nqunif is the inverse cumulative density function for a continuous uniform distribution.\nGiven \\(a = 30\\) and \\(b = 70\\), what is \\(x\\) such that \\(P(X \\le x) = 0.1\\)?\nWe can use the inverse CDF to generate \\(x\\) given \\(p\\).\nWe can use the CDF to generate \\(p\\) given \\(x\\).\nNote that the probabilities are equal unlike the discrete CDF and inverse CDF.\n\nx &lt;- 1:100\na = 30\nb = 70\np = 0.10\n\nuni_frame &lt;- tibble(inv_cdf &lt;- qunif(p, min = a, max = b, lower.tail = TRUE),\n                    cdf &lt;- punif(inv_cdf, min = a, max = b, lower.tail = TRUE))\n\nkable(uni_frame,\n      align       = \"cc\", \n      caption     = \"Inverse CDF and CDF\",\n      col.names   = c(\"Inverse CDF(p=0.1)\", \"CDF(X &lt; 34)\")) %&gt;%\n  kable_styling(font_size = 12)\n\n\nInverse CDF and CDF\n\n\nInverse CDF(p=0.1)\nCDF(X &lt; 34)\n\n\n\n\n34\n0.1",
+    "text": "28.10 Uniform Inverse CDF\nqunif is the inverse cumulative density function for a continuous uniform distribution.\nGiven \\(a = 30\\) and \\(b = 70\\), what is \\(x\\) such that \\(P(X \\le x) = 0.1\\)?\nWe can use the inverse CDF to generate \\(x\\) given \\(p\\).\nWe can use the CDF to generate \\(p\\) given \\(x\\).\nNote that the probabilities are equal unlike the discrete CDF and inverse CDF.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
     ]
   },
   {
-    "objectID": "mod-6-1-uniform.html#uniform---random-observations",
-    "href": "mod-6-1-uniform.html#uniform---random-observations",
+    "objectID": "mod-6-1-uniform.html#random-uniform",
+    "href": "mod-6-1-uniform.html#random-uniform",
     "title": "28  Uniform Distributions",
-    "section": "28.11 Uniform - Random Observations",
-    "text": "28.11 Uniform - Random Observations\nrunif generates random deviates using the uniform PDF.\nGiven \\(a\\) and \\(b\\), we can generate 5 observations from a uniform distribution.\nIn this example, we use a loop to generate 3 sets of random observations from a uniform distribution with \\(a = 30\\) and \\(b = 70\\).\n\na = 30\nb = 70\n\nuni_list &lt;- list()\n\nfor(i in 1:3){\n  temp &lt;- runif(5, min = a, max = b)\n  uni_list[[i]] &lt;- temp\n}\n\nran_unif &lt;- bind_cols(uni_list)\n\nkable(ran_unif,\n      align     = \"ccc\",\n      caption   = \" Uniform Random Observations\",\n      col.names = c(\"1\", \"2\", \"3\")) %&gt;%\n  kable_styling(font_size = 12)\n\n\nUniform Random Observations\n\n\n1\n2\n3\n\n\n\n\n66.14340\n55.28766\n30.61769\n\n\n39.47719\n57.95195\n45.53331\n\n\n56.51257\n50.07163\n35.32716\n\n\n44.66531\n37.88815\n57.65421\n\n\n62.93725\n51.62585\n40.52558",
+    "section": "28.11 Random Uniform",
+    "text": "28.11 Random Uniform\nrunif generates random deviates using the uniform PDF.\nGiven \\(a\\) and \\(b\\), we can generate 5 observations from a uniform distribution.\nIn this example, we use a loop to generate 3 sets of random observations from a uniform distribution with \\(a = 30\\) and \\(b = 70\\).\n\nrm(list = ls())\n\nlibrary(tidyverse)\nlibrary(kableExtra)\n\na &lt;- 30\nb &lt;- 70\n\n# Generate 3 columns of 5 uniform random observations\nran_unif &lt;- as_tibble(\n  replicate(3, runif(5, min = a, max = b)),\n    .name_repair = ~ paste0(\"Sample_\", seq_along(.))) %&gt;%\n    mutate(Observation = paste0(\"Observation_\", row_number())) %&gt;%\n    relocate(Observation)\n\nkable(ran_unif,\n      align     = \"c\",\n      caption   = \"Uniform Random Observations\",\n      col.names = c(\"Observation\", \"Sample 1\", \"Sample 2\", \"Sample 3\")) %&gt;%\nkable_styling(font_size = 12)\n\n\nUniform Random Observations\n\n\nObservation\nSample 1\nSample 2\nSample 3\n\n\n\n\nObservation_1\n59.05405\n54.30727\n61.93917\n\n\nObservation_2\n56.29969\n41.98346\n50.58727\n\n\nObservation_3\n56.48285\n65.60834\n53.04380\n\n\nObservation_4\n40.39665\n51.92466\n53.03893\n\n\nObservation_5\n68.99726\n41.62788\n63.77473",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-2-normal.html",
+    "href": "mod-6-2-normal.html",
+    "title": "29  Normal Distributions",
+    "section": "",
+    "text": "29.1 Normal Probability Distribution\nThe normal or Gaussian probability distribution is one (if not the one) of the most widely used probability distributions in statistics.\nWhy is the normal so useful?\nAccording to the Central Limit Theorem, the average of a random variable with finite mean and variance is a random variable whose distribution converges to a normal distribution as the number of samples increases.\nA continuous random variable \\(X\\) with mean \\(\\mu\\) and variance \\(\\sigma^2\\) is said to be a normal random variable if its PDF is given by:\n\\[f(x) = \\frac{1}{\\sigma \\sqrt{2 \\pi}} \\, e^{-\\frac{1}{2} (\\frac{x - \\mu}{\\sigma})^2}\\]\nA continuous random variable \\(x\\) is said to be a standard normal random variable if \\(\\mu = 1\\) and \\(\\sigma^2 = 1\\), shown as \\(x \\sim N(0,1)\\) and its PDF is given by:\n\\[f(x) = \\frac{1}{\\sqrt{2 \\pi}} \\, e^{-\\frac{x^2}{2}}\\]",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-2-normal.html#expected-value",
+    "href": "mod-6-2-normal.html#expected-value",
+    "title": "29  Normal Distributions",
+    "section": "29.2 Expected Value",
+    "text": "29.2 Expected Value\nThe expected value of a normally distributed random variable given \\(X \\sim N(0,1)\\) is\n\\[E[X] = \\int_{-\\infty}^{\\infty} \\, x \\, f(x) \\, dx\\]\n\\[E[X] = \\int_{-\\infty}^{\\infty} \\, x \\, \\frac{1}{\\sqrt{2 \\pi}} \\, e^{-\\frac{x^2}{2}} \\, dx\\]",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-2-normal.html#ex-frac1sqrt2-pi-int_-inftyinfty-x-e-fracx22-dx",
+    "href": "mod-6-2-normal.html#ex-frac1sqrt2-pi-int_-inftyinfty-x-e-fracx22-dx",
+    "title": "29  Normal Distributions",
+    "section": "29.3 \\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, x  \\, e^{-\\frac{x^2}{2}} \\, dx\\]",
+    "text": "29.3 \\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, x  \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nSince \\(d(-\\frac{x^2}{2})=-xdx\\) then\n\\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, e^{-\\frac{x^2}{2}} \\, d(-\\frac{x^2}{2})\\]\n\\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\,  [e^{-\\frac{x^2}{2}}]_{-\\infty}^{\\infty} = 0\\]",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-2-normal.html#variance-of-a-standard-normal",
+    "href": "mod-6-2-normal.html#variance-of-a-standard-normal",
+    "title": "29  Normal Distributions",
+    "section": "29.4 Variance of a Standard Normal",
+    "text": "29.4 Variance of a Standard Normal\nTo find the variance of the standard normal, note that\n\\[var(X) = E[X^2] - (E[X])^2 = E[X^2] = \\int_{-\\infty}^{\\infty} \\, x^2 \\, f(x) \\, dx\\]\n\\[var(X) = \\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, x^2 \\,  \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nSince \\(d(-\\frac{x^2}{2})=-xdx\\) then\n\\[var[X] = \\frac{1}{\\sqrt{2 \\pi}} \\, [-x  e^{-\\frac{x^2}{2}} ]_{-\\infty}^{\\infty} + \\frac{1}{\\sqrt{2 \\pi}} \\,\n\\int_{-\\infty}^{\\infty} \\, e^{-\\frac{x^2}{2}} \\, dx\\]\n\\[var[X] = \\int_{-\\infty}^{\\infty} \\, \\frac{1}{\\sqrt{2 \\pi}} \\,  \\, e^{-\\frac{x^2}{2}} \\, dx = 1\\]\nThe variance of the standard normal probability distribution is equal to 1 because it is the equal to the integration of the standard normal PDF from \\(-\\infty\\) to \\(\\infty\\).\nThus, we have shown that if \\(X \\sim N(0,1)\\) that \\(E[X] = 0\\) and \\(var(X) = 1\\).",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-2-normal.html#cdf-of-standard-normal",
+    "href": "mod-6-2-normal.html#cdf-of-standard-normal",
+    "title": "29  Normal Distributions",
+    "section": "29.5 CDF of Standard Normal",
+    "text": "29.5 CDF of Standard Normal\nTo find the CDF of the standard normal, we would need to integrate the PDF of the standard normal or",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-2-normal.html#f_xx-int_-inftyx-frac1sqrt2-pi-e-fracx22-dx",
+    "href": "mod-6-2-normal.html#f_xx-int_-inftyx-frac1sqrt2-pi-e-fracx22-dx",
+    "title": "29  Normal Distributions",
+    "section": "29.6 \\[F_X(x) = \\int_{-\\infty}^{x} \\, \\frac{1}{\\sqrt{2 \\pi}} \\,  \\, e^{-\\frac{x^2}{2}} \\, dx\\]",
+    "text": "29.6 \\[F_X(x) = \\int_{-\\infty}^{x} \\, \\frac{1}{\\sqrt{2 \\pi}} \\,  \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nHowever, since this integral does not have a closed-form solution, this cannot be done and the values of the CDF are available through tables and software.\nThe CDF of the standard normal is denoted with the \\(\\Phi\\) function or:\n\\[\\Phi(x) = P(Z \\le x) = \\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{x} \\,   \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nWhere \\(lim_{x \\rightarrow \\infty} \\Phi(x) = 1\\) and \\(lim_{x \\rightarrow -\\infty} \\Phi(x) = 0\\)\n\nWhere \\(\\Phi(0) = 1/2\\)\nWhere \\(\\Phi(-x) = 1 - \\Phi(x) \\quad \\forall x \\, \\in \\,\\mathbb{R}\\)",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-2-normal.html#normal-example",
+    "href": "mod-6-2-normal.html#normal-example",
+    "title": "29  Normal Distributions",
+    "section": "29.7 Normal Example",
+    "text": "29.7 Normal Example\nHere we can use the dnorm function to generate probabilities that are then graphed to provide a visual representation of the normal distribution.\nThe stat_function is part of ggplot2 and allows use to superimpose a function on top of an existing plot.\nHere we generate 600 observations observations that are normally distributed using the rnorm function.\nWe then generate the density plot using for a normal distribution with \\(\\mu = 500\\) and \\(\\sigma = 100\\).\n\nrm(list = ls())\n\nset.seed(2525)\n\ndf_norm &lt;- data.frame(x = rnorm(600, mean = 500, sd = 100))\n\nggplot(data = df_norm, \n       aes(x),\n       size  = 1.2) +\ngeom_density(linewidth = 1.2,\n             color = \"dark blue\") +\nstat_function(fun  = dnorm,\n              args  = list(mean = 500, sd = 100),\n              linewidth  = 1.2,\n              color = \"red\") +\ntheme_minimal() +\nlabs(x = \"x\",\n     y = \"Density\")",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
     ]
   }
 ]
