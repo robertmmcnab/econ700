@@ -16,29 +16,31 @@ The module emphasizes the normal distribution as the cornerstone of statistical 
 
 By the end of this module, you should be able to:
 
--   **Differentiate** between discrete and continuous random variables and describe the role of probability density functions.
+-   MLO 1: **Differentiate** between discrete and continuous random variables and describe the role of probability density functions.
 
--   **Compute** and interpret probabilities using the uniform, normal, and exponential distributions.
+-   MLO 2: **Compute** and interpret probabilities using the uniform, normal, and exponential distributions.
 
--   **Apply** R functions (dnorm, pnorm, qnorm, dunif, punif, pexp) to calculate and visualize probability densities and cumulative distributions.
+-   MLO 3: **Apply** R functions (dnorm, pnorm, qnorm, dunif, punif, pexp) to calculate and visualize probability densities and cumulative distributions.
 
--   **Explain** the properties of the normal distribution and its connection to the Central Limit Theorem.
+-   MLO 4: **Explain** the properties of the normal distribution and the Central Limit Theorem.
 
--   **Calculate** expected values, variances, and probabilities for continuous random variables.
+-   MLO 5: **Calculate** expected values, variances, and probabilities for continuous random variables.
 
--   **Evaluate** real-world examples that demonstrate how continuous distributions model random events such as arrival times, measurement variation, and economic outcomes.
+-   MLO 6: **Evaluate** real-world examples that demonstrate how continuous distributions model random events such as arrival times, measurement variation, and economic outcomes.
 
 ------------------------------------------------------------------------
 
-## Readings & Resources
+## Required Texts
 
--   Barbara Illowsky and Susan Dean. *Introductory Statistics 2e*. OpenStax. (Chapter 5). Available for free online at <https://openstax.org/books/introductory-statistics-2e/pages/2-introduction>
+The following textbooks are available for free. Please select the links provided to access.
 
--   Irizarry, R. (2025). *Introduction to Data Science: Statistics and Prediction Algorithms Through Case Studies* (Chapters 1-3). Available for free at: [https://rafalab.dfci.harvard.edu/dsbook-part-2/](https://rafalab.dfci.harvard.edu/dsbook-part-1/){.uri}
+-   Barbara Illowsky and Susan Dean. [Introductory Statistics 2e](https://openstax.org/books/introductory-statistics-2e/pages/1-introduction). OpenStax. Chapter 5 - 7.
 
--   Wickham, H., & Grolemund, G. (2017). *R for Data Science*. (Chapters 1–3).
+-   Rafael Irizarry. (2025). [Introduction to Data Science: Data Wrangling and Visualization with R](https://rafalab.dfci.harvard.edu/dsbook-part-1/). Chapters 1-2.
 
--   Online R documentation: <https://cran.r-project.org/manuals.html>
+-   Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund. (2025) [R for Data Science](https://r4ds.hadley.nz/). Sections 1-19.
+
+-   [Online R documentation](https://cran.r-project.org/manuals.html)
 
 -   [RStudio Cheat Sheets](https://posit.co/resources/cheatsheets/)
 
@@ -46,10 +48,10 @@ By the end of this module, you should be able to:
 
 ## Activities
 
--   Complete the hands-on coding exercises embedded in each lesson.\
--   Complete the weekly class assignment.\
--   Participate in the discussion form.\
--   Take the weekly knowledge quiz.\
+-   Complete the hands-on coding exercises embedded in each lesson (MLO 3)\
+-   Complete the weekly class assignment (MLO 1 - MLO 6)\
+-   Participate in the discussion form (MLO 3 - MLO 5)\
+-   Take the weekly knowledge quiz (MLO 1 - MLO 6)\
 
 ------------------------------------------------------------------------
 
