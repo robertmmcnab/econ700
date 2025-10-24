@@ -2578,7 +2578,7 @@
     "href": "mod-6-2-normal.html#expected-value",
     "title": "29  Normal Distributions",
     "section": "29.2 Expected Value",
-    "text": "29.2 Expected Value\nThe expected value of a normally distributed random variable given \\(X \\sim N(0,1)\\) is\n\\[E[X] = \\int_{-\\infty}^{\\infty} \\, x \\, f(x) \\, dx\\]\n\\[E[X] = \\int_{-\\infty}^{\\infty} \\, x \\, \\frac{1}{\\sqrt{2 \\pi}} \\, e^{-\\frac{x^2}{2}} \\, dx\\]",
+    "text": "29.2 Expected Value\nThe expected value of a normally distributed random variable given\n\\[X \\sim N(0,1)\\]\n\\[E[X] = \\int_{-\\infty}^{\\infty} \\, x \\, f(x) \\, dx\\]\n\\[E[X] = \\int_{-\\infty}^{\\infty} \\, x \\, \\frac{1}{\\sqrt{2 \\pi}} \\, e^{-\\frac{x^2}{2}} \\, dx\\]\n\\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, x  \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nSince \\(d(-\\frac{x^2}{2})=-xdx\\) then\n\\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, e^{-\\frac{x^2}{2}} \\, d(-\\frac{x^2}{2})\\]\n\\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\,  [e^{-\\frac{x^2}{2}}]_{-\\infty}^{\\infty} = 0\\]",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
@@ -2599,8 +2599,8 @@
     "objectID": "mod-6-2-normal.html#variance-of-a-standard-normal",
     "href": "mod-6-2-normal.html#variance-of-a-standard-normal",
     "title": "29  Normal Distributions",
-    "section": "29.4 Variance of a Standard Normal",
-    "text": "29.4 Variance of a Standard Normal\nTo find the variance of the standard normal, note that\n\\[var(X) = E[X^2] - (E[X])^2 = E[X^2] = \\int_{-\\infty}^{\\infty} \\, x^2 \\, f(x) \\, dx\\]\n\\[var(X) = \\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, x^2 \\,  \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nSince \\(d(-\\frac{x^2}{2})=-xdx\\) then\n\\[var[X] = \\frac{1}{\\sqrt{2 \\pi}} \\, [-x  e^{-\\frac{x^2}{2}} ]_{-\\infty}^{\\infty} + \\frac{1}{\\sqrt{2 \\pi}} \\,\n\\int_{-\\infty}^{\\infty} \\, e^{-\\frac{x^2}{2}} \\, dx\\]\n\\[var[X] = \\int_{-\\infty}^{\\infty} \\, \\frac{1}{\\sqrt{2 \\pi}} \\,  \\, e^{-\\frac{x^2}{2}} \\, dx = 1\\]\nThe variance of the standard normal probability distribution is equal to 1 because it is the equal to the integration of the standard normal PDF from \\(-\\infty\\) to \\(\\infty\\).\nThus, we have shown that if \\(X \\sim N(0,1)\\) that \\(E[X] = 0\\) and \\(var(X) = 1\\).",
+    "section": "29.3 Variance of a Standard Normal",
+    "text": "29.3 Variance of a Standard Normal\nTo find the variance of the standard normal, note that\n\\[var(X) = E[X^2] - (E[X])^2 = E[X^2] = \\int_{-\\infty}^{\\infty} \\, x^2 \\, f(x) \\, dx\\]\n\\[var(X) = \\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, x^2 \\,  \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nSince \\(d(-\\frac{x^2}{2})=-xdx\\) then\n\\[var[X] = \\frac{1}{\\sqrt{2 \\pi}} \\, [-x  e^{-\\frac{x^2}{2}} ]_{-\\infty}^{\\infty} + \\frac{1}{\\sqrt{2 \\pi}} \\,\n\\int_{-\\infty}^{\\infty} \\, e^{-\\frac{x^2}{2}} \\, dx\\]\n\\[var[X] = \\int_{-\\infty}^{\\infty} \\, \\frac{1}{\\sqrt{2 \\pi}} \\,  \\, e^{-\\frac{x^2}{2}} \\, dx = 1\\]\nThe variance of the standard normal probability distribution is equal to 1 because it is the equal to the integration of the standard normal PDF from \\(-\\infty\\) to \\(\\infty\\).\nThus, we have shown that if \\(X \\sim N(0,1)\\) that \\(E[X] = 0\\) and \\(var(X) = 1\\).",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
@@ -2610,8 +2610,8 @@
     "objectID": "mod-6-2-normal.html#cdf-of-standard-normal",
     "href": "mod-6-2-normal.html#cdf-of-standard-normal",
     "title": "29  Normal Distributions",
-    "section": "29.5 CDF of Standard Normal",
-    "text": "29.5 CDF of Standard Normal\nTo find the CDF of the standard normal, we would need to integrate the PDF of the standard normal or",
+    "section": "29.4 CDF of Standard Normal",
+    "text": "29.4 CDF of Standard Normal\nTo find the CDF of the standard normal, we would need to integrate the PDF of the standard normal or\n\\[F_X(x) = \\int_{-\\infty}^{x} \\, \\frac{1}{\\sqrt{2 \\pi}} \\,  \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nHowever, since this integral does not have a closed-form solution, this cannot be done and the values of the CDF are available through tables and software.\nThe CDF of the standard normal is denoted with the \\(\\Phi\\) function or:\n\\[\\Phi(x) = P(Z \\le x) = \\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{x} \\,   \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nWhere \\(lim_{x \\rightarrow \\infty} \\Phi(x) = 1\\) and \\(lim_{x \\rightarrow -\\infty} \\Phi(x) = 0\\)\n\nWhere \\(\\Phi(0) = 1/2\\)\nWhere \\(\\Phi(-x) = 1 - \\Phi(x) \\quad \\forall x \\, \\in \\,\\mathbb{R}\\)",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
@@ -2632,8 +2632,8 @@
     "objectID": "mod-6-2-normal.html#normal-example",
     "href": "mod-6-2-normal.html#normal-example",
     "title": "29  Normal Distributions",
-    "section": "29.7 Normal Example",
-    "text": "29.7 Normal Example\nHere we can use the dnorm function to generate probabilities that are then graphed to provide a visual representation of the normal distribution.\nThe stat_function is part of ggplot2 and allows use to superimpose a function on top of an existing plot.\nHere we generate 600 observations observations that are normally distributed using the rnorm function.\nWe then generate the density plot using for a normal distribution with \\(\\mu = 500\\) and \\(\\sigma = 100\\).\n\nrm(list = ls())\n\nset.seed(2525)\n\ndf_norm &lt;- data.frame(x = rnorm(600, mean = 500, sd = 100))\n\nggplot(data = df_norm, \n       aes(x),\n       size  = 1.2) +\ngeom_density(linewidth = 1.2,\n             color = \"dark blue\") +\nstat_function(fun  = dnorm,\n              args  = list(mean = 500, sd = 100),\n              linewidth  = 1.2,\n              color = \"red\") +\ntheme_minimal() +\nlabs(x = \"x\",\n     y = \"Density\")",
+    "section": "29.5 Normal Example",
+    "text": "29.5 Normal Example\nHere we can use the dnorm function to generate probabilities that are then graphed to provide a visual representation of the normal distribution.\nThe stat_function is part of ggplot2 and allows use to superimpose a function on top of an existing plot.\nHere we generate 600 observations observations that are normally distributed using the rnorm function.\nWe then generate the density plot using for a normal distribution with \\(\\mu = 500\\) and \\(\\sigma = 100\\).\n\nrm(list = ls())\n\nset.seed(2525)\n\ndf_norm &lt;- data.frame(x = rnorm(600, mean = 500, sd = 100))\n\nggplot(data = df_norm, \n       aes(x),\n       size  = 1.2) +\ngeom_density(linewidth = 1.2,\n             color = \"dark blue\") +\nstat_function(fun  = dnorm,\n              args  = list(mean = 500, sd = 100),\n              linewidth  = 1.2,\n              color = \"red\") +\ntheme_minimal() +\nlabs(x = \"x\",\n     y = \"Density\")",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"

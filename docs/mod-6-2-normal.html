@@ -444,11 +444,9 @@ window.Quarto = {
   <ul>
   <li><a href="#normal-probability-distribution" id="toc-normal-probability-distribution" class="nav-link active" data-scroll-target="#normal-probability-distribution"><span class="header-section-number">29.1</span> Normal Probability Distribution</a></li>
   <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">29.2</span> Expected Value</a></li>
-  <li><a href="#ex-frac1sqrt2-pi-int_-inftyinfty-x-e-fracx22-dx" id="toc-ex-frac1sqrt2-pi-int_-inftyinfty-x-e-fracx22-dx" class="nav-link" data-scroll-target="#ex-frac1sqrt2-pi-int_-inftyinfty-x-e-fracx22-dx"><span class="header-section-number">29.3</span> <span class="math display">\[E[X] =\frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{\infty} \, x  \, e^{-\frac{x^2}{2}} \, dx\]</span></a></li>
-  <li><a href="#variance-of-a-standard-normal" id="toc-variance-of-a-standard-normal" class="nav-link" data-scroll-target="#variance-of-a-standard-normal"><span class="header-section-number">29.4</span> Variance of a Standard Normal</a></li>
-  <li><a href="#cdf-of-standard-normal" id="toc-cdf-of-standard-normal" class="nav-link" data-scroll-target="#cdf-of-standard-normal"><span class="header-section-number">29.5</span> CDF of Standard Normal</a></li>
-  <li><a href="#f_xx-int_-inftyx-frac1sqrt2-pi-e-fracx22-dx" id="toc-f_xx-int_-inftyx-frac1sqrt2-pi-e-fracx22-dx" class="nav-link" data-scroll-target="#f_xx-int_-inftyx-frac1sqrt2-pi-e-fracx22-dx"><span class="header-section-number">29.6</span> <span class="math display">\[F_X(x) = \int_{-\infty}^{x} \, \frac{1}{\sqrt{2 \pi}} \,  \, e^{-\frac{x^2}{2}} \, dx\]</span></a></li>
-  <li><a href="#normal-example" id="toc-normal-example" class="nav-link" data-scroll-target="#normal-example"><span class="header-section-number">29.7</span> Normal Example</a></li>
+  <li><a href="#variance-of-a-standard-normal" id="toc-variance-of-a-standard-normal" class="nav-link" data-scroll-target="#variance-of-a-standard-normal"><span class="header-section-number">29.3</span> Variance of a Standard Normal</a></li>
+  <li><a href="#cdf-of-standard-normal" id="toc-cdf-of-standard-normal" class="nav-link" data-scroll-target="#cdf-of-standard-normal"><span class="header-section-number">29.4</span> CDF of Standard Normal</a></li>
+  <li><a href="#normal-example" id="toc-normal-example" class="nav-link" data-scroll-target="#normal-example"><span class="header-section-number">29.5</span> Normal Example</a></li>
   </ul>
 </nav>
     </div>
@@ -486,18 +484,17 @@ window.Quarto = {
 </section>
 <section id="expected-value" class="level2" data-number="29.2">
 <h2 data-number="29.2" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">29.2</span> Expected Value</h2>
-<p>The expected value of a normally distributed random variable given <span class="math inline">\(X \sim N(0,1)\)</span> is</p>
+<p>The expected value of a normally distributed random variable given</p>
+<p><span class="math display">\[X \sim N(0,1)\]</span></p>
 <p><span class="math display">\[E[X] = \int_{-\infty}^{\infty} \, x \, f(x) \, dx\]</span></p>
 <p><span class="math display">\[E[X] = \int_{-\infty}^{\infty} \, x \, \frac{1}{\sqrt{2 \pi}} \, e^{-\frac{x^2}{2}} \, dx\]</span></p>
-</section>
-<section id="ex-frac1sqrt2-pi-int_-inftyinfty-x-e-fracx22-dx" class="level2" data-number="29.3">
-<h2 data-number="29.3" class="anchored" data-anchor-id="ex-frac1sqrt2-pi-int_-inftyinfty-x-e-fracx22-dx"><span class="header-section-number">29.3</span> <span class="math display">\[E[X] =\frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{\infty} \, x  \, e^{-\frac{x^2}{2}} \, dx\]</span></h2>
+<p><span class="math display">\[E[X] =\frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{\infty} \, x  \, e^{-\frac{x^2}{2}} \, dx\]</span></p>
 <p>Since <span class="math inline">\(d(-\frac{x^2}{2})=-xdx\)</span> then</p>
 <p><span class="math display">\[E[X] =\frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{\infty} \, e^{-\frac{x^2}{2}} \, d(-\frac{x^2}{2})\]</span></p>
 <p><span class="math display">\[E[X] =\frac{1}{\sqrt{2 \pi}} \,  [e^{-\frac{x^2}{2}}]_{-\infty}^{\infty} = 0\]</span></p>
 </section>
-<section id="variance-of-a-standard-normal" class="level2" data-number="29.4">
-<h2 data-number="29.4" class="anchored" data-anchor-id="variance-of-a-standard-normal"><span class="header-section-number">29.4</span> Variance of a Standard Normal</h2>
+<section id="variance-of-a-standard-normal" class="level2" data-number="29.3">
+<h2 data-number="29.3" class="anchored" data-anchor-id="variance-of-a-standard-normal"><span class="header-section-number">29.3</span> Variance of a Standard Normal</h2>
 <p>To find the variance of the standard normal, note that</p>
 <p><span class="math display">\[var(X) = E[X^2] - (E[X])^2 = E[X^2] = \int_{-\infty}^{\infty} \, x^2 \, f(x) \, dx\]</span></p>
 <p><span class="math display">\[var(X) = \frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{\infty} \, x^2 \,  \, e^{-\frac{x^2}{2}} \, dx\]</span></p>
@@ -508,12 +505,10 @@ window.Quarto = {
 <p>The variance of the standard normal probability distribution is equal to 1 because it is the equal to the integration of the standard normal PDF from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span>.</p>
 <p>Thus, we have shown that if <span class="math inline">\(X \sim N(0,1)\)</span> that <span class="math inline">\(E[X] = 0\)</span> and <span class="math inline">\(var(X) = 1\)</span>.</p>
 </section>
-<section id="cdf-of-standard-normal" class="level2" data-number="29.5">
-<h2 data-number="29.5" class="anchored" data-anchor-id="cdf-of-standard-normal"><span class="header-section-number">29.5</span> CDF of Standard Normal</h2>
+<section id="cdf-of-standard-normal" class="level2" data-number="29.4">
+<h2 data-number="29.4" class="anchored" data-anchor-id="cdf-of-standard-normal"><span class="header-section-number">29.4</span> CDF of Standard Normal</h2>
 <p>To find the CDF of the standard normal, we would need to integrate the PDF of the standard normal or</p>
-</section>
-<section id="f_xx-int_-inftyx-frac1sqrt2-pi-e-fracx22-dx" class="level2" data-number="29.6">
-<h2 data-number="29.6" class="anchored" data-anchor-id="f_xx-int_-inftyx-frac1sqrt2-pi-e-fracx22-dx"><span class="header-section-number">29.6</span> <span class="math display">\[F_X(x) = \int_{-\infty}^{x} \, \frac{1}{\sqrt{2 \pi}} \,  \, e^{-\frac{x^2}{2}} \, dx\]</span></h2>
+<p><span class="math display">\[F_X(x) = \int_{-\infty}^{x} \, \frac{1}{\sqrt{2 \pi}} \,  \, e^{-\frac{x^2}{2}} \, dx\]</span></p>
 <p>However, since this integral does not have a closed-form solution, this cannot be done and the values of the CDF are available through tables and software.</p>
 <p>The CDF of the standard normal is denoted with the <span class="math inline">\(\Phi\)</span> function or:</p>
 <p><span class="math display">\[\Phi(x) = P(Z \le x) = \frac{1}{\sqrt{2 \pi}} \, \int_{-\infty}^{x} \,   \, e^{-\frac{x^2}{2}} \, dx\]</span></p>
@@ -523,8 +518,8 @@ window.Quarto = {
 <li><p>Where <span class="math inline">\(\Phi(-x) = 1 - \Phi(x) \quad \forall x \, \in \,\mathbb{R}\)</span></p></li>
 </ul>
 </section>
-<section id="normal-example" class="level2" data-number="29.7">
-<h2 data-number="29.7" class="anchored" data-anchor-id="normal-example"><span class="header-section-number">29.7</span> Normal Example</h2>
+<section id="normal-example" class="level2" data-number="29.5">
+<h2 data-number="29.5" class="anchored" data-anchor-id="normal-example"><span class="header-section-number">29.5</span> Normal Example</h2>
 <p>Here we can use the <strong>dnorm</strong> function to generate probabilities that are then graphed to provide a visual representation of the normal distribution.</p>
 <p>The <strong>stat_function</strong> is part of <strong>ggplot2</strong> and allows use to superimpose a function on top of an existing plot.</p>
 <p>Here we generate 600 observations observations that are normally distributed using the <strong>rnorm</strong> function.</p>
