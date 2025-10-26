@@ -59,7 +59,7 @@ The following textbooks are available for free. Please select the links provided
 
 -   [6.1 – Uniform Probability Distributions](mod-6-1-uniform.qmd)
 -   [6.2 – Normal Probability Distributions](mod-6-2-normal.qmd)
-
+-   [6.3 – Exponential Probability Distributions](mod-6-3-exponential.qmd)
 
 ------------------------------------------------------------------------
 

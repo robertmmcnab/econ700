@@ -81,7 +81,18 @@
     "href": "index.html#module-06---continuous-probability-distributions",
     "title": "ECON 700",
     "section": "0.7 Module 06 - Continuous Probability Distributions",
-    "text": "0.7 Module 06 - Continuous Probability Distributions\n\n\nModule 6.0 - Module 6 Overview\n\n\nModule 6.1 - Uniform Probability Distributions\n\n\nModule 6.2 - Normal Probability Distributions\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.7 Module 06 - Continuous Probability Distributions\n\n\nModule 6.0 - Module 6 Overview\n\n\nModule 6.1 - Uniform Probability Distributions\n\n\nModule 6.2 - Normal Probability Distributions\n\n\nModule 6.3 - Exponential Probability Distributions",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-07---sampling-distributions",
+    "href": "index.html#module-07---sampling-distributions",
+    "title": "ECON 700",
+    "section": "0.8 Module 07 - Sampling Distributions",
+    "text": "0.8 Module 07 - Sampling Distributions\n\n\nModule 7.0 - Module 7 Overview\n\n\nModule 7.1 - Sampling\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -411,7 +422,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n51.8\n49.54\n50.14",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n47.64\n49.01\n51.04",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -1445,7 +1456,7 @@
     "href": "mod-3-3-correlation.html#fred-covariance",
     "title": "18  Correlation",
     "section": "18.6 FRED Covariance",
-    "text": "18.6 FRED Covariance\nIn the following code chunk, we want to estimate the covariance between the headline unemployment rate and the headline inflation rate.\nUsing the tidyquant package, we obtain the data from FRED.\nHowever, the data from FRED are in ‘long’ format, that is, one column contains symbols that identify the series and another column contains the values. We want to translate the data into ‘wide’ format, where each row (date) contains several columns of data.\nWe use the pivot_wider command to translate the data from long to wide format and then estimate the monthly inflation rate as the year-over-year change in the Consumer Price Index. Since the unemployment rate is not in decimal form, we divide the unemployment series by 100.\nWe then create a scatterplot before estimating the mean of each series and the covariance between the two series.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyverse)\nlibrary(tidyquant)\nlibrary(scales)\n\ndf_3 &lt;- tq_get(c('UNRATE', 'CPIAUCSL'),\n               get  = 'economic.data',\n               from = '1969-01-01') %&gt;%\n  pivot_wider(names_from = symbol, values_from = price) %&gt;%\n  mutate(inflation = (CPIAUCSL - lag(CPIAUCSL, 12)) / lag(CPIAUCSL, 12),\n         UNRATE    = UNRATE/100) %&gt;%\n  filter(!is.na(inflation))\n\nggplot(data = df_3, \n       aes(x = inflation, \n           y = UNRATE)) +\ngeom_point() +\nscale_x_continuous(labels = scales::percent) +\nscale_y_continuous(labels = scales::percent) +\ntheme_classic() +\nlabs(x = \"Inflation (YoY %)\",\n     y = \"Unemployment Rate (%)\",\n     title = \"Scatterplot of Inflation and Unemployment\")\n\n\n\n\n\n\n\ndf_4 &lt;- df_3 %&gt;%\n        summarize(mean_inf = mean(inflation),\n                  mean_unr = mean(UNRATE),\n                  cov_i_u  = cov(inflation, UNRATE))\n\nkable(df_4,\n      col.names = c('Mean Inflation',\n                    'Mean Unemploymnet',\n                    'Covariance Inflation and Unemployment'),\n      align     = 'c') %&gt;%\nkable_classic()\n\n\n\n\nMean Inflation\nMean Unemploymnet\nCovariance Inflation and Unemployment\n\n\n\n\n0.0400282\n0.0606632\n2.76e-05",
+    "text": "18.6 FRED Covariance\nIn the following code chunk, we want to estimate the covariance between the headline unemployment rate and the headline inflation rate.\nUsing the tidyquant package, we obtain the data from FRED.\nHowever, the data from FRED are in ‘long’ format, that is, one column contains symbols that identify the series and another column contains the values. We want to translate the data into ‘wide’ format, where each row (date) contains several columns of data.\nWe use the pivot_wider command to translate the data from long to wide format and then estimate the monthly inflation rate as the year-over-year change in the Consumer Price Index. Since the unemployment rate is not in decimal form, we divide the unemployment series by 100.\nWe then create a scatterplot before estimating the mean of each series and the covariance between the two series.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyverse)\nlibrary(tidyquant)\nlibrary(scales)\n\ndf_3 &lt;- tq_get(c('UNRATE', 'CPIAUCSL'),\n               get  = 'economic.data',\n               from = '1969-01-01') %&gt;%\n  pivot_wider(names_from = symbol, values_from = price) %&gt;%\n  mutate(inflation = (CPIAUCSL - lag(CPIAUCSL, 12)) / lag(CPIAUCSL, 12),\n         UNRATE    = UNRATE/100) %&gt;%\n  filter(!is.na(inflation))\n\nggplot(data = df_3, \n       aes(x = inflation, \n           y = UNRATE)) +\ngeom_point() +\nscale_x_continuous(labels = scales::percent) +\nscale_y_continuous(labels = scales::percent) +\ntheme_classic() +\nlabs(x = \"Inflation (YoY %)\",\n     y = \"Unemployment Rate (%)\",\n     title = \"Scatterplot of Inflation and Unemployment\")\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\ndf_4 &lt;- df_3 %&gt;%\n        summarize(mean_inf = mean(inflation),\n                  mean_unr = mean(UNRATE),\n                  cov_i_u  = cov(inflation, UNRATE))\n\nkable(df_4,\n      col.names = c('Mean Inflation',\n                    'Mean Unemploymnet',\n                    'Covariance Inflation and Unemployment'),\n      align     = 'c') %&gt;%\nkable_classic()\n\n\n\n\nMean Inflation\nMean Unemploymnet\nCovariance Inflation and Unemployment\n\n\n\n\n0.0400135\nNA\nNA",
     "crumbs": [
       "Covariance and Correlation",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
@@ -1511,7 +1522,7 @@
     "href": "mod-3-3-correlation.html#fred-correlation",
     "title": "18  Correlation",
     "section": "18.12 FRED Correlation",
-    "text": "18.12 FRED Correlation\nIn the code chunk below, we again retrieve the headline unemployment rate and headline inflation series from FRED.\nThis time, however, we create two new variables.\n\nInflation_2 is equal to the inflation series times 1000\nUnemployment_2 is equal to the unemployment series time 100\n\nWe then estimate the covariance between\n\nInflation and unemployment\nInflation_2 and unemployment\nInflation and unemployment_2\n\nThe results demonstrate that the covariance measure is dependent on the scale or units of measurement and that we can inflate (or deflate) the covariance measure by scaling one or both variables.\nWe then estimate four correlation coefficients:\n\nInflation and unemployment\nInflation_2 and unemployment\nInflation and unemployment_2\nInflation_2 and unemployment_2\n\nThe correlation coefficients are equal to each other. In other words, the correlation coefficient is invariant to the scale of the variables.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyverse)\nlibrary(tidyquant)\nlibrary(scales)\n\ndf_5 &lt;- tq_get(c('UNRATE', 'CPIAUCSL'),\n               get  = 'economic.data',\n               from = '1969-01-01') %&gt;%\n  pivot_wider(names_from = symbol, values_from = price) %&gt;%\n  mutate(inflation = (CPIAUCSL - lag(CPIAUCSL, 12)) / lag(CPIAUCSL, 12),\n         unrate    = UNRATE/100) %&gt;%\n  filter(!is.na(inflation)) %&gt;%\n  mutate(unrate_2 = unrate *100,\n         inflation_2 = inflation * 1000) %&gt;%\n  summarize(cov_i_u     = cov(inflation, unrate),\n            cov_i2_u    = cov(inflation_2, unrate),\n            cov_i_u2    = cov(inflation, unrate_2),\n            cor_i_u     = cor(inflation, unrate),\n            cor_i2_u    = cor(inflation_2, unrate),\n            cor_i_u2    = cor(inflation, unrate_2),\n            cor_i2_u2   = cor(inflation_2, unrate_2))\n\nkable(df_5,\n      align = 'c',\n      digits = 3,\n      col.names = c('COV(Inf, Unemp)', 'COV(Inf2, Unemp)',\n                    'COV(Inf, Unemp2)', 'COR(Inf,Unemp)',\n                    'COR(Inf2, Unemp)', 'COR(Inf, Unemp2)',\n                    'COR(Inf2, Unemp2)'))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCOV(Inf, Unemp)\nCOV(Inf2, Unemp)\nCOV(Inf, Unemp2)\nCOR(Inf,Unemp)\nCOR(Inf2, Unemp)\nCOR(Inf, Unemp2)\nCOR(Inf2, Unemp2)\n\n\n\n\n0\n0.028\n0.003\n0.056\n0.056\n0.056\n0.056",
+    "text": "18.12 FRED Correlation\nIn the code chunk below, we again retrieve the headline unemployment rate and headline inflation series from FRED.\nThis time, however, we create two new variables.\n\nInflation_2 is equal to the inflation series times 1000\nUnemployment_2 is equal to the unemployment series time 100\n\nWe then estimate the covariance between\n\nInflation and unemployment\nInflation_2 and unemployment\nInflation and unemployment_2\n\nThe results demonstrate that the covariance measure is dependent on the scale or units of measurement and that we can inflate (or deflate) the covariance measure by scaling one or both variables.\nWe then estimate four correlation coefficients:\n\nInflation and unemployment\nInflation_2 and unemployment\nInflation and unemployment_2\nInflation_2 and unemployment_2\n\nThe correlation coefficients are equal to each other. In other words, the correlation coefficient is invariant to the scale of the variables.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyverse)\nlibrary(tidyquant)\nlibrary(scales)\n\ndf_5 &lt;- tq_get(c('UNRATE', 'CPIAUCSL'),\n               get  = 'economic.data',\n               from = '1969-01-01') %&gt;%\n  pivot_wider(names_from = symbol, values_from = price) %&gt;%\n  mutate(inflation = (CPIAUCSL - lag(CPIAUCSL, 12)) / lag(CPIAUCSL, 12),\n         unrate    = UNRATE/100) %&gt;%\n  filter(!is.na(inflation)) %&gt;%\n  mutate(unrate_2 = unrate *100,\n         inflation_2 = inflation * 1000) %&gt;%\n  summarize(cov_i_u     = cov(inflation, unrate),\n            cov_i2_u    = cov(inflation_2, unrate),\n            cov_i_u2    = cov(inflation, unrate_2),\n            cor_i_u     = cor(inflation, unrate),\n            cor_i2_u    = cor(inflation_2, unrate),\n            cor_i_u2    = cor(inflation, unrate_2),\n            cor_i2_u2   = cor(inflation_2, unrate_2))\n\nkable(df_5,\n      align = 'c',\n      digits = 3,\n      col.names = c('COV(Inf, Unemp)', 'COV(Inf2, Unemp)',\n                    'COV(Inf, Unemp2)', 'COR(Inf,Unemp)',\n                    'COR(Inf2, Unemp)', 'COR(Inf, Unemp2)',\n                    'COR(Inf2, Unemp2)'))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCOV(Inf, Unemp)\nCOV(Inf2, Unemp)\nCOV(Inf, Unemp2)\nCOR(Inf,Unemp)\nCOR(Inf2, Unemp)\nCOR(Inf, Unemp2)\nCOR(Inf2, Unemp2)\n\n\n\n\nNA\nNA\nNA\nNA\nNA\nNA\nNA",
     "crumbs": [
       "Covariance and Correlation",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Correlation</span>"
@@ -2358,7 +2369,7 @@
     "href": "mod-5-3-poisson.html#the-r-function-in-r",
     "title": "26  Poisson Distribution",
     "section": "26.10 The R Function in R",
-    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n52\n15\n13.394463\n\n\n59\n12\n7.307335\n\n\n52\n10\n6.743377\n\n\n44\n7\n10.501478\n\n\n49\n7\n8.276433",
+    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n50\n15\n12.425028\n\n\n48\n9\n10.903115\n\n\n47\n14\n12.312116\n\n\n58\n10\n11.355071\n\n\n44\n9\n8.630319",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
@@ -2424,7 +2435,7 @@
     "href": "mod-6-0-overview.html#lessons-in-this-module",
     "title": "27  Module 6 Overview",
     "section": "27.5 Lessons in this Module",
-    "text": "27.5 Lessons in this Module\n\n6.1 – Uniform Probability Distributions\n6.2 – Normal Probability Distributions\n\n\nNext: Start with Uniform Probability Distributions.",
+    "text": "27.5 Lessons in this Module\n\n6.1 – Uniform Probability Distributions\n6.2 – Normal Probability Distributions\n6.3 – Exponential Probability Distributions\n\n\nNext: Start with Uniform Probability Distributions.",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>27</span>  <span class='chapter-title'>Module 6 Overview</span>"
@@ -2556,7 +2567,7 @@
     "href": "mod-6-1-uniform.html#random-uniform",
     "title": "28  Uniform Distributions",
     "section": "28.11 Random Uniform",
-    "text": "28.11 Random Uniform\nrunif generates random deviates using the uniform PDF.\nGiven \\(a\\) and \\(b\\), we can generate 5 observations from a uniform distribution.\nIn this example, we use a loop to generate 3 sets of random observations from a uniform distribution with \\(a = 30\\) and \\(b = 70\\).\n\nrm(list = ls())\n\nlibrary(tidyverse)\nlibrary(kableExtra)\n\na &lt;- 30\nb &lt;- 70\n\n# Generate 3 columns of 5 uniform random observations\nran_unif &lt;- as_tibble(\n  replicate(3, runif(5, min = a, max = b)),\n    .name_repair = ~ paste0(\"Sample_\", seq_along(.))) %&gt;%\n    mutate(Observation = paste0(\"Observation_\", row_number())) %&gt;%\n    relocate(Observation)\n\nkable(ran_unif,\n      align     = \"c\",\n      caption   = \"Uniform Random Observations\",\n      col.names = c(\"Observation\", \"Sample 1\", \"Sample 2\", \"Sample 3\")) %&gt;%\nkable_styling(font_size = 12)\n\n\nUniform Random Observations\n\n\nObservation\nSample 1\nSample 2\nSample 3\n\n\n\n\nObservation_1\n59.05405\n54.30727\n61.93917\n\n\nObservation_2\n56.29969\n41.98346\n50.58727\n\n\nObservation_3\n56.48285\n65.60834\n53.04380\n\n\nObservation_4\n40.39665\n51.92466\n53.03893\n\n\nObservation_5\n68.99726\n41.62788\n63.77473",
+    "text": "28.11 Random Uniform\nrunif generates random deviates using the uniform PDF.\nGiven \\(a\\) and \\(b\\), we can generate 5 observations from a uniform distribution.\nIn this example, we use a loop to generate 3 sets of random observations from a uniform distribution with \\(a = 30\\) and \\(b = 70\\).\n\nrm(list = ls())\n\nlibrary(tidyverse)\nlibrary(kableExtra)\n\na &lt;- 30\nb &lt;- 70\n\n# Generate 3 columns of 5 uniform random observations\nran_unif &lt;- as_tibble(\n  replicate(3, runif(5, min = a, max = b)),\n    .name_repair = ~ paste0(\"Sample_\", seq_along(.))) %&gt;%\n    mutate(Observation = paste0(\"Observation_\", row_number())) %&gt;%\n    relocate(Observation)\n\nkable(ran_unif,\n      align     = \"c\",\n      caption   = \"Uniform Random Observations\",\n      col.names = c(\"Observation\", \"Sample 1\", \"Sample 2\", \"Sample 3\")) %&gt;%\nkable_styling(font_size = 12)\n\n\nUniform Random Observations\n\n\nObservation\nSample 1\nSample 2\nSample 3\n\n\n\n\nObservation_1\n40.11520\n32.40476\n52.81805\n\n\nObservation_2\n37.76135\n50.72458\n62.91796\n\n\nObservation_3\n49.18019\n48.98697\n48.30731\n\n\nObservation_4\n67.78729\n44.87748\n51.86616\n\n\nObservation_5\n68.94650\n46.59161\n53.01598",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
@@ -2585,17 +2596,6 @@
     ]
   },
   {
-    "objectID": "mod-6-2-normal.html#ex-frac1sqrt2-pi-int_-inftyinfty-x-e-fracx22-dx",
-    "href": "mod-6-2-normal.html#ex-frac1sqrt2-pi-int_-inftyinfty-x-e-fracx22-dx",
-    "title": "29  Normal Distributions",
-    "section": "29.3 \\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, x  \\, e^{-\\frac{x^2}{2}} \\, dx\\]",
-    "text": "29.3 \\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, x  \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nSince \\(d(-\\frac{x^2}{2})=-xdx\\) then\n\\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{\\infty} \\, e^{-\\frac{x^2}{2}} \\, d(-\\frac{x^2}{2})\\]\n\\[E[X] =\\frac{1}{\\sqrt{2 \\pi}} \\,  [e^{-\\frac{x^2}{2}}]_{-\\infty}^{\\infty} = 0\\]",
-    "crumbs": [
-      "Continuous Probability",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
-    ]
-  },
-  {
     "objectID": "mod-6-2-normal.html#variance-of-a-standard-normal",
     "href": "mod-6-2-normal.html#variance-of-a-standard-normal",
     "title": "29  Normal Distributions",
@@ -2618,88 +2618,11 @@
     ]
   },
   {
-    "objectID": "mod-6-2-normal.html#f_xx-int_-inftyx-frac1sqrt2-pi-e-fracx22-dx",
-    "href": "mod-6-2-normal.html#f_xx-int_-inftyx-frac1sqrt2-pi-e-fracx22-dx",
-    "title": "29  Normal Distributions",
-    "section": "29.6 \\[F_X(x) = \\int_{-\\infty}^{x} \\, \\frac{1}{\\sqrt{2 \\pi}} \\,  \\, e^{-\\frac{x^2}{2}} \\, dx\\]",
-    "text": "29.6 \\[F_X(x) = \\int_{-\\infty}^{x} \\, \\frac{1}{\\sqrt{2 \\pi}} \\,  \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nHowever, since this integral does not have a closed-form solution, this cannot be done and the values of the CDF are available through tables and software.\nThe CDF of the standard normal is denoted with the \\(\\Phi\\) function or:\n\\[\\Phi(x) = P(Z \\le x) = \\frac{1}{\\sqrt{2 \\pi}} \\, \\int_{-\\infty}^{x} \\,   \\, e^{-\\frac{x^2}{2}} \\, dx\\]\nWhere \\(lim_{x \\rightarrow \\infty} \\Phi(x) = 1\\) and \\(lim_{x \\rightarrow -\\infty} \\Phi(x) = 0\\)\n\nWhere \\(\\Phi(0) = 1/2\\)\nWhere \\(\\Phi(-x) = 1 - \\Phi(x) \\quad \\forall x \\, \\in \\,\\mathbb{R}\\)",
-    "crumbs": [
-      "Continuous Probability",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
-    ]
-  },
-  {
-    "objectID": "mod-6-2-normal.html#normal-example",
-    "href": "mod-6-2-normal.html#normal-example",
-    "title": "29  Normal Distributions",
-    "section": "29.6 Normal Example",
-    "text": "29.6 Normal Example\nAssume that IQ scores are normally distributed with a mean of 100 and a standard deviation of 15.\n\nWhat is the percentage of people with an IQ score less than or equal to 125?\nWhat is the percentage of people with an IQ score greater than or equal 110?\nWhat is the percentage of people with an IQ score between 110 and 125?\nWhat IQ score separates the lower 25% from the others or \\(P_{25}\\)?\nWhat IQ score separates the top 10% from the others or \\(P_{90}\\)?\n\n\nrm(list = ls())\n\nmean_iq &lt;- 100\nsd_iq &lt;- 15\n\nnormal_1 &lt;- tibble(p_le_125  &lt;- pnorm(125, mean = 100, sd = 15),\n                   p_ge_110  &lt;- pnorm(110, mean = 100, sd = 15, \n                                  lower.tail = FALSE),\n                   p_110_125 &lt;- pnorm(125,100,15) - pnorm(110, 100, 15),\n                   q_25      &lt;- qnorm(.25,100,15),\n                   q_10      &lt;- qnorm(.90,100,15))\n\n\nkable(normal_1,\n      align     = 'c',\n      digits    = 3,\n      caption   = 'Normal Distribution Example',\n      col.names = c(\"P(X &lt;= 125)\", \"P(X &gt;= 110)\", \n                    \"P(110 &lt;= X &lt;= 125)\",\n                    \"P(0.25)\", \"P(0.90)\")) %&gt;%\nkable_styling(font_size = 12)\n\n\nNormal Distribution Example\n\n\nP(X &lt;= 125)\nP(X &gt;= 110)\nP(110 &lt;= X &lt;= 125)\nP(0.25)\nP(0.90)\n\n\n\n\n0.952\n0.252\n0.205\n89.883\n119.223",
-    "crumbs": [
-      "Continuous Probability",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
-    ]
-  },
-  {
     "objectID": "mod-6-2-normal.html#normal-plot",
     "href": "mod-6-2-normal.html#normal-plot",
     "title": "29  Normal Distributions",
     "section": "29.5 Normal Plot",
     "text": "29.5 Normal Plot\nWe can use the dnorm function to generate probabilities that are then graphed to provide a visual representation of the normal distribution.\nThe stat_function is part of ggplot2 and allows use to superimpose a function on top of an existing plot.\nHere we generate 600 observations observations that are normally distributed using the rnorm function.\nWe then generate the density plot using for a normal distribution with \\(\\mu = 500\\) and \\(\\sigma = 100\\).\n\nrm(list = ls())\n\nset.seed(2525)\n\ndf_norm &lt;- tibble(x = rnorm(600, mean = 500, sd = 100))\n\nggplot(data = df_norm, \n       aes(x),\n       size  = 1.2) +\ngeom_density(linewidth = 1.2,\n             color = \"dark blue\") +\nstat_function(fun  = dnorm,\n              args  = list(mean = 500, sd = 100),\n              linewidth  = 1.2,\n              color = \"red\") +\ntheme_minimal() +\nlabs(x = \"x\",\n     y = \"Density\")",
-    "crumbs": [
-      "Continuous Probability",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
-    ]
-  },
-  {
-    "objectID": "mod-6-2-normal.html#normal-example-1",
-    "href": "mod-6-2-normal.html#normal-example-1",
-    "title": "29  Normal Distributions",
-    "section": "29.7 Normal Example",
-    "text": "29.7 Normal Example\nSAT scores are distributed normally with a mean score of 1150 and a standard deviation of 150 points.\nWhat is the probability of an SAT score exceeding 1380?\nWe can tackle this several ways.\nFirst, we can estimate the Z-score for 1380 given \\(\\mu = 1150\\) and \\(\\sigma = 150\\) or:\n\\[\nZ = \\frac{x - \\mu}{\\sigma} = \\frac{1380 - 1150}{150} = 1.53\n\\]\nWe can use the pnorm function in area with lower.tail = FALSE to estimate, for a standard normal distribution, the probability that Z is less than or equal to 1.53. We can then use this probability to estimate the probability that Z is greater than 1.53.\n\\[\nP(Z \\le 1.53) = 0.937\n\\]\n\\[\nP(Z &gt; 1.53) = 1 - P(Z \\le 1.53) = 1 - 0.937 - 0.063\n\\]\nThe code chunk below does the following:\n\nDeclares the mean, standard deviation, and value of interest for \\(x\\)\nEstimates the Z-score for \\(x\\) given \\(\\mu\\) and \\(\\sigma\\)\nEstimates \\(P(Z)\\)\nEstimates \\(1-P(Z)\\) which is equivalent to \\(P(X&gt;1380)\\)\nEstimates \\(1- P(Z)\\) using the lower.tail = FALSE option\nEstimates \\(P(X &gt; 1380)\\) directly\n\nThe code chunk then creates a graphic that corresponds to the normal distribution with a mean of 1150 and a standard deviation of 150 and identifies the region where \\(P(X &gt;1380)\\).\n\nCreate a tibble where \\(X\\) is a sequence of numbers, where the sequence of numbers is from 4 standard deviations to the left of the mean to 4 standard deviations to the right of the mean\nUsing \\(X\\), create \\(Y\\) where \\(Y\\) is equal to \\(P(X = x)\\)\nCreate a tibble which only has values where \\(X \\ge 1380\\)\nPlots the resulting normal distribution\nPlots the shaded area representing \\(P(X &gt; 1380)\\)\n\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\nmu = 1150\nsigma = 150\nx = 1380\n\nnorm &lt;- tibble(z = (x-mu)/sigma,\n               p_1 &lt;- pnorm(z, 0, 1),\n               p_2 &lt;- 1-pnorm(z, 0, 1),\n               p_3 &lt;- pnorm(z, 0, 1, lower.tail = FALSE),\n               p_4 &lt;- pnorm(x, mu, sigma, lower.tail = FALSE))\n\nkable(norm,\n      align  = 'c',\n      digits = 4,\n      col.names = c('Z', 'P(Z)', '1-P(Z)', '1-P(Z)', 'P(X &gt; 1380')) %&gt;%\nkable_classic()\n               \n\n# Create data for the normal curve\ncurve_data &lt;- tibble(X = seq(mu - 4 * sigma, \n                             mu + 4 * sigma, length.out = 1000),\n                     Y = dnorm(X, mean = mu, sd = sigma))\n\n# Data for shaded region (right tail)\nshade_data &lt;- curve_data %&gt;%\n              filter(X &gt;= x)\n\n# Plot\nggplot(curve_data, \n       aes(x = X, \n           y = Y)) +\ngeom_line(linewidth = 1, color = \"steelblue\") +\ngeom_area(data = shade_data, \n          aes(x = X, \n              y = Y),\n          fill = \"steelblue\", \n          alpha = 0.4) +\ngeom_vline(xintercept = x, \n           linetype = \"dashed\", \n           color = \"red\") +\nannotate(\"text\", \n         x = x + 40, \n         y = 0.001,\n         label = paste0(\"P(X &gt; 1380) = \",\n         round(pnorm(x, mu, sigma, lower.tail = FALSE), 4)),\n         hjust = 0, \n         color = \"black\") +\nlabs(title = \"Normal Distribution with Shaded Tail Where P(X&gt;1380)\",\n     x = \"X\",\n     y = \"Density\") +\ntheme_minimal(base_size = 12)\n\n\n\n\n\n\n\n\n\n\n\nZ\nP(Z)\n1-P(Z)\n1-P(Z)\nP(X &gt; 1380\n\n\n\n\n1.5333\n0.9374\n0.0626\n0.0626\n0.0626",
-    "crumbs": [
-      "Continuous Probability",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
-    ]
-  },
-  {
-    "objectID": "mod-6-2-normal.html#normal-probability-distirbution",
-    "href": "mod-6-2-normal.html#normal-probability-distirbution",
-    "title": "29  Normal Distributions",
-    "section": "29.8 Normal Probability Distirbution",
-    "text": "29.8 Normal Probability Distirbution\nFor a given random variable x, the dnorm function returns the value of the probability density function (PDF) of the normal distribution with mean \\(\\mu\\) and standard deviation \\(\\sigma\\).\nWe can generate a sequence of numbers from 1 to 100 and generate the value of the PDF for each of these numbers given that we have assumed that \\(\\mu = 50\\) and \\(\\sigma = 3.5\\). We also generate a second set of probabilities, however, these are using \\(\\mu = 50\\) and \\(\\sigma = 1.5\\).\nWe can also use stat_function to compute and draw a function of a continuous curve. Here we compare the distribution where \\(\\mu = 50\\) and \\(\\sigma = 3.5\\) with \\(\\mu =45\\) and \\(\\sigma = 4.5\\).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Continuous Probability",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
-    ]
-  },
-  {
-    "objectID": "mod-6-2-normal.html#cumulative-density-functions",
-    "href": "mod-6-2-normal.html#cumulative-density-functions",
-    "title": "29  Normal Distributions",
-    "section": "29.9 Cumulative Density Functions",
-    "text": "29.9 Cumulative Density Functions\nThe cumulative density function (CDF) of the normal distribution is used to answer such questions as \\(P(X \\le x)\\) and \\(P(X &gt; x)\\) and can be thought of as the area underneath the normal distribution curve at \\(x\\).\nFor example, if the mean height of students at a school is 68 inches and the standard deviation is 4.25 inches, what is the probability of observing a student with a height greater than 75 inches?\n\\[P(X &gt; 75) = 1 - P(X \\le 75)\\]\nThe probability of observing a student with a height greater than 75 includes is 0.05 (or 95% of students have heights 75 inches and less).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nLet’s say we want to find \\(P(a \\le x \\le b)\\) with respect to a normal distribution. Here again we can use the pnorm function to estimate this probability.\nUsing the previous example, what is the probability of observing a student with a height between 63 and 67 inches given that \\(\\mu = 68\\) and \\(\\sigma = 4.25\\)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Continuous Probability",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
-    ]
-  },
-  {
-    "objectID": "mod-6-2-normal.html#shading-part-of-a-curve",
-    "href": "mod-6-2-normal.html#shading-part-of-a-curve",
-    "title": "29  Normal Distributions",
-    "section": "29.10 Shading part of a curve",
-    "text": "29.10 Shading part of a curve\nIn the code below, we create a wrapper function. We first set the lower and upper bounds (defined in the previous example). The function uses values of x and the PDF of a normal distribution where \\(\\mu = 68\\) and \\(\\sigma = 4.25\\).\nWhen x is below the lower bound, the function returns “NA” values. When is between the bounds, it evaluates dnorm(x, mu, sigma) and returns the value of the PDF at x and assigns the value to y.\nWe can then use the stat_function argument to plot the normal distribution and then use stat_function again to map an area that is filled in.\nNote that the dnorm_limit function will return values that correspond to the PDF of the normal within the lower and upper bound and it will have “NA” values outside the bounds. So, you end up plotting a shaded area that corresponds to the previous example.\n\nmu = 68\nsd = 4.25\n\n#Create a limiting function\n\nlower_bound &lt;- 63\nupper_bound &lt;- 67\n\ndnorm_limit &lt;- function(x) {\n    y &lt;- dnorm(x, mean = mu, sd = sd)\n    y[x &lt; lower_bound  |  x &gt; upper_bound] &lt;- NA\n    return(y)\n}\n\n# ggplot() with dummy data\n \nggplot(data.frame(x = c(50, 90)), \n       aes(x = x)) +\n  stat_function(fun = dnorm, args = list(mean = mu, sd = sd)) +\n  stat_function(fun = dnorm_limit, geom = \"area\", fill = \"blue\", alpha = 0.2) +\nscale_y_continuous(labels   = scales::label_number(a=0.01),\n                   limits   = c(0,0.1),\n                   n.breaks = 10 ) +\ntheme_minimal() +\ntheme(legend.position = \"\") +\nlabs(x = \"X\",\n     y = \"P(X)\")",
-    "crumbs": [
-      "Continuous Probability",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
-    ]
-  },
-  {
-    "objectID": "mod-6-2-normal.html#inverse-cumulative-density-function",
-    "href": "mod-6-2-normal.html#inverse-cumulative-density-function",
-    "title": "29  Normal Distributions",
-    "section": "29.11 Inverse Cumulative Density Function",
-    "text": "29.11 Inverse Cumulative Density Function\nThe inverse cumulative density function gives the value associated with a specific cumulative probability. Use the inverse CDF to determine the value of the variable associated with a specific probability.\nFor example, we want to know the 90th percentile in height in the previous example, that is,\n\\[P(X \\le x) = .9\\]\nIt turns out the answer is 73.447.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
@@ -2750,6 +2673,17 @@
     ]
   },
   {
+    "objectID": "mod-6-2-normal.html#shading-part-of-a-curve",
+    "href": "mod-6-2-normal.html#shading-part-of-a-curve",
+    "title": "29  Normal Distributions",
+    "section": "29.10 Shading part of a curve",
+    "text": "29.10 Shading part of a curve\nIn the code below, we create a wrapper function. We first set the lower and upper bounds (defined in the previous example). The function uses values of x and the PDF of a normal distribution where \\(\\mu = 68\\) and \\(\\sigma = 4.25\\).\nWhen x is below the lower bound, the function returns “NA” values. When is between the bounds, it evaluates dnorm(x, mu, sigma) and returns the value of the PDF at x and assigns the value to y.\nWe can then use the stat_function argument to plot the normal distribution and then use stat_function again to map an area that is filled in.\nNote that the dnorm_limit function will return values that correspond to the PDF of the normal within the lower and upper bound and it will have “NA” values outside the bounds. So, you end up plotting a shaded area that corresponds to the previous example.\n\nmu = 68\nsd = 4.25\n\n#Create a limiting function\n\nlower_bound &lt;- 63\nupper_bound &lt;- 67\n\ndnorm_limit &lt;- function(x) {\n    y &lt;- dnorm(x, mean = mu, sd = sd)\n    y[x &lt; lower_bound  |  x &gt; upper_bound] &lt;- NA\n    return(y)\n}\n\n# ggplot() with dummy data\n \nggplot(data.frame(x = c(50, 90)), \n       aes(x = x)) +\n  stat_function(fun = dnorm, args = list(mean = mu, sd = sd)) +\n  stat_function(fun = dnorm_limit, geom = \"area\", fill = \"blue\", alpha = 0.2) +\nscale_y_continuous(labels   = scales::label_number(a=0.01),\n                   limits   = c(0,0.1),\n                   n.breaks = 10 ) +\ntheme_minimal() +\ntheme(legend.position = \"\") +\nlabs(x = \"X\",\n     y = \"P(X)\")",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
+    ]
+  },
+  {
     "objectID": "mod-6-2-normal.html#inverse-cdf-example",
     "href": "mod-6-2-normal.html#inverse-cdf-example",
     "title": "29  Normal Distributions",
@@ -2758,6 +2692,193 @@
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>29</span>  <span class='chapter-title'>Normal Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-3-exponential.html",
+    "href": "mod-6-3-exponential.html",
+    "title": "30  Exponential Distributions",
+    "section": "",
+    "text": "30.1 Exponential Distribution\nThe exponential probability distribution is the probability distribution of the time between events in a Poisson process.\nAn assumption is that events occur continuously and independently at a constant average rate\nThe exponential probability distribution is memoryless, that is, the distribution of ‘waiting time’ until a certain event does not depend on how much time has elasped.\n\\[P(X &gt; s+t | X &gt; t) = P(X &gt; s)\\]\nThe probability density function of the exponential probability distribution is: \\[P(x;\\lambda) = \\lambda \\, e^{-\\lambda \\, x} \\quad \\forall \\, x \\ge 0\\]\n\\[P(x;\\lambda) = 0 \\quad \\forall \\, x &lt; 0\\]\n\\(\\lambda\\) is the parameter of the distribution and can be thought of as the rate parameter.",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exponential Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-3-exponential.html#exponential-properties",
+    "href": "mod-6-3-exponential.html#exponential-properties",
+    "title": "30  Exponential Distributions",
+    "section": "30.2 Exponential Properties",
+    "text": "30.2 Exponential Properties\nLet \\(\\mu\\) be the expected value or mean of the exponential probability distribution.\nLet \\(\\mu\\) also be defined in terms of the rate parameter \\(\\lambda\\) or:\n\\[E[x] = \\mu = \\frac{1}{\\lambda}\\]\n\\[var(x) = \\frac{1}{\\lambda^2}\\]\nThe PDF of the exponential distribution can also be stated as:\n\\[f(x;\\mu) = \\frac{1}{\\mu} \\, e^{-(x/ \\mu)} \\quad \\forall \\, x \\ge 0, \\quad 0 \\, \\text{otherwise}\\]\nGiven this discussion, we can state the CDF of the exponential distribution in two ways:\n\\[F(x;\\lambda) = \\int_{-\\infty}^{x} \\, f(x) dx = 1 - e^{\\lambda \\, x} \\quad \\forall \\, x \\ge 0, \\quad 0 \\, \\text{otherwise}\\]\n\\[F(x;\\mu) = 1 - e^{-x_o / \\mu} \\quad \\forall \\, x \\ge 0, \\quad 0 \\, \\text{otherwise}\\]",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exponential Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-3-exponential.html#exponential-example",
+    "href": "mod-6-3-exponential.html#exponential-example",
+    "title": "30  Exponential Distributions",
+    "section": "30.3 Exponential Example",
+    "text": "30.3 Exponential Example\nAssume the time a customer spends in a bank is exponentially distributed with mean 15 minutes\n\nWhat is the probability that a customer spends less than six minutes in the bank?\nWhat is the probability that a customer spends more than 20 minutes?\nWhat is the probability that a customer spends between 12 and 18 minutes?\nWhat the number of minutes that separates the lowest 20% of customers from the others?\nWhat is the number of minutes that separates the top 15% of customers from the others?\n\n\nrm(list = ls())\n\nset.seed(123)\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\nmu = 15\nlambda = 1/mu\n\nexp_1 &lt;- tibble(q1 &lt;- pexp(6, lambda, lower.tail = TRUE),\n                q2 &lt;- pexp(20, lambda, lower.tail = FALSE),\n                q3 &lt;- pexp(18, lambda, lower.tail = TRUE) -\n                      pexp(12, lambda, lower.tail = TRUE),\n                q4 &lt;- qexp(0.2, lambda, lower.tail = TRUE),\n                q5 &lt;- qexp(0.86, lambda, lower.tail = FALSE))\n\nkable(exp_1,\n      align     = 'c',\n      digits    = 3,\n      caption   = 'Exponential Distribution Example',\n      col.names = c('P(X &lt; 6)', \n                    'P(X &gt; 20)', \n                    'P(12 &lt; X &lt; 18)',\n                    'P(20)', \n                    'P(85)')) %&gt;%\nkable_styling(font_size = 12)\n\n\nExponential Distribution Example\n\n\nP(X &lt; 6)\nP(X &gt; 20)\nP(12 &lt; X &lt; 18)\nP(20)\nP(85)\n\n\n\n\n0.33\n0.264\n0.148\n3.347\n2.262",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exponential Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-3-exponential.html#random-exponential",
+    "href": "mod-6-3-exponential.html#random-exponential",
+    "title": "30  Exponential Distributions",
+    "section": "30.4 Random Exponential",
+    "text": "30.4 Random Exponential\nrexp generates random deviates using the exponential PDF.\nThe constant rate \\(\\lambda\\) describes the arrival rate per each time unit.\nWe can simulate arrival times \\(x\\) arriving at rate \\(\\lambda = 15\\) per time unit.\nWe simulate 3 columns of random exponential observations.\nNote that \\(E[x] = \\mu = 1\\lambda = 1/15 = 0.067\\)\n\nrm(list = ls())\n\nset.seed(123)\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\nexp_list &lt;- list()\n\nlambda &lt;- 15\n\nran_exp &lt;- tibble(replicate(3, rexp(5, lambda)))\n\nkable(ran_exp[1:5,],\n      align     = 'c',\n      caption   = 'Exponential Random Observations',\n      col.names = c('1', '2', '3')) %&gt;%\nkable_styling(font_size = 12)\n\n\nExponential Random Observations\n\n\n1\n2\n3\n\n\n\n\n0.056230484\n0.021100081\n0.066988671\n\n\n0.038440685\n0.020948486\n0.032014315\n\n\n0.088603658\n0.009684454\n0.018734242\n\n\n0.002105157\n0.181749098\n0.025141189\n\n\n0.003747398\n0.001943563\n0.012552269",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exponential Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-3-exponential.html#exponential-plot",
+    "href": "mod-6-3-exponential.html#exponential-plot",
+    "title": "30  Exponential Distributions",
+    "section": "30.5 Exponential Plot",
+    "text": "30.5 Exponential Plot\nHere we can use the dexp function to generate probabilities that are then graphed to provide a visual representation of the exponential distribution.\nWe generate observations that are exponentially distributed using the rexp function with \\(\\lambda = 5\\)\nRecall that this means that \\(E(x) = \\mu = 1/\\lambda = 1/5\\).\nWe compare that to the exponential distribution where \\(\\lambda = 10\\).\n\nrm(list = ls())\n\nset.seed(123)\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\nlambda = 5\n\ndf_exp &lt;- tibble(x = seq(0,1, by = 0.001),\n                 y = dexp(x, rate = 5))\n\nggplot(data = df_exp, \n       aes(x = x,\n           y = y)) +\ngeom_line(linewidth = 1.2,\n          color = \"dark blue\") +\nstat_function(fun = dexp,\n              args = list(rate = 10),\n              color = \"red\") +\ntheme_minimal() +\nlabs(x = \"x\",\n     y = \"f(x)\")",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exponential Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-6-3-exponential.html#wrapping-up",
+    "href": "mod-6-3-exponential.html#wrapping-up",
+    "title": "30  Exponential Distributions",
+    "section": "30.6 Wrapping Up",
+    "text": "30.6 Wrapping Up\nA continuous probability distribution is where the random variable X can take on any value.\nSince there are infinite values for X, the probability of X taking on a specific value is 0, that is, \\(P(X = x) = 0\\).\nInstead, we often examine the probability of \\(P(X \\le x)\\) or \\(P(X &gt; x)\\).\nThere are numerous continuous probability distributions, we examined the uniform, normal, and exponential probability distributions.\nThe most commonly used continuous probability distribution is the normal distribution.\nWe have used the empirical rule, that is, 68%-95%-99.7% rule to discuss the proportion of observations that lie within 1,2,and 3 standard deviations of the mean.\nWe can now be much more precise with regards to this question.",
+    "crumbs": [
+      "Continuous Probability",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exponential Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-0-overview.html",
+    "href": "mod-7-0-overview.html",
+    "title": "31  Module 7 Overview",
+    "section": "",
+    "text": "31.1 Introduction\nWelcome to Module 7 of ECON 700.\nThis module introduces the concepts of sampling and sampling distributions, emphasizing how samples drawn from populations form the basis for statistical inference. Students begin by exploring different sampling methods and learn how sampling variability arises. The module demonstrates that while each sample may differ, the sampling distribution of the sample mean or proportion has predictable properties that enable estimation of population parameters. Learners use simulations and R-based visualizations to see how the shape and spread of sampling distributions change with sample size and variability in the population.\nBuilding on these concepts, the module introduces the Central Limit Theorem (CLT) and its foundational role in inferential statistics. Students discover how, regardless of the population distribution, the sampling distribution of the mean approaches a normal distribution as sample size increases. The module applies these principles to compute the standard error, evaluate probabilities for sample means and proportions, and interpret results within real-world economic and data-driven contexts. By the end, students understand how sampling distributions link descriptive statistics to inferential conclusions about populations.",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Module 7 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-0-overview.html#learning-objectives",
+    "href": "mod-7-0-overview.html#learning-objectives",
+    "title": "31  Module 7 Overview",
+    "section": "31.2 Learning Objectives",
+    "text": "31.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nMLO 1: Explain the purpose and importance of sampling in statistical inference.\nMLO 2: Differentiate among simple random, stratified, and cluster sampling techniques\nMLO 3: Describe how sampling variability affects sample statistics and their relationship to population parameters.\nMLO 4: Apply the Central Limit Theorem to explain the behavior of sampling distributions for means and proportions.\nMLO 5: Calculate and interpret the standard error of sample means and proportions.\nMLO 6: Use R to simulate and visualize sampling distributions and assess how sample size influences variability and normality.",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Module 7 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-0-overview.html#required-texts",
+    "href": "mod-7-0-overview.html#required-texts",
+    "title": "31  Module 7 Overview",
+    "section": "31.3 Required Texts",
+    "text": "31.3 Required Texts\nThe following textbooks are available for free. Please select the links provided to access.\n\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. Chapter 5 - 7.\nRafael Irizarry. (2025). Introduction to Data Science: Data Wrangling and Visualization with R. Chapters 1-2.\nHadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund. (2025) R for Data Science. Sections 1-19.\nOnline R documentation\nRStudio Cheat Sheets",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Module 7 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-0-overview.html#activities",
+    "href": "mod-7-0-overview.html#activities",
+    "title": "31  Module 7 Overview",
+    "section": "31.4 Activities",
+    "text": "31.4 Activities\n\nComplete the hands-on coding exercises embedded in each lesson (MLO 3)\n\nComplete the weekly class assignment (MLO 1 - MLO 6)\n\nParticipate in the discussion form (MLO 3 - MLO 5)\n\nTake the weekly knowledge quiz (MLO 1 - MLO 6)",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Module 7 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-0-overview.html#lessons-in-this-module",
+    "href": "mod-7-0-overview.html#lessons-in-this-module",
+    "title": "31  Module 7 Overview",
+    "section": "31.5 Lessons in this Module",
+    "text": "31.5 Lessons in this Module\n\n7.1 – Sampling\n\n\nNext: Start with Sampling.",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Module 7 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-1-sampling.html",
+    "href": "mod-7-1-sampling.html",
+    "title": "32  Sampling",
+    "section": "",
+    "text": "32.1 Terminology\nAn element is the entity on which data are collected.\nA population is a collection of all the elements of interest.\nA sample is a subset of the population.\nThe sampled population is the population from which the sample is drawn\nA frame is a list of elements from which the sample will be selected.\nA sample provides estimates of the population characteristics.\nThe question is whether the sample estimates are representative of the population characteristics?\nTo answer this question, we need to ask what sampling methods produce “reliable” estimates?",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Sampling</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-1-sampling.html#sampling-from-a-finite-population",
+    "href": "mod-7-1-sampling.html#sampling-from-a-finite-population",
+    "title": "32  Sampling",
+    "section": "32.2 Sampling from a Finite Population",
+    "text": "32.2 Sampling from a Finite Population\nLet \\(N\\) be the population size where \\(N &lt; \\infty\\) so \\(N\\) is finite.\nLet \\(n\\) be the sample size where \\(n \\le N\\).\nA simple random sample of size \\(n\\) from a finite population of size \\(N\\) is a sample selected such that each possible sample of size \\(n\\) has the same probability of being selected.\nWe can sample with replacement, however, sampling without replacement is more typically used.\nThe number of different samples of size \\(n\\) that can be drawn from the population of size \\(N\\) is: \\[\\frac{N!}{n!(N-n)!}\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Sampling</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-1-sampling.html#finite-population-sampling",
+    "href": "mod-7-1-sampling.html#finite-population-sampling",
+    "title": "32  Sampling",
+    "section": "32.3 Finite Population Sampling",
+    "text": "32.3 Finite Population Sampling\nCreate a finite population of numbers from 0 to 100,000, sequenced by 1.\nThe population mean is \\(\\mu = \\sum_{i = 1}^N \\frac{x_i}{N}\\).\nGenerate 5 samples of size \\(n = 100\\) without replacement.\nThe sample average is \\(\\bar{x} = \\sum_{i = 1}^n \\frac{x_i}{n}\\).\nThe population mean is \\(\\mu = 50,000\\), however, the sample averages vary “around” the population mean.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\npopulation &lt;- seq(0, 100000, by = 1) \n\nsamples &lt;- 5\navg_x &lt;- rep(0,samples)\n\nfor(i in 1:samples){\n  avg_x[i] &lt;- mean(sample(population, size = 100, replace = FALSE))\n}\n\nsamples &lt;- tibble(avg_x) %&gt;% rbind(mean(population)) %&gt;% t()\n\nkable(samples,\n      align       = \"cccccc\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Sample Averages and Population Mean\",\n      col.names   = c(\"Sample 1\", \"Sample 2\", \n                      \"Sample 3\", \"Sample 4\",\n                      \"Sample 5\", \"Population\")) %&gt;%\nkable_styling(font_size = 10)\n\n\nSample Averages and Population Mean\n\n\n\nSample 1\nSample 2\nSample 3\nSample 4\nSample 5\nPopulation\n\n\n\n\navg_x\n45,995.32\n50,220.79\n48,419.62\n53,063.51\n48,646.65\n50,000",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Sampling</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-1-sampling.html#infinite-population-sampling",
+    "href": "mod-7-1-sampling.html#infinite-population-sampling",
+    "title": "32  Sampling",
+    "section": "32.4 Infinite Population Sampling",
+    "text": "32.4 Infinite Population Sampling\nWe can also sample from a population that continues to change over time.\nIn other words, \\(N(t) &lt; N(t+1) &lt; N(t+2)\\) and so on.\nIn this case, we cannot find a list of all the elements in the population because the population is increasing without limit.\nWe cannot randomly select observations since the probability of selection a sample of size \\(n\\) is dependent upon when the population was sampled.\nIf we consider population of students that have enrolled at ODU, this number changes within each semester and across semesters. The population of current and former students is not static and theoretically could increase without bound.\nTo sample the ODU population we need to fulfill two conditions.\n\nEach element in the random sample must come from the population of interest.\nEach element in the random sample is selected independently.",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Sampling</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-1-sampling.html#infinite-sampling-example",
+    "href": "mod-7-1-sampling.html#infinite-sampling-example",
+    "title": "32  Sampling",
+    "section": "32.5 Infinite Sampling Example",
+    "text": "32.5 Infinite Sampling Example\nAssume we want to construct a sample of 1,000 ODU students and estimate average household income.\nFirst, we need to ensure each element in the random sample comes from the population of interest.\nOur sampling method would need to randomly select ODU students from the same time period.\nIn other words, the 2025 - 2026 Academic Year rather than across the last two decades as our interest is estimating the household income of the current student population.\nWhy?\nIf we sampled household income from 1970, would that be representative of the household income of the current and future student population?\nIn other words, currency of data matters.\nSecond, we need to ensure each element is selected independently to avoid selection bias.\nWe should not randomly sample from students at Webb Center or students in the commuter car parking lot. Both sampling mechanicisms would produce biased samples of the ODU population.\nWhat if we found students who purchased from the bookstore during the last week of October?\nWe could find each student in the registrar list and then select the student \\(x\\) number of positions alphabetically in front or behind the student.\nThe purchases of students at the bookstore are random and independent of other students. Thus, the selection of students \\(x\\) positions in front or behind in the alphabetical list of students yields a random sample that is independently drawn from the infinite population.",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Sampling</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-1-sampling.html#estimators-and-estimates",
+    "href": "mod-7-1-sampling.html#estimators-and-estimates",
+    "title": "32  Sampling",
+    "section": "32.6 Estimators and Estimates",
+    "text": "32.6 Estimators and Estimates\nPoint estimation is the use of sample data to estimate a sample statistic.\nAn estimator is a rule for calculating an estimate of a given quantity based on observed data.\n\nThe sample average, \\(\\bar{x}\\) is an estimator for the population mean.\nThe estimator \\(\\bar{x}\\) produces an estimate of the population mean \\(\\mu\\) using the \\(n\\) observations,\n\\(s^2\\) is the estimator of the population parameter \\(\\sigma^2\\).\n\\(s\\) is the estimator of the population parameter \\(\\sigma\\).\n\\(\\bar{p}\\) is the estimator of the population proportion \\(p\\).\n\nWe can demonstrate how \\(\\bar{x}\\) and \\(s\\) are estimators of \\(\\mu\\) and \\(\\sigma\\).\nWe generate random observations from a normal distribution with \\(\\mu = 25\\) and \\(\\sigma = 3\\)\nWe generate point estimates using \\(\\bar{x}\\) and \\(s\\).\n\\[\\bar{x} = \\sum_{i = 1}^n x_i / n\\]\n\\[s = \\sqrt{ \\frac{\\sum_{i = 1}^n(x_i - \\bar{x})^2}{n-1}}\\]\nWe can alter the sample size to see how \\(n\\) relative to \\(N\\) affects the estimates.\n\npopulation &lt;- rnorm(1000000, mean = 25, sd = 3) \nsamples &lt;-5 \nsamp_no &lt;- rep(0,samples)\nmean_vec &lt;- rep(0,samples)\nsd_vec &lt;- rep(0,samples)\n\nfor(i in 1:samples){\n  temp &lt;- sample(population, size = 500, replace = FALSE)\n  samp_no[i] &lt;- i\n  mean_vec[i] &lt;- mean(temp)\n  sd_vec[i] &lt;- sd(temp)\n}\n\nsamples &lt;- tibble(samp_no, mean_vec,sd_vec)\n\nkable(samples,\n      align       = \"ccc\", \n      digits      = 2,\n      caption     = \"Sample and Population Averages\",\n      col.names   = c(\"Sample\",\"Average\", \"SD\")) %&gt;%\n  kable_styling(font_size = 10)\n\n\nSample and Population Averages\n\n\nSample\nAverage\nSD\n\n\n\n\n1\n25.13\n3.00\n\n\n2\n24.78\n2.91\n\n\n3\n24.89\n3.08\n\n\n4\n24.86\n2.88\n\n\n5\n24.95\n2.98",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Sampling</span>"
     ]
   }
 ]

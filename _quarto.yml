@@ -49,7 +49,11 @@ book:
         - mod-6-0-overview.qmd
         - mod-6-1-uniform.qmd
         - mod-6-2-normal.qmd
+        - mod-6-3-exponential.qmd
     - part: "Sampling Distributions"
+      chapters: 
+        - mod-7-0-overview.qmd
+        - mod-7-1-sampling.qmd
     - part: "Inference"
 
 execute:

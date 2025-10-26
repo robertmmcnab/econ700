@@ -101,6 +101,17 @@ Note: The course is under construction. Some links will not work.
 <li><a href="mod-6-1-uniform.qmd">Module 6.1 - Uniform Probability Distributions</a></li>
 
 <li><a href="mod-6-2-normal.qmd">Module 6.2 - Normal Probability Distributions</a></li>
+
+<li><a href="mod-6-3-exponential.qmd">Module 6.3 - Exponential Probability Distributions</a></li>
+</ul>
+
+## Module 07 - Sampling Distributions
+
+<ul>
+
+<li><a href="mod-7-0-overview.qmd">Module 7.0 - Module 7 Overview</a></li>
+<li><a href="mod-7-1-sampling.qmd">Module 7.1 - Sampling</a></li>
+
 </ul>
 
 ------------------------------------------------------------------------
