@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>33&nbsp; Central Limit Theorem – ECON 700</title>
+<title>34&nbsp; Interval Estimation – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-7-3-interval.html" rel="next">
-<link href="./mod-7-1-sampling.html" rel="prev">
+<link href="./mod-7-2-central.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -151,7 +150,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-7-0-overview.html">Sampling Distributions</a></li><li class="breadcrumb-item"><a href="./mod-7-2-central.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-7-0-overview.html">Sampling Distributions</a></li><li class="breadcrumb-item"><a href="./mod-7-3-interval.html"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Interval Estimation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -458,14 +457,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-7-2-central.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-7-2-central.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-7-3-interval.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span></a>
+  <a href="./mod-7-3-interval.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Interval Estimation</span></span></a>
   </div>
 </li>
       </ul>
@@ -484,25 +483,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#unbiasedness" id="toc-unbiasedness" class="nav-link active" data-scroll-target="#unbiasedness"><span class="header-section-number">33.1</span> Unbiasedness</a></li>
-  <li><a href="#efficiency" id="toc-efficiency" class="nav-link" data-scroll-target="#efficiency"><span class="header-section-number">33.2</span> Efficiency</a></li>
-  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="header-section-number">33.3</span> Consistency</a></li>
-  <li><a href="#law-of-large-numbers" id="toc-law-of-large-numbers" class="nav-link" data-scroll-target="#law-of-large-numbers"><span class="header-section-number">33.4</span> Law of Large Numbers</a></li>
-  <li><a href="#uniform-example-of-lln" id="toc-uniform-example-of-lln" class="nav-link" data-scroll-target="#uniform-example-of-lln"><span class="header-section-number">33.5</span> Uniform Example of LLN</a></li>
-  <li><a href="#normal-example-of-lln" id="toc-normal-example-of-lln" class="nav-link" data-scroll-target="#normal-example-of-lln"><span class="header-section-number">33.6</span> Normal Example of LLN</a></li>
-  <li><a href="#central-limit-theorem" id="toc-central-limit-theorem" class="nav-link" data-scroll-target="#central-limit-theorem"><span class="header-section-number">33.7</span> Central Limit Theorem</a></li>
-  <li><a href="#central-limit-theorem-1" id="toc-central-limit-theorem-1" class="nav-link" data-scroll-target="#central-limit-theorem-1"><span class="header-section-number">33.8</span> Central Limit Theorem</a></li>
-  <li><a href="#sampling-distributions" id="toc-sampling-distributions" class="nav-link" data-scroll-target="#sampling-distributions"><span class="header-section-number">33.9</span> Sampling Distributions</a></li>
-  <li><a href="#clt-example" id="toc-clt-example" class="nav-link" data-scroll-target="#clt-example"><span class="header-section-number">33.10</span> CLT Example</a></li>
+  <li><a href="#standard-error" id="toc-standard-error" class="nav-link active" data-scroll-target="#standard-error"><span class="header-section-number">34.1</span> Standard Error</a></li>
+  <li><a href="#finite-standard-error" id="toc-finite-standard-error" class="nav-link" data-scroll-target="#finite-standard-error"><span class="header-section-number">34.2</span> Finite Standard Error</a></li>
+  <li><a href="#standard-error-example" id="toc-standard-error-example" class="nav-link" data-scroll-target="#standard-error-example"><span class="header-section-number">34.3</span> Standard Error Example</a></li>
+  <li><a href="#standard-error-example-2" id="toc-standard-error-example-2" class="nav-link" data-scroll-target="#standard-error-example-2"><span class="header-section-number">34.4</span> Standard Error Example 2</a></li>
+  <li><a href="#r-example" id="toc-r-example" class="nav-link" data-scroll-target="#r-example"><span class="header-section-number">34.5</span> R Example</a></li>
+  <li><a href="#interval-estimation" id="toc-interval-estimation" class="nav-link" data-scroll-target="#interval-estimation"><span class="header-section-number">34.6</span> Interval Estimation</a></li>
+  <li><a href="#interval-estimation---mean" id="toc-interval-estimation---mean" class="nav-link" data-scroll-target="#interval-estimation---mean"><span class="header-section-number">34.7</span> Interval Estimation - Mean</a></li>
+  <li><a href="#r-example-1" id="toc-r-example-1" class="nav-link" data-scroll-target="#r-example-1"><span class="header-section-number">34.8</span> R Example</a></li>
+  <li><a href="#interval-estimation---mean-1" id="toc-interval-estimation---mean-1" class="nav-link" data-scroll-target="#interval-estimation---mean-1"><span class="header-section-number">34.9</span> Interval Estimation - Mean</a></li>
+  <li><a href="#t-distribution" id="toc-t-distribution" class="nav-link" data-scroll-target="#t-distribution"><span class="header-section-number">34.10</span> T-Distribution</a></li>
+  <li><a href="#t-distribution-plot" id="toc-t-distribution-plot" class="nav-link" data-scroll-target="#t-distribution-plot"><span class="header-section-number">34.11</span> T Distribution Plot</a></li>
+  <li><a href="#interval-estimation---mean-2" id="toc-interval-estimation---mean-2" class="nav-link" data-scroll-target="#interval-estimation---mean-2"><span class="header-section-number">34.12</span> Interval Estimation - Mean</a></li>
+  <li><a href="#r-example-2" id="toc-r-example-2" class="nav-link" data-scroll-target="#r-example-2"><span class="header-section-number">34.13</span> R Example</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-7-0-overview.html">Sampling Distributions</a></li><li class="breadcrumb-item"><a href="./mod-7-2-central.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-7-0-overview.html">Sampling Distributions</a></li><li class="breadcrumb-item"><a href="./mod-7-3-interval.html"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Interval Estimation</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></h1>
+<h1 class="title"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Interval Estimation</span></h1>
 </div>
 
 
@@ -519,137 +521,136 @@ window.Quarto = {
 </header>
 
 
-<section id="unbiasedness" class="level2" data-number="33.1">
-<h2 data-number="33.1" class="anchored" data-anchor-id="unbiasedness"><span class="header-section-number">33.1</span> Unbiasedness</h2>
-<p>An estimator of a population parameter is <strong>unbiased</strong> if the expected value of the estimator is equal to the value of the population parameter.</p>
-<p>More formally, the sample statistic <span class="math inline">\(\hat{\theta}\)</span> is an unbiased estimator of the population parameter <span class="math inline">\(\theta\)</span> if:</p>
-<p><span class="math display">\[E[\hat{\theta}] = \theta\]</span></p>
-<p>In other words, an estimator is unbiased if it produces parameter estimates that are, <strong>on average</strong>, equal to the population parameter.</p>
-<p>An estimator that is not unbiased is a <strong>biased</strong> estimator.</p>
-<p>The bias of an estimator is equal to its expected value minus the value of the population parameter or:</p>
-<p><span class="math display">\[
-Bias(\hat{\theta}) = E[\hat{\theta}] - \theta
-\]</span></p>
-<p>In other words, an estimator is unbiased if its bias is equal to zero.</p>
-<p>The sample average is an unbiased estimator of the population mean as:</p>
-<p><span class="math display">\[
-E[\bar{x}] = \mu
-\]</span></p>
-<p>It can be shown that the unadjusted sample variance is a biased estimator of the population variance or:</p>
-<p><span class="math display">\[
-E[S_n^2] = E[\frac{1}{n}\sum_{1}^{n}(X_i - \bar{X})^2] = \frac{n-1}{n}\sigma^2
-\]</span></p>
-<p>It can also be shown that the adjusted sample variance is an unbiased estimator of the population variance or:</p>
-<p><span class="math display">\[
-E[s^2] = E[\frac{1}{n-1}\sum_1^n(X_i - \bar{X})^2 ] = \sigma^2
-\]</span></p>
-<p>Why? When the population mean is unknown, we must estimate it with the sample average. We lose a <strong>degree of freedom</strong> as we employ an estimate instead of a parameter. The number of degrees of freedom is equal to the number of sample observations minus the number of parameters to be estimated.</p>
+<section id="standard-error" class="level2" data-number="34.1">
+<h2 data-number="34.1" class="anchored" data-anchor-id="standard-error"><span class="header-section-number">34.1</span> Standard Error</h2>
+<p>The standard error (SE) of a statistic is the standard deviation of its sampling distribution.</p>
+<p>Assume that <span class="math inline">\(x_1, x_2, \dots , x_n\)</span> are i.i.d with mean <span class="math inline">\(\mu_x\)</span> and variance <span class="math inline">\(\sigma_x^2\)</span>.</p>
+<p>We have determined that</p>
+<p><span class="math display">\[var(\bar{x}) = \frac{\sigma_x^2}{n}\]</span></p>
+<p>For an infinite population, the standard error of the mean <span class="math inline">\(\bar{x}\)</span> is:</p>
+<p><span class="math display">\[se(\bar{x}) = \sigma_{\bar{x}} = \frac{\sigma_x}{\sqrt{n}}\]</span></p>
+<p>Since the standard deviation of the population <span class="math inline">\(\sigma_x\)</span> is typically unknown, we use the sample standard deviation <span class="math inline">\(s\)</span> or</p>
+<p><span class="math display">\[\hat{\sigma_x} = s(\bar{x}) = \frac{s_x}{\sqrt{n}}\]</span></p>
 </section>
-<section id="efficiency" class="level2" data-number="33.2">
-<h2 data-number="33.2" class="anchored" data-anchor-id="efficiency"><span class="header-section-number">33.2</span> Efficiency</h2>
-<p>An <strong>efficient estimator</strong> has the smallest possible variance among all unbiased estimators.</p>
-<p>More formally, the sample statistic <span class="math inline">\(\hat{\theta}\)</span> is relatively efficient to <span class="math inline">\(\hat{\hat{\theta}}\)</span> when</p>
-<p><span class="math display">\[var(\hat{\theta}) &lt; var(\hat{\hat{\theta}})\]</span></p>
+<section id="finite-standard-error" class="level2" data-number="34.2">
+<h2 data-number="34.2" class="anchored" data-anchor-id="finite-standard-error"><span class="header-section-number">34.2</span> Finite Standard Error</h2>
+<p>What if the population from which the samples are drawn is not infinite?</p>
+<p>In this case, we must use a <strong>finite population correction factor</strong> for the standard error of the mean.</p>
+<p>The finite population correct factor is used when the fraction of the population sampled is greater than 5%.</p>
+<p>In finite populations, the standard error of the mean is:</p>
+<p><span class="math display">\[\sigma(\bar{x}) = \sqrt{\frac{(N-n)}{(N-1)}} \bigg(\frac{\sigma}{\sqrt{n}} \bigg)\]</span></p>
+<p><span class="math display">\[s(\bar{x}) = \sqrt{\frac{(N-n)}{(N-1)}} \bigg(\frac{s}{\sqrt{n}} \bigg)\]</span></p>
 </section>
-<section id="consistency" class="level2" data-number="33.3">
-<h2 data-number="33.3" class="anchored" data-anchor-id="consistency"><span class="header-section-number">33.3</span> Consistency</h2>
-<p>An estimator of a population parameter is <strong>consistent</strong> if it converges in probability to the true value of the parameter as the sample size tends to infinity.</p>
-<p>The sample statistic <span class="math inline">\(\hat{\theta}\)</span> is consistent when</p>
-<p><span class="math display">\[plim_{n \rightarrow \infty} \, \hat{\theta} \rightarrow \theta\]</span></p>
-<p>It can be shown, for example, that the sample mean converges almost surely to the mean, which implies that the sample mean converges in probability to the mean or:</p>
-<p><span class="math display">\[
-plim_{n \rightarrow \infty} \, \bar{X} \rightarrow \mu
-\]</span></p>
-<p>While the unadjusted variance estimator is biased and the adjusted variance estimator is unbiased, it can be shown that both estimators are consistent estimators of the population variance.</p>
-<p><span class="math display">\[
-plim_{n \rightarrow \infty} \, S^2 = \frac{1}{n}\sum_{1}^{n}(X_i - \bar{X})^2] \rightarrow \sigma^2
-\]</span> <span class="math display">\[
-plim_{n \rightarrow \infty} \, s^2 = \frac{1}{n-1}\sum_{1}^{n}(X_i - \bar{X})^2] \rightarrow \sigma^2
-\]</span></p>
+<section id="standard-error-example" class="level2" data-number="34.3">
+<h2 data-number="34.3" class="anchored" data-anchor-id="standard-error-example"><span class="header-section-number">34.3</span> Standard Error Example</h2>
+<p>Assume that ages <span class="math inline">\(x\)</span> are normally distributed with <span class="math inline">\(\mu_x = 27.0\)</span> and <span class="math inline">\(\sigma_x = 12.0\)</span>.</p>
+<p>What is the probability that the age of a single randomly selected individual is less than 30 years old?</p>
+<p><span class="math display">\[P(X &lt; 30) = P(Z &lt; \frac{30 - 27}{12}) = P(Z &lt; 0.25) = 0.5987\]</span></p>
+<p>Assume that we now draw multiple samples from the population, such that <span class="math inline">\(n = 36\)</span> and the number of trials is ‘very large’.</p>
+<p>We know from the Central Limit Theorem that the sampling distribution of</p>
+<p><span class="math display">\[\bar{x} \sim N(\mu, \frac{\sigma}{\sqrt{n}})$ or $\bar{x} \sim N(27, 2)\]</span></p>
+<p>What is the probability that the mean age of a single sample of <span class="math inline">\(n = 36\)</span> randomly selected individuals is less than 30 years?</p>
+<p><span class="math display">\[P(\bar{x}&lt;30)  = P(Z &lt; \frac{30-27}{2}) = P(Z &lt; 1.5) = 0.9332\]</span></p>
 </section>
-<section id="law-of-large-numbers" class="level2" data-number="33.4">
-<h2 data-number="33.4" class="anchored" data-anchor-id="law-of-large-numbers"><span class="header-section-number">33.4</span> Law of Large Numbers</h2>
-<p>The <strong>large of large numbers</strong> states that the average of an experiment will converge to the expected value as more trials of the experiment are performed.</p>
-<p>Let <span class="math inline">\(\bar{x_n}\)</span> be the sample average across <span class="math inline">\(n\)</span> trials.</p>
-<p>Let <span class="math inline">\(E[x] = \mu\)</span>.</p>
-<p>The law of large numbers states that the sample average converges in probability towards the expected value or:</p>
-<p><span class="math display">\[\bar{x_n} \rightarrow^P \mu\]</span></p>
-<p><span class="math display">\[lim_{n \rightarrow \infty} P(|\bar{x}_n - \mu| &lt; \epsilon) = 1, \quad \epsilon &gt;0 \]</span></p>
-<p>The strong law of large numbers states that the sample average converges almost surely to the expected value or:</p>
-<p><span class="math display">\[\bar{x} \rightarrow^{a.s} \mu\]</span></p>
-<p><span class="math display">\[lim_{n \rightarrow \infty} \, P(\bar{x}_n = \mu) = 1\]</span></p>
+<section id="standard-error-example-2" class="level2" data-number="34.4">
+<h2 data-number="34.4" class="anchored" data-anchor-id="standard-error-example-2"><span class="header-section-number">34.4</span> Standard Error Example 2</h2>
+<p>Let <span class="math inline">\(\bar{x}\)</span> be the mean of a random sample of 50 drawn from a population with <span class="math inline">\(\mu = 112\)</span> and <span class="math inline">\(\sigma = 40\)</span>.</p>
+<p>The mean and standard deviation of <span class="math inline">\(\bar{x}\)</span> are:</p>
+<p><span class="math display">\[E[\bar{x}] = \mu = 112, \quad \sigma(\bar{x}) = \frac{\sigma_x}{\sqrt{n}} = \frac{40}{\sqrt{50}} = 5.66\]</span></p>
+<p>What is the <span class="math inline">\(P(110 &lt; \bar{x} &lt; 114)\)</span>?</p>
+<p><span class="math display">\[P(100 &lt; \bar{x} &lt; 114) = P \bigg( \frac{100-\mu_x}{\sigma(\bar{x})} &lt; Z &lt; \frac{114 - \mu_x}{\sigma(\bar{x})} \bigg)\]</span></p>
+<p><span class="math display">\[P(100 &lt; \bar{x} &lt; 114) = P \bigg(\frac{100 - 112}{5.66} &lt; Z &lt; \frac{114 - 112}{5.66} \bigg) \]</span></p>
+<p><span class="math display">\[P(100 &lt; \bar{x} &lt; 114) = P(-0.35 &lt; Z &lt; 0.35) = 0.6368 -0.3632 = 0.2736\]</span></p>
 </section>
-<section id="uniform-example-of-lln" class="level2" data-number="33.5">
-<h2 data-number="33.5" class="anchored" data-anchor-id="uniform-example-of-lln"><span class="header-section-number">33.5</span> Uniform Example of LLN</h2>
-<p>We can demonstrate the large of large numbers of a uniform distribution.</p>
-<p>The expected value of a uniform distribution is</p>
-<p><span class="math display">\[E[x] = (a + b) / 2\]</span></p>
-<p>Given <span class="math inline">\(a = 1\)</span> and <span class="math inline">\(b = 10\)</span> then</p>
-<p><span class="math display">\[E[x] = (1 + 10)/2 = 5.5\]</span></p>
-<p>The code below does the following</p>
-<ul>
-<li><p>Constructs a population of 100,000 random observations from a uniform distribution</p></li>
-<li><p>Establishes two vectors, one for the number of trials, one for the sample averages</p></li>
-<li><p>Performs a loop</p></li>
-<li><p>Inside the loop, the trial number is equal to the loop counter</p></li>
-<li><p>Takes a sample of size <em>i</em> and estimates the sample average</p></li>
-<li><p>Places the vectors of trial numbers and averages in a tibble</p></li>
-<li><p>Constructs a plot</p></li>
-</ul>
-<p>As the sample size increases, the sample averages tend toward the population mean.</p>
+<section id="r-example" class="level2" data-number="34.5">
+<h2 data-number="34.5" class="anchored" data-anchor-id="r-example"><span class="header-section-number">34.5</span> R Example</h2>
 <div class="cell" data-warnings="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100000</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ntrials <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,ntrials)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>avgs <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,ntrials)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>ntrials){</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  trials[i] <span class="ot">&lt;-</span> i</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  avgs[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(population, i, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>pop_mu <span class="ot">=</span> <span class="dv">112</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>pop_sd <span class="ot">=</span> <span class="dv">40</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>nsample <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>x_less_110 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">110</span>, pop_mu, pop_sd)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>x_less_114 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">114</span>, pop_mu, pop_sd)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>x_110_114 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">114</span>, pop_mu, pop_sd) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">110</span>, pop_mu, pop_sd)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>xbar_sd <span class="ot">&lt;-</span> pop_sd <span class="sc">/</span> <span class="fu">sqrt</span>(nsample)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>mean_frame <span class="ot">&lt;-</span> <span class="fu">tibble</span>(trials,avgs)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_frame,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> trials,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> avgs)) <span class="sc">+</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Large of Large Numbers Simulation"</span>,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"Population of 100,000"</span>,</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>     <span class="at">y     =</span> <span class="st">"Sample Average"</span>,</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">x     =</span> <span class="st">"Trial Number"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>xbar_less_110 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">110</span>, pop_mu, xbar_sd)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>xbar_less_114 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">114</span>, pop_mu, xbar_sd)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>xbar_110_114 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">114</span>, pop_mu, xbar_sd) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">110</span>, pop_mu, xbar_sd)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x_less_110, x_less_114, x_110_114, </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                      xbar_less_110, xbar_less_114, xbar_110_114)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(samples,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"cccccc"</span>, </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"X and Xbar"</span>,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"P(x &lt; 100)"</span>, <span class="st">"P(x &lt; 114)"</span>, <span class="st">"P(110 &lt; x &lt; 114)"</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"P(xbar &lt; 100)"</span>, <span class="st">"P(xbar &lt; 114)"</span>, <span class="st">"P(110 &lt; xbar &lt; 114)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="mod-7-2-central_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<table class="table caption-top table-sm table-striped small">
+<caption>X and Xbar</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(x &lt; 100)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(x &lt; 114)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(110 &lt; x &lt; 114)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(xbar &lt; 100)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(xbar &lt; 114)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(110 &lt; xbar &lt; 114)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.4800612</td>
+<td style="text-align: center;">0.5199388</td>
+<td style="text-align: center;">0.0398776</td>
+<td style="text-align: center;">0.3618368</td>
+<td style="text-align: center;">0.6381632</td>
+<td style="text-align: center;">0.2763264</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
-<section id="normal-example-of-lln" class="level2" data-number="33.6">
-<h2 data-number="33.6" class="anchored" data-anchor-id="normal-example-of-lln"><span class="header-section-number">33.6</span> Normal Example of LLN</h2>
-<p>We can demonstrate the Law of Large Numbers using data drawn from a normal distribution.</p>
-<p>We know the sample average is equal to:</p>
-<p><span class="math display">\[
-\bar{X} = \frac{1}{n}\sum_{i=1}^n x_i
-\]</span></p>
-<p>We also know that the sample average estimator is unbiased and consistent:</p>
-<p><span class="math display">\[
-E[\bar{X}] = \mu
-\]</span></p>
-<p><span class="math display">\[
-plim_{n \rightarrow \infty} \, \bar{X} \rightarrow \mu
-\]</span></p>
-<p>We use the code chunk from the last example as a starting point. Here we modify the population so that it is drawn from a normal distribution and we also create a table to illustrate the differences between the first five observations and the last five observations.</p>
+<section id="interval-estimation" class="level2" data-number="34.6">
+<h2 data-number="34.6" class="anchored" data-anchor-id="interval-estimation"><span class="header-section-number">34.6</span> Interval Estimation</h2>
+<p>An estimator generates a point estimate of a population parameter of interest.</p>
+<p>However, the point estimate is unlikely to be exactly equal to the population parameter or interest.</p>
+<p>An <strong>interval estimate</strong> provides information on how “close” the point estimate is to the population parameter.</p>
+<p>The <strong>margin of error</strong> is often added and subtracted from the point estimate to generate the interval estimate or:</p>
+<p><span class="math display">\[\bar{x} \pm \, \text{m.o.e}\]</span></p>
+<p><span class="math display">\[\bar{p} \pm \, \text{m.o.e}\]</span></p>
+<p>The sampling distributions of <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(\bar{p}\)</span> are the basis for the interval estimates.</p>
+</section>
+<section id="interval-estimation---mean" class="level2" data-number="34.7">
+<h2 data-number="34.7" class="anchored" data-anchor-id="interval-estimation---mean"><span class="header-section-number">34.7</span> Interval Estimation - Mean</h2>
+<p>Assume that the population variance <span class="math inline">\(\sigma^2\)</span> is known.</p>
+<p>Let <span class="math inline">\((1 - \alpha)\)</span> be the confidence interval of the interval estimate.</p>
+<p>When <span class="math inline">\(\alpha = 0.05\)</span>, a 95% confidence interval is generated.</p>
+<p>The interval estimate for the sample mean when <span class="math inline">\(\sigma^2\)</span> is known is:</p>
+<p><span class="math display">\[\bar{x} \pm \, z_{\alpha/2} \frac{\sigma}{\sqrt{n}}\]</span></p>
+<p>Let <span class="math inline">\(\sigma = 20\)</span> and <span class="math inline">\(n = 100\)</span> and <span class="math inline">\(\alpha = 0.05\)</span> so <span class="math inline">\(\alpha/2 = 0.025\)</span></p>
+<p><span class="math display">\[\sigma(\bar{x}) = \frac{\sigma_x}{\sqrt{n}} = \frac{20}{\sqrt{100}} = 2\]</span></p>
+<p>Given that <span class="math inline">\(1 - \alpha/2 = 0.975\)</span> then <span class="math inline">\(Z(0.975)=\)</span> 1.959964 then</p>
+<p><span class="math display">\[\bar{x} \pm \, z_{\alpha/2} \frac{\sigma}{\sqrt{n}} = \bar{x} \pm (1.959964 \times 2)  = \bar{x} \pm 3.919928\]</span></p>
+</section>
+<section id="r-example-1" class="level2" data-number="34.8">
+<h2 data-number="34.8" class="anchored" data-anchor-id="r-example-1"><span class="header-section-number">34.8</span> R Example</h2>
+<p>As an example, we will randomly sample 50 schools from the CASchools data set.</p>
+<p>We assume that the standard deviation of the CASchools data set is the population <span class="math inline">\(\sigma\)</span>.</p>
+<p>Let <span class="math inline">\(\alpha = 0.05\)</span> so <span class="math inline">\(1-\alpha/2 = 0.975\)</span></p>
+<p>We can conclude that 95% of <span class="math inline">\(\bar{x}\)</span> values obtained using a sample of <span class="math inline">\(n=50\)</span> will be within the confidence interval.</p>
 <div class="cell" data-warnings="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -657,164 +658,104 @@ plim_{n \rightarrow \infty} \, \bar{X} \rightarrow \mu
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>, <span class="at">mean =</span> <span class="dv">25</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ntrials <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,ntrials)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>avgs <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,ntrials)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>ntrials){</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  trials[i] <span class="ot">&lt;-</span> i</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  avgs[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(population, i, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>mean_frame <span class="ot">&lt;-</span> <span class="fu">tibble</span>(trials,avgs)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"CASchools"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>nsample <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> <span class="fu">sd</span>(CASchools<span class="sc">$</span>students)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>sterror  <span class="ot">&lt;-</span> stdev<span class="sc">/</span><span class="fu">sqrt</span>(nsample)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>z_ci <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(ci, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> z_ci<span class="sc">*</span>sterror</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>mean_frame_2 <span class="ot">&lt;-</span> mean_frame <span class="sc">%&gt;%</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trials <span class="sc">&lt;=</span> <span class="dv">5</span> <span class="sc">|</span> trials <span class="sc">&gt;</span> ntrials <span class="sc">-</span> <span class="dv">5</span>)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_frame,</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> trials,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> avgs)) <span class="sc">+</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Large of Large Numbers Simulation"</span>,</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"Population of 100,000"</span>,</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>     <span class="at">y     =</span> <span class="st">"Sample Average"</span>,</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">x     =</span> <span class="st">"Trial Number"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="mod-7-2-central_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(mean_frame_2,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">align  =</span> <span class="st">'c'</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Obsveration'</span>,<span class="st">'Sample average'</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> CASchools <span class="sc">%&gt;%</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_students =</span> <span class="fu">mean</span>(students))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>interval <span class="ot">&lt;-</span> samples <span class="sc">%&gt;%</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> mean_students <span class="sc">-</span> error,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper_ci =</span> mean_students <span class="sc">+</span> error)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(interval,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"ccc"</span>, </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Confidence Interval"</span>,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Sample Average"</span>, <span class="st">"Lower Bound"</span>, </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Upper Bound"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
+<caption>Confidence Interval</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Obsveration</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Sample average</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sample Average</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Lower Bound</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Upper Bound</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">35.881</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">17.463</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">16.660</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">34.795</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">20.064</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">9996</td>
-<td style="text-align: center;">24.936</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9997</td>
-<td style="text-align: center;">24.990</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">9998</td>
-<td style="text-align: center;">24.958</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9999</td>
-<td style="text-align: center;">25.064</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10000</td>
-<td style="text-align: center;">25.068</td>
+<td style="text-align: center;">2760.16</td>
+<td style="text-align: center;">1675.523</td>
+<td style="text-align: center;">3844.797</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </section>
-<section id="central-limit-theorem" class="level2" data-number="33.7">
-<h2 data-number="33.7" class="anchored" data-anchor-id="central-limit-theorem"><span class="header-section-number">33.7</span> Central Limit Theorem</h2>
-<p>The central limit theorem states that when independent random variables are summed, that, in many situations, the normalized sum tends toward a normal distribution even if the original variables were not normally distributed.</p>
-<p>Let <span class="math inline">\(\{x_1, x_2, \dots, x_n\}\)</span> be a random sample of size <span class="math inline">\(n\)</span>.</p>
-<p>Let <span class="math inline">\(\{x_1, x_2, \dots, x_n\}\)</span> be a sequence identically and independently distributed random variables.</p>
-<p>Let <span class="math inline">\(\{x_1, x_2, \dots, x_n\}\)</span> have mean <span class="math inline">\(\mu\)</span> and finite variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<p><span class="math display">\[E[x_1] = E[x_2] = \dots = E[x_n] = \mu\]</span></p>
-<p><span class="math display">\[var(x_1) = var(x_2) = \dots = var(x_n) = \sigma^2\]</span></p>
-<p>Thus, by the law of large numbers, the sample average of these random variables converges almost surely (and in probability) to the expected value <span class="math inline">\(\mu\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>.</p>
+<section id="interval-estimation---mean-1" class="level2" data-number="34.9">
+<h2 data-number="34.9" class="anchored" data-anchor-id="interval-estimation---mean-1"><span class="header-section-number">34.9</span> Interval Estimation - Mean</h2>
+<p>While we would prefer to know <span class="math inline">\(\sigma\)</span>, in all likelihood, we will not observe <span class="math inline">\(\sigma\)</span>.</p>
+<p>Let <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> be normal random variables with unknown mean and unknown standard deviation.</p>
+<p>Let <span class="math inline">\(s^2\)</span> be the unbiased sample variance.</p>
+<p>Since <span class="math inline">\(\sigma^2\)</span> is unknown, then replacing <span class="math inline">\(\sigma^2\)</span> with its unbiased estimate <span class="math inline">\(s^2\)</span> yields the t-statistic or:</p>
+<p><span class="math display">\[t = \frac{\bar{x} - \mu}{s/\sqrt{n}}\]</span></p>
 </section>
-<section id="central-limit-theorem-1" class="level2" data-number="33.8">
-<h2 data-number="33.8" class="anchored" data-anchor-id="central-limit-theorem-1"><span class="header-section-number">33.8</span> Central Limit Theorem</h2>
-<p>Suppose <span class="math inline">\(\{x_1, x_2, \dots, x_n\}\)</span> is a sequence of i.i.d. random variables with <span class="math inline">\(E[x_i] = \mu\)</span> and <span class="math inline">\(var[x_i] = \sigma^2\)</span>. Then, as <span class="math inline">\(n\)</span> approaches infinity, the random variables <span class="math inline">\(\sqrt{n} \, (\bar{x} - \mu)\)</span> converge in distribution to normal <span class="math inline">\(N \sim (0, \sigma^2)\)</span>.</p>
-<p><span class="math display">\[lim_{n \rightarrow \infty} \, \sqrt{n}( \bar{x} - \mu) \rightarrow^d N(0,\sigma^2)\]</span></p>
-<p>If <span class="math inline">\(\sigma &gt;0\)</span>, converge in distribution means that the cumulative distribution functions of <span class="math inline">\(\sqrt{n} \, (\bar{x} - \mu)\)</span> converge pointwise to the CDF of <span class="math inline">\(N(0,\sigma^2)\)</span> for every real number <span class="math inline">\(z\)</span>.</p>
-<p>Therefore, it can be shown the sample average <span class="math inline">\(\bar{x}\)</span> is such that</p>
-<p><span class="math display">\[lim_{n \rightarrow \infty} \, \frac{\sqrt{n}}{\sigma}( \bar{x} - \mu) \rightarrow^d N(0,1)\]</span></p>
-<p>In other words, if a random sample of size <span class="math inline">\(n\)</span> is selected from any population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, then when <span class="math inline">\(n\)</span> is sufficiently large</p>
-<p><span class="math display">\[\bar{x} \sim N(\mu, \sigma/\sqrt{n})\]</span></p>
+<section id="t-distribution" class="level2" data-number="34.10">
+<h2 data-number="34.10" class="anchored" data-anchor-id="t-distribution"><span class="header-section-number">34.10</span> T-Distribution</h2>
+<p>The t-statistic is:</p>
+<p><span class="math display">\[t = \frac{\bar{x} - \mu}{s/\sqrt{n}}\]</span></p>
+<p>Rearrange the t-statistic to obtain:</p>
+<p><span class="math display">\[T_{n-1} = \frac{\sqrt{n} (\bar{x} - \mu)}{s}\]</span> The numerator is a standard normal random variable.</p>
+<p>The denominator follows a chi-squared distribution with <span class="math inline">\((n - 1)\)</span> degrees of freedom.</p>
+<p><span class="math display">\[s^2 = \frac{1}{n-1} \, \sum_{i = 1}^{n} (x_i - \bar{x})^2\]</span></p>
+<p>The numerator and denominator are independent.</p>
 </section>
-<section id="sampling-distributions" class="level2" data-number="33.9">
-<h2 data-number="33.9" class="anchored" data-anchor-id="sampling-distributions"><span class="header-section-number">33.9</span> Sampling Distributions</h2>
-<p>The sampling distribution of the sample average estimator is the probability distribution of all possible values of the sample average estimator.</p>
-<p>Recall that a collection of random variables is identically and identically distributed if each random variable has the same probability distribution as the others and all are mutually independent.</p>
-<p>First, assume that the random variables are identically and identically distributed or:</p>
-<p><span class="math display">\[
-x_1, x_2, \dots, x_n \sim i.i.d
-\]</span></p>
-<p><strong><em>Note that we have not assumed the underlying distribution, merely that the distribution of each random variable is the same.</em></strong></p>
-<p>Second, assume that the mean and variance of each random variable is:</p>
-<p><span class="math display">\[
-\mu_i, \quad \sigma_i^2 \quad \forall i
-\]</span></p>
-<p>Third, the expected value of the sample averages is:</p>
-<p><span class="math display">\[E(\bar{x}) = E(\frac{1}{n} \sum_{i=1}^n x_i) = \frac{1}{n} \, E(\sum_{i=1}^n x_i) = \frac{1}{n} \, \sum_{i=1}^n E(x_i)\]</span></p>
-<p>Given that <span class="math inline">\(x_i\)</span> are i.i.d. with mean <span class="math inline">\(\mu_x\)</span>, then:</p>
-<p><span class="math display">\[E(\bar{x}) =  \frac{1}{n} \, \sum_{i=1}^n E(x_i) =  \frac{1}{n} \, \sum_{i=1}^n \mu_x = \frac{1}{n} \times n \times \mu_x = \mu_x\]</span></p>
-<p>The variance of the sample averages is:</p>
-<p><span class="math display">\[var(\bar{x}) = var(\frac{1}{n} \sum_{i=1}^n x_i)\]</span></p>
-<p><span class="math display">\[var(\bar{x}) = \frac{1}{n^2} \sum_{i = 1}^{n} \, var(x_i) + \frac{1}{n^2} \sum_{i=1}^{n} \sum_{j = 1}^{n} cov(x_i, x_j) \quad \forall i \ne j\]</span></p>
-<p>Since the covariance between any dissimilar random variables is assumed to be zero, the variance of the sample averages is:</p>
-<p><span class="math display">\[var(\bar{x}) = \frac{1}{n^2} \sum_{i = 1}^{n} \, var(x_i) = \frac{1}{n^2} \sum_{i = 1}^{n} \, \sigma_x^2 = \frac{1}{n^2} \times n \times \sigma_x^2 = \frac{\sigma_x^2}{n}\]</span>The variance of the sample average estimator is decreasing in the number of observations.</p>
-<p><strong>In other words, as the number of observations in repeated sampling increases, the variance of the distribution of the sample average estimator declines relatively to distributions with smaller sample sizes.</strong>.</p>
-</section>
-<section id="clt-example" class="level2" data-number="33.10">
-<h2 data-number="33.10" class="anchored" data-anchor-id="clt-example"><span class="header-section-number">33.10</span> CLT Example</h2>
-<p>In the following code below, we demonstrate the Law of Large Numbers and the Central Limit Theorem.</p>
-<p>We would expect that, given repeated sampling, that the sample average estimates would be, on average equal to the population mean.</p>
-<p>We would also expect that, given repeated sampling, that as sample size increased, the variance of the distribution of sample average estimates would decrease.</p>
-<p><strong><em>We observe that as sample size increases, the variance of the distribution of the sample average estimates declines. Each of the distributions is centered at the population mean.</em></strong></p>
-<p>The code completes the following tasks:</p>
-<ul>
-<li><p>The population of 100,000 observations is drawn from a standard normal distribution</p></li>
-<li><p>Sample sizes are equal to 1, 10, 100, and 1000</p></li>
-<li><p>The number of repetitions is 1,000</p></li>
-<li><p>In other words, we will take 1,000 samples of size 1, then 1,000 samples of size 10 and so on</p></li>
-<li><p>We can two lists in which we can populate data</p></li>
-<li><p>We have two loops. The outer loop loops over sample sizes. The inner loop over repetitions.</p></li>
-<li><p>In the inner loop, the sample size is set by the outer loop index (1, 10, 100, 1000)</p></li>
-<li><p>The sample average is estimated</p></li>
-<li><p>The sample size is assigned</p></li>
-<li><p>A data frame is created containing sample average and sample size</p></li>
-<li><p>The data frame is put into a list indexed by the inner loop counter</p></li>
-<li><p>After the inner loop completes, all the data frames are put in a loop indexed by the outer loop</p></li>
-<li><p>After the outer loop completes, all the data frames are row bound</p></li>
-<li><p>The plot illustrates the measure of central tendency and variance of each distribution</p></li>
-</ul>
+<section id="t-distribution-plot" class="level2" data-number="34.11">
+<h2 data-number="34.11" class="anchored" data-anchor-id="t-distribution-plot"><span class="header-section-number">34.11</span> T Distribution Plot</h2>
+<div class="cell" data-warnings="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)), </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">stat_function</span>(<span class="at">fun =</span> dt, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df =</span> <span class="dv">1</span>),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">1.2</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"dark blue"</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">1.2</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"P(x)"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Standard Normal and T Distribution"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"1 degree of freedom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-7-3-interval_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="cell" data-warnings="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -822,49 +763,106 @@ x_1, x_2, \dots, x_n \sim i.i.d
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>))</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>list_1 <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>list_2 <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> sample_size){</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  samp <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(population, <span class="at">n =</span> j)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  samp_avg <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(samp)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  sample_size <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(j)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(samp_avg, sample_size)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  list_1[[i]] <span class="ot">&lt;-</span> temp</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  list_2[[j]] <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(list_1)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>avg_final <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(list_2)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> avg_final,</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> samp_avg,</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="fu">as.character</span>(sample_size))) <span class="sc">+</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_density</span>(<span class="at">stat =</span> <span class="st">"density"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position =</span><span class="st">"bottom"</span>,</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.title    =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption    =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">0</span>),</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title.x    =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>), </span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x     =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.y     =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title.y    =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>)) <span class="sc">+</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>,</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Density"</span>,</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Distribution of Sample Averages"</span>,</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"True Mean = 0"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)), </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">stat_function</span>(<span class="at">fun =</span> dt, </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df =</span> <span class="dv">10</span>),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">1.2</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"dark blue"</span>) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">1.2</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"P(x)"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Standard Normal and T-Distribution"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"10 degrees of freedom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mod-7-2-central_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mod-7-3-interval_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+</section>
+<section id="interval-estimation---mean-2" class="level2" data-number="34.12">
+<h2 data-number="34.12" class="anchored" data-anchor-id="interval-estimation---mean-2"><span class="header-section-number">34.12</span> Interval Estimation - Mean</h2>
+<p>Assume that <span class="math inline">\(\sigma\)</span> is unknown and <span class="math inline">\(s\)</span> is an unbiased estimator.</p>
+<p>Let <span class="math inline">\((1-\alpha)\)</span> be the confidence coefficient.</p>
+<p>The interval estimate of the population mean is:</p>
+<p><span class="math display">\[\bar{x} \pm \, t_{\alpha/2} \, \frac{s}{\sqrt{n}}\]</span> Let <span class="math inline">\(n = 70\)</span>, <span class="math inline">\(\bar{x} =9312\)</span>, <span class="math inline">\(s=4007\)</span>, and <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p><span class="math inline">\(n-1 = 69\)</span> degrees of freedom, <span class="math inline">\((1-\alpha/2) = 0.975\)</span>, <span class="math inline">\(t_{69,0.975}=\)</span> 1.9949454</p>
+<p>The interval estimate is thus:</p>
+<p><span class="math display">\[\bar{x} \pm \, t_{\alpha/2} \, \frac{s}{\sqrt{n}} = 9312 \pm 1.994945 \times \frac{4007}{\sqrt{70}} = 9312 \pm 955.4352\]</span></p>
+</section>
+<section id="r-example-2" class="level2" data-number="34.13">
+<h2 data-number="34.13" class="anchored" data-anchor-id="r-example-2"><span class="header-section-number">34.13</span> R Example</h2>
+<p>Here we have a randomly generated population with <span class="math inline">\(\mu = 50,000\)</span> and <span class="math inline">\(\sigma = 9700\)</span>.</p>
+<p>Assume we don’t know <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\sigma\)</span> but we can sample the population.</p>
+<p>We can construct a 90% confidence interval using the sample average and the t-statistic.</p>
+<p>We can vary <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(n\)</span> to observe how changing the confidence interval and sample size affects the confidence interval.</p>
+<div class="cell" data-warnings="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">=</span> <span class="dv">100000</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">50000</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">9700</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>nsample <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.10</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>t_ci <span class="ot">&lt;-</span> <span class="fu">qt</span>(ci, nsample <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(pop, mu, sigma))</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> population <span class="sc">%&gt;%</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> nsample) <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">samp_avg =</span> <span class="fu">mean</span>(x),</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">samp_sd  =</span> <span class="fu">sd</span>(x)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">std_err =</span> samp_sd<span class="sc">/</span><span class="fu">sqrt</span>(nsample),</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">moe     =</span> t_ci<span class="sc">*</span>std_err) <span class="sc">%&gt;%</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> samp_avg <span class="sc">-</span> moe,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper_ci =</span> samp_avg <span class="sc">+</span> moe)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(samples,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"cccccc"</span>, </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Confidence Interval"</span>,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Average"</span>, <span class="st">"Std Dev"</span>, </span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Std Error"</span>, <span class="st">"MOE"</span>,</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Lower Bound"</span>, <span class="st">"Upper Bound"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Confidence Interval</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Average</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Std Dev</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Std Error</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">MOE</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Lower Bound</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Upper Bound</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">50302.36</td>
+<td style="text-align: center;">9796.843</td>
+<td style="text-align: center;">438.1281</td>
+<td style="text-align: center;">721.997</td>
+<td style="text-align: center;">49580.36</td>
+<td style="text-align: center;">51024.36</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -1279,14 +1277,11 @@ x_1, x_2, \dots, x_n \sim i.i.d
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-7-1-sampling.html" class="pagination-link" aria-label="Sampling">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Sampling</span></span>
+      <a href="./mod-7-2-central.html" class="pagination-link" aria-label="Central Limit Theorem">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-7-3-interval.html" class="pagination-link" aria-label="Central Limit Theorem">
-        <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

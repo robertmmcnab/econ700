@@ -59,6 +59,8 @@ The following textbooks are available for free. Please select the links provided
 
 -   [7.1 – Sampling](mod-7-1-sampling.qmd)
 -   [7.2 – Central Limit Theorem](mod-7-2-central.qmd)
+-   [7.3 – Interval Estimation](mod-7-3-interval.qmd)
+
 
 ------------------------------------------------------------------------
 

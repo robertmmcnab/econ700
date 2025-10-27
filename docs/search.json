@@ -92,7 +92,7 @@
     "href": "index.html#module-07---sampling-distributions",
     "title": "ECON 700",
     "section": "0.8 Module 07 - Sampling Distributions",
-    "text": "0.8 Module 07 - Sampling Distributions\n\n\nModule 7.0 - Module 7 Overview\n\n\nModule 7.1 - Sampling\n\n\nModule 7.2 - Central Limit Theorem\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.8 Module 07 - Sampling Distributions\n\n\nModule 7.0 - Module 7 Overview\n\n\nModule 7.1 - Sampling\n\n\nModule 7.2 - Central Limit Theorem\n\n\nModule 7.3 - Interval Estimation\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -2809,7 +2809,7 @@
     "href": "mod-7-0-overview.html#lessons-in-this-module",
     "title": "31  Module 7 Overview",
     "section": "31.5 Lessons in this Module",
-    "text": "31.5 Lessons in this Module\n\n7.1 – Sampling\n7.2 – Central Limit Theorem\n\n\nNext: Start with Sampling.",
+    "text": "31.5 Lessons in this Module\n\n7.1 – Sampling\n7.2 – Central Limit Theorem\n7.3 – Interval Estimation\n\n\nNext: Start with Sampling.",
     "crumbs": [
       "Sampling Distributions",
       "<span class='chapter-number'>31</span>  <span class='chapter-title'>Module 7 Overview</span>"
@@ -2940,8 +2940,8 @@
     "objectID": "mod-7-2-central.html#central-limit-theorem",
     "href": "mod-7-2-central.html#central-limit-theorem",
     "title": "33  Central Limit Theorem",
-    "section": "33.6 Central Limit Theorem",
-    "text": "33.6 Central Limit Theorem\nThe central limit theorem states that when independent random variables are summed, that, in many situations, the normalized sum tends toward a normal distribution even if the original variables were not normally distributed.\nLet \\(\\{x_1, x_2, \\dots, x_n\\}\\) be a random sample of size \\(n\\).\nLet \\(\\{x_1, x_2, \\dots, x_n\\}\\) be a sequence identically and independently distributed random variables.\nLet \\(\\{x_1, x_2, \\dots, x_n\\}\\) have mean \\(\\mu\\) and finite variance \\(\\sigma^2\\).\n\\[E[x_1] = E[x_2] = \\dots = E[x_n] = \\mu\\]\n\\[var(x_1) = var(x_2) = \\dots = var(x_n) = \\sigma^2\\]\nThus, by the law of large numbers, the sample average of these random variables converges almost surely (and in probability) to the expected value \\(\\mu\\) as \\(n \\rightarrow \\infty\\).",
+    "section": "33.7 Central Limit Theorem",
+    "text": "33.7 Central Limit Theorem\nThe central limit theorem states that when independent random variables are summed, that, in many situations, the normalized sum tends toward a normal distribution even if the original variables were not normally distributed.\nLet \\(\\{x_1, x_2, \\dots, x_n\\}\\) be a random sample of size \\(n\\).\nLet \\(\\{x_1, x_2, \\dots, x_n\\}\\) be a sequence identically and independently distributed random variables.\nLet \\(\\{x_1, x_2, \\dots, x_n\\}\\) have mean \\(\\mu\\) and finite variance \\(\\sigma^2\\).\n\\[E[x_1] = E[x_2] = \\dots = E[x_n] = \\mu\\]\n\\[var(x_1) = var(x_2) = \\dots = var(x_n) = \\sigma^2\\]\nThus, by the law of large numbers, the sample average of these random variables converges almost surely (and in probability) to the expected value \\(\\mu\\) as \\(n \\rightarrow \\infty\\).",
     "crumbs": [
       "Sampling Distributions",
       "<span class='chapter-number'>33</span>  <span class='chapter-title'>Central Limit Theorem</span>"
@@ -2951,11 +2951,308 @@
     "objectID": "mod-7-2-central.html#central-limit-theorem-1",
     "href": "mod-7-2-central.html#central-limit-theorem-1",
     "title": "33  Central Limit Theorem",
-    "section": "33.7 Central Limit Theorem",
-    "text": "33.7 Central Limit Theorem\nSuppose \\(\\{x_1, x_2, \\dots, x_n\\}\\) is a sequence of i.i.d. random variables with \\(E[x_i] = \\mu\\) and \\(var[x_i] = \\sigma^2\\). Then, as \\(n\\) approaches infinity, the random variables \\(\\sqrt{n} \\, (\\bar{x} - \\mu)\\) converge in distribution to normal \\(N \\sim (0, \\sigma^2)\\).\n\\[lim_{n \\rightarrow \\infty} \\, \\sqrt{n}( \\bar{x} - \\mu) \\rightarrow^d N(0,\\sigma^2)\\]\nIf \\(\\sigma &gt;0\\), converge in distribution means that the cumulative distribution functions of \\(\\sqrt{n} \\, (\\bar{x} - \\mu)\\) converge pointwise to the CDF of \\(N(0,\\sigma^2)\\) for every real number \\(z\\).\nTherefore, it can be shown the sample average \\(\\bar{x}\\) is such that\n\\[lim_{n \\rightarrow \\infty} \\, \\frac{\\sqrt{n}}{\\sigma}( \\bar{x} - \\mu) \\rightarrow^d N(0,1)\\]\nIn other words, if a random sample of size \\(n\\) is selected from any population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), then when \\(n\\) is sufficiently large\n\\[\\bar{x} \\sim N(\\mu, \\sigma/\\sqrt{n})\\]",
+    "section": "33.8 Central Limit Theorem",
+    "text": "33.8 Central Limit Theorem\nSuppose \\(\\{x_1, x_2, \\dots, x_n\\}\\) is a sequence of i.i.d. random variables with \\(E[x_i] = \\mu\\) and \\(var[x_i] = \\sigma^2\\). Then, as \\(n\\) approaches infinity, the random variables \\(\\sqrt{n} \\, (\\bar{x} - \\mu)\\) converge in distribution to normal \\(N \\sim (0, \\sigma^2)\\).\n\\[lim_{n \\rightarrow \\infty} \\, \\sqrt{n}( \\bar{x} - \\mu) \\rightarrow^d N(0,\\sigma^2)\\]\nIf \\(\\sigma &gt;0\\), converge in distribution means that the cumulative distribution functions of \\(\\sqrt{n} \\, (\\bar{x} - \\mu)\\) converge pointwise to the CDF of \\(N(0,\\sigma^2)\\) for every real number \\(z\\).\nTherefore, it can be shown the sample average \\(\\bar{x}\\) is such that\n\\[lim_{n \\rightarrow \\infty} \\, \\frac{\\sqrt{n}}{\\sigma}( \\bar{x} - \\mu) \\rightarrow^d N(0,1)\\]\nIn other words, if a random sample of size \\(n\\) is selected from any population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), then when \\(n\\) is sufficiently large\n\\[\\bar{x} \\sim N(\\mu, \\sigma/\\sqrt{n})\\]",
     "crumbs": [
       "Sampling Distributions",
       "<span class='chapter-number'>33</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-2-central.html#uniform-example-of-lln",
+    "href": "mod-7-2-central.html#uniform-example-of-lln",
+    "title": "33  Central Limit Theorem",
+    "section": "33.5 Uniform Example of LLN",
+    "text": "33.5 Uniform Example of LLN\nWe can demonstrate the large of large numbers of a uniform distribution.\nThe expected value of a uniform distribution is\n\\[E[x] = (a + b) / 2\\]\nGiven \\(a = 1\\) and \\(b = 10\\) then\n\\[E[x] = (1 + 10)/2 = 5.5\\]\nThe code below does the following\n\nConstructs a population of 100,000 random observations from a uniform distribution\nEstablishes two vectors, one for the number of trials, one for the sample averages\nPerforms a loop\nInside the loop, the trial number is equal to the loop counter\nTakes a sample of size i and estimates the sample average\nPlaces the vectors of trial numbers and averages in a tibble\nConstructs a plot\n\nAs the sample size increases, the sample averages tend toward the population mean.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npopulation &lt;- runif(100000, min = 1, max = 10)\n\nntrials = 10000\ntrials &lt;- rep(0,ntrials)\navgs &lt;- rep(0,ntrials)\n\nfor(i in 1:ntrials){\n  trials[i] &lt;- i\n  avgs[i] &lt;- mean(sample(population, i, replace = FALSE))\n}\n\nmean_frame &lt;- tibble(trials,avgs)\n\nggplot(mean_frame,\n       aes(x = trials,\n       y = avgs)) +\ngeom_point() +\ntheme_minimal() +\nlabs(title = \"Large of Large Numbers Simulation\",\n     subtitle = \"Population of 100,000\",\n     y     = \"Sample Average\",\n     x     = \"Trial Number\")",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-2-central.html#normal-example-of-lln",
+    "href": "mod-7-2-central.html#normal-example-of-lln",
+    "title": "33  Central Limit Theorem",
+    "section": "33.6 Normal Example of LLN",
+    "text": "33.6 Normal Example of LLN\nWe can demonstrate the Law of Large Numbers using data drawn from a normal distribution.\nWe know the sample average is equal to:\n\\[\n\\bar{X} = \\frac{1}{n}\\sum_{i=1}^n x_i\n\\]\nWe also know that the sample average estimator is unbiased and consistent:\n\\[\nE[\\bar{X}] = \\mu\n\\]\n\\[\nplim_{n \\rightarrow \\infty} \\, \\bar{X} \\rightarrow \\mu\n\\]\nWe use the code chunk from the last example as a starting point. Here we modify the population so that it is drawn from a normal distribution and we also create a table to illustrate the differences between the first five observations and the last five observations.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npopulation &lt;- rnorm(100000, mean = 25, sd = 10)\n\nntrials = 10000\ntrials &lt;- rep(0,ntrials)\navgs &lt;- rep(0,ntrials)\n\nfor(i in 1:ntrials){\n  trials[i] &lt;- i\n  avgs[i] &lt;- mean(sample(population, i, replace = FALSE))\n}\n\nmean_frame &lt;- tibble(trials,avgs)\n\nmean_frame_2 &lt;- mean_frame %&gt;%\n  filter(trials &lt;= 5 | trials &gt; ntrials - 5)\n\nggplot(mean_frame,\n       aes(x = trials,\n       y = avgs)) +\ngeom_point() +\ntheme_minimal() +\nlabs(title = \"Large of Large Numbers Simulation\",\n     subtitle = \"Population of 100,000\",\n     y     = \"Sample Average\",\n     x     = \"Trial Number\")\n\n\n\n\n\n\n\nkable(mean_frame_2,\n      align  = 'c',\n      digits = 3,\n      col.names = c('Obsveration','Sample average')) %&gt;%\nkable_styling()\n\n\n\n\nObsveration\nSample average\n\n\n\n\n1\n35.881\n\n\n2\n17.463\n\n\n3\n16.660\n\n\n4\n34.795\n\n\n5\n20.064\n\n\n9996\n24.936\n\n\n9997\n24.990\n\n\n9998\n24.958\n\n\n9999\n25.064\n\n\n10000\n25.068",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-2-central.html#sampling-distributions",
+    "href": "mod-7-2-central.html#sampling-distributions",
+    "title": "33  Central Limit Theorem",
+    "section": "33.9 Sampling Distributions",
+    "text": "33.9 Sampling Distributions\nThe sampling distribution of the sample average estimator is the probability distribution of all possible values of the sample average estimator.\nRecall that a collection of random variables is identically and identically distributed if each random variable has the same probability distribution as the others and all are mutually independent.\nFirst, assume that the random variables are identically and identically distributed or:\n\\[\nx_1, x_2, \\dots, x_n \\sim i.i.d\n\\]\nNote that we have not assumed the underlying distribution, merely that the distribution of each random variable is the same.\nSecond, assume that the mean and variance of each random variable is:\n\\[\n\\mu_i, \\quad \\sigma_i^2 \\quad \\forall i\n\\]\nThird, the expected value of the sample averages is:\n\\[E(\\bar{x}) = E(\\frac{1}{n} \\sum_{i=1}^n x_i) = \\frac{1}{n} \\, E(\\sum_{i=1}^n x_i) = \\frac{1}{n} \\, \\sum_{i=1}^n E(x_i)\\]\nGiven that \\(x_i\\) are i.i.d. with mean \\(\\mu_x\\), then:\n\\[E(\\bar{x}) =  \\frac{1}{n} \\, \\sum_{i=1}^n E(x_i) =  \\frac{1}{n} \\, \\sum_{i=1}^n \\mu_x = \\frac{1}{n} \\times n \\times \\mu_x = \\mu_x\\]\nThe variance of the sample averages is:\n\\[var(\\bar{x}) = var(\\frac{1}{n} \\sum_{i=1}^n x_i)\\]\n\\[var(\\bar{x}) = \\frac{1}{n^2} \\sum_{i = 1}^{n} \\, var(x_i) + \\frac{1}{n^2} \\sum_{i=1}^{n} \\sum_{j = 1}^{n} cov(x_i, x_j) \\quad \\forall i \\ne j\\]\nSince the covariance between any dissimilar random variables is assumed to be zero, the variance of the sample averages is:\n\\[var(\\bar{x}) = \\frac{1}{n^2} \\sum_{i = 1}^{n} \\, var(x_i) = \\frac{1}{n^2} \\sum_{i = 1}^{n} \\, \\sigma_x^2 = \\frac{1}{n^2} \\times n \\times \\sigma_x^2 = \\frac{\\sigma_x^2}{n}\\]The variance of the sample average estimator is decreasing in the number of observations.\nIn other words, as the number of observations in repeated sampling increases, the variance of the distribution of the sample average estimator declines relatively to distributions with smaller sample sizes..",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-2-central.html#sample-average-distributions",
+    "href": "mod-7-2-central.html#sample-average-distributions",
+    "title": "33  Central Limit Theorem",
+    "section": "33.10 Sample Average Distributions",
+    "text": "33.10 Sample Average Distributions\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npopulation &lt;- tibble(x = rnorm(100000, mean = 0, sd = 1))\nsample_size &lt;- c(1, 10, 100, 1000)\nnreps &lt;- 1000\n\nlist_1 &lt;- list()\nlist_2 &lt;- list()\n\nfor(j in sample_size){\n\nfor(i in 1:nreps){\n  samp &lt;- slice_sample(population, n = j)\n  samp_avg &lt;- colMeans(samp)\n  sample_size &lt;- as.numeric(j)\n  temp &lt;- data.frame(samp_avg, sample_size)\n  list_1[[i]] &lt;- temp\n\n}\n  list_2[[j]] &lt;- bind_rows(list_1)\n}\n\navg_final &lt;- bind_rows(list_2)\n\nggplot(data = avg_final,\n       aes(x = samp_avg,\n           fill = as.character(sample_size))) +\ngeom_density(stat = \"density\", alpha = 0.5, linewidth = 0.1) +\ntheme(legend.position =\"bottom\",\n      legend.title    = element_blank(),\n      plot.caption    = element_text(hjust=0),\n      axis.title.x    = element_text(face = \"bold\"), \n      axis.text.x     = element_text(face = \"bold\"),\n      axis.text.y     = element_text(face = \"bold\"),\n      axis.title.y    = element_text(face=\"bold\")) +\nlabs(x = \"x\",\n     y = \"Density\",\n     title = \"Distribution of Sample Averages\",\n     subtitle = \"True Mean = 0\")",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-2-central.html#clt-example",
+    "href": "mod-7-2-central.html#clt-example",
+    "title": "33  Central Limit Theorem",
+    "section": "33.10 CLT Example",
+    "text": "33.10 CLT Example\nIn the following code below, we demonstrate the Law of Large Numbers and the Central Limit Theorem.\nWe would expect that, given repeated sampling, that the sample average estimates would be, on average equal to the population mean.\nWe would also expect that, given repeated sampling, that as sample size increased, the variance of the distribution of sample average estimates would decrease.\nWe observe that as sample size increases, the variance of the distribution of the sample average estimates declines. Each of the distributions is centered at the population mean.\nThe code completes the following tasks:\n\nThe population of 100,000 observations is drawn from a standard normal distribution\nSample sizes are equal to 1, 10, 100, and 1000\nThe number of repetitions is 1,000\nIn other words, we will take 1,000 samples of size 1, then 1,000 samples of size 10 and so on\nWe can two lists in which we can populate data\nWe have two loops. The outer loop loops over sample sizes. The inner loop over repetitions.\nIn the inner loop, the sample size is set by the outer loop index (1, 10, 100, 1000)\nThe sample average is estimated\nThe sample size is assigned\nA data frame is created containing sample average and sample size\nThe data frame is put into a list indexed by the inner loop counter\nAfter the inner loop completes, all the data frames are put in a loop indexed by the outer loop\nAfter the outer loop completes, all the data frames are row bound\nThe plot illustrates the measure of central tendency and variance of each distribution\n\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npopulation &lt;- tibble(x = rnorm(100000, mean = 0, sd = 1))\nsample_size &lt;- c(1, 10, 100, 1000)\nnreps &lt;- 1000\n\nlist_1 &lt;- list()\nlist_2 &lt;- list()\n\nfor(j in sample_size){\n\nfor(i in 1:nreps){\n  samp &lt;- slice_sample(population, n = j)\n  samp_avg &lt;- colMeans(samp)\n  sample_size &lt;- as.numeric(j)\n  temp &lt;- data.frame(samp_avg, sample_size)\n  list_1[[i]] &lt;- temp\n\n}\n  list_2[[j]] &lt;- bind_rows(list_1)\n}\n\navg_final &lt;- bind_rows(list_2)\n\nggplot(data = avg_final,\n       aes(x = samp_avg,\n           fill = as.character(sample_size))) +\ngeom_density(stat = \"density\", alpha = 0.5, linewidth = 0.1) +\ntheme(legend.position =\"bottom\",\n      legend.title    = element_blank(),\n      plot.caption    = element_text(hjust=0),\n      axis.title.x    = element_text(face = \"bold\"), \n      axis.text.x     = element_text(face = \"bold\"),\n      axis.text.y     = element_text(face = \"bold\"),\n      axis.title.y    = element_text(face=\"bold\")) +\nlabs(x = \"x\",\n     y = \"Density\",\n     title = \"Distribution of Sample Averages\",\n     subtitle = \"True Mean = 0\")",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html",
+    "href": "mod-7-3-interval.html",
+    "title": "34  Interval Estimation",
+    "section": "",
+    "text": "34.1 Standard Error\nThe standard error (SE) of a statistic is the standard deviation of its sampling distribution.\nAssume that \\(x_1, x_2, \\dots , x_n\\) are i.i.d with mean \\(\\mu_x\\) and variance \\(\\sigma_x^2\\).\nWe have determined that\n\\[var(\\bar{x}) = \\frac{\\sigma_x^2}{n}\\]\nFor an infinite population, the standard error of the mean \\(\\bar{x}\\) is:\n\\[se(\\bar{x}) = \\sigma_{\\bar{x}} = \\frac{\\sigma_x}{\\sqrt{n}}\\]\nSince the standard deviation of the population \\(\\sigma_x\\) is typically unknown, we use the sample standard deviation \\(s\\) or\n\\[\\hat{\\sigma_x} = s(\\bar{x}) = \\frac{s_x}{\\sqrt{n}}\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#efficiency",
+    "href": "mod-7-3-interval.html#efficiency",
+    "title": "34  Central Limit Theorem",
+    "section": "34.2 Efficiency",
+    "text": "34.2 Efficiency\nAn efficient estimator has the smallest possible variance among all unbiased estimators.\nMore formally, the sample statistic \\(\\hat{\\theta}\\) is relatively efficient to \\(\\hat{\\hat{\\theta}}\\) when\n\\[var(\\hat{\\theta}) &lt; var(\\hat{\\hat{\\theta}})\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#consistency",
+    "href": "mod-7-3-interval.html#consistency",
+    "title": "34  Central Limit Theorem",
+    "section": "34.3 Consistency",
+    "text": "34.3 Consistency\nAn estimator of a population parameter is consistent if it converges in probability to the true value of the parameter as the sample size tends to infinity.\nThe sample statistic \\(\\hat{\\theta}\\) is consistent when\n\\[plim_{n \\rightarrow \\infty} \\, \\hat{\\theta} \\rightarrow \\theta\\]\nIt can be shown, for example, that the sample mean converges almost surely to the mean, which implies that the sample mean converges in probability to the mean or:\n\\[\nplim_{n \\rightarrow \\infty} \\, \\bar{X} \\rightarrow \\mu\n\\]\nWhile the unadjusted variance estimator is biased and the adjusted variance estimator is unbiased, it can be shown that both estimators are consistent estimators of the population variance.\n\\[\nplim_{n \\rightarrow \\infty} \\, S^2 = \\frac{1}{n}\\sum_{1}^{n}(X_i - \\bar{X})^2] \\rightarrow \\sigma^2\n\\] \\[\nplim_{n \\rightarrow \\infty} \\, s^2 = \\frac{1}{n-1}\\sum_{1}^{n}(X_i - \\bar{X})^2] \\rightarrow \\sigma^2\n\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#law-of-large-numbers",
+    "href": "mod-7-3-interval.html#law-of-large-numbers",
+    "title": "34  Central Limit Theorem",
+    "section": "34.4 Law of Large Numbers",
+    "text": "34.4 Law of Large Numbers\nThe large of large numbers states that the average of an experiment will converge to the expected value as more trials of the experiment are performed.\nLet \\(\\bar{x_n}\\) be the sample average across \\(n\\) trials.\nLet \\(E[x] = \\mu\\).\nThe law of large numbers states that the sample average converges in probability towards the expected value or:\n\\[\\bar{x_n} \\rightarrow^P \\mu\\]\n\\[lim_{n \\rightarrow \\infty} P(|\\bar{x}_n - \\mu| &lt; \\epsilon) = 1, \\quad \\epsilon &gt;0 \\]\nThe strong law of large numbers states that the sample average converges almost surely to the expected value or:\n\\[\\bar{x} \\rightarrow^{a.s} \\mu\\]\n\\[lim_{n \\rightarrow \\infty} \\, P(\\bar{x}_n = \\mu) = 1\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#uniform-example-of-lln",
+    "href": "mod-7-3-interval.html#uniform-example-of-lln",
+    "title": "34  Central Limit Theorem",
+    "section": "34.5 Uniform Example of LLN",
+    "text": "34.5 Uniform Example of LLN\nWe can demonstrate the large of large numbers of a uniform distribution.\nThe expected value of a uniform distribution is\n\\[E[x] = (a + b) / 2\\]\nGiven \\(a = 1\\) and \\(b = 10\\) then\n\\[E[x] = (1 + 10)/2 = 5.5\\]\nThe code below does the following\n\nConstructs a population of 100,000 random observations from a uniform distribution\nEstablishes two vectors, one for the number of trials, one for the sample averages\nPerforms a loop\nInside the loop, the trial number is equal to the loop counter\nTakes a sample of size i and estimates the sample average\nPlaces the vectors of trial numbers and averages in a tibble\nConstructs a plot\n\nAs the sample size increases, the sample averages tend toward the population mean.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npopulation &lt;- runif(100000, min = 1, max = 10)\n\nntrials = 10000\ntrials &lt;- rep(0,ntrials)\navgs &lt;- rep(0,ntrials)\n\nfor(i in 1:ntrials){\n  trials[i] &lt;- i\n  avgs[i] &lt;- mean(sample(population, i, replace = FALSE))\n}\n\nmean_frame &lt;- tibble(trials,avgs)\n\nggplot(mean_frame,\n       aes(x = trials,\n       y = avgs)) +\ngeom_point() +\ntheme_minimal() +\nlabs(title = \"Large of Large Numbers Simulation\",\n     subtitle = \"Population of 100,000\",\n     y     = \"Sample Average\",\n     x     = \"Trial Number\")",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#normal-example-of-lln",
+    "href": "mod-7-3-interval.html#normal-example-of-lln",
+    "title": "34  Central Limit Theorem",
+    "section": "34.6 Normal Example of LLN",
+    "text": "34.6 Normal Example of LLN\nWe can demonstrate the Law of Large Numbers using data drawn from a normal distribution.\nWe know the sample average is equal to:\n\\[\n\\bar{X} = \\frac{1}{n}\\sum_{i=1}^n x_i\n\\]\nWe also know that the sample average estimator is unbiased and consistent:\n\\[\nE[\\bar{X}] = \\mu\n\\]\n\\[\nplim_{n \\rightarrow \\infty} \\, \\bar{X} \\rightarrow \\mu\n\\]\nWe use the code chunk from the last example as a starting point. Here we modify the population so that it is drawn from a normal distribution and we also create a table to illustrate the differences between the first five observations and the last five observations.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npopulation &lt;- rnorm(100000, mean = 25, sd = 10)\n\nntrials = 10000\ntrials &lt;- rep(0,ntrials)\navgs &lt;- rep(0,ntrials)\n\nfor(i in 1:ntrials){\n  trials[i] &lt;- i\n  avgs[i] &lt;- mean(sample(population, i, replace = FALSE))\n}\n\nmean_frame &lt;- tibble(trials,avgs)\n\nmean_frame_2 &lt;- mean_frame %&gt;%\n  filter(trials &lt;= 5 | trials &gt; ntrials - 5)\n\nggplot(mean_frame,\n       aes(x = trials,\n       y = avgs)) +\ngeom_point() +\ntheme_minimal() +\nlabs(title = \"Large of Large Numbers Simulation\",\n     subtitle = \"Population of 100,000\",\n     y     = \"Sample Average\",\n     x     = \"Trial Number\")\n\n\n\n\n\n\n\nkable(mean_frame_2,\n      align  = 'c',\n      digits = 3,\n      col.names = c('Obsveration','Sample average')) %&gt;%\nkable_styling()\n\n\n\n\nObsveration\nSample average\n\n\n\n\n1\n12.979\n\n\n2\n11.710\n\n\n3\n27.118\n\n\n4\n30.610\n\n\n5\n24.283\n\n\n9996\n24.946\n\n\n9997\n25.116\n\n\n9998\n24.971\n\n\n9999\n25.123\n\n\n10000\n24.973",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#central-limit-theorem",
+    "href": "mod-7-3-interval.html#central-limit-theorem",
+    "title": "34  Central Limit Theorem",
+    "section": "34.7 Central Limit Theorem",
+    "text": "34.7 Central Limit Theorem\nThe central limit theorem states that when independent random variables are summed, that, in many situations, the normalized sum tends toward a normal distribution even if the original variables were not normally distributed.\nLet \\(\\{x_1, x_2, \\dots, x_n\\}\\) be a random sample of size \\(n\\).\nLet \\(\\{x_1, x_2, \\dots, x_n\\}\\) be a sequence identically and independently distributed random variables.\nLet \\(\\{x_1, x_2, \\dots, x_n\\}\\) have mean \\(\\mu\\) and finite variance \\(\\sigma^2\\).\n\\[E[x_1] = E[x_2] = \\dots = E[x_n] = \\mu\\]\n\\[var(x_1) = var(x_2) = \\dots = var(x_n) = \\sigma^2\\]\nThus, by the law of large numbers, the sample average of these random variables converges almost surely (and in probability) to the expected value \\(\\mu\\) as \\(n \\rightarrow \\infty\\).",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#central-limit-theorem-1",
+    "href": "mod-7-3-interval.html#central-limit-theorem-1",
+    "title": "34  Central Limit Theorem",
+    "section": "34.8 Central Limit Theorem",
+    "text": "34.8 Central Limit Theorem\nSuppose \\(\\{x_1, x_2, \\dots, x_n\\}\\) is a sequence of i.i.d. random variables with \\(E[x_i] = \\mu\\) and \\(var[x_i] = \\sigma^2\\). Then, as \\(n\\) approaches infinity, the random variables \\(\\sqrt{n} \\, (\\bar{x} - \\mu)\\) converge in distribution to normal \\(N \\sim (0, \\sigma^2)\\).\n\\[lim_{n \\rightarrow \\infty} \\, \\sqrt{n}( \\bar{x} - \\mu) \\rightarrow^d N(0,\\sigma^2)\\]\nIf \\(\\sigma &gt;0\\), converge in distribution means that the cumulative distribution functions of \\(\\sqrt{n} \\, (\\bar{x} - \\mu)\\) converge pointwise to the CDF of \\(N(0,\\sigma^2)\\) for every real number \\(z\\).\nTherefore, it can be shown the sample average \\(\\bar{x}\\) is such that\n\\[lim_{n \\rightarrow \\infty} \\, \\frac{\\sqrt{n}}{\\sigma}( \\bar{x} - \\mu) \\rightarrow^d N(0,1)\\]\nIn other words, if a random sample of size \\(n\\) is selected from any population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), then when \\(n\\) is sufficiently large\n\\[\\bar{x} \\sim N(\\mu, \\sigma/\\sqrt{n})\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#sampling-distributions",
+    "href": "mod-7-3-interval.html#sampling-distributions",
+    "title": "34  Central Limit Theorem",
+    "section": "34.9 Sampling Distributions",
+    "text": "34.9 Sampling Distributions\nThe sampling distribution of the sample average estimator is the probability distribution of all possible values of the sample average estimator.\nRecall that a collection of random variables is identically and identically distributed if each random variable has the same probability distribution as the others and all are mutually independent.\nFirst, assume that the random variables are identically and identically distributed or:\n\\[\nx_1, x_2, \\dots, x_n \\sim i.i.d\n\\]\nNote that we have not assumed the underlying distribution, merely that the distribution of each random variable is the same.\nSecond, assume that the mean and variance of each random variable is:\n\\[\n\\mu_i, \\quad \\sigma_i^2 \\quad \\forall i\n\\]\nThird, the expected value of the sample averages is:\n\\[E(\\bar{x}) = E(\\frac{1}{n} \\sum_{i=1}^n x_i) = \\frac{1}{n} \\, E(\\sum_{i=1}^n x_i) = \\frac{1}{n} \\, \\sum_{i=1}^n E(x_i)\\]\nGiven that \\(x_i\\) are i.i.d. with mean \\(\\mu_x\\), then:\n\\[E(\\bar{x}) =  \\frac{1}{n} \\, \\sum_{i=1}^n E(x_i) =  \\frac{1}{n} \\, \\sum_{i=1}^n \\mu_x = \\frac{1}{n} \\times n \\times \\mu_x = \\mu_x\\]\nThe variance of the sample averages is:\n\\[var(\\bar{x}) = var(\\frac{1}{n} \\sum_{i=1}^n x_i)\\]\n\\[var(\\bar{x}) = \\frac{1}{n^2} \\sum_{i = 1}^{n} \\, var(x_i) + \\frac{1}{n^2} \\sum_{i=1}^{n} \\sum_{j = 1}^{n} cov(x_i, x_j) \\quad \\forall i \\ne j\\]\nSince the covariance between any dissimilar random variables is assumed to be zero, the variance of the sample averages is:\n\\[var(\\bar{x}) = \\frac{1}{n^2} \\sum_{i = 1}^{n} \\, var(x_i) = \\frac{1}{n^2} \\sum_{i = 1}^{n} \\, \\sigma_x^2 = \\frac{1}{n^2} \\times n \\times \\sigma_x^2 = \\frac{\\sigma_x^2}{n}\\]The variance of the sample average estimator is decreasing in the number of observations.\nIn other words, as the number of observations in repeated sampling increases, the variance of the distribution of the sample average estimator declines relatively to distributions with smaller sample sizes..",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#clt-example",
+    "href": "mod-7-3-interval.html#clt-example",
+    "title": "34  Central Limit Theorem",
+    "section": "34.10 CLT Example",
+    "text": "34.10 CLT Example\nIn the following code below, we demonstrate the Law of Large Numbers and the Central Limit Theorem.\nWe would expect that, given repeated sampling, that the sample average estimates would be, on average equal to the population mean.\nWe would also expect that, given repeated sampling, that as sample size increased, the variance of the distribution of sample average estimates would decrease.\nWe observe that as sample size increases, the variance of the distribution of the sample average estimates declines. Each of the distributions is centered at the population mean.\nThe code completes the following tasks:\n\nThe population of 100,000 observations is drawn from a standard normal distribution\nSample sizes are equal to 1, 10, 100, and 1000\nThe number of repetitions is 1,000\nIn other words, we will take 1,000 samples of size 1, then 1,000 samples of size 10 and so on\nWe can two lists in which we can populate data\nWe have two loops. The outer loop loops over sample sizes. The inner loop over repetitions.\nIn the inner loop, the sample size is set by the outer loop index (1, 10, 100, 1000)\nThe sample average is estimated\nThe sample size is assigned\nA data frame is created containing sample average and sample size\nThe data frame is put into a list indexed by the inner loop counter\nAfter the inner loop completes, all the data frames are put in a loop indexed by the outer loop\nAfter the outer loop completes, all the data frames are row bound\nThe plot illustrates the measure of central tendency and variance of each distribution\n\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npopulation &lt;- tibble(x = rnorm(100000, mean = 0, sd = 1))\nsample_size &lt;- c(1, 10, 100, 1000)\nnreps &lt;- 1000\n\nlist_1 &lt;- list()\nlist_2 &lt;- list()\n\nfor(j in sample_size){\n\nfor(i in 1:nreps){\n  samp &lt;- slice_sample(population, n = j)\n  samp_avg &lt;- colMeans(samp)\n  sample_size &lt;- as.numeric(j)\n  temp &lt;- data.frame(samp_avg, sample_size)\n  list_1[[i]] &lt;- temp\n\n}\n  list_2[[j]] &lt;- bind_rows(list_1)\n}\n\navg_final &lt;- bind_rows(list_2)\n\nggplot(data = avg_final,\n       aes(x = samp_avg,\n           fill = as.character(sample_size))) +\ngeom_density(stat = \"density\", alpha = 0.5, linewidth = 0.1) +\ntheme(legend.position =\"bottom\",\n      legend.title    = element_blank(),\n      plot.caption    = element_text(hjust=0),\n      axis.title.x    = element_text(face = \"bold\"), \n      axis.text.x     = element_text(face = \"bold\"),\n      axis.text.y     = element_text(face = \"bold\"),\n      axis.title.y    = element_text(face=\"bold\")) +\nlabs(x = \"x\",\n     y = \"Density\",\n     title = \"Distribution of Sample Averages\",\n     subtitle = \"True Mean = 0\")",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Central Limit Theorem</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#finite-standard-error",
+    "href": "mod-7-3-interval.html#finite-standard-error",
+    "title": "34  Interval Estimation",
+    "section": "34.2 Finite Standard Error",
+    "text": "34.2 Finite Standard Error\nWhat if the population from which the samples are drawn is not infinite?\nIn this case, we must use a finite population correction factor for the standard error of the mean.\nThe finite population correct factor is used when the fraction of the population sampled is greater than 5%.\nIn finite populations, the standard error of the mean is:\n\\[\\sigma(\\bar{x}) = \\sqrt{\\frac{(N-n)}{(N-1)}} \\bigg(\\frac{\\sigma}{\\sqrt{n}} \\bigg)\\]\n\\[s(\\bar{x}) = \\sqrt{\\frac{(N-n)}{(N-1)}} \\bigg(\\frac{s}{\\sqrt{n}} \\bigg)\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#interval-estimation",
+    "href": "mod-7-3-interval.html#interval-estimation",
+    "title": "34  Interval Estimation",
+    "section": "34.6 Interval Estimation",
+    "text": "34.6 Interval Estimation\nAn estimator generates a point estimate of a population parameter of interest.\nHowever, the point estimate is unlikely to be exactly equal to the population parameter or interest.\nAn interval estimate provides information on how “close” the point estimate is to the population parameter.\nThe margin of error is often added and subtracted from the point estimate to generate the interval estimate or:\n\\[\\bar{x} \\pm \\, \\text{m.o.e}\\]\n\\[\\bar{p} \\pm \\, \\text{m.o.e}\\]\nThe sampling distributions of \\(\\bar{x}\\) and \\(\\bar{p}\\) are the basis for the interval estimates.",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#interval-estimation---mean",
+    "href": "mod-7-3-interval.html#interval-estimation---mean",
+    "title": "34  Interval Estimation",
+    "section": "34.7 Interval Estimation - Mean",
+    "text": "34.7 Interval Estimation - Mean\nAssume that the population variance \\(\\sigma^2\\) is known.\nLet \\((1 - \\alpha)\\) be the confidence interval of the interval estimate.\nWhen \\(\\alpha = 0.05\\), a 95% confidence interval is generated.\nThe interval estimate for the sample mean when \\(\\sigma^2\\) is known is:\n\\[\\bar{x} \\pm \\, z_{\\alpha/2} \\frac{\\sigma}{\\sqrt{n}}\\]\nLet \\(\\sigma = 20\\) and \\(n = 100\\) and \\(\\alpha = 0.05\\) so \\(\\alpha/2 = 0.025\\)\n\\[\\sigma(\\bar{x}) = \\frac{\\sigma_x}{\\sqrt{n}} = \\frac{20}{\\sqrt{100}} = 2\\]\nGiven that \\(1 - \\alpha/2 = 0.975\\) then \\(Z(0.975)=\\) 1.959964 then\n\\[\\bar{x} \\pm \\, z_{\\alpha/2} \\frac{\\sigma}{\\sqrt{n}} = \\bar{x} \\pm (1.959964 \\times 2)  = \\bar{x} \\pm 3.919928\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#interval-estimation---mean-1",
+    "href": "mod-7-3-interval.html#interval-estimation---mean-1",
+    "title": "34  Interval Estimation",
+    "section": "34.9 Interval Estimation - Mean",
+    "text": "34.9 Interval Estimation - Mean\nWhile we would prefer to know \\(\\sigma\\), in all likelihood, we will not observe \\(\\sigma\\).\nLet \\(x_1, x_2, \\dots, x_n\\) be normal random variables with unknown mean and unknown standard deviation.\nLet \\(s^2\\) be the unbiased sample variance.\nSince \\(\\sigma^2\\) is unknown, then replacing \\(\\sigma^2\\) with its unbiased estimate \\(s^2\\) yields the t-statistic or:\n\\[t = \\frac{\\bar{x} - \\mu}{s/\\sqrt{n}}\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#t-distribution",
+    "href": "mod-7-3-interval.html#t-distribution",
+    "title": "34  Interval Estimation",
+    "section": "34.10 T-Distribution",
+    "text": "34.10 T-Distribution\nThe t-statistic is:\n\\[t = \\frac{\\bar{x} - \\mu}{s/\\sqrt{n}}\\]\nRearrange the t-statistic to obtain:\n\\[T_{n-1} = \\frac{\\sqrt{n} (\\bar{x} - \\mu)}{s}\\] The numerator is a standard normal random variable.\nThe denominator follows a chi-squared distribution with \\((n - 1)\\) degrees of freedom.\n\\[s^2 = \\frac{1}{n-1} \\, \\sum_{i = 1}^{n} (x_i - \\bar{x})^2\\]\nThe numerator and denominator are independent.",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#interval-estimation---mean-2",
+    "href": "mod-7-3-interval.html#interval-estimation---mean-2",
+    "title": "34  Interval Estimation",
+    "section": "34.12 Interval Estimation - Mean",
+    "text": "34.12 Interval Estimation - Mean\nAssume that \\(\\sigma\\) is unknown and \\(s\\) is an unbiased estimator.\nLet \\((1-\\alpha)\\) be the confidence coefficient.\nThe interval estimate of the population mean is:\n\\[\\bar{x} \\pm \\, t_{\\alpha/2} \\, \\frac{s}{\\sqrt{n}}\\] Let \\(n = 70\\), \\(\\bar{x} =9312\\), \\(s=4007\\), and \\(\\alpha = 0.05\\).\n\\(n-1 = 69\\) degrees of freedom, \\((1-\\alpha/2) = 0.975\\), \\(t_{69,0.975}=\\) 1.9949454\nThe interval estimate is thus:\n\\[\\bar{x} \\pm \\, t_{\\alpha/2} \\, \\frac{s}{\\sqrt{n}} = 9312 \\pm 1.994945 \\times \\frac{4007}{\\sqrt{70}} = 9312 \\pm 955.4352\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#r-example-1",
+    "href": "mod-7-3-interval.html#r-example-1",
+    "title": "34  Interval Estimation",
+    "section": "34.8 R Example",
+    "text": "34.8 R Example\nAs an example, we will randomly sample 50 schools from the CASchools data set.\nWe assume that the standard deviation of the CASchools data set is the population \\(\\sigma\\).\nLet \\(\\alpha = 0.05\\) so \\(1-\\alpha/2 = 0.975\\)\nWe can conclude that 95% of \\(\\bar{x}\\) values obtained using a sample of \\(n=50\\) will be within the confidence interval.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nlibrary(AER)\n\ndata(\"CASchools\")\n\nnsample &lt;- 50\nstdev &lt;- sd(CASchools$students)\nsterror  &lt;- stdev/sqrt(nsample)\nalpha &lt;- 0.05\n\nci &lt;- 1 - (alpha/2)\nz_ci &lt;- qnorm(ci, 0, 1)\nerror &lt;- z_ci*sterror\n\nsamples &lt;- CASchools %&gt;%\n  slice_sample(n = 50) %&gt;%\n  summarize(mean_students = mean(students))\n\ninterval &lt;- samples %&gt;%\n  mutate(lower_ci = mean_students - error,\n         upper_ci = mean_students + error)\n\nkable(interval,\n      align       = \"ccc\", \n      caption     = \"Confidence Interval\",\n      col.names   = c(\"Sample Average\", \"Lower Bound\", \n                      \"Upper Bound\")) %&gt;%\n  kable_styling(font_size = 12)\n\n\nConfidence Interval\n\n\nSample Average\nLower Bound\nUpper Bound\n\n\n\n\n2760.16\n1675.523\n3844.797",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#standard-error-example",
+    "href": "mod-7-3-interval.html#standard-error-example",
+    "title": "34  Interval Estimation",
+    "section": "34.3 Standard Error Example",
+    "text": "34.3 Standard Error Example\nAssume that ages \\(x\\) are normally distributed with \\(\\mu_x = 27.0\\) and \\(\\sigma_x = 12.0\\).\nWhat is the probability that the age of a single randomly selected individual is less than 30 years old?\n\\[P(X &lt; 30) = P(Z &lt; \\frac{30 - 27}{12}) = P(Z &lt; 0.25) = 0.5987\\]\nAssume that we now draw multiple samples from the population, such that \\(n = 36\\) and the number of trials is ‘very large’.\nWe know from the Central Limit Theorem that the sampling distribution of\n\\[\\bar{x} \\sim N(\\mu, \\frac{\\sigma}{\\sqrt{n}})$ or $\\bar{x} \\sim N(27, 2)\\]\nWhat is the probability that the mean age of a single sample of \\(n = 36\\) randomly selected individuals is less than 30 years?\n\\[P(\\bar{x}&lt;30)  = P(Z &lt; \\frac{30-27}{2}) = P(Z &lt; 1.5) = 0.9332\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#standard-error-example-2",
+    "href": "mod-7-3-interval.html#standard-error-example-2",
+    "title": "34  Interval Estimation",
+    "section": "34.4 Standard Error Example 2",
+    "text": "34.4 Standard Error Example 2\nLet \\(\\bar{x}\\) be the mean of a random sample of 50 drawn from a population with \\(\\mu = 112\\) and \\(\\sigma = 40\\).\nThe mean and standard deviation of \\(\\bar{x}\\) are:\n\\[E[\\bar{x}] = \\mu = 112, \\quad \\sigma(\\bar{x}) = \\frac{\\sigma_x}{\\sqrt{n}} = \\frac{40}{\\sqrt{50}} = 5.66\\]\nWhat is the \\(P(110 &lt; \\bar{x} &lt; 114)\\)?\n\\[P(100 &lt; \\bar{x} &lt; 114) = P \\bigg( \\frac{100-\\mu_x}{\\sigma(\\bar{x})} &lt; Z &lt; \\frac{114 - \\mu_x}{\\sigma(\\bar{x})} \\bigg)\\]\n\\[P(100 &lt; \\bar{x} &lt; 114) = P \\bigg(\\frac{100 - 112}{5.66} &lt; Z &lt; \\frac{114 - 112}{5.66} \\bigg) \\]\n\\[P(100 &lt; \\bar{x} &lt; 114) = P(-0.35 &lt; Z &lt; 0.35) = 0.6368 -0.3632 = 0.2736\\]",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#r-example",
+    "href": "mod-7-3-interval.html#r-example",
+    "title": "34  Interval Estimation",
+    "section": "34.5 R Example",
+    "text": "34.5 R Example\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\npop_mu = 112\npop_sd = 40\nnsample = 50\n\nx_less_110 &lt;- pnorm(110, pop_mu, pop_sd)\n\nx_less_114 &lt;- pnorm(114, pop_mu, pop_sd)\n\nx_110_114 &lt;- pnorm(114, pop_mu, pop_sd) - pnorm(110, pop_mu, pop_sd)\n                    \nxbar_sd &lt;- pop_sd / sqrt(nsample)\n\nxbar_less_110 &lt;- pnorm(110, pop_mu, xbar_sd)\nxbar_less_114 &lt;- pnorm(114, pop_mu, xbar_sd)\n\nxbar_110_114 &lt;- pnorm(114, pop_mu, xbar_sd) - pnorm(110, pop_mu, xbar_sd)\n\nsamples &lt;- data.frame(x_less_110, x_less_114, x_110_114, \n                      xbar_less_110, xbar_less_114, xbar_110_114)\n\nkable(samples,\n      align       = \"cccccc\", \n      caption     = \"X and Xbar\",\n      col.names   = c(\"P(x &lt; 100)\", \"P(x &lt; 114)\", \"P(110 &lt; x &lt; 114)\",\n                      \"P(xbar &lt; 100)\", \"P(xbar &lt; 114)\", \"P(110 &lt; xbar &lt; 114)\")) %&gt;%\nkable_styling(font_size = 12)\n\n\nX and Xbar\n\n\nP(x &lt; 100)\nP(x &lt; 114)\nP(110 &lt; x &lt; 114)\nP(xbar &lt; 100)\nP(xbar &lt; 114)\nP(110 &lt; xbar &lt; 114)\n\n\n\n\n0.4800612\n0.5199388\n0.0398776\n0.3618368\n0.6381632\n0.2763264",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#t-distribution-plot",
+    "href": "mod-7-3-interval.html#t-distribution-plot",
+    "title": "34  Interval Estimation",
+    "section": "34.11 T Distribution Plot",
+    "text": "34.11 T Distribution Plot\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nggplot(data.frame(x = c(-5, 5)), \n       aes(x = x)) +\nstat_function(fun = dt, \n              args = list(df = 1),\n              linewidth = 1.2,\n              color = \"dark blue\") +\nstat_function(fun = dnorm, \n              args = list(mean = 0, sd = 1),\n              linewidth = 1.2,\n              color = \"red\") +\ntheme_minimal() +\nlabs(x = \"x\",\n     y = \"P(x)\",\n     title = \"Standard Normal and T Distribution\",\n     subtitle = \"1 degree of freedom\")\n\n\n\n\n\n\n\n\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nlibrary(ggplot2)\n\nggplot(data.frame(x = c(-5, 5)), \n       aes(x = x)) +\nstat_function(fun = dt, \n              args = list(df = 10),\n              linewidth = 1.2,\n              color = \"dark blue\") +\nstat_function(fun = dnorm, \n              args = list(mean = 0, sd = 1),\n              linewidth = 1.2,\n              color = \"red\") +\ntheme_minimal() +\nlabs(x = \"x\",\n     y = \"P(x)\",\n     title = \"Standard Normal and T-Distribution\",\n     subtitle = \"10 degrees of freedom\")",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-7-3-interval.html#r-example-2",
+    "href": "mod-7-3-interval.html#r-example-2",
+    "title": "34  Interval Estimation",
+    "section": "34.13 R Example",
+    "text": "34.13 R Example\nHere we have a randomly generated population with \\(\\mu = 50,000\\) and \\(\\sigma = 9700\\).\nAssume we don’t know \\(\\mu\\) or \\(\\sigma\\) but we can sample the population.\nWe can construct a 90% confidence interval using the sample average and the t-statistic.\nWe can vary \\(\\alpha\\) and \\(n\\) to observe how changing the confidence interval and sample size affects the confidence interval.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npop = 100000\nmu = 50000\nsigma = 9700\nnsample &lt;- 500\nalpha &lt;- 0.10\n\nci &lt;- 1 - (alpha/2)\nt_ci &lt;- qt(ci, nsample - 1)\n\npopulation &lt;- data.frame(x = rnorm(pop, mu, sigma))\n\nsamples &lt;- population %&gt;%\n  slice_sample(n = nsample) %&gt;%\n  summarize(samp_avg = mean(x),\n            samp_sd  = sd(x)) %&gt;%\n  mutate(std_err = samp_sd/sqrt(nsample),\n         moe     = t_ci*std_err) %&gt;%\n  mutate(lower_ci = samp_avg - moe,\n         upper_ci = samp_avg + moe)\n\nkable(samples,\n      align       = \"cccccc\", \n      caption     = \"Confidence Interval\",\n      col.names   = c(\"Average\", \"Std Dev\", \n                      \"Std Error\", \"MOE\",\n                      \"Lower Bound\", \"Upper Bound\")) %&gt;%\n  kable_styling(font_size = 12)\n\n\nConfidence Interval\n\n\nAverage\nStd Dev\nStd Error\nMOE\nLower Bound\nUpper Bound\n\n\n\n\n50302.36\n9796.843\n438.1281\n721.997\n49580.36\n51024.36",
+    "crumbs": [
+      "Sampling Distributions",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
     ]
   }
 ]

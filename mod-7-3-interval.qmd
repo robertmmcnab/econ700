@@ -1,0 +1,394 @@
+---
+title: "Interval Estimation"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    self-contained: false     # must be false when using webr
+urlcolor: blue
+filters:
+  - webr
+execute:
+  webR: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+
+library(dplyr, quietly = TRUE)
+library(ggplot2, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(tidyquant, quietly = TRUE)
+
+```
+
+## Standard Error
+
+The standard error (SE) of a statistic is the standard deviation of its
+sampling distribution.
+
+Assume that $x_1, x_2, \dots , x_n$ are i.i.d with mean $\mu_x$ and
+variance $\sigma_x^2$.
+
+We have determined that
+
+$$var(\bar{x}) = \frac{\sigma_x^2}{n}$$
+
+For an infinite population, the standard error of the mean $\bar{x}$ is:
+
+$$se(\bar{x}) = \sigma_{\bar{x}} = \frac{\sigma_x}{\sqrt{n}}$$
+
+Since the standard deviation of the population $\sigma_x$ is typically
+unknown, we use the sample standard deviation $s$ or
+
+$$\hat{\sigma_x} = s(\bar{x}) = \frac{s_x}{\sqrt{n}}$$
+
+## Finite Standard Error
+
+What if the population from which the samples are drawn is not infinite?
+
+In this case, we must use a **finite population correction factor** for
+the standard error of the mean.
+
+The finite population correct factor is used when the fraction of the
+population sampled is greater than 5%.
+
+In finite populations, the standard error of the mean is:
+
+$$\sigma(\bar{x}) = \sqrt{\frac{(N-n)}{(N-1)}} \bigg(\frac{\sigma}{\sqrt{n}} \bigg)$$
+
+$$s(\bar{x}) = \sqrt{\frac{(N-n)}{(N-1)}} \bigg(\frac{s}{\sqrt{n}} \bigg)$$
+
+## Standard Error Example
+
+Assume that ages $x$ are normally distributed with $\mu_x = 27.0$ and
+$\sigma_x = 12.0$.
+
+What is the probability that a single randomly selected individual is
+less than 30 years old?
+
+$$P(X < 30) = P(Z < \frac{30 - 27}{12}) = P(Z < 0.25) = 0.5987$$
+
+Assume that we now draw multiple samples from the population, such that
+$n = 36$ and the number of trials is 'very large'.
+
+We know from the Central Limit Theorem that the sampling distribution of
+
+$$\bar{x} \sim N(\mu, \frac{\sigma}{\sqrt{n}})$$ 
+$$\bar{x} \sim N(27, 2)$$
+
+What is the probability that the mean age of a single sample of $n = 36$
+randomly selected individuals is less than 30 years?
+
+$$P(\bar{x}<30)  = P(Z < \frac{30-27}{2}) = P(Z < 1.5) = 0.9332$$
+
+## Standard Error Example 2
+
+Let $\bar{x}$ be the mean of a random sample of 50 drawn from a
+population with $\mu = 112$ and $\sigma = 40$.
+
+The mean and standard deviation of $\bar{x}$ are:
+
+$$E[\bar{x}] = \mu = 112, \quad \sigma(\bar{x}) = \frac{\sigma_x}{\sqrt{n}} = \frac{40}{\sqrt{50}} = 5.66$$
+
+What is the $P(110 < \bar{x} < 114)$?
+
+$$P(100 < \bar{x} < 114) = P \bigg( \frac{100-\mu_x}{\sigma(\bar{x})} < Z < \frac{114 - \mu_x}{\sigma(\bar{x})} \bigg)$$
+
+$$P(100 < \bar{x} < 114) = P \bigg(\frac{100 - 112}{5.66} < Z < \frac{114 - 112}{5.66} \bigg) $$
+
+$$P(100 < \bar{x} < 114) = P(-0.35 < Z < 0.35) = 0.6368 -0.3632 = 0.2736$$
+
+## R Example
+
+```{r, warnings = FALSE, message = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
+
+pop_mu = 112
+pop_sd = 40
+nsample = 50
+
+x_less_110 <- pnorm(110, pop_mu, pop_sd)
+
+x_less_114 <- pnorm(114, pop_mu, pop_sd)
+
+x_110_114 <- pnorm(114, pop_mu, pop_sd) - pnorm(110, pop_mu, pop_sd)
+                    
+xbar_sd <- pop_sd / sqrt(nsample)
+
+xbar_less_110 <- pnorm(110, pop_mu, xbar_sd)
+xbar_less_114 <- pnorm(114, pop_mu, xbar_sd)
+
+xbar_110_114 <- pnorm(114, pop_mu, xbar_sd) - pnorm(110, pop_mu, xbar_sd)
+
+samples <- data.frame(x_less_110, x_less_114, x_110_114, 
+                      xbar_less_110, xbar_less_114, xbar_110_114)
+
+kable(samples,
+      align       = "cccccc", 
+      caption     = "X and Xbar",
+      col.names   = c("P(x < 100)", "P(x < 114)", "P(110 < x < 114)",
+                      "P(xbar < 100)", "P(xbar < 114)", "P(110 < xbar < 114)")) %>%
+kable_styling(font_size = 12)
+
+```
+
+## Interval Estimation
+
+An estimator generates a point estimate of a population parameter of
+interest.
+
+However, the point estimate is unlikely to be exactly equal to the
+population parameter or interest.
+
+An **interval estimate** provides information on how "close" the point
+estimate is to the population parameter.
+
+The **margin of error** is often added and subtracted from the point
+estimate to generate the interval estimate or:
+
+$$\bar{x} \pm \, \text{m.o.e}$$
+
+$$\bar{p} \pm \, \text{m.o.e}$$
+
+The sampling distributions of $\bar{x}$ and $\bar{p}$ are the basis for
+the interval estimates.
+
+## Interval Estimation - Mean
+
+Assume that the population variance $\sigma^2$ is known.
+
+Let $(1 - \alpha)$ be the confidence interval of the interval estimate.
+
+When $\alpha = 0.05$, a 95% confidence interval is generated.
+
+The interval estimate for the sample mean when $\sigma^2$ is known is:
+
+$$\bar{x} \pm \, z_{\alpha/2} \frac{\sigma}{\sqrt{n}}$$
+
+Let $\sigma = 20$ and $n = 100$ and $\alpha = 0.05$ so
+$\alpha/2 = 0.025$
+
+$$\sigma(\bar{x}) = \frac{\sigma_x}{\sqrt{n}} = \frac{20}{\sqrt{100}} = 2$$
+
+Given that $1 - \alpha/2 = 0.975$ then $Z(0.975)=$ `r qnorm(0.975,0,1)`
+then
+
+$$\bar{x} \pm \, z_{\alpha/2} \frac{\sigma}{\sqrt{n}} = \bar{x} \pm (1.959964 \times 2)  = \bar{x} \pm 3.919928$$
+
+## R Example
+
+As an example, we will randomly sample 50 schools from the CASchools
+data set.
+
+We assume that the standard deviation of the CASchools data set is the
+population $\sigma$.
+
+Let $\alpha = 0.05$ so $1-\alpha/2 = 0.975$
+
+We can conclude that 95% of $\bar{x}$ values obtained using a sample of
+$n=50$ will be within the confidence interval.
+
+```{r, warnings = FALSE, message = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+
+library(AER)
+
+data("CASchools")
+
+nsample <- 50
+stdev <- sd(CASchools$students)
+sterror  <- stdev/sqrt(nsample)
+alpha <- 0.05
+
+ci <- 1 - (alpha/2)
+z_ci <- qnorm(ci, 0, 1)
+error <- z_ci*sterror
+
+samples <- CASchools %>%
+  slice_sample(n = 50) %>%
+  summarize(mean_students = mean(students))
+
+interval <- samples %>%
+  mutate(lower_ci = mean_students - error,
+         upper_ci = mean_students + error)
+
+kable(interval,
+      align       = "ccc", 
+      caption     = "Confidence Interval",
+      col.names   = c("Sample Average", "Lower Bound", 
+                      "Upper Bound")) %>%
+  kable_styling(font_size = 12)
+
+
+```
+
+## Interval Estimation - Mean
+
+While we would prefer to know $\sigma$, in all likelihood, we will not
+observe $\sigma$.
+
+Let $x_1, x_2, \dots, x_n$ be normal random variables with unknown mean
+and unknown standard deviation.
+
+Let $s^2$ be the unbiased sample variance.
+
+Since $\sigma^2$ is unknown, then replacing $\sigma^2$ with its unbiased
+estimate $s^2$ yields the t-statistic or:
+
+$$t = \frac{\bar{x} - \mu}{s/\sqrt{n}}$$
+
+## T-Distribution
+
+The t-statistic is:
+
+$$t = \frac{\bar{x} - \mu}{s/\sqrt{n}}$$
+
+Rearrange the t-statistic to obtain:
+
+$$T_{n-1} = \frac{\sqrt{n} (\bar{x} - \mu)}{s}$$ The numerator is a
+standard normal random variable.
+
+The denominator follows a chi-squared distribution with $(n - 1)$
+degrees of freedom.
+
+$$s^2 = \frac{1}{n-1} \, \sum_{i = 1}^{n} (x_i - \bar{x})^2$$
+
+The numerator and denominator are independent.
+
+## T Distribution Plot
+
+```{r, warnings = FALSE, message = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+
+ggplot(data.frame(x = c(-5, 5)), 
+       aes(x = x)) +
+stat_function(fun = dt, 
+              args = list(df = 1),
+              linewidth = 1.2,
+              color = "dark blue") +
+stat_function(fun = dnorm, 
+              args = list(mean = 0, sd = 1),
+              linewidth = 1.2,
+              color = "red") +
+theme_minimal() +
+labs(x = "x",
+     y = "P(x)",
+     title = "Standard Normal and T Distribution",
+     subtitle = "1 degree of freedom")
+```
+
+```{r, warnings = FALSE, message = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+
+library(ggplot2)
+
+ggplot(data.frame(x = c(-5, 5)), 
+       aes(x = x)) +
+stat_function(fun = dt, 
+              args = list(df = 10),
+              linewidth = 1.2,
+              color = "dark blue") +
+stat_function(fun = dnorm, 
+              args = list(mean = 0, sd = 1),
+              linewidth = 1.2,
+              color = "red") +
+theme_minimal() +
+labs(x = "x",
+     y = "P(x)",
+     title = "Standard Normal and T-Distribution",
+     subtitle = "10 degrees of freedom")
+
+```
+
+## Interval Estimation - Mean
+
+Assume that $\sigma$ is unknown and $s$ is an unbiased estimator.
+
+Let $(1-\alpha)$ be the confidence coefficient.
+
+The interval estimate of the population mean is:
+
+$$\bar{x} \pm \, t_{\alpha/2} \, \frac{s}{\sqrt{n}}$$ Let $n = 70$,
+$\bar{x} =9312$, $s=4007$, and $\alpha = 0.05$.
+
+$n-1 = 69$ degrees of freedom, $(1-\alpha/2) = 0.975$, $t_{69,0.975}=$
+`r qt(0.975,69)`
+
+The interval estimate is thus:
+
+$$\bar{x} \pm \, t_{\alpha/2} \, \frac{s}{\sqrt{n}} = 9312 \pm 1.994945 \times \frac{4007}{\sqrt{70}} = 9312 \pm 955.4352$$
+
+## R Example
+
+Here we have a randomly generated population with $\mu = 50,000$ and
+$\sigma = 9700$.
+
+Assume we don't know $\mu$ or $\sigma$ but we can sample the population.
+
+We can construct a 90% confidence interval using the sample average and
+the t-statistic.
+
+We can vary $\alpha$ and $n$ to observe how changing the confidence
+interval and sample size affects the confidence interval.
+
+```{r, warnings = FALSE, message = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+
+pop = 100000
+mu = 50000
+sigma = 9700
+nsample <- 500
+alpha <- 0.10
+
+ci <- 1 - (alpha/2)
+t_ci <- qt(ci, nsample - 1)
+
+population <- data.frame(x = rnorm(pop, mu, sigma))
+
+samples <- population %>%
+  slice_sample(n = nsample) %>%
+  summarize(samp_avg = mean(x),
+            samp_sd  = sd(x)) %>%
+  mutate(std_err = samp_sd/sqrt(nsample),
+         moe     = t_ci*std_err) %>%
+  mutate(lower_ci = samp_avg - moe,
+         upper_ci = samp_avg + moe)
+
+kable(samples,
+      align       = "cccccc", 
+      caption     = "Confidence Interval",
+      col.names   = c("Average", "Std Dev", 
+                      "Std Error", "MOE",
+                      "Lower Bound", "Upper Bound")) %>%
+  kable_styling(font_size = 12)
+
+
+```
