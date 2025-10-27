@@ -54,6 +54,7 @@ book:
       chapters: 
         - mod-7-0-overview.qmd
         - mod-7-1-sampling.qmd
+        - mod-7-2-central.qmd
     - part: "Inference"
 
 execute:

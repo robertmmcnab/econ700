@@ -111,6 +111,7 @@ Note: The course is under construction. Some links will not work.
 
 <li><a href="mod-7-0-overview.qmd">Module 7.0 - Module 7 Overview</a></li>
 <li><a href="mod-7-1-sampling.qmd">Module 7.1 - Sampling</a></li>
+<li><a href="mod-7-2-central.qmd">Module 7.2 - Central Limit Theorem</a></li>
 
 </ul>
 

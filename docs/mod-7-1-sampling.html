@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./mod-7-2-central.html" rel="next">
 <link href="./mod-7-0-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -455,6 +456,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Sampling</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mod-7-2-central.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -472,8 +479,8 @@ window.Quarto = {
    
   <ul>
   <li><a href="#terminology" id="toc-terminology" class="nav-link active" data-scroll-target="#terminology"><span class="header-section-number">32.1</span> Terminology</a></li>
-  <li><a href="#sampling-from-a-finite-population" id="toc-sampling-from-a-finite-population" class="nav-link" data-scroll-target="#sampling-from-a-finite-population"><span class="header-section-number">32.2</span> Sampling from a Finite Population</a></li>
-  <li><a href="#finite-population-sampling" id="toc-finite-population-sampling" class="nav-link" data-scroll-target="#finite-population-sampling"><span class="header-section-number">32.3</span> Finite Population Sampling</a></li>
+  <li><a href="#finite-population-sampling" id="toc-finite-population-sampling" class="nav-link" data-scroll-target="#finite-population-sampling"><span class="header-section-number">32.2</span> Finite Population Sampling</a></li>
+  <li><a href="#finite-sampling-example" id="toc-finite-sampling-example" class="nav-link" data-scroll-target="#finite-sampling-example"><span class="header-section-number">32.3</span> Finite Sampling Example</a></li>
   <li><a href="#infinite-population-sampling" id="toc-infinite-population-sampling" class="nav-link" data-scroll-target="#infinite-population-sampling"><span class="header-section-number">32.4</span> Infinite Population Sampling</a></li>
   <li><a href="#infinite-sampling-example" id="toc-infinite-sampling-example" class="nav-link" data-scroll-target="#infinite-sampling-example"><span class="header-section-number">32.5</span> Infinite Sampling Example</a></li>
   <li><a href="#estimators-and-estimates" id="toc-estimators-and-estimates" class="nav-link" data-scroll-target="#estimators-and-estimates"><span class="header-section-number">32.6</span> Estimators and Estimates</a></li>
@@ -513,21 +520,36 @@ window.Quarto = {
 <p>The question is whether the sample estimates are representative of the population characteristics?</p>
 <p>To answer this question, we need to ask what <strong>sampling methods</strong> produce “reliable” estimates?</p>
 </section>
-<section id="sampling-from-a-finite-population" class="level2" data-number="32.2">
-<h2 data-number="32.2" class="anchored" data-anchor-id="sampling-from-a-finite-population"><span class="header-section-number">32.2</span> Sampling from a Finite Population</h2>
+<section id="finite-population-sampling" class="level2" data-number="32.2">
+<h2 data-number="32.2" class="anchored" data-anchor-id="finite-population-sampling"><span class="header-section-number">32.2</span> Finite Population Sampling</h2>
 <p>Let <span class="math inline">\(N\)</span> be the population size where <span class="math inline">\(N &lt; \infty\)</span> so <span class="math inline">\(N\)</span> is finite.</p>
 <p>Let <span class="math inline">\(n\)</span> be the sample size where <span class="math inline">\(n \le N\)</span>.</p>
 <p>A simple random sample of size <span class="math inline">\(n\)</span> from a finite population of size <span class="math inline">\(N\)</span> is a sample selected such that each possible sample of size <span class="math inline">\(n\)</span> has the same probability of being selected.</p>
 <p>We can sample with replacement, however, sampling without replacement is more typically used.</p>
-<p>The number of different samples of size <span class="math inline">\(n\)</span> that can be drawn from the population of size <span class="math inline">\(N\)</span> is: <span class="math display">\[\frac{N!}{n!(N-n)!}\]</span></p>
+<p>The number of different samples of size <span class="math inline">\(n\)</span> that can be drawn from the population of size <span class="math inline">\(N\)</span> is:</p>
+<p><span class="math display">\[\frac{N!}{n!(N-n)!}\]</span></p>
 </section>
-<section id="finite-population-sampling" class="level2" data-number="32.3">
-<h2 data-number="32.3" class="anchored" data-anchor-id="finite-population-sampling"><span class="header-section-number">32.3</span> Finite Population Sampling</h2>
+<section id="finite-sampling-example" class="level2" data-number="32.3">
+<h2 data-number="32.3" class="anchored" data-anchor-id="finite-sampling-example"><span class="header-section-number">32.3</span> Finite Sampling Example</h2>
 <p>Create a finite population of numbers from 0 to 100,000, sequenced by 1.</p>
-<p>The population mean is <span class="math inline">\(\mu = \sum_{i = 1}^N \frac{x_i}{N}\)</span>.</p>
+<p>The population mean is</p>
+<p><span class="math display">\[\mu = \sum_{i = 1}^N \frac{x_i}{N}\]</span></p>
 <p>Generate 5 samples of size <span class="math inline">\(n = 100\)</span> without replacement.</p>
-<p>The sample average is <span class="math inline">\(\bar{x} = \sum_{i = 1}^n \frac{x_i}{n}\)</span>.</p>
-<p>The population mean is <span class="math inline">\(\mu = 50,000\)</span>, however, the sample averages vary “around” the population mean.</p>
+<p>The sample average is:</p>
+<p><span class="math display">\[\bar{x} = \sum_{i = 1}^n \frac{x_i}{n}\]</span></p>
+<p>The population mean is 50,000, however, the sample averages vary “around” the population mean.</p>
+<p>If you run the code multiple times, the population mean does not vary, but the sample averages will change with each run as we have not <strong>set.seed</strong> the code.</p>
+<p>The code below does the following:</p>
+<ul>
+<li><p>Creates a population of integers, sequenced by 1, from 0 to 100,000</p></li>
+<li><p>Sets the samples variable to 5</p></li>
+<li><p>Creates a vector, avg_x, filled with zeros with the number of columns set by samples</p></li>
+<li><p>Runs a loop where the number of loops is set by the samples variable</p></li>
+<li><p>In each loop, takes a random sample of 100 from the population and estimates the average</p></li>
+<li><p>Creates a tibble of the averages and row binds the population mean</p></li>
+<li><p>Transposes the vector of averages and the population mean</p></li>
+<li><p>Produces a table of results</p></li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -543,17 +565,18 @@ window.Quarto = {
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  avg_x[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(population, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(avg_x) <span class="sc">%&gt;%</span> <span class="fu">rbind</span>(<span class="fu">mean</span>(population)) <span class="sc">%&gt;%</span> <span class="fu">t</span>()</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(samples,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"cccccc"</span>, </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                         <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Sample Averages and Population Mean"</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Sample 1"</span>, <span class="st">"Sample 2"</span>, </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Sample 3"</span>, <span class="st">"Sample 4"</span>,</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Sample 5"</span>, <span class="st">"Population"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(avg_x) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>           <span class="fu">rbind</span>(<span class="fu">mean</span>(population)) <span class="sc">%&gt;%</span> <span class="fu">t</span>()</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(samples,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"c"</span>, </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>, </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                         <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Sample Averages and Population Mean"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Sample 1"</span>, <span class="st">"Sample 2"</span>, </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Sample 3"</span>, <span class="st">"Sample 4"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Sample 5"</span>, <span class="st">"Population"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
 <caption>Sample Averages and Population Mean</caption>
@@ -571,11 +594,11 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">avg_x</td>
-<td style="text-align: center;">45,995.32</td>
-<td style="text-align: center;">50,220.79</td>
-<td style="text-align: center;">48,419.62</td>
-<td style="text-align: center;">53,063.51</td>
-<td style="text-align: center;">48,646.65</td>
+<td style="text-align: center;">49,682.86</td>
+<td style="text-align: center;">52,838.52</td>
+<td style="text-align: center;">47,198.79</td>
+<td style="text-align: center;">50,561.88</td>
+<td style="text-align: center;">45,033.78</td>
 <td style="text-align: center;">50,000</td>
 </tr>
 </tbody>
@@ -586,7 +609,7 @@ window.Quarto = {
 <section id="infinite-population-sampling" class="level2" data-number="32.4">
 <h2 data-number="32.4" class="anchored" data-anchor-id="infinite-population-sampling"><span class="header-section-number">32.4</span> Infinite Population Sampling</h2>
 <p>We can also sample from a population that continues to change over time.</p>
-<p>In other words, <span class="math inline">\(N(t) &lt; N(t+1) &lt; N(t+2)\)</span> and so on.</p>
+<p><span class="math display">\[N(t) &lt; N(t+1) &lt; N(t+2) &lt; \dots\]</span></p>
 <p>In this case, we cannot find a list of all the elements in the population because the population is increasing without limit.</p>
 <p>We cannot randomly select observations since the probability of selection a sample of size <span class="math inline">\(n\)</span> is dependent upon when the population was sampled.</p>
 <p>If we consider population of students that have enrolled at ODU, this number changes within each semester and across semesters. The population of current and former students is not static and theoretically could increase without bound.</p>
@@ -622,34 +645,50 @@ window.Quarto = {
 <li><p><span class="math inline">\(s\)</span> is the estimator of the population parameter <span class="math inline">\(\sigma\)</span>.</p></li>
 <li><p><span class="math inline">\(\bar{p}\)</span> is the estimator of the population proportion <span class="math inline">\(p\)</span>.</p></li>
 </ul>
-<p>We can demonstrate how <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(s\)</span> are estimators of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
-<p>We generate random observations from a normal distribution with <span class="math inline">\(\mu = 25\)</span> and <span class="math inline">\(\sigma = 3\)</span></p>
-<p>We generate point estimates using <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(s\)</span>.</p>
+<p>In the code below, we demonstrate how the sample average and sample standard deviation are estimators of the population mean and the population standard deviation.</p>
+<p>We generate point estimates using:</p>
 <p><span class="math display">\[\bar{x} = \sum_{i = 1}^n x_i / n\]</span></p>
 <p><span class="math display">\[s = \sqrt{ \frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{n-1}}\]</span></p>
-<p>We can alter the sample size to see how <span class="math inline">\(n\)</span> relative to <span class="math inline">\(N\)</span> affects the estimates.</p>
+<p>The code below does the following:</p>
+<ul>
+<li><p>Generates 1,000,000 random numbers drawn from a normal distribution</p></li>
+<li><p>The mean of the normal distribution is 25 with a standard deviation of 3</p></li>
+<li><p>Declares 5 samples will be taken</p></li>
+<li><p>Creates three vectors to be filled by the loop</p></li>
+<li><p>A sample of 500 is taken from the population</p></li>
+<li><p>The sample number is set to the iteration of the loop</p></li>
+<li><p>The sample average and sample standard deviation are estimated</p></li>
+<li><p>A tibble is created of all three variables</p></li>
+<li><p>A table of output is produced</p></li>
+</ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>, <span class="at">mean =</span> <span class="dv">25</span>, <span class="at">sd =</span> <span class="dv">3</span>) </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span><span class="dv">5</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>samp_no <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,samples)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mean_vec <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,samples)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>sd_vec <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,samples)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>samples){</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="fu">sample</span>(population, <span class="at">size =</span> <span class="dv">500</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  samp_no[i] <span class="ot">&lt;-</span> i</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  mean_vec[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(temp)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  sd_vec[i] <span class="ot">&lt;-</span> <span class="fu">sd</span>(temp)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(samp_no, mean_vec,sd_vec)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(samples,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"ccc"</span>, </span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits      =</span> <span class="dv">2</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Sample and Population Averages"</span>,</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Sample"</span>,<span class="st">"Average"</span>, <span class="st">"SD"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>, <span class="at">mean =</span> <span class="dv">25</span>, <span class="at">sd =</span> <span class="dv">3</span>) </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span><span class="dv">5</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>samp_no <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,samples)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>mean_vec <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,samples)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>sd_vec <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,samples)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>samples){</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="fu">sample</span>(population, <span class="at">size =</span> <span class="dv">500</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  samp_no[i] <span class="ot">&lt;-</span> i</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  mean_vec[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(temp)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  sd_vec[i] <span class="ot">&lt;-</span> <span class="fu">sd</span>(temp)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(samp_no, mean_vec,sd_vec)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(samples,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">align       =</span> <span class="st">"ccc"</span>, </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits      =</span> <span class="dv">2</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption     =</span> <span class="st">"Sample and Population Averages"</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names   =</span> <span class="fu">c</span>(<span class="st">"Sample"</span>,<span class="st">"Average"</span>, <span class="st">"SD"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
 <caption>Sample and Population Averages</caption>
@@ -663,33 +702,34 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">25.13</td>
-<td style="text-align: center;">3.00</td>
+<td style="text-align: center;">25.01</td>
+<td style="text-align: center;">3.09</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
-<td style="text-align: center;">24.78</td>
-<td style="text-align: center;">2.91</td>
+<td style="text-align: center;">24.92</td>
+<td style="text-align: center;">2.95</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
-<td style="text-align: center;">24.89</td>
-<td style="text-align: center;">3.08</td>
+<td style="text-align: center;">24.96</td>
+<td style="text-align: center;">3.04</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: center;">24.86</td>
+<td style="text-align: center;">25.14</td>
 <td style="text-align: center;">2.88</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
-<td style="text-align: center;">24.95</td>
-<td style="text-align: center;">2.98</td>
+<td style="text-align: center;">25.15</td>
+<td style="text-align: center;">2.94</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<p>An illustrative exercise is to increase the sample size relative to the population and observe what happens to the estimates of the mean and standard deviation.</p>
 
 
 </section>
@@ -1107,6 +1147,9 @@ window.Quarto = {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./mod-7-2-central.html" class="pagination-link" aria-label="Central Limit Theorem">
+        <span class="nav-page-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

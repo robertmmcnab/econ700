@@ -47,7 +47,7 @@ population characteristics?
 To answer this question, we need to ask what **sampling methods**
 produce "reliable" estimates?
 
-## Sampling from a Finite Population
+## Finite Population Sampling
 
 Let $N$ be the population size where $N < \infty$ so $N$ is finite.
 
@@ -61,20 +61,50 @@ We can sample with replacement, however, sampling without replacement is
 more typically used.
 
 The number of different samples of size $n$ that can be drawn from the
-population of size $N$ is: $$\frac{N!}{n!(N-n)!}$$
+population of size $N$ is:
 
-## Finite Population Sampling
+$$\frac{N!}{n!(N-n)!}$$
+
+## Finite Sampling Example
 
 Create a finite population of numbers from 0 to 100,000, sequenced by 1.
 
-The population mean is $\mu = \sum_{i = 1}^N \frac{x_i}{N}$.
+The population mean is
+
+$$\mu = \sum_{i = 1}^N \frac{x_i}{N}$$
 
 Generate 5 samples of size $n = 100$ without replacement.
 
-The sample average is $\bar{x} = \sum_{i = 1}^n \frac{x_i}{n}$.
+The sample average is:
 
-The population mean is $\mu = 50,000$, however, the sample averages vary
+$$\bar{x} = \sum_{i = 1}^n \frac{x_i}{n}$$
+
+The population mean is 50,000, however, the sample averages vary
 "around" the population mean.
+
+If you run the code multiple times, the population mean does not vary,
+but the sample averages will change with each run as we have not
+**set.seed** the code.
+
+The code below does the following:
+
+-   Creates a population of integers, sequenced by 1, from 0 to 100,000
+
+-   Sets the samples variable to 5
+
+-   Creates a vector, avg_x, filled with zeros with the number of
+    columns set by samples
+
+-   Runs a loop where the number of loops is set by the samples variable
+
+-   In each loop, takes a random sample of 100 from the population and
+    estimates the average
+
+-   Creates a tibble of the averages and row binds the population mean
+
+-   Transposes the vector of averages and the population mean
+
+-   Produces a table of results
 
 ```{r, message = FALSE, warning = FALSE}
 
@@ -92,10 +122,11 @@ for(i in 1:samples){
   avg_x[i] <- mean(sample(population, size = 100, replace = FALSE))
 }
 
-samples <- tibble(avg_x) %>% rbind(mean(population)) %>% t()
+samples <- tibble(avg_x) %>% 
+           rbind(mean(population)) %>% t()
 
 kable(samples,
-      align       = "cccccc", 
+      align       = "c", 
       format.args = list(big.mark = ",", 
                          scientific = FALSE),
       caption     = "Sample Averages and Population Mean",
@@ -110,7 +141,7 @@ kable_styling(font_size = 10)
 
 We can also sample from a population that continues to change over time.
 
-In other words, $N(t) < N(t+1) < N(t+2)$ and so on.
+$$N(t) < N(t+1) < N(t+2) < \dots$$
 
 In this case, we cannot find a list of all the elements in the
 population because the population is increasing without limit.
@@ -192,24 +223,46 @@ based on observed data.**
 
 -   $\bar{p}$ is the estimator of the population proportion $p$.
 
-We can demonstrate how $\bar{x}$ and $s$ are estimators of $\mu$ and
-$\sigma$.
+In the code below, we demonstrate how the sample average and sample
+standard deviation are estimators of the population mean and the
+population standard deviation.
 
-We generate random observations from a normal distribution with
-$\mu = 25$ and $\sigma = 3$
-
-We generate point estimates using $\bar{x}$ and $s$.
+We generate point estimates using:
 
 $$\bar{x} = \sum_{i = 1}^n x_i / n$$
 
 $$s = \sqrt{ \frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{n-1}}$$
 
-We can alter the sample size to see how $n$ relative to $N$ affects the
-estimates.
+The code below does the following:
 
-```{r, fig.height=4, fig.width=4}
+-   Generates 1,000,000 random numbers drawn from a normal distribution
+
+-   The mean of the normal distribution is 25 with a standard deviation
+    of 3
+
+-   Declares 5 samples will be taken
+
+-   Creates three vectors to be filled by the loop
+
+-   A sample of 500 is taken from the population
+
+-   The sample number is set to the iteration of the loop
+
+-   The sample average and sample standard deviation are estimated
+
+-   A tibble is created of all three variables
+
+-   A table of output is produced
+
+```{r, message = FALSE, warning = FALSE}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
 
 population <- rnorm(1000000, mean = 25, sd = 3) 
+
 samples <-5 
 samp_no <- rep(0,samples)
 mean_vec <- rep(0,samples)
@@ -229,6 +282,10 @@ kable(samples,
       digits      = 2,
       caption     = "Sample and Population Averages",
       col.names   = c("Sample","Average", "SD")) %>%
-  kable_styling(font_size = 10)
+kable_styling(font_size = 10)
 
 ```
+
+An illustrative exercise is to increase the sample size relative to the
+population and observe what happens to the estimates of the mean and
+standard deviation.

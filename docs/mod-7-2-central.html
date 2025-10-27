@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>27&nbsp; Module 6 Overview – ECON 700</title>
+<title>33&nbsp; Central Limit Theorem – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-6-1-uniform.html" rel="next">
-<link href="./mod-5-3-poisson.html" rel="prev">
+<link href="./mod-7-1-sampling.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -71,6 +105,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-6-0-overview.html">Continuous Probability</a></li><li class="breadcrumb-item"><a href="./mod-6-0-overview.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 6 Overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-7-0-overview.html">Sampling Distributions</a></li><li class="breadcrumb-item"><a href="./mod-7-2-central.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -343,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-6-0-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-6-0-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 6 Overview</span></span></a>
   </div>
 </li>
@@ -390,7 +453,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-7-2-central.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-7-2-central.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></span></a>
   </div>
 </li>
@@ -410,20 +473,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">27.1</span> Introduction</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">27.2</span> Learning Objectives</a></li>
-  <li><a href="#required-texts" id="toc-required-texts" class="nav-link" data-scroll-target="#required-texts"><span class="header-section-number">27.3</span> Required Texts</a></li>
-  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities"><span class="header-section-number">27.4</span> Activities</a></li>
-  <li><a href="#lessons-in-this-module" id="toc-lessons-in-this-module" class="nav-link" data-scroll-target="#lessons-in-this-module"><span class="header-section-number">27.5</span> Lessons in this Module</a></li>
+  <li><a href="#unbiasedness" id="toc-unbiasedness" class="nav-link active" data-scroll-target="#unbiasedness"><span class="header-section-number">33.1</span> Unbiasedness</a></li>
+  <li><a href="#efficiency" id="toc-efficiency" class="nav-link" data-scroll-target="#efficiency"><span class="header-section-number">33.2</span> Efficiency</a></li>
+  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="header-section-number">33.3</span> Consistency</a></li>
+  <li><a href="#law-of-large-numbers" id="toc-law-of-large-numbers" class="nav-link" data-scroll-target="#law-of-large-numbers"><span class="header-section-number">33.4</span> Law of Large Numbers</a></li>
+  <li><a href="#example-of-lln" id="toc-example-of-lln" class="nav-link" data-scroll-target="#example-of-lln"><span class="header-section-number">33.5</span> Example of LLN</a></li>
+  <li><a href="#central-limit-theorem" id="toc-central-limit-theorem" class="nav-link" data-scroll-target="#central-limit-theorem"><span class="header-section-number">33.6</span> Central Limit Theorem</a></li>
+  <li><a href="#central-limit-theorem-1" id="toc-central-limit-theorem-1" class="nav-link" data-scroll-target="#central-limit-theorem-1"><span class="header-section-number">33.7</span> Central Limit Theorem</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-6-0-overview.html">Continuous Probability</a></li><li class="breadcrumb-item"><a href="./mod-6-0-overview.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 6 Overview</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-7-0-overview.html">Sampling Distributions</a></li><li class="breadcrumb-item"><a href="./mod-7-2-central.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 6 Overview</span></h1>
+<h1 class="title"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Central Limit Theorem</span></h1>
 </div>
 
 
@@ -440,61 +505,137 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2" data-number="27.1">
-<h2 data-number="27.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">27.1</span> Introduction</h2>
-<p>Welcome to <strong>Module 6</strong> of ECON 700.</p>
-<p>This module extends probability theory to the study of continuous random variables and their probability distributions. Students begin by differentiating discrete from continuous variables and exploring the concept of a probability density function (PDF) as the continuous counterpart to the probability mass function (PMF). The module introduces three key continuous distributions—the uniform, normal, and exponential—each representing a different type of process.</p>
-<p>The module emphasizes the normal distribution as the cornerstone of statistical analysis due to its relationship with the Central Limit Theorem. Through practical applications, students use R to compute probabilities (dnorm, pnorm, and qnorm), visualize areas under the curve, and identify key percentiles and standard deviations. The module concludes with the exponential distribution as a model of waiting times in Poisson processes, illustrating the connection between continuous distributions and real-world timing or reliability problems.</p>
-<hr>
+<section id="unbiasedness" class="level2" data-number="33.1">
+<h2 data-number="33.1" class="anchored" data-anchor-id="unbiasedness"><span class="header-section-number">33.1</span> Unbiasedness</h2>
+<p>An estimator of a population parameter is <strong>unbiased</strong> if the expected value of the estimator is equal to the value of the population parameter.</p>
+<p>More formally, the sample statistic <span class="math inline">\(\hat{\theta}\)</span> is an unbiased estimator of the population parameter <span class="math inline">\(\theta\)</span> if:</p>
+<p><span class="math display">\[E[\hat{\theta}] = \theta\]</span></p>
+<p>In other words, an estimator is unbiased if it produces parameter estimates that are, <strong>on average</strong>, equal to the population parameter.</p>
+<p>An estimator that is not unbiased is a <strong>biased</strong> estimator.</p>
+<p>The bias of an estimator is equal to its expected value minus the value of the population parameter or:</p>
+<p><span class="math display">\[
+Bias(\hat{\theta}) = E[\hat{\theta}] - \theta
+\]</span></p>
+<p>In other words, an estimator is unbiased if its bias is equal to zero.</p>
+<p>The sample average is an unbiased estimator of the population mean as:</p>
+<p><span class="math display">\[
+E[\bar{x}] = \mu
+\]</span></p>
+<p>It can be shown that the unadjusted sample variance is a biased estimator of the population variance or:</p>
+<p><span class="math display">\[
+E[S_n^2] = E[\frac{1}{n}\sum_{1}^{n}(X_i - \bar{X})^2] = \frac{n-1}{n}\sigma^2
+\]</span></p>
+<p>It can also be shown that the adjusted sample variance is an unbiased estimator of the population variance or:</p>
+<p><span class="math display">\[
+E[s^2] = E[\frac{1}{n-1}\sum_1^n(X_i - \bar{X})^2 ] = \sigma^2
+\]</span></p>
+<p>Why? When the population mean is unknown, we must estimate it with the sample average. We lose a <strong>degree of freedom</strong> as we employ an estimate instead of a parameter. The number of degrees of freedom is equal to the number of sample observations minus the number of parameters to be estimated.</p>
 </section>
-<section id="learning-objectives" class="level2" data-number="27.2">
-<h2 data-number="27.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">27.2</span> Learning Objectives</h2>
-<p>By the end of this module, you should be able to:</p>
-<ul>
-<li><p>MLO 1: <strong>Differentiate</strong> between discrete and continuous random variables and describe the role of probability density functions.</p></li>
-<li><p>MLO 2: <strong>Compute</strong> and interpret probabilities using the uniform, normal, and exponential distributions.</p></li>
-<li><p>MLO 3: <strong>Apply</strong> R functions (dnorm, pnorm, qnorm, dunif, punif, pexp) to calculate and visualize probability densities and cumulative distributions.</p></li>
-<li><p>MLO 4: <strong>Explain</strong> the properties of the normal distribution and the Central Limit Theorem.</p></li>
-<li><p>MLO 5: <strong>Calculate</strong> expected values, variances, and probabilities for continuous random variables.</p></li>
-<li><p>MLO 6: <strong>Evaluate</strong> real-world examples that demonstrate how continuous distributions model random events such as arrival times, measurement variation, and economic outcomes.</p></li>
-</ul>
-<hr>
+<section id="efficiency" class="level2" data-number="33.2">
+<h2 data-number="33.2" class="anchored" data-anchor-id="efficiency"><span class="header-section-number">33.2</span> Efficiency</h2>
+<p>An <strong>efficient estimator</strong> has the smallest possible variance among all unbiased estimators.</p>
+<p>More formally, the sample statistic <span class="math inline">\(\hat{\theta}\)</span> is relatively efficient to <span class="math inline">\(\hat{\hat{\theta}}\)</span> when</p>
+<p><span class="math display">\[var(\hat{\theta}) &lt; var(\hat{\hat{\theta}})\]</span></p>
 </section>
-<section id="required-texts" class="level2" data-number="27.3">
-<h2 data-number="27.3" class="anchored" data-anchor-id="required-texts"><span class="header-section-number">27.3</span> Required Texts</h2>
-<p>The following textbooks are available for free. Please select the links provided to access.</p>
-<ul>
-<li><p>Barbara Illowsky and Susan Dean. <a href="https://openstax.org/books/introductory-statistics-2e/pages/1-introduction">Introductory Statistics 2e</a>. OpenStax. Chapter 5 - 7.</p></li>
-<li><p>Rafael Irizarry. (2025). <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/">Introduction to Data Science: Data Wrangling and Visualization with R</a>. Chapters 1-2.</p></li>
-<li><p>Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund. (2025) <a href="https://r4ds.hadley.nz/">R for Data Science</a>. Sections 1-19.</p></li>
-<li><p><a href="https://cran.r-project.org/manuals.html">Online R documentation</a></p></li>
-<li><p><a href="https://posit.co/resources/cheatsheets/">RStudio Cheat Sheets</a></p></li>
-</ul>
-<hr>
+<section id="consistency" class="level2" data-number="33.3">
+<h2 data-number="33.3" class="anchored" data-anchor-id="consistency"><span class="header-section-number">33.3</span> Consistency</h2>
+<p>An estimator of a population parameter is <strong>consistent</strong> if it converges in probability to the true value of the parameter as the sample size tends to infinity.</p>
+<p>The sample statistic <span class="math inline">\(\hat{\theta}\)</span> is consistent when</p>
+<p><span class="math display">\[plim_{n \rightarrow \infty} \, \hat{\theta} \rightarrow \theta\]</span></p>
+<p>It can be shown, for example, that the sample mean converges almost surely to the mean, which implies that the sample mean converges in probability to the mean or:</p>
+<p><span class="math display">\[
+plim_{n \rightarrow \infty} \, \bar{X} \rightarrow \mu
+\]</span></p>
+<p>While the unadjusted variance estimator is biased and the adjusted variance estimator is unbiased, it can be shown that both estimators are consistent estimators of the population variance.</p>
+<p><span class="math display">\[
+plim_{n \rightarrow \infty} \, S^2 = \frac{1}{n}\sum_{1}^{n}(X_i - \bar{X})^2] \rightarrow \sigma^2
+\]</span> <span class="math display">\[
+plim_{n \rightarrow \infty} \, s^2 = \frac{1}{n-1}\sum_{1}^{n}(X_i - \bar{X})^2] \rightarrow \sigma^2
+\]</span></p>
 </section>
-<section id="activities" class="level2" data-number="27.4">
-<h2 data-number="27.4" class="anchored" data-anchor-id="activities"><span class="header-section-number">27.4</span> Activities</h2>
-<ul>
-<li>Complete the hands-on coding exercises embedded in each lesson (MLO 3)<br>
-</li>
-<li>Complete the weekly class assignment (MLO 1 - MLO 6)<br>
-</li>
-<li>Participate in the discussion form (MLO 3 - MLO 5)<br>
-</li>
-<li>Take the weekly knowledge quiz (MLO 1 - MLO 6)<br>
-</li>
-</ul>
-<hr>
+<section id="law-of-large-numbers" class="level2" data-number="33.4">
+<h2 data-number="33.4" class="anchored" data-anchor-id="law-of-large-numbers"><span class="header-section-number">33.4</span> Law of Large Numbers</h2>
+<p>The <strong>large of large numbers</strong> states that the average of an experiment will converge to the expected value as more trials of the experiment are performed.</p>
+<p>Let <span class="math inline">\(\bar{x_n}\)</span> be the sample average across <span class="math inline">\(n\)</span> trials.</p>
+<p>Let <span class="math inline">\(E[x] = \mu\)</span>.</p>
+<p>The law of large numbers states that the sample average converges in probability towards the expected value or:</p>
+<p><span class="math display">\[\bar{x_n} \rightarrow^P \mu\]</span></p>
+<p><span class="math display">\[lim_{n \rightarrow \infty} P(|\bar{x}_n - \mu| &lt; \epsilon) = 1, \quad \epsilon &gt;0 \]</span></p>
+<p>The strong law of large numbers states that the sample average converges almost surely to the expected value or:</p>
+<p><span class="math display">\[\bar{x} \rightarrow^{a.s} \mu\]</span></p>
+<p><span class="math display">\[lim_{n \rightarrow \infty} \, P(\bar{x}_n = \mu) = 1\]</span></p>
 </section>
-<section id="lessons-in-this-module" class="level2" data-number="27.5">
-<h2 data-number="27.5" class="anchored" data-anchor-id="lessons-in-this-module"><span class="header-section-number">27.5</span> Lessons in this Module</h2>
+<section id="example-of-lln" class="level2" data-number="33.5">
+<h2 data-number="33.5" class="anchored" data-anchor-id="example-of-lln"><span class="header-section-number">33.5</span> Example of LLN</h2>
+<p>We can demonstrate the large of large numbers of a uniform distribution.</p>
+<p>The expected value of a uniform distribution is</p>
+<p><span class="math display">\[E[x] = (a + b) / 2\]</span></p>
+<p>Given <span class="math inline">\(a = 1\)</span> and <span class="math inline">\(b = 10\)</span> then</p>
+<p><span class="math display">\[E[x] = (1 + 10)/2 = 5.5\]</span></p>
+<p>The code below does the following</p>
 <ul>
-<li><a href="./mod-6-1-uniform.html">6.1 – Uniform Probability Distributions</a></li>
-<li><a href="./mod-6-2-normal.html">6.2 – Normal Probability Distributions</a></li>
-<li><a href="./mod-6-3-exponential.html">6.3 – Exponential Probability Distributions</a></li>
+<li><p>Constructs a population of 100,000 random observations from a uniform distribution</p></li>
+<li><p>Establishes two vectors, one for the number of trials, one for the sample averages</p></li>
+<li><p>Performs a loop</p></li>
+<li><p>Inside the loop, the trial number is equal to the loop counter</p></li>
+<li><p>Takes a sample of size <em>i</em> and estimates the sample average</p></li>
+<li><p>Places the vectors of trial numbers and averages in a tibble</p></li>
+<li><p>Constructs a plot</p></li>
 </ul>
-<hr>
-<p>Next: Start with <a href="./mod-6-1-uniform.html"><strong>Uniform Probability Distributions</strong></a>.</p>
+<p>As the sample size increases, the sample averages tend toward the population mean.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100000</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ntrials <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,ntrials)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>avgs <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,ntrials)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>ntrials){</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  trials[i] <span class="ot">&lt;-</span> i</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  avgs[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(population, i, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>mean_frame <span class="ot">&lt;-</span> <span class="fu">tibble</span>(trials,avgs)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_frame,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> trials,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> avgs)) <span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Large of Large Numbers Simulation"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"Population of 100,000"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">y     =</span> <span class="st">"Sample Average"</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">x     =</span> <span class="st">"Trial Number"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-7-2-central_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="central-limit-theorem" class="level2" data-number="33.6">
+<h2 data-number="33.6" class="anchored" data-anchor-id="central-limit-theorem"><span class="header-section-number">33.6</span> Central Limit Theorem</h2>
+<p>The central limit theorem states that when independent random variables are summed, that, in many situations, the normalized sum tends toward a normal distribution even if the original variables were not normally distributed.</p>
+<p>Let <span class="math inline">\(\{x_1, x_2, \dots, x_n\}\)</span> be a random sample of size <span class="math inline">\(n\)</span>.</p>
+<p>Let <span class="math inline">\(\{x_1, x_2, \dots, x_n\}\)</span> be a sequence identically and independently distributed random variables.</p>
+<p>Let <span class="math inline">\(\{x_1, x_2, \dots, x_n\}\)</span> have mean <span class="math inline">\(\mu\)</span> and finite variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><span class="math display">\[E[x_1] = E[x_2] = \dots = E[x_n] = \mu\]</span></p>
+<p><span class="math display">\[var(x_1) = var(x_2) = \dots = var(x_n) = \sigma^2\]</span></p>
+<p>Thus, by the law of large numbers, the sample average of these random variables converges almost surely (and in probability) to the expected value <span class="math inline">\(\mu\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>.</p>
+</section>
+<section id="central-limit-theorem-1" class="level2" data-number="33.7">
+<h2 data-number="33.7" class="anchored" data-anchor-id="central-limit-theorem-1"><span class="header-section-number">33.7</span> Central Limit Theorem</h2>
+<p>Suppose <span class="math inline">\(\{x_1, x_2, \dots, x_n\}\)</span> is a sequence of i.i.d. random variables with <span class="math inline">\(E[x_i] = \mu\)</span> and <span class="math inline">\(var[x_i] = \sigma^2\)</span>. Then, as <span class="math inline">\(n\)</span> approaches infinity, the random variables <span class="math inline">\(\sqrt{n} \, (\bar{x} - \mu)\)</span> converge in distribution to normal <span class="math inline">\(N \sim (0, \sigma^2)\)</span>.</p>
+<p><span class="math display">\[lim_{n \rightarrow \infty} \, \sqrt{n}( \bar{x} - \mu) \rightarrow^d N(0,\sigma^2)\]</span></p>
+<p>If <span class="math inline">\(\sigma &gt;0\)</span>, converge in distribution means that the cumulative distribution functions of <span class="math inline">\(\sqrt{n} \, (\bar{x} - \mu)\)</span> converge pointwise to the CDF of <span class="math inline">\(N(0,\sigma^2)\)</span> for every real number <span class="math inline">\(z\)</span>.</p>
+<p>Therefore, it can be shown the sample average <span class="math inline">\(\bar{x}\)</span> is such that</p>
+<p><span class="math display">\[lim_{n \rightarrow \infty} \, \frac{\sqrt{n}}{\sigma}( \bar{x} - \mu) \rightarrow^d N(0,1)\]</span></p>
+<p>In other words, if a random sample of size <span class="math inline">\(n\)</span> is selected from any population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, then when <span class="math inline">\(n\)</span> is sufficiently large</p>
+<p><span class="math display">\[\bar{x} \sim N(\mu, \sigma/\sqrt{n})\]</span></p>
 
 
 </section>
@@ -907,14 +1048,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-5-3-poisson.html" class="pagination-link" aria-label="Poisson Distribution">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Poisson Distribution</span></span>
+      <a href="./mod-7-1-sampling.html" class="pagination-link" aria-label="Sampling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Sampling</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-6-1-uniform.html" class="pagination-link" aria-label="Uniform Distributions">
-        <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Uniform Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
