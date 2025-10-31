@@ -116,6 +116,17 @@ Note: The course is under construction. Some links will not work.
 
 </ul>
 
+## Module 08 - Inference
+
+<ul>
+
+<li><a href="mod-8-0-overview.qmd">Module 8.0 - Module 8 Overview</a></li>
+<li><a href="mod-8-1-hypothesis.qmd">Module 8.1 - Hypothesis Testing</a></li>
+<li><a href="mod-8-2-means.qmd">Module 8.2 - Hypothesis Testing: Means</a></li>
+<li><a href="mod-8-3-variance.qmd">Module 8.3 - Hypothesis Testing: Variance</a></li>
+
+</ul>
+
 ------------------------------------------------------------------------
 
 <p>This site provides <strong>interactive and static examples</strong> for economic data analysis using R and WebR. Click on the links above to explore each section.</p>

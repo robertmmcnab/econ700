@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Module 1 Overview – ECON 700</title>
+<title>35&nbsp; Module 8 Overview – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-1-1-intro-to-data.html" rel="next">
-<link href="./about.html" rel="prev">
+<link href="./mod-8-1-hypothesis.html" rel="next">
+<link href="./mod-7-3-interval.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -71,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-0-overview.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-8-0-overview.html">Inference</a></li><li class="breadcrumb-item"><a href="./mod-8-0-overview.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Module 8 Overview</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -150,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-1-0-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-1-0-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></span></a>
   </div>
 </li>
@@ -413,7 +442,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-8-0-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-8-0-overview.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Module 8 Overview</span></span></a>
   </div>
 </li>
@@ -447,20 +476,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">4.2</span> Learning Objectives</a></li>
-  <li><a href="#required-texts" id="toc-required-texts" class="nav-link" data-scroll-target="#required-texts"><span class="header-section-number">4.3</span> Required Texts</a></li>
-  <li><a href="#module-to-do-list" id="toc-module-to-do-list" class="nav-link" data-scroll-target="#module-to-do-list"><span class="header-section-number">4.4</span> Module To Do List</a></li>
-  <li><a href="#lessons-in-this-module" id="toc-lessons-in-this-module" class="nav-link" data-scroll-target="#lessons-in-this-module"><span class="header-section-number">4.5</span> Lessons in this Module</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">35.1</span> Introduction</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">35.2</span> Learning Objectives</a></li>
+  <li><a href="#required-texts" id="toc-required-texts" class="nav-link" data-scroll-target="#required-texts"><span class="header-section-number">35.3</span> Required Texts</a></li>
+  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities"><span class="header-section-number">35.4</span> Activities</a></li>
+  <li><a href="#lessons-in-this-module" id="toc-lessons-in-this-module" class="nav-link" data-scroll-target="#lessons-in-this-module"><span class="header-section-number">35.5</span> Lessons in this Module</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-0-overview.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-8-0-overview.html">Inference</a></li><li class="breadcrumb-item"><a href="./mod-8-0-overview.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Module 8 Overview</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></h1>
+<h1 class="title"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Module 8 Overview</span></h1>
 </div>
 
 
@@ -477,68 +506,61 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1</span> Introduction</h2>
-<p>Welcome to <strong>Module 1</strong> of ECON 700.</p>
-<p>In this module, you will be introduced to the R programming environment and its integrated interface, RStudio. You will learn how to install and navigate both tools while becoming familiar with R’s basic syntax and data types. You will also learn how to import, view, and explore datasets to build a foundational understanding of data handling in R. Finally, you will apply descriptive statistical techniques to perform initial data exploration and summarize key insights from the datasets.&nbsp;</p>
+<section id="introduction" class="level2" data-number="35.1">
+<h2 data-number="35.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">35.1</span> Introduction</h2>
+<p>Welcome to <strong>Module 8</strong> of ECON 700.</p>
+<p>This final module integrates the principles of statistical inference, emphasizing how sample evidence supports or refutes claims about population parameters. Students learn how to formulate and test hypotheses regarding population means, proportions, and variances. The module introduces the logic of null and alternative hypotheses, Type I and Type II errors, and the role of significance levels (α) in decision-making. Through practical examples and R-based visualizations, learners explore one-tailed and two-tailed tests using both the z and t distributions, building a strong understanding of how to determine rejection regions, calculate p-values, and interpret statistical significance.</p>
+<p>The module extends these concepts to inferences involving two populations and variability. Students conduct hypothesis tests for the difference between two means and proportions and explore the chi-square <span class="math inline">\(\chi^2\)</span> and F-distributions for analyzing population variances. By connecting hypothesis testing to real-world economic and data-driven applications, students gain experience in applying inference to managerial decisions and policy evaluation. This capstone module consolidates key statistical methods, preparing students to interpret and evaluate empirical evidence in research and professional contexts.</p>
 <hr>
 </section>
-<section id="learning-objectives" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">4.2</span> Learning Objectives</h2>
+<section id="learning-objectives" class="level2" data-number="35.2">
+<h2 data-number="35.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">35.2</span> Learning Objectives</h2>
 <p>By the end of this module, you should be able to:</p>
 <ul>
-<li>MLO 1: <strong>Install</strong> and navigate R and RStudio.<br>
-</li>
-<li>MLO 2: <strong>Identify</strong> R’s basic syntax and data types.<br>
-</li>
-<li>MLO 3: <strong>Work</strong> with variables and simple operations in R.<br>
-</li>
-<li>MLO 4: <strong>Explore</strong> data frames and tibbles in R<br>
-</li>
-<li>MLO 5: <strong>Apply</strong> descriptive statistics for initial data exploration.</li>
+<li><p>MLO 1: <strong>Formulate</strong> null and alternative hypotheses and explain the logic of statistical decision-making.</p></li>
+<li><p>MLO 2: <strong>Differentiate</strong> between Type I and Type II errors and interpret the role of significance levels in hypothesis testing.</p></li>
+<li><p>MLO 3: <strong>Conduct</strong> hypothesis tests for population means and proportions using the z and t distributions in R.</p></li>
+<li><p>MLO 4: <strong>Apply</strong> hypothesis testing to compare two population means or proportions and interpret p-values and confidence levels.</p></li>
+<li><p>MLO 5: <strong>Evaluate</strong> population variances using the chi-square and F-distributions to test assumptions about variability.</p></li>
+<li><p>MLO 6: <strong>Integrate</strong> hypothesis testing results into real-world economic and data analysis contexts to draw valid inferential conclusions.</p></li>
 </ul>
 <hr>
 </section>
-<section id="required-texts" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="required-texts"><span class="header-section-number">4.3</span> Required Texts</h2>
+<section id="required-texts" class="level2" data-number="35.3">
+<h2 data-number="35.3" class="anchored" data-anchor-id="required-texts"><span class="header-section-number">35.3</span> Required Texts</h2>
 <p>The following textbooks are available for free. Please select the links provided to access.</p>
 <ul>
-<li><p>Barbara Illowsky and Susan Dean. <a href="https://openstax.org/books/introductory-statistics-2e/pages/1-introduction">Introductory Statistics 2e</a>. OpenStax. Chapter 1.</p></li>
-<li><p>Rafael Irizarry. (2025). <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/">Introduction to Data Science: Data Wrangling and Visualization with R</a>. Chapters 1-2.</p></li>
-<li><p>Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund. (2025) <a href="https://r4ds.hadley.nz/">R for Data Science</a>. Sections 1-19.</p></li>
+<li><p>Barbara Illowsky and Susan Dean. <a href="https://openstax.org/books/introductory-statistics-2e/pages/1-introduction">Introductory Statistics 2e</a>. OpenStax. Chapter 9-11.</p></li>
+<li><p>Rafael Irizarry. (2025). <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/">Introduction to Data Science: Data Wrangling and Visualization with R</a>.</p></li>
+<li><p>Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund. (2025) <a href="https://r4ds.hadley.nz/">R for Data Science</a>.</p></li>
 <li><p><a href="https://cran.r-project.org/manuals.html">Online R documentation</a></p></li>
 <li><p><a href="https://posit.co/resources/cheatsheets/">RStudio Cheat Sheets</a></p></li>
 </ul>
 <hr>
 </section>
-<section id="module-to-do-list" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="module-to-do-list"><span class="header-section-number">4.4</span> Module To Do List</h2>
+<section id="activities" class="level2" data-number="35.4">
+<h2 data-number="35.4" class="anchored" data-anchor-id="activities"><span class="header-section-number">35.4</span> Activities</h2>
 <ul>
-<li>Complete the hands-on coding exercises embedded in each lesson (MLO 3,4)<br>
+<li>Complete the hands-on coding exercises embedded in each lesson (MLO 3-6)<br>
 </li>
-<li>Use WebR to experiment directly in your browser (MLO 2, 3, 4)<br>
+<li>Complete the weekly class assignment (MLO 1 - MLO 6)<br>
 </li>
-<li>Complete the weekly class assignment (MLO 1-5)<br>
+<li>Participate in the discussion form (MLO 3 - MLO 6)<br>
 </li>
-<li>Take the weekly knowledge quiz (MLO 2-5).<br>
+<li>Take the weekly knowledge quiz (MLO 1 - MLO 6)<br>
 </li>
 </ul>
 <hr>
 </section>
-<section id="lessons-in-this-module" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="lessons-in-this-module"><span class="header-section-number">4.5</span> Lessons in this Module</h2>
+<section id="lessons-in-this-module" class="level2" data-number="35.5">
+<h2 data-number="35.5" class="anchored" data-anchor-id="lessons-in-this-module"><span class="header-section-number">35.5</span> Lessons in this Module</h2>
 <ul>
-<li><a href="./mod-1-1-intro-to-data.html">1.1 – Introduction to Economic Analysis</a><br>
-</li>
-<li><a href="./mod-1-2-intro-to-r.html">1.2 – Introduction to R</a><br>
-</li>
-<li><a href="./mod-1-3-intro-to-r-variables.html">1.3 – Variables in R</a><br>
-</li>
-<li><a href="./mod-1-4-intro-to-r-dataframes.html">1.4 - Data frames in R</a></li>
-<li><a href="./mod-1-5-quarto.html">1.5 - Using Quarto in R</a></li>
+<li><a href="./mod-8-1-hypothesis.html">8.1 – Hypothesis Testing</a></li>
+<li><a href="./mod-8-2-means.html">8.2 – Hypothesis Testing: Means</a></li>
+<li><a href="./mod-8-3-variance.html">8.3 – Hypothesis Testing: Variance</a></li>
 </ul>
 <hr>
-<p>Next: Start with <a href="./mod-1-1-intro-to-data.html"><strong>Economic Analysis</strong></a>.</p>
+<p>Next: Start with <a href="./mod-8-1-hypothesis.html"><strong>Hypothesis Testing</strong></a>.</p>
 
 
 </section>
@@ -951,13 +973,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./about.html" class="pagination-link" aria-label="Course Objectives">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Course Objectives</span></span>
+      <a href="./mod-7-3-interval.html" class="pagination-link" aria-label="Interval Estimation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Interval Estimation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-1-1-intro-to-data.html" class="pagination-link" aria-label="Economic Analysis">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Economic Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mod-8-1-hypothesis.html" class="pagination-link" aria-label="Hypothesis Testing">
+        <span class="nav-page-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

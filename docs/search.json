@@ -92,7 +92,18 @@
     "href": "index.html#module-07---sampling-distributions",
     "title": "ECON 700",
     "section": "0.8 Module 07 - Sampling Distributions",
-    "text": "0.8 Module 07 - Sampling Distributions\n\n\nModule 7.0 - Module 7 Overview\n\n\nModule 7.1 - Sampling\n\n\nModule 7.2 - Central Limit Theorem\n\n\nModule 7.3 - Interval Estimation\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
+    "text": "0.8 Module 07 - Sampling Distributions\n\n\nModule 7.0 - Module 7 Overview\n\n\nModule 7.1 - Sampling\n\n\nModule 7.2 - Central Limit Theorem\n\n\nModule 7.3 - Interval Estimation",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#module-08---inference",
+    "href": "index.html#module-08---inference",
+    "title": "ECON 700",
+    "section": "0.9 Module 08 - Inference",
+    "text": "0.9 Module 08 - Inference\n\n\nModule 8.0 - Module 8 Overview\n\n\nModule 8.1 - Hypothesis Testing\n\n\nModule 8.2 - Hypothesis Testing: Means\n\n\nModule 8.3 - Hypothesis Testing: Variance\n\n\n\n\nThis site provides interactive and static examples for economic data analysis using R and WebR. Click on the links above to explore each section.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>ECON 700</span>"
@@ -422,7 +433,7 @@
     "href": "mod-1-1-intro-to-data.html#descriptive-statistics",
     "title": "5  Economic Analysis",
     "section": "5.17 Descriptive Statistics",
-    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n54.98\n49.7\n50.82",
+    "text": "5.17 Descriptive Statistics\n\nDescriptive statistics are a set of tools used to describe the properties of a set of data.\nDescriptive statistics can be numerical, tabular, or graphical.\nDescriptive statistics typically summarize the properties of the individual observations.\nWe can create a population for 10,000 observations that have a mean of 50.5 and a standard deviation of 10\nWe can then estimate sample averages to describe the mean of the data.\n\nGathering a sample that is representative of the population is the first step. We then must understand the properties of the sample and how this reflects the properties of the population.\n\n# Create a data frame with 10,000 observations\n# mean of the observations is 50.5\n\ndata_1 &lt;- tibble(x1 = rnorm(10000, mean = 50.5, sd = 10))\n\ndata_2 &lt;- slice_sample(data_1, n = 10) %&gt;% \n          summarize(mean_10 = mean(x1))\n\ndata_3 &lt;- slice_sample(data_1, n = 100) %&gt;% \n          summarize(mean_100 = mean(x1))\n\ndata_4 &lt;- slice_sample (data_1, n = 1000) %&gt;% \n          summarize(mean_1000 = mean(x1))\n\ndata_5 &lt;- cbind(data_2, data_3, data_4)\n\nkable(data_5,\n      col.names = c(\"Sample = 10\",\n                    \"Sample = 100\",\n                    \"Sample = 1000\"),\n      align     = c('c', 'c', 'c'),\n      digits    = 2,\n      caption   = 'Sample Averages') %&gt;% \n  column_spec(2:3, width = \"3cm\") %&gt;%\n  kable_styling(full_width = TRUE,\n                font_size  = 10)\n\n\nSample Averages\n\n\nSample = 10\nSample = 100\nSample = 1000\n\n\n\n\n53.04\n49.7\n49.99",
     "crumbs": [
       "Introduction to R",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Economic Analysis</span>"
@@ -2369,7 +2380,7 @@
     "href": "mod-5-3-poisson.html#the-r-function-in-r",
     "title": "26  Poisson Distribution",
     "section": "26.10 The R Function in R",
-    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n45\n8\n12.821181\n\n\n50\n9\n6.747618\n\n\n37\n11\n16.159574\n\n\n48\n6\n6.618471\n\n\n48\n4\n8.907599",
+    "text": "26.10 The R Function in R\nThe function rbinom generates a vector of binomial distributed random variables given the number of experiments \\(m\\), the number of trials in each experiment \\(n\\), and the probability of success \\(p\\).\nThe function rpois generates a vector of Poisson distributed random variables given the number of experiments \\(m\\) and the arrival rate \\(\\mu\\).\nThe function rnorm generates a vector of normally distributed random variables given \\(\\mu\\) and \\(\\sigma\\).\n\n#set the number of observations (experiments) to 5\n\nr_binom &lt;- rbinom(5,100,0.5)\n\nr_poisson &lt;- rpois(5, 10)\n\nr_norm &lt;- rnorm(5, 10, 2)\n\nr_dist &lt;- data.frame(r_binom, r_poisson, r_norm)\n\n\nkable(r_dist,\n      align       = \"ccc\", \n      caption     = \"Random Numbers\",\n      col.names   = c(\"Binomal\", \n                      \"Poisson\",\n                      \"Normal\")) %&gt;%\n  kable_styling(font_size = 14)\n\n\nRandom Numbers\n\n\nBinomal\nPoisson\nNormal\n\n\n\n\n52\n14\n10.621882\n\n\n58\n10\n8.856054\n\n\n51\n13\n11.515168\n\n\n47\n9\n9.318065\n\n\n54\n12\n11.725172",
     "crumbs": [
       "Discrete Probability",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Poisson Distribution</span>"
@@ -2567,7 +2578,7 @@
     "href": "mod-6-1-uniform.html#random-uniform",
     "title": "28  Uniform Distributions",
     "section": "28.11 Random Uniform",
-    "text": "28.11 Random Uniform\nrunif generates random deviates using the uniform PDF.\nGiven \\(a\\) and \\(b\\), we can generate 5 observations from a uniform distribution.\nIn this example, we use a loop to generate 3 sets of random observations from a uniform distribution with \\(a = 30\\) and \\(b = 70\\).\n\nrm(list = ls())\n\nlibrary(tidyverse)\nlibrary(kableExtra)\n\na &lt;- 30\nb &lt;- 70\n\n# Generate 3 columns of 5 uniform random observations\nran_unif &lt;- as_tibble(\n  replicate(3, runif(5, min = a, max = b)),\n    .name_repair = ~ paste0(\"Sample_\", seq_along(.))) %&gt;%\n    mutate(Observation = paste0(\"Observation_\", row_number())) %&gt;%\n    relocate(Observation)\n\nkable(ran_unif,\n      align     = \"c\",\n      caption   = \"Uniform Random Observations\",\n      col.names = c(\"Observation\", \"Sample 1\", \"Sample 2\", \"Sample 3\")) %&gt;%\nkable_styling(font_size = 12)\n\n\nUniform Random Observations\n\n\nObservation\nSample 1\nSample 2\nSample 3\n\n\n\n\nObservation_1\n41.65205\n32.27930\n65.35132\n\n\nObservation_2\n67.52083\n57.68208\n51.17719\n\n\nObservation_3\n38.51239\n42.86205\n54.89934\n\n\nObservation_4\n33.56519\n49.67754\n38.88695\n\n\nObservation_5\n68.83485\n30.96338\n30.24129",
+    "text": "28.11 Random Uniform\nrunif generates random deviates using the uniform PDF.\nGiven \\(a\\) and \\(b\\), we can generate 5 observations from a uniform distribution.\nIn this example, we use a loop to generate 3 sets of random observations from a uniform distribution with \\(a = 30\\) and \\(b = 70\\).\n\nrm(list = ls())\n\nlibrary(tidyverse)\nlibrary(kableExtra)\n\na &lt;- 30\nb &lt;- 70\n\n# Generate 3 columns of 5 uniform random observations\nran_unif &lt;- as_tibble(\n  replicate(3, runif(5, min = a, max = b)),\n    .name_repair = ~ paste0(\"Sample_\", seq_along(.))) %&gt;%\n    mutate(Observation = paste0(\"Observation_\", row_number())) %&gt;%\n    relocate(Observation)\n\nkable(ran_unif,\n      align     = \"c\",\n      caption   = \"Uniform Random Observations\",\n      col.names = c(\"Observation\", \"Sample 1\", \"Sample 2\", \"Sample 3\")) %&gt;%\nkable_styling(font_size = 12)\n\n\nUniform Random Observations\n\n\nObservation\nSample 1\nSample 2\nSample 3\n\n\n\n\nObservation_1\n40.69302\n42.02820\n61.08957\n\n\nObservation_2\n66.17294\n39.32491\n65.89460\n\n\nObservation_3\n47.54265\n61.28503\n39.59567\n\n\nObservation_4\n48.18692\n38.99967\n59.25396\n\n\nObservation_5\n32.46462\n30.48438\n53.96933",
     "crumbs": [
       "Continuous Probability",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Uniform Distributions</span>"
@@ -2842,7 +2853,7 @@
     "href": "mod-7-1-sampling.html#finite-sampling-example",
     "title": "32  Sampling",
     "section": "32.3 Finite Sampling Example",
-    "text": "32.3 Finite Sampling Example\nCreate a finite population of numbers from 0 to 100,000, sequenced by 1.\nThe population mean is\n\\[\\mu = \\sum_{i = 1}^N \\frac{x_i}{N}\\]\nGenerate 5 samples of size \\(n = 100\\) without replacement.\nThe sample average is:\n\\[\\bar{x} = \\sum_{i = 1}^n \\frac{x_i}{n}\\]\nThe population mean is 50,000, however, the sample averages vary “around” the population mean.\nIf you run the code multiple times, the population mean does not vary, but the sample averages will change with each run as we have not set.seed the code.\nThe code below does the following:\n\nCreates a population of integers, sequenced by 1, from 0 to 100,000\nSets the samples variable to 5\nCreates a vector, avg_x, filled with zeros with the number of columns set by samples\nRuns a loop where the number of loops is set by the samples variable\nIn each loop, takes a random sample of 100 from the population and estimates the average\nCreates a tibble of the averages and row binds the population mean\nTransposes the vector of averages and the population mean\nProduces a table of results\n\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\npopulation &lt;- seq(0, 100000, by = 1) \n\nsamples &lt;- 5\navg_x &lt;- rep(0,samples)\n\nfor(i in 1:samples){\n  avg_x[i] &lt;- mean(sample(population, size = 100, replace = FALSE))\n}\n\nsamples &lt;- tibble(avg_x) %&gt;% \n           rbind(mean(population)) %&gt;% t()\n\nkable(samples,\n      align       = \"c\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Sample Averages and Population Mean\",\n      col.names   = c(\"Sample 1\", \"Sample 2\", \n                      \"Sample 3\", \"Sample 4\",\n                      \"Sample 5\", \"Population\")) %&gt;%\nkable_styling(font_size = 10)\n\n\nSample Averages and Population Mean\n\n\n\nSample 1\nSample 2\nSample 3\nSample 4\nSample 5\nPopulation\n\n\n\n\navg_x\n48,382.32\n52,701.01\n52,959.2\n49,876.88\n46,661.52\n50,000",
+    "text": "32.3 Finite Sampling Example\nCreate a finite population of numbers from 0 to 100,000, sequenced by 1.\nThe population mean is\n\\[\\mu = \\sum_{i = 1}^N \\frac{x_i}{N}\\]\nGenerate 5 samples of size \\(n = 100\\) without replacement.\nThe sample average is:\n\\[\\bar{x} = \\sum_{i = 1}^n \\frac{x_i}{n}\\]\nThe population mean is 50,000, however, the sample averages vary “around” the population mean.\nIf you run the code multiple times, the population mean does not vary, but the sample averages will change with each run as we have not set.seed the code.\nThe code below does the following:\n\nCreates a population of integers, sequenced by 1, from 0 to 100,000\nSets the samples variable to 5\nCreates a vector, avg_x, filled with zeros with the number of columns set by samples\nRuns a loop where the number of loops is set by the samples variable\nIn each loop, takes a random sample of 100 from the population and estimates the average\nCreates a tibble of the averages and row binds the population mean\nTransposes the vector of averages and the population mean\nProduces a table of results\n\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\npopulation &lt;- seq(0, 100000, by = 1) \n\nsamples &lt;- 5\navg_x &lt;- rep(0,samples)\n\nfor(i in 1:samples){\n  avg_x[i] &lt;- mean(sample(population, size = 100, replace = FALSE))\n}\n\nsamples &lt;- tibble(avg_x) %&gt;% \n           rbind(mean(population)) %&gt;% t()\n\nkable(samples,\n      align       = \"c\", \n      format.args = list(big.mark = \",\", \n                         scientific = FALSE),\n      caption     = \"Sample Averages and Population Mean\",\n      col.names   = c(\"Sample 1\", \"Sample 2\", \n                      \"Sample 3\", \"Sample 4\",\n                      \"Sample 5\", \"Population\")) %&gt;%\nkable_styling(font_size = 10)\n\n\nSample Averages and Population Mean\n\n\n\nSample 1\nSample 2\nSample 3\nSample 4\nSample 5\nPopulation\n\n\n\n\navg_x\n49,532.55\n47,721.48\n50,283.04\n50,568.72\n50,466.68\n50,000",
     "crumbs": [
       "Sampling Distributions",
       "<span class='chapter-number'>32</span>  <span class='chapter-title'>Sampling</span>"
@@ -2875,7 +2886,7 @@
     "href": "mod-7-1-sampling.html#estimators-and-estimates",
     "title": "32  Sampling",
     "section": "32.6 Estimators and Estimates",
-    "text": "32.6 Estimators and Estimates\nPoint estimation is the use of sample data to estimate a sample statistic.\nAn estimator is a rule for calculating an estimate of a given quantity based on observed data.\n\nThe sample average, \\(\\bar{x}\\) is an estimator for the population mean.\nThe estimator \\(\\bar{x}\\) produces an estimate of the population mean \\(\\mu\\) using the \\(n\\) observations,\n\\(s^2\\) is the estimator of the population parameter \\(\\sigma^2\\).\n\\(s\\) is the estimator of the population parameter \\(\\sigma\\).\n\\(\\bar{p}\\) is the estimator of the population proportion \\(p\\).\n\nIn the code below, we demonstrate how the sample average and sample standard deviation are estimators of the population mean and the population standard deviation.\nWe generate point estimates using:\n\\[\\bar{x} = \\sum_{i = 1}^n x_i / n\\]\n\\[s = \\sqrt{ \\frac{\\sum_{i = 1}^n(x_i - \\bar{x})^2}{n-1}}\\]\nThe code below does the following:\n\nGenerates 1,000,000 random numbers drawn from a normal distribution\nThe mean of the normal distribution is 25 with a standard deviation of 3\nDeclares 5 samples will be taken\nCreates three vectors to be filled by the loop\nA sample of 500 is taken from the population\nThe sample number is set to the iteration of the loop\nThe sample average and sample standard deviation are estimated\nA tibble is created of all three variables\nA table of output is produced\n\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\npopulation &lt;- rnorm(1000000, mean = 25, sd = 3) \n\nsamples &lt;-5 \nsamp_no &lt;- rep(0,samples)\nmean_vec &lt;- rep(0,samples)\nsd_vec &lt;- rep(0,samples)\n\nfor(i in 1:samples){\n  temp &lt;- sample(population, size = 500, replace = FALSE)\n  samp_no[i] &lt;- i\n  mean_vec[i] &lt;- mean(temp)\n  sd_vec[i] &lt;- sd(temp)\n}\n\nsamples &lt;- tibble(samp_no, mean_vec,sd_vec)\n\nkable(samples,\n      align       = \"ccc\", \n      digits      = 2,\n      caption     = \"Sample and Population Averages\",\n      col.names   = c(\"Sample\",\"Average\", \"SD\")) %&gt;%\nkable_styling(font_size = 10)\n\n\nSample and Population Averages\n\n\nSample\nAverage\nSD\n\n\n\n\n1\n25.02\n2.96\n\n\n2\n25.12\n3.07\n\n\n3\n24.92\n3.19\n\n\n4\n25.11\n3.03\n\n\n5\n24.90\n2.85\n\n\n\n\n\nAn illustrative exercise is to increase the sample size relative to the population and observe what happens to the estimates of the mean and standard deviation.",
+    "text": "32.6 Estimators and Estimates\nPoint estimation is the use of sample data to estimate a sample statistic.\nAn estimator is a rule for calculating an estimate of a given quantity based on observed data.\n\nThe sample average, \\(\\bar{x}\\) is an estimator for the population mean.\nThe estimator \\(\\bar{x}\\) produces an estimate of the population mean \\(\\mu\\) using the \\(n\\) observations,\n\\(s^2\\) is the estimator of the population parameter \\(\\sigma^2\\).\n\\(s\\) is the estimator of the population parameter \\(\\sigma\\).\n\\(\\bar{p}\\) is the estimator of the population proportion \\(p\\).\n\nIn the code below, we demonstrate how the sample average and sample standard deviation are estimators of the population mean and the population standard deviation.\nWe generate point estimates using:\n\\[\\bar{x} = \\sum_{i = 1}^n x_i / n\\]\n\\[s = \\sqrt{ \\frac{\\sum_{i = 1}^n(x_i - \\bar{x})^2}{n-1}}\\]\nThe code below does the following:\n\nGenerates 1,000,000 random numbers drawn from a normal distribution\nThe mean of the normal distribution is 25 with a standard deviation of 3\nDeclares 5 samples will be taken\nCreates three vectors to be filled by the loop\nA sample of 500 is taken from the population\nThe sample number is set to the iteration of the loop\nThe sample average and sample standard deviation are estimated\nA tibble is created of all three variables\nA table of output is produced\n\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(kableExtra)\n\npopulation &lt;- rnorm(1000000, mean = 25, sd = 3) \n\nsamples &lt;-5 \nsamp_no &lt;- rep(0,samples)\nmean_vec &lt;- rep(0,samples)\nsd_vec &lt;- rep(0,samples)\n\nfor(i in 1:samples){\n  temp &lt;- sample(population, size = 500, replace = FALSE)\n  samp_no[i] &lt;- i\n  mean_vec[i] &lt;- mean(temp)\n  sd_vec[i] &lt;- sd(temp)\n}\n\nsamples &lt;- tibble(samp_no, mean_vec,sd_vec)\n\nkable(samples,\n      align       = \"ccc\", \n      digits      = 2,\n      caption     = \"Sample and Population Averages\",\n      col.names   = c(\"Sample\",\"Average\", \"SD\")) %&gt;%\nkable_styling(font_size = 10)\n\n\nSample and Population Averages\n\n\nSample\nAverage\nSD\n\n\n\n\n1\n24.91\n3.11\n\n\n2\n24.98\n2.84\n\n\n3\n25.05\n3.04\n\n\n4\n24.97\n2.92\n\n\n5\n24.89\n3.03\n\n\n\n\n\nAn illustrative exercise is to increase the sample size relative to the population and observe what happens to the estimates of the mean and standard deviation.",
     "crumbs": [
       "Sampling Distributions",
       "<span class='chapter-number'>32</span>  <span class='chapter-title'>Sampling</span>"
@@ -2941,7 +2952,7 @@
     "href": "mod-7-2-central.html#normal-example-of-lln",
     "title": "33  Central Limit Theorem",
     "section": "33.6 Normal Example of LLN",
-    "text": "33.6 Normal Example of LLN\nWe can demonstrate the Law of Large Numbers using data drawn from a normal distribution.\nWe know the sample average is equal to:\n\\[\n\\bar{X} = \\frac{1}{n}\\sum_{i=1}^n x_i\n\\]\nWe also know that the sample average estimator is unbiased and consistent:\n\\[\nE[\\bar{X}] = \\mu\n\\]\n\\[\nplim_{n \\rightarrow \\infty} \\, \\bar{X} \\rightarrow \\mu\n\\]\nWe use the code chunk from the last example as a starting point. Here we modify the population so that it is drawn from a normal distribution and we also create a table to illustrate the differences between the first five observations and the last five observations.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npopulation &lt;- rnorm(100000, mean = 25, sd = 10)\n\nntrials = 10000\ntrials &lt;- rep(0,ntrials)\navgs &lt;- rep(0,ntrials)\n\nfor(i in 1:ntrials){\n  trials[i] &lt;- i\n  avgs[i] &lt;- mean(sample(population, i, replace = FALSE))\n}\n\nmean_frame &lt;- tibble(trials,avgs)\n\nmean_frame_2 &lt;- mean_frame %&gt;%\n  filter(trials &lt;= 5 | trials &gt; ntrials - 5)\n\nggplot(mean_frame,\n       aes(x = trials,\n       y = avgs)) +\ngeom_point() +\ntheme_minimal() +\nlabs(title = \"Large of Large Numbers Simulation\",\n     subtitle = \"Population of 100,000\",\n     y     = \"Sample Average\",\n     x     = \"Trial Number\")\n\n\n\n\n\n\n\nkable(mean_frame_2,\n      align  = 'c',\n      digits = 3,\n      col.names = c('Obsveration','Sample average')) %&gt;%\nkable_styling()\n\n\n\n\nObsveration\nSample average\n\n\n\n\n1\n25.158\n\n\n2\n9.327\n\n\n3\n24.846\n\n\n4\n34.903\n\n\n5\n16.504\n\n\n9996\n24.784\n\n\n9997\n25.220\n\n\n9998\n24.867\n\n\n9999\n24.831\n\n\n10000\n25.000",
+    "text": "33.6 Normal Example of LLN\nWe can demonstrate the Law of Large Numbers using data drawn from a normal distribution.\nWe know the sample average is equal to:\n\\[\n\\bar{X} = \\frac{1}{n}\\sum_{i=1}^n x_i\n\\]\nWe also know that the sample average estimator is unbiased and consistent:\n\\[\nE[\\bar{X}] = \\mu\n\\]\n\\[\nplim_{n \\rightarrow \\infty} \\, \\bar{X} \\rightarrow \\mu\n\\]\nWe use the code chunk from the last example as a starting point. Here we modify the population so that it is drawn from a normal distribution and we also create a table to illustrate the differences between the first five observations and the last five observations.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npopulation &lt;- rnorm(100000, mean = 25, sd = 10)\n\nntrials = 10000\ntrials &lt;- rep(0,ntrials)\navgs &lt;- rep(0,ntrials)\n\nfor(i in 1:ntrials){\n  trials[i] &lt;- i\n  avgs[i] &lt;- mean(sample(population, i, replace = FALSE))\n}\n\nmean_frame &lt;- tibble(trials,avgs)\n\nmean_frame_2 &lt;- mean_frame %&gt;%\n  filter(trials &lt;= 5 | trials &gt; ntrials - 5)\n\nggplot(mean_frame,\n       aes(x = trials,\n       y = avgs)) +\ngeom_point() +\ntheme_minimal() +\nlabs(title = \"Large of Large Numbers Simulation\",\n     subtitle = \"Population of 100,000\",\n     y     = \"Sample Average\",\n     x     = \"Trial Number\")\n\n\n\n\n\n\n\nkable(mean_frame_2,\n      align  = 'c',\n      digits = 3,\n      col.names = c('Obsveration','Sample average')) %&gt;%\nkable_styling()\n\n\n\n\nObsveration\nSample average\n\n\n\n\n1\n16.416\n\n\n2\n22.606\n\n\n3\n15.616\n\n\n4\n13.504\n\n\n5\n17.588\n\n\n9996\n25.171\n\n\n9997\n25.129\n\n\n9998\n25.036\n\n\n9999\n25.078\n\n\n10000\n24.816",
     "crumbs": [
       "Sampling Distributions",
       "<span class='chapter-number'>33</span>  <span class='chapter-title'>Central Limit Theorem</span>"
@@ -3154,6 +3165,556 @@
     "crumbs": [
       "Sampling Distributions",
       "<span class='chapter-number'>34</span>  <span class='chapter-title'>Interval Estimation</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-0-overview.html",
+    "href": "mod-8-0-overview.html",
+    "title": "35  Module 8 Overview",
+    "section": "",
+    "text": "35.1 Introduction\nWelcome to Module 8 of ECON 700.\nThis final module integrates the principles of statistical inference, emphasizing how sample evidence supports or refutes claims about population parameters. Students learn how to formulate and test hypotheses regarding population means, proportions, and variances. The module introduces the logic of null and alternative hypotheses, Type I and Type II errors, and the role of significance levels (α) in decision-making. Through practical examples and R-based visualizations, learners explore one-tailed and two-tailed tests using both the z and t distributions, building a strong understanding of how to determine rejection regions, calculate p-values, and interpret statistical significance.\nThe module extends these concepts to inferences involving two populations and variability. Students conduct hypothesis tests for the difference between two means and proportions and explore the chi-square \\(\\chi^2\\) and F-distributions for analyzing population variances. By connecting hypothesis testing to real-world economic and data-driven applications, students gain experience in applying inference to managerial decisions and policy evaluation. This capstone module consolidates key statistical methods, preparing students to interpret and evaluate empirical evidence in research and professional contexts.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Module 8 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-0-overview.html#learning-objectives",
+    "href": "mod-8-0-overview.html#learning-objectives",
+    "title": "35  Module 8 Overview",
+    "section": "35.2 Learning Objectives",
+    "text": "35.2 Learning Objectives\nBy the end of this module, you should be able to:\n\nMLO 1: Formulate null and alternative hypotheses and explain the logic of statistical decision-making.\nMLO 2: Differentiate between Type I and Type II errors and interpret the role of significance levels in hypothesis testing.\nMLO 3: Conduct hypothesis tests for population means and proportions using the z and t distributions in R.\nMLO 4: Apply hypothesis testing to compare two population means or proportions and interpret p-values and confidence levels.\nMLO 5: Evaluate population variances using the chi-square and F-distributions to test assumptions about variability.\nMLO 6: Integrate hypothesis testing results into real-world economic and data analysis contexts to draw valid inferential conclusions.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Module 8 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-0-overview.html#required-texts",
+    "href": "mod-8-0-overview.html#required-texts",
+    "title": "35  Module 8 Overview",
+    "section": "35.3 Required Texts",
+    "text": "35.3 Required Texts\nThe following textbooks are available for free. Please select the links provided to access.\n\nBarbara Illowsky and Susan Dean. Introductory Statistics 2e. OpenStax. Chapter 9-11.\nRafael Irizarry. (2025). Introduction to Data Science: Data Wrangling and Visualization with R.\nHadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund. (2025) R for Data Science.\nOnline R documentation\nRStudio Cheat Sheets",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Module 8 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-0-overview.html#activities",
+    "href": "mod-8-0-overview.html#activities",
+    "title": "35  Module 8 Overview",
+    "section": "35.4 Activities",
+    "text": "35.4 Activities\n\nComplete the hands-on coding exercises embedded in each lesson (MLO 3-6)\n\nComplete the weekly class assignment (MLO 1 - MLO 6)\n\nParticipate in the discussion form (MLO 3 - MLO 6)\n\nTake the weekly knowledge quiz (MLO 1 - MLO 6)",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Module 8 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-0-overview.html#lessons-in-this-module",
+    "href": "mod-8-0-overview.html#lessons-in-this-module",
+    "title": "35  Module 8 Overview",
+    "section": "35.5 Lessons in this Module",
+    "text": "35.5 Lessons in this Module\n\n8.1 – Hypothesis Testing\n8.2 – Hypothesis Testing: Means\n8.3 – Hypothesis Testing: Variance\n\n\nNext: Start with Hypothesis Testing.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Module 8 Overview</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-1-hypothesis.html",
+    "href": "mod-8-1-hypothesis.html",
+    "title": "36  Hypothesis Testing",
+    "section": "",
+    "text": "36.1 Terminology\nHypothesis testing is a process by which a statement about the value of a population parameter of interest is rejected or not rejected.\nA null hypothesis or \\(H_0\\) is statement about a population parameter and a specific value or there is no difference between two parameters of interest.\nAn alternative hypothesis or \\(H_a\\) is a statement that states the existence of a difference between a population parameter and a specific value or states that there is a difference between two parameters of interest.\nWe use data to test whether to reject or fail to reject the null hypothesis.\nWe never accept the null hypothesis nor do we accept the alternative.\nWe either have sufficient empirical evidence to reject \\(H_0\\) or we have insufficient evidence to reject \\(H_0\\).",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Hypothesis Testing</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-1-hypothesis.html#two-tailed-hypotheses",
+    "href": "mod-8-1-hypothesis.html#two-tailed-hypotheses",
+    "title": "36  Hypothesis Testing",
+    "section": "36.2 Two-Tailed Hypotheses",
+    "text": "36.2 Two-Tailed Hypotheses\n\\(H_0\\) will always have an equality as part of the hypothesis.\n\\(H_a\\) will not have an equality as part of the hypothesis.\nA two-tailed hypothesis can be stated that the population parameter is equal to a value.\n\\[H_0 : \\mu = k\\]\n\\[H_a: \\mu \\ne k\\]\nWe will reject the null hypothesis if we have sufficient empirical evidence that \\(\\mu\\) is sufficiently different from \\(k\\).\nA two-tailed hypothesis can also be stated that two parameters are equal to each other under the null.\n\\[H_0: \\mu_1 = \\mu_2 \\implies H_0: \\mu_1 - \\mu_2 = 0\\]\n\\[H_a: \\mu_1 \\ne \\mu_2 \\implies H_a: \\mu_1 - \\mu_2 \\ne 0\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Hypothesis Testing</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-1-hypothesis.html#one-tailed-hypotheses",
+    "href": "mod-8-1-hypothesis.html#one-tailed-hypotheses",
+    "title": "36  Hypothesis Testing",
+    "section": "36.3 One-Tailed Hypotheses",
+    "text": "36.3 One-Tailed Hypotheses\n\\(H_0\\) will always have an equality as part of the hypothesis.\n\\(H_a\\) will not have an equality as part of the hypothesis.\nFor a one-tailed hypothesis, the population parameter under \\(H_0\\) may be less than or equal to a value of interest.\n\\[H_0 : \\mu \\le k\\]\n\\[H_a: \\mu &gt; k\\]\nFor a one-tailed hypothesis, the population parameter under \\(H_0\\) may be greater than or equal to a value of interest.\n\\[H_0 : \\mu \\ge k\\]\n\\[H_a: \\mu &lt; k\\]\nA one-tailed hypothesis can also be stated in terms of two parameters.\n\\[H_0: \\mu_1 \\le \\mu_2 \\implies H_0: \\mu_1 - \\mu_2 \\le 0\\]\n\\[H_a: \\mu_1 &gt; \\mu_2 \\implies H_a: \\mu_1 - \\mu_2 &gt; 0\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Hypothesis Testing</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-1-hypothesis.html#hypothesis-example",
+    "href": "mod-8-1-hypothesis.html#hypothesis-example",
+    "title": "36  Hypothesis Testing",
+    "section": "36.4 Hypothesis Example",
+    "text": "36.4 Hypothesis Example\nAssume that mean sales volume is 14 cars a month. A manager implements a new incentive plan to increase sales and collects data over a six-month period. What are the null and alternative hypotheses?\nIf the manager want to examine whether mean sales volume increased and let \\(\\mu_1\\) be the mean sales volume prior to the implementation of the plan and \\(\\mu_2\\) be the mean sales volume after the implementation of the plan.\nIn other words, since the manager is really interested if sales increased \\(\\mu_2 &gt; \\mu_1\\), we can form a one-tailed hypothesis.\n\\[H_0: \\mu_1 \\ge \\mu_2 \\implies H_0: \\mu_1 - \\mu_2 \\ge 0\\]\n\\[H_0: \\mu_1 &lt; \\mu_2 \\implies H_0: \\mu_1 - \\mu_2 &lt; 0\\]\nMore specifically:\n\\[H_0: \\mu_{old} \\ge \\mu_{new} \\implies H_0: \\mu_{old} - \\mu_{new} \\ge 0\\]\n\\[H_0: \\mu_{old} &lt; \\mu_{new} \\implies H_0: \\mu_{old} - \\mu_{new} &lt; 0\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Hypothesis Testing</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-1-hypothesis.html#example",
+    "href": "mod-8-1-hypothesis.html#example",
+    "title": "36  Hypothesis Testing",
+    "section": "36.5 Example",
+    "text": "36.5 Example\nAssume that mean filling weight on a production line is 32 ounces/container. A new machine is installed and a sample of cartons is gathered and weighed. What is the hypothesis to determine whether the new machine impacted mean filling weight?\nSince the question is whether an impact (positive or negative) has occurred, we can develop a two-tailed hypothesis\n\\[H_0: \\mu_1 = \\mu_2 \\implies H_0: \\mu_1 - \\mu_2 = 0\\]\n\\[H_a: \\mu_1 \\ne \\mu_2 \\implies H_a: \\mu_1 - \\mu_2 \\ne 0\\]More specifically,\n\\[H_0: \\mu_{old} = \\mu_{new} \\implies H_0: \\mu_{old} - \\mu_{new} = 0\\]\n\\[H_a: \\mu_{old} \\ne \\mu_{new} \\implies H_a: \\mu_{old} - \\mu_{new} \\ne 0\\]Note that you would reject the null hypothesis if there was sufficient empirical evidence that the new mean weight was significantly less or significantly more than the previous weight.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Hypothesis Testing</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-1-hypothesis.html#type-i-and-type-ii-errors",
+    "href": "mod-8-1-hypothesis.html#type-i-and-type-ii-errors",
+    "title": "36  Hypothesis Testing",
+    "section": "36.6 Type I and Type II Errors",
+    "text": "36.6 Type I and Type II Errors\nSince we are using sample data to make inferences about population parameters, our estimates will not be exactly equal to the population parameter(s) of interest.\nA Type I error occurs when when we reject \\(H_0\\) but \\(H_0\\) should not be rejected.\nA Type II errors occurs when we do not reject \\(H_0\\) but we should reject \\(H_0\\)\nFrom a hypothesis testing perspective, we focus on incorrectly rejecting \\(H_0\\), that is, concluding that there is sufficient empirical evidence to reject the null hypothesis.\nThe probability of making a Type I error is called the level of significance.\nWe denote the level of significance as \\(\\alpha\\).\nIf \\(\\alpha = 0.05\\), then we want to know whether we can reject \\(H_0\\) at the 5% level of significance.\nThe greater the consequences of a Type I error, the higher the level of significance to reduce the probability of incorrectly rejecting \\(H_0\\) when, in fact, it should not be rejected.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Hypothesis Testing</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-1-hypothesis.html#type-i-error-discussion",
+    "href": "mod-8-1-hypothesis.html#type-i-error-discussion",
+    "title": "36  Hypothesis Testing",
+    "section": "36.7 Type I Error Discussion",
+    "text": "36.7 Type I Error Discussion\nA Type 1 error occurs when you reject the null hypothesis when you should not reject the null hypothesis, in other words, you conclude a statistically significant result exists when it does not exist.\nA Type 1 error is a false positive error.\nLet the significance level be 10%, that is, \\(\\alpha = 0.10\\).\nThis means that we have a 10% chance of incorrectly rejecting the null hypothesis.\nA higher level of significance means that \\(\\alpha\\) is smaller.\nLet the significance level be 1%, that is, \\(\\alpha = 0.01\\).\nThis means that we now have a 1% chance of incorrectly rejecting the null hypothesis.\nYou conduct a clinical study comparing the mean recovery time of patients who received a new drug versus patients who received an old drug. You have decided to conduct a two-tailed hypothesis test comparing the mean recovery times. You have set your level of significance to 5%.\n\\[\nH_0: \\mu_{old} = \\mu_{new}\n\\]\n\\[\nH_A: \\mu_{old} \\ne \\mu_{new}\n\\]\nIf you obtain a p-value from your test statistic of 0.07, you would fail to reject the null hypothesis as the p-value of the test is greater than the level of significance.\nNow assume you obtain new data and you obtain a p-value of 0.03. Your p-value is less than the level of significance, so you would reject the null hypothesis. You should note that the p-value of 0.03 indicates that the probability of a Type 1 error is 3%, that is, the probability of a Type 1 error is smaller than the level of significance and non-zero.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Hypothesis Testing</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-1-hypothesis.html#type-ii-error-discussion",
+    "href": "mod-8-1-hypothesis.html#type-ii-error-discussion",
+    "title": "36  Hypothesis Testing",
+    "section": "36.8 Type II Error Discussion",
+    "text": "36.8 Type II Error Discussion\nA Type II error occurs when you fail to reject the null hypothesis when, in fact, it should be rejected.\nA Type II error is a false negative error.\nAn example of a Type II error is when a doctor uses a test to screen for a disease and the test returns a negative result (no disease) but the patient actually has the disease.\nThe probability of a Type II error is denoted by \\(\\beta\\).\nThere is a trade off between Type I and Type II errors.\nAs you decrease the probability of one type of error, you increase the probability of the other type of error.\nFor example, you are examining whether a new type of surgery improves outcomes for patients. The surgery is costly and invasive. As such, you want to only reject the null hypothesis of no impact with a high degree of confidence and so you set the significance level of the test to 1%.\nA significance level of 1% is “more stringent” than a significance level of 5% and this means you require more evidence to reject the null hypothesis.\nIn other words, by increasing the significance level to 1%, you reduce the likelihood of false positive but you also increase the likelihood of a false negative.\nThe graphic below highlights the trade off between Type I and Type II errors.\nAs you increase the level of significance, \\(\\alpha\\), you move the threshold of the test to the right, reducing the likelihood of a Type I error but increasing the likelihood of a Type II error.\nSince we are typically most concerned about a false positive, we focus on Type I errors rather than Type II errors, hence our focus on the level of statistical significance which is equal to the likelihood of making a Type I error.\n\nImage Source: http://grasshopper.com/blog/the-errors-of-ab-testing-your-conclusions-can-make-things-worse/",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Hypothesis Testing</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html",
+    "href": "mod-8-2-means.html",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "",
+    "text": "37.1 Hypothesis Testing\nLet \\(n\\) be the sample size used to estimate \\(\\bar{x}\\) and \\(\\sigma\\) the population standard deviation for \\(x\\).\nLet \\(\\mu_0\\) be the hypothesized value of the population mean under \\(H_0\\) such that:\nThe test-statistic for testing hypotheses regarding the sample mean when \\(\\sigma\\) is known is:\n\\[z = \\frac{\\bar{x} - \\mu_0}{\\sigma/\\sqrt{n}}\\]\nThe value of \\(z\\) is known as the test statistic.\nGiven a level of significance, \\(\\alpha\\), we can obtain the critical value of the test statistic.\nIf it is a one-tailed test, then we use \\(\\alpha\\) to obtain the test statistic.\nIf it is a two-tailed test, then we use \\(\\alpha/2\\) to obtain the test statistic.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#one-tailed-hypothesis-test",
+    "href": "mod-8-2-means.html#one-tailed-hypothesis-test",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.2 One-Tailed Hypothesis Test",
+    "text": "37.2 One-Tailed Hypothesis Test\nWe hypothesize that the population mean is less than than 42 and let \\(\\alpha = 0.10\\).\n\\[H_0: \\mu_1 \\ge 42\\]\n\\[H_a: \\mu &lt; 42\\]\nOur rejection region is in the left tail of the standard normal distribution or:\n\\[\\text{If} \\; z \\le z_c \\implies \\text{reject} \\; H_0\\]\n\\[\\text{If} \\; z &gt; z_c \\implies \\text{fail to reject} \\; H_0\\]\nGiven \\(\\alpha = 0.10\\) and a left-tail test, we need to find \\(z_{\\alpha} = z_{0.10}\\).\nThe critical value of the test statistic can be found with a standard normal table or using R as in the code chunk below.\nGiven the \\(\\alpha = 0.10\\) and the rejection reject is in the left tail, we use the qnorm function to find the critical value of the test statistic.\nThe critical value of the test statistic is -1.282.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFor this one-tailed hypothesis,\n\\[\\text{If} \\; z \\le -1.28 \\implies \\text{reject} \\; H_0\\] \\[\\text{If} \\; z &gt; -1.28 \\implies \\text{fail to reject} \\; H_0\\]\nIf the estimated test statistic is less than or equal to -1.282, we reject the null hypothesis. If the estimated test statistic is greater than -1.282, then we fail to reject the null hypothesis.\nThe code chunk below graphically depicts the rejection region for this one-tailed hypothesis test.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\ndf &lt;- data.frame(x = seq(-4, 4, length.out = 100)) %&gt;%\n          mutate(y = dnorm(x))\n\nggplot(df, \n       aes(x = x,\n           y = y)) +\ngeom_area(fill = 'sky blue') +\ngeom_ribbon(data = df %&gt;% filter(x &lt;= -1.28), \n            aes(ymax = y), ymin = 0, fill= \"red\", alpha = 0.5) +\ngeom_vline(aes(xintercept = -1.28), linetype = 'dashed', linewidth = 1.1) +\ntheme_minimal() +\nlabs(x = \"Z\",\n     y = \"P(Z)\",\n     title = \"Standard Normal Distribution\",\n     subtitle = \"One Tailed Rejection Region for Alpha = 0.10 is Z &lt;= -1.28\")",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#one-tailed-hypothesis-test-1",
+    "href": "mod-8-2-means.html#one-tailed-hypothesis-test-1",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.3 One-Tailed Hypothesis Test",
+    "text": "37.3 One-Tailed Hypothesis Test\nWe hypothesize that the population mean is greater than 42 and let \\(\\alpha = 0.05\\).\n\\[H_0: \\mu \\le 42\\]\n\\[H_a: \\mu &gt; 42\\]\nOur rejection region is in the right tail of the standard normal distribution or:\n\\[\\text{If} \\; z \\ge z_c \\implies \\text{reject} \\; H_0\\]\n\\[\\text{If} \\; z &lt; z_c \\implies \\text{fail to reject} \\; H_0\\]\nGiven \\(\\alpha = 0.05\\) and a right-tail test, we need to find \\(z_{(1-\\alpha)} = z_{0.95}\\).\nGiven the \\(\\alpha = 0.05\\) and the rejection reject is in the left tail, we can use the qnorm function to find the critical value of the test statistic.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFor this one-tailed hypothesis,\n\\[\\text{If} \\; z \\ge 1.65 \\implies \\text{reject} \\; H_0\\]\n\\[\\text{If} \\; z &lt; 1.65 \\implies \\text{fail to reject} \\; H_0\\]If the estimated test statistic is greater than or equal to 1.65, then we reject the null hypothesis. If the estimated test statistic is less than 1.65, we fail to reject the null hypothesis.\nThe code chunk below illustrates the rejection region in question\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\ndf &lt;- data.frame(x = seq(-4, 4, length.out = 100)) %&gt;%\n          mutate(y = dnorm(x))\n\nggplot(df, \n       aes(x = x,\n           y = y)) +\ngeom_area(fill = 'sky blue') +\ngeom_ribbon(data = df %&gt;% filter(x &gt;= 1.65), \n            aes(ymax = y), ymin = 0, fill= \"red\", alpha = 0.5) +\ngeom_vline(aes(xintercept = 1.65), linetype = 'dashed', linewidth = 1.1) +\ntheme_minimal() +\nlabs(x = \"Z\",\n     y = \"P(Z)\",\n     title = \"Standard Normal Distribution\",\n     subtitle = \"One Tailed Rejection Region for Alpha = 0.05 is Z &gt;= 1.65\")",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#two-tailed-hypothesis-test",
+    "href": "mod-8-2-means.html#two-tailed-hypothesis-test",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.4 Two-Tailed Hypothesis Test",
+    "text": "37.4 Two-Tailed Hypothesis Test\nWe hypothesize that the population mean is not equal to 42 or:\n\\[H_0: \\mu = 42\\]\n\\[H_a: \\mu \\ne 42\\]\nThis is a two-tailed hypothesis test.\nThe rejection region lies in each tail of the distribution.\nWhy? Our null hypothesis is that the mean is equal to 42. If find evidence that the mean is sufficiently different from 42, in either direction, we will reject the null hypothesis.\nWe need to find the critical values of \\(z\\) for \\(\\alpha/2\\) and \\(1-\\alpha/2\\).\nLet \\(\\alpha = 0.05\\) so \\(\\alpha/2 = 0.025\\) and \\(1-\\alpha/2 = 0.975\\).\nThe critical values of the test statistic can be found using R as before. Since the standard normal is symmetrically distributed around the mean of zero, the critical values are -1.96 and 1.96.\n\nrm(list = ls())\n\nqnorm(0.025,0,1)\n\n[1] -1.959964\n\nqnorm(0.975,0,1)\n\n[1] 1.959964\n\n\nFor this two-tailed hypothesis,\n\\[\\text{If} \\; z \\le -1.96 \\implies \\text{reject} \\; H_0\\]\n\\[\\text{If} \\; z \\ge 1.96 \\implies \\text{reject} \\; H_0\\]\n\\[\\text{If} \\; -1.95 &lt; z &lt; 1.96 \\implies \\text{fail to reject} \\; H_0\\]\nIf the estimated test statistic is less than or equal to -1.96 or less than or equal to 1.96, then we reject the null hypothesis.\nThe code chunk below illustrates the rejection regions for the hypothesis test.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\ndf &lt;- data.frame(x = seq(-3, 3, length.out = 100), by = 0.1) %&gt;%\n          mutate(y = dnorm(x))\n\nggplot(df, \n       aes(x = x,\n           y = y)) +\ngeom_area(fill = 'sky blue') +\ngeom_ribbon(data = subset(df, x &lt;= -1.96), aes(ymax = y), \n            ymin = 0, fill= \"red\", alpha = 0.5) +\ngeom_ribbon(data = subset(df, x &gt;= 1.96), aes(ymax = y), \n            ymin = 0, fill= \"red\", alpha = 0.5) +\ngeom_vline(aes(xintercept = -1.96), linetype = 'dashed') +\ngeom_vline(aes(xintercept = 1.96), linetype = 'dashed') +\ntheme_minimal() +\nlabs(x = \"Z\",\n     y = \"P(Z)\",\n     title = \"Standard Normal - Two Tailed Hypothesis Test\",\n     subtitle = \"Alpha = 0.05 and Z &lt;= -1.96 and Z =&gt; 1.96\")",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#one-tailed-example",
+    "href": "mod-8-2-means.html#one-tailed-example",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.5 One-Tailed Example",
+    "text": "37.5 One-Tailed Example\nWe have collected a sample of 50 individuals and assume that the 50 individuals are representative of the population. The individuals take a standard test after receiving training and the average of their scores was 19.4. We know that, in general, the mean score on the test was 20.0.\nDid the test lower the average test score? Test this hypothesis at a 5% significance level.\nConsider the following hypothesis test with \\(\\alpha = 0.05\\).\n\\[H_0: \\mu \\ge 20\\]\n\\[H_a: \\mu &lt; 20\\]\nThe critical value of the test statistic for \\(\\alpha = 0.05\\) is -1.65.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nLet\n\\[\nn = 50\n\\]\n\\[\n\\bar{x} = 50\n\\]\n\\[\n\\sigma = 2\n\\]\nGiven the known population variance and standard deviation, we can estimate the Z-score for the average score of the 50 individuals or:\n\\[z =  \\frac{\\bar{x} - \\mu_0}{\\sigma/\\sqrt{n}} = \\frac{19.4 - 20}{2/\\sqrt{50}} = -2.12132\\]\nWe reject \\(H_0\\) at the 5% level of statistical significance as\n\\[z = -2.12 &lt; -1.65 = z_c\\]\nWe can also use pnorm to find \\(P(z \\le -2.12132) =\\) 0.0169 and reject \\(H_0\\) since:\n\\[P(z \\le -2.12132) = 0.017 &lt; 0.05 = P(z &lt; 1.65)\\]\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nxbar = 19.4\nmu = 20\nn = 50\nsigma = 2\n\ndf &lt;- tibble(crit_z &lt;- qnorm(0.05,0,1),\n             z &lt;- (xbar-mu)/(sigma/sqrt(n)),\n             pnorm(z, 0, 1))\n\nkable(df,\n      digits = 3,\n      align = 'c',\n      col.names = c('Critical Z', 'Estimated Z', 'P(Z &lt;= z)')) %&gt;%\nkable_classic()\n\n\n\n\nCritical Z\nEstimated Z\nP(Z &lt;= z)\n\n\n\n\n-1.645\n-2.121\n0.017",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#one-tailed-example-1",
+    "href": "mod-8-2-means.html#one-tailed-example-1",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.6 One-Tailed Example",
+    "text": "37.6 One-Tailed Example\nConsider the following hypothesis test with \\(\\alpha = 0.10\\).\n\\[H_0: \\mu \\le 30\\]\n\\[H_a: \\mu &gt; 30\\]\nLet \\(n = 90\\), \\(\\bar{x} = 31.7\\), and \\(\\sigma = 12.5\\), then\n\\[z =  \\frac{\\bar{x} - \\mu_0}{\\sigma/\\sqrt{n}} = \\frac{31.2 - 30}{12.5/\\sqrt{90}} = 0.91\\]\nThe critical value of the test statistic for \\(1 - \\alpha = 0.90\\) is 1.282.\nWe fail to reject \\(H_0\\) at the 10% level of statistical significance as:\n\\[z = 0.91 &lt; 1.28 = z_c\\]\nWe can also use pnorm to find \\(P(z \\le 0.91) =\\) 0.819 and fail to reject \\(H_0\\) since:\n\\[P(z \\le 0.91) = 0.812 &lt; 0.90 = P(z &lt; 1.28)\\]\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nxbar = 31.2\nmu = 30\nsigma = 12.5\nn = 90\n\ndf &lt;- tibble(crit_z &lt;- qnorm(0.90,0,1),\n             z &lt;- (xbar-mu)/(sigma/sqrt(n)),\n             pnorm(z, 0, 1))\n\nkable(df,\n      digits = 3,\n      align = 'c',\n      col.names = c('Critical Z', 'Estimated Z', 'P(Z &lt;= z)')) %&gt;%\nkable_classic()\n\n\n\n\nCritical Z\nEstimated Z\nP(Z &lt;= z)\n\n\n\n\n1.282\n0.911\n0.819",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#hypothesis-test-in-r",
+    "href": "mod-8-2-means.html#hypothesis-test-in-r",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.7 Hypothesis Test in R",
+    "text": "37.7 Hypothesis Test in R\nAssume that we observe pressure readings for a pipe.\nWe want to know whether pressure is higher than 127.9.\nWe know that \\(\\sigma = 8\\) and we set \\(\\alpha = 0.05\\).\nWe find that \\(z = 0.693\\) and that \\(z_c = 1.65\\).\nWe find that \\(P(z \\ge 0.693) = 0.2443\\).\nWe fail to reject \\(H_0: \\mu \\le 127.9\\) at the 5% level of significance.\nWe would also fail to reject the null at the 10% level of significance.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nmu = 127.9\nsigma = 8\nalpha = 0.05\n\npressure &lt;- c(110, 132, 138, 98, 122, 190, 92, 105, 104, 148, \n              83, 193, 132, 114, 192, 183, 100, 99, 111, 123, \n              130, 194, 141, 138, 98, 94, 97, 128, 105, 108, \n              193, 85, 80, 132, 134, 148, 192)\n\nxbar = mean(pressure)\n\nz = (mean(pressure) - mu)/(sigma/sqrt(length(pressure)))\n\nz_crit &lt;- qnorm((1-alpha),0,1)\np_z &lt;- 1-pnorm(z,0,1)\n\ntest &lt;- data.frame(mu, xbar, alpha, z, z_crit, p_z)\n\nkable(test,\n      align     = \"c\",\n      digits    = 3,\n      caption   = \"Hypothesis Test\",\n      col.names = c(\"Hypothesized Mean\", \"Sample Avg\", \n                    \"Sig. Level\", \"Z\", \"Z(c)\",\n                    \"1-CDF(Z)\")) %&gt;%\nkable_styling(font_size = 11)\n\n\nHypothesis Test\n\n\nHypothesized Mean\nSample Avg\nSig. Level\nZ\nZ(c)\n1-CDF(Z)\n\n\n\n\n127.9\n128.811\n0.05\n0.693\n1.645\n0.244",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#hypothesis-test-in-r-1",
+    "href": "mod-8-2-means.html#hypothesis-test-in-r-1",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.8 Hypothesis Test in R",
+    "text": "37.8 Hypothesis Test in R\nWe observe pressure readings for a pipe.\nWe hypothesize that \\(\\mu = 127.3\\).\nLet \\(\\sigma = 10\\) and \\(\\alpha = 0.1\\).\nTwo-tailed hypothesis: Find \\(\\alpha/2\\) and \\(1-\\alpha/2\\) critical values.\n\\(z_c = -1.65\\) and \\(z_c = 1.65\\)\nWe find \\(z = 2.66\\).\nWe reject \\(H_0\\) at 5% as \\(z &gt; z_c\\).\nWe also reject \\(H_0\\) at 1% as \\(P(Z \\ge z) = .004 &gt; 0.005 = \\alpha/2\\).\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nmu = 127.3\nsigma = 10\nalpha = 0.1\n\npressure &lt;- c(110, 132, 138, 98, 122, 190, 92, 105, 104, 148, \n              83, 193, 132, 114, 192, 183, 100, 99, 111, 123, \n              130, 194, 141, 138, 98, 94, 97, 128, 105, 108, \n              193, 85, 80, 132, 134, 148, 192, 218, 113, \n              138, 83, 103, 109, 183, 148, 153, 135, 146)\n\nxbar = mean(pressure)\n\nz = (mean(pressure) - mu)/(sigma/sqrt(length(pressure)))\n\nz_crit_left &lt;- qnorm((alpha/2),0,1)\nz_crit_right &lt;- qnorm(1 - (alpha/2),0,1)\np_z &lt;- pnorm(z,0,1, lower.tail = FALSE)\n\ntest &lt;- data.frame(mu, xbar, alpha, z, z_crit_right, p_z)\n\nkable(test,\n      align     = \"cccccc\",\n      caption   = \"Hypothesis Test\",\n      col.names = c(\"Hypothesized Mean\", \"Sample Avg\", \n                    \"Sig. Level\", \"Z\", \"Z(c) at 5%\",\n                    \"1-CDF(Z)\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nHypothesis Test\n\n\nHypothesized Mean\nSample Avg\nSig. Level\nZ\nZ(c) at 5%\n1-CDF(Z)\n\n\n\n\n127.3\n131.1458\n0.1\n2.664471\n1.644854\n0.0038555",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#unknown-variance",
+    "href": "mod-8-2-means.html#unknown-variance",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.9 Unknown Variance",
+    "text": "37.9 Unknown Variance\nIf \\(\\sigma\\) is unknown, the test statistic has a t distribution with \\(n-1\\) degrees of freedom.\n\\[t = \\frac{\\bar{x} - \\mu}{s/\\sqrt{n}}\\]\nConsider the following hypothesis test:\n\\[H_0: \\mu \\le 12\\]\n\\[H_a: \\mu &gt; 12\\]\nIf \\(n = 25\\), \\(\\bar{x} = 14\\), and \\(s = 4.32\\), then\n\\[t_{n-1} = \\frac{\\bar{x} - \\mu}{s/\\sqrt{n}} = \\frac{14 - 12}{4.32/\\sqrt{25}} = 2.32\\]\nLet \\(\\alpha = 0.5\\) thus the critical value of the t-statistic is 1.7108821.\nWe reject the null hypothesis at the 5% level of significance since:\n\\[t = 2.32 &gt; 1.71 = t_c^{\\alpha = 0.05}\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#hypothesis-testing-1",
+    "href": "mod-8-2-means.html#hypothesis-testing-1",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.10 Hypothesis Testing",
+    "text": "37.10 Hypothesis Testing\nLet \\(n = 50\\), \\(\\bar{x} = 38.7\\), \\(s = 4.58\\), and \\(\\alpha = 0.1\\) and\n\\[H_0: \\mu = 39.9\\]\n\\[H_0: \\mu \\ne 39.9\\]\nThe test statistic is equal to:\n\\[t_{n-1} = \\frac{\\bar{x} - \\mu}{s/\\sqrt{n}} = \\frac{38.7 - 39.9}{4.58/\\sqrt{50}} = -1.85\\]\nThe critical value of the test-statistic is 1.6765509.\nWe reject the null hypothesis at the 10% level of significance since:\n\\[t = -1.85 &lt; -1.68 = t_c^{\\alpha/2 = 0.05}\\]\nHowever, we fail to reject at the 5% level of significance since:\n\\[t = -1.85 &gt; -2.01 = t_c^{\\alpha/2 = 0.025}\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#standard-normal-and-t-distribution",
+    "href": "mod-8-2-means.html#standard-normal-and-t-distribution",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.11 Standard Normal and T Distribution",
+    "text": "37.11 Standard Normal and T Distribution\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\ndf &lt;- data.frame(x = seq(-5, 5, length.out = 100), by = 0.1) %&gt;%\n          mutate(y = dt(x, 1))\n\nggplot(df,\n       aes(x = x,\n           y = y,\n           color = \"red\")) +\n  geom_line(linewidth = 1.2) +\n  stat_function(fun = dnorm,\n                args = list(mean = 0, sd = 1),\n                color = \"dark blue\",\n                size = 1.2) +\n  theme_minimal() +\n  theme(legend.position = \"\") +\n  labs(title = \"Standard Normal and T-Distribution\",\n       subtitle = \"1 Degree of Freedom for T-Distribution\",\n       y = \"P(X)\",\n       x = \"X\")",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#rejection-regions",
+    "href": "mod-8-2-means.html#rejection-regions",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.12 Rejection Regions",
+    "text": "37.12 Rejection Regions\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\ndf &lt;- data.frame(x = seq(-3, 3, length.out = 100), by = 0.1) %&gt;%\n          mutate(y = dt(x, 24))\n\nggplot(df, \n       aes(x = x,\n           y = y)) +\ngeom_area(fill = 'sky blue') +\ngeom_ribbon(data = subset(df, x &gt;= 1.71),\n            aes(ymax = y), \n            ymin = 0, fill= \"red\", alpha = 0.5) +\ngeom_vline(aes(xintercept = 1.71), \n           linetype = 'dashed', size = 1.1) +\ntheme_minimal() +\nlabs(x = \"X\",\n     y = \"P(X)\",\n     title = \"T Distribution and One-Tailed Hypothesis Test\",\n     subtitle = \"Alpha = 0.05, 24 DF, and Critical T =&gt; 1.71\")",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-2-means.html#hypothesis-test-in-r-2",
+    "href": "mod-8-2-means.html#hypothesis-test-in-r-2",
+    "title": "37  Hypothesis Testing: Means",
+    "section": "37.13 Hypothesis Test in R",
+    "text": "37.13 Hypothesis Test in R\nWe observe pressure readings.\nWe hypothesize that \\(\\mu = 127.3\\).\n\\(n= 48\\), \\(s = 35.3\\), \\(\\alpha = 0.01\\)\nFind \\(\\alpha/2\\) and \\(1-\\alpha/2\\) critical values.\n\\(t_c = -2.69\\) and \\(t_c = 2.69\\)\n\\(t = 2.37\\).\nWe fail to reject \\(H_0\\) as \\(t &lt; t_c\\).\nWe fail to reject \\(H_0\\) as \\(P(T &gt; t) = .011 &gt; 0.005 = \\alpha/2\\).\nWe can, however, reject \\(H_0\\) at 5%.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nmu = 127.3\nalpha = 0.01\n\npressure &lt;- c(90, 76, 98, 108, 102, 100, 92, 105, 104, 148, \n              83, 93, 132, 114, 92, 103, 100, 99, 111, 123, \n              130, 194, 141, 138, 98, 94, 97, 128, 105, 108, \n              193, 85, 80, 132, 134, 148, 192, 218, 113, \n              138, 83, 103, 109, 113, 138, 103, 105, 106)\n\nxbar = mean(pressure)\nsd = sd(pressure)\n\nt = (mean(pressure) - mu)/(sd/sqrt(length(pressure)))\n\nt_crit_left &lt;- qt((alpha/2),length(pressure) - 1)\nt_crit_right &lt;- qt(1 - (alpha/2), length(pressure - 1))\n\nt_p &lt;- pt(t, length(pressure -1))\n\ntest &lt;- data.frame(mu, xbar, alpha, t, t_crit_left, t_p)\n\nkable(test,\n      align     = \"c\",\n      digits    = 3,\n      caption   = \"Hypothesis Test\",\n      col.names = c(\"Hypothesized Mean\", \"Sample Avg\", \n                    \"Sig. Level\", \"T\", \"T(c) at 1%\",\n                    \"CDF(T)\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nHypothesis Test\n\n\nHypothesized Mean\nSample Avg\nSig. Level\nT\nT(c) at 1%\nCDF(T)\n\n\n\n\n127.3\n116.646\n0.01\n-2.366\n-2.685\n0.011",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Hypothesis Testing: Means</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html",
+    "href": "mod-8-3-variance.html",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "",
+    "text": "38.1 Difference in Means\nLet \\(\\mu_1\\) denote the mean of population 1.\nlet \\(\\mu_2\\) denote the mean of population 2.\nAssume that we have two independent random samples that produce \\(\\bar{x_1}\\) and \\(\\bar{x_2}\\).\nThe point estimator for the difference between \\(\\mu_1\\) and \\(\\mu_2\\) is:\n\\[\\bar{x}_1- \\bar{x}_2\\]\nIf \\(\\sigma_1^2\\) and \\(\\sigma_2^2\\) are known, the standard error of the point estimator is:\n\\[\\sigma(\\bar{x}_1 -\\bar{x}_2) = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}\\] The interval estimate for the difference between two population means when the population variances are known:\n\\[(\\bar{x}_1 - \\bar{x}_2) \\pm z_{\\alpha/2} \\times \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#difference-example",
+    "href": "mod-8-3-variance.html#difference-example",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.2 Difference Example",
+    "text": "38.2 Difference Example\nWe know that \\(\\sigma_1 = 3\\) and \\(\\sigma_2 = 6\\)\nAssume we sample the populations independently and randomly by taking 200 observations from each population.\nWe can construct the point estimate of the difference of the population means.\nWe can also construct the interval estimate (or margin of error) around this point estimate.\nWe specify that \\(\\alpha = 0.05\\).\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npop_1 &lt;- rnorm(10000, mean = 50.5, sd = 3)\npop_2 &lt;- rnorm(5000, mean = 47.5, sd = 6)\n\nxbar_1 &lt;- mean(sample(pop_1, 500))\nxbar_2 &lt;- mean(sample(pop_2, 200))\n\ndiff &lt;- xbar_1 - xbar_2\n\nstd_err &lt;- sqrt((9/500) + (36/200))\n\ninterval = xbar_1 - xbar_2\nmoe = qnorm(.975,0,1)*std_err\n\nint_lower = interval - qnorm(.975,0,1)*std_err\nint_upper = interval + qnorm(.975,0,1)*std_err\n\nmeans &lt;- data.frame(xbar_1, xbar_2, diff, std_err,\n                    moe, int_lower, int_upper)\n\nkable(means,\n      align     = \"ccccccc\",\n      caption   = \"Interval Estimation\",\n      col.names = c(\"Xbar(1)\", \"Xbar(2)\", \n                    \"Xbar(1)-Xbar(2)\",\n                    \"Std. Error\", \"MOE\", \n                    \"Lower Bound\", \"Upper Bound\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nInterval Estimation\n\n\nXbar(1)\nXbar(2)\nXbar(1)-Xbar(2)\nStd. Error\nMOE\nLower Bound\nUpper Bound\n\n\n\n\n50.37366\n47.6566\n2.717061\n0.4449719\n0.8721289\n1.844932\n3.58919",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#difference-in-means-1",
+    "href": "mod-8-3-variance.html#difference-in-means-1",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.3 Difference in Means",
+    "text": "38.3 Difference in Means\nLet \\(n_1\\) and \\(n_2\\) be samples used to estimate \\(\\bar{x}_1\\) and \\(\\bar{x}_2\\) and \\(\\sigma_1\\) and \\(\\sigma_2\\) are the population standard deviations for the two independent random samples.\nLet \\(D_0 = \\mu_1 - \\mu_2\\) be the hypothesized difference between the population means under \\(H_0\\).\nThe test-statistic for testing hypotheses regarding the difference between two population means when \\(\\sigma_1\\) and \\(\\sigma_2\\) are known is:\n\\[z = \\frac{(\\bar{x}_1 - \\bar{x}_2) - D_0}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}\\]\nGiven a level of significance, \\(\\alpha\\), we can obtain the critical value(s) of the test statistic.\nIf it is a one-tailed test, then we use \\(\\alpha\\) to obtain the test statistic.\nIf it is a two-tailed test, then we use \\(\\alpha/2\\) to obtain the test statistic.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#difference-example-1",
+    "href": "mod-8-3-variance.html#difference-example-1",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.4 Difference Example",
+    "text": "38.4 Difference Example\nConsider the following hypothesis test with \\(\\alpha = 0.05\\).\n\\[H_0: \\mu_1 - \\mu_2 = 0\\]\n\\[H_a: \\mu_1 - \\mu_2 \\ne 0\\]\nLet \\(n_1 = 50\\), \\(\\bar{x}_1 = 19.4\\), \\(\\sigma_1 = 2\\) and \\(n_2 = 25\\), \\(\\bar{x}_2 = 20.5\\), \\(\\sigma_2 = 4\\).\n\\[z = \\frac{(\\bar{x}_1 - \\bar{x}_2) - D_0}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}} = \\frac{(19.4 - 20.5) - 0}{\\sqrt{\\frac{2^2}{50} + \\frac{4^2}{25}}} = \\frac{-1.1}{0.8485} = -1.2964\\]\nFor a two-tailed test, the critical value of the test statistic is \\(z_c =\\) -1.959964.\nWe fail to reject \\(H_0\\) at the 5% level of statistical significance as\n\\[z = -1.2964 &gt; -1.96 = z_c\\]\nWe can use pnorm as \\(P(z \\le -1.2964) = 0.0974\\) and fail to reject \\(H_0\\) since:\n\\[P(z \\le -1.2964) = 0.0974 &gt; 0.025 = P(z &lt; -1.96)\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#difference-example-2",
+    "href": "mod-8-3-variance.html#difference-example-2",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.5 Difference Example",
+    "text": "38.5 Difference Example\nConsider the following hypothesis test with \\(\\alpha = 0.01\\).\n\\[H_0: \\mu_1 - \\mu_2 \\ge 0\\]\n\\[H_a: \\mu_1 - \\mu_2 \\le 0\\]\nLet \\(n_1 = 25\\), \\(\\bar{x}_1 = 18.4\\), \\(\\sigma_1 = 4\\) and \\(n_2 = 50\\), \\(\\bar{x}_2 = 20.8\\), \\(\\sigma_2 = 3\\).\n\\[z = \\frac{(\\bar{x}_1 - \\bar{x}_2) - D_0}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}} = \\frac{(18.4 - 20.8) - 0}{\\sqrt{\\frac{4^2}{25} + \\frac{3^2}{50}}} = \\frac{-2.4}{0.9055} = -2.6504\\]\nFor a one-tailed test, the critical value of the test statistic is -2.3264.\nWe reject \\(H_0\\) at the 1% level of statistical significance as\n\\[z = -2.6504 &lt; -2.3264 = z_c\\]\nWe can use pnorm as \\(P(z \\le -2.6504)\\) and reject \\(H_0\\) since:\n\\[P(z \\le -2.6504) = 0.004 &lt; 0.01 = P(z &lt; -2.3264)\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#unknown-variance",
+    "href": "mod-8-3-variance.html#unknown-variance",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.6 Unknown Variance",
+    "text": "38.6 Unknown Variance\nLet \\(n_1\\) and \\(n_2\\) be samples used to estimate \\(\\bar{x}_1\\) and \\(\\bar{x}_2\\). The population standard deviations for the two independent random samples are unknown.\nWe assume that \\(s_1\\) and \\(s_2\\) are unbiased estimators of the population standard deviations.\nLet \\(D_0 = \\mu_1 - \\mu_2\\) be the hypothesized difference between the population means under \\(H_o\\).\nThe test-statistic for testing hypotheses regarding the difference between two population means when \\(\\sigma\\) is unknown is:\n\\[t = \\frac{(\\bar{x}_1 - \\bar{x}_2) - D_0}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}\\]\nGiven a level of significance, \\(\\alpha\\), we can obtain the critical value of the test statistic.\nIf it is a one-tailed test, then we use \\(\\alpha\\) to obtain the test statistic.\nIf it is a two-tailed test, then we use \\(\\alpha/2\\) to obtain the test statistic.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#hypothesis-test-in-r",
+    "href": "mod-8-3-variance.html#hypothesis-test-in-r",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.7 Hypothesis Test in R",
+    "text": "38.7 Hypothesis Test in R\nAssume that we observe pressure readings for two pipes which are independent of each other.\nWe want to know whether the mean pressure readings for pipes are different.\nWe do not observe \\(\\sigma_1\\) or \\(\\sigma_2\\).\nWe can use the t.test function in R.\nWe find that \\(t = -0.14751\\).\nWe fail to reject the null hypothesis that the population means are equal.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npressure_1 &lt;- c(110, 132, 138, 98, 122, 190, 92, 105, 104, 148, \n              83, 193, 132, 114, 192, 183, 100, 99, 111, 123, \n              130, 194, 141, 138, 98, 94, 97, 128, 105, 108, \n              193, 85, 80, 132, 134, 148, 192)\n\npressure_2 &lt;- c(140, 112, 98, 98, 192, 190, 93, 125, 144, 146, \n              87, 195, 112, 124, 132, 185, 102, 139, 101, 125, \n              123, 144, 123, 108, 128, 114, 107, 134, 115, 88, \n              143, 124, 120, 135, 121, 168, 172)\n\n# Manual T-Test, H0: mu(1)-mu(2) = 0\n\nxbar_1 &lt;- mean(pressure_1)\nxbar_2 &lt;- mean(pressure_2)\n\ndiff &lt;- xbar_1 - xbar_2 - 0\n\ndenom &lt;- sqrt((var(pressure_1)/length(pressure_1)) + \n                (var(pressure_2)/length(pressure_2)))\n\nt_man &lt;- diff/denom\n\n# Generated T-Test\nt_calc &lt;- t.test(pressure_1, pressure_2, mu = 0)\n\nmeans &lt;- data.frame(xbar_1, xbar_2, diff, \n                    t_man, t_calc$statistic, \n                    t_calc$parameter, t_calc$p.value)\n\nkable(means,\n      align     = \"ccccccc\",\n      caption   = \"Hypothesis Testing\",\n      col.names = c(\"Xbar(1)\", \"Xbar(2)\", \n                    \"Xbar(1)-Xbar(2)\",\n                    \"T-Manual\", \"T-Calculated\", \n                    \"Degrees Freedom\", \"P-Value\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nHypothesis Testing\n\n\n\nXbar(1)\nXbar(2)\nXbar(1)-Xbar(2)\nT-Manual\nT-Calculated\nDegrees Freedom\nP-Value\n\n\n\n\nt\n128.8108\n129.9189\n-1.108108\n-0.1475103\n-0.1475103\n69.28732\n0.8831577",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#hypothesis-test-in-r-1",
+    "href": "mod-8-3-variance.html#hypothesis-test-in-r-1",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.8 Hypothesis Test in R",
+    "text": "38.8 Hypothesis Test in R\nAssume that we observe pressure readings for two pipes which are independent of each other.\nWe want to know whether \\(\\mu_1 - \\mu_2 &gt; 0\\).\nWe do not observe \\(\\sigma_1\\) or \\(\\sigma_2\\).\nWe can use the t.test function in R.\nWe find that \\(t = 3.75\\) and \\(P(t &lt; T_c) = 0.0003\\).\nWe reject the null hypothesis that \\(\\mu_1 - \\mu_2 \\le 0\\) at the 1% level of statistical significance.\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\npressure_3 &lt;- c(210, 32, 238, 198, 322, 290, 192, 105, 204, 248, \n              83, 103, 232, 114, 192, 283, 200, 99, 111, 193, \n              150, 94, 241, 238, 198, 194, 197, 128, 215, 108, \n              133, 185, 180, 141, 234, 48, 92, 281, 47, 290)\n\npressure_4 &lt;- c(140, 112, 98, 98, 192, 190, 93, 125, 144, 146, \n              87, 195, 112, 124, 132, 185, 102, 139, 101, 125, \n              123, 144, 123, 108, 128, 114, 107, 134, 115, 88, \n              143, 124, 120, 135, 121, 168, 172, 129, 103)\n\n# Manual T-Test, H0: mu(1)-mu(2) &gt; 0\n\nxbar_3 &lt;- mean(pressure_3)\nxbar_4 &lt;- mean(pressure_4)\n\ndiff &lt;- xbar_3 - xbar_4 - 0\n\ndenom &lt;- sqrt((var(pressure_3)/length(pressure_3)) + \n                (var(pressure_4)/length(pressure_4)))\n\nt_man &lt;- diff/denom\n\n# Generated T-Test\nt_calc &lt;- t.test(pressure_3, pressure_4, \n                 alternative = \"greater\", mu = 0)\n\nmeans &lt;- data.frame(xbar_3, xbar_4, diff, \n                    t_man, t_calc$statistic, \n                    t_calc$parameter, t_calc$p.value)\n\nkable(means,\n      align     = \"ccccccc\",\n      caption   = \"Hypothesis Testing\",\n      col.names = c(\"Xbar(1)\", \"Xbar(2)\", \n                    \"Xbar(1)-Xbar(2)\",\n                    \"T-Manual\", \"T-Calculated\", \n                    \"Degrees Freedom\", \"P-Value\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nHypothesis Testing\n\n\n\nXbar(1)\nXbar(2)\nXbar(1)-Xbar(2)\nT-Manual\nT-Calculated\nDegrees Freedom\nP-Value\n\n\n\n\nt\n176.075\n129.2051\n46.86987\n3.749521\n3.749521\n50.68183\n0.0002278",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#chi-squared-distribution",
+    "href": "mod-8-3-variance.html#chi-squared-distribution",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.9 Chi-Squared Distribution",
+    "text": "38.9 Chi-Squared Distribution\nLet \\(x_1, x_2, \\dots, x_n\\) be \\(n\\) identically and independently distributed random variables such that \\(x_i \\sim N(\\mu,\\sigma)\\).\nLet \\(\\sigma_1, \\sigma_2, \\dots, \\sigma_n\\) be the standard deviations of \\(x_1, x_2, \\dots, x_n\\).\nConsider the following two measures about the sample data and its relationship with the population parameters:\n\\[R = \\sum_{i=1}^n \\frac{(x_i - \\mu)}{\\sigma_i} \\sim N(0,1)\\]\n\\[V = \\sum_{i=1}^n \\frac{(x_i - \\mu)^2}{\\sigma_i^2} \\sim \\chi^2(k)\\]\nR is the sum of \\(n\\) standard normal variables and is distributed normally.\nV is the sum of \\(n\\) squared standard normal variables and is distributed \\(\\chi^2\\) with \\(k\\) degrees of freedom.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#chi-square-distribution",
+    "href": "mod-8-3-variance.html#chi-square-distribution",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.10 Chi-Square Distribution",
+    "text": "38.10 Chi-Square Distribution\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nlibrary(ggplot2)\n\nggplot(data.frame(x = c(-10, 10)), \n       aes(x = x)) +\nstat_function(fun = dchisq, \n              args = list(df = 1),\n              linewidth = 1.2) +\nstat_function(fun = dnorm, \n              args = list(mean = 0, sd = 1),\n              linewidth = 1.2,\n              color = \"red\") +\ntheme_minimal() +\nlabs(x = \"x\",\n     y = \"P(x)\",\n     title = \"Standard Normal and Chi-Squared Distribution\",\n     subtitle = \"1 degree of freedom\")\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(data.frame(x = c(-30, 30)), \n       aes(x = x)) +\nstat_function(fun = dchisq, \n              args = list(df = 10),\n              linewidth = 1.2) +\nstat_function(fun = dnorm, \n              args = list(mean = 0, sd = 1),\n              linewidth = 1.2,\n              color = \"red\") +\ntheme_minimal() +\nlabs(x = \"x\",\n     y = \"P(x)\",\n     title = \"Chi-Squared Distribution\",\n     subtitle = \"10 degrees of freedom\")",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#chi-squared-distributions",
+    "href": "mod-8-3-variance.html#chi-squared-distributions",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.11 Chi-Squared Distributions",
+    "text": "38.11 Chi-Squared Distributions\nLet \\(x\\) be the value of V for which we seek the probability or:\n\\[V = \\sum_{i=1}^n \\frac{(x_i - \\mu)^2}{\\sigma_i^2} \\sim \\chi^2\\]\nThe probability density function of the \\(\\chi^2\\) distribution is:\n\\[f(x;k) = \\frac{1}{2^{(k/2)} \\, \\Gamma(k/2)} x^{(k/2)-1} e^{-x/2}, \\quad 0 \\le \\chi^2 \\le 1\\]\nWhere \\(\\Gamma\\) is the Gamma function and\n\\[\\Gamma(z) = \\int_{0}^{\\infty} x^{z-1} \\, e^{-x} dx, \\quad x &gt; 0\\]\n\\[\\Gamma(n) = (n-1)! \\quad \\text{for any positive integer} \\, n\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#chi-squared-properties",
+    "href": "mod-8-3-variance.html#chi-squared-properties",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.12 Chi-Squared Properties",
+    "text": "38.12 Chi-Squared Properties\nGiven \\(x_1, x_2, \\dots, x_n\\) random variables with \\(x_i \\sim N(0,\\sigma^2)\\), then\n\\[V = \\sum_{i=1}^n \\frac{(x_i - \\mu)^2}{\\sigma_i^2} \\sim \\chi^2(k)\\]\nGiven \\(n\\) and \\(k = n-1\\), then the mean of \\(\\chi^2(k)\\) is:\n\\[\\mu(\\chi^2) = k\\]\nThe variance and standard deviation of \\(\\chi^2(k)\\) is:\n\\[var(\\chi^2) = 2 \\times k\\]\n\\[sd(\\chi^2) = \\sqrt{2 \\times df}\\]\nThe \\(\\chi^2\\) distribution is non-symmetrical and skewed right.\nThere is a different \\(\\chi^2\\) curve for each degree of freedom \\(k\\).",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#chi-squared-examples",
+    "href": "mod-8-3-variance.html#chi-squared-examples",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.13 Chi-Squared Examples",
+    "text": "38.13 Chi-Squared Examples\nLet \\(Y\\) have a chi-square distribution with 15 degrees of freedom.\nWhat is \\(P(Y \\le y_0) = 0.025\\)?\nWhat is \\(P(Y \\ge y_0) = 0.05\\)?\nWhat is \\(P(Y \\le 15.23)\\)?\nWhat is \\(P(Y \\ge 22.307)\\)?\nWe can use the \\(\\chi^2\\) tables.\npchisq is the CDF for \\(\\chi^2\\) in R\nqchisq is the inverse CDF in R\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nk = 15\n\n#P(Y &lt; y0) = 0.025\n#Lower.tail = TRUE since area to left of y_0\n\nq_1 &lt;- qchisq(0.025, 15, lower.tail = TRUE)\n\n#P(Y &gt; y0) = 0.05\n#Lower.tail = FALSE since area to left of y_0\n\nq_2 &lt;- qchisq(0.05, 15, lower.tail = FALSE)\n\n#P(Y &lt; 15.23) = p\n#Lower.tail since area of the left of 15.23\n\nq_3 &lt;- pchisq(15.23, 15, lower.tail = TRUE)\n\n#P(Y &gt; 22.307) = p\n\nq_4 &lt;- pchisq(23.307, 15, lower.tail = FALSE)\n\nqchi &lt;- data.frame(k, q_1, q_2, q_3, q_4)\n\nkable(qchi,\n      align     = \"ccccc\",\n      caption   = \"Chi-Squared Examples\",\n      col.names = c(\"k\", \"P(y &lt; y0) = 0.025\", \n                    \"P(y &gt; y0) = 0.05\",\n                    \"P(y &lt; 15.23)\", \"P(y &gt; 23.307)\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nChi-Squared Examples\n\n\nk\nP(y &lt; y0) = 0.025\nP(y &gt; y0) = 0.05\nP(y &lt; 15.23)\nP(y &gt; 23.307)\n\n\n\n\n15\n6.262138\n24.99579\n0.5650197\n0.0778356",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#chi-squared-examples-1",
+    "href": "mod-8-3-variance.html#chi-squared-examples-1",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.14 Chi-Squared Examples",
+    "text": "38.14 Chi-Squared Examples\nTypically \\(\\chi^2_{\\alpha}\\) denotes the value for the \\(\\chi^2\\) distribution that provides an area or probability of \\(\\alpha\\) to the right of the \\(\\chi^2_\\alpha\\) value.\nLet \\(X\\) have a chi-square distribution with 19 degrees of freedom.\nWhat is \\(P(X \\ge x_0) = 0.025\\)?\nIn other words, what \\(\\chi^2\\) value is such that 2.5% of the observations lie to the right of it?\nWhat is \\(P(X \\ge x_0) = 0.95\\)?\nIn other words, what \\(\\chi^2\\) value is such that 95% of the observations lie to the right of it?\n\nrm(list = ls())\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\n\nalpha_1 = 0.025\nalpha_2 = 0.95\ndf_1 = 19\n\n#Obtain chi-squared value for which 2.5% of obs lie to the right\n#Use alpha and lower.tail = FALSE \n#Use (1-alpha) and lower.tail = TRUE\n\nq_5 &lt;- qchisq(alpha_1, df_1, lower.tail = FALSE)\nq_6 &lt;- qchisq(1-alpha_1, df_1, lower.tail = TRUE)\n\n#Obtain chi-squared value for which 95% of obs lie to the right\n#Use alpha and lower.tail = FALSE \n#Use (1-alpha) and lower.tail = TRUE\n\nq_7 &lt;- qchisq(alpha_2, df_1, lower.tail = FALSE)\nq_8 &lt;- qchisq(1-alpha_2, df_1, lower.tail = TRUE)\n\nqchi2 &lt;- data.frame(df_1, q_5, q_6, q_7, q_8)\n\nkable(qchi2,\n      align     = \"ccccc\",\n      caption   = \"Chi-Squared Examples\",\n      col.names = c(\"k\", \"P(X &gt; x0) = 0.025\", \n                    \"P(X &lt; x0) = 0.975\",\n                    \"P(X &gt; x0) = 0.95\", \"P(X &lt; x0) = 0.05\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nChi-Squared Examples\n\n\nk\nP(X &gt; x0) = 0.025\nP(X &lt; x0) = 0.975\nP(X &gt; x0) = 0.95\nP(X &lt; x0) = 0.05\n\n\n\n\n19\n32.85233\n32.85233\n10.11701\n10.11701",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#variance-inferences",
+    "href": "mod-8-3-variance.html#variance-inferences",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.15 Variance Inferences",
+    "text": "38.15 Variance Inferences\nRecall that the sample variance \\(s^2\\) is the point estimator of the population variance \\(\\sigma^2\\).\nRecall that the sample variance is equal to:\n\\[s^2 = \\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n-1}\\]\nTo make inferences about the population variance, we need to know the sampling distribution of:\n\\[\\frac{(n-1)s^2}{\\sigma^2}\\]\nWe will find that sampling distribution is \\(\\chi^2\\) with \\(k\\) degrees of freedom.\nWe can use the \\(\\chi^2\\) distribution to develop interval estimates and conduct hypothesis tests about a population variance.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#sampling-distribution",
+    "href": "mod-8-3-variance.html#sampling-distribution",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.16 Sampling Distribution",
+    "text": "38.16 Sampling Distribution\nTo begin, let \\(y_i = x_i - \\mu\\) which implies that \\(\\bar{y} = \\bar{x} - \\mu\\) since \\(\\bar{u} = \\mu\\) and:\n\\[(y_i - \\bar{y}) = (x_i - \\mu) - (\\bar{x} - \\mu) = x_i - \\mu - \\bar{x} + \\mu = (x_i - \\bar{x})\\]\nRearranging \\(s^2\\) yields:\n\\[s^2 = \\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n-1}\\]\n\\[(n-1) s^2 = \\sum_{i=1}^n (x_i - \\bar{x})^2 = \\sum_{i = 1}^n (y_i - \\mu)^2\\]\n\\[(n-1) s^2 = \\sum_{i = 1}^n(y_i^2 - 2 y_i \\bar{y} + \\bar{y}^2) = \\sum_{i=1}^n y_i^2 - 2\\bar{y}\\sum_{i=1}^n Y_i + \\sum_{i=1}^n \\bar{y}^2\\]\nRecall that \\(\\sum y_i = n \\bar{y}\\) and \\(\\sum \\bar{y} = n\\bar{y}\\) so\n\\[(n-1) s^2 = \\sum_{i=1}^n y_i^2 - (2n \\bar{y}  + n \\bar{y}^2) = \\sum_{i=1}^n y_i^2 - n\\bar{y}^2\\]\nSubstituting back \\(y_i = x_i - \\mu\\) yields:\n\\[(n-1) s^2 = \\sum_{i=1}^n (x_i - \\mu)^2 - n(\\bar{x} - \\mu)^2\\]\nDividing through by \\(\\sigma^2\\) and rearranging\n\\[\\frac{(n-1) s^2}{\\sigma^2} = \\sum_{i=1}^n \\frac{(x_i - \\mu)^2}{\\sigma^2} - \\frac{n(\\bar{x} - \\mu)^2}{\\sigma^2}\\]\n\\[\\sum_{i=1}^n \\bigg[\\frac{(x_i - \\mu)}{\\sigma}\\bigg]^2 = \\frac{(n-1) s^2}{\\sigma^2} + \\bigg[\\frac{(\\bar{x} - \\mu)}{\\sigma/\\sqrt{n}}\\bigg]^2\\]\nThe left hand side is the sum of the squares of \\(n\\) independent standard normal variables.\nThe second term on the right hand side is the square of a single standard normal variable.\nIf \\(s^2\\) and \\(\\bar{x}\\) are independent, then the first term on the right hand side must have the same distribution as the left hand side.\nEach term thus has the same distribution: \\(\\chi^2\\) with \\(k\\) degrees of freedom.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#interval-estimation---variance",
+    "href": "mod-8-3-variance.html#interval-estimation---variance",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.17 Interval Estimation - Variance",
+    "text": "38.17 Interval Estimation - Variance\nGiven that\n\\[\\frac{(n-1) s^2}{\\sigma^2} \\sim \\chi^2(k)\\]\nGiven \\(\\alpha\\), we can find the interval in which \\(\\alpha\\) of \\((n-1)s^2/ \\sigma^2\\) lie or:\n\\[\\chi_{\\alpha/2}^2 \\le \\frac{(n-1) s^2}{\\sigma^2} \\le \\chi_{(1-\\alpha/2)}^2\\]\nRearranging, we obtain the confidence interval estimate for \\(\\sigma^2\\) or:\n\\[\\frac{(n-1)s^2}{\\chi_{\\alpha/2}^2} \\le \\sigma^2 \\le \\frac{(n-1)s^2}{\\chi_{(1-\\alpha/2)}^2}\\]\nThe \\(\\chi^2\\) values are based on a \\(\\chi^2\\) distribution with \\(k\\) degrees of freedom.\n\n\\((1-\\alpha)\\) is the confidence coefficient for the interval estimate.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#example",
+    "href": "mod-8-3-variance.html#example",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.18 Example",
+    "text": "38.18 Example\nAssume that we collect a sample of 100 individuals from a population.\nThe sample standard deviation of individual income is $200.\nWe want to construct a 90% confidence interval for \\(\\sigma^2\\) so \\(\\alpha = 0.1\\)\nThere are \\((n-1) = k = 99\\) degrees of freedom for the \\(\\chi^2\\) statistic.\n\\(\\chi^2_{0.05}(99) =\\) 123.2252215\n\\(\\chi^2_{0.95}(99) =\\) 77.0463319\nThe 90% confidence interval is:\n\\[\\frac{(n-1)s^2}{\\chi_{\\alpha/2}^2} \\le \\sigma^2 \\le \\frac{(n-1)s^2}{\\chi_{(1-\\alpha/2)}^2}\\]\n\\[\\frac{99*40000}{123.23} \\le \\sigma^2 \\le \\frac{99*4000}{77.046}\\]\n\\[51397.64 \\le \\sigma^2 \\le 32136.28\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#r-example",
+    "href": "mod-8-3-variance.html#r-example",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.19 R Example",
+    "text": "38.19 R Example\nWe collect salaries (in millions) on 10 managers.\nThe average salary is 1.47 million.\nThe sample variance is 0.767 million\nLet \\(\\alpha = 0.05\\)\nUse qchisq to find the \\(\\chi^2\\) value for \\((n-1)\\) degrees of freedom at \\(\\alpha/2\\) and \\((1-\\alpha/2)\\)\n95% confidence interval for \\(\\sigma^2\\) is [0.363, 2.556]\n\nsalaries &lt;- c(2.2, .5, 2.4, 2.7, 2.0, 1.5, 1.3, 1.5, .3, .3)\n\navg_sal &lt;- mean(salaries)\nvar_sal &lt;- var(salaries)\nsd_sal &lt;- sd(salaries)\nn = length(salaries)\n\nalpha = 0.05\n\nlower &lt;- ((n-1)*sd_sal^2) / qchisq(1-(alpha/2), n-1)\nupper &lt;- ((n-1)*sd_sal^2) / qchisq((alpha/2), n-1)\n\nvars &lt;- data.frame(n, avg_sal, var_sal, alpha, lower, upper)\n\nkable(vars,\n      align     = \"cccccc\",\n      caption   = \"Variance Interval\",\n      col.names = c(\"n\", \"Xbar\", \n                    \"s^2\",\n                    \"alpha\", \"Lower Bound\", \n                    \"Upper Bound\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nVariance Interval\n\n\nn\nXbar\ns^2\nalpha\nLower Bound\nUpper Bound\n\n\n\n\n10\n1.47\n0.7667778\n0.05\n0.3627758\n2.555557",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#hypothesis-testing",
+    "href": "mod-8-3-variance.html#hypothesis-testing",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.20 Hypothesis Testing",
+    "text": "38.20 Hypothesis Testing\nWe obtain a random sample of 29 bus arrivals at a station and \\(s^2 = 4.2\\).\nManagement argues the variance in arrival times is less than 4 minutes or:\n\\[Ho: \\sigma^2 \\ge 4\\]\n\\[Ha: \\sigma^2 &lt; 4\\]\nThe test statistic for a hypothesis tests about a population variance is:\n\\[\\chi^2(k) = \\frac{(n-1) \\, s^2}{\\sigma_0^2}\\]\n\\[\\chi^2(28) = \\frac{(29 - 1) \\, 4.2}{4.0} = 29.4\\]\nWe can use pchisq to find \\(P(X \\ge 29.4) =\\) 0.3924554\nSince \\(P(X \\ge 29.4) = 0.392\\) we fail to reject the null hypothesis that \\(\\sigma \\le 4\\).\nThere is insufficient empirical evidence to support the argument that the variance of arrival times is less than 4 minutes.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#r-example-1",
+    "href": "mod-8-3-variance.html#r-example-1",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.21 R Example",
+    "text": "38.21 R Example\nUsing data on manager salaries.\nThe average salary is 1.65 million.\nThe sample variance is 1.35 million\nFind the 90% confidence interval.\nTest the hypothesis that \\(\\sigma^2 = 1.45\\)\n90% confidence interval for \\(\\sigma^2\\) is [0.85,2.53]\nWe fail to reject the null hypothesis that \\(\\sigma^2 = 1.45\\)\n\nsalaries &lt;- c(2.2, .5, 2.4, 2.7, 2.0, 1.5, 1.3, 1.5, .3, .3,\n              3.5, 1.2, 4.5, 0.2, 1.9, 1.3, 0.9, 0.4, 1.2, 3.1)\n\navg_sal &lt;- mean(salaries)\nvar_sal &lt;- var(salaries)\nsd_sal &lt;- sd(salaries)\nn = length(salaries)\nsigma2_null = 1.45\n\nalpha = 0.1\n\nlower &lt;- ((n-1)*sd_sal^2) / qchisq(1-(alpha/2), n-1)\nupper &lt;- ((n-1)*sd_sal^2) / qchisq((alpha/2), n-1)\n\nchi_test &lt;- ((n-1)*sd_sal^2)/sigma2_null\nchi_p &lt;- pchisq(chi_test, n-1, lower.tail = FALSE)\n\nvars &lt;- data.frame(n, avg_sal, var_sal, alpha, lower, upper,\n                   chi_test, chi_p)\n\nkable(vars,\n      align     = \"cccccccc\",\n      caption   = \"Variance Interval and Test\",\n      col.names = c(\"n\", \"Xbar\", \n                    \"s^2\",\n                    \"alpha\", \"Lower Bound\", \n                    \"Upper Bound\", \"Chi Test\", \"P(X &gt; x)\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nVariance Interval and Test\n\n\nn\nXbar\ns^2\nalpha\nLower Bound\nUpper Bound\nChi Test\nP(X &gt; x)\n\n\n\n\n20\n1.645\n1.352079\n0.1\n0.8522393\n2.539238\n17.7169\n0.5414171",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#two-population-variances",
+    "href": "mod-8-3-variance.html#two-population-variances",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.22 Two Population Variances",
+    "text": "38.22 Two Population Variances\nWhenever independent simple random samples of sizes \\(n_1\\) and \\(n_2\\) are selected for two normal populations with equal variances, the sampling distribution is an F distribution with \\((n_1 - 1)\\) degrees of freedom in the numerator and \\((n_2 - 1)\\) degrees of freedom in the denominator.\nGiven \\(s_1^2\\) and \\(s_2^2\\) the sampling distribution is:\n\\[\\frac{s_1^2}{s_2^2} \\sim F(n_1 - 1, n_2 - 1)\\]\nLet \\(s_1^2\\) be the population with the larger sample variance, then the test statistic for the equality of population variances is:\n\\[F(n_1-1,n_2-1) = \\frac{s_1^2}{s_2^2}\\]",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#f-test-example",
+    "href": "mod-8-3-variance.html#f-test-example",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.23 F Test Example",
+    "text": "38.23 F Test Example\nAssume that \\(n_1 = 28\\) and \\(s_1^2 = 48\\)\nAssume that \\(n_2 = 16\\) and \\(s_2^2 = 20\\)\nTest whether \\(\\sigma_1^2 = \\sigma_2^2\\)\nLet \\(\\alpha = .10\\) so \\(\\alpha/2 = 0.05\\)\nThe calculated F-statistic is 2.4.\nThe critical value at 5% is 2.28.\nWe reject the null hypothesis that the variances are equal at the 5% level of statistical significance.\n\nn_1 &lt;- 26\ns_1 &lt;- 48\n\nn_2 &lt;- 16\ns_2 &lt;- 20\n\nalpha = .1\n\nf_crit &lt;- qf(alpha/2, n_1-1, n_2-1, lower.tail = FALSE)\n\nf_stat &lt;- s_1/s_2\n\nf_pvalue &lt;- pf(f_stat, n_1 - 1, n_2-1, lower.tail = FALSE)\n\nvars &lt;- data.frame(n_1, s_1, n_2, s_2, alpha, \n                   f_stat, f_crit, f_pvalue)\n\nkable(vars,\n      align     = \"cccccccc\",\n      caption   = \"F Test\",\n      col.names = c(\"n1\", \"s1\", \"n2\", \"s2\", \n                    \"alpha\", \"F Statistic\", \n                    \"F Critical\", \"P(F &gt; F)\")) %&gt;%\n  kable_styling(font_size = 11)\n\n\nF Test\n\n\nn1\ns1\nn2\ns2\nalpha\nF Statistic\nF Critical\nP(F &gt; F)\n\n\n\n\n26\n48\n16\n20\n0.1\n2.4\n2.279729\n0.0405991",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
+    ]
+  },
+  {
+    "objectID": "mod-8-3-variance.html#wrapping-up",
+    "href": "mod-8-3-variance.html#wrapping-up",
+    "title": "38  Hypothesis Testing: Variance",
+    "section": "38.24 Wrapping Up",
+    "text": "38.24 Wrapping Up\nIn this module, we explored hypothesis testing. We noted the differences between Type I and Type II errors and examined how to form one-tail and two-tailed hypothesis tests. We estimated critical statistics when the population variance is known and unknown. We then explored examples of different types of hypothesis tests in R.\nWe then discussed how to conduct hypothesis tests for means, differences in mean, and variances. We introduced the Chi-Squared distribution and how it is used to make inferences regarding population variances. We also investigated how to use R to test hypotheses regarding two population variances and introduced the F-test.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Hypothesis Testing: Variance</span>"
     ]
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Module 1 Overview – ECON 700</title>
+<title>36&nbsp; Hypothesis Testing – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-1-1-intro-to-data.html" rel="next">
-<link href="./about.html" rel="prev">
+<link href="./mod-8-2-means.html" rel="next">
+<link href="./mod-8-0-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -71,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-0-overview.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-8-0-overview.html">Inference</a></li><li class="breadcrumb-item"><a href="./mod-8-1-hypothesis.html"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -150,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-1-0-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-1-0-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></span></a>
   </div>
 </li>
@@ -419,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-8-1-hypothesis.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-8-1-hypothesis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span></a>
   </div>
 </li>
@@ -447,20 +476,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">4.2</span> Learning Objectives</a></li>
-  <li><a href="#required-texts" id="toc-required-texts" class="nav-link" data-scroll-target="#required-texts"><span class="header-section-number">4.3</span> Required Texts</a></li>
-  <li><a href="#module-to-do-list" id="toc-module-to-do-list" class="nav-link" data-scroll-target="#module-to-do-list"><span class="header-section-number">4.4</span> Module To Do List</a></li>
-  <li><a href="#lessons-in-this-module" id="toc-lessons-in-this-module" class="nav-link" data-scroll-target="#lessons-in-this-module"><span class="header-section-number">4.5</span> Lessons in this Module</a></li>
+  <li><a href="#terminology" id="toc-terminology" class="nav-link active" data-scroll-target="#terminology"><span class="header-section-number">36.1</span> Terminology</a></li>
+  <li><a href="#two-tailed-hypotheses" id="toc-two-tailed-hypotheses" class="nav-link" data-scroll-target="#two-tailed-hypotheses"><span class="header-section-number">36.2</span> Two-Tailed Hypotheses</a></li>
+  <li><a href="#one-tailed-hypotheses" id="toc-one-tailed-hypotheses" class="nav-link" data-scroll-target="#one-tailed-hypotheses"><span class="header-section-number">36.3</span> One-Tailed Hypotheses</a></li>
+  <li><a href="#hypothesis-example" id="toc-hypothesis-example" class="nav-link" data-scroll-target="#hypothesis-example"><span class="header-section-number">36.4</span> Hypothesis Example</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">36.5</span> Example</a></li>
+  <li><a href="#type-i-and-type-ii-errors" id="toc-type-i-and-type-ii-errors" class="nav-link" data-scroll-target="#type-i-and-type-ii-errors"><span class="header-section-number">36.6</span> Type I and Type II Errors</a></li>
+  <li><a href="#type-i-error-discussion" id="toc-type-i-error-discussion" class="nav-link" data-scroll-target="#type-i-error-discussion"><span class="header-section-number">36.7</span> Type I Error Discussion</a></li>
+  <li><a href="#type-ii-error-discussion" id="toc-type-ii-error-discussion" class="nav-link" data-scroll-target="#type-ii-error-discussion"><span class="header-section-number">36.8</span> Type II Error Discussion</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-1-0-overview.html">Introduction to R</a></li><li class="breadcrumb-item"><a href="./mod-1-0-overview.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-8-0-overview.html">Inference</a></li><li class="breadcrumb-item"><a href="./mod-8-1-hypothesis.html"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1 Overview</span></h1>
+<h1 class="title"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></h1>
 </div>
 
 
@@ -477,68 +509,107 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1</span> Introduction</h2>
-<p>Welcome to <strong>Module 1</strong> of ECON 700.</p>
-<p>In this module, you will be introduced to the R programming environment and its integrated interface, RStudio. You will learn how to install and navigate both tools while becoming familiar with R’s basic syntax and data types. You will also learn how to import, view, and explore datasets to build a foundational understanding of data handling in R. Finally, you will apply descriptive statistical techniques to perform initial data exploration and summarize key insights from the datasets.&nbsp;</p>
-<hr>
+<section id="terminology" class="level2" data-number="36.1">
+<h2 data-number="36.1" class="anchored" data-anchor-id="terminology"><span class="header-section-number">36.1</span> Terminology</h2>
+<p><strong>Hypothesis testing</strong> is a process by which a statement about the value of a population parameter of interest is rejected or not rejected.</p>
+<p>A <strong>null hypothesis</strong> or <span class="math inline">\(H_0\)</span> is statement about a population parameter and a specific value or there is no difference between two parameters of interest.</p>
+<p>An <strong>alternative hypothesis</strong> or <span class="math inline">\(H_a\)</span> is a statement that states the existence of a difference between a population parameter and a specific value or states that there is a difference between two parameters of interest.</p>
+<p>We use data to test whether to reject or fail to reject the null hypothesis.</p>
+<p><strong>We never accept the null hypothesis nor do we accept the alternative.</strong></p>
+<p>We either have sufficient empirical evidence to reject <span class="math inline">\(H_0\)</span> or we have insufficient evidence to reject <span class="math inline">\(H_0\)</span>.</p>
 </section>
-<section id="learning-objectives" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">4.2</span> Learning Objectives</h2>
-<p>By the end of this module, you should be able to:</p>
-<ul>
-<li>MLO 1: <strong>Install</strong> and navigate R and RStudio.<br>
-</li>
-<li>MLO 2: <strong>Identify</strong> R’s basic syntax and data types.<br>
-</li>
-<li>MLO 3: <strong>Work</strong> with variables and simple operations in R.<br>
-</li>
-<li>MLO 4: <strong>Explore</strong> data frames and tibbles in R<br>
-</li>
-<li>MLO 5: <strong>Apply</strong> descriptive statistics for initial data exploration.</li>
-</ul>
-<hr>
+<section id="two-tailed-hypotheses" class="level2" data-number="36.2">
+<h2 data-number="36.2" class="anchored" data-anchor-id="two-tailed-hypotheses"><span class="header-section-number">36.2</span> Two-Tailed Hypotheses</h2>
+<p><span class="math inline">\(H_0\)</span> will always have an equality as part of the hypothesis.</p>
+<p><span class="math inline">\(H_a\)</span> will not have an equality as part of the hypothesis.</p>
+<p>A two-tailed hypothesis can be stated that the population parameter is equal to a value.</p>
+<p><span class="math display">\[H_0 : \mu = k\]</span></p>
+<p><span class="math display">\[H_a: \mu \ne k\]</span></p>
+<p>We will reject the null hypothesis if we have sufficient empirical evidence that <span class="math inline">\(\mu\)</span> is sufficiently different from <span class="math inline">\(k\)</span>.</p>
+<p>A two-tailed hypothesis can also be stated that two parameters are equal to each other under the null.</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 \implies H_0: \mu_1 - \mu_2 = 0\]</span></p>
+<p><span class="math display">\[H_a: \mu_1 \ne \mu_2 \implies H_a: \mu_1 - \mu_2 \ne 0\]</span></p>
 </section>
-<section id="required-texts" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="required-texts"><span class="header-section-number">4.3</span> Required Texts</h2>
-<p>The following textbooks are available for free. Please select the links provided to access.</p>
-<ul>
-<li><p>Barbara Illowsky and Susan Dean. <a href="https://openstax.org/books/introductory-statistics-2e/pages/1-introduction">Introductory Statistics 2e</a>. OpenStax. Chapter 1.</p></li>
-<li><p>Rafael Irizarry. (2025). <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/">Introduction to Data Science: Data Wrangling and Visualization with R</a>. Chapters 1-2.</p></li>
-<li><p>Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund. (2025) <a href="https://r4ds.hadley.nz/">R for Data Science</a>. Sections 1-19.</p></li>
-<li><p><a href="https://cran.r-project.org/manuals.html">Online R documentation</a></p></li>
-<li><p><a href="https://posit.co/resources/cheatsheets/">RStudio Cheat Sheets</a></p></li>
-</ul>
-<hr>
+<section id="one-tailed-hypotheses" class="level2" data-number="36.3">
+<h2 data-number="36.3" class="anchored" data-anchor-id="one-tailed-hypotheses"><span class="header-section-number">36.3</span> One-Tailed Hypotheses</h2>
+<p><span class="math inline">\(H_0\)</span> will always have an equality as part of the hypothesis.</p>
+<p><span class="math inline">\(H_a\)</span> will not have an equality as part of the hypothesis.</p>
+<p>For a one-tailed hypothesis, the population parameter under <span class="math inline">\(H_0\)</span> may be less than or equal to a value of interest.</p>
+<p><span class="math display">\[H_0 : \mu \le k\]</span></p>
+<p><span class="math display">\[H_a: \mu &gt; k\]</span></p>
+<p>For a one-tailed hypothesis, the population parameter under <span class="math inline">\(H_0\)</span> may be greater than or equal to a value of interest.</p>
+<p><span class="math display">\[H_0 : \mu \ge k\]</span></p>
+<p><span class="math display">\[H_a: \mu &lt; k\]</span></p>
+<p>A one-tailed hypothesis can also be stated in terms of two parameters.</p>
+<p><span class="math display">\[H_0: \mu_1 \le \mu_2 \implies H_0: \mu_1 - \mu_2 \le 0\]</span></p>
+<p><span class="math display">\[H_a: \mu_1 &gt; \mu_2 \implies H_a: \mu_1 - \mu_2 &gt; 0\]</span></p>
 </section>
-<section id="module-to-do-list" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="module-to-do-list"><span class="header-section-number">4.4</span> Module To Do List</h2>
-<ul>
-<li>Complete the hands-on coding exercises embedded in each lesson (MLO 3,4)<br>
-</li>
-<li>Use WebR to experiment directly in your browser (MLO 2, 3, 4)<br>
-</li>
-<li>Complete the weekly class assignment (MLO 1-5)<br>
-</li>
-<li>Take the weekly knowledge quiz (MLO 2-5).<br>
-</li>
-</ul>
-<hr>
+<section id="hypothesis-example" class="level2" data-number="36.4">
+<h2 data-number="36.4" class="anchored" data-anchor-id="hypothesis-example"><span class="header-section-number">36.4</span> Hypothesis Example</h2>
+<p>Assume that mean sales volume is 14 cars a month. A manager implements a new incentive plan to increase sales and collects data over a six-month period. What are the null and alternative hypotheses?</p>
+<p>If the manager want to examine whether mean sales volume increased and let <span class="math inline">\(\mu_1\)</span> be the mean sales volume prior to the implementation of the plan and <span class="math inline">\(\mu_2\)</span> be the mean sales volume after the implementation of the plan.</p>
+<p>In other words, since the manager is really interested if sales increased <span class="math inline">\(\mu_2 &gt; \mu_1\)</span>, we can form a one-tailed hypothesis.</p>
+<p><span class="math display">\[H_0: \mu_1 \ge \mu_2 \implies H_0: \mu_1 - \mu_2 \ge 0\]</span></p>
+<p><span class="math display">\[H_0: \mu_1 &lt; \mu_2 \implies H_0: \mu_1 - \mu_2 &lt; 0\]</span></p>
+<p>More specifically:</p>
+<p><span class="math display">\[H_0: \mu_{old} \ge \mu_{new} \implies H_0: \mu_{old} - \mu_{new} \ge 0\]</span></p>
+<p><span class="math display">\[H_0: \mu_{old} &lt; \mu_{new} \implies H_0: \mu_{old} - \mu_{new} &lt; 0\]</span></p>
 </section>
-<section id="lessons-in-this-module" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="lessons-in-this-module"><span class="header-section-number">4.5</span> Lessons in this Module</h2>
-<ul>
-<li><a href="./mod-1-1-intro-to-data.html">1.1 – Introduction to Economic Analysis</a><br>
-</li>
-<li><a href="./mod-1-2-intro-to-r.html">1.2 – Introduction to R</a><br>
-</li>
-<li><a href="./mod-1-3-intro-to-r-variables.html">1.3 – Variables in R</a><br>
-</li>
-<li><a href="./mod-1-4-intro-to-r-dataframes.html">1.4 - Data frames in R</a></li>
-<li><a href="./mod-1-5-quarto.html">1.5 - Using Quarto in R</a></li>
-</ul>
-<hr>
-<p>Next: Start with <a href="./mod-1-1-intro-to-data.html"><strong>Economic Analysis</strong></a>.</p>
+<section id="example" class="level2" data-number="36.5">
+<h2 data-number="36.5" class="anchored" data-anchor-id="example"><span class="header-section-number">36.5</span> Example</h2>
+<p>Assume that mean filling weight on a production line is 32 ounces/container. A new machine is installed and a sample of cartons is gathered and weighed. What is the hypothesis to determine whether the new machine impacted mean filling weight?</p>
+<p>Since the question is whether an impact (positive or negative) has occurred, we can develop a two-tailed hypothesis</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 \implies H_0: \mu_1 - \mu_2 = 0\]</span></p>
+<p><span class="math display">\[H_a: \mu_1 \ne \mu_2 \implies H_a: \mu_1 - \mu_2 \ne 0\]</span>More specifically,</p>
+<p><span class="math display">\[H_0: \mu_{old} = \mu_{new} \implies H_0: \mu_{old} - \mu_{new} = 0\]</span></p>
+<p><span class="math display">\[H_a: \mu_{old} \ne \mu_{new} \implies H_a: \mu_{old} - \mu_{new} \ne 0\]</span>Note that you would reject the null hypothesis if there was sufficient empirical evidence that the new mean weight was significantly less or significantly more than the previous weight.</p>
+</section>
+<section id="type-i-and-type-ii-errors" class="level2" data-number="36.6">
+<h2 data-number="36.6" class="anchored" data-anchor-id="type-i-and-type-ii-errors"><span class="header-section-number">36.6</span> Type I and Type II Errors</h2>
+<p>Since we are using sample data to make inferences about population parameters, our estimates will not be exactly equal to the population parameter(s) of interest.</p>
+<p>A <strong>Type I</strong> error occurs when when we reject <span class="math inline">\(H_0\)</span> but <span class="math inline">\(H_0\)</span> should not be rejected.</p>
+<p>A <strong>Type II</strong> errors occurs when we do not reject <span class="math inline">\(H_0\)</span> but we should reject <span class="math inline">\(H_0\)</span></p>
+<p>From a hypothesis testing perspective, we focus on incorrectly rejecting <span class="math inline">\(H_0\)</span>, that is, concluding that there is sufficient empirical evidence to reject the null hypothesis.</p>
+<p><strong>The probability of making a Type I error is called the level of significance.</strong></p>
+<p>We denote the level of significance as <span class="math inline">\(\alpha\)</span>.</p>
+<p>If <span class="math inline">\(\alpha = 0.05\)</span>, then we want to know whether we can reject <span class="math inline">\(H_0\)</span> at the 5% level of significance.</p>
+<p>The greater the consequences of a Type I error, the higher the level of significance to reduce the probability of incorrectly rejecting <span class="math inline">\(H_0\)</span> when, in fact, it should not be rejected.</p>
+</section>
+<section id="type-i-error-discussion" class="level2" data-number="36.7">
+<h2 data-number="36.7" class="anchored" data-anchor-id="type-i-error-discussion"><span class="header-section-number">36.7</span> Type I Error Discussion</h2>
+<p>A Type 1 error occurs when you reject the null hypothesis when you should not reject the null hypothesis, in other words, you conclude a statistically significant result exists when it does not exist.</p>
+<p>A Type 1 error is a <strong>false positive</strong> error.</p>
+<p>Let the significance level be 10%, that is, <span class="math inline">\(\alpha = 0.10\)</span>.</p>
+<p>This means that we have a 10% chance of incorrectly rejecting the null hypothesis.</p>
+<p>A higher level of significance means that <span class="math inline">\(\alpha\)</span> is smaller.</p>
+<p>Let the significance level be 1%, that is, <span class="math inline">\(\alpha = 0.01\)</span>.</p>
+<p>This means that we now have a 1% chance of incorrectly rejecting the null hypothesis.</p>
+<p><em>You conduct a clinical study comparing the mean recovery time of patients who received a new drug versus patients who received an old drug. You have decided to conduct a two-tailed hypothesis test comparing the mean recovery times. You have set your level of significance to 5%.</em></p>
+<p><span class="math display">\[
+H_0: \mu_{old} = \mu_{new}
+\]</span></p>
+<p><span class="math display">\[
+H_A: \mu_{old} \ne \mu_{new}
+\]</span></p>
+<p><em>If you obtain a p-value from your test statistic of 0.07, you would fail to reject the null hypothesis as the p-value of the test is greater than the level of significance.</em></p>
+<p><em>Now assume you obtain new data and you obtain a p-value of 0.03. Your p-value is less than the level of significance, so you would reject the null hypothesis. You should note that the p-value of 0.03 indicates that the probability of a Type 1 error is 3%, that is, the probability of a Type 1 error is smaller than the level of significance and non-zero.</em></p>
+</section>
+<section id="type-ii-error-discussion" class="level2" data-number="36.8">
+<h2 data-number="36.8" class="anchored" data-anchor-id="type-ii-error-discussion"><span class="header-section-number">36.8</span> Type II Error Discussion</h2>
+<p>A Type II error occurs when you fail to reject the null hypothesis when, in fact, it should be rejected.</p>
+<p>A Type II error is a <strong>false negative</strong> error.</p>
+<p>An example of a Type II error is when a doctor uses a test to screen for a disease and the test returns a negative result (no disease) but the patient actually has the disease.</p>
+<p>The probability of a Type II error is denoted by <span class="math inline">\(\beta\)</span>.</p>
+<p>There is a trade off between Type I and Type II errors.</p>
+<p><em>As you decrease the probability of one type of error, you increase the probability of the other type of error</em>.</p>
+<p>For example, you are examining whether a new type of surgery improves outcomes for patients. The surgery is costly and invasive. As such, you want to only reject the null hypothesis of no impact with a high degree of confidence and so you set the significance level of the test to 1%.</p>
+<p>A significance level of 1% is “more stringent” than a significance level of 5% and this means you require more evidence to reject the null hypothesis.</p>
+<p><strong>In other words, by increasing the significance level to 1%, you reduce the likelihood of false positive but you also increase the likelihood of a false negative.</strong></p>
+<p>The graphic below highlights the trade off between Type I and Type II errors.</p>
+<p>As you increase the level of significance, <span class="math inline">\(\alpha\)</span>, you move the threshold of the test to the right, reducing the likelihood of a Type I error but increasing the likelihood of a Type II error.</p>
+<p>Since we are typically most concerned about a <strong>false positive</strong>, we focus on Type I errors rather than Type II errors, hence our focus on the level of statistical significance which is equal to the likelihood of making a Type I error.</p>
+<p><img src="images/clipboard-813737596.png" class="img-fluid"></p>
+<p>Image Source: <a href="http://grasshopper.com/blog/the-errors-of-ab-testing-your-conclusions-can-make-things-worse/" class="uri">http://grasshopper.com/blog/the-errors-of-ab-testing-your-conclusions-can-make-things-worse/</a></p>
 
 
 </section>
@@ -951,13 +1022,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./about.html" class="pagination-link" aria-label="Course Objectives">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Course Objectives</span></span>
+      <a href="./mod-8-0-overview.html" class="pagination-link" aria-label="Module 8 Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Module 8 Overview</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-1-1-intro-to-data.html" class="pagination-link" aria-label="Economic Analysis">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Economic Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mod-8-2-means.html" class="pagination-link" aria-label="Hypothesis Testing: Means">
+        <span class="nav-page-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Hypothesis Testing: Means</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

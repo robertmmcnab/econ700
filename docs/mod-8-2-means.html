@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Measures of Disperson – ECON 700</title>
+<title>37&nbsp; Hypothesis Testing: Means – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mod-2-4-zscores.html" rel="next">
-<link href="./mod-2-2-central.html" rel="prev">
+<link href="./mod-8-3-variance.html" rel="next">
+<link href="./mod-8-1-hypothesis.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -409,7 +409,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\npopulation <- tibble(pop = rnorm(1000000, mean = 50.5, sd = 5))\n\npop_stats <- population %>%\n  summarize(man_mean = sum(pop)/n(),\n            mean_pop = mean(pop),\n            man_var  = sum((pop-mean(pop))^2)/n(),\n            var_pop  = var(pop),\n            man_sd   = sqrt(sum((pop-mean(pop))^2)/n()),\n            sd_pop   = sd(pop))\n            \nkable(pop_stats,\n      align  = 'c',\n      digits = 2,\n      font   = 8,\n      col.names = c('M.Mean','Mean',\n                    'M.Variance', 'Variance',\n                    'M.Std. Dev', 'Std. Dev'))\n      ","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\ndf_1 <- data.frame(x = rnorm(100000, mean = 100, sd = 8.5)) %>%\n        slice_sample(n = 1000)\n\nvar_df1 <- df_1 %>%\n  summarize(n = n(),\n            var_man_n  = (1/n())*sum((x - mean(x))^2),\n            var_man_n1 = (1/(n()-1))*sum((x - mean(x))^2),\n            var_auto   = var(x),\n            sd_auto    = sd(x))\n\ndf_2 <- slice_sample(df_1, n = 1000)\n\nkable(var_df1,\n      col.names = c('Observations',\n                    'Variance (N)', \n                    'Variance (n-1)',\n                    'Variance',\n                    'Standard Deviation'),\n      align     = 'c',\n      digits    = 3,\n      caption = 'Variance with N and n-1')","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"rm(list = ls())\n\nqnorm(.1,0,1)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\nqnorm(.95,0,1)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"rm(list = ls())\n\nqnorm(0.05,0,1)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1704,7 +1704,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-8-0-overview.html">Inference</a></li><li class="breadcrumb-item"><a href="./mod-8-2-means.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Hypothesis Testing: Means</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1836,7 +1836,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-2-3-variance.html" class="sidebar-item-text sidebar-link active">
+  <a href="./mod-2-3-variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></span></a>
   </div>
 </li>
@@ -2046,7 +2046,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mod-8-2-means.html" class="sidebar-item-text sidebar-link">
+  <a href="./mod-8-2-means.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Hypothesis Testing: Means</span></span></a>
   </div>
 </li>
@@ -2068,16 +2068,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-properties" id="toc-data-properties" class="nav-link active" data-scroll-target="#data-properties"><span class="header-section-number">13.1</span> Data Properties</a></li>
-  <li><a href="#population-variance" id="toc-population-variance" class="nav-link" data-scroll-target="#population-variance"><span class="header-section-number">13.2</span> Population Variance</a></li>
-  <li><a href="#population-standard-deviation" id="toc-population-standard-deviation" class="nav-link" data-scroll-target="#population-standard-deviation"><span class="header-section-number">13.3</span> Population Standard Deviation</a></li>
-  <li><a href="#variance-example" id="toc-variance-example" class="nav-link" data-scroll-target="#variance-example"><span class="header-section-number">13.4</span> Variance Example</a></li>
-  <li><a href="#census-example" id="toc-census-example" class="nav-link" data-scroll-target="#census-example"><span class="header-section-number">13.5</span> Census Example</a></li>
-  <li><a href="#sample-variance" id="toc-sample-variance" class="nav-link" data-scroll-target="#sample-variance"><span class="header-section-number">13.6</span> Sample Variance</a></li>
-  <li><a href="#sample-standard-deviation" id="toc-sample-standard-deviation" class="nav-link" data-scroll-target="#sample-standard-deviation"><span class="header-section-number">13.7</span> Sample Standard Deviation</a></li>
-  <li><a href="#sample-example" id="toc-sample-example" class="nav-link" data-scroll-target="#sample-example"><span class="header-section-number">13.8</span> Sample Example</a></li>
-  <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation"><span class="header-section-number">13.9</span> Coefficient of Variation</a></li>
-  <li><a href="#tidyquant-example" id="toc-tidyquant-example" class="nav-link" data-scroll-target="#tidyquant-example"><span class="header-section-number">13.10</span> Tidyquant Example</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link active" data-scroll-target="#hypothesis-testing"><span class="header-section-number">37.1</span> Hypothesis Testing</a></li>
+  <li><a href="#one-tailed-hypothesis-test" id="toc-one-tailed-hypothesis-test" class="nav-link" data-scroll-target="#one-tailed-hypothesis-test"><span class="header-section-number">37.2</span> One-Tailed Hypothesis Test</a></li>
+  <li><a href="#one-tailed-hypothesis-test-1" id="toc-one-tailed-hypothesis-test-1" class="nav-link" data-scroll-target="#one-tailed-hypothesis-test-1"><span class="header-section-number">37.3</span> One-Tailed Hypothesis Test</a></li>
+  <li><a href="#two-tailed-hypothesis-test" id="toc-two-tailed-hypothesis-test" class="nav-link" data-scroll-target="#two-tailed-hypothesis-test"><span class="header-section-number">37.4</span> Two-Tailed Hypothesis Test</a></li>
+  <li><a href="#one-tailed-example" id="toc-one-tailed-example" class="nav-link" data-scroll-target="#one-tailed-example"><span class="header-section-number">37.5</span> One-Tailed Example</a></li>
+  <li><a href="#one-tailed-example-1" id="toc-one-tailed-example-1" class="nav-link" data-scroll-target="#one-tailed-example-1"><span class="header-section-number">37.6</span> One-Tailed Example</a></li>
+  <li><a href="#hypothesis-test-in-r" id="toc-hypothesis-test-in-r" class="nav-link" data-scroll-target="#hypothesis-test-in-r"><span class="header-section-number">37.7</span> Hypothesis Test in R</a></li>
+  <li><a href="#hypothesis-test-in-r-1" id="toc-hypothesis-test-in-r-1" class="nav-link" data-scroll-target="#hypothesis-test-in-r-1"><span class="header-section-number">37.8</span> Hypothesis Test in R</a></li>
+  <li><a href="#unknown-variance" id="toc-unknown-variance" class="nav-link" data-scroll-target="#unknown-variance"><span class="header-section-number">37.9</span> Unknown Variance</a></li>
+  <li><a href="#hypothesis-testing-1" id="toc-hypothesis-testing-1" class="nav-link" data-scroll-target="#hypothesis-testing-1"><span class="header-section-number">37.10</span> Hypothesis Testing</a></li>
+  <li><a href="#standard-normal-and-t-distribution" id="toc-standard-normal-and-t-distribution" class="nav-link" data-scroll-target="#standard-normal-and-t-distribution"><span class="header-section-number">37.11</span> Standard Normal and T Distribution</a></li>
+  <li><a href="#rejection-regions" id="toc-rejection-regions" class="nav-link" data-scroll-target="#rejection-regions"><span class="header-section-number">37.12</span> Rejection Regions</a></li>
+  <li><a href="#hypothesis-test-in-r-2" id="toc-hypothesis-test-in-r-2" class="nav-link" data-scroll-target="#hypothesis-test-in-r-2"><span class="header-section-number">37.13</span> Hypothesis Test in R</a></li>
   </ul>
 </nav>
     </div>
@@ -2368,9 +2371,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-8-0-overview.html">Inference</a></li><li class="breadcrumb-item"><a href="./mod-8-2-means.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Hypothesis Testing: Means</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></h1>
+<h1 class="title"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Hypothesis Testing: Means</span></h1>
 </div>
 
 
@@ -2387,219 +2390,601 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="data-properties" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="data-properties"><span class="header-section-number">13.1</span> Data Properties</h2>
-<p>Previously, we discussed measures of the <strong>central tendency</strong> of the data.</p>
-<p>We used population data from the U.S. Census to estimate the population mean, <span class="math inline">\(/mu\)</span>, as well as the median.</p>
-<p>We used sample data from the <em>mtcars</em> dataset to estimate the sample average, <span class="math inline">\(\bar{x}\)</span>, as well as the sample median.</p>
-<p>We also used R and RStudio to estimate the number of observations, the minimum value for a variable, and the maximum value for a variable.</p>
-<p>The measures of central tendency estimate the <em>middle</em> of the data, however, we also noted that <strong>outliers</strong> can influence the sample average. We discussed how to <strong>trim</strong> the data to reduce the influence of outliers.</p>
-<p>The measures of central tendency do not provide us information about the <strong>spread</strong> or <strong>dispersion</strong> of the data.</p>
-<p>Are the data “tightly clustered” around the measure of central tendency or are the data “spread out?”</p>
-<p>We want to know the spread of the data relative to the center of the data.</p>
-<p>To this end, we will estimate measure of the <strong>variance</strong> and <strong>standard deviation</strong>.</p>
+<section id="hypothesis-testing" class="level2" data-number="37.1">
+<h2 data-number="37.1" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">37.1</span> Hypothesis Testing</h2>
+<p>Let <span class="math inline">\(n\)</span> be the sample size used to estimate <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(\sigma\)</span> the population standard deviation for <span class="math inline">\(x\)</span>.</p>
+<p>Let <span class="math inline">\(\mu_0\)</span> be the hypothesized value of the population mean under <span class="math inline">\(H_0\)</span> such that:</p>
+<p>The test-statistic for testing hypotheses regarding the sample mean when <span class="math inline">\(\sigma\)</span> is known is:</p>
+<p><span class="math display">\[z = \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}}\]</span></p>
+<p>The value of <span class="math inline">\(z\)</span> is known as the <strong>test statistic</strong>.</p>
+<p>Given a level of significance, <span class="math inline">\(\alpha\)</span>, we can obtain the <strong>critical value</strong> of the test statistic.</p>
+<p>If it is a one-tailed test, then we use <span class="math inline">\(\alpha\)</span> to obtain the test statistic.</p>
+<p>If it is a two-tailed test, then we use <span class="math inline">\(\alpha/2\)</span> to obtain the test statistic.</p>
 </section>
-<section id="population-variance" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="population-variance"><span class="header-section-number">13.2</span> Population Variance</h2>
-<p>One measure of the dispersion (spread) of the data is the <strong>range</strong> which is equal to the distance between the minimum and maximum observations in the data.</p>
-<p>We could estimate the average distance of the observations from the mean or:</p>
-<p><span class="math display">\[\text{average mean deviation} = \frac{1}{N} \sum_{i = 1}^N (x_i - \mu)\]</span></p>
-<p>However, if sum of the mean deviations is equal to zero in the population, the average of the mean deviations will also be zero in the population.</p>
-<p>We note that the sum of the <strong>squared mean deviations</strong> will not be zero.</p>
-<p>The <strong>population variance</strong>, <span class="math inline">\(\sigma^2\)</span>, is equal to the average of the sum of the squared mean deviations:</p>
-<p><span class="math display">\[\text{Population Variance} = \sigma^2 = \frac{1}{N} \sum_{i = 1}^N (x_i - \mu)^2\]</span></p>
-</section>
-<section id="population-standard-deviation" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="population-standard-deviation"><span class="header-section-number">13.3</span> Population Standard Deviation</h2>
-<p>As noted previously, the population variance, <span class="math inline">\(\sigma^2\)</span>, is the average of the squared mean deviations:</p>
-<p><span class="math display">\[\sigma^2 = \frac{1}{N} \sum_{i = 1}^N (x_i - \mu)^2\]</span></p>
-<p>The population variance, <span class="math inline">\(\sigma^2\)</span>, may difficult to interpret as <span class="math inline">\(\sigma^2\)</span> is measured in the squared units of the variable of interest.</p>
-<p><em>In other words, if we were measuring the variance of total population, the variance would be in individuals-squared units. If we were measuring the variance of income, the variance would be in income-squared units.</em></p>
-<p>The <strong>population standard deviation</strong>, <span class="math inline">\(\sigma\)</span>, is the positive square root of the population standard deviation.</p>
-<p><span class="math display">\[\sigma = \sqrt{\frac{1}{N} \sum_{i = 1}^N (x_i - \mu)^2}\]</span>The standard deviation is measured in the same units as the variable of interest.</p>
-<p>Lastly, we note that if we have two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then <span class="math inline">\(x\)</span> is less dispersed than <span class="math inline">\(y\)</span> if <span class="math inline">\(\sigma_x &lt; \sigma_y\)</span>.</p>
-</section>
-<section id="variance-example" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="variance-example"><span class="header-section-number">13.4</span> Variance Example</h2>
-<p>In the example below, we create a tibble of <strong>simulated</strong> population data.</p>
-<p>There are 1,000,000 observations drawn from a <strong>random normal</strong> distribution with a population mean of 50.5 and a standard deviation of 5.</p>
-<p>In other words, we are creating a population with a known mean and known standard deviation.</p>
-<p>Since the variance is the square of the standard deviation, we know the variance also.</p>
-<p>For a random variable, <span class="math inline">\(X\)</span> that is distributed normally with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, we can express this distribution of <span class="math inline">\(X\)</span> as:</p>
-<p><span class="math display">\[X \sim N(\mu, \sigma^2 )\]</span></p>
-<p>We use the <strong>summarize</strong> function for this example.</p>
-<p>We estimate the population variance manually and using the <strong>var</strong> function.</p>
-<p>We then estimate the population standard deviation manually and using the <strong>sd</strong> function.</p>
-<p>We do this to illustrate the manual estimates and estimates using the functions are the same.</p>
-<p>An additional note that each time you run the code, a new population is generated, and the descriptive statistics may change.</p>
+<section id="one-tailed-hypothesis-test" class="level2" data-number="37.2">
+<h2 data-number="37.2" class="anchored" data-anchor-id="one-tailed-hypothesis-test"><span class="header-section-number">37.2</span> One-Tailed Hypothesis Test</h2>
+<p>We hypothesize that the population mean is less than than 42 and let <span class="math inline">\(\alpha = 0.10\)</span>.</p>
+<p><span class="math display">\[H_0: \mu_1 \ge 42\]</span></p>
+<p><span class="math display">\[H_a: \mu &lt; 42\]</span></p>
+<p>Our <strong>rejection region</strong> is in the <strong>left tail</strong> of the standard normal distribution or:</p>
+<p><span class="math display">\[\text{If} \; z \le z_c \implies \text{reject} \; H_0\]</span></p>
+<p><span class="math display">\[\text{If} \; z &gt; z_c \implies \text{fail to reject} \; H_0\]</span></p>
+<p>Given <span class="math inline">\(\alpha = 0.10\)</span> and a left-tail test, we need to find <span class="math inline">\(z_{\alpha} = z_{0.10}\)</span>.</p>
+<p>The critical value of the test statistic can be found with a standard normal table or using R as in the code chunk below.</p>
+<p>Given the <span class="math inline">\(\alpha = 0.10\)</span> and the rejection reject is in the left tail, we use the <strong>qnorm</strong> function to find the critical value of the test statistic.</p>
+<p>The critical value of the test statistic is -1.282.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="census-example" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="census-example"><span class="header-section-number">13.5</span> Census Example</h2>
-<p>In the code chunk below, we replicate the example above but with actual data from the U.S. Census for the total population of counties and county-equivalent geographies in the United States.</p>
-<p>Note the difference between the mean and median population estimates. The relatively large counties influence the population mean and ‘pull’ it away from the population median.</p>
+<p>For this one-tailed hypothesis,</p>
+<p><span class="math display">\[\text{If} \; z \le -1.28 \implies \text{reject} \; H_0\]</span> <span class="math display">\[\text{If} \; z &gt; -1.28 \implies \text{fail to reject} \; H_0\]</span></p>
+<p>If the estimated test statistic is less than or equal to -1.282, we reject the null hypothesis. If the estimated test statistic is greater than -1.282, then we fail to reject the null hypothesis.</p>
+<p>The code chunk below graphically depicts the rejection region for this one-tailed hypothesis test.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>county_pop <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">"acs/acs5"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">vintage =</span> <span class="dv">2023</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">key     =</span> <span class="st">"9c1637a56ff93f0af6b4b1d0547ea048fe668175"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">vars    =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"B01001_001E"</span>),</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">region  =</span> <span class="st">"county:*"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">pop =</span> B01001_001E) <span class="sc">%&gt;%</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">med_pop  =</span> <span class="fu">median</span>(pop),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_pop =</span> <span class="fu">mean</span>(pop),</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">var_pop  =</span> <span class="fu">var</span>(pop),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd_pop   =</span> <span class="fu">sd</span>(pop))</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(county_pop,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Median'</span>, <span class="st">'Mean'</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Variance'</span>, <span class="st">'Std. Dev'</span>),</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>,</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits    =</span> <span class="dv">2</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">'Mean, Variance, and Standard Deviation, County Population'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">dnorm</span>(x))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">'sky blue'</span>) <span class="sc">+</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_ribbon</span>(<span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(x <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fl">1.28</span>), </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">ymax =</span> y), <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">fill=</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="sc">-</span><span class="fl">1.28</span>), <span class="at">linetype =</span> <span class="st">'dashed'</span>, <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Z"</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"P(Z)"</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Standard Normal Distribution"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"One Tailed Rejection Region for Alpha = 0.10 is Z &lt;= -1.28"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>Mean, Variance, and Standard Deviation, County Population</caption>
+<div>
+<figure class="figure">
+<p><img src="mod-8-2-means_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="one-tailed-hypothesis-test-1" class="level2" data-number="37.3">
+<h2 data-number="37.3" class="anchored" data-anchor-id="one-tailed-hypothesis-test-1"><span class="header-section-number">37.3</span> One-Tailed Hypothesis Test</h2>
+<p>We hypothesize that the population mean is greater than 42 and let <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p><span class="math display">\[H_0: \mu \le 42\]</span></p>
+<p><span class="math display">\[H_a: \mu &gt; 42\]</span></p>
+<p>Our rejection region is in the <strong>right tail</strong> of the standard normal distribution or:</p>
+<p><span class="math display">\[\text{If} \; z \ge z_c \implies \text{reject} \; H_0\]</span></p>
+<p><span class="math display">\[\text{If} \; z &lt; z_c \implies \text{fail to reject} \; H_0\]</span></p>
+<p>Given <span class="math inline">\(\alpha = 0.05\)</span> and a right-tail test, we need to find <span class="math inline">\(z_{(1-\alpha)} = z_{0.95}\)</span>.</p>
+<p>Given the <span class="math inline">\(\alpha = 0.05\)</span> and the rejection reject is in the left tail, we can use the <strong>qnorm</strong> function to find the critical value of the test statistic.</p>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>For this one-tailed hypothesis,</p>
+<p><span class="math display">\[\text{If} \; z \ge 1.65 \implies \text{reject} \; H_0\]</span></p>
+<p><span class="math display">\[\text{If} \; z &lt; 1.65 \implies \text{fail to reject} \; H_0\]</span>If the estimated test statistic is greater than or equal to 1.65, then we reject the null hypothesis. If the estimated test statistic is less than 1.65, we fail to reject the null hypothesis.</p>
+<p>The code chunk below illustrates the rejection region in question</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">dnorm</span>(x))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">'sky blue'</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_ribbon</span>(<span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(x <span class="sc">&gt;=</span> <span class="fl">1.65</span>), </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">ymax =</span> y), <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">fill=</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fl">1.65</span>), <span class="at">linetype =</span> <span class="st">'dashed'</span>, <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Z"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"P(Z)"</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Standard Normal Distribution"</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"One Tailed Rejection Region for Alpha = 0.05 is Z &gt;= 1.65"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-8-2-means_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="two-tailed-hypothesis-test" class="level2" data-number="37.4">
+<h2 data-number="37.4" class="anchored" data-anchor-id="two-tailed-hypothesis-test"><span class="header-section-number">37.4</span> Two-Tailed Hypothesis Test</h2>
+<p>We hypothesize that the population mean is not equal to 42 or:</p>
+<p><span class="math display">\[H_0: \mu = 42\]</span></p>
+<p><span class="math display">\[H_a: \mu \ne 42\]</span></p>
+<p>This is a two-tailed hypothesis test.</p>
+<p>The rejection region lies in each tail of the distribution.</p>
+<p><strong>Why? Our null hypothesis is that the mean is equal to 42. If find evidence that the mean is sufficiently different from 42, in either direction, we will reject the null hypothesis.</strong></p>
+<p>We need to find the critical values of <span class="math inline">\(z\)</span> for <span class="math inline">\(\alpha/2\)</span> and <span class="math inline">\(1-\alpha/2\)</span>.</p>
+<p>Let <span class="math inline">\(\alpha = 0.05\)</span> so <span class="math inline">\(\alpha/2 = 0.025\)</span> and <span class="math inline">\(1-\alpha/2 = 0.975\)</span>.</p>
+<p>The critical values of the test statistic can be found using R as before. Since the standard normal is symmetrically distributed around the mean of zero, the critical values are -1.96 and 1.96.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.959964</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.959964</code></pre>
+</div>
+</div>
+<p>For this two-tailed hypothesis,</p>
+<p><span class="math display">\[\text{If} \; z \le -1.96 \implies \text{reject} \; H_0\]</span></p>
+<p><span class="math display">\[\text{If} \; z \ge 1.96 \implies \text{reject} \; H_0\]</span></p>
+<p><span class="math display">\[\text{If} \; -1.95 &lt; z &lt; 1.96 \implies \text{fail to reject} \; H_0\]</span></p>
+<p>If the estimated test statistic is less than or equal to -1.96 or less than or equal to 1.96, then we reject the null hypothesis.</p>
+<p>The code chunk below illustrates the rejection regions for the hypothesis test.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length.out =</span> <span class="dv">100</span>), <span class="at">by =</span> <span class="fl">0.1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">dnorm</span>(x))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">'sky blue'</span>) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_ribbon</span>(<span class="at">data =</span> <span class="fu">subset</span>(df, x <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fl">1.96</span>), <span class="fu">aes</span>(<span class="at">ymax =</span> y), </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">fill=</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_ribbon</span>(<span class="at">data =</span> <span class="fu">subset</span>(df, x <span class="sc">&gt;=</span> <span class="fl">1.96</span>), <span class="fu">aes</span>(<span class="at">ymax =</span> y), </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">fill=</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="sc">-</span><span class="fl">1.96</span>), <span class="at">linetype =</span> <span class="st">'dashed'</span>) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fl">1.96</span>), <span class="at">linetype =</span> <span class="st">'dashed'</span>) <span class="sc">+</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Z"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"P(Z)"</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Standard Normal - Two Tailed Hypothesis Test"</span>,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"Alpha = 0.05 and Z &lt;= -1.96 and Z =&gt; 1.96"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-8-2-means_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="one-tailed-example" class="level2" data-number="37.5">
+<h2 data-number="37.5" class="anchored" data-anchor-id="one-tailed-example"><span class="header-section-number">37.5</span> One-Tailed Example</h2>
+<p>We have collected a sample of 50 individuals and assume that the 50 individuals are representative of the population. The individuals take a standard test after receiving training and the average of their scores was 19.4. We know that, in general, the mean score on the test was 20.0.</p>
+<p>Did the test lower the average test score? Test this hypothesis at a 5% significance level.</p>
+<p>Consider the following hypothesis test with <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p><span class="math display">\[H_0: \mu \ge 20\]</span></p>
+<p><span class="math display">\[H_a: \mu &lt; 20\]</span></p>
+<p>The critical value of the test statistic for <span class="math inline">\(\alpha = 0.05\)</span> is -1.65.</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Let</p>
+<p><span class="math display">\[
+n = 50
+\]</span></p>
+<p><span class="math display">\[
+\bar{x} = 50
+\]</span></p>
+<p><span class="math display">\[
+\sigma = 2
+\]</span></p>
+<p>Given the known population variance and standard deviation, we can estimate the Z-score for the average score of the 50 individuals or:</p>
+<p><span class="math display">\[z =  \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}} = \frac{19.4 - 20}{2/\sqrt{50}} = -2.12132\]</span></p>
+<p>We reject <span class="math inline">\(H_0\)</span> at the 5% level of statistical significance as</p>
+<p><span class="math display">\[z = -2.12 &lt; -1.65 = z_c\]</span></p>
+<p>We can also use <strong>pnorm</strong> to find <span class="math inline">\(P(z \le -2.12132) =\)</span> 0.0169 and reject <span class="math inline">\(H_0\)</span> since:</p>
+<p><span class="math display">\[P(z \le -2.12132) = 0.017 &lt; 0.05 = P(z &lt; 1.65)\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">=</span> <span class="fl">19.4</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(crit_z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>,<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>             z <span class="ot">&lt;-</span> (xbar<span class="sc">-</span>mu)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n)),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>             <span class="fu">pnorm</span>(z, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">'c'</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Critical Z'</span>, <span class="st">'Estimated Z'</span>, <span class="st">'P(Z &lt;= z)'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Median</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Mean</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Variance</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Std. Dev</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Critical Z</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Estimated Z</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(Z &lt;= z)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">25967</td>
-<td style="text-align: center;">104172.1</td>
-<td style="text-align: center;">108681584571</td>
-<td style="text-align: center;">329668.9</td>
+<td style="text-align: center;">-1.645</td>
+<td style="text-align: center;">-2.121</td>
+<td style="text-align: center;">0.017</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </section>
-<section id="sample-variance" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="sample-variance"><span class="header-section-number">13.6</span> Sample Variance</h2>
-<p>The sample variance, <span class="math inline">\(s^2\)</span>, is estimated by:</p>
-<p><span class="math display">\[s^2 = \frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2\]</span></p>
-<p>One might ask, “why do we divide by <span class="math inline">\(n-1\)</span> instead of <span class="math inline">\(n\)</span>?”</p>
-<p>The population mean <span class="math inline">\(\mu\)</span> is a <strong>known, definite mean</strong>. It does not require estimation.</p>
-<p>The sample average, <span class="math inline">\(\bar{x}\)</span> is an <strong>estimate</strong> of the population mean <span class="math inline">\(\mu\)</span>.</p>
-<p>If <span class="math inline">\(\mu\)</span> is known, then we can reconstitute the data with <span class="math inline">\(n-1\)</span> values.</p>
-<p>With 100 observations and <span class="math inline">\(\mu = 50\)</span>, then the <span class="math inline">\(n-1\)</span> values can take on any value, but the <em>n-th</em> value is <strong>constrained</strong> so <span class="math inline">\(\mu = 50\)</span>.</p>
-<p>The loss of a <strong>degree of freedom</strong> requires the use <span class="math inline">\(n-1\)</span> in the sample variance instead of <span class="math inline">\(n\)</span>.</p>
-</section>
-<section id="sample-standard-deviation" class="level2" data-number="13.7">
-<h2 data-number="13.7" class="anchored" data-anchor-id="sample-standard-deviation"><span class="header-section-number">13.7</span> Sample Standard Deviation</h2>
-<p>The sample variance, <span class="math inline">\(s^2\)</span>, is estimated by:</p>
-<p><span class="math display">\[s^2 = \frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2\]</span></p>
-<p>The sample standard deviation, <span class="math inline">\(s\)</span>, is estimated by:</p>
-<p><span class="math display">\[s = \sqrt{\frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2}\]</span> <strong>R</strong> (as with most programs) calculates the sample variance and sample standard deviation.</p>
-<p>As <span class="math inline">\(n\)</span> increases, the impact of dividing by <span class="math inline">\(n-1\)</span> rather than <span class="math inline">\(N\)</span> declines.</p>
-<p>If you are worried about <span class="math inline">\(n-1\)</span>, then you are likely to have other issues (sample size) of higher concern.</p>
-</section>
-<section id="sample-example" class="level2" data-number="13.8">
-<h2 data-number="13.8" class="anchored" data-anchor-id="sample-example"><span class="header-section-number">13.8</span> Sample Example</h2>
-<p>We simulate 100,000 observations from a normal distribution with <span class="math inline">\(\mu = 100\)</span> and <span class="math inline">\(\sigma = 8.5\)</span>.</p>
-<p>We then take a random sample of 1,000 observations from the population and estimate the variance manually and with the <strong>var</strong> function in <strong>summarize</strong></p>
-<p>The <strong>slice_sample</strong> function is used to randomly select rows from a data frame.</p>
-<p>The manually calculated sample variance using <span class="math inline">\((n-1)\)</span> is equal to the variance obtained from the <strong>var</strong> function in R illustrating that R generates its variance estimate using the sample variance formula.</p>
-<p>As <span class="math inline">\(\sigma\)</span> is the square root of <span class="math inline">\(\sigma^2\)</span>, the same discussion applies.</p>
-<p>It is interesting to note that a new set of values for <span class="math inline">\(X\)</span> is generated each time the code is run, changing the resulting sample descriptive statistics.</p>
-<p><em>Try changing the sample size, that is, changing from n = 1000 to n = 50, and observe what happens to the sample statistics for variance and standard deviation across several runs.</em></p>
-<div id="qwebr-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="coefficient-of-variation" class="level2" data-number="13.9">
-<h2 data-number="13.9" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">13.9</span> Coefficient of Variation</h2>
-<p>The <strong>coefficient of variation</strong> is a measure of how “large” the standard deviation is relative to the mean.</p>
-<p>The coefficient of variation for the population is:</p>
-<p><span class="math display">\[\text{coefficient of variation} = \frac{\sigma}{\mu}\]</span> The coefficient of variation for a sample is:</p>
-<p><span class="math display">\[\text{coefficient of variation} = \frac{s}{\bar{x}}\]</span></p>
-<p>The higher the coefficient of variation, the greater the level of dispersion of observations around the mean.</p>
-<p>In finance, the coefficient of variation estimates how much volatility, or risk, is assumed in comparison to the amount of return expected from investments.</p>
-<p>The lower the coefficient of variation, the better risk-return trade-off.</p>
-</section>
-<section id="tidyquant-example" class="level2" data-number="13.10">
-<h2 data-number="13.10" class="anchored" data-anchor-id="tidyquant-example"><span class="header-section-number">13.10</span> Tidyquant Example</h2>
-<p>We use the <strong>tidyquant</strong> package to obtain stock price data for Apple, Ford, General Motors, Gamestop, IBM, and Netflix.</p>
-<p>We then estimate the coefficient of variation for each of these corporations.</p>
-<p>From January 2020 to July 2025, IBM had the lowest coefficient of variation, that is, it was the least volatile relative to its mean.</p>
-<p>Over the same period, Netflix and Gamestop has the highest coefficients of variation, that is, these stocks were relatively volatile when compared to IBM or Ford.</p>
+<section id="one-tailed-example-1" class="level2" data-number="37.6">
+<h2 data-number="37.6" class="anchored" data-anchor-id="one-tailed-example-1"><span class="header-section-number">37.6</span> One-Tailed Example</h2>
+<p>Consider the following hypothesis test with <span class="math inline">\(\alpha = 0.10\)</span>.</p>
+<p><span class="math display">\[H_0: \mu \le 30\]</span></p>
+<p><span class="math display">\[H_a: \mu &gt; 30\]</span></p>
+<p>Let <span class="math inline">\(n = 90\)</span>, <span class="math inline">\(\bar{x} = 31.7\)</span>, and <span class="math inline">\(\sigma = 12.5\)</span>, then</p>
+<p><span class="math display">\[z =  \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}} = \frac{31.2 - 30}{12.5/\sqrt{90}} = 0.91\]</span></p>
+<p>The critical value of the test statistic for <span class="math inline">\(1 - \alpha = 0.90\)</span> is 1.282.</p>
+<p>We fail to reject <span class="math inline">\(H_0\)</span> at the 10% level of statistical significance as:</p>
+<p><span class="math display">\[z = 0.91 &lt; 1.28 = z_c\]</span></p>
+<p>We can also use <strong>pnorm</strong> to find <span class="math inline">\(P(z \le 0.91) =\)</span> 0.819 and fail to reject <span class="math inline">\(H_0\)</span> since:</p>
+<p><span class="math display">\[P(z \le 0.91) = 0.812 &lt; 0.90 = P(z &lt; 1.28)\]</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>tickers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'AAPL'</span>, <span class="st">'F'</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">'GM'</span>, <span class="st">'GME'</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>             <span class="st">'IBM'</span>, <span class="st">'NFLX'</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>prices <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(tickers, </span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">from =</span> <span class="st">'2010-01-01'</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">to   =</span> <span class="st">"2025-07-31"</span>,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">get  =</span> <span class="st">"stock.prices"</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>coef_var <span class="ot">&lt;-</span> prices <span class="sc">%&gt;%</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(symbol) <span class="sc">%&gt;%</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cv =</span> <span class="fu">sd</span>(close)<span class="sc">/</span><span class="fu">mean</span>(close)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(cv)</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(coef_var,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Company'</span>,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'Coefficient of Variation'</span>),</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="fu">c</span>(<span class="st">'c'</span>,<span class="st">'c'</span>),</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption   =</span> <span class="st">'Coefficient of Variation'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">=</span> <span class="fl">31.2</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="fl">12.5</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">90</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(crit_z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>,<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>             z <span class="ot">&lt;-</span> (xbar<span class="sc">-</span>mu)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n)),</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>             <span class="fu">pnorm</span>(z, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">'c'</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">'Critical Z'</span>, <span class="st">'Estimated Z'</span>, <span class="st">'P(Z &lt;= z)'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>Coefficient of Variation</caption>
+<table class="lightable-classic caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Company</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Coefficient of Variation</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Critical Z</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Estimated Z</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">P(Z &lt;= z)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">IBM</td>
-<td style="text-align: center;">0.2096402</td>
+<td style="text-align: center;">1.282</td>
+<td style="text-align: center;">0.911</td>
+<td style="text-align: center;">0.819</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">0.2307120</td>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="hypothesis-test-in-r" class="level2" data-number="37.7">
+<h2 data-number="37.7" class="anchored" data-anchor-id="hypothesis-test-in-r"><span class="header-section-number">37.7</span> Hypothesis Test in R</h2>
+<p>Assume that we observe pressure readings for a pipe.</p>
+<p>We want to know whether pressure is higher than 127.9.</p>
+<p>We know that <span class="math inline">\(\sigma = 8\)</span> and we set <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p>We find that <span class="math inline">\(z = 0.693\)</span> and that <span class="math inline">\(z_c = 1.65\)</span>.</p>
+<p>We find that <span class="math inline">\(P(z \ge 0.693) = 0.2443\)</span>.</p>
+<p>We fail to reject <span class="math inline">\(H_0: \mu \le 127.9\)</span> at the 5% level of significance.</p>
+<p>We would also fail to reject the null at the 10% level of significance.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="fl">127.9</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">8</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>pressure <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">110</span>, <span class="dv">132</span>, <span class="dv">138</span>, <span class="dv">98</span>, <span class="dv">122</span>, <span class="dv">190</span>, <span class="dv">92</span>, <span class="dv">105</span>, <span class="dv">104</span>, <span class="dv">148</span>, </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>              <span class="dv">83</span>, <span class="dv">193</span>, <span class="dv">132</span>, <span class="dv">114</span>, <span class="dv">192</span>, <span class="dv">183</span>, <span class="dv">100</span>, <span class="dv">99</span>, <span class="dv">111</span>, <span class="dv">123</span>, </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>              <span class="dv">130</span>, <span class="dv">194</span>, <span class="dv">141</span>, <span class="dv">138</span>, <span class="dv">98</span>, <span class="dv">94</span>, <span class="dv">97</span>, <span class="dv">128</span>, <span class="dv">105</span>, <span class="dv">108</span>, </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>              <span class="dv">193</span>, <span class="dv">85</span>, <span class="dv">80</span>, <span class="dv">132</span>, <span class="dv">134</span>, <span class="dv">148</span>, <span class="dv">192</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">=</span> <span class="fu">mean</span>(pressure)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> (<span class="fu">mean</span>(pressure) <span class="sc">-</span> mu)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(pressure)))</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>z_crit <span class="ot">&lt;-</span> <span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">-</span>alpha),<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>p_z <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mu, xbar, alpha, z, z_crit, p_z)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(test,</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">"c"</span>,</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits    =</span> <span class="dv">3</span>,</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption   =</span> <span class="st">"Hypothesis Test"</span>,</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Hypothesized Mean"</span>, <span class="st">"Sample Avg"</span>, </span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Sig. Level"</span>, <span class="st">"Z"</span>, <span class="st">"Z(c)"</span>,</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"1-CDF(Z)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">11</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Hypothesis Test</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Hypothesized Mean</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sample Avg</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sig. Level</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Z(c)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">1-CDF(Z)</th>
 </tr>
+</thead>
+<tbody>
 <tr class="odd">
-<td style="text-align: center;">GM</td>
-<td style="text-align: center;">0.2413333</td>
+<td style="text-align: center;">127.9</td>
+<td style="text-align: center;">128.811</td>
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">0.693</td>
+<td style="text-align: center;">1.645</td>
+<td style="text-align: center;">0.244</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">AAPL</td>
-<td style="text-align: center;">0.9291908</td>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="hypothesis-test-in-r-1" class="level2" data-number="37.8">
+<h2 data-number="37.8" class="anchored" data-anchor-id="hypothesis-test-in-r-1"><span class="header-section-number">37.8</span> Hypothesis Test in R</h2>
+<p>We observe pressure readings for a pipe.</p>
+<p>We hypothesize that <span class="math inline">\(\mu = 127.3\)</span>.</p>
+<p>Let <span class="math inline">\(\sigma = 10\)</span> and <span class="math inline">\(\alpha = 0.1\)</span>.</p>
+<p>Two-tailed hypothesis: Find <span class="math inline">\(\alpha/2\)</span> and <span class="math inline">\(1-\alpha/2\)</span> critical values.</p>
+<p><span class="math inline">\(z_c = -1.65\)</span> and <span class="math inline">\(z_c = 1.65\)</span></p>
+<p>We find <span class="math inline">\(z = 2.66\)</span>.</p>
+<p>We reject <span class="math inline">\(H_0\)</span> at 5% as <span class="math inline">\(z &gt; z_c\)</span>.</p>
+<p>We also reject <span class="math inline">\(H_0\)</span> at 1% as <span class="math inline">\(P(Z \ge z) = .004 &gt; 0.005 = \alpha/2\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="fl">127.3</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.1</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>pressure <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">110</span>, <span class="dv">132</span>, <span class="dv">138</span>, <span class="dv">98</span>, <span class="dv">122</span>, <span class="dv">190</span>, <span class="dv">92</span>, <span class="dv">105</span>, <span class="dv">104</span>, <span class="dv">148</span>, </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>              <span class="dv">83</span>, <span class="dv">193</span>, <span class="dv">132</span>, <span class="dv">114</span>, <span class="dv">192</span>, <span class="dv">183</span>, <span class="dv">100</span>, <span class="dv">99</span>, <span class="dv">111</span>, <span class="dv">123</span>, </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>              <span class="dv">130</span>, <span class="dv">194</span>, <span class="dv">141</span>, <span class="dv">138</span>, <span class="dv">98</span>, <span class="dv">94</span>, <span class="dv">97</span>, <span class="dv">128</span>, <span class="dv">105</span>, <span class="dv">108</span>, </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>              <span class="dv">193</span>, <span class="dv">85</span>, <span class="dv">80</span>, <span class="dv">132</span>, <span class="dv">134</span>, <span class="dv">148</span>, <span class="dv">192</span>, <span class="dv">218</span>, <span class="dv">113</span>, </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>              <span class="dv">138</span>, <span class="dv">83</span>, <span class="dv">103</span>, <span class="dv">109</span>, <span class="dv">183</span>, <span class="dv">148</span>, <span class="dv">153</span>, <span class="dv">135</span>, <span class="dv">146</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">=</span> <span class="fu">mean</span>(pressure)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> (<span class="fu">mean</span>(pressure) <span class="sc">-</span> mu)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(pressure)))</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>z_crit_left <span class="ot">&lt;-</span> <span class="fu">qnorm</span>((alpha<span class="sc">/</span><span class="dv">2</span>),<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>z_crit_right <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> (alpha<span class="sc">/</span><span class="dv">2</span>),<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>p_z <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mu, xbar, alpha, z, z_crit_right, p_z)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(test,</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">"cccccc"</span>,</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption   =</span> <span class="st">"Hypothesis Test"</span>,</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Hypothesized Mean"</span>, <span class="st">"Sample Avg"</span>, </span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Sig. Level"</span>, <span class="st">"Z"</span>, <span class="st">"Z(c) at 5%"</span>,</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"1-CDF(Z)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">11</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Hypothesis Test</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Hypothesized Mean</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sample Avg</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sig. Level</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Z(c) at 5%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">1-CDF(Z)</th>
 </tr>
+</thead>
+<tbody>
 <tr class="odd">
-<td style="text-align: center;">GME</td>
-<td style="text-align: center;">0.9739563</td>
+<td style="text-align: center;">127.3</td>
+<td style="text-align: center;">131.1458</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">2.664471</td>
+<td style="text-align: center;">1.644854</td>
+<td style="text-align: center;">0.0038555</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">NFLX</td>
-<td style="text-align: center;">0.9909600</td>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="unknown-variance" class="level2" data-number="37.9">
+<h2 data-number="37.9" class="anchored" data-anchor-id="unknown-variance"><span class="header-section-number">37.9</span> Unknown Variance</h2>
+<p>If <span class="math inline">\(\sigma\)</span> is unknown, the test statistic has a <em>t</em> distribution with <span class="math inline">\(n-1\)</span> degrees of freedom.</p>
+<p><span class="math display">\[t = \frac{\bar{x} - \mu}{s/\sqrt{n}}\]</span></p>
+<p>Consider the following hypothesis test:</p>
+<p><span class="math display">\[H_0: \mu \le 12\]</span></p>
+<p><span class="math display">\[H_a: \mu &gt; 12\]</span></p>
+<p>If <span class="math inline">\(n = 25\)</span>, <span class="math inline">\(\bar{x} = 14\)</span>, and <span class="math inline">\(s = 4.32\)</span>, then</p>
+<p><span class="math display">\[t_{n-1} = \frac{\bar{x} - \mu}{s/\sqrt{n}} = \frac{14 - 12}{4.32/\sqrt{25}} = 2.32\]</span></p>
+<p>Let <span class="math inline">\(\alpha = 0.5\)</span> thus the critical value of the t-statistic is 1.7108821.</p>
+<p>We reject the null hypothesis at the 5% level of significance since:</p>
+<p><span class="math display">\[t = 2.32 &gt; 1.71 = t_c^{\alpha = 0.05}\]</span></p>
+</section>
+<section id="hypothesis-testing-1" class="level2" data-number="37.10">
+<h2 data-number="37.10" class="anchored" data-anchor-id="hypothesis-testing-1"><span class="header-section-number">37.10</span> Hypothesis Testing</h2>
+<p>Let <span class="math inline">\(n = 50\)</span>, <span class="math inline">\(\bar{x} = 38.7\)</span>, <span class="math inline">\(s = 4.58\)</span>, and <span class="math inline">\(\alpha = 0.1\)</span> and</p>
+<p><span class="math display">\[H_0: \mu = 39.9\]</span></p>
+<p><span class="math display">\[H_0: \mu \ne 39.9\]</span></p>
+<p>The test statistic is equal to:</p>
+<p><span class="math display">\[t_{n-1} = \frac{\bar{x} - \mu}{s/\sqrt{n}} = \frac{38.7 - 39.9}{4.58/\sqrt{50}} = -1.85\]</span></p>
+<p>The critical value of the test-statistic is 1.6765509.</p>
+<p>We reject the null hypothesis at the 10% level of significance since:</p>
+<p><span class="math display">\[t = -1.85 &lt; -1.68 = t_c^{\alpha/2 = 0.05}\]</span></p>
+<p>However, we fail to reject at the 5% level of significance since:</p>
+<p><span class="math display">\[t = -1.85 &gt; -2.01 = t_c^{\alpha/2 = 0.025}\]</span></p>
+</section>
+<section id="standard-normal-and-t-distribution" class="level2" data-number="37.11">
+<h2 data-number="37.11" class="anchored" data-anchor-id="standard-normal-and-t-distribution"><span class="header-section-number">37.11</span> Standard Normal and T Distribution</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">length.out =</span> <span class="dv">100</span>), <span class="at">by =</span> <span class="fl">0.1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">dt</span>(x, <span class="dv">1</span>))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> y,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"red"</span>)) <span class="sc">+</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">"dark blue"</span>,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Standard Normal and T-Distribution"</span>,</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"1 Degree of Freedom for T-Distribution"</span>,</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"P(X)"</span>,</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"X"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-8-2-means_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="rejection-regions" class="level2" data-number="37.12">
+<h2 data-number="37.12" class="anchored" data-anchor-id="rejection-regions"><span class="header-section-number">37.12</span> Rejection Regions</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length.out =</span> <span class="dv">100</span>), <span class="at">by =</span> <span class="fl">0.1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">dt</span>(x, <span class="dv">24</span>))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">'sky blue'</span>) <span class="sc">+</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_ribbon</span>(<span class="at">data =</span> <span class="fu">subset</span>(df, x <span class="sc">&gt;=</span> <span class="fl">1.71</span>),</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">ymax =</span> y), </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">fill=</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fl">1.71</span>), </span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">linetype =</span> <span class="st">'dashed'</span>, <span class="at">size =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"X"</span>,</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"P(X)"</span>,</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"T Distribution and One-Tailed Hypothesis Test"</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"Alpha = 0.05, 24 DF, and Critical T =&gt; 1.71"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mod-8-2-means_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-test-in-r-2" class="level2" data-number="37.13">
+<h2 data-number="37.13" class="anchored" data-anchor-id="hypothesis-test-in-r-2"><span class="header-section-number">37.13</span> Hypothesis Test in R</h2>
+<p>We observe pressure readings.</p>
+<p>We hypothesize that <span class="math inline">\(\mu = 127.3\)</span>.</p>
+<p><span class="math inline">\(n= 48\)</span>, <span class="math inline">\(s = 35.3\)</span>, <span class="math inline">\(\alpha = 0.01\)</span></p>
+<p>Find <span class="math inline">\(\alpha/2\)</span> and <span class="math inline">\(1-\alpha/2\)</span> critical values.</p>
+<p><span class="math inline">\(t_c = -2.69\)</span> and <span class="math inline">\(t_c = 2.69\)</span></p>
+<p><span class="math inline">\(t = 2.37\)</span>.</p>
+<p>We fail to reject <span class="math inline">\(H_0\)</span> as <span class="math inline">\(t &lt; t_c\)</span>.</p>
+<p>We fail to reject <span class="math inline">\(H_0\)</span> as <span class="math inline">\(P(T &gt; t) = .011 &gt; 0.005 = \alpha/2\)</span>.</p>
+<p>We can, however, reject <span class="math inline">\(H_0\)</span> at 5%.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="fl">127.3</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.01</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>pressure <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">76</span>, <span class="dv">98</span>, <span class="dv">108</span>, <span class="dv">102</span>, <span class="dv">100</span>, <span class="dv">92</span>, <span class="dv">105</span>, <span class="dv">104</span>, <span class="dv">148</span>, </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>              <span class="dv">83</span>, <span class="dv">93</span>, <span class="dv">132</span>, <span class="dv">114</span>, <span class="dv">92</span>, <span class="dv">103</span>, <span class="dv">100</span>, <span class="dv">99</span>, <span class="dv">111</span>, <span class="dv">123</span>, </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>              <span class="dv">130</span>, <span class="dv">194</span>, <span class="dv">141</span>, <span class="dv">138</span>, <span class="dv">98</span>, <span class="dv">94</span>, <span class="dv">97</span>, <span class="dv">128</span>, <span class="dv">105</span>, <span class="dv">108</span>, </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>              <span class="dv">193</span>, <span class="dv">85</span>, <span class="dv">80</span>, <span class="dv">132</span>, <span class="dv">134</span>, <span class="dv">148</span>, <span class="dv">192</span>, <span class="dv">218</span>, <span class="dv">113</span>, </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>              <span class="dv">138</span>, <span class="dv">83</span>, <span class="dv">103</span>, <span class="dv">109</span>, <span class="dv">113</span>, <span class="dv">138</span>, <span class="dv">103</span>, <span class="dv">105</span>, <span class="dv">106</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">=</span> <span class="fu">mean</span>(pressure)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">=</span> <span class="fu">sd</span>(pressure)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> (<span class="fu">mean</span>(pressure) <span class="sc">-</span> mu)<span class="sc">/</span>(sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(pressure)))</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>t_crit_left <span class="ot">&lt;-</span> <span class="fu">qt</span>((alpha<span class="sc">/</span><span class="dv">2</span>),<span class="fu">length</span>(pressure) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>t_crit_right <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> (alpha<span class="sc">/</span><span class="dv">2</span>), <span class="fu">length</span>(pressure <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>t_p <span class="ot">&lt;-</span> <span class="fu">pt</span>(t, <span class="fu">length</span>(pressure <span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mu, xbar, alpha, t, t_crit_left, t_p)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(test,</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">"c"</span>,</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits    =</span> <span class="dv">3</span>,</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption   =</span> <span class="st">"Hypothesis Test"</span>,</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Hypothesized Mean"</span>, <span class="st">"Sample Avg"</span>, </span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Sig. Level"</span>, <span class="st">"T"</span>, <span class="st">"T(c) at 1%"</span>,</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"CDF(T)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">11</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Hypothesis Test</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Hypothesized Mean</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sample Avg</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sig. Level</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">T</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">T(c) at 1%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">CDF(T)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">127.3</td>
+<td style="text-align: center;">116.646</td>
+<td style="text-align: center;">0.01</td>
+<td style="text-align: center;">-2.366</td>
+<td style="text-align: center;">-2.685</td>
+<td style="text-align: center;">0.011</td>
 </tr>
 </tbody>
 </table>
@@ -3017,13 +3402,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mod-2-2-central.html" class="pagination-link" aria-label="Central Tendency">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency</span></span>
+      <a href="./mod-8-1-hypothesis.html" class="pagination-link" aria-label="Hypothesis Testing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mod-2-4-zscores.html" class="pagination-link" aria-label="Z-Scores">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Z-Scores</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mod-8-3-variance.html" class="pagination-link" aria-label="Hypothesis Testing: Variance">
+        <span class="nav-page-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Hypothesis Testing: Variance</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
