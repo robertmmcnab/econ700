@@ -17,7 +17,7 @@ By the end of this module, you should be able to:
 -   MLO 1: **Install** and navigate R and RStudio.\
 -   MLO 2: **Identify** R’s basic syntax and data types.\
 -   MLO 3: **Work** with variables and simple operations in R.\
--   MLO 4: **Explore** data frames and tibbles in R\
+-   MLO 4: **Explore** data frames and tibbles in R.\
 -   MLO 5: **Apply** descriptive statistics for initial data exploration.
 
 ------------------------------------------------------------------------
@@ -43,7 +43,7 @@ The following textbooks are available for free. Please select the links provided
 -   Complete the hands-on coding exercises embedded in each lesson (MLO 3,4)\
 -   Use WebR to experiment directly in your browser (MLO 2, 3, 4)\
 -   Complete the weekly class assignment (MLO 1-5)\
--   Take the weekly knowledge quiz (MLO 2-5).\
+-   Take the weekly knowledge quiz (MLO 2-5)\
 
 ------------------------------------------------------------------------
 

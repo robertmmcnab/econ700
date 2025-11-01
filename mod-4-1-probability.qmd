@@ -28,7 +28,7 @@ library(tidyquant, quietly = TRUE)
 
 If a fair coin has tails on one side and heads on the other side, we understand, over thousands of flips (trials), that we will observe heads 50% of the time and tails 50% of the time. Assuming that no flips end up on the edge, the **likelihood** of heads for a fair coin is 0.50 while the **likelihood** of tails is 0.50.
 
-Probability is a numerical measure of the likelihood of an outcome and is bounded between 0 and 1, including 0 and 1. If the probability of an outcome is 'close' to zero, then it is likely to occur than an outcome that is 'closer' to 1.
+Probability is a numerical measure of the likelihood of an outcome and is bounded between 0 and 1, including 0 and 1. If the probability of an outcome is 'close' to zero, then it is less likely to occur than an outcome that is 'closer' to 1.
 
 In other words, if the outcome of the outcome is beneficial (winning a prize), we would prefer that the probability of the outcome be higher (closer to 1) than lower. Likewise, if the outcome of the outcome if not beneficial (incurring a costly bill), we would prefer the probability of the outcome be lower (closer to 0) than higher.
 
@@ -134,21 +134,13 @@ In our previous examples, the number of steps and outcomes for each step was rel
 
 A bowl of vegetable soup contains a different vegetables and the number of vegetables may differ by type. We don't care about ordering since all the vegetables together make soup.
 
-*Assume we have four objects, and we select one object at a time without replacement.*
-
-How many ways can the four objects be drawn given we draw one object at a time without replacement?
+*Assume we have four objects (A,B,C,D), and we select one object at a time without replacement and draw all the objects.*
 
 Let's list the possible combinations:
 
--   ABC
+-   ABCD
 
--   ABD
-
--   ACD
-
--   BCD
-
-Why are there only four combinations? Remember, the order does not matter. In other words, ABC is the same as BCA which is the same as CAB which is the same as BAC and so on.
+Why is there only one combination? Remember, the order does not matter. In other words, ABCD is the same as BCAD which is the same as CABD which is the same as BACD and so on.
 
 *Assume now that we have the four objects and we select two objects at a time without replacement.*
 
@@ -166,9 +158,9 @@ Assume the objects are labeled A, B, C, D and the order of drawing is not import
 
 -   CD
 
-In other words, given four objects and two objects are selected at a time, there are six possible combinations.
+Given four objects and two objects are selected at a time, there are six possible combinations.
 
-*Lastly, consider the same number of objects (4) and three objects are selected at a time without replacement.*
+*Consider the same number of objects (4) and draw three objects at a time without replacement.*
 
 Assume the objects are labeled A, B, C, D and the order of drawing is not important (AC is the same as drawing CA), then the number of possible combinations:
 
@@ -317,7 +309,7 @@ kable(object,
 
 In the example code below, the number of combinations and permutations are calculated using the **choose** and **permutations** functions.
 
-The **combination** and **permutations** functions will create a matrix of outcomes for the random experiment. 
+The **combination** and **permutations** functions will create a matrix of outcomes for the random experiment.
 
 These matrices grow large quickly and it may be more efficient to manually code the combinations and permutations.
 
@@ -353,4 +345,3 @@ kable(perm_1,
       caption = 'P(4,2)')
 
 ```
-

@@ -2,8 +2,6 @@
 title: "ECON 700"
 ---
 
-Note: The course is under construction. Some links will not work.
-
 ## Course Introduction
 
 <ul>
@@ -129,4 +127,4 @@ Note: The course is under construction. Some links will not work.
 
 ------------------------------------------------------------------------
 
-<p>This site provides <strong>interactive and static examples</strong> for economic data analysis using R and WebR. Click on the links above to explore each section.</p>
+<p>This site provides <strong>interactive and static examples</strong> for economic data analysis using R and WebR. Click on the links above to explore each module.</p>

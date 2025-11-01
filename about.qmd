@@ -22,7 +22,7 @@ The required textbooks are an integral part of the class. Students should expect
 
 [**These textbooks are free.**]{.underline}
 
-As this course focuses on the learning and application of statistical techniques, a computer with R and R Studio installed is necessary. You will need access to a laptop, tablet, or other computing device to complete the assignments and and exams.
+As this course focuses on the learning and application of statistical techniques, a computer with R and R Studio installed is necessary. You will need access to a laptop, tablet, or other computing device to complete the assignments and exams.
 
 **You may also use R Studio Cloud instead of a locally installed version of R.**
 

@@ -48,7 +48,7 @@ The observation $x_1$ is 6 standard deviations from the mean of 20. Given that $
 
 [*Since the theorem is independent of the underlying distribution, we can apply Chebyshev's theorem to a data set without worrying about how the data are distributed.*]{.underline}
 
-With this in mind, let $z = 2$, $z = 3$, and $z=6$, then
+With this in mind, let $z = 2$, $z = 3$, and $z=4$, then
 
 $$z = 2 \rightarrow (1 - \frac{1}{2^2}) = 1 - 1/4 = 0.750 $$
 

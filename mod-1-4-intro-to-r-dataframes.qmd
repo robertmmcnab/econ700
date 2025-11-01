@@ -28,15 +28,15 @@ So far, everything we have created has been stored as a variable or vector. A **
 
 A matrix is a table or a two-dimensional array-like structure. In R, a **data frame** is a list of variables with the same number of rows with unique row names. If we use the dplyr package, a **tibble** is similar to a data frame.
 
-A data frame can have one column with numeric elements, another with date elements, another with character elements, and so on. 
+A data frame can have one column with numeric elements, another with date elements, another with character elements, and so on.
 
-In the webR code chunk below, we create two vectors, **x8** and **x9**. 
+In the webR code chunk below, we create two vectors, **x8** and **x9**.
 
 We can **bind** these vectors together, that is, 'merge' the two vectors. How we choose to put the vectors together is important.
 
 There are two functions at our disposal: **rbind** and **cbind**.
 
-The **rbind** function "stacks" the observations in the vectors. 
+The **rbind** function "stacks" the observations in the vectors.
 
 The **cbind** function "adds" the column of the second vector to the first vector, creating a data frame with two columns.
 
@@ -78,7 +78,6 @@ First, we bind **x9** to **x8**. We then bind **x8** to **x9**.
 
 Note that we bind within the **kable** function. We do not create a new matrix.
 
-
 ```{webr-r}
 
 rm(list = ls())
@@ -104,14 +103,13 @@ kable(cbind(x9,x8))
 
 ## Creating a data frame
 
-Previously, we created a matrix by binding two vectors together. We can now create a **data frame** or **tibble**. 
+Previously, we created a matrix by binding two vectors together. We can now create a **data frame** or **tibble**.
 
 A tibble is a more modern version of the standard R data farme. It is part of the *tidyverse* collection of packages.
 
 If you want to learn more about tibbles, see <https://tibble.tidyverse.org/>
 
 In the code chunk below, we again create our two variables. This time, however, we store the two variables in a data frame (original R) and a tibble (new and improved).
-
 
 ```{webr-r}
 
@@ -159,7 +157,6 @@ tail(cardata)
 
 ```
 
-
 ## Dimensions of a Data Frame
 
 To find the dimensions of a data frame, we can determine the number of rows and the number of columns separately or together. First, the **nrow** and **ncol** functions determine the number of rows and columns in a data frame, respectively.
@@ -189,17 +186,19 @@ dim(cardata)
 
 Having determined the dimensions of the *cardata* data frame, we can now select parts of the data frame.
 
-We can approach this by recognizing that a data frame is organized by rows and columns. 
+We can approach this by recognizing that a data frame is organized by rows and columns.
 
-For example, *mtcars[1,1]* returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.
+For example, *mtcars\[1,1\]* returns the value stored in the intersection of the first row and first column in the data frame. The first row in the data frame is for the Mazda RX4 and the first column in the data frame is for miles per gallon, so the intersection of these two produces a value of 21.0. In other words, the Maxda RX4 earns 21.0 miles per gallon.
 
-So, in general, for a data frame or tibble, *data[row,column]*. 
+So, in general, for a data frame or tibble, *data\[row,column\]*.
 
-For example, *cardata[1:2, 2:3]* returns rows 1 to 2 and columns 2 to 3.
+For example, *cardata\[1:2, 2:3\]* returns rows 1 to 2 and columns 2 to 3.
 
 ```{webr-r}
 
 rm(list = ls())
+
+cardata <- mtcars
 
 # First observation, First variable.
 
@@ -211,13 +210,15 @@ cardata[1:2, 2:3]
 
 ```
 
-If the row or column is left blank, all values for the column are the result. 
+If the row or column is left blank, all values for the column are the result.
 
-For example, *cardata[,1]* would return all rows for the first column of data. On the other hand, *cardata[1:2,]* would return the first two rows and all the columns.
+For example, *cardata\[,1\]* would return all rows for the first column of data. On the other hand, *cardata\[1:2,\]* would return the first two rows and all the columns.
 
 ```{webr-r}
 
 rm(list = ls())
+
+cardata <- mtcars
 
 # All rows, first two columns
 
@@ -231,27 +232,27 @@ cardata[1:2,]
 
 ## Manipulating the Dataframe and Adding New Variables
 
-Starting with the **cardata** data frame, we can now utilize one of the features of the packages to **pipe** the data. 
+Starting with the **cardata** data frame, we can now utilize one of the features of the packages to **pipe** the data.
 
 Piping means that the data 'flows' in the direction of the pipe. It's actually called a pipeline of data.
 
-A bit of housekeeping. We want to convert the rownames in **cardata** to a variable. 
+A bit of housekeeping. We want to convert the rownames in **cardata** to a variable.
 
-We pipe the data frame and then use the function **rownames\_to\_column()** to do just that. We then pipe the data to rename the new variable **rowname** to **car**.
+We pipe the data frame and then use the function **rownames_to_column()** to do just that. We then pipe the data to rename the new variable **rowname** to **car**.
 
 We can now use the **mutate** function to create a new variable or replace an existing variable.
 
-In the following code, the data flow from cardata to the next line of code to create a new variable **km\_per\_gallon** using the mutate function.
+In the following code, the data flow from cardata to the next line of code to create a new variable **km_per_gallon** using the mutate function.
 
-Imagine a temporary data frame that consists of **cardata** with a new column for the **km\_per\_gallon** variable.
+Imagine a temporary data frame that consists of **cardata** with a new column for the **km_per_gallon** variable.
 
-Each new line of within the mutate} function creates a new variable. The second variable that we create converts kilometers per gallon to kilometers per liter or **km\_per\_liter**.
+Each new line of within the **mutate** function creates a new variable. The second variable that we create converts kilometers per gallon to kilometers per liter or **km_per_liter**.
 
 Your temporary data frame now consists of the cardata data frame plus the two new variables.
 
-The third line of the mutate statement creates a new variable that converts miles per gallon into kilometers per liter, essentially duplicating the process of the first two lines of the mutate statement. The new variable is called **km2\_per\_liter**.
+The third line of the mutate statement creates a new variable that converts miles per gallon into kilometers per liter, essentially duplicating the process of the first two lines of the mutate statement. The new variable is called **km2_per_liter**.
 
-At this point, you decide you only need to keep a subset of variables. 
+At this point, you decide you only need to keep a subset of variables.
 
 We pipe the resulting data frame to the **select** statement. The variables included in the select statement are kept in the temporary data frame while the variables excluded from the select statement are deleted from the temporary data frame.
 
@@ -287,7 +288,7 @@ kable(cardata2[1:5,],
                     "Cylinders",
                     "Weight",
                     "Kilometers per Gallon",
-                    "Kliometers per Liter",
+                    "Kilometers per Liter",
                     "Squared KM/Gallon")) %>%
 kable_classic()
 
@@ -305,7 +306,7 @@ Real GDP: <https://fred.stlouisfed.org/series/GDPC1>
 
 We can use an API call to obtain the data. Instead of having to write the code for an API call, we can use a package called **tidyquant**.
 
-We have the variable name **GDPC1** and so we can simply use the **tq\_get** function in tidyquant to retrieve the real GDP series. 
+We have the variable name **GDPC1** and so we can simply use the **tq_get** function in tidyquant to retrieve the real GDP series.
 
 We rename the **price** variable to **rgdp** and we convert the date using the lubridate package.
 
@@ -373,13 +374,13 @@ kable(gdp[1:5,]) %>%
 
 In the previous examples, we made an API call for one variable at a time. The result was two data frames, one for nominal GDP, and one for real GDP. It would be more efficient to make one API call that results in a single data frame with both variables.
 
-In the following code, we **combine** the names of the two variables, that is, *c("GDP","GDPC1")* creates a row vector with the two names. This row vector is used by the **tq\_get** function to make an API call to obtain the two variables from FRED.
+In the following code, we **combine** the names of the two variables, that is, *c("GDP","GDPC1")* creates a row vector with the two names. This row vector is used by the **tq_get** function to make an API call to obtain the two variables from FRED.
 
-What's important to note is that the *all\_gdp* data fame is in **long** format. In other words, each row corresponds to one period of time for one variable.
+What's important to note is that the *all_gdp* data fame is in **long** format. In other words, each row corresponds to one period of time for one variable.
 
 We have to do some housecleaning. When we obtain the data from FRED, the variable names are contained in a variable called **symbol** and the values are contained in a variable named **price**. We rename those to **variable** and **value**, respectively.
 
-We then plot the data using the **ggplot2** package. 
+We then plot the data using the **ggplot2** package.
 
 The ggplot function is very flexible and you can modify almost every element of a graph. For now, we provide the example and will work on developing our graphing skills later on in the course.
 
@@ -432,4 +433,3 @@ labs(title    = "Real and Nominal GDP, United States",
      y        = "Billions of Dollars")
 
 ```
-

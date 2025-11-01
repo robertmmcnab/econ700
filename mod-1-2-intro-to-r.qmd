@@ -58,7 +58,7 @@ Each is a piece of software. R is the 'engine' and RStudio is the interface.
 
 You can work with R directly, but RStudio makes the process less painful.
 
-R is the statistical software package that we will use throughout the course,
+R is the statistical software package that we will use throughout the course.
 
 RStudio is an interface that makes using R much easier.
 
@@ -130,7 +130,7 @@ The four panels are as follows:
 
 ![Screenshot of Rstudio with panel labels.](images/rstudio-fourpanel.jpg){fig-alt="Screenshot of Rstudio with panel labels."}
 
-# Packages in R
+## Packages in R
 
 One of the most powerful features of R is that there are numerous packages or add-ons to base R that provide additional functionality. We need to install these packages and then include them so they are accessible to R as we work with data.
 
@@ -182,11 +182,11 @@ To do this in RStudio, first install the above packages and then use the followi
 
 -   Copy the code above and paste it into your script file
 
--   Click on "Run" or Use CNTRL+SHIFT+ENTER
+-   Click on "Run" or Use CTRL+SHIFT+ENTER
 
 ![Screenshot of Rstudio with package code](images/rstudio-loadpackages.jpg){fig-alt="Screenshot of Rstudio with package code"}
 
-# WebR
+## WebR
 
 We can use **WebR** to provide **dynamic** examples of code. The WebR code chunks appear different than the static code chucks.
 
@@ -196,7 +196,7 @@ In this example, we first clear the memory, then we do three operations
 
 -   Add 5 and 13 or $(5 + 13)$
 
--   Multiple 5 and 13 or $(5 \times 13)$
+-   Multiply 5 and 13 or $(5 \times 13)$
 
 -   Divide 5 by 13 or $\frac{5}{13}$
 
