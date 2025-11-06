@@ -46,21 +46,73 @@ unknown, we use the sample standard deviation $s$ or
 
 $$\hat{\sigma_x} = s(\bar{x}) = \frac{s_x}{\sqrt{n}}$$
 
-## Finite Standard Error
+## Finite Population
 
 What if the population from which the samples are drawn is not infinite?
 
-In this case, we must use a **finite population correction factor** for
-the standard error of the mean.
+The **Finite Population Correction Factor** is used when you sample
+without replacement from more than 5% of a finite population.
 
-The finite population correct factor is used when the fraction of the
-population sampled is greater than 5%.
+Why do we need to correct the standard error when the sampled population
+is "small" and the sample of the finite population is "large" relative
+to the population?
+
+It can be shown that when you sample without replacement from a finite
+population and the sample size exceeds 5% of the population, the Central
+Limit Theorem will no longer hold. The Finite Population Correction
+Factor captures the difference between sampling without replacement and
+sampling with replacement.
+
+For example, if conduct a telephone survey in a large city with a
+population of 1 million, then surveying 1,000 residents without
+replacement will still leave a large population to be sampled. On the
+other hand, if you conduct the same survey in a town of 5,000 residents,
+you are sampling a significant proportion of the population.
 
 In finite populations, the standard error of the mean is:
 
 $$\sigma(\bar{x}) = \sqrt{\frac{(N-n)}{(N-1)}} \bigg(\frac{\sigma}{\sqrt{n}} \bigg)$$
 
 $$s(\bar{x}) = \sqrt{\frac{(N-n)}{(N-1)}} \bigg(\frac{s}{\sqrt{n}} \bigg)$$
+
+In the code chunk below, we demonstrate the FPC and how the FPC corrects
+the standard error as the sample size rises as a proportion of a finite
+("small") population.
+
+```{r}
+
+rm(list = ls())
+
+library(dplyr)
+library(kableExtra)
+
+N <- 10000
+sigma <- 5
+
+# Define sample sizes
+sample_sizes <- c(1, 10, 50, 100, 500, 1000, 5000, 8000)
+
+# Calculate finite population correction factor using a loop or vectorized method
+
+fpcf <- sqrt((N - sample_sizes) / (N - 1))
+
+# Combine into a table (data frame)
+fpc_table <- tibble(sample_size = sample_sizes,
+                    fpc = sqrt((N - sample_sizes) / (N - 1)),
+                    se  = sigma/sqrt(sample_sizes),
+                    se_fpc = fpc*se)
+
+kable(fpc_table,
+      align = 'c',
+      digits = 3,
+      col.names = c('Sample Size', 'FPC', 'SE', 'FPC*SE')) %>%
+kable_classic()
+
+
+
+
+
+```
 
 ## Z-Score Example
 
