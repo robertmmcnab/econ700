@@ -133,7 +133,7 @@ time unit.
 
 We simulate 3 columns of random exponential observations.
 
-Note that $E[x] = \mu = 1\lambda = 1/15 = 0.067$
+Note that $E[x] = \mu = 1 /\lambda = 1/15 = 0.067$
 
 ```{r, warning = FALSE, message = FALSE}
 

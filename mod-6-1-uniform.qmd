@@ -200,7 +200,7 @@ labs(x = "x",
 
 $$P(c \le x \le d) = \int_{c}^{d} f(x) dx = \int_{c}^{d} \frac{1}{b-a}dx$$
 
-$$P(c \le x \le d) = \int_{c}^{d} \frac{1}{b-a} [x]_x^d = \frac{1}{b-a}(d-c) = \frac{d-c}{b-a}$$
+$$P(c \le x \le d) = \int_{c}^{d} \frac{1}{b-a} \,dx = \frac{1}{b-a}(d-c) = \frac{d-c}{b-a}$$
 
 Let an elevator arrive randomly between 10 and 30 seconds after a button
 is pushed.
@@ -215,7 +215,7 @@ $$P(15 \le x \le 20) = \frac{20-15}{30-10} = 0.25$$
 Given a uniform distribution defined over $[a,b]$, what is $P(X \le x)$
 if $a < x < b$.
 
-We have found that $P(c \le x \le d) = \frac{d - c}{b - c}$, so
+We have found that $P(c \le x \le d) = \frac{d - c}{b - a}$, so
 
 $$F_X(x) = P(X \le x) = \int_{-\infty}^{x} f_x(t)dt$$
 
@@ -338,7 +338,7 @@ $$\mu = \frac{a+b}{2} = \frac{10+30}{2} = 20$$
 
 $$\sigma^2 = \frac{(b-a)^2}{12} = \frac{(30-10)^2}{12} = 33.33$$
 
-$$\sigma = \frac{\sqrt{3}(b-a)}{6} = \frac{\sqrt{3}(30-10)}{6} = 5.78$$
+$$\sigma = \sqrt{\frac{(b-a)^{2}}{12}} = \sqrt{\frac{(30-10)^2}{12}} = \sqrt{33.33} = 5.78$$
 
 ## Uniform Inverse CDF
 

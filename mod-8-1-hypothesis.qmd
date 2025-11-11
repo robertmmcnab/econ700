@@ -113,13 +113,13 @@ increased $\mu_2 > \mu_1$, we can form a one-tailed hypothesis.
 
 $$H_0: \mu_1 \ge \mu_2 \implies H_0: \mu_1 - \mu_2 \ge 0$$
 
-$$H_0: \mu_1 < \mu_2 \implies H_0: \mu_1 - \mu_2 < 0$$
+$$H_a: \mu_1 < \mu_2 \implies H_a: \mu_1 - \mu_2 < 0$$
 
 More specifically:
 
 $$H_0: \mu_{old} \ge \mu_{new} \implies H_0: \mu_{old} - \mu_{new} \ge 0$$
 
-$$H_0: \mu_{old} < \mu_{new} \implies H_0: \mu_{old} - \mu_{new} < 0$$
+$$H_a: \mu_{old} < \mu_{new} \implies H_a: \mu_{old} - \mu_{new} < 0$$
 
 ## Example
 

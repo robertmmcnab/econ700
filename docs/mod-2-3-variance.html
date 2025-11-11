@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Measures of Disperson – ECON 700</title>
+<title>13&nbsp; Measures of Dispersion – ECON 700</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -1704,7 +1704,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Dispersion</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1837,7 +1837,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mod-2-3-variance.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Dispersion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -2368,9 +2368,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mod-2-0-overview.html">Descriptive Statistics</a></li><li class="breadcrumb-item"><a href="./mod-2-3-variance.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Dispersion</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Dispersion</span></h1>
 </div>
 
 
@@ -2390,7 +2390,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="data-properties" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="data-properties"><span class="header-section-number">13.1</span> Data Properties</h2>
 <p>Previously, we discussed measures of the <strong>central tendency</strong> of the data.</p>
-<p>We used population data from the U.S. Census to estimate the population mean, <span class="math inline">\(/mu\)</span>, as well as the median.</p>
+<p>We used population data from the U.S. Census to estimate the population mean, <span class="math inline">\(\mu\)</span>, as well as the median.</p>
 <p>We used sample data from the <em>mtcars</em> dataset to estimate the sample average, <span class="math inline">\(\bar{x}\)</span>, as well as the sample median.</p>
 <p>We also used R and RStudio to estimate the number of observations, the minimum value for a variable, and the maximum value for a variable.</p>
 <p>The measures of central tendency estimate the <em>middle</em> of the data, however, we also noted that <strong>outliers</strong> can influence the sample average. We discussed how to <strong>trim</strong> the data to reduce the influence of outliers.</p>
@@ -2492,7 +2492,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="sample-variance" class="level2" data-number="13.6">
 <h2 data-number="13.6" class="anchored" data-anchor-id="sample-variance"><span class="header-section-number">13.6</span> Sample Variance</h2>
 <p>The sample variance, <span class="math inline">\(s^2\)</span>, is estimated by:</p>
-<p><span class="math display">\[s^2 = \frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2\]</span></p>
+<p><span class="math display">\[s^2 = \frac{1}{n-1} \sum_{i = 1}^n (x_i - \bar{x})^2\]</span></p>
 <p>One might ask, “why do we divide by <span class="math inline">\(n-1\)</span> instead of <span class="math inline">\(n\)</span>?”</p>
 <p>The population mean <span class="math inline">\(\mu\)</span> is a <strong>known, definite mean</strong>. It does not require estimation.</p>
 <p>The sample average, <span class="math inline">\(\bar{x}\)</span> is an <strong>estimate</strong> of the population mean <span class="math inline">\(\mu\)</span>.</p>

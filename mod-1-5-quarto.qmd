@@ -24,7 +24,7 @@ library(tidyquant, quietly = TRUE)
 
 ## What is Quarto?
 
-**Quatro** is how we will work with R and RStudio to produce documents, assignments, and exams.
+**Quartro** is how we will work with R and RStudio to produce documents, assignments, and exams.
 
 One way to think about Quarto is that it is like Microsoft Word, however, it is much more powerful and flexible.
 
@@ -50,7 +50,7 @@ The getting started page will help you understand the capabilities of Quarto.
 
 ## Creating a File
 
-In RStudio, go to File -\> New File -\> New Quatro Document.
+In RStudio, go to File -\> New File -\> New Quartro Document.
 
 You will see the window below. Let's say we name our document: **Example-1**.
 
@@ -96,9 +96,9 @@ Your file should look like the following picture:
 
 ## Rendering
 
-Use the **Render** button in RStudio to render the file and previous the output. If you prefer to automatically render whenever you save, check the **Render on Save** button in RStudio.
+Use the **Render** button in RStudio to render the file and preview the output. If you prefer to automatically render whenever you save, check the **Render on Save** button in RStudio.
 
-When you render, your can save your file as Example1.qmd and the rendered file should appear in a browser window.
+When you render, you can save your file as **Example1.qmd** and the rendered file should appear in a browser window.
 
 Quarto is a powerful approach to displaying your work in R and RStudio.
 

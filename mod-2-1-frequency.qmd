@@ -22,7 +22,6 @@ library(tidyquant, quietly = TRUE)
 
 ```
 
-
 ## Frequency Distributions
 
 The **frequency** of a category, class, or value is the number of times it occurs in a data set.
@@ -43,7 +42,7 @@ A frequency distribution may provide insights about the data that cannot be quic
 
 ## Frequency Example
 
-In the example below, we have six observations (students).
+In the example below, we have seven observations (students).
 
 The students can be grouped by their graduating year. There are 3 students that graduate in 2028 and 4 students that graduate in 2029.
 
@@ -300,9 +299,10 @@ labs(title = "Relative Frequency of Population Bins",
      x     = "Population Bin",
      y     = "Relative Frequency")
 ```
+
 ## Scatterplots
 
-A **scatterplot** is a graphical display of a relationship between two variables of interest. 
+A **scatterplot** is a graphical display of a relationship between two variables of interest.
 
 Before constructing a scatterplot, one must think about the nature of the relationship between the two variables.
 

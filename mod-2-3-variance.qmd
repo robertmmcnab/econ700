@@ -1,5 +1,5 @@
 ---
-title: "Measures of Disperson"
+title: "Measures of Dispersion"
 format:
   html:
     toc: true
@@ -26,7 +26,7 @@ library(tidyquant, quietly = TRUE)
 
 Previously, we discussed measures of the **central tendency** of the data.
 
-We used population data from the U.S. Census to estimate the population mean, $/mu$, as well as the median.
+We used population data from the U.S. Census to estimate the population mean, $\mu$, as well as the median.
 
 We used sample data from the *mtcars* dataset to estimate the sample average, $\bar{x}$, as well as the sample median.
 
@@ -163,7 +163,7 @@ kable_styling(font_size = 12)
 
 The sample variance, $s^2$, is estimated by:
 
-$$s^2 = \frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2$$
+$$s^2 = \frac{1}{n-1} \sum_{i = 1}^n (x_i - \bar{x})^2$$
 
 One might ask, "why do we divide by $n-1$ instead of $n$?"
 
@@ -294,4 +294,3 @@ kable(coef_var,
 kable_styling(font_size = 12)
 
 ```
-

@@ -66,17 +66,17 @@ Since we are not concerned with ordering, the outcome $AB$ is concerned the same
 
 -   $X(BB) = 0$ and the probability of observing $X$ is $P(X) = 1/4$ .
 
-+--------------------+---------------------+--------------------+
-| $\omega$           | $X(\omega)$         | $P(X)$             |
-+====================+=====================+====================+
-| AA                 | 2                   | $\frac{1}{4}$      |
-+--------------------+---------------------+--------------------+
-| AB                 | 1                   | $\frac{1}{2}$      |
-|                    |                     |                    |
-| BA                 | 1                   |                    |
-+--------------------+---------------------+--------------------+
-| BB                 | 0                   | $\frac{1}{4}$      |
-+--------------------+---------------------+--------------------+
++-------------------+--------------------+-------------------+
+| $\omega$          | $X(\omega)$        | $P(X)$            |
++===================+====================+===================+
+| AA                | 2                  | $\frac{1}{4}$     |
++-------------------+--------------------+-------------------+
+| AB                | 1                  | $\frac{1}{2}$     |
+|                   |                    |                   |
+| BA                | 1                  |                   |
++-------------------+--------------------+-------------------+
+| BB                | 0                  | $\frac{1}{4}$     |
++-------------------+--------------------+-------------------+
 
 : PMF Example
 
@@ -116,7 +116,7 @@ Previously, we have used **empirical** data to generate distributions.
 
 The **binomial probability distribution** is a discrete probability distribution.
 
-In a **binomial experiment**, we are interested in the **number of success** relative to the **number of trials**.
+In a **binomial experiment**, we are interested in the **number of successes** relative to the **number of trials**.
 
 If $x$ denotes the number of successes occurring in $n$ trials, then $x$ is a discrete random variable.
 
@@ -130,7 +130,7 @@ We count the number of successes out of the 5 trials.
 
 A binomial experiment exhibits the following four properties:
 
--   The experiment consists of a sequence of $n$ identical trails.
+-   The experiment consists of a sequence of $n$ identical trials.
 
 -   Two outcomes: **success** and **failure** are possible on each trial.
 
@@ -199,7 +199,7 @@ Assume that we have a toggle switch that determines whether a manufacturing line
 
 -   We know that the probability of the switch being on is $p = 0.95$.
 
--   We assume that the probability remains constant,
+-   We assume that the probability remains constant.
 
 -   We assume that the current switch position is independent of the previous switch position.
 
@@ -442,8 +442,7 @@ Let
 
 The expected value, variance, and standard deviation are equal to:
 
-$$E(x) = \mu = 50 \times 0.55 = 27.5$$ 
-$$var(x) = \sigma ^2 = np \, (1-p) = 50 \times 0.55 \times (1 - 0.55) = 12.375$$ 
+$$E(x) = \mu = 50 \times 0.55 = 27.5$$ $$var(x) = \sigma ^2 = np \, (1-p) = 50 \times 0.55 \times (1 - 0.55) = 12.375$$
 
 $$sd(x) = \sqrt{(\sigma^2)} = \sqrt{(12.375)} = 3.52$$
 

@@ -210,10 +210,10 @@ $$
 Z = \frac{x - \mu}{\sigma} = \frac{1380 - 1150}{150} = 1.53
 $$
 
-We can use the **pnorm** function in area with **lower.tail = FALSE** to
+We can use the **pnorm** function in area with **lower.tail = TRUE** to
 estimate, for a standard normal distribution, the probability that Z is
-less than or equal to 1.53. We can then use this probability to estimate
-the probability that Z is greater than 1.53.
+less than or equal to 1.53. We can also estimate the probability of Z
+being greater than 1.53 using the **lower.tail = FALSE** option.
 
 $$
 P(Z \le 1.53) = 0.937 
@@ -377,7 +377,7 @@ observing a student with a height greater than 75 inches?
 $$P(X > 75) = 1 - P(X \le 75)$$
 
 The probability of observing a student with a height greater than 75
-includes is 0.05 (or 95% of students have heights 75 inches and less).
+inches is 0.05 (or 95% of students have heights 75 inches and less).
 
 ```{webr-r}
 

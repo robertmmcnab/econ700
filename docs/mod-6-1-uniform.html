@@ -1837,7 +1837,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mod-2-3-variance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Disperson</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measures of Dispersion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -2502,7 +2502,7 @@ X \sim U(a,b)
 <li><p>The probability that <span class="math inline">\(x\)</span> is in specific interval <span class="math inline">\([c,d]\)</span> is:</p></li>
 </ul>
 <p><span class="math display">\[P(c \le x \le d) = \int_{c}^{d} f(x) dx = \int_{c}^{d} \frac{1}{b-a}dx\]</span></p>
-<p><span class="math display">\[P(c \le x \le d) = \int_{c}^{d} \frac{1}{b-a} [x]_x^d = \frac{1}{b-a}(d-c) = \frac{d-c}{b-a}\]</span></p>
+<p><span class="math display">\[P(c \le x \le d) = \int_{c}^{d} \frac{1}{b-a} \,dx = \frac{1}{b-a}(d-c) = \frac{d-c}{b-a}\]</span></p>
 <p>Let an elevator arrive randomly between 10 and 30 seconds after a button is pushed.</p>
 <p>What is the probability that the elevator arrives between 15 and 20 seconds?</p>
 <p><span class="math display">\[P(15 \le x \le 20) = \frac{20-15}{30-10} = 0.25\]</span></p>
@@ -2510,7 +2510,7 @@ X \sim U(a,b)
 <section id="cdf-of-continuous-uniform" class="level2" data-number="28.6">
 <h2 data-number="28.6" class="anchored" data-anchor-id="cdf-of-continuous-uniform"><span class="header-section-number">28.6</span> CDF of Continuous Uniform</h2>
 <p>Given a uniform distribution defined over <span class="math inline">\([a,b]\)</span>, what is <span class="math inline">\(P(X \le x)\)</span> if <span class="math inline">\(a &lt; x &lt; b\)</span>.</p>
-<p>We have found that <span class="math inline">\(P(c \le x \le d) = \frac{d - c}{b - c}\)</span>, so</p>
+<p>We have found that <span class="math inline">\(P(c \le x \le d) = \frac{d - c}{b - a}\)</span>, so</p>
 <p><span class="math display">\[F_X(x) = P(X \le x) = \int_{-\infty}^{x} f_x(t)dt\]</span></p>
 <p><span class="math display">\[F_X(d) = \int_{-\infty}^{a}f_x(t)dt + \int_{a}^{x}f_x(t)dt\]</span></p>
 <p><span class="math display">\[F_X(d) = \int_{-\infty}^{a}0 \, dt + \int_{a}^{x} \frac{1}{b-a}dt = \frac{1}{b-a} \, [t]_a^x = \frac{x-a}{b-a}\]</span></p>
@@ -2613,7 +2613,7 @@ P(15 \le x \le 20) = P(x \le 20) - P(x \le 15) \quad \text{for} \, x \in [10,30]
 <p>Let <span class="math inline">\(a = 10\)</span> and <span class="math inline">\(b = 30\)</span> and <span class="math inline">\(x\)</span> be continuously, uniformly distributed over this range.</p>
 <p><span class="math display">\[\mu = \frac{a+b}{2} = \frac{10+30}{2} = 20\]</span></p>
 <p><span class="math display">\[\sigma^2 = \frac{(b-a)^2}{12} = \frac{(30-10)^2}{12} = 33.33\]</span></p>
-<p><span class="math display">\[\sigma = \frac{\sqrt{3}(b-a)}{6} = \frac{\sqrt{3}(30-10)}{6} = 5.78\]</span></p>
+<p><span class="math display">\[\sigma = \sqrt{\frac{(b-a)^{2}}{12}} = \sqrt{\frac{(30-10)^2}{12}} = \sqrt{33.33} = 5.78\]</span></p>
 </section>
 <section id="uniform-inverse-cdf" class="level2" data-number="28.10">
 <h2 data-number="28.10" class="anchored" data-anchor-id="uniform-inverse-cdf"><span class="header-section-number">28.10</span> Uniform Inverse CDF</h2>
@@ -2665,33 +2665,33 @@ P(15 \le x \le 20) = P(x \le 20) - P(x \le 15) \quad \text{for} \, x \in [10,30]
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Observation_1</td>
-<td style="text-align: center;">58.46784</td>
-<td style="text-align: center;">38.92631</td>
-<td style="text-align: center;">47.25438</td>
+<td style="text-align: center;">58.51013</td>
+<td style="text-align: center;">34.84571</td>
+<td style="text-align: center;">37.27867</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Observation_2</td>
-<td style="text-align: center;">59.04516</td>
-<td style="text-align: center;">42.31414</td>
-<td style="text-align: center;">63.89501</td>
+<td style="text-align: center;">65.70972</td>
+<td style="text-align: center;">42.40309</td>
+<td style="text-align: center;">51.83839</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Observation_3</td>
-<td style="text-align: center;">48.09258</td>
-<td style="text-align: center;">54.50229</td>
-<td style="text-align: center;">46.43965</td>
+<td style="text-align: center;">41.90601</td>
+<td style="text-align: center;">69.68946</td>
+<td style="text-align: center;">67.93199</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Observation_4</td>
-<td style="text-align: center;">39.43846</td>
-<td style="text-align: center;">53.62763</td>
-<td style="text-align: center;">68.68435</td>
+<td style="text-align: center;">54.87539</td>
+<td style="text-align: center;">58.62598</td>
+<td style="text-align: center;">68.66122</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Observation_5</td>
-<td style="text-align: center;">30.25388</td>
-<td style="text-align: center;">55.88228</td>
-<td style="text-align: center;">36.06936</td>
+<td style="text-align: center;">51.16245</td>
+<td style="text-align: center;">58.23324</td>
+<td style="text-align: center;">52.09064</td>
 </tr>
 </tbody>
 </table>

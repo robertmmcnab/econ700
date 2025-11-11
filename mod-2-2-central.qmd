@@ -61,7 +61,7 @@ Given a population size $N$, the population mean, $\mu$, is defined as:
 
 $$\mu = \frac{1}{N} \sum_{i = 1}^N x_i$$
 
-For a sample size $n$ from a population size $N$, then the sample average $\bar{X}$ is:
+For a sample size $n$ from a population size $N$, then the sample average $\bar{x}$ is:
 
 $$\bar{x} = \frac{1}{n} \sum_{i = 1}^n x_i$$ Here we must be careful in our use of language. When we say **mean** we refer to the **population mean**, that is, the mean obtained using all the members of the population. When we say **sample**, we refer to the **sample average**, that is, the average obtained using a subset of the members of the population.
 
@@ -98,7 +98,7 @@ For a given median, 50% of the observations are below the median value and 50% o
 
 In the example below, we use the **censusapi** package to access the U.S. Census API to obtain data on total population for county and county-equivalent geographies.
 
-*Note the difference between the mtcars example and the census example: the mtcars example is a sample while the census examine uses population data*.
+*Note the difference between the mtcars example and the census example: the mtcars example is a sample while the census example uses population data*.
 
 We then estimate the following descriptive statistics for the population of geographies:
 
@@ -160,7 +160,7 @@ The sum of the mean deviations is zero for the population or approximately zero 
 
 $$\sum_{i = 1}^N d_i = \sum_{i = 1}^N (x_i - \mu) = 0$$
 
-$$\sum_{i = 1}^N d_i = \sum_{i = 1}^N (x_i - \bar{x}) \approx 0$$
+$$\sum_{i = 1}^n d_i = \sum_{i = 1}^n (x_i - \bar{x}) \approx 0$$
 
 ## Mean Deviations Example
 

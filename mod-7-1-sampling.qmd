@@ -60,8 +60,9 @@ same probability of being selected.
 We can sample with replacement, however, sampling without replacement is
 more typically used.
 
-The number of different samples of size $n$ that can be drawn from the
-population of size $N$ is:
+Remembering our discussion of combinations, we know that the number of
+different samples of size $n$ that can be drawn from the population of
+size $N$ is:
 
 $$\frac{N!}{n!(N-n)!}$$
 

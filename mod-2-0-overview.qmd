@@ -44,7 +44,7 @@ The following textbooks are available for free. Please select the links provided
 
 ------------------------------------------------------------------------
 
-## Moudle To Do List
+## Module To Do List
 
 -   Complete the hands-on coding exercises embedded in each lesson (MLO 3, MLO 5)\
 -   Complete the weekly class assignment (MLO 1 - MLO 5)\
