@@ -30,7 +30,7 @@ $$
 \omega \in \Omega
 $$
 
-a random variable determine the **Probability Mass Function**
+a random variable determines the **Probability Mass Function**
 
 $$
 P(X(\omega))
@@ -56,7 +56,7 @@ $$
 \Omega = \{AA, AB, BA, BB \}
 $$
 
-Since we are not concerned with ordering, the outcome $AB$ is concerned the same as the outcome $BA$.
+Since we are not concerned with ordering, the outcome $AB$ is considered the same as the outcome $BA$.
 
 **The function** $X$ **maps each possible pair of observations to the total number of A's obtained.**
 
@@ -66,17 +66,17 @@ Since we are not concerned with ordering, the outcome $AB$ is concerned the same
 
 -   $X(BB) = 0$ and the probability of observing $X$ is $P(X) = 1/4$ .
 
-+-------------------+--------------------+-------------------+
-| $\omega$          | $X(\omega)$        | $P(X)$            |
-+===================+====================+===================+
-| AA                | 2                  | $\frac{1}{4}$     |
-+-------------------+--------------------+-------------------+
-| AB                | 1                  | $\frac{1}{2}$     |
-|                   |                    |                   |
-| BA                | 1                  |                   |
-+-------------------+--------------------+-------------------+
-| BB                | 0                  | $\frac{1}{4}$     |
-+-------------------+--------------------+-------------------+
++------------------+-------------------+------------------+
+| $\omega$         | $X(\omega)$       | $P(X)$           |
++==================+===================+==================+
+| AA               | 2                 | $\frac{1}{4}$    |
++------------------+-------------------+------------------+
+| AB               | 1                 | $\frac{1}{2}$    |
+|                  |                   |                  |
+| BA               | 1                 |                  |
++------------------+-------------------+------------------+
+| BB               | 0                 | $\frac{1}{4}$    |
++------------------+-------------------+------------------+
 
 : PMF Example
 
@@ -90,7 +90,7 @@ $$
 P(X = x) = P(X = BB) = P(0) = 1/4 = 0.25
 $$
 
-What is we want to know the likelihood of observing 1 or fewer A's?
+What if we want to know the likelihood of observing 1 or fewer A's?
 
 In other words, we want to know
 
@@ -146,7 +146,7 @@ The experiment consisted of 5 trials, the outcomes were heads (success) and tail
 
 ## Combinations and Experiments
 
-We first need determine the number of successes, $x$, in the trials, $n$.
+We first need to determine the number of successes, $x$, in the trials, $n$.
 
 A combination examines the number of ways objects can be selected, without regard to the order in which they are selected.
 
@@ -156,7 +156,7 @@ $$\binom{n}{x} = \frac{n!}{x!(n-x)!}$$ If the number of successes is 2 and numbe
 
 $$\binom{3}{2} = \frac{3!}{2!(3-2)!} = 3$$
 
-If the number of successes is 5 and the number of trails is 10, the $x = 5$ and $n = 10$ and:
+If the number of successes is 5 and the number of trials is 10, the $x = 5$ and $n = 10$ and:
 
 $$\binom{10}{5} = \frac{10!}{5!(10-5)!} = 252$$
 
@@ -173,7 +173,7 @@ kable(combos,
 
 ```
 
-## Binominal Probability Function
+## Binomial Probability Function
 
 Let $x$ be the number of successes.
 
@@ -269,7 +269,7 @@ The problem statement:
 
 -   We know that the probability of the switch being on is $p = 0.95$.
 
--   We assume that the probability remains constant,
+-   We assume that the probability remains constant.
 
 -   We assume that the current switch position is independent of the previous switch position.
 
@@ -281,7 +281,7 @@ The problem statement:
 
 What is the probability that $x = 7$, that is, $P(X = 7)$?
 
-What is the probability that $x$ is less than 7, that is $P(x \le 7)$?
+What is the probability that $x$ is less than or equal to 7, that is $P(x \le 7)$?
 
 The code below does the following:
 
@@ -299,11 +299,11 @@ In other words:
 
 -   We evaluate $P(X \le 7)$ using the **pbinom** function
 
--   We show $P(X \le 7) = \sum_{i = 1}^7 P(X = x_i)$
+-   We show $P(X \le 7) = \sum_{i = 0}^7 P(X = x_i)$
 
-We find that the probability of observing 7 successes in an experiment with 10 trials and a probability of success of 0.95 in any given trial is equal to 0.0195.
+We find that the probability of observing 7 successes in an experiment with 10 trials and a probability of success of 0.95 in any given trial is equal to 0.0105.
 
-We find that probability of observing 7 or fewer successes in an experiment with 10 trials and a probability of success of 0.95 in any given trail is equal to 0.0115.
+We find that probability of observing 7 or fewer successes in an experiment with 10 trials and a probability of success of 0.95 in any given trial is equal to 0.0115.
 
 ```{r, warning = FALSE, message = FALSE}
 
@@ -335,7 +335,7 @@ kable_styling(font_size = 14,
 
 ## Graphical Binomial PMF
 
-The code below provides a graphical illustrate of three binomial PMFs.
+The code below provides a graphical illustration of three binomial PMFs.
 
 The number of trials is equal to 100.
 
@@ -347,7 +347,7 @@ In the second case, the probability of success in any given trial is 0.4.
 
 In the third case, the probability of success in any given trial is 0.5.
 
-You should observe that the center of each PFM shifts right as the probability of success in any given independent trail increases.
+You should observe that the center of each PMF shifts right as the probability of success in any given independent trial increases.
 
 ```{r, warning = FALSE, message = FALSE}
 
@@ -380,7 +380,7 @@ labs(title = "Binomial Probability Mass Function",
 
 ## Graphical Binomial CDF
 
-The code below provides a graphical illustrate of three binomial CDFs.
+The code below provides a graphical illustration of three binomial CDFs.
 
 The number of trials is equal to 100.
 
@@ -418,7 +418,7 @@ theme_minimal() +
 theme(legend.position = " ") +
 labs(title = "Binomial Cumulative Distribution Function",
      x     = " ",
-     y     = "P(X = x)")
+     y     = "P(X <= x)")
 
 ```
 

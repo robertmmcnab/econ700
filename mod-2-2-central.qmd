@@ -292,7 +292,7 @@ For the population mean, $\mu$, the weights are equal to $1/N$ or
 
 $$\mu = \frac{1}{N} \sum_{i = 1}^N = \frac{1}{N}x_1 + \frac{1}{N}x_2 + \dots + \frac{1}{N}x_N$$
 
-Given $n$ observations of $x$, the weighted sampel average $\bar{x}_w$, is defined as:
+Given $n$ observations of $x$, the weighted sample average $\bar{x}_w$, is defined as:
 
 $$\bar{x}_w = \sum_{i = 1}^n w_i \times x_i$$
 

@@ -10,7 +10,7 @@ editor: visual
 
 -   CLO 2: **Acquire**, **manage**, and **prepare** economic data by applying programming techniques in R, including data extraction from APIs and other official sources.
 
--   CLOE 3: **Apply** descriptive statistics, probability concepts, and sampling methods to summarize, visualize, and interpret economic data.
+-   CLO 3: **Apply** descriptive statistics, probability concepts, and sampling methods to summarize, visualize, and interpret economic data.
 
 -   CLO 4: **Conduct** hypothesis testing and interval estimation to draw valid inferences from economic and financial data.
 

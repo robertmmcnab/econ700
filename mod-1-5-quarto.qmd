@@ -50,7 +50,7 @@ The getting started page will help you understand the capabilities of Quarto.
 
 ## Creating a File
 
-In RStudio, go to File -\> New File -\> New Quartro Document.
+In RStudio, go to File -\> New File -\> New Quarto Document.
 
 You will see the window below. Let's say we name our document: **Example-1**.
 

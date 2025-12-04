@@ -62,7 +62,7 @@ If we assume a normal distribution and an individual scores 190.
 $$Z_{190} = \frac{x_i - \mu}{\sigma} = \frac{190 - 150}{25} = 1.6$$
 A Z-score of 1.6 means that the individual's score of 190 is 1.6 standard deviations from the population mean. Given the value of the Z-score is positive, this means the score of 190 lies 1.6 standard deviations to the right of the population mean.
 
-What is an individual scored 100?
+What if an individual scored 100?
 
 $$Z_{100} = \frac{x_i - \mu}{\sigma} = \frac{100 - 150}{25} = -2$$
 A Z-score of -2 means that the individual's score is 2 standard deviations to the **left** of the population mean. The negative value of the Z-score means that the individual scored less than the population mean.

@@ -181,11 +181,11 @@ The loss of a **degree of freedom** requires the use $n-1$ in the sample varianc
 
 The sample variance, $s^2$, is estimated by:
 
-$$s^2 = \frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2$$
+$$s^2 = \frac{1}{n-1} \sum_{i = 1}^n (x_i - \bar{x})^2$$
 
 The sample standard deviation, $s$, is estimated by:
 
-$$s = \sqrt{\frac{1}{n-1} \sum_{i = 1}^N (x_i - \bar{x})^2}$$ **R** (as with most programs) calculates the sample variance and sample standard deviation.
+$$s = \sqrt{\frac{1}{n-1} \sum_{i = 1}^n (x_i - \bar{x})^2}$$ **R** (as with most programs) calculates the sample variance and sample standard deviation.
 
 As $n$ increases, the impact of dividing by $n-1$ rather than $N$ declines.
 

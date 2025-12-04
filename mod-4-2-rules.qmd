@@ -68,7 +68,7 @@ Third, if we sum the probabilities of each outcome across all outcomes then the 
 
 Assume we have a random experiment with $n$ outcomes in the sample space. We can compute the probability of each outcome using the proportion of occurrence of each outcome to the total number of occurrences. In other words, the probability of an outcome $o_i$ is equal to ratio of the number of times $o_i$ occurs relative to the total number of occurrences across all outcomes.
 
-In the following code, we create a data frame with for the reactions to the administration of a drug. We calculate the relative frequency of each type of reaction by:
+In the following code, we create a data frame with the reactions to the administration of a drug. We calculate the relative frequency of each type of reaction by:
 
 $$
 P(Reaction_i) = \frac{Cases_i}{sum_{i=1}^{N} Cases_i}
@@ -187,11 +187,17 @@ $$
 
 Let's return to the 10-sided die experiment.
 
-Assume that event A consists of the outcomes $A \in \{1, 2, 3 \}$ and B is an event consisting of the outcomes $B \in \{9. 10 \}$.
+Assume that event A consists of the outcomes $A \in \{1, 2, 3 \}$ and B is an event consisting of the outcomes $B \in \{9, 10 \}$.
 
 The union of A and B, $A \cup B$ is an event consisting of the outcomes $A \cup B \in \{1, 2, 3, 9, 10 \}$.
 
 Consider the same experiment where $C \in \{4, 6, 8 \}$ and $D \in \{4, 5, 8, 10 \}$.
+
+What is the union of $C$ and $D$?
+
+$$
+C \cup D \in \{4, 5, 6, 8, 10\}
+$$
 
 
 ## Intersection
@@ -206,7 +212,16 @@ $$
 C \cap D
 $$
 
-Recall from the previous discussion of the union of two events that $C \in \{4, 6, 8 \}$ and $D \in \{4, 5, 8, 10 \}$. The intersection of C and D is $C \cap D \in \{4, 8 \}$.
+Recall from the previous discussion of the union of two events that $C \in \{4, 6, 8 \}$ and $D \in \{4, 5, 8, 10 \}$. 
+
+The union of C and D is:
+
+$$
+C \cup D \in \{4, 5, 6, 8, 10\}
+$$
+The intersection of C and D is 
+
+$$C \cap D \in \{4, 8 \}$$
 
 ## Mutually Exclusive Events
 
@@ -220,7 +235,7 @@ Assume a 52-card deck of cars. Let **A** consist of all the Kings in the deck wh
 
 $$A \in \{K_c, K_d, K_h, K_s \}$$
 
-$$B \in \{Q_c, Q_d, Q_h, Q_d \}$$
+$$B \in \{Q_c, Q_d, Q_h, Q_s \}$$
 
 There are no elements in common between the two events, that is,
 
@@ -242,7 +257,7 @@ $$
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
 $$
 
-Since A and B share outcomes in common, then the probability of either event occurring is equal to the probability of each event occurring minus the probability that of A and B occurring. The subtraction of the intersection of the event events avoids double-counting.
+Since A and B share outcomes in common, then the probability of either event occurring is equal to the probability of each event occurring minus the probability that of A and B occurring. The subtraction of the intersection of the event avoids double-counting.
 
 Returning to the 52-card deck example, what is the probability that a card is either a King or a Heart? There are 4 Kings in a deck and 13 Hearts in a deck. 1 of the 13 hearts in the deck is a King.
 

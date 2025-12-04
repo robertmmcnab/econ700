@@ -260,7 +260,7 @@ df_4 <- df_3 %>%
 
 kable(df_4,
       col.names = c('Mean Inflation',
-                    'Mean Unemploymnet',
+                    'Mean Unemployment',
                     'Covariance Inflation and Unemployment'),
       align     = 'c') %>%
 kable_classic()

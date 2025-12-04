@@ -2388,7 +2388,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="multistep-examples" class="level2" data-number="20.4">
 <h2 data-number="20.4" class="anchored" data-anchor-id="multistep-examples"><span class="header-section-number">20.4</span> Multistep Examples</h2>
 <p>In our first example, assume we are flipping a fair two-sided coin five times.</p>
-<p>Given that <span class="math inline">\(k = 5\)</span> and <span class="math inline">\(n_1 = 5, n_2 = 5, n_3 = 5, n_4 = 5, n_5 = 5\)</span>, then number outcomes in the sample space of the random experiment is equal to:</p>
+<p>Given that <span class="math inline">\(k = 5\)</span> and <span class="math inline">\(n_1 = 2, n_2 = 2, n_3 = 2, n_4 = 2, n_5 = 2\)</span>, then number outcomes in the sample space of the random experiment is equal to:</p>
 <p><span class="math display">\[s = n_1 \times n_2 \times n_3 \times n_4 \times n_5 = 2 \times 2 \times 2 \times 2 \times 2 = 2^5 = 32\]</span></p>
 <p>In our second example, assume that we are throwing a fair six-sided die followed by a fair two-sided coin followed by a fair twenty-sided die.</p>
 <p>Given that <span class="math inline">\(k =3\)</span> and <span class="math inline">\(n_1 = 6, n_2 = 2, n_3 = 20\)</span>, then the number of outcomes in the sample space is equal to:</p>
@@ -2399,7 +2399,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>A factorial is merely a series of products and are indicated by an exclamation mark.</p>
 <p>The factorial function of a positive integer <span class="math inline">\(n\)</span> is defined as the product of all the positive integers not greater than <span class="math inline">\(n\)</span>.</p>
 <p><span class="math display">\[
-n! = 1 \times 2 \times 3\ \times 4 \dots (n-2) \times (n-1) \times n
+n! = 1 \times 2 \times 3 \times 4 \dots (n-2) \times (n-1) \times n
 \]</span> For example, 5 factorial can be represented as</p>
 <p><span class="math display">\[
 5! = 5 \times 4 \times 3 \times 2 \times 1 = 120
@@ -2452,13 +2452,13 @@ n! = 1 \times 2 \times 3\ \times 4 \dots (n-2) \times (n-1) \times n
 </section>
 <section id="combinations-in-r" class="level2" data-number="20.8">
 <h2 data-number="20.8" class="anchored" data-anchor-id="combinations-in-r"><span class="header-section-number">20.8</span> Combinations in R</h2>
-<p>In the following examples, we show how to calculate the factorial of a value in R, the manual calculation of combination without replacement, and using the <strong>choose}</strong> function to calculate the combination without replacement.</p>
+<p>In the following examples, we show how to calculate the factorial of a value in R, the manual calculation of combination without replacement, and using the <strong>choose</strong> function to calculate the combination without replacement.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="lottery-example" class="level2" data-number="20.9">
 <h2 data-number="20.9" class="anchored" data-anchor-id="lottery-example"><span class="header-section-number">20.9</span> Lottery Example</h2>
-<p>A good example is a lottery. Assume that the lottery requires you to pick six numbers from 1 to 70. The numbers are picked without replacement. In other words, there are 70 objects (<span class="math inline">\(N\)</span>) and 6 objects (<span class="math inline">\(n\)</span>) are selected without replacement?</p>
+<p>A good example is a lottery. Assume that the lottery requires you to pick six numbers from 1 to 70. The numbers are picked without replacement. In other words, there are 70 objects (<span class="math inline">\(N\)</span>) and 6 objects (<span class="math inline">\(n\)</span>) are selected without replacement.</p>
 <p>How many possible outcomes are there in the sample space for this lottery? The example code below demonstrates how to calculate the number of outcomes in the sample space when there are 70 objects and 6 objects are selected without replacement. There are 131,115,985 possible combinations or outcomes in the sample space for this experiment.</p>
 <p>However, lotteries found that larger jackpots attracted more customers. How do you boost the jackpot? One method is to have players pick a number of balls from one set of numbers without replacement and then another ball from another set of numbers. This “megaball” or “powerball” increases the number of possible combinations.</p>
 <p>In the Virginia lottery Megamillions game, you pick 5 balls from 70 balls and then one ball from a separate 25 balls. The number of possible outcomes is equal to the combination of 70 balls picking 5 without replacement and then 1 ball from 25 possible balls. As you can see in the example below, the number of potential combinations increases to 302,575,350.</p>
