@@ -599,11 +599,11 @@ P(X \le 3)
 \mu = (10/60) \times 15 = 2.5
 \]</span></p>
 <p><span class="math display">\[
-P(X \le 15)
+P(X \le 0)
 \]</span></p>
 <p>What is the probability of at least one arrival in a 15-second period?</p>
 <p><span class="math display">\[
-P(X \ge 0)
+P(X \ge 1)
 \]</span></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
@@ -614,10 +614,10 @@ P(X \ge 0)
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># mu_60 = 10 per 60 seconds</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># mu_15 = 2.5 per 15 second</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>poissons <span class="ot">&lt;-</span> <span class="fu">tibble</span>(p_x0_1min <span class="ot">&lt;-</span> <span class="fu">ppois</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>poissons <span class="ot">&lt;-</span> <span class="fu">tibble</span>(p_x0_1min <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                   p_x12_1min <span class="ot">&lt;-</span> <span class="fu">ppois</span>(<span class="dv">12</span>, <span class="dv">10</span>),</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                   p_xle3_1min <span class="ot">&lt;-</span> <span class="fu">ppois</span>(<span class="dv">3</span>, <span class="dv">10</span>),</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                   p_x0_15sec <span class="ot">&lt;-</span> <span class="fu">ppois</span>(<span class="dv">0</span>, <span class="fl">2.5</span>),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                   p_x0_15sec <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="dv">0</span>, <span class="fl">2.5</span>),</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                   p_xge1_15sec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">dpois</span>(<span class="dv">0</span>, <span class="fl">2.5</span>))</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(poissons,</span>
@@ -936,7 +936,7 @@ P(X = 775)
 <section id="the-r-function-in-r" class="level2" data-number="26.10">
 <h2 data-number="26.10" class="anchored" data-anchor-id="the-r-function-in-r"><span class="header-section-number">26.10</span> The R Function in R</h2>
 <p>The function <strong>rbinom</strong> generates a vector of binomial distributed random variables given the number of experiments <span class="math inline">\(m\)</span>, the number of trials in each experiment <span class="math inline">\(n\)</span>, and the probability of success <span class="math inline">\(p\)</span>.</p>
-<p>The function <strong>rpois</strong> generates a vector of Poisson distributed random variables given the number of experiments <span class="math inline">\(m\)</span> and the arrival rate <span class="math inline">\(\mu\)</span>.</p>
+<p>The function <strong>rpois</strong> generates a vector of Poisson distributed random variables given the number of experiments <span class="math inline">\(m\)</span> and the arrival rate <span class="math inline">\(\lambda\)</span>.</p>
 <p>The function <strong>rnorm</strong> generates a vector of normally distributed random variables given <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#set the number of observations (experiments) to 5</span></span>
@@ -969,29 +969,29 @@ P(X = 775)
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">13.312304</td>
+</tr>
+<tr class="even">
 <td style="text-align: center;">50</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">8.129466</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">11.262161</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">11.025640</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">47</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">11.437068</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">9.076227</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">46</td>
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">9.278799</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">8.718651</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">50</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">9.047603</td>
+<td style="text-align: center;">53</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">11.176074</td>
 </tr>
 </tbody>
 </table>

@@ -2401,7 +2401,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>For an infinite population, the standard error of the mean <span class="math inline">\(\bar{x}\)</span> is:</p>
 <p><span class="math display">\[se(\bar{x}) = \sigma_{\bar{x}} = \frac{\sigma_x}{\sqrt{n}}\]</span></p>
 <p>Since the standard deviation of the population <span class="math inline">\(\sigma_x\)</span> is typically unknown, we use the sample standard deviation <span class="math inline">\(s\)</span> or</p>
-<p><span class="math display">\[\hat{\sigma_x} = s(\bar{x}) = \frac{s_x}{\sqrt{n}}\]</span></p>
+<p><span class="math display">\[\hat{\sigma_\bar{x}} = s(\bar{x}) = \frac{s_x}{\sqrt{n}}\]</span></p>
 </section>
 <section id="finite-population" class="level2" data-number="34.2">
 <h2 data-number="34.2" class="anchored" data-anchor-id="finite-population"><span class="header-section-number">34.2</span> Finite Population</h2>
@@ -2643,7 +2643,7 @@ se(\bar{x}) = \frac{s}{\sqrt{n}} = \frac{2,750}{\sqrt{600}} = 112.27
 <p><span class="math display">\[
 P(\bar{x} \le 52,400) = P(Z \le \frac{52400-52500}{112.27}) = 0.1865
 \]</span></p>
-<p>In the code chunk below, we create simulated population of 500,000 observations and then take samples of 60, 600, and 6000 from the population. We then estimate the probability of observing a sample average of 52,400 for each of the sample sizes.</p>
+<p>In the code chunk below, we create simulated population of 500,000 observations and then take samples of 60, 600, and 3,600 from the population. We then estimate the probability of observing a sample average of 52,400 for each of the sample sizes.</p>
 <p>As one would expect, given the Central Limit Theorem, as you increase the sample size, the standard error of the sample average estimator declines, and the probability of observing a sample with an average income of 52,400 declines.</p>
 <div class="cell" data-warnings="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>

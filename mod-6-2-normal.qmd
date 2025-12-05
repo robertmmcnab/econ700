@@ -351,11 +351,11 @@ labs(x = "X",
 
 ggplot() +
     geom_line(data = df_1, aes(x = x, y = y2, color = 'red')) +
-    stat_function(fun   = dunif, 
-                  args  = list(min = 30, max = 50),
-                  color = "blue") +
     stat_function(fun   = dnorm, 
                   args  = list(mean = 50, sd = 3.5),
+                  color = "blue") +
+    stat_function(fun   = dnorm, 
+                  args  = list(mean = 50, sd = 4.5),
                   color = "purple") +
 theme_minimal() +
 theme(legend.position = "") +

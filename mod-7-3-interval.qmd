@@ -44,7 +44,7 @@ $$se(\bar{x}) = \sigma_{\bar{x}} = \frac{\sigma_x}{\sqrt{n}}$$
 Since the standard deviation of the population $\sigma_x$ is typically
 unknown, we use the sample standard deviation $s$ or
 
-$$\hat{\sigma_x} = s(\bar{x}) = \frac{s_x}{\sqrt{n}}$$
+$$\hat{\sigma_\bar{x}} = s(\bar{x}) = \frac{s_x}{\sqrt{n}}$$
 
 ## Finite Population
 
@@ -308,7 +308,7 @@ P(\bar{x} \le 52,400) = P(Z \le \frac{52400-52500}{112.27}) = 0.1865
 $$
 
 In the code chunk below, we create simulated population of 500,000
-observations and then take samples of 60, 600, and 6000 from the
+observations and then take samples of 60, 600, and 3,600 from the
 population. We then estimate the probability of observing a sample
 average of 52,400 for each of the sample sizes.
 

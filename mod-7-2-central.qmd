@@ -116,7 +116,7 @@ $$
 
 ## Law of Large Numbers
 
-The **large of large numbers** states that the average of an experiment
+The **Law of Large Numbers** states that the average of an experiment
 will converge to the expected value as more trials of the experiment are
 performed.
 
@@ -326,11 +326,11 @@ probability distribution of all possible values of the sample average
 estimator.
 
 Recall that a collection of random variables is identically and
-identically distributed if each random variable has the same probability
-distribution as the others and all are mutually independent.
+independently distributed if each random variable has the same
+probability distribution as the others and all are mutually independent.
 
-First, assume that the random variables are identically and identically
-distributed or:
+First, assume that the random variables are identically and
+independently distributed or:
 
 $$
 x_1, x_2, \dots, x_n \sim i.i.d

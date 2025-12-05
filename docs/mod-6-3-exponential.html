@@ -550,7 +550,8 @@ window.Quarto = {
 <h2 data-number="30.1" class="anchored" data-anchor-id="exponential-distribution"><span class="header-section-number">30.1</span> Exponential Distribution</h2>
 <p>The <strong>exponential probability distribution</strong> is the probability distribution of the time between events in a <strong>Poisson process</strong>.</p>
 <p>An assumption is that events occur continuously and independently at a constant average rate</p>
-<p>The exponential probability distribution is <strong>memoryless</strong>, that is, the distribution of ‘waiting time’ until a certain event does not depend on how much time has elasped.</p>
+<p>The exponential probability distribution is <strong>memoryless</strong>, that is, the distribution of ‘waiting time’ until a certain event does not depend on how much time has elapsed.</p>
+<p>Let the random variable, <span class="math inline">\(x\)</span>, represent the time until the next event, then:</p>
 <p><span class="math display">\[P(X &gt; s+t | X &gt; t) = P(X &gt; s)\]</span></p>
 <p>The probability density function of the exponential probability distribution is: <span class="math display">\[P(x;\lambda) = \lambda \, e^{-\lambda \, x} \quad \forall \, x \ge 0\]</span></p>
 <p><span class="math display">\[P(x;\lambda) = 0 \quad \forall \, x &lt; 0\]</span></p>
@@ -559,14 +560,15 @@ window.Quarto = {
 <section id="exponential-properties" class="level2" data-number="30.2">
 <h2 data-number="30.2" class="anchored" data-anchor-id="exponential-properties"><span class="header-section-number">30.2</span> Exponential Properties</h2>
 <p>Let <span class="math inline">\(\mu\)</span> be the expected value or mean of the exponential probability distribution.</p>
+<p>Let <span class="math inline">\(x\)</span> represent a random variable whose behavior is described by an exponential probability distribution.</p>
 <p>Let <span class="math inline">\(\mu\)</span> also be defined in terms of the rate parameter <span class="math inline">\(\lambda\)</span> or:</p>
 <p><span class="math display">\[E[x] = \mu = \frac{1}{\lambda}\]</span></p>
 <p><span class="math display">\[var(x) = \frac{1}{\lambda^2}\]</span></p>
 <p>The PDF of the exponential distribution can also be stated as:</p>
 <p><span class="math display">\[f(x;\mu) = \frac{1}{\mu} \, e^{-(x/ \mu)} \quad \forall \, x \ge 0, \quad 0 \, \text{otherwise}\]</span></p>
 <p>Given this discussion, we can state the CDF of the exponential distribution in two ways:</p>
-<p><span class="math display">\[F(x;\lambda) = \int_{-\infty}^{x} \, f(x) dx = 1 - e^{\lambda \, x} \quad \forall \, x \ge 0, \quad 0 \, \text{otherwise}\]</span></p>
-<p><span class="math display">\[F(x;\mu) = 1 - e^{-x_o / \mu} \quad \forall \, x \ge 0, \quad 0 \, \text{otherwise}\]</span></p>
+<p><span class="math display">\[F(x;\lambda) = \int_{-\infty}^{x} \, f(x) dx = 1 - e^{-\lambda \, x} \quad \forall \, x \ge 0, \quad 0 \, \text{otherwise}\]</span></p>
+<p><span class="math display">\[F(x;\mu) = 1 - e^{-x / \mu} \quad \forall \, x \ge 0, \quad 0 \, \text{otherwise}\]</span></p>
 </section>
 <section id="exponential-example" class="level2" data-number="30.3">
 <h2 data-number="30.3" class="anchored" data-anchor-id="exponential-example"><span class="header-section-number">30.3</span> Exponential Example</h2>
@@ -594,7 +596,7 @@ window.Quarto = {
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                q3 <span class="ot">&lt;-</span> <span class="fu">pexp</span>(<span class="dv">18</span>, lambda, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>) <span class="sc">-</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">pexp</span>(<span class="dv">12</span>, lambda, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                q4 <span class="ot">&lt;-</span> <span class="fu">qexp</span>(<span class="fl">0.2</span>, lambda, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                q5 <span class="ot">&lt;-</span> <span class="fu">qexp</span>(<span class="fl">0.86</span>, lambda, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                q5 <span class="ot">&lt;-</span> <span class="fu">qexp</span>(<span class="fl">0.15</span>, lambda, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>))</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(exp_1,</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">align     =</span> <span class="st">'c'</span>,</span>
@@ -624,7 +626,7 @@ window.Quarto = {
 <td style="text-align: center;">0.264</td>
 <td style="text-align: center;">0.148</td>
 <td style="text-align: center;">3.347</td>
-<td style="text-align: center;">2.262</td>
+<td style="text-align: center;">28.457</td>
 </tr>
 </tbody>
 </table>

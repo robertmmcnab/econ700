@@ -93,13 +93,13 @@ $$
 $$
 
 $$
-P(X \le 15)
+P(X \le 0)
 $$
 
 What is the probability of at least one arrival in a 15-second period?
 
 $$
-P(X \ge 0)
+P(X \ge 1)
 $$
 
 ```{r, message = FALSE, warning = FALSE}
@@ -112,10 +112,10 @@ library(kableExtra)
 # mu_60 = 10 per 60 seconds
 # mu_15 = 2.5 per 15 second
 
-poissons <- tibble(p_x0_1min <- ppois(0, 10),
+poissons <- tibble(p_x0_1min <- dpois(0, 10),
                    p_x12_1min <- ppois(12, 10),
                    p_xle3_1min <- ppois(3, 10),
-                   p_x0_15sec <- ppois(0, 2.5),
+                   p_x0_15sec <- dpois(0, 2.5),
                    p_xge1_15sec <- 1-dpois(0, 2.5))
 
 kable(poissons,
@@ -390,7 +390,7 @@ kable_styling(font_size = 14)
 
 The function **rbinom** generates a vector of binomial distributed random variables given the number of experiments $m$, the number of trials in each experiment $n$, and the probability of success $p$.
 
-The function **rpois** generates a vector of Poisson distributed random variables given the number of experiments $m$ and the arrival rate $\mu$.
+The function **rpois** generates a vector of Poisson distributed random variables given the number of experiments $m$ and the arrival rate $\lambda$.
 
 The function **rnorm** generates a vector of normally distributed random variables given $\mu$ and $\sigma$.
 

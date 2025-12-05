@@ -35,7 +35,10 @@ constant average rate
 
 The exponential probability distribution is **memoryless**, that is, the
 distribution of 'waiting time' until a certain event does not depend on
-how much time has elasped.
+how much time has elapsed.
+
+Let the random variable, $x$, represent the time until the next event,
+then:
 
 $$P(X > s+t | X > t) = P(X > s)$$
 
@@ -53,6 +56,9 @@ the **rate parameter**.
 Let $\mu$ be the expected value or mean of the exponential probability
 distribution.
 
+Let $x$ represent a random variable whose behavior is described by an
+exponential probability distribution.
+
 Let $\mu$ also be defined in terms of the rate parameter $\lambda$ or:
 
 $$E[x] = \mu = \frac{1}{\lambda}$$
@@ -66,9 +72,9 @@ $$f(x;\mu) = \frac{1}{\mu} \, e^{-(x/ \mu)} \quad \forall \, x \ge 0, \quad 0 \,
 Given this discussion, we can state the CDF of the exponential
 distribution in two ways:
 
-$$F(x;\lambda) = \int_{-\infty}^{x} \, f(x) dx = 1 - e^{\lambda \, x} \quad \forall \, x \ge 0, \quad 0 \, \text{otherwise}$$
+$$F(x;\lambda) = \int_{-\infty}^{x} \, f(x) dx = 1 - e^{-\lambda \, x} \quad \forall \, x \ge 0, \quad 0 \, \text{otherwise}$$
 
-$$F(x;\mu) = 1 - e^{-x_o / \mu} \quad \forall \, x \ge 0, \quad 0 \, \text{otherwise}$$
+$$F(x;\mu) = 1 - e^{-x / \mu} \quad \forall \, x \ge 0, \quad 0 \, \text{otherwise}$$
 
 ## Exponential Example
 
@@ -106,7 +112,7 @@ exp_1 <- tibble(q1 <- pexp(6, lambda, lower.tail = TRUE),
                 q3 <- pexp(18, lambda, lower.tail = TRUE) -
                       pexp(12, lambda, lower.tail = TRUE),
                 q4 <- qexp(0.2, lambda, lower.tail = TRUE),
-                q5 <- qexp(0.86, lambda, lower.tail = FALSE))
+                q5 <- qexp(0.15, lambda, lower.tail = FALSE))
 
 kable(exp_1,
       align     = 'c',
