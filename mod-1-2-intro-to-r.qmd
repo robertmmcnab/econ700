@@ -34,13 +34,13 @@ The simple answer is that Excel is good for some things but R is better for the 
 
 Writing code (programming) allows for:
 
--   Reproducibility (code provides transparency to processes)
+-   **Reproducibility** (code provides transparency to processes)
 
--   Customization (many solutions to a problem)
+-   **Customization** (many solutions to a problem)
 
--   Automation (code once, run many times)
+-   **Automation** (code once, run many times)
 
--   Accountability (the programmer is responsible for what the code does)
+-   **Accountability** (the programmer is responsible for what the code does)
 
 Other programs have lower fixed costs than R. These programs, whether Excel, SAS, SPSS, or TSP, have 'built in' functions and interfaces that allow 'easier entry' than R. In other words, you will invest less time to learn how to start working in other programs than R.
 
@@ -62,21 +62,20 @@ R is the statistical software package that we will use throughout the course.
 
 RStudio is an interface that makes using R much easier.
 
-The **R Project** is located at: <https://www.r-project.org/>
+**You should first install R and then install RStudio.**
 
 ## Downloading R
 
-You can download **R** at: <https://cloud.r-project.org/>
-
-Select the correct operating system to download and install R.
+-   Select the link to access: [**The R Project for Statistical Computing**](https://www.r-project.org/)
+-   Select the correct operating system to download and install R.
 
 ## Downloading RStudio
 
-You can download **RStudio** at: <https://posit.co/download/rstudio-desktop/>
+-   Select the link to access and download: [**RStudio**](https://posit.co/download/rstudio-desktop/)
 
-Note how Posit tells you to install R and then RStudio.
+-   Note how Posit tells you to install R and then RStudio.
 
-You can also use **Posit Cloud** from Posit at: <https://posit.cloud/>
+-   You can also use [**Posit Cloud**](https://posit.cloud/) from Posit.
 
 ## Tutorials in R
 
@@ -84,29 +83,29 @@ There are numerous tutorials online on how to use R.
 
 Some overviews that might be helpful:
 
-The Big Book of R: <https://www.bigbookofr.com/>
+-   [The Big Book of R](https://www.bigbookofr.com/)
 
-Getting Started with R: <https://rfortherestofus.com/courses/getting-started/>
+-   [Getting Started with R](https://rfortherestofus.com/courses/getting-started/)
 
-R Programming for Beginners: <https://youtu.be/fDRa82lxzaU>
+-   [R Programming for Beginners](https://youtu.be/fDRa82lxzaU)
 
-R Programming Tutorial: <https://youtu.be/_V8eKsto3Ug>
+-   [R Programming Tutorial](https://youtu.be/_V8eKsto3Ug)
 
 ## How to Get Better at Coding
 
 No coder works alone. Everyone (and yes, I mean everyone) relies on the expertise of others to code.
 
-What does this mean?
+**What does this mean?**
 
 When you are working on code, try it yourself first. If something doesn't work, look for small typos.
 
 You can then start asking other resources for help.
 
-Artificial Intelligence (AI) is helpful to debug code. It can even write code for you, if you know what you are doing.
+**Artificial Intelligence (AI)** is helpful to debug code. It can even write code for you, if you know what you are doing.
 
 *Remember, however, that AI is only as good as its algorithm and your prompt. It can (and will) give you answers that are incorrect, answers that appear correct but are wrong, or lead you through solution paths that are inefficient.*
 
-Coding is a dance between what you know and what you can find. The more that you do on your own, the better you will be able to use AI to help you improve (not write) your code.
+**Coding is a dance between what you know and what you can find. The more that you do on your own, the better you will be able to use AI to help you improve (not write) your code.**
 
 ## Opening RStudio
 
@@ -148,15 +147,15 @@ For example, **library(dplyr)** loads the dplyr package so we can use its functi
 
 To learn more about each package, see the following links.
 
-dplyr: <https://dplyr.tidyverse.org/>
+-   [dplyr](https://dplyr.tidyverse.org/)
 
-ggplot2: <https://ggplot2.tidyverse.org/articles/ggplot2.html>
+-   [ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 
-lubridate: <https://lubridate.tidyverse.org/>
+-   [lubridate](https://lubridate.tidyverse.org/)
 
-tidyverse: <https://www.tidyverse.org/>
+-   [tidyverse](https://www.tidyverse.org/)
 
-kable: <https://cran.r-project.org/web/packages/kableExtra>
+-   [kable](https://cran.r-project.org/web/packages/kableExtra)
 
 ```{r, message = FALSE}
 

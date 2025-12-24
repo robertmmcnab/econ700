@@ -90,7 +90,8 @@ UNRATE <- tq_get(c("LNS14000003",
           filter(date > ymd("2023-01-01")) %>%
   mutate(race = ifelse(symbol == "LNS14000003", "White",
                 ifelse(symbol == "LNS14000006", "Black or African American",
-                ifelse(symbol == "LNS14000009", "Hispanic", "NA"))))
+                ifelse(symbol == "LNS14000009", "Hispanic", "NA")))) %>%
+  filter(!is.na(price))
 
 chartdate <- UNRATE %>%
   mutate(month_mindate = lubridate::month(min(date), label = TRUE, abbr = FALSE),
@@ -116,7 +117,8 @@ theme_minimal()+
 theme(legend.position="bottom",
       legend.title = element_blank(),
       legend.text = element_text(size = 10),
-      legend.box.margin = margin(c(-10,-10,0,-10)),
+      legend.box.margin = margin(c(-10)),
+      axis.text.x = element_text(size = 5, angle = 90, vjust = 0.5, hjust = 1),
       plot.caption=element_text(hjust=0),
       plot.subtitle=element_text(size=12,face="italic",color="darkgray"),
       plot.title=element_text(size=12,face="bold",color="black")) +
@@ -131,7 +133,7 @@ labs(x        = "",
 
 ## Unemployment Rate for Selected States
 
-In the table below, we obtain data on unemployment rates for Virginia, Maryland, North Carolina, West Virginia, and the United States from <https://fred.stlouisfed.org> or 'FRED'.
+In the table below, we obtain data on unemployment rates for Virginia, Maryland, North Carolina, West Virginia, and the United States from the [Federal Reserve Economic Data (FRED) website](https://fred.stlouisfed.org/).
 
 In the table, each row corresponds to a geography (state or nation) while each column represents a variable for that geography. Note that only the last period available is represented in the table.
 
@@ -173,11 +175,11 @@ Statistics can also refer to the **art** and **science** of collecting, analyzin
 
 ## Elements, Variables, Observations
 
-An **element** is the entity or entities on which data are collected.
+-   An **element** is the entity or entities on which data are collected.
 
-A **variable** is a characteristic of interest for the elements.
+-   A **variable** is a characteristic of interest for the elements.
 
-An **observation** is the set of measurements for an element.
+-   An **observation** is the set of measurements for an element.
 
 A data set consists of 1,200 individuals with data concerning individual income and job tenure.
 

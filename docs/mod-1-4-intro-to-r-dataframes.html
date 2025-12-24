@@ -2044,7 +2044,7 @@ globalThis.qwebrExecuteCode = async function (
   <li><a href="#using-rbind" id="toc-using-rbind" class="nav-link" data-scroll-target="#using-rbind"><span class="header-section-number">8.1.1</span> Using rbind</a></li>
   <li><a href="#using-cbind" id="toc-using-cbind" class="nav-link" data-scroll-target="#using-cbind"><span class="header-section-number">8.1.2</span> Using cbind</a></li>
   </ul></li>
-  <li><a href="#creating-a-data-frame-1" id="toc-creating-a-data-frame-1" class="nav-link" data-scroll-target="#creating-a-data-frame-1"><span class="header-section-number">8.2</span> Creating a data frame</a></li>
+  <li><a href="#creating-a-data-frame-1" id="toc-creating-a-data-frame-1" class="nav-link" data-scroll-target="#creating-a-data-frame-1"><span class="header-section-number">8.2</span> Creating a Data Frame</a></li>
   <li><a href="#using-an-existing-dataframe" id="toc-using-an-existing-dataframe" class="nav-link" data-scroll-target="#using-an-existing-dataframe"><span class="header-section-number">8.3</span> Using an Existing Dataframe</a></li>
   <li><a href="#dimensions-of-a-data-frame" id="toc-dimensions-of-a-data-frame" class="nav-link" data-scroll-target="#dimensions-of-a-data-frame"><span class="header-section-number">8.4</span> Dimensions of a Data Frame</a></li>
   <li><a href="#selecting-rows-or-columns-in-a-data-frame" id="toc-selecting-rows-or-columns-in-a-data-frame" class="nav-link" data-scroll-target="#selecting-rows-or-columns-in-a-data-frame"><span class="header-section-number">8.5</span> Selecting Rows or Columns in a Data Frame</a></li>
@@ -2389,10 +2389,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 </section>
 <section id="creating-a-data-frame-1" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="creating-a-data-frame-1"><span class="header-section-number">8.2</span> Creating a data frame</h2>
-<p>Previously, we created a matrix by binding two vectors together. We can now create a <strong>data frame</strong> or <strong>tibble</strong>.</p>
-<p>A tibble is a more modern version of the standard R data farme. It is part of the <em>tidyverse</em> collection of packages.</p>
-<p>If you want to learn more about tibbles, see <a href="https://tibble.tidyverse.org/" class="uri">https://tibble.tidyverse.org/</a></p>
+<h2 data-number="8.2" class="anchored" data-anchor-id="creating-a-data-frame-1"><span class="header-section-number">8.2</span> Creating a Data Frame</h2>
+<p>Previously, we created a matrix by binding two vectors together.</p>
+<p>We can now create a <strong>data frame</strong> or <strong>tibble</strong>.</p>
+<p>A tibble is a more modern version of the standard R data frame. It is part of the <em>tidyverse</em> collection of packages.</p>
+<p>Select the link to learn more about <a href="https://tibble.tidyverse.org/"><strong>tibbles</strong></a>.</p>
 <p>In the code chunk below, we again create our two variables. This time, however, we store the two variables in a data frame (original R) and a tibble (new and improved).</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2727,8 +2728,10 @@ Hornet Sportabout
 <h2 data-number="8.7" class="anchored" data-anchor-id="the-fred-api-for-real-gdp"><span class="header-section-number">8.7</span> The FRED API for Real GDP</h2>
 <p>An Application Programming Interface (API) allows us to obtain data from a source without having to manually downloading the data. In effect, an API allows us to “grab” data from an external source. If the external source updates the data, then our next API call with obtain the updated data.</p>
 <p>For example, let’s say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called <strong>GDPC1</strong>, and download the data into an Excel file. This process is labor-intensive and subject to error.</p>
-<p>FRED: <a href="https://fred.stlouisfed.org/" class="uri">https://fred.stlouisfed.org/</a></p>
-<p>Real GDP: <a href="https://fred.stlouisfed.org/series/GDPC1" class="uri">https://fred.stlouisfed.org/series/GDPC1</a></p>
+<ul>
+<li><p><a href="https://fred.stlouisfed.org/"><strong>FRED</strong></a></p></li>
+<li><p><a href="https://fred.stlouisfed.org/series/GDPC1"><strong>Real GDP</strong></a></p></li>
+</ul>
 <p>We can use an API call to obtain the data. Instead of having to write the code for an API call, we can use a package called <strong>tidyquant</strong>.</p>
 <p>We have the variable name <strong>GDPC1</strong> and so we can simply use the <strong>tq_get</strong> function in tidyquant to retrieve the real GDP series.</p>
 <p>We rename the <strong>price</strong> variable to <strong>rgdp</strong> and we convert the date using the lubridate package.</p>
@@ -2798,7 +2801,7 @@ Hornet Sportabout
 <section id="the-fred-api-for-nominal-gdp" class="level2" data-number="8.8">
 <h2 data-number="8.8" class="anchored" data-anchor-id="the-fred-api-for-nominal-gdp"><span class="header-section-number">8.8</span> The FRED API for Nominal GDP</h2>
 <p>We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the <strong>price</strong> variable containing the values for nominal GDP. We rename the variable to <strong>gdp</strong> and also use the lubridate package for the dates.</p>
-<p>Nominal GDP: <a href="https://fred.stlouisfed.org/series/GDP" class="uri">https://fred.stlouisfed.org/series/GDP</a></p>
+<p>Select the link to view the nominal GDP series: <a href="https://fred.stlouisfed.org/series/GDP"><strong>Nominal GDP</strong></a></p>
 <div class="cell" data-messages="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>

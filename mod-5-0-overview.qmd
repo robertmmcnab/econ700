@@ -16,17 +16,17 @@ Building on these principles, the module introduces the binomial and Poisson dis
 
 By the end of this module, you should be able to:
 
--   MLO 1: **Differentiate** between discrete and continuous random variables.
+-   MLO 1: **Differentiate** between discrete and continuous random variables. (CLO 3)
 
--   MLO 2: **Construct** and interpret discrete probability distributions.
+-   MLO 2: **Construct** and interpret discrete probability distributions. (CLO 3)
 
--   MLO 3: **Calculate** expected value, variance, and standard deviation for discrete random variables.
+-   MLO 3: **Calculate** expected value, variance, and standard deviation for discrete random variables. (CLO 3)
 
--   MLO 4: **Apply** the binomial and Poisson probability functions to real-world random processes.
+-   MLO 4: **Apply** the binomial and Poisson probability functions to real-world random processes. (CLO 3)
 
--   MLO 5: **Use** R to compute probability mass, cumulative, and inverse distribution functions.
+-   MLO 5: **Use** R to compute probability mass, cumulative, and inverse distribution functions. (CLO 3, 5)
 
--   MLO 6: **Evaluate** how probability models support decision-making in economics.
+-   MLO 6: **Evaluate** how probability models support decision-making in economics. (CLO 1, 3, 5)
 
 ------------------------------------------------------------------------
 

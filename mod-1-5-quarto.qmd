@@ -34,19 +34,15 @@ As with R and RStudio, the more you work with Quarto, the easier it comes to wor
 
 ## Getting Started
 
-To get started with Quarto, you have to install Quarto.
+-   First, ensure that you have [**R**](https://cloud.r-project.org/index.html) and [**RStudio**](https://posit.co/downloads/) installed correctly.
 
-This step assumes you have already installed R and RStudio.
+-   To install Quarto, go to [**Quarto**](https://quarto.org/docs/get-started/)
 
-To install Quarto, go to <https://quarto.org/docs/get-started/>
+-   Once you have installed Quarto, go to the getting started in the [**RStudio page**](https://quarto.org/docs/get-started/hello/rstudio.html).
+
+-   The getting started page will help you understand the capabilities of Quarto. 
 
 [![Quarto Installation Page](images/quarto-start.jpg){fig-alt="Screenshot of Quarto Installation Page"}](https://quarto.org/docs/get-started/)
-
-Once you have installed Quarto, go to the getting started in RStudio page.
-
-You can find this page at: <https://quarto.org/docs/get-started/hello/rstudio.html>
-
-The getting started page will help you understand the capabilities of Quarto.
 
 ## Creating a File
 
@@ -104,11 +100,10 @@ Quarto is a powerful approach to displaying your work in R and RStudio.
 
 ## Additional Resources
 
-Getting started with Quarto video from Posit: <https://youtu.be/_f3latmOhew?si=FS-Ue1--z-hLGtKg>
+-   [Getting started with Quarto video from Posit](https://youtu.be/_f3latmOhew?si=FS-Ue1--z-hLGtKg)
 
-Quarto crash course: <https://www.youtube.com/watch?v=oYV1a9sWhgM>
+-   [Quarto crash course](https://www.youtube.com/watch?v=oYV1a9sWhgM)
 
-R for Data Science: Quarto <https://r4ds.hadley.nz/quarto.html>
+-   [R for Data Science](https://r4ds.hadley.nz/quarto.html)
 
-Introduction to Quarto, Klajdi Puka: <https://kpuka.ca/resources/quarto_intro.html>
-
+-   [Introduction to Quarto](https://kpuka.ca/resources/quarto_intro.html)

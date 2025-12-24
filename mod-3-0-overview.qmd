@@ -16,17 +16,17 @@ To overcome this limitation, the module introduces the Pearson correlation coeff
 
 By the end of this module, you should be able to:
 
--   MLO 1: **Define** covariance and correlation as measures of association.
+-   MLO 1: **Define** covariance and correlation as measures of association. (CLO 3)
 
--   MLO 2: **Compute** sample and population covariance and correlation using R.
+-   MLO 2: **Compute** sample and population covariance and correlation using R. (CLO 2, 3)
 
--   MLO 3: **Interpret** the sign and magnitude of covariance and correlation coefficients.
+-   MLO 3: **Interpret** the sign and magnitude of covariance and correlation coefficients. (CLO 1, 2, 3)
 
--   MLO 4: **Explain** how changes in units of measurement affect covariance but not correlation.
+-   MLO 4: **Explain** how changes in units of measurement affect covariance but not correlation. (CLO 2,3)
 
--   MLO 5: **Distinguish** between statistical association and causal relationships in bivariate data.
+-   MLO 5: **Distinguish** between statistical association and causal relationships in bivariate data. (CLO 1, 2, 3, 4)
 
--   MLO 6: **Apply** covariance and correlation measures using R.
+-   MLO 6: **Apply** covariance and correlation measures using R. (CLO 5)
 
 ------------------------------------------------------------------------
 

@@ -160,7 +160,7 @@ We can graphically depict the frequency distribution.
 
 We use the **ggplot** package to create a graphical plot of the frequency distribution.
 
-To learn more about the capabilities of **ggplot**, see <https://ggplot2.tidyverse.org/>.
+Select the link to learn more about the capabilities of [**ggplot**](https://ggplot2.tidyverse.org/).
 
 We have categories (population size) on the x-axis and the frequencies on the y-axis.
 

@@ -16,15 +16,15 @@ Emphasis will be placed on using R to compute and visualize descriptive statisti
 
 By the end of this module, you should be able to:
 
--   MLO 1: **Construct** and **interpret** frequency and relative frequency distributions to summarize quantitative data.
+-   MLO 1: **Construct** and **interpret** frequency and relative frequency distributions to summarize quantitative data. (CLO 2, 3, 5)
 
--   MLO 2: **Compute** and **interpret** measures of central tendency, including the mean, median, mode, and trimmed and weighted means.
+-   MLO 2: **Compute** and **interpret** measures of central tendency, including the mean, median, mode, and trimmed and weighted means. (CLO 2, 3, 5)
 
--   MLO 3: **Calculate** and **explain** measures of variability, including the range, variance, standard deviation, and coefficient of variation.
+-   MLO 3: **Calculate** and **explain** measures of variability, including the range, variance, standard deviation, and coefficient of variation. (CLO 2, 3, 5)
 
--   MLO 4: **Use** z-scores to assess relative position and identify outliers within a dataset.
+-   MLO 4: **Use** z-scores to assess relative position of an observation and identify outliers within a dataset. (CLO 2, 3, 4, 5)
 
--   MLO 5: **Apply** R to generate, visualize, and interpret descriptive statistics and graphical summaries of economic data.
+-   MLO 5: **Apply** R to generate, visualize, and interpret descriptive statistics and graphical summaries of economic data. (CLO 5)
 
 ------------------------------------------------------------------------
 

@@ -16,17 +16,17 @@ The module extends these concepts to inferences involving two populations and va
 
 By the end of this module, you should be able to:
 
--   MLO 1: **Formulate** null and alternative hypotheses and explain the logic of statistical decision-making.
+-   MLO 1: **Formulate** null and alternative hypotheses and explain the logic of statistical decision-making. (CLO 1, 2, 3, 4)
 
--   MLO 2: **Differentiate** between Type I and Type II errors and interpret the role of significance levels in hypothesis testing.
+-   MLO 2: **Differentiate** between Type I and Type II errors and interpret the role of significance levels in hypothesis testing. (CLO 1, 2, 3, 4)
 
--   MLO 3: **Conduct** hypothesis tests for population means and proportions using the z and t distributions in R.
+-   MLO 3: **Conduct** hypothesis tests for population means and proportions using the z and t distributions in R. (CLO 1, 2, 3, 4, 5)
 
--   MLO 4: **Apply** hypothesis testing to compare two population means or proportions and interpret p-values and confidence levels.
+-   MLO 4: **Apply** hypothesis testing to compare two population means or proportions and interpret p-values and confidence levels. (CLO 1, 2, 3, 4, 5)
 
--   MLO 5: **Evaluate** population variances using the chi-square and F-distributions to test assumptions about variability.
+-   MLO 5: **Evaluate** population variances using the chi-square and F-distributions to test assumptions about variability. (CLO 1, 2, 3, 4, 5)
 
--   MLO 6: **Integrate** hypothesis testing results into real-world economic and data analysis contexts to draw valid inferential conclusions.
+-   MLO 6: **Integrate** hypothesis testing results into real-world economic and data analysis contexts to draw valid inferential conclusions. (CLO 1, 2, 3, 4, 5)
 
 ------------------------------------------------------------------------
 

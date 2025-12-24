@@ -101,13 +101,15 @@ kable(cbind(x9,x8))
 
 ```
 
-## Creating a data frame
+## Creating a Data Frame
 
-Previously, we created a matrix by binding two vectors together. We can now create a **data frame** or **tibble**.
+Previously, we created a matrix by binding two vectors together.
 
-A tibble is a more modern version of the standard R data farme. It is part of the *tidyverse* collection of packages.
+We can now create a **data frame** or **tibble**.
 
-If you want to learn more about tibbles, see <https://tibble.tidyverse.org/>
+A tibble is a more modern version of the standard R data frame. It is part of the *tidyverse* collection of packages.
+
+Select the link to learn more about [**tibbles**](https://tibble.tidyverse.org/).
 
 In the code chunk below, we again create our two variables. This time, however, we store the two variables in a data frame (original R) and a tibble (new and improved).
 
@@ -300,9 +302,9 @@ An Application Programming Interface (API) allows us to obtain data from a sourc
 
 For example, let's say we wanted to obtain data from FRED on real Gross Domestic Product (GDP) for the United States from 1980 to the most current data available. We could go to FRED, search for real GDP, find the real GDP variable is called **GDPC1**, and download the data into an Excel file. This process is labor-intensive and subject to error.
 
-FRED: <https://fred.stlouisfed.org/>
+-   [**FRED**](https://fred.stlouisfed.org/)
 
-Real GDP: <https://fred.stlouisfed.org/series/GDPC1>
+-   [**Real GDP**](https://fred.stlouisfed.org/series/GDPC1)
 
 We can use an API call to obtain the data. Instead of having to write the code for an API call, we can use a package called **tidyquant**.
 
@@ -344,7 +346,7 @@ kable(rgdp[1:5,]) %>%
 
 We can also make an API call to FRED for the nominal GDP series. Much like the real GDP API call, we have a data frame with the **price** variable containing the values for nominal GDP. We rename the variable to **gdp** and also use the lubridate package for the dates.
 
-Nominal GDP: <https://fred.stlouisfed.org/series/GDP>
+Select the link to view the nominal GDP series: [**Nominal GDP**](https://fred.stlouisfed.org/series/GDP)
 
 ```{r, messages = FALSE}
 

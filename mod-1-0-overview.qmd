@@ -14,11 +14,11 @@ In this module, you will be introduced to the R programming environment and its 
 
 By the end of this module, you should be able to:
 
--   MLO 1: **Install** and navigate R and RStudio.\
--   MLO 2: **Identify** R’s basic syntax and data types.\
--   MLO 3: **Work** with variables and simple operations in R.\
--   MLO 4: **Explore** data frames and tibbles in R.\
--   MLO 5: **Apply** descriptive statistics for initial data exploration.
+-   MLO 1: **Install** and navigate R and RStudio. (CLO 5)\
+-   MLO 2: **Identify** R’s basic syntax and data types. (CLO 5)\
+-   MLO 3: **Work** with variables and simple operations in R.(CLO 5)\
+-   MLO 4: **Explore** data frames and tibbles in R. (CLO 5)\
+-   MLO 5: **Apply** descriptive statistics for initial data exploration. (CLO 2, 5)
 
 ------------------------------------------------------------------------
 

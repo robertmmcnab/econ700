@@ -16,17 +16,17 @@ The second half of the module applies probability rules to real-world decision-m
 
 By the end of this module, you should be able to:
 
--   MLO 1: **Define** key probability concepts, including experiments, sample spaces, and events.
+-   MLO 1: **Define** key probability concepts, including experiments, sample spaces, and events. (CLO 3)
 
--   MLO 2: **Compute** probabilities using basic rules (addition, multiplication, complement) for mutually exclusive and independent events.
+-   MLO 2: **Compute** probabilities using basic rules (addition, multiplication, complement) for mutually exclusive and independent events. (CLO 3)
 
--   MLO 3: **Differentiate** between permutations and combinations in counting possible outcomes.
+-   MLO 3: **Differentiate** between permutations and combinations in counting possible outcomes. (CLO 3)
 
--   MLO 4: **Interpret** conditional probabilities and construct joint and marginal probability tables.
+-   MLO 4: **Interpret** conditional probabilities and construct joint and marginal probability tables. (CLO 3)
 
--   MLO 5: **Apply** Bayes’ Theorem to update probabilities based on new information.
+-   MLO 5: **Apply** Bayes’ Theorem to update probabilities based on new information. (CLO 3)
 
--   MLO 6: **Analyze** probabilities using R.
+-   MLO 6: **Analyze** probabilities using R. (CLO 3, 5)
 
 ------------------------------------------------------------------------
 

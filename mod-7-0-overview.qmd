@@ -16,17 +16,17 @@ Building on these concepts, the module introduces the Central Limit Theorem (CLT
 
 By the end of this module, you should be able to:
 
--   MLO 1: **Explain** the purpose and importance of sampling in statistical inference.
+-   MLO 1: **Explain** the purpose and importance of sampling in statistical inference. (CLO 1, 2)
 
--   MLO 2: **Differentiate** among simple random, stratified, and cluster sampling techniques.
+-   MLO 2: **Differentiate** among simple random, stratified, and cluster sampling techniques. (CLO 1, 2)
 
--   MLO 3: **Describe** how sampling variability affects sample statistics and their relationship to population parameters.
+-   MLO 3: **Describe** how sampling variability affects sample statistics and their relationship to population parameters. (CLO 1, 2, 4)
 
--   MLO 4: **Apply** the Central Limit Theorem to explain the behavior of sampling distributions for means and proportions.
+-   MLO 4: **Apply** the Central Limit Theorem to explain the behavior of sampling distributions for means and proportions. (CLO 1, 2, 4)
 
--   MLO 5: **Calculate** and interpret the standard error of sample means and proportions.
+-   MLO 5: **Calculate** and interpret the standard error of sample means and proportions. (CLO 1, 2, 4)
 
--   MLO 6: **Use** R to simulate and visualize sampling distributions and assess how sample size influences variability and normality.
+-   MLO 6: **Use** R to simulate and visualize sampling distributions and assess how sample size influences variability and normality. (CLO 1, 2, 3, 4, 5)
 
 ------------------------------------------------------------------------
 
